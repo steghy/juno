@@ -1,0 +1,16 @@
+# dirs
+
+bin
+videos
+relazioni
+
+# eclipse stuff
+.settings
+
+
+	
+
+# files
+
+.classpath
+.project

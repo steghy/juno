@@ -1,0 +1,57 @@
+<<supply process started>> user-data
+--data supply process started 
+----setting the data [country=Italy]
+----setting the data [user-name=steghy]
+----setting the data [passwd=main.model.Passwd@48140564]
+----setting the data [name=Simone]
+----setting the data [cellphone=3802679518]
+----setting the data [email=main.model.Email@58ceff1]
+----setting the data [age=24]
+----setting the data [last-name=Gentili]
+--data supply process finished 
+<<supply process finished>> user-data
+<<configuration process started>> {JSON}
+--data supply process started metadata
+----providing the data [os-name=Linux]
+----providing the data [arch=amd64]
+----providing the data [version=5.19.0-76051900-generic]
+----providing the data [local-date-time=2022-09-05T23:31:41.389976318]
+--data supply process finished metadata
+--data supply process started data
+----providing the data [country=Italy]
+----providing the data [user-name=steghy]
+----providing the data [passwd=main.model.Passwd@48140564]
+----providing the data [name=Simone]
+----providing the data [cellphone=3802679518]
+----providing the data [email=main.model.Email@58ceff1]
+----providing the data [age=24]
+----providing the data [last-name=Gentili]
+--data supply process finished data
+----setting the data JSONArray
+<<configuration process finished>> {JSON} json file writing completed
+<<loading process started>> {JSON}
+****DATA FOUND******
+----loading the data [os-name=Linux]
+----loading the data [arch=amd64]
+----loading the data [version=5.19.0-76051900-generic]
+----loading the data [local-date-time=2022-09-05T23:31:41.389976318]
+----loading the data [country=Italy]
+----loading the data [user-name=steghy]
+----loading the data [passwd={passwd=enter}]
+----loading the data [name=Simone]
+----loading the data [cellphone=3802679518]
+----loading the data [email={email=gentilis98@gmail.com}]
+----loading the data [age=24]
+----loading the data [last-name=Gentili]
+<<configuration process started>> user-data
+--data setting process started 
+----setting the data [country=Italy]
+----setting the data [user-name=steghy]
+----setting the data [passwd={passwd=enter}]
+----setting the data [name=Simone]
+----setting the data [cellphone=3802679518]
+----setting the data [email={email=gentilis98@gmail.com}]
+----setting the data [age=24]
+----setting the data [last-name=Gentili]
+--data setting process finished 
+<<configuration process finished>> user-data
