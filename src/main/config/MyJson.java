@@ -79,7 +79,8 @@ import main.log.main.Log;
 	 * @throws IOException
 	 */
 	public static DataPackage loadData(String path) throws IOException, NoSuchFileException {
-
+		
+		// load process (start)
 		Log.print(LogMessage.SLOAD_PROC, JSON_PROCESS);
 
 		// source file
@@ -88,8 +89,12 @@ import main.log.main.Log;
 		// data
 		DataPackage dataPackage = new DataPackage("");
 		JSONArray jsonArray = new JSONArray(source);
-		
+	
+		// prepare data package
 		confDataPackage(jsonArray, dataPackage);
+	
+		// load process (end)
+		Log.print(LogMessage.ELOAD_PROC, JSON_PROCESS);
 		
 		return dataPackage;
 	}
@@ -103,12 +108,19 @@ import main.log.main.Log;
 	@SuppressWarnings({ })
 	private static void confDataPackage(JSONArray jsonArray, DataPackage dataPackage) throws IOException {
 		
+		// getting metadata from json array
 		Map<String, Object> metadata = jsonArray.getJSONObject(0).toMap();
+		
+		// getting data from json array
 		Map<String, Object> data = jsonArray.getJSONObject(1).toMap();
 			
+		// prepare metadata
 		setMetadata(metadata, dataPackage);
-		setData(data, dataPackage);
 		
+		// prepare data
+		setData(data, dataPackage);
+	
+		// inst loading 
 		Log.print(LogMessage.ILOAD_DATA, dataPackage.getMetadata());
 		Log.print(LogMessage.ILOAD_DATA, dataPackage.getData());
 	}
@@ -129,33 +141,31 @@ import main.log.main.Log;
 		 * è presente all' interno della mappa. I null vengono impostati
 		 * e si ha l'equivalenza dell'assenza di informazioni sui metadati.
 		 */
-		
 		String key = (String) jsonMetadata.keySet().toArray()[0];
 		Map<String, Object> metadata = (HashMap) jsonMetadata.get(key);
 		
-		//local-date-time
+		// local-date-time
 		Optional<Object> opt1 = Optional.ofNullable(metadata.get(DataPackage.LOCAL_DATE_TIME));
 		if(opt1.isPresent()) {
 			String localDateTime = (String) opt1.get();
 			dataPackage.setLocalDateTime(localDateTime);
 		}
 
-		//os type
+		// os type
 		Optional<Object> opt2 = Optional.ofNullable(metadata.get(DataPackage.OS));
 		if(opt2.isPresent()) {
 			String os = (String) opt2.get();
 			dataPackage.setOs(os);
 		}
 
-		//architercture
+		// architercture
 		Optional<Object> opt3 = Optional.ofNullable(metadata.get(DataPackage.ARCH));
 		if(opt2.isPresent()) {
 			String arch = (String) opt3.get();
 			dataPackage.setArch(arch);
 		}
 		
-		
-		//version
+		// version
 		Optional<Object> opt4 = Optional.ofNullable(metadata.get(DataPackage.VERSION));
 		if(opt2.isPresent()) {
 			String version = (String) opt4.get();

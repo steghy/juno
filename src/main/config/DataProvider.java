@@ -21,13 +21,13 @@ public class DataProvider {
 		
 		File file = new File(path);
 		
-		//controllo esistenza file
+		// controllo esistenza file
 		if(file.exists()){
 			
-			//controllo identità
+			//i controllo identità
 			if(file.isFile()) {
 				
-				//controllo estensione
+				//i controllo estensione
 				if(path.endsWith(MyJson.JSON_EXTENSION)) {
 					return MyJson.loadData(path);
 				}

@@ -18,7 +18,6 @@ public class Exporter {
 	 */
 	public static void write(String path, Exportable obj) throws IOException {
 		DataPackage data = obj.provideData();
-		data.setMetadata();
 		MyJson.create(path, data);
 	}
 }
