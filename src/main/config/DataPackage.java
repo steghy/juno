@@ -1,61 +1,58 @@
 package main.config;
 
+
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
 import main.util.Os;
 
-/**
- * Classe per la creazione di dati
- * @author steghy
- *
- */
+
 public class DataPackage {
+
 	
-	/** i nomi da usare come key per le mappe*/
 	public static final String LOCAL_DATE_TIME = "local-date-time";
 	public static final String OS = "os-name";
 	public static final String ARCH = "arch";
 	public static final String VERSION = "version";
+
 	
-	/** i metadati del pacchetto*/
-	private String name;
-	private String localDateTime;
-	private String os;
-	private String arch;
-	private String version;
+	private String name;          // data name 
+	private String localDateTime; // local date and time
+	private String os;            // os
+	private String arch;          // arch
+	private String version;       // version
 	
 	
-	/** i dati del pacchetto*/
+	/** data container */
 	private Map<String, Object> data;
 
 	
 	/**
-	 * Genera un pacchetto di dati composto soltanto dai
-	 * metadati
-	 * @param name Il nome
+	 * Builds a data package
+	 * @param name Data package's name
 	 */
 	public DataPackage(String name) {
 		this.name = name;
+		this.setMetadata();
 	}
 
-	
+
 	/**
-	 * Genera un pacchetto di dati contenente i metadati ed
-	 * i dati
-	 * @param name Il nome
-	 * @param data I dati 
+	 * Builds a data package
+	 * @param name Data package's name
+	 * @param data Data
 	 */
 	public DataPackage(String name, Map<String, Object> data) {
 		this.name = name;
 		this.data = data;
+		this.setMetadata();
 	}
-	
+
 	
 	/**
-	 * Restituisce il nome del pacchetto
-	 * @return Il nome
+	 * Returns the name
+	 * @return The name
 	 */
 	public String getName() {
 		return this.name;
@@ -63,18 +60,17 @@ public class DataPackage {
 
 	
 	/**
-	 * Restituisce la data, l'ora e il tempo di creazione
-	 * di questo pacchetto dati
-	 * @return Data, temo, ora
+	 * Returns the local date & time 
+	 * @return Local data & time
 	 */
 	public String getLocalDateTime() {
 		return this.localDateTime;
 	}
-
+	
 	
 	/**
-	 * Restituisce l'os impostato su questo pacchetto
-	 * @return
+	 * Returns the os type
+	 * @return The os type
 	 */
 	public String getOs() {
 		return this.os;
@@ -82,9 +78,8 @@ public class DataPackage {
 
 	
 	/**
-	 * Ritorna l'architettura del sistema operativo
-	 * impostato su questo oggetto
-	 * @return L'architettura
+	 * Returns the architecture
+	 * @return The architecture
 	 */
 	public String getArch() {
 		return this.arch;
@@ -92,9 +87,8 @@ public class DataPackage {
 
 	
 	/**
-	 * Ritorna la versione del sistema operativo 
-	 * impostato su questo oggetto
-	 * @return La versione
+	 * Returns the system version 
+	 * @return The system version
 	 */
 	public String getVersion() {
 		return this.version;
@@ -102,18 +96,13 @@ public class DataPackage {
 
 	
 	/**
-	 * Restituisce i dati di questo oggetto.
-	 * @return I dati
+	 * Returns the data
+	 * @return The data
 	 */
 	public Map<String, Object> getData() {
 		return this.data;
 	}
 
-	
-	/**
-	 * Restituisce i metadati di questo oggetto
-	 * @return I metadati
-	 */
 	public Map<String, Object> getMetadata(){
 		
 		//metadati map
@@ -127,11 +116,10 @@ public class DataPackage {
 		
 		return metadata;
 	}
-
 	
 	/**
-	 * Imposta l'ora, data e il tempo di questo oggetto
-	 * @param localdateTime Data, ora e tempo
+	 * 
+	 * @param localDateTime
 	 */
 	public void setLocalDateTime(String localDateTime) {
 		this.localDateTime = localDateTime;
@@ -139,8 +127,8 @@ public class DataPackage {
 
 	
 	/**
-	 * imposta l'os
-	 * @param os l'os
+	 * 
+	 * @param os
 	 */
 	public void setOs(String os) {
 		this.os = os;
@@ -148,8 +136,8 @@ public class DataPackage {
 
 	
 	/**
-	 * imposta l'architettura
-	 * @param arch l'architettura
+	 * 
+	 * @param arch
 	 */
 	public void setArch(String arch) {
 		this.arch = arch;
@@ -157,8 +145,8 @@ public class DataPackage {
 
 	
 	/**
-	 * imposta la versione
-	 * @param version la versione
+	 * 
+	 * @param version
 	 */
 	public void setVersion(String version) {
 		this.version = version;
@@ -166,24 +154,27 @@ public class DataPackage {
 
 	
 	/**
-	 * Imposta i dati di questo pacchetto 
-	 * @param data I Dati
+	 * 
+	 * @param data
 	 */
 	public void setData(Map<String, Object> data) {
 		this.data = data;
 	}
-
+	
 	
 	/**
-	 * Imposta il nome di questo pacchetto dati
-	 * @param name Una stringa
+	 * 
+	 * @param name
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	
-	public void setMetadata() {
+	/**
+	 * 
+	 */
+	private void setMetadata() {
 		localDateTime = LocalDateTime.now().toString();
 		this.os = Os.getName();
 		this.arch = Os.getArch();

@@ -9,181 +9,197 @@ import main.log.main.Log;
 import main.log.messages.LogMessage;
 
 /**
- * Definisce l'account di un utente dell'applicazione
+ * This class defines a user in the program 
  * @author steghy
  *
  */
 public class User implements Configurable, Exportable {
 	
-	/** le key da usare per configurare la classe con le map*/
+
+	// data keys
 	public static final String DATA_NAME = "user-data";
 	public static final String USER_NAME = "user-name";
 	public static final String NAME = "name";
 	public static final String LAST_NAME = "last-name";
 	public static final String EMAIL = "email";
-	public static final String CELLPHONE = "cellphone";
+	public static final String TELEPHONE_NUMBER = "telephone-number";
 	public static final String COUNTRY = "country";
 	public static final String PASSWD = "passwd";
 	public static final String AGE = "age";
+
 	
-	/** dettagli dell'utente*/
-	private String userName;
+	// user data
+	private String username;
 	private String name;
 	private String lastName;
-	private Email email;
-	private long cellphone;
+	private Email emailAddress;
+	private long telephoneNumber;
 	private String country;
 	private Passwd passwd;
 	private int age;
-		
+	
+	
 	/**
-	 * Costruisce uno user a partire dallo user name
-	 * @param userName Lo username
+	 * Builds a user
 	 */
 	public User() {
 		
 	}
+
 	
 	/**
-	 * Imposta la email dell'utente
-	 * @param email la email
+	 * Sets the email address 
+	 * @param emailAddress The email address
 	 */
-	public void setEmail(Email email) {
-		//controllo validità email da effettuare
-		this.email = email;
+	public void setEmail(Email emailAddress) {
+		// implements email checker
+		this.emailAddress = emailAddress;
 	}
+
 	
 	/**
-	 * Imposta la passwd dell'utente
-	 * @param passwd La passwd
+	 * Sets the passwd
+	 * @param passwd The passwd
 	 */
 	public void setPasswd(Passwd passwd) {
+		// implements passwd checker
 		this.passwd = passwd;
 	}
 	
+	
 	/**
-	 * Imposta l'età dell'utente
-	 * @param age L'età
+	 * Sets the age
+	 * @param age The age
 	 */
 	public void setAge(int age) {
 		if(age <= 0) {
-			throw new IllegalArgumentException("User invalid age");
+			throw new IllegalArgumentException(
+					"Invalid user age");
 		}
 		this.age = age;
 	}
 	
+	
 	/**
-	 * Imposta il paese dell'utente
-	 * @param country Il paese
+	 * Sets the country 
+	 * @param country The country
 	 */
 	public void setCountry(String country) {
-		//ancora nessuna verifica sulla correttezza del dato
+		// implements data checker for this data
 		this.country = country;
 	}
 	
-	/**
-	 * Imposta il cellulare dell'utente
-	 * @param cellphone Il cellulare
-	 */
-	public void setCellphone(long cellphone) {
-		Long temp = cellphone;
-		long length = temp.toString().length();
-		
-		//momentanea unica accettazione
-		if(length != 10) {
-			throw new IllegalArgumentException("illegan cellphone number");
-		}
-		this.cellphone = cellphone;
-	}
 	
 	/**
-	 * Imposta il cognome dell'utente
-	 * @param lastName Il cognome
+	 * Sets the telephone number
+	 * @param telephoneNumber The telephone number
+	 */
+	public void setTelephoneNumber(long telephoneNumber) {
+		// implements telephone number checker
+		this.telephoneNumber = telephoneNumber;
+	}
+	
+	
+	/**
+	 * Sets the lastname
+	 * @param lastName The lastname
 	 */
 	public void setLastName(String lastName) {
+		// implements lastname checker
 		this.lastName = lastName;
 	}
+
 	
 	/**
-	 * Imposta il nome dell'utente
-	 * @param name Il nome
+	 * Sets the name
+	 * @param name The name
 	 */
 	public void setName(String name) {
+		// implements name checker
 		this.name = name;
 	}
+
 	
 	/**
-	 * Imposta lo username dell'utente
-	 * @param userName Lo username
+	 * Sets the username
+	 * @param username The username
 	 */
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	
+	/**
+	 * Returns the username
+	 * @return The username
+	 */
+	public String getUsername() {
+		return this.username;
 	}
 	
-	/**
-	 * Restituisce lo username
-	 * @return Lo username
-	 */
-	public String getUserName() {
-		return this.userName;
-	}
 	
 	/**
-	 * Restituisce il nome dell'utente
-	 * @return il nome
+	 * Returns the name
+	 * @return The name
 	 */
 	public String getName() {
 		return this.name;
 	}
 	
+	
 	/**
-	 * restituisce il cognome dell'utente
-	 * @return il cognome
+	 * Returns the lastname
+	 * @return The lastname
 	 */
-	public String getLastName() {
+	public String getLastname() {
 		return this.lastName;
 	}
+
 	
 	/**
-	 * ritorna il cellulare dell'utente
-	 * @return il cellulare
+	 * Returns the telephone number
+	 * @return The telephone number
 	 */
-	public long getCellphone() {
-		return this.cellphone;
+	public long getTelephoneNumber() {
+		return this.telephoneNumber;
+	}
+
+	
+	/**
+	 * Returns the email address
+	 * @return The email address
+	 */
+	public Email getEmailAddress() {
+		return this.emailAddress;
 	}
 	
-	/**
-	 * ritorna la email dell'utente
-	 * @return la email
-	 */
-	public Email getEmail() {
-		return this.email;
-	}
-	
 	
 	/**
-	 * ritorna il paese dell'utente
-	 * @return il paese
+	 * Returns the country
+	 * @return the country
 	 */
 	public String getCountry() {
 		return this.country;
 	}
 	
+	
 	/**
-	 * ritorna l'età dell'utente
-	 * @return l'età
+	 * Returns the age
+	 * @return The age
 	 */
 	public int getAge() {
 		return this.age;
 	}
+
 	
 	/**
-	 * ritorna la passwd dell'utente
-	 * @return la passwd
+	 * Returns the passwd
+	 * @return The passwd
 	 */
 	public Passwd getPasswd() {
 		return this.passwd;
 	}
+
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
@@ -193,8 +209,8 @@ public class User implements Configurable, Exportable {
 		Log.print(LogMessage.SCONF_SUBPROC, "");
 		
 		if(!(source.getName().equals(User.DATA_NAME))) {
-			throw new IllegalArgumentException("Wrong data."
-					+",no "+DATA_NAME+" key found");
+			throw new IllegalArgumentException(
+					"Wrong data , no "+DATA_NAME+" key found");
 		}
 		
 		Map<String, Object> data = (HashMap) source.getData();
@@ -205,62 +221,62 @@ public class User implements Configurable, Exportable {
 		
 		else {
 			
-			//user name
+			// user name
 			if(data.containsKey(User.USER_NAME)) {
 				String temp = (String) data.get(User.USER_NAME);
-				this.userName = temp;
+				this.username = temp;
 			}
 			
-			//name
+			// name
 			if(data.containsKey(User.NAME)){
 				String temp = (String) data.get(User.NAME);
 				this.name = temp;
 			}
 			
-			//last name
+			// last name
 			if(data.containsKey(User.LAST_NAME)) {
 				String temp = (String) data.get(User.LAST_NAME);
 				this.lastName = temp;
 			}
 			
-			//country
+			// country
 			if(data.containsKey(User.COUNTRY)) {
 				String temp = (String) data.get(User.COUNTRY);
 				this.country = temp;
 			}
 			
-			//cellphone
-			if(data.containsKey(User.CELLPHONE)) {
-				Object obj = data.get(User.CELLPHONE);
+			// phone number
+			if(data.containsKey(User.TELEPHONE_NUMBER)) {
+				Object obj = data.get(User.TELEPHONE_NUMBER);
 				long temp = 0;
 				
-				//se il numero è stato inserito
+				// if a number had been entered
 				if(obj instanceof Long) {
 					temp = (long)obj;
 				}
 				
-				//se il numero non è stato inserito
+				// if a number had not been entered
 				if(obj instanceof Integer) {
 					temp = Integer.toUnsignedLong((Integer)obj);
 				}
 				
-				this.cellphone = temp;
+				this.telephoneNumber = temp;
 			}
 			
-			//age
+			// age
 			if(data.containsKey(User.AGE)) {
 				int temp = (Integer) data.get(User.AGE);
 				this.age = temp;
 			}
 			
-			//email
+			// email
 			if(data.containsKey(User.EMAIL)) {
 				Map<String, Object> temp = (HashMap) data.get(User.EMAIL);
 				Email email = new Email((String)temp.get(Email.EMAIL));
-				this.email = email;
+				this.emailAddress = email;
 			}
 			
-			//passwd
+			// passwd
 			if(data.containsKey(User.PASSWD)) {
 				Map<String, Object> temp = (HashMap) data.get(User.PASSWD);
 				Passwd passwd = new Passwd((String)temp.get(Passwd.PASSWD));
@@ -280,41 +296,48 @@ public class User implements Configurable, Exportable {
 		Log.print(LogMessage.SSUPPLY_SUBPROC, "");
 	
 		Map<String, Object> data = new HashMap<>();
-		
-		if(this.userName != null) {
-			data.put(User.USER_NAME, this.userName);
+	
+		// user name
+		if(this.username != null) {
+			data.put(User.USER_NAME, this.username);
 		}
 		
+		// name
 		if(this.name != null) {
 			data.put(User.NAME, this.name);
 		}
 		
+		// lastname
 		if(this.lastName != null) {
 			data.put(User.LAST_NAME, this.lastName);
 		}
 		
+		// country
 		if(this.country != null) {
 			data.put(User.COUNTRY, this.country);
 		}
 		
-		if(this.cellphone != 0) {
-			data.put(User.CELLPHONE, this.cellphone);
+		// telephone number
+		if(this.telephoneNumber != 0) {
+			data.put(User.TELEPHONE_NUMBER, this.telephoneNumber);
 		}
 		
-		if(this.email != null) {
-			data.put(User.EMAIL,this.email);
+		// email address
+		if(this.emailAddress != null) {
+			data.put(User.EMAIL,this.emailAddress);
 		}
 			
+		// age
 		if(this.age != 0) {
 			data.put(User.AGE, this.age);
 		}
 		
+		// passwd
 		if(this.passwd != null) {
 			data.put(User.PASSWD, this.passwd);
 		}
 		
-		
-		Log.print(LogMessage.ICONF_DATA, data);
+		Log.print(LogMessage.ISUPP_DATA, data);
 		Log.print(LogMessage.ESUPPLY_SUBPROC, "");
 		Log.print(LogMessage.ESUPPLY_PROC, DATA_NAME);
 		

@@ -4,32 +4,43 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Classe per la generazione di percorsi
+ * 
  * @author steghy
  *
  */
 public class PathGenerator {
 	
-	//mac/linux div
+	// unix-like
 	private static final String DEFAULT_DIV = "/";
 		
-	//win div
+	// windows
 	private static final String INVERTED_DIV = "\\";
+
 	
-	//genera un percorso con dir corrente
+	/**
+	 * 
+	 * @param filename
+	 * @return
+	 */
 	public static String generate(String filename) {
 		String path = Os.getCurrentPath();
-		path += (Os.isLinux()==true?DEFAULT_DIV:INVERTED_DIV);
+		path += (Os.isUnix()==true?DEFAULT_DIV:INVERTED_DIV);
 		return path.concat(filename);
 	}
 	
-	//genera un percorso arbitrario
+	
+	/**
+	 * 
+	 * @param src
+	 * @param fileName
+	 * @return
+	 * @throws IOException
+	 */
 	public static String generate(String src, String fileName) throws IOException {
 		File file = new File(src);
-		
 		if(file.exists()) {
 			if(file.isDirectory()) {
-				String div = (Os.isLinux() == true ? DEFAULT_DIV : INVERTED_DIV);
+				String div = (Os.isUnix() == true ? DEFAULT_DIV : INVERTED_DIV);
 				return src.concat(div).concat(fileName);
 			}
 			else {

@@ -3,21 +3,36 @@ package main.config;
 import java.io.IOException;
 
 /**
- * Classe per la creazione di file di configurazione 
+ * This class is used for the creation of configuration files.
+ * Actually the only supported file type is: JSON.
  * @author steghy
+ *
  */
 public class Exporter {
 	
 	/**
-	 * Preleva i dati dall'esportabile specificato e
-	 * li salva in un file localizzato nella posizione
-	 * specificata
-	 * @param path il percorso
-	 * @param obj l'esportabile
-	 * @throws IOException 
+	 * Generates a JSON file which contains all the informations
+	 * provided by the specified exportable object.
+	 * @param path Where save the file.
+	 * @param obj The exportable object.
+	 * @throws IOException If the parent directory of the specified
+	 * path doesn't exist.
 	 */
-	public static void write(String path, Exportable obj) throws IOException {
+	public static void exportJson(String path, Exportable obj) 
+			throws IOException {
 		DataPackage data = obj.provideData();
 		MyJson.create(path, data);
+	}
+	
+	public static void exportYaml(String path, Exportable obj) 
+			throws IOException {
+		DataPackage data = obj.provideData();
+		// implements
+	}
+	
+	public static void exportConfig(String path, Exportable obj) 
+			throws IOException {
+		DataPackage data = obj.provideData();
+		// implements
 	}
 }

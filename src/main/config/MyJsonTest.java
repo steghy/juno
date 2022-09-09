@@ -9,7 +9,7 @@ import main.log.file.LogWriterArgumentsManager;
 import main.model.Email;
 import main.model.Passwd;
 import main.model.User;
-import main.model.UserConfigurator;
+import main.model.UserDataManager;
 import main.util.PathGenerator;
 
 /**
@@ -23,7 +23,6 @@ import main.util.PathGenerator;
 public class MyJsonTest {
 	
 	
-	public static String path = PathGenerator.generate("user-data.json");		
 
 	/**
 	 * Classe main
@@ -44,19 +43,21 @@ public class MyJsonTest {
 	 */
 	private static void createJsonTest() throws IOException {
 		
-		//configurazione User
+		public static String path = PathGenerator.generate("user-data.json");		
+		
+		// Setting the user informations
 		User user = new User();
-		user.setUserName("steghy");
+		user.setUsername("steghy");
 		user.setAge(24);
-		user.setCellphone(3802679518L);
+		user.setTelephoneNumber(3802679518L);
 		user.setEmail(new Email("gentilis98@gmail.com"));
 		user.setName("Simone");
 		user.setLastName("Gentili");
 		user.setPasswd(new Passwd("enter"));
 		user.setCountry("Italy");	
 		
-		//scrittura file json
-		UserConfigurator.export(user, "user-data.json");
+		// export the informations
+		Exporter.exportJson(path, user);
 	}
 	
 	/**
@@ -66,7 +67,7 @@ public class MyJsonTest {
 	private static void readJsonTest() throws IOException {
 		
 		User user = new User();
-		UserConfigurator.configure(user, "user-data.json");
+		UserDataManager.configure(user, "user-data.json");
 		
 		user.getAge();
 	}

@@ -15,98 +15,98 @@ import main.log.main.Log;
 
 
 /**
- * Classe per la creazione e il caricamento di file di tipo json
  * 
  * @author steghy
+ *
  */
  public class MyJson {
 
-	/** costanti da utilizzare per la creazione dei file */
+	// JSON metadata name
 	public static final String METADATA = "metadata";
+	
+	// JSON data name
 	public static final String DATA = "data";
+	
+	// JSON extension
 	public static final String JSON_EXTENSION = ".json";
-	public static final String JSON_PROCESS = "{JSON}";
-
+	
+	
 	/**
-	 * Crea un file json contenente i dati specificati all'interno del percorso
-	 * specificato
 	 * 
-	 * @param path   Il percorso
-	 * @param source Le informazioni
+	 * @param path
+	 * @param source
 	 * @throws IOException
 	 */
-	public static void create(String path, DataPackage source) throws IOException {
+	public static void create(String path, DataPackage source) 
+			throws IOException {
 
-		Log.print(LogMessage.SCONF_PROC, JSON_PROCESS);
-
-		// metadati
+		Log.print(LogMessage.SCONF_PROC, "JSON");
 		Log.print(LogMessage.SSUPPLY_SUBPROC, METADATA);
+		
+		// metadata
 		JSONObject jsonMetadata = new JSONObject();
 		jsonMetadata.put(METADATA, source.getMetadata());
 		Log.print(LogMessage.ISUPP_DATA, source.getMetadata());
 		Log.print(LogMessage.ESUPPLY_SUBPROC, METADATA);
 		
-		// data
 		Log.print(LogMessage.SSUPPLY_SUBPROC, DATA);
+		
+		// data
 		JSONObject jsonData = new JSONObject();
 		jsonData.put(source.getName(), source.getData());	
 		Log.print(LogMessage.ISUPP_DATA, source.getData());
 		Log.print(LogMessage.ESUPPLY_SUBPROC, DATA);	
 
-		// finalizzazione
 		Log.print(LogMessage.ICONF_DATA, "JSONArray");
+		
 		JSONArray jsonArray = new JSONArray();
 		jsonArray.put(jsonMetadata);
 		jsonArray.put(jsonData);
 
-		// scrittura
 		FileWriter file = new FileWriter(path);
 		file.write(jsonArray.toString());
-		file.flush();
+		file.flush();  // i really need this ? 
 		file.close();
 
-		Log.print(LogMessage.ECONF_PROC, JSON_PROCESS 
+		Log.print(LogMessage.ECONF_PROC, "JSON" 
 				+ " json file writing completed");
 
 	}
-              
+    
+	
 	/**
-	 * carica i dati dal percorso specificato e ritorna un Data contenente i dati
-	 * raccolti
 	 * 
-	 * @param path il percorso
-	 * @return Un Data
+	 * @param path
+	 * @return
 	 * @throws IOException
+	 * @throws NoSuchFileException
 	 */
-	public static DataPackage loadData(String path) throws IOException, NoSuchFileException {
+	public static DataPackage loadData(String path) 
+			throws IOException, NoSuchFileException {
 		
-		// load process (start)
-		Log.print(LogMessage.SLOAD_PROC, JSON_PROCESS);
+		Log.print(LogMessage.SLOAD_PROC, "JSON");
 
-		// source file
 		String source = new String(Files.readAllBytes(Paths.get(path)));
 
-		// data
 		DataPackage dataPackage = new DataPackage("");
 		JSONArray jsonArray = new JSONArray(source);
 	
-		// prepare data package
 		confDataPackage(jsonArray, dataPackage);
-	
-		// load process (end)
-		Log.print(LogMessage.ELOAD_PROC, JSON_PROCESS);
 		
+		Log.print(LogMessage.ELOAD_PROC, "JSON");
 		return dataPackage;
 	}
-		
 
 	
 	/**
-	 * Estrae i dati da un JSONObject
-	 * @throws IOException 
+	 * 
+	 * @param jsonArray
+	 * @param dataPackage
+	 * @throws IOException
 	 */
 	@SuppressWarnings({ })
-	private static void confDataPackage(JSONArray jsonArray, DataPackage dataPackage) throws IOException {
+	private static void confDataPackage(JSONArray jsonArray, 
+			DataPackage dataPackage) throws IOException {
 		
 		// getting metadata from json array
 		Map<String, Object> metadata = jsonArray.getJSONObject(0).toMap();
@@ -120,66 +120,66 @@ import main.log.main.Log;
 		// prepare data
 		setData(data, dataPackage);
 	
-		// inst loading 
 		Log.print(LogMessage.ILOAD_DATA, dataPackage.getMetadata());
 		Log.print(LogMessage.ILOAD_DATA, dataPackage.getData());
 	}
 	
 		
 	/**
-	 * Inserisce i metadati all'interno del pacchetto dati
-	 * specificato in input.
+	 * 
+	 * @param jsonMetadata
+	 * @param dataPackage
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	private static void setMetadata(Map<String, Object> jsonMetadata, DataPackage dataPackage) {
+	private static void setMetadata(Map<String, Object> jsonMetadata,
+			DataPackage dataPackage) {
 		
-		/*
-		 * Piuttosto che effettuare i get direttamente dall'oggetto JSONObject
-		 * utilizzo una mappa ritornata dal medesimo per prelevare i valori delle
-		 * chiavi. In questo modo evito le eccezioni JSONObjectException.
-		 * Le implementazioni concrete di Map ritornano null quando la key non
-		 * è presente all' interno della mappa. I null vengono impostati
-		 * e si ha l'equivalenza dell'assenza di informazioni sui metadati.
-		 */
 		String key = (String) jsonMetadata.keySet().toArray()[0];
-		Map<String, Object> metadata = (HashMap) jsonMetadata.get(key);
+		Map<String, Object> metadata = (HashMap)jsonMetadata.get(key);
 		
 		// local-date-time
-		Optional<Object> opt1 = Optional.ofNullable(metadata.get(DataPackage.LOCAL_DATE_TIME));
+		Optional<Object> opt1 = Optional.ofNullable(
+				metadata.get(DataPackage.LOCAL_DATE_TIME));
 		if(opt1.isPresent()) {
 			String localDateTime = (String) opt1.get();
 			dataPackage.setLocalDateTime(localDateTime);
 		}
 
 		// os type
-		Optional<Object> opt2 = Optional.ofNullable(metadata.get(DataPackage.OS));
+		Optional<Object> opt2 = Optional.ofNullable(
+				metadata.get(DataPackage.OS));
 		if(opt2.isPresent()) {
 			String os = (String) opt2.get();
 			dataPackage.setOs(os);
 		}
 
 		// architercture
-		Optional<Object> opt3 = Optional.ofNullable(metadata.get(DataPackage.ARCH));
+		Optional<Object> opt3 = Optional.ofNullable(
+				metadata.get(DataPackage.ARCH));
 		if(opt2.isPresent()) {
 			String arch = (String) opt3.get();
 			dataPackage.setArch(arch);
 		}
 		
 		// version
-		Optional<Object> opt4 = Optional.ofNullable(metadata.get(DataPackage.VERSION));
+		Optional<Object> opt4 = Optional.ofNullable(
+				metadata.get(DataPackage.VERSION));
 		if(opt2.isPresent()) {
 			String version = (String) opt4.get();
 			dataPackage.setVersion(version);
 		}
 	}
+
 	
 	/**
+	 * 
 	 * @param jsonData
 	 * @param dataPackage
 	 * @throws IOException
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public static void setData(Map<String, Object> jsonData, DataPackage dataPackage) throws IOException {
+	public static void setData(Map<String, Object> jsonData, 
+			DataPackage dataPackage) throws IOException {
 			
 		String key = (String) jsonData.keySet().toArray()[0];
 		Map<String, Object> data = (HashMap) jsonData.get(key);

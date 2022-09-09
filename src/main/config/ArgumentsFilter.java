@@ -38,5 +38,4 @@ public class ArgumentsFilter {
 	private static void addOptional(String k, Map<String, Optional<Object>> source, Map<String, Optional<Object>> output) {
 		output.put(k, source.get(k));
 	}
-
 }
