@@ -1,4 +1,4 @@
-package main.log.main;
+package main.log;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -11,85 +11,73 @@ import main.config.Exportable;
 import main.log.messages.LogMessage;
 import main.log.utils.LogUtil;
 
+/**
+ * 
+ * @author steghy
+ * @email <steghy.github@proton.me>
+ */
 public class LogActivationManager implements Configurable, Exportable{
 
-	/** default values */
-	public static final boolean DEF_MAIN_LOG_STAT = false;
-	public static final boolean DEF_PROC_STAT = false;
-	public static final boolean DEF_SUBPROC_STAT = false;
-	public static final boolean DEF_INST_STAT = false;
-	public static final boolean DEF_COMM_STAT = false;
-
-	/** data name */
-	public static final String DATA_NAME = "log-service-status";
-
-	/** main data name */
-	public static final String LOG_MAIN_STAT_DATA_NAME = "log-main-service-status";
-
-	/** processes data names */
-	public static final String 
-	LOAD_PROC_STAT_DATA_NAME = "load-proc-service-status";
+	// data name
+	static final String DATA_NAME = "log-service-status";
 	
-	public static final String 
-	CONF_PROC_STAT_DATA_NAME = "conf-proc-service-status";
+	// main service status
+	static final String LOG_MAIN_STAT_DATA_NAME = "log-main-service-status";
+	
+	// processes service status
+	static final String LOAD_PROC_STAT_DATA_NAME = "load-proc-service-status";
+	static final String CONF_PROC_STAT_DATA_NAME = "conf-proc-service-status";
+	static final String SUPP_PROC_STAT_DATA_NAME = "supp-proc-service-status";
+	
+	// sub-processes service status
+	static final String LOAD_SUBPROC_STAT_DATA_NAME = "load-subproc-service-status";
+	static final String CONF_SUBPROC_STAT_DATA_NAME = "conf-subproc-service-status";
+	static final String SUPP_SUBPROC_STAT_DATA_NAME = "supp-subproc-service-status";
+	
+	// instructions service status
+	static final String LOAD_INST_STAT_DATA_NAME = "load-ins-service-status";
+	static final String CONF_INST_STAT_DATA_NAME = "conf-ins-service-status";
+	static final String SUPP_INST_STAT_DATA_NAME = "supp-ins-service-status";
+	
+	// communications service status
+	static final String COMM_STAT_DATA_NAME = "com-service-status";
 
-	public static final String 
-	SUPP_PROC_STAT_DATA_NAME = "supp-proc-service-status";
-
-	/** sub-processes data names */
-	public static final String 
-	LOAD_SUBPROC_STAT_DATA_NAME = "load-subproc-service-status";
-
-	public static final String 
-	CONF_SUBPROC_STAT_DATA_NAME = "conf-subproc-service-status";
-
-	public static final String 
-	SUPP_SUBPROC_STAT_DATA_NAME = "supp-subproc-service-status";
-
-	/** instructions data names */
-	public static final String LOAD_INST_STAT_DATA_NAME = "load-ins-service-status";
-	public static final String CONF_INST_STAT_DATA_NAME = "conf-ins-service-status";
-	public static final String SUPP_INST_STAT_DATA_NAME = "supp-ins-service-status";
-
-	/** communicatons data names */
-	public static final String COMM_STAT_DATA_NAME = "com-service-status";
-
-	/** main activation */
+	// Main status 
 	private boolean mainLogStat;
 
-	/** processes activation */
+	// Process status 
 	private boolean loadProcStat;
 	private boolean confProcStat;
 	private boolean suppProcStat;
 
-	/** sub-processes activation */
+	// Sub-process status 
 	private boolean loadSubprocStat;
 	private boolean confSubprocStat;
 	private boolean suppSubprocStat;
 
-	/** instructions activaton */
+	// Instructions statsu
 	private boolean loadInstStat;
 	private boolean confInstStat;
 	private boolean suppInstStat;
 
-	/** communications activation */
+	// Communications status
 	private boolean commStat;
 
-	/** contiene le associazioni codice-abilitazione stampa*/
+	// enabled services
 	private Map<Integer, Boolean> enabled;
 
+	// The instance
 	private static LogActivationManager instance;
 
-	/**
-	 * Singleton
-	 */
+	// Singleton pattern
 	private LogActivationManager() {
 		init();
 	}
 
+	
 	/**
-	 * Ritorna l'unica istanza di questa classe
-	 * @return Un DebugEnabler
+	 * 
+	 * @return The instance
 	 */
 	public static LogActivationManager getInstance() {
 		if(instance == null) {
@@ -99,16 +87,11 @@ public class LogActivationManager implements Configurable, Exportable{
 	}
 
 	/**
-	 * Restituisce true se il main-log è attivo, altrimenti
-	 * restituisce il booleano associato al codice messaggio
-	 * fornito in input
-	 * @param logMessage Il log message
-	 * @return Un booleano
+	 * @param logMessage
+	 * @return A boolean
 	 */
 	public boolean isActive(LogMessage logMessage) {
-
 		int code = logMessage.getCode();
-
 		if(enabled.containsKey(code)) {
 
 			if(mainLogStat) {
@@ -124,10 +107,7 @@ public class LogActivationManager implements Configurable, Exportable{
 		}
 	}
 	
-	public static void main(){
-		System.out.println();
-	}
-	
+
 	@Override
 	public DataPackage provideData() throws IOException {
 
@@ -176,22 +156,17 @@ public class LogActivationManager implements Configurable, Exportable{
 			throw new IllegalArgumentException("Wrong data."
 					+",no "+ DATA_NAME +" key found");
 		}
-
 		Map<String, Object> data = (HashMap) source.getData();
-
 		if(data.isEmpty()) {
 			Log.print(LogMessage.C_NO_DATA_FOUND, "");
 		}
-
 		else {
-
 			try {
-
-				//main
+				// main
 				mainLogStat = LogUtil
 						.toBoolean(data
 								.get(LOG_MAIN_STAT_DATA_NAME));
-				//processes
+				// processes
 				loadProcStat = LogUtil
 						.toBoolean(data
 								.get(LOAD_PROC_STAT_DATA_NAME));
@@ -204,7 +179,7 @@ public class LogActivationManager implements Configurable, Exportable{
 						.toBoolean(data
 								.get(SUPP_PROC_STAT_DATA_NAME));
 
-				//sub-processes
+				// sub-processes
 				loadSubprocStat = LogUtil
 						.toBoolean(data
 								.get(LOAD_SUBPROC_STAT_DATA_NAME));
@@ -217,7 +192,7 @@ public class LogActivationManager implements Configurable, Exportable{
 						.toBoolean(data
 								.get(SUPP_SUBPROC_STAT_DATA_NAME));
 
-				//instructions
+				// instructions
 				loadInstStat = LogUtil
 						.toBoolean(data
 								.get(LOAD_INST_STAT_DATA_NAME));
@@ -230,12 +205,10 @@ public class LogActivationManager implements Configurable, Exportable{
 						.toBoolean(data
 								.get(SUPP_INST_STAT_DATA_NAME));
 
-				//communications
+				// communications
 				commStat = LogUtil
 						.toBoolean(data
 								.get(COMM_STAT_DATA_NAME));
-
-				//aggiornamento valori nella mappa
 				update();
 			}
 			catch(IllegalArgumentException e) {
@@ -243,43 +216,44 @@ public class LogActivationManager implements Configurable, Exportable{
 				init();
 			}
 		}
-
 		Log.print(LogMessage.ILOAD_DATA, data);
 		Log.print(LogMessage.ECONF_SUBPROC, "");
 		Log.print(LogMessage.ECONF_PROC, DATA_NAME);
 	}
 
-	/**
-	 * Reimposta l'abilitatore ai valori di default
-	 */
+	
+	// Initialize the service status
 	private void init() {
 
-		/** main activation */
-		mainLogStat = DEF_MAIN_LOG_STAT;
+		// main default status
+		mainLogStat = false;
 
-		/** processes activation */
-		loadProcStat = DEF_PROC_STAT;
-		confProcStat = DEF_PROC_STAT;
-		suppProcStat = DEF_PROC_STAT;
+		// process default status
+		loadProcStat = false;
+		confProcStat = false;
+		suppProcStat = false;
 
-		/** sub-processes activation */
-		loadSubprocStat = DEF_SUBPROC_STAT;
-		confSubprocStat = DEF_SUBPROC_STAT;
-		suppSubprocStat = DEF_SUBPROC_STAT;
+		// sub-process default status
+		loadSubprocStat = false;
+		confSubprocStat = false;
+		suppSubprocStat = false;
 
-		/** instructions activaton */
-		loadInstStat = DEF_INST_STAT;
-		confInstStat = DEF_INST_STAT;
-		suppInstStat = DEF_INST_STAT;
+		// instructions default status
+		loadInstStat = false;
+		confInstStat = false;
+		suppInstStat = false;
 
-		/** communications activation */
-		commStat = DEF_COMM_STAT;
+		// communications default status
+		commStat = false;
 
 		update();
 	}
 
+	
+	/**
+	 * 
+	 */
 	public void update() {
-
 		enabled = new TreeMap<>();
 
 		/** processes */
@@ -299,47 +273,103 @@ public class LogActivationManager implements Configurable, Exportable{
 
 		/** communications */
 		enabled.put(Log.COMM_CODE, commStat);
-
 	}
 
+	
+	/**
+	 * 
+	 * @param value
+	 */
 	public void setLogMainStat(boolean value) {
 		this.mainLogStat = value;
 	}
 
 
+	/**
+	 * 
+	 * @param value
+	 */
 	public void setLoadProStat(boolean value) {
 		this.loadProcStat = value;
 	}
+
+	
+	/**
+	 * 
+	 * @param value
+	 */
 	public void setConfProStat(boolean value) {
 		this.confProcStat = value;
 	}
+	
+	
+	/**
+	 * 
+	 * @param value
+	 */
 	public void setSuppProStat(boolean value) {
 		this.suppProcStat = value;
 	}
 
-
+	
+	/**
+	 * 
+	 * @param value
+	 */
 	public void setLoadSUBProStat(boolean value) {
 		this.loadSubprocStat = value;
 	}
+	
+	
+	/**
+	 * 
+	 * @param value
+	 */
 	public void setConfSUBProStat(boolean value) {
 		this.confSubprocStat = value;
 	}
+	
+	
+	/**
+	 * 
+	 * @param value
+	 */
 	public void setSuppSUBProStat(boolean value) {
 		this.suppSubprocStat = value;
 	}
 
 
+	/**
+	 * 
+	 * @param value
+	 */
 	public void setLoadInstStat(boolean value) {
 		this.loadInstStat = value;
 	}
+	
+	
+	/**
+	 * 
+	 * @param value
+	 */
 	public void setConfInstStat(boolean value) {
 		this.confInstStat = value;
 	}
+
+	
+	/**
+	 * 
+	 * @param value
+	 */
 	public void setSuppInstStat(boolean value) {
 		this.suppInstStat = value;
 	}
 
 
+	/**
+	 * 
+	 * @param value
+	 */
 	public void setCommStat(boolean value) {
 		this.commStat = value;
 	}

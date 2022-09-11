@@ -11,7 +11,7 @@ public interface Exportable {
 	
 	/**
 	 * 
-	 * @return
+	 * @return A DataPackage
 	 * @throws IOException
 	 */
 	public DataPackage provideData() throws IOException;

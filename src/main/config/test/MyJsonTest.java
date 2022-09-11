@@ -2,9 +2,9 @@ package main.config.test;
 
 import java.io.IOException;
 import main.config.Exporter;
+import main.log.LogArgumentsManager;
 import main.log.color.LogColorsArgumentsManager;
 import main.log.file.LogWriterArgumentsManager;
-import main.log.main.LogArgumentsManager;
 import main.model.Email;
 import main.model.Passwd;
 import main.model.User;

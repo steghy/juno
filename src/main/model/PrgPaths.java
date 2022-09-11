@@ -6,29 +6,27 @@ import java.util.Map;
 import main.util.PathGenerator;
 
 /**
- * This class defines the paths of all
- * the necessary data for the program.
+ * 
  * @author steghy
- *
+ * @email <steghy.github@proton.me>
  */
 public class PrgPaths {
 	
-	// directory name -> full PATH
-	Map<String, String> paths;
+	//
+	private Map<String, String> paths;
 	
-	// one instance only
+	//
 	private static PrgPaths instance;
+
 	
-	/**
-	 * Singleton pattern
-	 */
+	//
 	private PrgPaths() {
 		init();
 	}
 
 	
 	/**
-	 * Returns the instance
+	 * 
 	 * @return The instance
 	 */
 	public static PrgPaths getInstance() {
@@ -37,11 +35,8 @@ public class PrgPaths {
 		} return instance;
 	}
 
-	
 	/**
-	 * It generates the data map which contains
-	 * the association between "directory name",
-	 * "PATH".
+	 * 
 	 */
 	private void init() {
 		this.paths = new HashMap<>();
@@ -59,7 +54,4 @@ public class PrgPaths {
 	public Map<String, String> getPaths(){
 		return this.paths;
 	}
-	
-	
-
 }

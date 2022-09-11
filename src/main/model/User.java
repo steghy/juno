@@ -5,7 +5,7 @@ import java.util.Map;
 import main.config.Configurable;
 import main.config.DataPackage;
 import main.config.Exportable;
-import main.log.main.Log;
+import main.log.Log;
 import main.log.messages.LogMessage;
 
 /**

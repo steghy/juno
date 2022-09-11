@@ -10,8 +10,9 @@ import java.nio.file.Paths;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Optional;
+
+import main.log.Log;
 import main.log.messages.LogMessage;
-import main.log.main.Log;
 
 
 /**

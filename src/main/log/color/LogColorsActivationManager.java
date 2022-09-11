@@ -6,7 +6,7 @@ import java.util.TreeMap;
 import main.config.Configurable;
 import main.config.DataPackage;
 import main.config.Exportable;
-import main.log.main.Log;
+import main.log.Log;
 import main.log.messages.LogMessage;
 import main.log.utils.LogUtil;
 
@@ -30,41 +30,43 @@ public class LogColorsActivationManager implements Exportable, Configurable {
 	static final String SUPP_INST_COL_DATA_NAME = "supp-inst-color-service-status";
 	static final String COMM_COL_DATA_NAME = "comm-color-service-status";
 
-	//
+	// main status
 	private boolean mainlogStat;
 	
-	//
+	// processes status
 	private boolean loadProcColStat;
 	private boolean confProcColStat;
 	private boolean suppProcColStat;
 
-	//
+	// sub-processes status
 	private boolean loadSubprocColStat;
 	private boolean confSubprocColStat;
 	private boolean suppSubprocColStat;
 
-	//
+	// instructions status
 	private boolean loadInstColStat;
 	private boolean confInstColStat;
 	private boolean suppInstColStat;
 
-	//
+	// communications status
 	private boolean commColStat;
 
-	//
+	// enabled status
 	private Map<Integer, Boolean> enabled;
 	
-	//
+	// The instance
 	private static LogColorsActivationManager instance;
 
+	
 	// Builds a LCAM for the LogColors class
 	private LogColorsActivationManager() {
 		init();
 	}
+
 	
 	/**
 	 * 
-	 * @return
+	 * @return The instance
 	 */
 	public static LogColorsActivationManager getInstance() {
 		if(instance == null) {
@@ -72,6 +74,7 @@ public class LogColorsActivationManager implements Exportable, Configurable {
 		}
 		return instance;
 	}
+
 	
 	/**
 	 * 
@@ -93,6 +96,7 @@ public class LogColorsActivationManager implements Exportable, Configurable {
 					+ "code message:" + code);
 		}
 	}
+
 	
 	@Override
 	public void configure(DataPackage source) {
@@ -145,7 +149,6 @@ public class LogColorsActivationManager implements Exportable, Configurable {
 				// communications
 				commColStat = LogUtil.toBoolean(data.get(COMM_COL_DATA_NAME));
 				
-				//aggiornamento dei valori nella mappa
 				update();
 			} 
 			catch (IllegalArgumentException e) {
@@ -153,7 +156,6 @@ public class LogColorsActivationManager implements Exportable, Configurable {
 				init();
 			}
 		}
-
 	}
 
 	@Override
@@ -187,80 +189,138 @@ public class LogColorsActivationManager implements Exportable, Configurable {
 		Log.print(LogMessage.ESUPPLY_PROC, DATA_NAME);
 		return new DataPackage(DATA_NAME, data);
 	}
+
 	
+	/**
+	 * 
+	 * @param value
+	 */
 	public void setMainLogColStat(boolean value) {
 		mainlogStat = value;
 	}
+
 	
+	/**
+	 * 
+	 * @param value
+	 */
 	public void setLoadProcColStat(boolean value) {
 		loadProcColStat = value;
 	}
+	
+	
+	/**
+	 * 
+	 * @param value
+	 */
 	public void setConfProcColStat(boolean value) {
 		confProcColStat = value;
 	}
+	
+	
+	/**
+	 * 
+	 * @param value
+	 */
 	public void setSuppProcColStat(boolean value) {
 		suppProcColStat = value;
 	}
 	
 	
+	/**
+	 * 
+	 * @param value
+	 */
 	public void setLoadSUBProcColStat(boolean value) {
 		loadSubprocColStat = value;
 	}
+	
+	
+	/**
+	 * 
+	 * @param value
+	 */
 	public void setConfSUBProcColStat(boolean value) {
 		confSubprocColStat = value;
 	}
+	
+	
+	/**
+	 * 
+	 * @param value
+	 */
 	public void setSuppSUBProcColStat(boolean value) {
 		suppSubprocColStat = value;
 	}
 	
+	
+	/**
+	 * 
+	 * @param value
+	 */
 	public void setLoadInstColStat(boolean value) {
 		loadInstColStat = value;
 	}
+	
+	
+	/**
+	 * 
+	 * @param value
+	 */
 	public void setConfInstColStat(boolean value) {
 		confInstColStat = value;
 	}
+	
+	
+	/**
+	 * 
+	 * @param value
+	 */
 	public void setSuppSInstColStat(boolean value) {
 		suppInstColStat = value;
 	}
+	
+	
+	/**
+	 * 
+	 * @param value
+	 */
 	public void setCommColStat(boolean value) {
 		commColStat = value;
 	}
 	
 	
-	/**
-	 * Inizializza l'obj LogColorsActivationManager.
-	 */
+	// Initialize the status
 	private void init() {
-	
-		/** main **/
+		// main status
 		mainlogStat = false;
 		
-		/** processes */
+		// process status
 		loadProcColStat = false;
 		confProcColStat = false;
 		suppProcColStat = false;
 	
-		/** sub-processes */
+		// sub-process
 		loadSubprocColStat = false;
 		confSubprocColStat = false;
 		suppSubprocColStat = false;
 
-		/** instructions */
+		// inst 
 		loadInstColStat = false;
 		confInstColStat = false;
 		suppInstColStat = false;
 
-		/** communications */
+		// comm
 		commColStat = false;
 		
 		update();
 	}
+
 	
 	/**
-	 * 
+	 * Update the status
 	 */
-	private void update() {
-		
+	public void update() {
 		enabled = new TreeMap<>();
 					
 		/** processes */
@@ -280,7 +340,5 @@ public class LogColorsActivationManager implements Exportable, Configurable {
 
 		/** communications */
 		enabled.put(Log.COMM_CODE, commColStat);
-
 	}
-
 }

@@ -8,91 +8,89 @@ import java.util.Optional;
 import main.util.ArgumentsFilter;
 import main.util.ArgumentsSorter;
 
+/**
+ * 
+ * @author steghy
+ * @email <steghy.github@proton.me>
+ */
 public class LogColorsArgumentsManager {
 	
-	/** debug terminal options */
-	public static final String COL_FOPT = "--log-col";
-	public static final String COL_SOPT = "-lc";
+	// main activation option name
+	static final String COL_FOPT = "--log-col";
+	static final String COL_SOPT = "-lc";
 	
-	/** debug process terminal options */
-	public static final String LOAD_PRC_COL_FOPT = "--log-col-loadprc";
-	public static final String LOAD_PRC_COL_SOPT = "-llpc";
+	// load process option name
+	static final String LOAD_PRC_COL_FOPT = "--log-col-loadprc";
+	static final String LOAD_PRC_COL_SOPT = "-llpc";
 	
-	public static final String CONF_PRC_COL_FOPT = "--log-col-confprc";
-	public static final String CONF_PRC_COL_SOPT = "-lcpc";
+	// conf process option name 
+	static final String CONF_PRC_COL_FOPT = "--log-col-confprc";
+	static final String CONF_PRC_COL_SOPT = "-lcpc";
 	
-	public static final String SUPP_PRC_COL_FOPT = "--log-col-supplyprc";
-	public static final String SUPP_PRC_COL_SOPT = "-lspc";
+	// supp process option name
+	static final String SUPP_PRC_COL_FOPT = "--log-col-supplyprc";
+	static final String SUPP_PRC_COL_SOPT = "-lspc";
 	
-	/** debug sub-process terminal options */
-	public static final String SUBPRC_LOAD_COL_FOPT = "--log-col-load-subprc";
-	public static final String SUBPRC_LOAD_COL_SOPT = "-llspc";
-	public static final String SUBPRC_CONF_COL_FOPT = "--log-col-conf-subprc";
-	public static final String SUBPRC_CONF_COL_SOPT = "-lcspc"; 
-	public static final String SUBPRC_SUPP_COL_FOPT = "--log-col-supp-subprc";
-	public static final String SUBPRC_SUPP_COL_SOPT = "-lsspc";
+	// 
+	static final String SUBPRC_LOAD_COL_FOPT = "--log-col-load-subprc";
+	static final String SUBPRC_LOAD_COL_SOPT = "-llspc";
 	
-	/** debug instructions terminal options */
-	public static final String INST_LOAD_COL_FOPT = "--log-col-load-inst";
-	public static final String INST_LOAD_COL_SOPT = "-llic";
-	public static final String INST_CONF_COL_FOPT = "--log-col-conf-inst";
-	public static final String INST_CONF_COL_SOPT = "-lcic";
-	public static final String INST_SUPP_COL_FOPT = "--log-col-supp-inst";
-	public static final String INST_SUPP_COL_SOPT = "-lsic";
+	//
+	static final String SUBPRC_CONF_COL_FOPT = "--log-col-conf-subprc";
+	static final String SUBPRC_CONF_COL_SOPT = "-lcspc"; 
 	
-	/** debug communications terminal options */
-	public static final String COMM_COL_FOPT = "--log-col-com";
-	public static final String COMM_COL_SOPT = "-lcc";
+	//
+	static final String SUBPRC_SUPP_COL_FOPT = "--log-col-supp-subprc";
+	static final String SUBPRC_SUPP_COL_SOPT = "-lsspc";
+	
+	//
+	static final String INST_LOAD_COL_FOPT = "--log-col-load-inst";
+	static final String INST_LOAD_COL_SOPT = "-llic";
+	
+	//
+	static final String INST_CONF_COL_FOPT = "--log-col-conf-inst";
+	static final String INST_CONF_COL_SOPT = "-lcic";
+	
+	//
+	static final String INST_SUPP_COL_FOPT = "--log-col-supp-inst";
+	static final String INST_SUPP_COL_SOPT = "-lsic";
+	
+	//
+	static final String COMM_COL_FOPT = "--log-col-com";
+	static final String COMM_COL_SOPT = "-lcc";
 	
 	
-	/** le opzioni in lista delle riga di comando */
+	// all options
 	private static List<String> options;
 
-	/** no istance */
-	private LogColorsArgumentsManager() {
-		
-	}
+	
+	// Singleton pattern
+	private LogColorsArgumentsManager() {}
+
 
 	/**
-	 * In base alle opzioni ed ai relativi argomenti 
-	 * forniti dalla linea di comando, configura le 
-	 * abilitazioni della classe LogColorsArgumentsManager
-	 * @param args Gli argomenti contenuti in un array String
+	 * 
+	 * @param args
 	 */
+	@SuppressWarnings("unchecked")
 	public static void active(String[] args) {
-		
 		if(options == null) {
 			init();
 		}
-		
-		//organizzazione e filtraggio degli argomenti
 		Map<String, Optional<Object>> filteredArgs = ArgumentsFilter
 				.filter(options, ArgumentsSorter.getArguments(args));
-				
 		for(String key: filteredArgs.keySet()) {	
-			
 			Optional<Object> optional = filteredArgs.get(key);
-			
 			boolean argument;
-	
-				//controllo presenza argomento (1)
 				if(optional.isEmpty()) {
-						
-					//bisogna fornire un booleano per ogni opzione
 					throw new IllegalArgumentException("the argument "
 							+ "for the option is missing, option ("+key+")");
 				}
-					
-				//checks argument type (2) //vengono inseriti in vettori gli args
-				@SuppressWarnings("unchecked")
 				ArrayList<Object> temp = ((ArrayList<Object>) optional.get());
-
-				//only one argument for one option
 				if(temp.size() > 1) {
 					throw new IllegalArgumentException("too many arguments "
 							+ "for the option:"+key);
 				}
-					
 				String strArg = temp.get(0).toString();
 				if(strArg.equals("true")) {
 					argument = true;
@@ -105,8 +103,6 @@ public class LogColorsArgumentsManager {
 								+strArg+" for the option: "+key
 								+". It needs to be a boolean.");
 				}
-					
-				//indirizzamento dei dati
 				addressing(key, argument);
 				}
 		

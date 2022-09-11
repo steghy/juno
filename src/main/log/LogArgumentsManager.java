@@ -1,5 +1,5 @@
 
-package main.log.main;
+package main.log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,67 +10,68 @@ import main.util.ArgumentsFilter;
 import main.util.ArgumentsSorter;
 
 /**
- * Classe per l'amministrazione delle abilitazioni dei
- * processi di stampa a video mediante la classe Debug.
+ * 
  * @author steghy
- *
+ * @email <steghy.github@proton.me>
  */
 public class LogArgumentsManager {
 	
-	/** debug terminal options */
-	public static final String LOG_FOPT = "--log";
-	public static final String LOG_SOPT = "-l";
+	static final String LOG_FOPT = "--log";
+	static final String LOG_SOPT = "-l";
 	
-	/** debug process terminal options */
-	public static final String LOG_LOAD_PRC_FOPT = "--log-loadprc";
-	public static final String LOG_LOAD_PRC_SOPT = "-llp";
+	//
+	static final String LOG_LOAD_PRC_FOPT = "--log-loadprc";
+	static final String LOG_LOAD_PRC_SOPT = "-llp";
 	
-	public static final String LOG_CONF_PRC_FOPT = "--log-confprc";
-	public static final String LOG_CONF_PRC_SOPT = "-lcp";
+	//
+	static final String LOG_CONF_PRC_FOPT = "--log-confprc";
+	static final String LOG_CONF_PRC_SOPT = "-lcp";
 	
-	public static final String LOG_SUPP_PRC_FOPT = "--log-supplyprc";
-	public static final String LOG_SUPP_PRC_SOPT = "-lsp";
+	//
+	static final String LOG_SUPP_PRC_FOPT = "--log-supplyprc";
+	static final String LOG_SUPP_PRC_SOPT = "-lsp";
 	
-	/** debug sub-process terminal options */
-	public static final String LOG_SUBPRC_LOAD_FOPT = "--log-load-subprc";
-	public static final String LOG_SUBPRC_LOAD_SOPT = "-llsp";
+	//
+	static final String LOG_SUBPRC_LOAD_FOPT = "--log-load-subprc";
+	static final String LOG_SUBPRC_LOAD_SOPT = "-llsp";
 	
-	public static final String LOG_SUBPRC_CONF_FOPT = "--log-conf-subprc";
-	public static final String LOG_SUBPRC_CONF_SOPT = "-lcsp"; 
+	//
+	static final String LOG_SUBPRC_CONF_FOPT = "--log-conf-subprc";
+	static final String LOG_SUBPRC_CONF_SOPT = "-lcsp"; 
 	
-	public static final String LOG_SUBPRC_SUPP_FOPT = "--log-supp-subprc";
-	public static final String LOG_SUBPRC_SUPP_SOPT = "-lssp";
+	//
+	static final String LOG_SUBPRC_SUPP_FOPT = "--log-supp-subprc";
+	static final String LOG_SUBPRC_SUPP_SOPT = "-lssp";
 	
-	/** debug instructions terminal options */
-	public static final String LOG_INSTR_LOAD_FOPT = "--log-loadinst";
-	public static final String LOG_INSTR_LOAD_SOPT = "-lli";
+	//
+	static final String LOG_INSTR_LOAD_FOPT = "--log-loadinst";
+	static final String LOG_INSTR_LOAD_SOPT = "-lli";
 	
-	public static final String LOG_INSTR_CONF_FOPT = "--log-confinst";
-	public static final String LOG_INSTR_CONF_SOPT = "-lci";
+	//
+	static final String LOG_INSTR_CONF_FOPT = "--log-confinst";
+	static final String LOG_INSTR_CONF_SOPT = "-lci";
 	
-	public static final String LOG_INSTR_SUPP_FOPT = "--log-supplyinst";
-	public static final String LOG_INSTR_SUPP_SOPT = "-lsi";
+	//
+	static final String LOG_INSTR_SUPP_FOPT = "--log-supplyinst";
+	static final String LOG_INSTR_SUPP_SOPT = "-lsi";
 	
-	/** debug communications terminal options */
-	public static final String LOG_COM_FOPT = "--log-com";
-	public static final String LOG_COM_SOPT = "-lc";
+	// Communications service
+	static final String LOG_COM_FOPT = "--log-com";
+	static final String LOG_COM_SOPT = "-lc";
 	
-	
-	/** le opzioni in lista delle riga di comando */
+	// All options
 	private static List<String> options;
 
-	/**
-	 * Non si devono istanziarne oggetti
-	 */
+	
+	// No instance
 	private LogArgumentsManager() {
 
 	}
+
 	
 	/**
-	 * Imposta le variabili statiche della classe Debug per abilitare
-	 * le stampe. La mappa fornita in input contiene le coppie 
-	 * DebugDaAttivare-booleano.
-	 * @param args Una mappa
+	 * 
+	 * @param args
 	 */
 	@SuppressWarnings("unchecked")
 	public static void active(String[] args) {
@@ -95,16 +96,11 @@ public class LogArgumentsManager {
 				throw new IllegalArgumentException("the argument "
 						+ "for the option is missing, option ("+key+")");
 			}
-			
-			//checks argument type (2) //vengono inseriti in vettori gli args
 			ArrayList<Object> temp = ((ArrayList<Object>) optional.get());
-
-			//only one argument for one option
 			if(temp.size() > 1) {
 				throw new IllegalArgumentException("too many arguments "
 						+ "for the option:"+key);
 			}
-			
 			String strArg = temp.get(0).toString();
 			if(strArg.equals(Boolean.toString(true))) {
 				argument = true;
@@ -116,20 +112,13 @@ public class LogArgumentsManager {
 				throw new IllegalArgumentException("wrong argument: "
 						+strArg+" for the option: "+key);
 			}
-			
-			//indirizzamento dei dati
 			LogArgumentsManager.addressing(key, argument);
 		}
-		
 		LogActivationManager.getInstance().update();
 	}
 	
-	/**
-	 * Indirizza il valore booleano specificato nel canale di Debug associato
-	 * alla key (dove la key è la opzione per l'attivazione/disattivazione del canale). 
-	 * @param key La opzione
-	 * @param argument Un booleano
-	 */
+	
+	//
 	private static void addressing(String key, boolean argument) {
 		
 		LogActivationManager instance = LogActivationManager.getInstance();
@@ -178,13 +167,9 @@ public class LogArgumentsManager {
 		}			
 	}
 	
-	/**
-	 * Costruisce una lista contenente tutte le opzioni per la
-	 * abilitazione delle stampe per la classe Debug.
-	 * @return Una lista
-	 */
+	
+	// Initialiaze options
 	private static void init() {
-				
 		options = new ArrayList<>();
 		
 		//aggiunta delle opzioni

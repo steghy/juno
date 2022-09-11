@@ -7,26 +7,24 @@ import java.io.PrintWriter;
 /**
  * 
  * @author steghy
- *
+ * @email <steghy.github@proton.me>
  */
 public class LogWriter {
 	
-	// comment
+	// activator component
 	private LogWriterActivationManager activator;
 	
-	// comment
+	// configurator component
 	private LogWriterConfigurator configurator;
 	
-	// comment
+	// writer component
 	private PrintWriter writer;
 	
-	// comment
+	// the instance
 	private static LogWriter instance;
 	
 
-	/**
-	 * 
-	 */
+	//
 	private LogWriter() {
 		init();
 	}
@@ -34,7 +32,7 @@ public class LogWriter {
 	
 	/**
 	 * 
-	 * @return
+	 * @return The instance
 	 */
 	public static LogWriter getInstance() {
 		if(instance == null) {
@@ -49,9 +47,7 @@ public class LogWriter {
 	 * @param string
 	 */
 	public void write(String string) {
-		
 		if(instance.activator.getStatus()) {
-			
 			if(writer == null) {
 				try {
 					writer = new PrintWriter(configurator.getPath());
@@ -60,12 +56,13 @@ public class LogWriter {
 					e.printStackTrace();
 				}
 			}
-			
 			writer.println(string);			
 			writer.flush();
 		}
 	}
 
+	
+	// initialize the components
 	private void init() {
 		activator = LogWriterActivationManager.getInstance();
 		configurator = LogWriterConfigurator.getInstance();
