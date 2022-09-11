@@ -4,30 +4,22 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Classe per la fornitura di file di configurazione
+ * 
  * @author steghy
+ * @email <steghy.github@proton.me>
  */
-
 public class DataProvider {
 	
 	/**
-	 * legge il file specificato dal percorso e lo ritorna
-	 * come pacchetto dati
-	 * @param path il percorso
-	 * @return un Data
+	 * 
+	 * @param path A path
+	 * @return A DataPackage
 	 * @throws IOException
 	 */
 	public static DataPackage load(String path) throws IOException{
-		
 		File file = new File(path);
-		
-		// controllo esistenza file
 		if(file.exists()){
-			
-			//i controllo identità
 			if(file.isFile()) {
-				
-				//i controllo estensione
 				if(path.endsWith(MyJson.JSON_EXTENSION)) {
 					return MyJson.loadData(path);
 				}

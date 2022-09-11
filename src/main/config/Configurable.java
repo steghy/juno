@@ -3,13 +3,16 @@ package main.config;
 import java.io.IOException;
 
 /**
- * Interfaccia per la configurazione di classi
- * con dati
+ * 
  * @author steghy
- *
+ * @email <steghy.github@proton.me>
  */
 public interface Configurable {
 		
-	//configura il configurabile con i dati
+	/**
+	 * 
+	 * @param data
+	 * @throws IOException
+	 */
 	public void configure(DataPackage data) throws IOException;
 }

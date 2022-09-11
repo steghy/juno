@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import main.config.ArgumentsFilter;
 import main.log.color.LogColorsActivationManager;
+import main.util.ArgumentsFilter;
 import main.util.ArgumentsSorter;
 
 /**

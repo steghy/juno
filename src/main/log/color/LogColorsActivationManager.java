@@ -10,75 +10,61 @@ import main.log.main.Log;
 import main.log.messages.LogMessage;
 import main.log.utils.LogUtil;
 
+/**
+ * 
+ * @author steghy
+ * @email <steghy.github@proton.me>
+ */
 public class LogColorsActivationManager implements Exportable, Configurable {
 
-	/** default status */
-	public static final boolean DEF_MAIN_LOG_COL_STAT = false;
-	public static final boolean DEF_PROC_COL_STAT = false;
-	public static final boolean DEF_SUBPROC_COL_STAT = false;
-	public static final boolean DEF_INST_COL_STAT = false;
-	public static final boolean DEF_COMM_STAT = false;
+	static final String DATA_NAME = "log-colors-service-status";
+	static final String LOG_MAIN_COL_STAT_DATA_NAME = "log-main-color-service-status";
+	static final String LOAD_PROC_COL_DATA_NAME = "load-proc-color-service-status";
+	static final String CONF_PROC_COL_DATA_NAME = "conf-proc-color-service-status";
+	static final String SUPP_PROC_COL_DATA_NAME = "supp-proc-color-service-status";
+	static final String LOAD_SUBPROC_COL_DATA_NAME = "load-subproc-color-service-status";
+	static final String CONF_SUBPROC_COL_DATA_NAME = "conf-subproc-color-service-status";
+	static final String SUPP_SUBPROC_COL_DATA_NAME = "supp-subproc-color-service-status";
+	static final String LOAD_INST_COL_DATA_NAME = "load-inst-color-service-status";
+	static final String CONF_INST_COL_DATA_NAME = "conf-inst-color-service-status";
+	static final String SUPP_INST_COL_DATA_NAME = "supp-inst-color-service-status";
+	static final String COMM_COL_DATA_NAME = "comm-color-service-status";
 
-	/** data name */
-	public static final String DATA_NAME = "log-colors-service-status";
-
-	/** main data name */
-	public static final String LOG_MAIN_COL_STAT_DATA_NAME = "log-main-color-service-status";
-	/** processes data names */
-	public static final String LOAD_PROC_COL_DATA_NAME = "load-proc-color-service-status";
-	public static final String CONF_PROC_COL_DATA_NAME = "conf-proc-color-service-status";
-	public static final String SUPP_PROC_COL_DATA_NAME = "supp-proc-color-service-status";
-
-	/** sub-processes data names */
-	public static final String LOAD_SUBPROC_COL_DATA_NAME = "load-subproc-color-service-status";
-	public static final String CONF_SUBPROC_COL_DATA_NAME = "conf-subproc-color-service-status";
-	public static final String SUPP_SUBPROC_COL_DATA_NAME = "supp-subproc-color-service-status";
-
-	/** instructions data names */
-	public static final String LOAD_INST_COL_DATA_NAME = "load-inst-color-service-status";
-	public static final String CONF_INST_COL_DATA_NAME = "conf-inst-color-service-status";
-	public static final String SUPP_INST_COL_DATA_NAME = "supp-inst-color-service-status";
-
-	/** communicatons data names */
-	public static final String COMM_COL_DATA_NAME = "comm-color-service-status";
-
-	/** main activations */
+	//
 	private boolean mainlogStat;
 	
-	/** processes color */
+	//
 	private boolean loadProcColStat;
 	private boolean confProcColStat;
 	private boolean suppProcColStat;
 
-	/** sub-processes color */
+	//
 	private boolean loadSubprocColStat;
 	private boolean confSubprocColStat;
 	private boolean suppSubprocColStat;
 
-	/** instructions color */
+	//
 	private boolean loadInstColStat;
 	private boolean confInstColStat;
 	private boolean suppInstColStat;
 
-	/** communications color */
+	//
 	private boolean commColStat;
 
-	/** contiene le associazioni codice-abilitazione colore */
+	//
 	private Map<Integer, Boolean> enabled;
 	
-	/** the only instance */
+	//
 	private static LogColorsActivationManager instance;
 
-	/**
-	 * Singleton
-	 */
+	// Builds a LCAM for the LogColors class
 	private LogColorsActivationManager() {
 		init();
 	}
 	
 	/**
-	 * Restituisce l'unica istanza di questa classe
-	 * @return Un DebugColorEnabler
+	 * 
+	 * @return
 	 */
 	public static LogColorsActivationManager getInstance() {
 		if(instance == null) {
@@ -86,19 +72,15 @@ public class LogColorsActivationManager implements Exportable, Configurable {
 		}
 		return instance;
 	}
+	
 	/**
-	 * Restituisce true se il codice del messaggio è abilitato, altrimenti false.
-	 * Se il messaggio non è schedato all'interno della mappa dei messaggi registrati
-	 * il metodo lancia una eccezione IllegalArgumentException
-	 * @param message Il messaggio
-	 * @return Un booleano
+	 * 
+	 * @param message
+	 * @return A boolean
 	 */
 	public boolean isActive(LogMessage message) {
-		
 		int code = message.getCode();
-		
 		if(enabled.containsKey(code)) {
-			
 			if(mainlogStat) {
 				return true;
 			}
@@ -114,21 +96,16 @@ public class LogColorsActivationManager implements Exportable, Configurable {
 	
 	@Override
 	public void configure(DataPackage source) {
-
 		Log.print(LogMessage.SCONF_PROC, DATA_NAME);
 		Log.print(LogMessage.SCONF_SUBPROC, "");
-
 		if (!(source.getName().equals(DATA_NAME))) {
 			throw new IllegalArgumentException("Wrong data." 
 					+ ",no " + DATA_NAME + " key found");
 		}
-
 		Map<String, Object> data = source.getData();
-
 		if (data.isEmpty()) {
 			Log.print(LogMessage.C_NO_DATA_FOUND, "");
 		}
-		
 		else {
 			try {
 				//main log
@@ -181,12 +158,9 @@ public class LogColorsActivationManager implements Exportable, Configurable {
 
 	@Override
 	public DataPackage provideData() {
-
 		Log.print(LogMessage.SSUPPLY_PROC, DATA_NAME);
 		Log.print(LogMessage.SSUPPLY_SUBPROC, "");
-
 		Map<String, Object> data = new HashMap<>();
-
 		//main
 		data.put(LOG_MAIN_COL_STAT_DATA_NAME, mainlogStat);
 		
@@ -211,7 +185,6 @@ public class LogColorsActivationManager implements Exportable, Configurable {
 		Log.print(LogMessage.ISUPP_DATA, data);
 		Log.print(LogMessage.ESUPPLY_SUBPROC, "");
 		Log.print(LogMessage.ESUPPLY_PROC, DATA_NAME);
-
 		return new DataPackage(DATA_NAME, data);
 	}
 	
@@ -260,34 +233,33 @@ public class LogColorsActivationManager implements Exportable, Configurable {
 	private void init() {
 	
 		/** main **/
-		mainlogStat = DEF_MAIN_LOG_COL_STAT;
+		mainlogStat = false;
 		
 		/** processes */
-		loadProcColStat = DEF_PROC_COL_STAT;
-		confProcColStat = DEF_PROC_COL_STAT;
-		suppProcColStat = DEF_PROC_COL_STAT;
+		loadProcColStat = false;
+		confProcColStat = false;
+		suppProcColStat = false;
 	
 		/** sub-processes */
-		loadSubprocColStat = DEF_SUBPROC_COL_STAT;
-		confSubprocColStat = DEF_SUBPROC_COL_STAT;
-		suppSubprocColStat = DEF_SUBPROC_COL_STAT;
+		loadSubprocColStat = false;
+		confSubprocColStat = false;
+		suppSubprocColStat = false;
 
 		/** instructions */
-		loadInstColStat = DEF_INST_COL_STAT;
-		confInstColStat = DEF_INST_COL_STAT;
-		suppInstColStat = DEF_INST_COL_STAT;
+		loadInstColStat = false;
+		confInstColStat = false;
+		suppInstColStat = false;
 
 		/** communications */
-		commColStat = DEF_COMM_STAT;
+		commColStat = false;
 		
 		update();
 	}
 	
 	/**
-	 * Inizializza la mappa che associa al logcode l'abilitazione
-	 * del colore.
+	 * 
 	 */
-	public void update() {
+	private void update() {
 		
 		enabled = new TreeMap<>();
 					

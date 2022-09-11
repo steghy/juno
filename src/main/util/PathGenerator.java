@@ -6,10 +6,9 @@ import java.io.IOException;
 /**
  * 
  * @author steghy
- *
+ * @email <steghy.github@proton.me>
  */
 public class PathGenerator {
-	
 	// unix-like
 	private static final String DEFAULT_DIV = "/";
 		
@@ -20,7 +19,7 @@ public class PathGenerator {
 	/**
 	 * 
 	 * @param filename
-	 * @return
+	 * @return A String
 	 */
 	public static String generate(String filename) {
 		String path = Os.getCurrentPath();
@@ -33,7 +32,7 @@ public class PathGenerator {
 	 * 
 	 * @param src
 	 * @param fileName
-	 * @return
+	 * @return A String
 	 * @throws IOException
 	 */
 	public static String generate(String src, String fileName) throws IOException {

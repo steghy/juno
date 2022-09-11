@@ -9,26 +9,59 @@ import main.log.main.Log;
 import main.log.messages.LogMessage;
 
 /**
- * This class defines a user in the program 
+ * 
  * @author steghy
- *
+ * @email <steghy.github@proton.me>
  */
 public class User implements Configurable, Exportable {
 	
 
-	// data keys
+	/**
+	 * 
+	 */
 	public static final String DATA_NAME = "user-data";
+	
+	/**
+	 * 
+	 */
 	public static final String USER_NAME = "user-name";
+	
+	/**
+	 * 
+	 */
 	public static final String NAME = "name";
+	
+	/**
+	 * 
+	 */
 	public static final String LAST_NAME = "last-name";
+	
+	/**
+	 * 
+	 */
 	public static final String EMAIL = "email";
+	
+	/**
+	 * 
+	 */
 	public static final String TELEPHONE_NUMBER = "telephone-number";
+	
+	/**
+	 * 
+	 */
 	public static final String COUNTRY = "country";
+	
+	/**
+	 * 
+	 */
 	public static final String PASSWD = "passwd";
+	
+	/**
+	 * 
+	 */
 	public static final String AGE = "age";
 
 	
-	// user data
 	private String username;
 	private String name;
 	private String lastName;
@@ -42,10 +75,7 @@ public class User implements Configurable, Exportable {
 	/**
 	 * Builds a user
 	 */
-	public User() {
-		
-	}
-
+	public User() {}
 	
 	/**
 	 * Sets the email address 

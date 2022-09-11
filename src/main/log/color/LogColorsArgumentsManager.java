@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import main.config.ArgumentsFilter;
+import main.util.ArgumentsFilter;
 import main.util.ArgumentsSorter;
 
 public class LogColorsArgumentsManager {

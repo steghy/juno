@@ -11,71 +11,69 @@ import main.log.main.Log;
 import main.log.messages.LogMessage;
 import main.util.ANSIEscape;
 
+/**
+ * 
+ * @author steghy
+ * @email <steghy.github@proton.me>
+ */
 public class LogColors implements Exportable, Configurable{
 	
-	/** default colors */
-	public static final String DEF_PROC_COL = ANSIEscape.TX_BLUE;
-	public static final String DEF_SUBPROC_COL = ANSIEscape.TX_RED;
-	public static final String DEF_INST_COL = ANSIEscape.TX_CYAN;
-	public static final String DEF_COMM_COL = ANSIEscape.TX_GREEN;
+	//
+	static final String DATA_NAME = "log-colors";
+
+	//
+	final String LOAD_PROC_COL_DATA_NAME = "load-proc-color";
+	final String CONF_PROC_COL_DATA_NAME = "conf-proc-color";
+	final String SUPP_PROC_COL_DATA_NAME = "supp-proc-color";
+
+	//
+	final String LOAD_SUBPROC_COL_DATA_NAME = "load-subproc-color";
+	final String CONF_SUBPROC_COL_DATA_NAME = "conf-subproc-color";
+	final String SUPP_SUBPROC_COL_DATA_NAME = "supp-subproc-color";
+
+	//
+	final String LOAD_INST_COL_DATA_NAME = "load-ins-color";
+	final String CONF_INST_COL_DATA_NAME = "conf-ins-color";
+	final String SUPP_INST_COL_DATA_NAME = "supp-ins-color";
+
+	//
+	final String COMM_COL_DATA_NAME = "comm-color";
 	
-	/** data name */
-	public static final String DATA_NAME = "log-colors";
-	
-	/** processes data names */
-	public static final String LOAD_PROC_COL_DATA_NAME = "load-proc-color";
-	public static final String CONF_PROC_COL_DATA_NAME = "conf-proc-color";
-	public static final String SUPP_PROC_COL_DATA_NAME = "supp-proc-color";
-	
-	/** sub-processes data names */
-	public static final String LOAD_SUBPROC_COL_DATA_NAME = "load-subproc-color";
-	public static final String CONF_SUBPROC_COL_DATA_NAME = "conf-subproc-color";
-	public static final String SUPP_SUBPROC_COL_DATA_NAME = "supp-subproc-color";
-	
-	/** instructions data names */
-	public static final String LOAD_INST_COL_DATA_NAME = "load-ins-color";
-	public static final String CONF_INST_COL_DATA_NAME = "conf-ins-color";
-	public static final String SUPP_INST_COL_DATA_NAME = "supp-ins-color";
-	
-	/** communicatons data names */
-	public static final String COMM_COL_DATA_NAME = "comm-color";
-	
-	/** processes color */
+	//
 	private String loadProcCol;
 	private String confProcCol;
 	private String suppProcCol;
 	
-	/** sub-processes color */
+	//
 	private String loadSubprocCol;
 	private String confSubprocCol;
 	private String suppSubprocCol;
 	
-	/** instructions color */
+	//
 	private String loadInstCol;
 	private String confInstCol;
 	private String suppInstCol;
 	
-	/** communications color */
+	//
 	private String commCol;
 	
+	//
 	private LogColorsActivationManager activator;
 	
-	/** associazioni codiceMessaggio-colore */
+	//
 	private Map<Integer, String> colors;
 		
-	/** istanza unica */
+	// The instance
 	private static LogColors instance;
 	
-	/**
-	 * Singleton.
-	 */
+	// Singleton pattern
 	private LogColors() {	
 		init();
 	}
 	
 	/**
-	 * Ritorna l'unica istanza di questa classe
-	 * @return LogColors instance.
+	 * 
+	 * @return The instance
 	 */
 	public static LogColors getInstance() {
 		
@@ -85,11 +83,10 @@ public class LogColors implements Exportable, Configurable{
 		return LogColors.instance;
 	}
 	
-	/** 
-	 * Restituisce la sequenza di escape ANSI associata
-	 * al codice del messaggio di Debug
-	 * @param logMessage Un DebugMessage
-	 * @return Un ANSIEscape
+	/**
+	 * 
+	 * @param logMessage
+	 * @return ANSI Escape sequence
 	 */
 	public String getColor(LogMessage logMessage) {
 		
@@ -193,40 +190,33 @@ public class LogColors implements Exportable, Configurable{
 	}
 	
 
-	/**
-	 * Inizializza i campi del LogColors
-	 */
+	// initialize the colors with default values
 	private void init() {	
-		
 		activator = LogColorsActivationManager.getInstance();
 		
 		/** processes */
-		loadProcCol = DEF_PROC_COL;
-		confProcCol = DEF_PROC_COL;
-		suppProcCol = DEF_PROC_COL;
+		loadProcCol = ANSIEscape.TX_BLUE;
+		confProcCol = ANSIEscape.TX_BLUE;
+		suppProcCol = ANSIEscape.TX_BLUE;
 		
 		/** sub-processes */
-		loadSubprocCol = DEF_SUBPROC_COL;
-		confSubprocCol = DEF_SUBPROC_COL;
-		suppSubprocCol = DEF_SUBPROC_COL;
+		loadSubprocCol = ANSIEscape.TX_GREEN;
+		confSubprocCol = ANSIEscape.TX_GREEN;
+		suppSubprocCol = ANSIEscape.TX_GREEN;
 	
 		/** instructions */
-		loadInstCol = DEF_INST_COL;
-		confInstCol = DEF_INST_COL;
-		suppInstCol = DEF_INST_COL;
+		loadInstCol = ANSIEscape.TX_YELLOW;
+		confInstCol = ANSIEscape.TX_YELLOW;
+		suppInstCol = ANSIEscape.TX_YELLOW;
 		
 		/** communications */
-		commCol = DEF_COMM_COL;
+		commCol = ANSIEscape.TX_RED;
 		
 		update();
 	}
 	
-	/**
-	 * Inizializza la mappa che associa al Debug code un colore
-	 * @return Map<Integer, ANSIEscape>
-	 */
+	// refresh the colors with the dynamic values
 	private void update() {
-
 		colors = new TreeMap<>();
 		
 		/** processes */
@@ -246,7 +236,5 @@ public class LogColors implements Exportable, Configurable{
 
 		/** communications */
 		colors.put(Log.COMM_CODE, commCol);
-
-		
 	}
 }

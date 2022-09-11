@@ -17,19 +17,13 @@ import main.log.main.Log;
 /**
  * 
  * @author steghy
- *
+ * @email <steghy.github@proton.me>
  */
  public class MyJson {
 
-	// JSON metadata name
-	public static final String METADATA = "metadata";
-	
-	// JSON data name
-	public static final String DATA = "data";
-	
-	// JSON extension
-	public static final String JSON_EXTENSION = ".json";
-	
+	static final String METADATA = "metadata";
+	static final String DATA = "data";
+	static final String JSON_EXTENSION = ".json";
 	
 	/**
 	 * 
@@ -77,7 +71,7 @@ import main.log.main.Log;
 	/**
 	 * 
 	 * @param path
-	 * @return
+	 * @return A DataPackage instance
 	 * @throws IOException
 	 * @throws NoSuchFileException
 	 */

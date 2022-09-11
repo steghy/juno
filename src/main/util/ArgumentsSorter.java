@@ -5,35 +5,36 @@ import java.util.Map;
 import java.util.Optional;
 
 /**
- * This class contains a static method for organizing the arguments 
- * entered at the command prompt.
- * @author Simone Gentili
- *
+ * 
+ * @author steghy
+ * @email <steghy.github@proton.me>
  */
 public class ArgumentsSorter 
 {
 	
-	public static final String EXTENDED_OPT = "--";
-	public static final String CONTRACTED_OPT = "-";
 	/**
-	 * Arranges arguments within vectors so that in each vector there 
-	 * is the option and its arguments. Vectors are added inside a vector 
-	 * that is returned.
-	 * @param args The array of arguments.
-	 * @return	A vector (ArrayList) that contains vectors.
+	 * 
+	 */
+	public static final String EXTENDED_OPT = "--";
+	
+	/**
+	 * 
+	 */
+	public static final String CONTRACTED_OPT = "-";
+	
+	
+	/**
+	 * 
+	 * @param args
+	 * @return A Map
 	 */
 	public static Map<String, Optional<Object>> getArguments(String[] args) {
-		
 		Map<String, Optional<Object>> optionArguments = new HashMap<>();
-		
 		int length = args.length;
-		
 		for(int i = 0; i < length; i++) {
 			String temp = args[i];
 			if(temp.startsWith(EXTENDED_OPT) ||
 					temp.startsWith(CONTRACTED_OPT)) {
-				
-				//options
 				ArrayList<String> arguments = new ArrayList<>();
 				
 				for(int j = i+1; j < length; j++) {
@@ -42,9 +43,6 @@ public class ArgumentsSorter
 					
 					if(!(arg.startsWith(EXTENDED_OPT) ||
 							arg.startsWith(CONTRACTED_OPT))) {
-						
-
-					//argumnet
 						arguments.add(arg);
 					}
 					else {

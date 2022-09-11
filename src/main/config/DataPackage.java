@@ -8,13 +8,18 @@ import java.util.Map;
 import main.util.Os;
 
 
+/**
+ * 
+ * @author steghy
+ * @email <steghy.github@proton.me>
+ */
 public class DataPackage {
 
-	
-	public static final String LOCAL_DATE_TIME = "local-date-time";
-	public static final String OS = "os-name";
-	public static final String ARCH = "arch";
-	public static final String VERSION = "version";
+	//
+	static final String LOCAL_DATE_TIME = "local-date-time";
+	static final String OS = "os-name";
+	static final String ARCH = "arch";
+	static final String VERSION = "version";
 
 	
 	private String name;          // data name 
@@ -23,8 +28,7 @@ public class DataPackage {
 	private String arch;          // arch
 	private String version;       // version
 	
-	
-	/** data container */
+	//
 	private Map<String, Object> data;
 
 	
@@ -103,17 +107,17 @@ public class DataPackage {
 		return this.data;
 	}
 
+	
+	/**
+	 * 
+	 * @return A Map
+	 */
 	public Map<String, Object> getMetadata(){
-		
-		//metadati map
 		Map<String, Object> metadata = new HashMap<>();
-		
-		//inserimento
 		metadata.put(LOCAL_DATE_TIME, this.localDateTime);
 		metadata.put(OS, this.os);
 		metadata.put(ARCH, this.arch);
 		metadata.put(VERSION, this.version);
-		
 		return metadata;
 	}
 	
