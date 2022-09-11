@@ -33,9 +33,7 @@ public class UserDataManager {
 	/**
 	 * Singleton pattern
 	 */
-	private UserDataManager() {
-		
-	}
+	private UserDataManager() {}
 	
 
 	/**
@@ -48,29 +46,4 @@ public class UserDataManager {
 		}
 		return instance;
 	}
-
-	
-	public void configure(User user, String fileName) throws IOException {
-		String filePath = PathGenerator.generate(userPath, fileName);
-		Loader.load(DataProvider.load(filePath), user);
-	}
-
-	
-	public void export(User user, String fileName) throws IOException {
-		String filePath = PathGenerator.generate(userPath, fileName);
-		Exporter.exportJson(filePath, user);
-	}
-
-	
-	public void setUserPath(String path) {
-		File file = new File(path);
-		if(file.isDirectory()) {
-			userPath = path;
-		}
-		else {
-			throw new IllegalArgumentException("The specified path"
-					+ "needs to be a directory");
-		}
-	}
-
 }

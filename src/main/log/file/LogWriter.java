@@ -1,43 +1,40 @@
 package main.log.file;
 
-/**
- * Classe per la scrittura di file di registro del programma
- */
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+
+
 /**
- * Classe per la scrittura di testo all'interno di file
- * che rappresentano file di registro per il programma
+ * 
  * @author steghy
  *
  */
 public class LogWriter {
 	
-	/** L'abilitatore */
+	// comment
 	private LogWriterActivationManager activator;
 	
-	/** configuratore */
+	// comment
 	private LogWriterConfigurator configurator;
 	
-	/** lo scrittore */
+	// comment
 	private PrintWriter writer;
 	
-	/** l'unica istanza di questa classe */
+	// comment
 	private static LogWriter instance;
 	
+
 	/**
-	 * Costruisce il log writer
-	 * @throws IOException 
+	 * 
 	 */
 	private LogWriter() {
 		init();
 	}
+
 	
 	/**
-	 * Restituisce l'unica istanza di questa classe
-	 * @return L'oggetto LogWriter di questa classe
-	 * @throws IOException 
+	 * 
+	 * @return
 	 */
 	public static LogWriter getInstance() {
 		if(instance == null) {
@@ -45,13 +42,11 @@ public class LogWriter {
 		}
 		return instance;
 	}
+
 	
 	/**
-	 * Scrive le informazioni specificate all'interno
-	 * di un file la cui località è fornita dal 
-	 * LogWriterConfigurator
-	 * @param string L'informazione da scrivere
-	 * @throws FileNotFoundException 
+	 * 
+	 * @param string
 	 */
 	public void write(String string) {
 		
