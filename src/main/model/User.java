@@ -6,69 +6,50 @@ import main.config.Configurable;
 import main.config.DataPackage;
 import main.config.Exportable;
 import main.log.Log;
-import main.log.messages.LogMessage;
+import main.log.LogMessage;
 
 /**
- * 
+ * This class defines users.
+ * A User if composed by:
+ * 		
  * @author steghy
  * @email <steghy.github@proton.me>
  */
 public class User implements Configurable, Exportable {
 	
-
-	/**
-	 * 
-	 */
-	public static final String DATA_NAME = "user-data";
+	/* Data keys (for configuration e exportation) */
+	static final String DATA_NAME = "user-data";
+	static final String USER_NAME = "user-name";
+	static final String NAME = "name";
+	static final String LAST_NAME = "last-name";
+	static final String EMAIL = "email";
+	static final String TELEPHONE_NUMBER = "telephone-number";
+	static final String COUNTRY = "country";
+	static final String PASSWD = "passwd";
+	static final String AGE = "age";
 	
-	/**
-	 * 
-	 */
-	public static final String USER_NAME = "user-name";
-	
-	/**
-	 * 
-	 */
-	public static final String NAME = "name";
-	
-	/**
-	 * 
-	 */
-	public static final String LAST_NAME = "last-name";
-	
-	/**
-	 * 
-	 */
-	public static final String EMAIL = "email";
-	
-	/**
-	 * 
-	 */
-	public static final String TELEPHONE_NUMBER = "telephone-number";
-	
-	/**
-	 * 
-	 */
-	public static final String COUNTRY = "country";
-	
-	/**
-	 * 
-	 */
-	public static final String PASSWD = "passwd";
-	
-	/**
-	 * 
-	 */
-	public static final String AGE = "age";
-
-	
+	/* Username */
 	private String username;
+	
+	/* Name */
 	private String name;
+	
+	/* Lastname */
 	private String lastName;
+	
+	/* Email address */
 	private Email emailAddress;
+	
+	/* Telephone number */
 	private long telephoneNumber;
+	
+	/* Country */
 	private String country;
+	
+	/* Passwd */
 	private Passwd passwd;
+	
+	/* Age */
 	private int age;
 	
 	
@@ -76,6 +57,33 @@ public class User implements Configurable, Exportable {
 	 * Builds a user
 	 */
 	public User() {}
+	
+	
+	/**
+	 * Builds a user with all the
+	 * informations.
+	 * @param username The username
+	 * @param name The name
+	 * @param lastName The last name
+	 * @param emailAddress The email address
+	 * @param telephoneNumber The telephone number
+	 * @param country The country
+	 * @param passwd The passwd
+	 * @param age The age
+	 */
+	public User(String username, String name,
+			String lastName, Email emailAddress,
+			long telephoneNumber, String country,
+			Passwd passwd, int age) {
+		this.username = username;
+		this.name = name;
+		this.lastName = lastName;
+		this.emailAddress = emailAddress;
+		this.telephoneNumber = telephoneNumber;
+		this.country = country;
+		this.passwd = passwd;
+		this.age = age;
+	}
 	
 	/**
 	 * Sets the email address 
@@ -251,13 +259,13 @@ public class User implements Configurable, Exportable {
 		
 		else {
 			
-			// user name
+			// User name
 			if(data.containsKey(User.USER_NAME)) {
 				String temp = (String) data.get(User.USER_NAME);
 				this.username = temp;
 			}
 			
-			// name
+			// Name
 			if(data.containsKey(User.NAME)){
 				String temp = (String) data.get(User.NAME);
 				this.name = temp;
@@ -327,42 +335,42 @@ public class User implements Configurable, Exportable {
 	
 		Map<String, Object> data = new HashMap<>();
 	
-		// user name
+		// User name
 		if(this.username != null) {
 			data.put(User.USER_NAME, this.username);
 		}
 		
-		// name
+		// Name
 		if(this.name != null) {
 			data.put(User.NAME, this.name);
 		}
 		
-		// lastname
+		// Lastname
 		if(this.lastName != null) {
 			data.put(User.LAST_NAME, this.lastName);
 		}
 		
-		// country
+		// Country
 		if(this.country != null) {
 			data.put(User.COUNTRY, this.country);
 		}
 		
-		// telephone number
+		// Telephone number
 		if(this.telephoneNumber != 0) {
 			data.put(User.TELEPHONE_NUMBER, this.telephoneNumber);
 		}
 		
-		// email address
+		// Email address
 		if(this.emailAddress != null) {
 			data.put(User.EMAIL,this.emailAddress);
 		}
 			
-		// age
+		// Age
 		if(this.age != 0) {
 			data.put(User.AGE, this.age);
 		}
 		
-		// passwd
+		// Passwd
 		if(this.passwd != null) {
 			data.put(User.PASSWD, this.passwd);
 		}

@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Optional;
 
 import main.log.Log;
-import main.log.messages.LogMessage;
+import main.log.LogMessage;
 
 
 /**
@@ -132,7 +132,7 @@ import main.log.messages.LogMessage;
 		String key = (String) jsonMetadata.keySet().toArray()[0];
 		Map<String, Object> metadata = (HashMap)jsonMetadata.get(key);
 		
-		// local-date-time
+		// Local-date-time
 		Optional<Object> opt1 = Optional.ofNullable(
 				metadata.get(DataPackage.LOCAL_DATE_TIME));
 		if(opt1.isPresent()) {
@@ -140,7 +140,7 @@ import main.log.messages.LogMessage;
 			dataPackage.setLocalDateTime(localDateTime);
 		}
 
-		// os type
+		// Os type
 		Optional<Object> opt2 = Optional.ofNullable(
 				metadata.get(DataPackage.OS));
 		if(opt2.isPresent()) {
@@ -148,7 +148,7 @@ import main.log.messages.LogMessage;
 			dataPackage.setOs(os);
 		}
 
-		// architercture
+		// Architercture
 		Optional<Object> opt3 = Optional.ofNullable(
 				metadata.get(DataPackage.ARCH));
 		if(opt2.isPresent()) {
@@ -156,7 +156,7 @@ import main.log.messages.LogMessage;
 			dataPackage.setArch(arch);
 		}
 		
-		// version
+		// Version
 		Optional<Object> opt4 = Optional.ofNullable(
 				metadata.get(DataPackage.VERSION));
 		if(opt2.isPresent()) {
@@ -166,14 +166,11 @@ import main.log.messages.LogMessage;
 	}
 
 	
-	/**
+	/*
 	 * 
-	 * @param jsonData
-	 * @param dataPackage
-	 * @throws IOException
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public static void setData(Map<String, Object> jsonData, 
+	private static void setData(Map<String, Object> jsonData, 
 			DataPackage dataPackage) throws IOException {
 			
 		String key = (String) jsonData.keySet().toArray()[0];
@@ -183,14 +180,10 @@ import main.log.messages.LogMessage;
 			Log.print(LogMessage.C_NO_DATA_FOUND, "");
 			throw new IllegalArgumentException("JSONObject data empty");
 		}
-
 		else {
 			Log.print(LogMessage.C_DATA_FOUND, "");
 			dataPackage.setData(data);
 		}
-		
 		dataPackage.setName(key);
-		
 	}
-
 }

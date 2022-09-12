@@ -11,24 +11,24 @@ import main.util.Os;
 /**
  * 
  * @author steghy
- * @email <steghy.github@proton.me>
+ * @email <steghy.github@proton.me> 
  */
 public class DataPackage {
 
-	//
+	/* Local, date, time data name */
 	static final String LOCAL_DATE_TIME = "local-date-time";
 	static final String OS = "os-name";
 	static final String ARCH = "arch";
 	static final String VERSION = "version";
 
 	
-	private String name;          // data name 
-	private String localDateTime; // local date and time
-	private String os;            // os
-	private String arch;          // arch
-	private String version;       // version
+	private String name;          /* data name */
+	private String localDateTime; /* local date and time */
+	private String os;            /* os */
+	private String arch;          /* arch */
+	private String version;       /* version */
 	
-	//
+	/* Data */
 	private Map<String, Object> data;
 
 	
@@ -38,7 +38,7 @@ public class DataPackage {
 	 */
 	public DataPackage(String name) {
 		this.name = name;
-		this.setMetadata();
+		this.init();
 	}
 
 
@@ -50,7 +50,7 @@ public class DataPackage {
 	public DataPackage(String name, Map<String, Object> data) {
 		this.name = name;
 		this.data = data;
-		this.setMetadata();
+		this.init();
 	}
 
 	
@@ -112,12 +112,15 @@ public class DataPackage {
 	 * 
 	 * @return A Map
 	 */
-	public Map<String, Object> getMetadata(){
-		Map<String, Object> metadata = new HashMap<>();
+	public Map<Object, Object> getMetadata(){
+
+		Map<Object, Object> metadata = new HashMap<>();
+
 		metadata.put(LOCAL_DATE_TIME, this.localDateTime);
 		metadata.put(OS, this.os);
 		metadata.put(ARCH, this.arch);
 		metadata.put(VERSION, this.version);
+
 		return metadata;
 	}
 	
@@ -178,7 +181,7 @@ public class DataPackage {
 	/**
 	 * 
 	 */
-	private void setMetadata() {
+	private void init() {
 		localDateTime = LocalDateTime.now().toString();
 		this.os = Os.getName();
 		this.arch = Os.getArch();

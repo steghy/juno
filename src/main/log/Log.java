@@ -1,8 +1,6 @@
 package main.log;
 import java.util.Map;
-import main.log.color.LogColors;
-import main.log.file.LogWriter;
-import main.log.messages.LogMessage;
+
 import main.util.*;
 
 
@@ -12,68 +10,40 @@ import main.util.*;
  */
 public class Log {
 	
-	/**
-	 * 
-	 */
-	public static final int LOAD_PROC_CODE = 0;
 	
-	/**
-	 * 
-	 */
-	public static final int CONF_PROC_CODE = 1;
+	static final int MAIN_LOG_CODE = -1;
 	
-	/**
-	 * 
-	 */
-	public static final int SUPP_PROC_CODE = 2;
+	static final int LOAD_PROC_CODE = 0;
 	
-	/**
-	 * 
-	 */
-	public static final int LOAD_SUBPROC_CODE = 3;
+	static final int CONF_PROC_CODE = 1;
 	
-	/**
-	 * 
-	 */
-	public static final int CONF_SUBPROC_CODE = 4;
+	static final int SUPP_PROC_CODE = 2;
 	
-	/**
-	 * 
-	 */
-	public static final int SUPP_SUBPROC_CODE = 5;
+	static final int LOAD_SUBPROC_CODE = 3;
 	
-	/**
-	 * 
-	 */
-	public static final int LOAD_INST_CODE = 6;
+	static final int CONF_SUBPROC_CODE = 4;
 	
-	/**
-	 * 
-	 */
-	public static final int CONF_INST_CODE = 7;
+	static final int SUPP_SUBPROC_CODE = 5;
 	
-	/**
-	 * 
-	 */
-	public static final int SUPP_INST_CODE = 8;
+	static final int LOAD_INST_CODE = 6;
 	
-	/**
-	 * 
-	 */
-	public static final int COMM_CODE = 9;
+	static final int CONF_INST_CODE = 7;
 	
-	// Activator component
-	private static LogActivationManager activator = LogActivationManager
-			.getInstance();
+	static final int SUPP_INST_CODE = 8;
 	
-	// Color component
+	static final int COMM_CODE = 9;
+	
+	/* Activator component */
+	private static LogActivationManager activator = LogActivationManager.instance;	
+
+	/* Color component */
 	private static LogColors colors = LogColors.getInstance();
 
-	// Writer component
+	/* Writer component */
 	private static LogWriter writer = LogWriter.getInstance();
 
 	
-	// static class
+	/* static class */
 	private Log() {}
 
 	

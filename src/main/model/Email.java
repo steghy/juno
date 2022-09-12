@@ -1,14 +1,14 @@
 package main.model;
+
 /**
- * Classe per la rappresentazione, gestione
- * di email.
+ * 
  * @author steghy
- *
+ * @email <steghy.github@proton.me>
  */
 public class Email {
 	
-	/** key per i data */
-	public static final String EMAIL = "email";
+	/* */
+	static final String EMAIL = "email";
 	
 	/** email */
 	private String email;

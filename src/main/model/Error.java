@@ -1,19 +1,23 @@
 package main.model;
 
 /**
- * 
+ * This class defines errors in the programs.
+ * An error is defined by:
+ * 		- Name
+ * 		- Type
+ * 		- Code
  * @author steghy
- *
+ * @email <steghy.github@proton.me>
  */
 public class Error {
 	
-	// the errorname
+	/* The error name */
 	private String name;
 
-	// the error type
+	/* The error type */
 	private String type;
 
-	// the error code
+	/* The error code */
 	private int code;
 
 	

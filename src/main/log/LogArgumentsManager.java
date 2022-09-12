@@ -16,57 +16,56 @@ import main.util.ArgumentsSorter;
  */
 public class LogArgumentsManager {
 	
+	/* Main activator | Options name */
 	static final String LOG_FOPT = "--log";
 	static final String LOG_SOPT = "-l";
 	
-	//
+	/* Loading process | Options name */
 	static final String LOG_LOAD_PRC_FOPT = "--log-loadprc";
 	static final String LOG_LOAD_PRC_SOPT = "-llp";
 	
-	//
+	/* Configuration process | Options name */
 	static final String LOG_CONF_PRC_FOPT = "--log-confprc";
 	static final String LOG_CONF_PRC_SOPT = "-lcp";
 	
-	//
+	/* Supply process | Options name */
 	static final String LOG_SUPP_PRC_FOPT = "--log-supplyprc";
 	static final String LOG_SUPP_PRC_SOPT = "-lsp";
 	
-	//
+	/* Loading sub-process | Options name */
 	static final String LOG_SUBPRC_LOAD_FOPT = "--log-load-subprc";
 	static final String LOG_SUBPRC_LOAD_SOPT = "-llsp";
 	
-	//
+	/* Configuration sub-process | Options name */
 	static final String LOG_SUBPRC_CONF_FOPT = "--log-conf-subprc";
 	static final String LOG_SUBPRC_CONF_SOPT = "-lcsp"; 
 	
-	//
+	/* Supply sub-process | Options name */
 	static final String LOG_SUBPRC_SUPP_FOPT = "--log-supp-subprc";
 	static final String LOG_SUBPRC_SUPP_SOPT = "-lssp";
 	
-	//
+	/* Loading instructions | Options name */
 	static final String LOG_INSTR_LOAD_FOPT = "--log-loadinst";
 	static final String LOG_INSTR_LOAD_SOPT = "-lli";
 	
-	//
+	/* Configuration instructions | Options name */
 	static final String LOG_INSTR_CONF_FOPT = "--log-confinst";
 	static final String LOG_INSTR_CONF_SOPT = "-lci";
 	
-	//
+	/* Supply instructions | Options name */
 	static final String LOG_INSTR_SUPP_FOPT = "--log-supplyinst";
 	static final String LOG_INSTR_SUPP_SOPT = "-lsi";
 	
-	// Communications service
+	/* Communications | Options name */
 	static final String LOG_COM_FOPT = "--log-com";
 	static final String LOG_COM_SOPT = "-lc";
 	
-	// All options
+	/* List of all options */
 	private static List<String> options;
 
 	
-	// No instance
-	private LogArgumentsManager() {
-
-	}
+	/* No instance */
+	private LogArgumentsManager() {}
 
 	
 	/**
@@ -75,122 +74,114 @@ public class LogArgumentsManager {
 	 */
 	@SuppressWarnings("unchecked")
 	public static void active(String[] args) {
-		
+	
+		// Initializes all options
 		if(options == null) {
 			init();
 		}
 		
-		//organizzazione e filtraggio degli argomenti
+		// It only takes the recognized options
 		Map<String, Optional<Object>> filteredArgs = ArgumentsFilter
 				.filter(options, ArgumentsSorter.getArguments(args));
 		
 		for(String key: filteredArgs.keySet()) {
-			
+
 			Optional<Object> optional = filteredArgs.get(key);
 			boolean argument;
 			
-			//controllo presenza argomento (1)
+			// Check argument presence
 			if(optional.isEmpty()) {
-				
-				//bisogna fornire un booleano per ogni opzione
-				throw new IllegalArgumentException("the argument "
-						+ "for the option is missing, option ("+key+")");
+				throw new IllegalArgumentException("The argument "
+						+ "for the option is missing, option (" + key + ")");
 			}
-			ArrayList<Object> temp = ((ArrayList<Object>) optional.get());
+
+			// Check for multiple arguments for a single option
+			ArrayList<Object> temp = (ArrayList<Object>) optional.get();
 			if(temp.size() > 1) {
-				throw new IllegalArgumentException("too many arguments "
-						+ "for the option:"+key);
+				throw new IllegalArgumentException("Too many arguments "
+						+ "for the option:" + key);
 			}
+			
+			// true or false ?
 			String strArg = temp.get(0).toString();
-			if(strArg.equals(Boolean.toString(true))) {
+			if(strArg.equals("true")) {
 				argument = true;
 			}
-			else if(strArg.equals(Boolean.toString(false))) {
+			else if(strArg.equals("false")) {
 				argument = false;
 			}
+			
+			// The argument can only be true or false
 			else {
 				throw new IllegalArgumentException("wrong argument: "
 						+strArg+" for the option: "+key);
 			}
 			LogArgumentsManager.addressing(key, argument);
 		}
-		LogActivationManager.getInstance().update();
 	}
+
 	
-	
-	//
 	private static void addressing(String key, boolean argument) {
-		
-		LogActivationManager instance = LogActivationManager.getInstance();
-		
-		//main
+		LogActivationManager instance = LogActivationManager.instance;
 		if(key.equals(LOG_FOPT) || key.equals(LOG_SOPT)) {
-			instance.setLogMainStat(argument);
+			instance.enabled.put(Log.MAIN_LOG_CODE, argument);
 		}
-		
-		//processes
 		else if(key.equals(LOG_LOAD_PRC_FOPT) || key.equals(LOG_LOAD_PRC_SOPT)) {
-			instance.setLoadProStat(argument);
+			instance.enabled.put(Log.LOAD_PROC_CODE, argument);
 		}
 		else if(key.equals(LOG_CONF_PRC_FOPT) || key.equals(LOG_CONF_PRC_SOPT)) {
-			instance.setConfProStat(argument);
+			instance.enabled.put(Log.CONF_PROC_CODE, argument);
 		}
 		else if(key.equals(LOG_SUPP_PRC_FOPT) || key.equals(LOG_SUPP_PRC_SOPT)) {
-			instance.setSuppProStat(argument);
+			instance.enabled.put(Log.SUPP_PROC_CODE, argument);
 		}
-		
-		//sub-processes
 		else if(key.equals(LOG_SUBPRC_LOAD_FOPT) || key.equals(LOG_SUBPRC_LOAD_SOPT)) {
-			instance.setLoadSUBProStat(argument);
+			instance.enabled.put(Log.LOAD_SUBPROC_CODE, argument);
 		}
 		else if(key.equals(LOG_SUBPRC_CONF_FOPT) || key.equals(LOG_SUBPRC_CONF_SOPT)) {
-			instance.setConfSUBProStat(argument);
+			instance.enabled.put(Log.CONF_SUBPROC_CODE, argument);
 		}
 		else if(key.equals(LOG_SUBPRC_SUPP_FOPT) || key.equals(LOG_SUBPRC_SUPP_SOPT)) {
-			instance.setSuppSUBProStat(argument);
+			instance.enabled.put(Log.SUPP_SUBPROC_CODE, argument);
 		}
-		
-		//instructions
 		else if(key.equals(LOG_INSTR_LOAD_FOPT) || key.equals(LOG_INSTR_LOAD_SOPT)) {
-			instance.setLoadInstStat(argument);
+			instance.enabled.put(Log.LOAD_INST_CODE, argument);
 		}
 		else if(key.equals(LOG_INSTR_CONF_FOPT) || key.equals(LOG_INSTR_CONF_SOPT)) {
-			instance.setConfInstStat(argument);
+			instance.enabled.put(Log.CONF_INST_CODE, argument);
 		}
 		else if(key.equals(LOG_INSTR_SUPP_FOPT) || key.equals(LOG_INSTR_SUPP_SOPT)) {
-			instance.setSuppInstStat(argument);
+			instance.enabled.put(Log.SUPP_INST_CODE, argument);
 		}
-		
-		//communications
 		else if(key.equals(LOG_COM_FOPT) || key.equals(LOG_COM_FOPT)) {
-			instance.setCommStat(argument);
+			instance.enabled.put(Log.COMM_CODE, argument);
 		}			
 	}
 	
-	
-	// Initialiaze options
+
+	/** Initialize the status */
 	private static void init() {
 		options = new ArrayList<>();
 		
-		//aggiunta delle opzioni
+		// Main options
 		options.add(LOG_FOPT);     options.add(LOG_SOPT);
 		
-		//processes
+		// Process
 		options.add(LOG_LOAD_PRC_FOPT); options.add(LOG_LOAD_PRC_SOPT);
 		options.add(LOG_CONF_PRC_FOPT); options.add(LOG_CONF_PRC_SOPT);
 		options.add(LOG_SUPP_PRC_FOPT); options.add(LOG_SUPP_PRC_SOPT);
 		
-		//sub-processes
+		// Sub-processes
 		options.add(LOG_SUBPRC_LOAD_FOPT); options.add(LOG_SUBPRC_LOAD_SOPT);
 		options.add(LOG_SUBPRC_CONF_FOPT); options.add(LOG_SUBPRC_CONF_SOPT);
 		options.add(LOG_SUBPRC_SUPP_FOPT); options.add(LOG_SUBPRC_SUPP_SOPT);
 		
-		//instructions
+		// Instructions
 		options.add(LOG_INSTR_LOAD_FOPT); options.add(LOG_INSTR_LOAD_SOPT);
 		options.add(LOG_INSTR_CONF_FOPT); options.add(LOG_INSTR_CONF_SOPT);
 		options.add(LOG_INSTR_SUPP_FOPT); options.add(LOG_INSTR_SUPP_SOPT);
 		
-		//communications
+		// Communications
 		options.add(LOG_COM_FOPT); options.add(LOG_COM_SOPT);
 	}
 }
