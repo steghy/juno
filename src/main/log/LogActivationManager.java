@@ -1,6 +1,7 @@
 package main.log;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -11,7 +12,11 @@ import main.config.DataPackage;
 import main.config.Exportable;
 
 /**
- * 
+ * This class is respondible for enabling
+ * the different types of printouts in the 
+ * register (file) and on the terminal. The types
+ * of printouts are code labels (see LogCodes for
+ * informations about code labels).
  * @author steghy
  * @email <steghy.github@proton.me>
  */
@@ -27,15 +32,17 @@ public class LogActivationManager implements Configurable, Exportable{
 	static LogActivationManager instance = new LogActivationManager();
 
 	
-	/* Singleton pattern */
+	/* Returns the instance */
 	private LogActivationManager() {
 		init();
 	}
 
 	
 	/**
-	 * @param logMessage
-	 * @return A boolean
+	 * Returns true if the specified LogMessage
+	 * is active, otherwise returns false.
+	 * @param logMessage A LogMessage instance
+	 * @return A boolean 
 	 */
 	boolean isActive(LogMessage logMessage) {
 		int code = logMessage.getCode();
@@ -58,6 +65,7 @@ public class LogActivationManager implements Configurable, Exportable{
 		Log.print(LogMessage.SSUPPLY_PROC, DATA_NAME);
 		Log.print(LogMessage.SSUPPLY_SUBPROC, "");
 
+		// Map<Integer, Boolean> => Map<String, Object>
 		Map<String, Object> data = enabled.entrySet()
 				.stream()
 				.collect(Collectors
@@ -65,7 +73,6 @@ public class LogActivationManager implements Configurable, Exportable{
 							   e -> e.getValue()));
 		
 		Log.print(LogMessage.ISUPP_DATA, enabled);
-
 		Log.print(LogMessage.ESUPPLY_SUBPROC, "");
 		Log.print(LogMessage.ESUPPLY_PROC, DATA_NAME);
 
@@ -80,19 +87,20 @@ public class LogActivationManager implements Configurable, Exportable{
 		Log.print(LogMessage.SCONF_PROC, DATA_NAME);
 		Log.print(LogMessage.SCONF_SUBPROC, "");
 
-		// 
+		// It checks validity data 
 		if(!(source.getName().equals(DATA_NAME))) {
 			throw new IllegalArgumentException("Wrong data."
 					+",no "+ DATA_NAME +" key found");
 		}
 		
-
+		// That is not gonna happen
 		if(source.getData().isEmpty()) {
 			Log.print(LogMessage.C_NO_DATA_FOUND, "");
 		}
 
 		else {
 			try {
+				// Map<String, Object> => Map<Integer, Boolean>
 				enabled = (HashMap)source.getData()
 						.entrySet()
 						.stream()
@@ -103,6 +111,7 @@ public class LogActivationManager implements Configurable, Exportable{
 			}
 			catch(Exception e) {
 				e.printStackTrace();
+				// Back to default values
 				init();
 			}
 		}
@@ -116,25 +125,10 @@ public class LogActivationManager implements Configurable, Exportable{
 	/* Initialize the status */
 	private void init() {
 		enabled = new TreeMap<>();
-
-		enabled.put(Log.MAIN_LOG_CODE, false);
-		
-		/** processes */
-		enabled.put(Log.LOAD_PROC_CODE, false);
-		enabled.put(Log.CONF_PROC_CODE, false);
-		enabled.put(Log.SUPP_PROC_CODE, false);
-
-		/** sub-processes */
-		enabled.put(Log.LOAD_SUBPROC_CODE, false);
-		enabled.put(Log.CONF_SUBPROC_CODE, false);
-		enabled.put(Log.SUPP_SUBPROC_CODE, false);
-
-		/** instructions */
-		enabled.put(Log.LOAD_INST_CODE, false);
-		enabled.put(Log.CONF_INST_CODE, false);
-		enabled.put(Log.SUPP_INST_CODE, false);
-
-		/** communications */
-		enabled.put(Log.COMM_CODE, false);
+		Arrays.asList(LogCodes.values())
+		.stream()
+		.map(c -> c.getCode()) // Integer mapping
+		.forEach(c -> enabled
+				.put(c, false));
 	}
 }

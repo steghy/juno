@@ -124,37 +124,37 @@ public class LogArgumentsManager {
 	private static void addressing(String key, boolean argument) {
 		LogActivationManager instance = LogActivationManager.instance;
 		if(key.equals(LOG_FOPT) || key.equals(LOG_SOPT)) {
-			instance.enabled.put(Log.MAIN_LOG_CODE, argument);
+			instance.enabled.put(LogCodes.MAIN_LOG_CODE.getCode(), argument);
 		}
 		else if(key.equals(LOG_LOAD_PRC_FOPT) || key.equals(LOG_LOAD_PRC_SOPT)) {
-			instance.enabled.put(Log.LOAD_PROC_CODE, argument);
+			instance.enabled.put(LogCodes.LOAD_PROC_CODE.getCode(), argument);
 		}
 		else if(key.equals(LOG_CONF_PRC_FOPT) || key.equals(LOG_CONF_PRC_SOPT)) {
-			instance.enabled.put(Log.CONF_PROC_CODE, argument);
+			instance.enabled.put(LogCodes.CONF_PROC_CODE.getCode(), argument);
 		}
 		else if(key.equals(LOG_SUPP_PRC_FOPT) || key.equals(LOG_SUPP_PRC_SOPT)) {
-			instance.enabled.put(Log.SUPP_PROC_CODE, argument);
+			instance.enabled.put(LogCodes.SUPP_PROC_CODE.getCode(), argument);
 		}
 		else if(key.equals(LOG_SUBPRC_LOAD_FOPT) || key.equals(LOG_SUBPRC_LOAD_SOPT)) {
-			instance.enabled.put(Log.LOAD_SUBPROC_CODE, argument);
+			instance.enabled.put(LogCodes.LOAD_SUBPROC_CODE.getCode(), argument);
 		}
 		else if(key.equals(LOG_SUBPRC_CONF_FOPT) || key.equals(LOG_SUBPRC_CONF_SOPT)) {
-			instance.enabled.put(Log.CONF_SUBPROC_CODE, argument);
+			instance.enabled.put(LogCodes.CONF_SUBPROC_CODE.getCode(), argument);
 		}
 		else if(key.equals(LOG_SUBPRC_SUPP_FOPT) || key.equals(LOG_SUBPRC_SUPP_SOPT)) {
-			instance.enabled.put(Log.SUPP_SUBPROC_CODE, argument);
+			instance.enabled.put(LogCodes.SUPP_SUBPROC_CODE.getCode(), argument);
 		}
 		else if(key.equals(LOG_INSTR_LOAD_FOPT) || key.equals(LOG_INSTR_LOAD_SOPT)) {
-			instance.enabled.put(Log.LOAD_INST_CODE, argument);
+			instance.enabled.put(LogCodes.LOAD_INST_CODE.getCode(), argument);
 		}
 		else if(key.equals(LOG_INSTR_CONF_FOPT) || key.equals(LOG_INSTR_CONF_SOPT)) {
-			instance.enabled.put(Log.CONF_INST_CODE, argument);
+			instance.enabled.put(LogCodes.CONF_INST_CODE.getCode(), argument);
 		}
 		else if(key.equals(LOG_INSTR_SUPP_FOPT) || key.equals(LOG_INSTR_SUPP_SOPT)) {
-			instance.enabled.put(Log.SUPP_INST_CODE, argument);
+			instance.enabled.put(LogCodes.SUPP_INST_CODE.getCode(), argument);
 		}
 		else if(key.equals(LOG_COM_FOPT) || key.equals(LOG_COM_FOPT)) {
-			instance.enabled.put(Log.COMM_CODE, argument);
+			instance.enabled.put(LogCodes.COMM_CODE.getCode(), argument);
 		}			
 	}
 	

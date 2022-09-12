@@ -1,8 +1,10 @@
 package main.log;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 import main.config.Configurable;
 import main.config.DataPackage;
@@ -16,49 +18,13 @@ import main.util.ANSIEscape;
  */
 public class LogColors implements Exportable, Configurable{
 	
-	//
+	// Data name
 	static final String DATA_NAME = "log-colors";
 
-	//
-	final String LOAD_PROC_COL_DATA_NAME = "load-proc-color";
-	final String CONF_PROC_COL_DATA_NAME = "conf-proc-color";
-	final String SUPP_PROC_COL_DATA_NAME = "supp-proc-color";
-
-	//
-	final String LOAD_SUBPROC_COL_DATA_NAME = "load-subproc-color";
-	final String CONF_SUBPROC_COL_DATA_NAME = "conf-subproc-color";
-	final String SUPP_SUBPROC_COL_DATA_NAME = "supp-subproc-color";
-
-	//
-	final String LOAD_INST_COL_DATA_NAME = "load-ins-color";
-	final String CONF_INST_COL_DATA_NAME = "conf-ins-color";
-	final String SUPP_INST_COL_DATA_NAME = "supp-ins-color";
-
-	//
-	final String COMM_COL_DATA_NAME = "comm-color";
-	
-	//
-	private String loadProcCol;
-	private String confProcCol;
-	private String suppProcCol;
-	
-	//
-	private String loadSubprocCol;
-	private String confSubprocCol;
-	private String suppSubprocCol;
-	
-	//
-	private String loadInstCol;
-	private String confInstCol;
-	private String suppInstCol;
-	
-	//
-	private String commCol;
-	
-	//
+	// Activator component
 	private LogColorsActivationManager activator;
 	
-	//
+	// CodeMessage => ANSIEscape sequence
 	private Map<Integer, String> colors;
 		
 	// The instance
@@ -70,10 +36,10 @@ public class LogColors implements Exportable, Configurable{
 	}
 	
 	/**
-	 * 
+	 * Returns the LogColors instance
 	 * @return The instance
 	 */
-	public static LogColors getInstance() {
+	static LogColors getInstance() {
 		
 		if(LogColors.instance == null) {
 			LogColors.instance = new LogColors();
@@ -86,7 +52,7 @@ public class LogColors implements Exportable, Configurable{
 	 * @param logMessage
 	 * @return ANSI Escape sequence
 	 */
-	public String getColor(LogMessage logMessage) {
+	String getColor(LogMessage logMessage) {
 		
 		int code = logMessage.getCode();
 		
@@ -120,29 +86,15 @@ public class LogColors implements Exportable, Configurable{
 		
 		else {
 			try {
-				
-				//processes
-				loadProcCol = (String) data.get(LOAD_PROC_COL_DATA_NAME);
-				confProcCol = (String) data.get(CONF_PROC_COL_DATA_NAME);
-				suppProcCol = (String) data.get(SUPP_PROC_COL_DATA_NAME);
-				
-				//sub-processes
-				loadSubprocCol = (String) data.get(LOAD_SUBPROC_COL_DATA_NAME);
-				confSubprocCol = (String) data.get(CONF_SUBPROC_COL_DATA_NAME);
-				suppSubprocCol = (String) data.get(SUPP_SUBPROC_COL_DATA_NAME);
-				
-				//instructions
-				loadInstCol = (String) data.get(LOAD_INST_COL_DATA_NAME);
-				confInstCol = (String) data.get(CONF_INST_COL_DATA_NAME);
-				suppInstCol = (String) data.get(SUPP_INST_COL_DATA_NAME);
-				
-				//communications
-				commCol = (String) data.get(COMM_COL_DATA_NAME);
-				
-				//aggiornamento della mappa
-				update();
+				// Map<String, Object> => Map<Integer, String>
+				colors = (HashMap)source.getData()
+						.entrySet()
+						.stream()
+						.collect(Collectors
+								.toMap(
+										e -> Integer.parseInt(e.getKey()), 
+										e -> e.toString()));
 			}
-
 			catch(ClassCastException e) {
 				e.printStackTrace();
 				init();
@@ -159,26 +111,13 @@ public class LogColors implements Exportable, Configurable{
 		
 		Log.print(LogMessage.SSUPPLY_PROC, DATA_NAME);
 		Log.print(LogMessage.SSUPPLY_SUBPROC, "");
-		
-		Map<String, Object> data = new HashMap<>();
-		
-		//processes
-		data.put(LOAD_PROC_COL_DATA_NAME, loadProcCol);
-		data.put(CONF_PROC_COL_DATA_NAME, confProcCol);
-		data.put(SUPP_PROC_COL_DATA_NAME, suppProcCol);
-		
-		//sub-processes
-		data.put(LOAD_SUBPROC_COL_DATA_NAME, loadSubprocCol);
-		data.put(CONF_SUBPROC_COL_DATA_NAME, confSubprocCol);
-		data.put(SUPP_SUBPROC_COL_DATA_NAME, suppSubprocCol);
-		
-		//instructions
-		data.put(LOAD_INST_COL_DATA_NAME, loadInstCol);
-		data.put(CONF_INST_COL_DATA_NAME, confInstCol);
-		data.put(SUPP_INST_COL_DATA_NAME, suppInstCol);
-		
-		//communications
-		data.put(COMM_COL_DATA_NAME, commCol);
+
+		// Map<Integer, Boolean> => Map<String, Object>
+		Map<String, Object> data = colors.entrySet()
+				.stream()
+				.collect(Collectors
+						.toMap(e -> e.getKey().toString(), 
+							   e -> e.getValue()));
 		
 		Log.print(LogMessage.ISUPP_DATA, data);
 		Log.print(LogMessage.ESUPPLY_SUBPROC, "");
@@ -190,49 +129,11 @@ public class LogColors implements Exportable, Configurable{
 
 	// initialize the colors with default values
 	private void init() {	
-		activator = LogColorsActivationManager.getInstance();
-		
-		/** processes */
-		loadProcCol = ANSIEscape.TX_BLUE;
-		confProcCol = ANSIEscape.TX_BLUE;
-		suppProcCol = ANSIEscape.TX_BLUE;
-		
-		/** sub-processes */
-		loadSubprocCol = ANSIEscape.TX_GREEN;
-		confSubprocCol = ANSIEscape.TX_GREEN;
-		suppSubprocCol = ANSIEscape.TX_GREEN;
-	
-		/** instructions */
-		loadInstCol = ANSIEscape.TX_YELLOW;
-		confInstCol = ANSIEscape.TX_YELLOW;
-		suppInstCol = ANSIEscape.TX_YELLOW;
-		
-		/** communications */
-		commCol = ANSIEscape.TX_RED;
-		
-		update();
-	}
-	
-	// refresh the colors with the dynamic values
-	private void update() {
 		colors = new TreeMap<>();
-		
-		/** processes */
-		colors.put(Log.LOAD_PROC_CODE, loadProcCol);
-		colors.put(Log.CONF_PROC_CODE, confProcCol);
-		colors.put(Log.SUPP_PROC_CODE, suppProcCol);
-		
-		/** sub-processes */
-		colors.put(Log.LOAD_SUBPROC_CODE, loadSubprocCol);
-		colors.put(Log.CONF_SUBPROC_CODE, confSubprocCol);
-		colors.put(Log.SUPP_SUBPROC_CODE, suppSubprocCol);
-
-		/** instructions */
-		colors.put(Log.LOAD_INST_CODE, loadInstCol);
-		colors.put(Log.CONF_INST_CODE, confInstCol);
-		colors.put(Log.SUPP_INST_CODE, suppInstCol);
-
-		/** communications */
-		colors.put(Log.COMM_CODE, commCol);
+		Arrays.asList(LogCodes.values())
+		.stream()
+		.map(c -> c.getCode()) // Integer mapping
+		.forEach(c -> colors   
+				.put(c, ANSIEscape.TX_WHITE));
 	}
 }

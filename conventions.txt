@@ -1,14 +1,1 @@
 The conventions used for writing the code are shown here:
-
-    1) The javadoc was included only in the public methods.
-
-	2) Private methods use comments not detected by Javadoc, 
-	   for example: /*
-  					 * Comment here.
-                     */ 
-                    
-    3) Override methods don't have a comment.
-    
-    4) convention 4.
-    
-    ...
