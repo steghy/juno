@@ -3,7 +3,7 @@
 bin
 # videos
 relazioni
-logs
+logs/
 
 # eclipse stuff
 .settings
