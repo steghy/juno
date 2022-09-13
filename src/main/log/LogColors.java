@@ -113,7 +113,6 @@ public class LogColors implements Exportable, Configurable{
 						.toMap(e -> e.getKey().toString(), 
 							   e -> e.getValue()));
 		
-		Log.print(LogMessage.ISUPP_DATA, data);
 		Log.print(LogMessage.ESUPPLY_SUBPROC, "");
 		Log.print(LogMessage.ESUPPLY_PROC, DATA_NAME);
 		

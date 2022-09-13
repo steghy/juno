@@ -36,7 +36,7 @@ import main.log.LogMessage;
 		Log.print(LogMessage.SCONF_PROC, "JSON");
 		Log.print(LogMessage.SSUPPLY_SUBPROC, METADATA);
 		
-		// metadata
+		// Metadata
 		JSONObject jsonMetadata = new JSONObject();
 		jsonMetadata.put(METADATA, source.getMetadataObj().getAllMetadata());
 		Log.print(LogMessage.ISUPP_DATA, source.getMetadataObj().getAllMetadata());
@@ -44,7 +44,7 @@ import main.log.LogMessage;
 		
 		Log.print(LogMessage.SSUPPLY_SUBPROC, DATA);
 		
-		// data
+		// Data
 		JSONObject jsonData = new JSONObject();
 		jsonData.put(source.getDataObj().getName(), source.getDataObj().getData());	
 		Log.print(LogMessage.ISUPP_DATA, source.getDataObj().getData());
@@ -56,16 +56,15 @@ import main.log.LogMessage;
 		jsonArray.put(jsonMetadata);
 		jsonArray.put(jsonData);
 
-		Log.print(LogMessage.ECONF_PROC, "JSON" 
-				+ " json file writing completed");
+		Log.print(LogMessage.ECONF_PROC, "JSON");
 
 		return jsonArray;
 	}
     
 	
 	/**
-	 * 
-	 * @param path
+	 * Creates and return a data from the specified file.
+	 * @param path The path of the file
 	 * @return A DataPackage instance
 	 * @throws IOException
 	 * @throws NoSuchFileException
@@ -75,6 +74,9 @@ import main.log.LogMessage;
 		
 		Log.print(LogMessage.SLOAD_PROC, "JSON");
 
+		/**
+		 * Controls the data first
+		 */
 		String source = new String(Files.readAllBytes(Paths.get(path)));
 
 		DataPackage dataPackage = new DataPackage();

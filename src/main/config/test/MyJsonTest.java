@@ -1,12 +1,15 @@
 package main.config.test;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import main.config.DataProvider;
 import main.config.Exporter;
 import main.config.Loader;
+import main.log.Log;
 import main.log.LogArgumentsManager;
 import main.log.LogColorsArgumentsManager;
+import main.log.LogMessage;
 import main.log.LogWriterArgumentsManager;
 import main.model.Email;
 import main.model.Passwd;
@@ -31,8 +34,10 @@ public class MyJsonTest {
 		LogArgumentsManager.active(args);
 		LogColorsArgumentsManager.active(args);
 		LogWriterArgumentsManager.active(args);
+		Log.print(LogMessage.TC_START, "With arguments:" + Arrays.asList(args).toString());
 		createJsonTest();
 		readJsonTest();
+		Log.print(LogMessage.TC_END, "");
 	}
 	
 	/* Creating and exporting JSON file with user information */

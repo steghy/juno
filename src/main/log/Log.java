@@ -81,6 +81,7 @@ public class Log {
 	private static String buildForWriter(LogMessage logMessage, Object message) {
 		
 		// the final string
-		return logMessage.toString().concat(" " + message.toString());
+		return logMessage.toString()
+				.concat((message.toString().length() > 0 ? " " : "") + message.toString());
 	}
 }
