@@ -70,7 +70,7 @@ public class Log {
 		// the final string 
 		return color.concat(logMessage.toString())
 				.concat(color.equals("") ? "" : ANSIEscape.RESET)
-				.concat(message.toString());
+				.concat(" " + message.toString());
 	}
 
 	
@@ -81,6 +81,6 @@ public class Log {
 	private static String buildForWriter(LogMessage logMessage, Object message) {
 		
 		// the final string
-		return logMessage.toString().concat(message.toString());
+		return logMessage.toString().concat(" " + message.toString());
 	}
 }

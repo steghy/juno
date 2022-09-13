@@ -42,13 +42,13 @@ public class MyJsonTest {
 		
 		// Setting the user informations
 		User user = new User();
-		user.setUsername("steghy");
-		user.setAge(24);
-		user.setTelephoneNumber(3802679518L);
-		user.setEmail(new Email("gentilis98@gmail.com"));
+		user.setUsername("Paperino");
+		user.setAge(100);
+		user.setTelephoneNumber(380279518L);
+		user.setEmail(new Email("genjdflsjfalktilis98@gmail.com"));
 		user.setName("Simone");
 		user.setLastName("Gentili");
-		user.setPasswd(new Passwd("enter"));
+		user.setPasswd(new Passwd("fuck off"));
 		user.setCountry("Italy");	
 		
 		// export the informations

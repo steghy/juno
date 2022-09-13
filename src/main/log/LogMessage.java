@@ -62,10 +62,10 @@ public enum LogMessage {
 	ILOAD_DATA("===> Loading the data ", 6),
 	
 	/** Configuration instruction. Code: 7 */ 
-	ICONF_DATA("----setting the data ", 7),
+	ICONF_DATA("===> Setting the data ", 7),
 	
 	/** Supply instruction. Code: 8 */ 
-	ISUPP_DATA("----providing the data ", 8),
+	ISUPP_DATA("===> Providing the data ", 8),
 
 	
 	/*============= COMMUNICATINS ==========================*/

@@ -25,7 +25,6 @@ public class Exporter {
 		DataPackage data = obj.provideData();
 		FileWriter file = new FileWriter(new File(path));
 		file.write(MyJson.create(data).toString());
-		file.flush(); // i really need this ?
 		file.close();
 	}
 

@@ -29,7 +29,9 @@ public class DataPackage {
 	/**
 	 * Builds an empty DataPackage
 	 */
-	public DataPackage() {}
+	public DataPackage() {
+		this.metadata = new Metadata();
+	}
 
 
 	/**

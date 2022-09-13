@@ -130,7 +130,7 @@ public class LogColors implements Exportable, Configurable{
 		.stream()
 		.map(c -> c.getCode()) // Integer mapping
 		.forEach(c -> colors   
-				.put(c, ANSIEscape.TX_WHITE));
+				.put(c, ANSIEscape.TX_GREEN));
 		
 		// initialize the component
 		activator = LogColorsActivationManager.getInstance();

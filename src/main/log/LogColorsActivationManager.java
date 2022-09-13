@@ -49,14 +49,10 @@ public class LogColorsActivationManager implements Exportable, Configurable {
 	 * @return A boolean
 	 */
 	public boolean isActive(LogMessage logMessage) {
-		int code = logMessage.getCode();
-		if(enabled.containsKey(code)) {
-			return enabled.get(code);
+		if(enabled.get(LogMessage.MAIN_LOG_CODE.getCode())) {
+			return true;
 		}
-		else {
-			throw new IllegalArgumentException("Unreconized "
-					+ "code message:" + code);
-		}
+		return enabled.get(logMessage.getCode());
 	}
 
 	
