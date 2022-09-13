@@ -15,23 +15,23 @@ import main.util.ArgumentsSorter;
  */
 public class LogColorsArgumentsManager {
 	
-	// main activation option name
+	/* main activation option name */
 	static final String COL_FOPT = "--log-col";
 	static final String COL_SOPT = "-lc";
 	
-	// load process option name
+	/* load process option name */
 	static final String LOAD_PRC_COL_FOPT = "--log-col-loadprc";
 	static final String LOAD_PRC_COL_SOPT = "-llpc";
 	
-	// conf process option name 
+	/* conf process option name */
 	static final String CONF_PRC_COL_FOPT = "--log-col-confprc";
 	static final String CONF_PRC_COL_SOPT = "-lcpc";
 	
-	// supp process option name
+	/* supp process option name */
 	static final String SUPP_PRC_COL_FOPT = "--log-col-supplyprc";
 	static final String SUPP_PRC_COL_SOPT = "-lspc";
 	
-	// 
+	/* */ 
 	static final String SUBPRC_LOAD_COL_FOPT = "--log-col-load-subprc";
 	static final String SUBPRC_LOAD_COL_SOPT = "-llspc";
 	
@@ -81,7 +81,6 @@ public class LogColorsArgumentsManager {
 				.filter(options, ArgumentsSorter.getArguments(args));
 		for(String key: filteredArgs.keySet()) {	
 			Optional<Object> optional = filteredArgs.get(key);
-			boolean argument;
 				if(optional.isEmpty()) {
 					throw new IllegalArgumentException("the argument "
 							+ "for the option is missing, option ("+key+")");
@@ -93,75 +92,20 @@ public class LogColorsArgumentsManager {
 				}
 				String strArg = temp.get(0).toString();
 				if(strArg.equals("true")) {
-					argument = true;
 				}
 				else if(strArg.equals("false")) {
-					argument = false;
 				}
 				else {
 					throw new IllegalArgumentException("wrong argument: "
 								+strArg+" for the option: "+key
 								+". It needs to be a boolean.");
 				}
-				addressing(key, argument);
-				}
-		
-		LogColorsActivationManager.getInstance().update();
+				/**
+				 * Implementare qui
+				 */
+		}
 	}
-	
-	/**
-	 * Indirizza il valore booleano specificato nel canale di Debug associato
-	 * alla key (dove la key è la opzione per l'attivazione/disattivazione del canale). 
-	 * @param key La opzione
-	 * @param argument Un booleano
-	 */
-	private static void addressing(String key, boolean argument) {
-		
-		LogColorsActivationManager instance = LogColorsActivationManager.getInstance();
-		
-		//main activation
-		if(key.equals(COL_FOPT) || key.equals(COL_SOPT)) {
-			instance.setMainLogColStat(argument);
-		}
-		
-		//processes
-		else if(key.equals(LOAD_PRC_COL_FOPT) || key.equals(LOAD_PRC_COL_SOPT)) {
-			instance.setLoadProcColStat(argument);
-		}
-		else if(key.equals(CONF_PRC_COL_FOPT) || key.equals(CONF_PRC_COL_SOPT)) {
-			instance.setConfProcColStat(argument);
-		}
-		else if(key.equals(SUPP_PRC_COL_FOPT) || key.equals(SUPP_PRC_COL_SOPT)) {
-			instance.setSuppProcColStat(argument);
-		}
-		
-		//sub-processes
-		else if(key.equals(SUBPRC_LOAD_COL_FOPT) || key.equals(SUBPRC_LOAD_COL_SOPT)) {
-			instance.setLoadSUBProcColStat(argument);
-		}
-		else if(key.equals(SUBPRC_CONF_COL_FOPT) || key.equals(SUBPRC_CONF_COL_SOPT)) {
-			instance.setConfSUBProcColStat(argument);
-		}
-		else if(key.equals(SUBPRC_SUPP_COL_FOPT) || key.equals(SUBPRC_SUPP_COL_SOPT)) {
-			instance.setSuppSUBProcColStat(argument);
-		}
-		
-		//instructions
-		else if(key.equals(INST_LOAD_COL_FOPT) || key.equals(INST_LOAD_COL_SOPT)) {
-			instance.setLoadInstColStat(argument);
-		}
-		else if(key.equals(INST_CONF_COL_FOPT) || key.equals(INST_CONF_COL_SOPT)) {
-			instance.setConfInstColStat(argument);
-		}
-		else if(key.equals(INST_SUPP_COL_FOPT) || key.equals(INST_SUPP_COL_SOPT)) {
-			instance.setSuppSInstColStat(argument);
-		}
-		
-		//communications
-		else if(key.equals(COMM_COL_FOPT) || key.equals(COMM_COL_FOPT)) {
-			instance.setSuppSInstColStat(argument);
-		}			
-	}
+
 	
 	/**
 	 * Inizializza la lista contenente tutte le opzioni 

@@ -2,7 +2,6 @@ package main.config;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
@@ -27,12 +26,11 @@ import main.log.LogMessage;
 	static final String JSON_EXTENSION = ".json";
 	
 	/**
-	 * 
-	 * @param path
 	 * @param source
+	 * @return A JSONArray object
 	 * @throws IOException
 	 */
-	public static void create(String path, DataPackage source) 
+	public static JSONArray create(DataPackage source) 
 			throws IOException {
 
 		Log.print(LogMessage.SCONF_PROC, "JSON");
@@ -40,16 +38,16 @@ import main.log.LogMessage;
 		
 		// metadata
 		JSONObject jsonMetadata = new JSONObject();
-		jsonMetadata.put(METADATA, source.getMetadata());
-		Log.print(LogMessage.ISUPP_DATA, source.getMetadata());
+		jsonMetadata.put(METADATA, source.getMetadataObj().getAllMetadata());
+		Log.print(LogMessage.ISUPP_DATA, source.getMetadataObj().getAllMetadata());
 		Log.print(LogMessage.ESUPPLY_SUBPROC, METADATA);
 		
 		Log.print(LogMessage.SSUPPLY_SUBPROC, DATA);
 		
 		// data
 		JSONObject jsonData = new JSONObject();
-		jsonData.put(source.getName(), source.getData());	
-		Log.print(LogMessage.ISUPP_DATA, source.getData());
+		jsonData.put(source.getDataObj().getName(), source.getDataObj().getData());	
+		Log.print(LogMessage.ISUPP_DATA, source.getDataObj().getData());
 		Log.print(LogMessage.ESUPPLY_SUBPROC, DATA);	
 
 		Log.print(LogMessage.ICONF_DATA, "JSONArray");
@@ -58,14 +56,10 @@ import main.log.LogMessage;
 		jsonArray.put(jsonMetadata);
 		jsonArray.put(jsonData);
 
-		FileWriter file = new FileWriter(path);
-		file.write(jsonArray.toString());
-		file.flush();  // i really need this ? 
-		file.close();
-
 		Log.print(LogMessage.ECONF_PROC, "JSON" 
 				+ " json file writing completed");
 
+		return jsonArray;
 	}
     
 	
@@ -83,7 +77,7 @@ import main.log.LogMessage;
 
 		String source = new String(Files.readAllBytes(Paths.get(path)));
 
-		DataPackage dataPackage = new DataPackage("");
+		DataPackage dataPackage = new DataPackage();
 		JSONArray jsonArray = new JSONArray(source);
 	
 		confDataPackage(jsonArray, dataPackage);
@@ -115,8 +109,8 @@ import main.log.LogMessage;
 		// prepare data
 		setData(data, dataPackage);
 	
-		Log.print(LogMessage.ILOAD_DATA, dataPackage.getMetadata());
-		Log.print(LogMessage.ILOAD_DATA, dataPackage.getData());
+		Log.print(LogMessage.ILOAD_DATA, dataPackage.getMetadataObj());
+		Log.print(LogMessage.ILOAD_DATA, dataPackage.getDataObj());
 	}
 	
 		
@@ -130,38 +124,39 @@ import main.log.LogMessage;
 			DataPackage dataPackage) {
 		
 		String key = (String) jsonMetadata.keySet().toArray()[0];
-		Map<String, Object> metadata = (HashMap)jsonMetadata.get(key);
+		Map<String, Object> metadata = (HashMap) jsonMetadata.get(key);
 		
 		// Local-date-time
 		Optional<Object> opt1 = Optional.ofNullable(
-				metadata.get(DataPackage.LOCAL_DATE_TIME));
+				metadata.get(Metadata.LOCAL_DATE_TIME));
+		
 		if(opt1.isPresent()) {
 			String localDateTime = (String) opt1.get();
-			dataPackage.setLocalDateTime(localDateTime);
+			dataPackage.getMetadataObj().setLocalDateTime(localDateTime);
 		}
 
 		// Os type
 		Optional<Object> opt2 = Optional.ofNullable(
-				metadata.get(DataPackage.OS));
+				metadata.get(Metadata.OS));
 		if(opt2.isPresent()) {
 			String os = (String) opt2.get();
-			dataPackage.setOs(os);
+			dataPackage.getMetadataObj().setOs(os);
 		}
 
 		// Architercture
 		Optional<Object> opt3 = Optional.ofNullable(
-				metadata.get(DataPackage.ARCH));
+				metadata.get(Metadata.ARCH));
 		if(opt2.isPresent()) {
 			String arch = (String) opt3.get();
-			dataPackage.setArch(arch);
+			dataPackage.getMetadataObj().setArch(arch);
 		}
 		
 		// Version
 		Optional<Object> opt4 = Optional.ofNullable(
-				metadata.get(DataPackage.VERSION));
+				metadata.get(Metadata.VERSION));
 		if(opt2.isPresent()) {
 			String version = (String) opt4.get();
-			dataPackage.setVersion(version);
+			dataPackage.getMetadataObj().setVersion(version);
 		}
 	}
 
@@ -182,8 +177,7 @@ import main.log.LogMessage;
 		}
 		else {
 			Log.print(LogMessage.C_DATA_FOUND, "");
-			dataPackage.setData(data);
 		}
-		dataPackage.setName(key);
+		dataPackage.setData(new Data(data, key));
 	}
 }

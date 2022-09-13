@@ -5,8 +5,9 @@ import main.util.*;
 
 
 /**
+ * 
  * @author steghy
- *
+ * @email steghy.github@proton.me
  */
 public class Log {
 	
@@ -25,44 +26,42 @@ public class Log {
 
 	
 	/**
+	 * Print the specified LogMessage and message.
 	 * @param logMessage The standard message to print
 	 * @param message The message to print
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static void print(LogMessage logMessage, Object message) {
-	
-		// build the final string
 		String string = build(logMessage, message);
-	
-		// print the message if it is enabled
 		if(activator.isActive(logMessage)) {
 					
-			// maybe is a map ( see printMap )
+			// It can be a Map
 			if(message instanceof Map) {
 				printMap(logMessage, (Map) message);
 			}
 			else {
 				System.out.println(string);
-				
-				// if it is enabled, it writes the text in the log file
 				writer.write(buildForWriter(logMessage, message));
 			}
 		}
 	}
 		
 	
-	//
+	/*
+	 * Prints the specified LogMessage with the specified Map.
+	 */
 	private static void printMap(LogMessage logMessage, Map<String, Object> data) {
-		
 		data
 		.keySet()
 		.stream()
 		.forEach(e -> Log   
 				.print(logMessage,  "[" + e + "=" + data.get(e) +"]"));
-	}
-
+	} 
 	
-	//
+	/* 
+	 * Builds and return the string from the specified LogMessage
+	 * and message (with ANSIEscape sequence).
+	 */
 	private static String build(LogMessage logMessage, Object message) {
 		
 		// maybe it is a blank string 
@@ -75,7 +74,10 @@ public class Log {
 	}
 
 	
-	//
+	/*
+	 * Builds and return the string from the specified LogMessage
+	 * and message (without ANSIEscape sequence).
+	 */
 	private static String buildForWriter(LogMessage logMessage, Object message) {
 		
 		// the final string

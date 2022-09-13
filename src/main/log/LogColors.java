@@ -7,6 +7,7 @@ import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 import main.config.Configurable;
+import main.config.Data;
 import main.config.DataPackage;
 import main.config.Exportable;
 import main.util.ANSIEscape;
@@ -48,22 +49,14 @@ public class LogColors implements Exportable, Configurable{
 	}
 	
 	/**
-	 * 
-	 * @param logMessage
-	 * @return ANSI Escape sequence
+	 * Returns the ANSI escape sequence associated 
+	 * to the specified LogMessage object.
+	 * @param logMessage A LogMessage object
+	 * @return An ANSI Escape sequence
 	 */
 	String getColor(LogMessage logMessage) {
-		
-		int code = logMessage.getCode();
-		
-		if(colors.containsKey(code))
-		{
-			String temp = (activator.isActive(logMessage) ? colors.get(code) : "");	
-			return temp;
-		}
-		else {
-			throw new IllegalArgumentException("");
-		}
+		return (activator.isActive(logMessage) ? 
+				colors.get(logMessage.getCode()) : "");	
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -73,12 +66,13 @@ public class LogColors implements Exportable, Configurable{
 		Log.print(LogMessage.SCONF_PROC, DATA_NAME);
 		Log.print(LogMessage.SCONF_SUBPROC, "");
 		
-		if(!(source.getName().equals(LogColors.DATA_NAME))) {
+		if(!(source.getDataObj().getName().equals(LogColors.DATA_NAME))) {
 			throw new IllegalArgumentException("Wrong data."
 					+",no "+DATA_NAME+" key found");
 		}
-		
-		Map<String, Object> data = (HashMap) source.getData();
+	
+		// Gets data from the DataPackage
+		Map<String, Object> data = (HashMap) source.getDataObj().getData();
 		
 		if(data.isEmpty()) {
 			Log.print(LogMessage.C_NO_DATA_FOUND, "");
@@ -87,7 +81,7 @@ public class LogColors implements Exportable, Configurable{
 		else {
 			try {
 				// Map<String, Object> => Map<Integer, String>
-				colors = (HashMap)source.getData()
+				colors = (HashMap)source.getDataObj().getData()
 						.entrySet()
 						.stream()
 						.collect(Collectors
@@ -123,17 +117,22 @@ public class LogColors implements Exportable, Configurable{
 		Log.print(LogMessage.ESUPPLY_SUBPROC, "");
 		Log.print(LogMessage.ESUPPLY_PROC, DATA_NAME);
 		
-		return new DataPackage(DATA_NAME, data);
+		return new DataPackage(new Data(data, DATA_NAME));
 	}
 	
 
-	// initialize the colors with default values
+	/* Intiialize the LogColors component*/
 	private void init() {	
+		
+		// initialize the colors map
 		colors = new TreeMap<>();
-		Arrays.asList(LogCodes.values())
+		Arrays.asList(LogMessage.values())
 		.stream()
 		.map(c -> c.getCode()) // Integer mapping
 		.forEach(c -> colors   
 				.put(c, ANSIEscape.TX_WHITE));
+		
+		// initialize the component
+		activator = LogColorsActivationManager.getInstance();
 	}
 }

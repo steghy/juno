@@ -1,5 +1,7 @@
 package main.config;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 /**
@@ -21,7 +23,10 @@ public class Exporter {
 	public static void exportJson(String path, Exportable obj) 
 			throws IOException {
 		DataPackage data = obj.provideData();
-		MyJson.create(path, data);
+		FileWriter file = new FileWriter(new File(path));
+		file.write(MyJson.create(data).toString());
+		file.flush(); // i really need this ?
+		file.close();
 	}
 
 	

@@ -1,7 +1,10 @@
 package main.config.test;
 
 import java.io.IOException;
+
+import main.config.DataProvider;
 import main.config.Exporter;
+import main.config.Loader;
 import main.log.LogArgumentsManager;
 import main.log.LogColorsArgumentsManager;
 import main.log.LogWriterArgumentsManager;
@@ -32,7 +35,7 @@ public class MyJsonTest {
 		readJsonTest();
 	}
 	
-	// create JSON
+	/* Creating and exporting JSON file with user information */
 	private static void createJsonTest() throws IOException {
 		
 		String path = PathGenerator.generate("user-data.json");		
@@ -52,8 +55,13 @@ public class MyJsonTest {
 		Exporter.exportJson(path, user);
 	}
 	
-	// read JSON
+	
+	/* Reading JSON file and configure a User instance with the informations */
 	private static void readJsonTest() throws IOException {
+		String path = PathGenerator.generate("user-data.json");		
+		User user = new User();
+		Loader.load(DataProvider.load(path), user);
+		user.getAge();
 	}
 		
 	

@@ -7,6 +7,7 @@ import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 import main.config.Configurable;
+import main.config.Data;
 import main.config.DataPackage;
 import main.config.Exportable;
 
@@ -66,19 +67,19 @@ public class LogColorsActivationManager implements Exportable, Configurable {
 		Log.print(LogMessage.SCONF_PROC, DATA_NAME);
 		Log.print(LogMessage.SCONF_SUBPROC, "");
 
-		if (!(source.getName().equals(DATA_NAME))) {
+		if (!(source.getDataObj().getName().equals(DATA_NAME))) {
 			throw new IllegalArgumentException("Wrong data." 
 					+ ",no " + DATA_NAME + " key found");
 		}
 
-		Map<String, Object> data = source.getData();
+		Map<String, Object> data = source.getDataObj().getData();
 		if (data.isEmpty()) {
 			Log.print(LogMessage.C_NO_DATA_FOUND, "");
 		}
 		else {
 			try {
 				// Map<String, Object> => Map<Integer, Boolean>
-				enabled = (HashMap)source.getData()
+				enabled = (HashMap)source.getDataObj().getData()
 						.entrySet()
 						.stream()
 						.collect(Collectors
@@ -109,14 +110,14 @@ public class LogColorsActivationManager implements Exportable, Configurable {
 		Log.print(LogMessage.ESUPPLY_SUBPROC, "");
 		Log.print(LogMessage.ESUPPLY_PROC, DATA_NAME);
 
-		return new DataPackage(DATA_NAME, data);
+		return new DataPackage(new Data(data, DATA_NAME));
 	}
 
 	
 	/* Initialize the status */
 	private void init() {
 		enabled = new TreeMap<>();
-		Arrays.asList(LogCodes.values())
+		Arrays.asList(LogMessage.values())
 		.stream()
 		.map(c -> c.getCode()) // Integer mapping
 		.forEach(c -> enabled

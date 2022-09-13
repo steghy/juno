@@ -2,7 +2,9 @@ package main.model;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import main.config.Configurable;
+import main.config.Data;
 import main.config.DataPackage;
 import main.config.Exportable;
 import main.log.Log;
@@ -13,7 +15,7 @@ import main.log.LogMessage;
  * A User if composed by:
  * 		
  * @author steghy
- * @email <steghy.github@proton.me>
+ * @email steghy.github@proton.me
  */
 public class User implements Configurable, Exportable {
 	
@@ -246,13 +248,13 @@ public class User implements Configurable, Exportable {
 		Log.print(LogMessage.SCONF_PROC, DATA_NAME);
 		Log.print(LogMessage.SCONF_SUBPROC, "");
 		
-		if(!(source.getName().equals(User.DATA_NAME))) {
+		if(!(source.getDataObj().getName().equals(User.DATA_NAME))) {
 			throw new IllegalArgumentException(
 					"Wrong data , no "+DATA_NAME+" key found");
 		}
 		
-		Map<String, Object> data = (HashMap) source.getData();
-		
+		Map<String, Object> data = (HashMap) source.getDataObj().getData(); 
+
 		if(data.isEmpty()) {
 			Log.print(LogMessage.C_NO_DATA_FOUND, "");
 		}
@@ -379,7 +381,7 @@ public class User implements Configurable, Exportable {
 		Log.print(LogMessage.ESUPPLY_SUBPROC, "");
 		Log.print(LogMessage.ESUPPLY_PROC, DATA_NAME);
 		
-		return new DataPackage(User.DATA_NAME, data);
+		return new DataPackage(new Data(data, DATA_NAME));
 	}
 	
 

@@ -8,6 +8,7 @@ import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 import main.config.Configurable;
+import main.config.Data;
 import main.config.DataPackage;
 import main.config.Exportable;
 
@@ -45,17 +46,13 @@ public class LogActivationManager implements Configurable, Exportable{
 	 * @return A boolean 
 	 */
 	boolean isActive(LogMessage logMessage) {
-		int code = logMessage.getCode();
-		
-		// Activation controll
-		if(enabled.containsKey(code)) {
-				return enabled.get(code);
+		if(enabled.get(LogMessage.MAIN_LOG_CODE.getCode())) {
+			return true;
 		}
-		
 		else {
-			throw new IllegalArgumentException("Unreconized"
-					+ " code message:" + code);
+			return enabled.get(logMessage.getCode());
 		}
+		
 	}
 	
 
@@ -76,7 +73,7 @@ public class LogActivationManager implements Configurable, Exportable{
 		Log.print(LogMessage.ESUPPLY_SUBPROC, "");
 		Log.print(LogMessage.ESUPPLY_PROC, DATA_NAME);
 
-		return new DataPackage(DATA_NAME, data);
+		return new DataPackage(new Data(data, DATA_NAME));
 	}
 	
 	
@@ -88,20 +85,20 @@ public class LogActivationManager implements Configurable, Exportable{
 		Log.print(LogMessage.SCONF_SUBPROC, "");
 
 		// It checks validity data 
-		if(!(source.getName().equals(DATA_NAME))) {
+		if(!(source.getDataObj().getName().equals(DATA_NAME))) {
 			throw new IllegalArgumentException("Wrong data."
 					+",no "+ DATA_NAME +" key found");
 		}
 		
 		// That is not gonna happen
-		if(source.getData().isEmpty()) {
+		if(source.getDataObj().getData().isEmpty()) {
 			Log.print(LogMessage.C_NO_DATA_FOUND, "");
 		}
 
 		else {
 			try {
 				// Map<String, Object> => Map<Integer, Boolean>
-				enabled = (HashMap)source.getData()
+				enabled = (HashMap)source.getDataObj().getData()
 						.entrySet()
 						.stream()
 						.collect(Collectors
@@ -125,7 +122,7 @@ public class LogActivationManager implements Configurable, Exportable{
 	/* Initialize the status */
 	private void init() {
 		enabled = new TreeMap<>();
-		Arrays.asList(LogCodes.values())
+		Arrays.asList(LogMessage.values())
 		.stream()
 		.map(c -> c.getCode()) // Integer mapping
 		.forEach(c -> enabled

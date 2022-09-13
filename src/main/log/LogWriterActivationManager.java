@@ -7,8 +7,8 @@ package main.log;
  */
 public class LogWriterActivationManager {
 	
-	//
-	private boolean status;
+	/** Status */
+	boolean status;
 		
 	//
 	private static LogWriterActivationManager instance;

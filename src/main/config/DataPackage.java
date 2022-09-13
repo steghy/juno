@@ -1,101 +1,44 @@
 package main.config;
 
-
-import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
-
-import main.util.Os;
-
-
 /**
+ * This class defines DataPackage. 
+ * A DataPackage is composed by:
+ * 		- Metadata
+ * 		- Data
+ * The Metadata are composed by:
+ * 		- Local, date & time
+ * 		- OS (Operative System type)
+ * 		- Architecture (System architecture)
+ * 		- Version (System version)
+ * The data consist in a Map<String, Object>
+ * where the keys are the labels for the concreted
+ * data (Object).
  * 
  * @author steghy
  * @email <steghy.github@proton.me> 
  */
 public class DataPackage {
 
-	/* Local, date, time data name */
-	static final String LOCAL_DATE_TIME = "local-date-time";
-	static final String OS = "os-name";
-	static final String ARCH = "arch";
-	static final String VERSION = "version";
-
-	
-	private String name;          /* data name */
-	private String localDateTime; /* local date and time */
-	private String os;            /* os */
-	private String arch;          /* arch */
-	private String version;       /* version */
+	/* Metadata */
+	private Metadata metadata;
 	
 	/* Data */
-	private Map<String, Object> data;
-
+	private Data data;
+	
 	
 	/**
-	 * Builds a data package
-	 * @param name Data package's name
+	 * Builds an empty DataPackage
 	 */
-	public DataPackage(String name) {
-		this.name = name;
-		this.init();
-	}
+	public DataPackage() {}
 
 
 	/**
 	 * Builds a data package
-	 * @param name Data package's name
-	 * @param data Data
+	 * @param data The data
 	 */
-	public DataPackage(String name, Map<String, Object> data) {
-		this.name = name;
+	public DataPackage(Data data) {
 		this.data = data;
-		this.init();
-	}
-
-	
-	/**
-	 * Returns the name
-	 * @return The name
-	 */
-	public String getName() {
-		return this.name;
-	}
-
-	
-	/**
-	 * Returns the local date & time 
-	 * @return Local data & time
-	 */
-	public String getLocalDateTime() {
-		return this.localDateTime;
-	}
-	
-	
-	/**
-	 * Returns the os type
-	 * @return The os type
-	 */
-	public String getOs() {
-		return this.os;
-	}
-
-	
-	/**
-	 * Returns the architecture
-	 * @return The architecture
-	 */
-	public String getArch() {
-		return this.arch;
-	}
-
-	
-	/**
-	 * Returns the system version 
-	 * @return The system version
-	 */
-	public String getVersion() {
-		return this.version;
+		this.metadata = new Metadata();
 	}
 
 	
@@ -103,88 +46,35 @@ public class DataPackage {
 	 * Returns the data
 	 * @return The data
 	 */
-	public Map<String, Object> getData() {
+	public Data getDataObj() {
 		return this.data;
 	}
 
 	
 	/**
-	 * 
-	 * @return A Map
+	 * Returns the metadata 
+	 * @return The metadata
 	 */
-	public Map<Object, Object> getMetadata(){
-
-		Map<Object, Object> metadata = new HashMap<>();
-
-		metadata.put(LOCAL_DATE_TIME, this.localDateTime);
-		metadata.put(OS, this.os);
-		metadata.put(ARCH, this.arch);
-		metadata.put(VERSION, this.version);
-
+	public Metadata getMetadataObj(){
 		return metadata;
 	}
 	
-	/**
-	 * 
-	 * @param localDateTime
-	 */
-	public void setLocalDateTime(String localDateTime) {
-		this.localDateTime = localDateTime;
-	}
 
 	
 	/**
-	 * 
-	 * @param os
+	 * Sets the data
+	 * @param data The data
 	 */
-	public void setOs(String os) {
-		this.os = os;
-	}
-
-	
-	/**
-	 * 
-	 * @param arch
-	 */
-	public void setArch(String arch) {
-		this.arch = arch;
-	}
-
-	
-	/**
-	 * 
-	 * @param version
-	 */
-	public void setVersion(String version) {
-		this.version = version;
-	}
-
-	
-	/**
-	 * 
-	 * @param data
-	 */
-	public void setData(Map<String, Object> data) {
+	public void setData(Data data) {
 		this.data = data;
 	}
 	
 	
 	/**
-	 * 
-	 * @param name
+	 * Sets the metadata 
+	 * @param metadata The metadata
 	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	
-	/**
-	 * 
-	 */
-	private void init() {
-		localDateTime = LocalDateTime.now().toString();
-		this.os = Os.getName();
-		this.arch = Os.getArch();
-		this.version = Os.getVersion();
+	public void setMetadata(Metadata metadata) {
+		this.metadata = metadata;
 	}
 }

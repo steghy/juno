@@ -7,7 +7,7 @@ import java.io.IOException;
  * @author steghy
  * @email <steghy.github@proton.me>
  */
-public interface Exportable {
+public interface Exportable{
 	
 	/**
 	 * 

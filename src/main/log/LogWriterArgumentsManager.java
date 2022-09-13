@@ -71,8 +71,8 @@ public class LogWriterArgumentsManager {
 				}
 				addressing(key, argument);
 		}
-		LogColorsActivationManager.getInstance().update();
 	}
+
 	
 	/**
 	 * 

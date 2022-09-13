@@ -1,5 +1,6 @@
 package main.log.test;
 
+
 /**
  * 
  * @author steghy
@@ -12,7 +13,6 @@ public class LogMessagesTest {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-
 	}
 
 }
