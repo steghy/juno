@@ -1,5 +1,7 @@
 package main.init;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -23,12 +25,34 @@ public class Init {
 	/** Initialize the program 
 	 * @throws Exception */
 	public static void init() throws Exception {
-		if(getRequiredDirectoryCheck()
-		.entrySet()
-		.stream()
-		.filter(e -> e.getValue().isFatal()).count() > 0) {
-			throw new Exception();
+		List<String> fatals = new ArrayList<>();
+		List<String> notFatals = new ArrayList<>();
+		
+		getRequiredDirectoryCheck()
+			.entrySet()
+			.stream()
+			.forEach(k -> {
+
+						// FATAL
+						if(k.getValue().isFatal()) {
+							fatals.add(k.getKey());
+						}
+						
+						// NOT FATAL
+						else if(k.getValue().getErrorCode() > 0) {
+							notFatals.add(k.getKey());
+						}
+					});
+
+		if(fatals.size() > 0) {
+			fatals.stream().forEach(System.out::println);
+			throw new RequiredDirNotFound("");
 		}
+		
+		if(notFatals.size() > 0) {
+			notFatals.stream().forEach(System.out::println);
+		}
+		
 		Log.print(LogMessage.ISUPP_DATA, getRequiredDirectoryCheck());
 	}
 
@@ -45,7 +69,12 @@ public class Init {
 								return ErrorCode.ERROR_0;
 							}
 							else {
-								return ErrorCode.ERROR_2;
+								if(k.getKey().getPriority() == 1){
+									return ErrorCode.ERROR_128;
+								}
+								else {
+									return ErrorCode.ERROR_2;
+								}
 							}}));
 	}
 }

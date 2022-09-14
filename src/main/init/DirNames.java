@@ -1,32 +1,36 @@
 package main.init;
 
 /**
- * This class defines the folders names.
+ * This class defines the folders names 
+ * with the priority codes.
  * @author steghy
  * @email <steghy.github@proton.me>
  */
 public enum DirNames {
 	
-	/** Users folder name */
+	/** Users folder */
 	USERS("users", 0),
 	
-	/** Profiles folder name */
+	/** Profiles folder */
 	PROFILES("profiles", 0),
 	
-	/** Soundtracks folder name */
+	/** Soundtracks folder */
 	SOUNDTRACKS("soundtracks", 1),
 	
-	/** Themes folder name */
+	/** Themes folder */
 	THEMES("themes", 1),
 	
-	/** Videos folder name */
+	/** Videos folder */
 	VIDEOS("videos", 1),
 	
-	/** Preferences folder name */
+	/** Preferences folder */
 	PREFERENCES("preferences", 0),
 	
-	/** Config folder name */
-	CONFIG("config", 0);
+	/** Config folder */
+	CONFIG("config", 0),
+	
+	/** Saves folder */
+	SAVES("saves", 0);
 
 	/* Folder name */
 	private String name;

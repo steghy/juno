@@ -18,7 +18,7 @@ public enum ErrorCode {
 	ERROR_2(2, "Directory not found"),
 	
 	/** Fatal error */
-	Error_3(128, "Fatal error");
+	ERROR_128(128, "Fatal error");
 	
 	/* The error code */
 	private int errorCode;
