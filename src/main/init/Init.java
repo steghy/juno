@@ -20,26 +20,32 @@ public class Init {
 	private Init() {}
 	
 	
-	/** Initialize the program */
-	public static void init() {
+	/** Initialize the program 
+	 * @throws Exception */
+	public static void init() throws Exception {
+		if(getRequiredDirectoryCheck()
+		.entrySet()
+		.stream()
+		.filter(e -> e.getValue().isFatal()).count() > 0) {
+			throw new Exception();
+		}
 		Log.print(LogMessage.ISUPP_DATA, getRequiredDirectoryCheck());
 	}
 
 	
 	/* Checks the required directory and return the esit */
 	private static Map<String, ErrorCode> getRequiredDirectoryCheck(){
-
-		Map<String, String> paths = PrgPaths.getPaths();
-
-		return paths.entrySet().stream().collect(Collectors.toMap(
-				k -> k.getValue(),
-				k -> {
-					if(Os.isDir(k.getValue())) {
-						return ErrorCode.ERROR_0;
-					}
-					else {
-						return ErrorCode.ERROR_2;
-					}
-				}));
+		return PrgPaths.getPaths()
+				.entrySet()
+				.stream()
+				.collect(Collectors.toMap(
+						k -> k.getValue(),  // The folder path
+						k -> {
+							if(Os.isDir(k.getValue())) {
+								return ErrorCode.ERROR_0;
+							}
+							else {
+								return ErrorCode.ERROR_2;
+							}}));
 	}
 }

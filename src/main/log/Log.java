@@ -1,9 +1,8 @@
 package main.log;
-import java.util.Arrays;
+
 import java.util.Collection;
 import java.util.Map;
 import java.util.Map.Entry;
-
 import main.util.ANSIEscape;
 
 
@@ -42,17 +41,20 @@ public class Log {
 	 * @param logMessage The standard message to print
 	 * @param message The message to print
 	 */
-	@SuppressWarnings({ "rawtypes" })
 	public static void print(LogMessage logMessage, Object message) {
-		String string = build(logMessage, message);
+		String string = build(logMessage);  // Colored string
 		if(activator.isActive(logMessage)) {
 					
-			// It can be a Map
-			if(message instanceof Map || message instanceof Collection) {
-				message = stringFrom(logMessage, (Map) message);
+			if(message instanceof Map || 
+			   message instanceof Collection || 
+			   message.getClass().isArray()) {
+				string += stringFrom(message);
+			}
+			else {
+				string += message.toString();
 			}
 			System.out.println(string);
-			writer.write(buildForWriter(logMessage, message));
+			writer.write(buildForWriter(logMessage));
 		}
 	}
 		
@@ -61,13 +63,16 @@ public class Log {
 	 * Prints the specified LogMessage with the specified Map.
 	 */
 	@SuppressWarnings("unchecked")
-	private static String stringFrom(LogMessage logMessage, Object object) {
-		String message = logMessage.toString();
+	private static String stringFrom(Object object) {
+		String message = "";
 		if(object instanceof Map) {
-			message.concat(stringFromRecursive((Map<Object, Object>) object));
+			message += stringFromRecursive((Map<Object, Object>) object);
 		}
 		else if(object instanceof Collection) {
-			message.concat(stringFromRecursive((Collection<Object>) object));
+			message += stringFromRecursive((Collection<Object>) object);
+		}
+		else if(object.getClass().isArray()) {
+			message += stringFromRecursive((Object[]) object);
 		}
 		return message;
 	}
@@ -75,63 +80,91 @@ public class Log {
 	/* */
 	@SuppressWarnings("unchecked")
 	private static String stringFromRecursive(Map<Object, Object> data) {
-		String message = "{";
+		String message = "\n{\n";
+		int count = 1;
 		for(Entry<Object, Object> entrySet : data.entrySet()) {
 			Object key = entrySet.getKey();
 			Object value = entrySet.getValue();
 			
 			if(key instanceof Map) {
-				message.concat(stringFromRecursive((Map<Object, Object>) key));
+				message += stringFromRecursive((Map<Object, Object>) key);
 			}
 			else if(key instanceof Collection) {
-				message.concat(stringFromRecursive((Collection<Object>) key));
+				message += stringFromRecursive((Collection<Object>) key);
 			}
 			else if(key.getClass().isArray()) {
-				message.concat(stringFromRecursive(Arrays.asList(key)));
+				message += stringFromRecursive((Object[]) key);
 			}
 			else {
-				message.concat(key.toString());
+				message += key.toString().concat(" = ");
 			}
 			
 			if(value instanceof Map) {
-				message.concat(stringFromRecursive((Map<Object, Object>) value));
+				message += stringFromRecursive((Map<Object, Object>) value);
 			}
 			else if(value instanceof Collection) {
-				message.concat(stringFromRecursive((Collection<Object>) value));
+				message += stringFromRecursive((Collection<Object>) value);
 			}
 			else if(value.getClass().isArray()) {
-				message.concat(stringFromRecursive(Arrays.asList(value)));
+				message += stringFromRecursive((Object[]) value);
 			}
-
 			else {
-				message.concat(value.toString());
+				message += value.toString();
 			}
-		}
+			message += (count == data.size() ? "" : ", ");
+			message += "\n";
+			count ++;
+		};
 		return message.concat("}");
-	}
+	};
 	
 	
 	/* */
 	@SuppressWarnings("unchecked")
 	private static String stringFromRecursive(Collection<Object> data) {
-		String message = "{";
-			
+		String message = "[";
+		int count = 1;
 		for(Object value : data) {
 			if(value instanceof Map) {
-				message.concat(stringFromRecursive((Map<Object, Object>) value));
+				message += stringFromRecursive((Map<Object, Object>) value);
 			}
 			else if(value instanceof Collection) {
-				message.concat(stringFromRecursive((Collection<Object>) value));
+				message += (stringFromRecursive((Collection<Object>) value));
 			}
 			else if(value.getClass().isArray()) {
-				System.out.println(Arrays.asList(value));
-				message.concat(stringFromRecursive(Arrays.asList(value)));
+				message += stringFromRecursive((Object[]) value);
 			}
 			else {
-				message.concat(value.toString());
+				message += value.toString();
 			}
+			message += (count == data.size() ? "" : ", ");
 		}
-		return message.concat("}");
+		return message.concat("]");
+	}
+	
+	
+	@SuppressWarnings("unchecked")
+	private static String stringFromRecursive(Object[] array) {
+		String message = "(";
+		for(int i = 0; i < array.length; i++) {
+			Object value = array[i];
+			if(value instanceof Map) {
+				message += stringFromRecursive((Map<Object, Object>) value);
+			}
+			else if(value instanceof Collection) {
+				message += stringFromRecursive((Collection<Object>) value);
+			}
+			else if(value.getClass().isArray()) {
+				message += stringFromRecursive((Object[]) value);
+			}
+			else {
+				message += value.toString();
+			}
+			message += (i == array.length - 1 ? "" : ", ");
+		}
+		message += ")";
+		return message;
+		
 	}
 	
 	
@@ -139,15 +172,14 @@ public class Log {
 	 * Builds and return the string from the specified LogMessage
 	 * and message (with ANSIEscape sequence).
 	 */
-	private static String build(LogMessage logMessage, Object message) {
+	private static String build(LogMessage logMessage) {
 		
-		// maybe it is a blank string 
+		// The ANSI escape sequence 
 		String color = colors.getColor(logMessage);
-		
-		// the final string 
-		return color.concat(logMessage.toString())
-				.concat(color.equals("") ? "" : ANSIEscape.RESET)
-				.concat(" " + message.toString());
+
+		return color
+				.concat(logMessage.toString())
+				.concat(color.equals("") ? "" : ANSIEscape.RESET);
 	}
 
 	
@@ -155,10 +187,7 @@ public class Log {
 	 * Builds and return the string from the specified LogMessage
 	 * and message (without ANSIEscape sequence).
 	 */
-	private static String buildForWriter(LogMessage logMessage, Object message) {
-		
-		// the final string
-		return logMessage.toString()
-				.concat((message.toString().length() > 0 ? " " : "") + message.toString());
+	private static String buildForWriter(LogMessage logMessage) {
+		return logMessage.toString();
 	}
 }

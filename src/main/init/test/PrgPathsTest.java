@@ -3,6 +3,7 @@ package main.init.test;
 import main.init.PrgPaths;
 import main.log.Log;
 import main.log.LogArgumentsManager;
+import main.log.LogColorsArgumentsManager;
 import main.log.LogMessage;
 
 /**
@@ -18,6 +19,7 @@ public class PrgPathsTest {
 	 */
 	public static void main(String[] args) {
 		LogArgumentsManager.active(args);
+		LogColorsArgumentsManager.active(args);
 		Log.print(LogMessage.ICONF_DATA, PrgPaths.getPaths());
 	}
 }
