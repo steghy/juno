@@ -179,7 +179,7 @@ public class Log {
 
 		return color
 				.concat(logMessage.toString())
-				.concat(color.equals("") ? "" : ANSIEscape.RESET);
+				.concat(color.equals("") ? "" : ANSIEscape.RESET.getSequence());
 	}
 
 	
