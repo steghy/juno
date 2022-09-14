@@ -1,30 +1,32 @@
-package main.model;
+package main.init;
 
 /**
- * This class defines the names of directories
- * for the program.
+ * This class defines the folders names.
  * @author steghy
  * @email <steghy.github@proton.me>
  */
 public enum DirNames {
 	
-	/** */
+	/** Users folder name */
 	USERS("users"),
 	
-	/** */
+	/** Profiles folder name */
 	PROFILES("profiles"),
 	
-	/** */
+	/** Soundtracks folder name */
 	SOUNDTRACKS("soundtracks"),
 	
-	/** */
+	/** Themes folder name */
 	THEMES("themes"),
 	
-	/** */
+	/** Videos folder name */
 	VIDEOS("videos"),
 	
-	/** */
-	PREFERENCES("preferences");
+	/** Preferences folder name */
+	PREFERENCES("preferences"),
+	
+	/** Config folder name */
+	CONFIG("config");
 
 	/* Directory name */
 	private String name;
@@ -32,12 +34,13 @@ public enum DirNames {
 	
 	/**
 	 * Builds an object with the 
-	 * specified directory name
+	 * specified folder name
 	 * @param name The directory name
 	 */
 	private DirNames(String name) {
 		this.name = name;
 	}
+
 	
 	/**
 	 * Returns the directory name

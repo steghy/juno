@@ -27,7 +27,7 @@ public class Metadata {
 	
 	private String localDateTime; /* Local, date & time */
 	private String os;            /* OS type */
-	private String arch;          /* Srchitecture */
+	private String arch;          /* Architecture */
 	private String version;       /* System version */
 	
 	/**
