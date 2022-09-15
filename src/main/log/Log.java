@@ -23,13 +23,13 @@ import main.util.ANSIEscape;
 public class Log {
 	
 	/* Activator component */
-	private static LogActivationManager activator = LogActivationManager.instance;	
+	private static LogEnabler activator = LogEnabler.instance;	
 
 	/* Color component */
-	private static LogColors colors = LogColors.getInstance();
+	private static LogColor colors = LogColor.getInstance();
 
 	/* Writer component */
-	private static LogWriter writer = LogWriter.getInstance();
+	private static LogFile writer = LogFile.getInstance();
 
 	
 	/* static class */

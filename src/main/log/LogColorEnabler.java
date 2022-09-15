@@ -16,7 +16,7 @@ import main.config.Exportable;
  * @author steghy
  * @email <steghy.github@proton.me>
  */
-public class LogColorsActivationManager implements Exportable, Configurable {
+public class LogColorEnabler implements Exportable, Configurable {
 
 	/* Data name */
 	static final String DATA_NAME = "log-colors-service-status";
@@ -25,18 +25,18 @@ public class LogColorsActivationManager implements Exportable, Configurable {
 	Map<Integer, Boolean> enabled;
 	
 	/* The instance */
-	private static LogColorsActivationManager instance;
+	private static LogColorEnabler instance;
 
 	/* Builds and initialize the LCAM object */
-	private LogColorsActivationManager() {
+	private LogColorEnabler() {
 		init();
 	}
 
 	
 	/* Returns the instance */
-	static LogColorsActivationManager getInstance() {
+	static LogColorEnabler getInstance() {
 		if(instance == null) {
-			instance = new LogColorsActivationManager();
+			instance = new LogColorEnabler();
 		}
 		return instance;
 	}

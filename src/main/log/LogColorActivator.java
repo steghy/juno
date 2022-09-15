@@ -13,14 +13,14 @@ import main.util.ArgumentsSorter;
  * @author steghy
  * @email <steghy.github@proton.me>
  */
-public class LogColorsArgumentsManager {
+public class LogColorActivator {
 	
 	/* Options => LogMessage Code */
 	static Map<String, Integer> options;
 	
 	
 	// Singleton pattern
-	private LogColorsArgumentsManager() {}
+	private LogColorActivator() {}
 
 
 	/**
@@ -67,7 +67,7 @@ public class LogColorsArgumentsManager {
 								+". It needs to be a boolean.");
 				}
 
-				LogColorsActivationManager.getInstance()
+				LogColorEnabler.getInstance()
 					.enabled
 						.put(options.get(key), argument);
 

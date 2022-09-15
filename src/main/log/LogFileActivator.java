@@ -13,7 +13,7 @@ import main.util.ArgumentsSorter;
  * @author steghy
  * @email <steghy.github@proton.me>
  */
-public class LogWriterArgumentsManager {
+public class LogFileActivator {
 	
 	/**
 	 * extended option name
@@ -29,7 +29,7 @@ public class LogWriterArgumentsManager {
 	private static List<String> options;
 	
 	// singleton pattern
-	private LogWriterArgumentsManager() {}
+	private LogFileActivator() {}
 	
 	/**
 	 * Configure the activation status (command-line)
@@ -43,6 +43,7 @@ public class LogWriterArgumentsManager {
 		
 		Map<String, Optional<Object>> filteredArgs = ArgumentsFilter
 				.filter(options, ArgumentsSorter.getArguments(args));
+		
 		for(String key: filteredArgs.keySet()) {	
 			Optional<Object> optional = filteredArgs.get(key);
 			boolean argument;
@@ -80,7 +81,7 @@ public class LogWriterArgumentsManager {
 	 * @param argument The argument of the option
 	 */
 	private static void addressing(String key, boolean argument) {
-		LogWriterActivationManager instance = LogWriterActivationManager.getInstance();
+		LogFileEnabler instance = LogFileEnabler.getInstance();
 		if(key.equals(LOG_WRITER_FOPT) || key.equals(LOG_WRITER_SOPT)) {
 			instance.setStatus(argument);
 		}

@@ -17,22 +17,22 @@ import main.util.ANSIEscape;
  * @author steghy
  * @email <steghy.github@proton.me>
  */
-public class LogColors implements Exportable, Configurable{
+public class LogColor implements Exportable, Configurable{
 	
 	// Data name
 	static final String DATA_NAME = "log-colors";
 
 	// Activator component
-	private LogColorsActivationManager activator;
+	private LogColorEnabler activator;
 	
 	// CodeMessage => ANSIEscape sequence
 	private Map<Integer, String> colors;
 		
 	// The instance
-	private static LogColors instance;
+	private static LogColor instance;
 	
 	// Singleton pattern
-	private LogColors() {	
+	private LogColor() {	
 		init();
 	}
 	
@@ -40,12 +40,12 @@ public class LogColors implements Exportable, Configurable{
 	 * Returns the LogColors instance
 	 * @return The instance
 	 */
-	static LogColors getInstance() {
+	static LogColor getInstance() {
 		
-		if(LogColors.instance == null) {
-			LogColors.instance = new LogColors();
+		if(LogColor.instance == null) {
+			LogColor.instance = new LogColor();
 		}
-		return LogColors.instance;
+		return LogColor.instance;
 	}
 	
 	/**
@@ -66,7 +66,7 @@ public class LogColors implements Exportable, Configurable{
 		Log.print(LogMessage.SCONF_PROC, DATA_NAME);
 		Log.print(LogMessage.SCONF_SUBPROC, "");
 		
-		if(!(source.getDataObj().getName().equals(LogColors.DATA_NAME))) {
+		if(!(source.getDataObj().getName().equals(LogColor.DATA_NAME))) {
 			throw new IllegalArgumentException("Wrong data."
 					+",no "+DATA_NAME+" key found");
 		}
@@ -132,6 +132,6 @@ public class LogColors implements Exportable, Configurable{
 				.put(c, ANSIEscape.TX_GREEN.getSequence()));
 		
 		// initialize the component
-		activator = LogColorsActivationManager.getInstance();
+		activator = LogColorEnabler.getInstance();
 	}
 }

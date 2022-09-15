@@ -2,8 +2,8 @@ package main.init.test;
 
 import main.init.PrgPaths;
 import main.log.Log;
-import main.log.LogArgumentsManager;
-import main.log.LogColorsArgumentsManager;
+import main.log.LogActivator;
+import main.log.LogColorActivator;
 import main.log.LogMessage;
 
 /**
@@ -18,8 +18,8 @@ public class PrgPathsTest {
 	 * @param args The arguments
 	 */
 	public static void main(String[] args) {
-		LogArgumentsManager.active(args);
-		LogColorsArgumentsManager.active(args);
+		LogActivator.active(args);
+		LogColorActivator.active(args);
 		Log.print(LogMessage.ICONF_DATA, PrgPaths.getPaths());
 	}
 }

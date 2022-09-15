@@ -1,7 +1,7 @@
 package main.init.test;
 
 import main.init.Init;
-import main.log.LogArgumentsManager;
+import main.log.LogActivator;
 
 /**
  * Init class test
@@ -16,7 +16,7 @@ public class InitTest {
 	 * @throws Exception 
 	 */
 	public static void main(String[] args) throws Exception {
-		LogArgumentsManager.active(args);
+		LogActivator.active(args);
 		Init.init();
 	}
 

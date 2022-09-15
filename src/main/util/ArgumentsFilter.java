@@ -1,51 +1,50 @@
 package main.util;
 
-import java.util.HashMap;
-import java.util.List;
+import java.util.Collection;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * 
  * @author steghy
- * @email <steghy.github@proton.me>
+ * @email steghy.github@proton.me
  */
 public class ArgumentsFilter {
 	
 	/**
 	 * 
-	 * @param list
-	 * @param source
-	 * @return A Map
+	 * @param from A Collection
+	 * @param source The source Map
+	 * @return A Map 
 	 */
-	public static Map<String, Optional<Object>> filter(List<String> list, 
+	public static Map<String, Optional<Object>> filter(Collection<String> from, 
 			Map<String, Optional<Object>> source) {
 
-		Map<String, Optional<Object>> output = new HashMap<>();
-
-		source.keySet()
-			.stream()
-			.filter(k -> list.contains(k))
-			.forEach(k -> output.put(k, source.get(k)));
-
-		return output;
+		return source.keySet()
+					.stream()
+					.filter(k -> from.contains(k))
+					.collect(Collectors.toMap(
+							k -> k, 
+							k -> source.get(k)));
 	}
 	
 	
 	/**
 	 * 
-	 * @param map
-	 * @param source
+	 * @param <T> The values type 
+	 * @param from A Map
+	 * @param source The source Map
 	 * @return A Map
 	 */
-	public static Map<String, Optional<Object>> filter(Map<String, Integer> map,
+	public static <T> Map<String, Optional<Object>> filter(Map<String, T> from,
 			Map<String, Optional<Object>> source) {
 
-		Map<String, Optional<Object>> output = new HashMap<>();
-		source.keySet()
-			.stream()
-			.filter(k -> map.containsKey(k))
-			.forEach(k -> output.put(k, source.get(k)));
-		return output;
+		return source.keySet()
+					.stream()
+					.filter(k -> from.containsKey(k))
+					.collect(Collectors.toMap(
+							k -> k,
+							k -> source.get(k)));
 	}
 }

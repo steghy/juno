@@ -7,10 +7,10 @@ import main.config.DataProvider;
 import main.config.Exporter;
 import main.config.Loader;
 import main.log.Log;
-import main.log.LogArgumentsManager;
-import main.log.LogColorsArgumentsManager;
+import main.log.LogActivator;
+import main.log.LogColorActivator;
 import main.log.LogMessage;
-import main.log.LogWriterArgumentsManager;
+import main.log.LogFileActivator;
 import main.model.Email;
 import main.model.Passwd;
 import main.model.User;
@@ -31,9 +31,9 @@ public class MyJsonTest {
 	 * @throws IOException
 	 */
 	public static void main(String[] args) throws IOException{
-		LogArgumentsManager.active(args);
-		LogColorsArgumentsManager.active(args);
-		LogWriterArgumentsManager.active(args);
+		LogActivator.active(args);
+		LogColorActivator.active(args);
+		LogFileActivator.active(args);
 		Log.print(LogMessage.TC_START, "With arguments:" + Arrays.asList(args).toString());
 		createJsonTest();
 		readJsonTest();

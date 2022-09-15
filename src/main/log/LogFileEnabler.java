@@ -5,17 +5,17 @@ package main.log;
  * @author steghy
  * @email <steghy.github@proton.me>
  */
-public class LogWriterActivationManager {
+public class LogFileEnabler {
 	
 	/** Status */
 	boolean status;
 		
 	//
-	private static LogWriterActivationManager instance;
+	private static LogFileEnabler instance;
 	
 	
 	//
-	private LogWriterActivationManager() {
+	private LogFileEnabler() {
 		init();
 	}
 	
@@ -24,9 +24,9 @@ public class LogWriterActivationManager {
 	 * 
 	 * @return The instance
 	 */
-	public static LogWriterActivationManager getInstance() {
+	public static LogFileEnabler getInstance() {
 		if(instance == null) {
-			instance = new LogWriterActivationManager();
+			instance = new LogFileEnabler();
 		}
 		return instance;
 	}

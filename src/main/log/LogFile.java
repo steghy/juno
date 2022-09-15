@@ -7,25 +7,24 @@ import java.io.PrintWriter;
 /**
  * 
  * @author steghy
- * @email <steghy.github@proton.me>
+ * @email steghy.github@proton.me
  */
-public class LogWriter {
+public class LogFile {
 	
-	// activator component
-	private LogWriterActivationManager activator;
+	/* Enabler component */
+	private LogFileEnabler activator;
 	
-	// configurator component
-	private LogWriterConfigurator configurator;
+	private LogFilePath configurator;
 	
 	// writer component
 	private PrintWriter writer;
 	
 	// the instance
-	private static LogWriter instance;
+	private static LogFile instance;
 	
 
 	//
-	private LogWriter() {
+	private LogFile() {
 		init();
 	}
 
@@ -34,9 +33,9 @@ public class LogWriter {
 	 * 
 	 * @return The instance
 	 */
-	public static LogWriter getInstance() {
+	public static LogFile getInstance() {
 		if(instance == null) {
-			instance = new LogWriter();
+			instance = new LogFile();
 		}
 		return instance;
 	}
@@ -64,7 +63,7 @@ public class LogWriter {
 	
 	// initialize the components
 	private void init() {
-		activator = LogWriterActivationManager.getInstance();
-		configurator = LogWriterConfigurator.getInstance();
+		activator = LogFileEnabler.getInstance();
+		configurator = LogFilePath.getInstance();
 	}
 }

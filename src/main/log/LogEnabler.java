@@ -19,9 +19,9 @@ import main.config.Exportable;
  * of printouts are code labels (see LogCodes for
  * informations about code labels).
  * @author steghy
- * @email <steghy.github@proton.me>
+ * @email steghy.github@proton.me
  */
-public class LogActivationManager implements Configurable, Exportable{
+public class LogEnabler implements Configurable, Exportable{
 
 	/* Data name */
 	final String DATA_NAME = "Log_service_status";
@@ -30,11 +30,11 @@ public class LogActivationManager implements Configurable, Exportable{
 	Map<Integer, Boolean> enabled;
 
 	/* The instance */
-	static LogActivationManager instance = new LogActivationManager();
+	static LogEnabler instance = new LogEnabler();
 
 	
 	/* Returns the instance */
-	private LogActivationManager() {
+	private LogEnabler() {
 		init();
 	}
 
@@ -108,8 +108,7 @@ public class LogActivationManager implements Configurable, Exportable{
 			}
 			catch(Exception e) {
 				e.printStackTrace();
-				// Back to default values
-				init();
+				init();  // Back to default values
 			}
 		}
 
