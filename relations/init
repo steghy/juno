@@ -1,0 +1,48 @@
+[INIT] [13/10/2022]
+
+Dal punto di vista generale l'inizializzazione del programma
+avviene mediante l'elaborazione di dati statici (presenti al
+livello del codice sorgente) e dati dinamici (dati dinamici/
+creati dall'utente).
+
+Nello specifico, l'inizializzazione dell'applicazione, in ordine
+prioritario, è struttrata nel seguente modo:
+
+	1) Controllo dei dati necessari all'esecuzione corretta
+	   dell'applicazione (immagini, audio e video).
+	   I percorsi dei file sono definiti all'interno di un file
+	   (path_to_project/data/gf/paths). Tale file è protetto da
+	   scrittura e creato una sola volta in fase di installazione.
+	   Se tale file dovesse mancare o non dovesse rispettare
+	   determinate caratteristiche (caso in cui risulta essere
+	   corrotto), allora verrebbe ricreato mediante uno strumento
+	   apposito (1).
+	   Nel caso in cui, in questo passaggio, dov'essero
+	   verificarsi dell'eccezioni, il programma eseguirebbe
+	   un programma secondario con lo scopo di risolvere
+	   proprio tali eccezioni (2).
+
+	2) Caricamento dei dati dell'ultimo utente che ha ciao come stai
+	   eseguito l'accesso, se esiste.
+
+	3) Se il passo 1 è stato eseguito, allora eseguire
+	   il caricamento delle impostazioni del programma
+	   associate a tale utente (3).
+
+Nell'unico caso in cui non vi è alcun profilo utente nella
+cartella designata per tale scopo (path_to_project/data/gf/user/user-data)
+verranno caricate le impostazioni di default (path_to_project/data/gf/config).
+
+	   (1)
+	   [ Osservare il file path_to_project_relations/scanner
+	     per maggiori informazioni in merito alla modalità di
+	     risoluzione di eventuali errori inerenti al file config ]
+	   (2)
+	   [ Osservare il file path_to_project/relations/resolver
+	     per maggiori informazioni in merito alla modalità di
+	     risoluzione di eventuali errori presenti in fase di
+	     inizializzazione del programma ]
+	   (3)
+	   [ Osservare il file path_to_project/relations/user-data
+             per maggiori informazioni in merito ai dati degli utenti
+	     e al relativo caricamento nel programma ]
