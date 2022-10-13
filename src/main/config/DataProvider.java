@@ -20,8 +20,8 @@ public class DataProvider {
 		File file = new File(path);
 		if(file.exists()){
 			if(file.isFile()) {
-				if(path.endsWith(MyJson.JSON_EXTENSION)) {
-					return MyJson.loadData(path);
+				if(path.endsWith(Json.JSON_EXTENSION)) {
+					return Json.loadData(path);
 				}
 				else {
 					throw new IllegalArgumentException("the file needs"

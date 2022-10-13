@@ -19,7 +19,7 @@ import main.log.LogMessage;
  * @author steghy
  * @email <steghy.github@proton.me>
  */
- public class MyJson {
+ public class Json {
 
 	static final String METADATA = "metadata";
 	static final String DATA = "data";

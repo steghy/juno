@@ -21,7 +21,7 @@ import main.config.Exportable;
  * @author steghy
  * @email steghy.github@proton.me
  */
-public class LogEnabler implements Configurable, Exportable{
+public class LogEnabler implements Configurable, Exportable, Activable{
 
 	/* Data name */
 	final String DATA_NAME = "Log_service_status";
@@ -126,5 +126,11 @@ public class LogEnabler implements Configurable, Exportable{
 		.map(c -> c.getCode()) // Integer mapping
 		.forEach(c -> enabled
 				.put(c, false));
+	}
+
+
+	@Override
+	public Map<Integer, Boolean> getActive() {
+		return this.enabled;
 	}
 }

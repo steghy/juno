@@ -25,7 +25,7 @@ public class LogColorEnabler implements Exportable, Configurable {
 	Map<Integer, Boolean> enabled;
 	
 	/* The instance */
-	private static LogColorEnabler instance;
+	static LogColorEnabler instance;
 
 	/* Builds and initialize the LCAM object */
 	private LogColorEnabler() {

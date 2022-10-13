@@ -23,7 +23,7 @@ public class PathGenerator {
 	 */
 	public static String generate(String filename) {
 		String path = Os.getCurrentPath();
-		path += (Os.isUnix()==true?DEFAULT_DIV:INVERTED_DIV);
+		path += (Os.isUnix() == true ? DEFAULT_DIV : INVERTED_DIV);
 		return path.concat(filename);
 	}
 	

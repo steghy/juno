@@ -4,7 +4,7 @@ package main.log;
  * This enumerative class provides objects composed of a message and a code.
  * The message explicitly identifies the type of message to be displayed 
  * in the terminal and/or saved in the log. The code allows you to enable 
- * or disable each print individually (see: LogActivation *).
+ * or disable each print individually (see: LogActivator for more informations).
  * @author steghy
  * @email <steghy.github@proton.me>
  */

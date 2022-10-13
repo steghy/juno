@@ -24,7 +24,7 @@ public class Exporter {
 			throws IOException {
 		DataPackage data = obj.provideData();
 		FileWriter file = new FileWriter(new File(path));
-		file.write(MyJson.create(data).toString());
+		file.write(Json.create(data).toString());
 		file.close();
 	}
 

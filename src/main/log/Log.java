@@ -57,7 +57,25 @@ public class Log {
 			writer.write(buildForWriter(logMessage));
 		}
 	}
-		
+	
+	
+	/**
+	 * Sets the path where save the log file
+	 * @param path The path where save the log file
+	 */
+	public static void setPath(String path) {
+		writer.setPath(path);
+	}
+	
+	
+	/**
+	 * Returns the path where save the log file
+	 * @return The path where save the log file
+	 */
+	public static String getPath() {
+		return writer.getPath();
+	}
+
 	
 	/*
 	 * Prints the specified LogMessage with the specified Map.

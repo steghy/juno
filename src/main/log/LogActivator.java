@@ -10,7 +10,7 @@ import main.util.ArgumentsSorter;
 /**
  * 
  * @author steghy
- * @email <steghy.github@proton.me>
+ * @email steghy.github@proton.me
  */
 public class LogActivator {
 	
@@ -24,12 +24,10 @@ public class LogActivator {
 	 */
 	@SuppressWarnings("unchecked")
 	public static void active(String[] args) {
-	
 		
 		// It only takes the recognized options
 		Map<String, Optional<Object>> filteredArgs = ArgumentsFilter
-				.filter(LogOptionsUtils.getOptions(), 
-						ArgumentsSorter.getArguments(args));
+				.filter(LogOptionsUtils.getOptions(), ArgumentsSorter.getArguments(args));
 		
 		for(String option: filteredArgs.keySet()) {
 
@@ -63,11 +61,7 @@ public class LogActivator {
 				throw new IllegalArgumentException("wrong argument: "
 						+ arg + " for the option: " + option);
 			}
-			LogEnabler.instance
-					.enabled
-					.put(LogOptionsUtils
-							.getCodeFrom(option), value);
+			LogEnabler.instance.enabled.put(LogOptionsUtils.getCodeFrom(option), value);
 		}
 	}
-	
 }

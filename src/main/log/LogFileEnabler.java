@@ -1,30 +1,37 @@
 package main.log;
 
+import java.io.IOException;
+import java.util.Map;
+
+import main.config.Configurable;
+import main.config.DataPackage;
+import main.config.Exportable;
+
 /**
  * 
  * @author steghy
- * @email <steghy.github@proton.me>
+ * @email * @email steghy.github@proton.me
  */
-public class LogFileEnabler {
-	
-	/** Status */
-	boolean status;
+public class LogFileEnabler implements Configurable, Exportable, Activable{
 		
-	//
+	/* The status */
+	private boolean status;
+	
+	/* The instance */
 	private static LogFileEnabler instance;
 	
 	
-	//
+	/* Builds the LogFileEnabler instance */
 	private LogFileEnabler() {
 		init();
 	}
 	
 	
 	/**
-	 * 
+	 * Returns the instance 
 	 * @return The instance
 	 */
-	public static LogFileEnabler getInstance() {
+	static LogFileEnabler getInstance() {
 		if(instance == null) {
 			instance = new LogFileEnabler();
 		}
@@ -33,8 +40,8 @@ public class LogFileEnabler {
 	
 	
 	/**
-	 * 
-	 * @return A boolean
+	 * Returns the status
+	 * @return The status
 	 */
 	public boolean getStatus() {
 		return this.status;
@@ -43,15 +50,36 @@ public class LogFileEnabler {
 	
 	/**
 	 * Sets the status 
-	 * @param value A boolean
+	 * @param status The status
 	 */
-	public void setStatus(boolean value) {
-		this.status = value;
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 
 	
-	//
+	/* Initialize the instance */
 	private void init() {
 		this.status = false;
+	}
+
+
+	@Override
+	public Map<Integer, Boolean> getActive() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public DataPackage provideData() throws IOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public void configure(DataPackage data) throws IOException {
+		// TODO Auto-generated method stub
+		
 	}
 }

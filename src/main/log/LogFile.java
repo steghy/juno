@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 
 
 /**
- * 
+ * LogFile class
  * @author steghy
  * @email steghy.github@proton.me
  */
@@ -14,23 +14,24 @@ public class LogFile {
 	/* Enabler component */
 	private LogFileEnabler activator;
 	
+	/* Configurator component */
 	private LogFilePath configurator;
 	
-	// writer component
+	/* writer component */
 	private PrintWriter writer;
 	
-	// the instance
+	/* the instance */
 	private static LogFile instance;
 	
 
-	//
+	/* Builds the LogFile instance */
 	private LogFile() {
 		init();
 	}
 
 	
 	/**
-	 * 
+	 * Returns the instance
 	 * @return The instance
 	 */
 	public static LogFile getInstance() {
@@ -42,11 +43,15 @@ public class LogFile {
 
 	
 	/**
-	 * 
-	 * @param string
+	 * Write the specified String object in the file
+	 * @param string A String object
 	 */
 	public void write(String string) {
 		if(instance.activator.getStatus()) {
+			if(configurator.getPath() == null) {
+				throw new NullPointerException("First set the path "
+						+ "where save the log file");
+			}
 			if(writer == null) {
 				try {
 					writer = new PrintWriter(configurator.getPath());
@@ -61,7 +66,25 @@ public class LogFile {
 	}
 
 	
-	// initialize the components
+	/**
+	 * Sets the path where save the Log file
+	 * @param path A path
+	 */
+	public void setPath(String path) {
+		this.configurator.setPath(path);
+	}
+	
+	
+	/**
+	 * Returns the path where save the log file
+	 * @return The path where save the log file
+	 */
+	public String getPath() {
+		return this.configurator.getPath();
+	}
+
+	
+	/* Initialize the instance */
 	private void init() {
 		activator = LogFileEnabler.getInstance();
 		configurator = LogFilePath.getInstance();

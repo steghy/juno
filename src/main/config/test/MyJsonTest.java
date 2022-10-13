@@ -9,8 +9,9 @@ import main.config.Loader;
 import main.log.Log;
 import main.log.LogActivator;
 import main.log.LogColorActivator;
-import main.log.LogMessage;
 import main.log.LogFileActivator;
+import main.log.LogFilePath;
+import main.log.LogMessage;
 import main.model.Email;
 import main.model.Passwd;
 import main.model.User;
@@ -34,6 +35,7 @@ public class MyJsonTest {
 		LogActivator.active(args);
 		LogColorActivator.active(args);
 		LogFileActivator.active(args);
+		Log.setPath(PathGenerator.generate("test-file"));
 		Log.print(LogMessage.TC_START, "With arguments:" + Arrays.asList(args).toString());
 		createJsonTest();
 		readJsonTest();
