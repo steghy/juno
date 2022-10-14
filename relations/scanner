@@ -29,9 +29,15 @@ inseriti (almeno dall'installer presente in dotazione al progetto in cui questo 
 	Se, durante l'installazione è stata scelta l'opzione 'user'
 	- path_to_user_home/.local/lib
 
+Nei sistemi Windows:
+	Da definire
+
+Nei sistemi MacOs:
+	Da definire
+
 Essendo che, sia l'installer che lo scanner come anche il programma resolver devono
 creare il file paths, quest'ultimo, per progettazione, viene generato da uno script
-specifico chiamato: paths_generator (2)
+specifico chiamato: paths_generator.py (2)
 
 	  (1)
 	  [ Osservare il file path_to_project/relations/resolver per

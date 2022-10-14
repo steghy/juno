@@ -2,8 +2,9 @@
 
 Dal punto di vista generale l'inizializzazione del programma
 avviene mediante l'elaborazione di dati statici (presenti al
-livello del codice sorgente) e dati dinamici (dati dinamici/
-creati dall'utente).
+livello del codice sorgente, oppure definiti all'interno della
+cartella path_to_project/data/ngf) e dati dinamici (file definiti
+all'interno del percorso path_to_project/data/gf).
 
 Nello specifico, l'inizializzazione dell'applicazione, in ordine
 prioritario, è struttrata nel seguente modo:
@@ -16,7 +17,9 @@ prioritario, è struttrata nel seguente modo:
 	   Se tale file dovesse mancare o non dovesse rispettare
 	   determinate caratteristiche (caso in cui risulta essere
 	   corrotto), allora verrebbe ricreato mediante uno strumento
-	   apposito (1).
+	   apposito (1) che è presente all'interno dei compilati
+	   (.class files) e quindi svincolato dallo strumento usato
+	   in fase di installazione.
 	   Nel caso in cui, in questo passaggio, dov'essero
 	   verificarsi dell'eccezioni, il programma eseguirebbe
 	   un programma secondario con lo scopo di risolvere
