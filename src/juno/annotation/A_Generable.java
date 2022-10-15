@@ -7,6 +7,6 @@ package juno.annotation;
  * @author steghy
  * @email steghy.github@proton.me
  */
-public @interface GenerableAnnotation {
+public @interface A_Generable {
 
 }

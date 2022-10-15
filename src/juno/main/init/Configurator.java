@@ -31,7 +31,7 @@ public class Configurator {
 	 * mediante la lettura dei dati provenienti dai files
 	 * contenuti nella libreria del programma.
 	 */
-	void configure() {
+	void configure(File paths) {
 		// Qui sotto sono riportate le classi che dovranno essere
 		// configurate dinamicamente durante l'inizializzazione
 		// del programma.
@@ -50,6 +50,8 @@ public class Configurator {
 		 * di configurazione (file 'config' localizzato nella libreria
 		 * del gioco all'interno del percorso data/gf/).
 		 */
+		
+		
 	}
 
 }

@@ -1,0 +1,11 @@
+FileSeparator=/
+JClassPath =/home/steghy/Documents/codes/juno-project/bin:/home/steghy/Documents/codes/juno-project/json-20220320.jar
+JClassVersion=61.0
+JCompiler=null
+JSpecVersion=17
+JVMVersion=17.0.3+7
+JVendor=Eclipse Adoptium
+JVendorURL=https://adoptium.net/
+JVersion=17.0.3
+OSArch=amd64
+OSName=Linux

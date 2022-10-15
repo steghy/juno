@@ -31,7 +31,7 @@ public class User implements Configurable, Exportable {
 	private String lastName;
 	
 	/* Email address */
-	private Email email;
+	private String email;
 	
 	/* Telephone number */
 	private long telephoneNumber;
@@ -39,72 +39,35 @@ public class User implements Configurable, Exportable {
 	/* Country */
 	private String country;
 	
-	/* Passwd */
-	private Passwd passwd;
-	
 	/* Age */
 	private int age;
 	
-	
-	/**
-	 * Builds a User without informations
-	 */
-	public User() {}
+	/* User instance */
+	private static User instance;
 	
 	
-	/**
-	 * Builds a User with the specified
-	 * username
-	 * @param username The username
-	 */
-	public User(String username) {
-		this.username = username;
-	}
+	/* Buids an empty User instance */
+	private User() {}
 	
 	
 	/**
-	 * Builds a user with all the
-	 * informations.
-	 * @param username The username
-	 * @param name The name
-	 * @param lastName The last name
-	 * @param email The email
-	 * @param telephoneNumber The telephone number
-	 * @param country The country
-	 * @param passwd The passwd
-	 * @param age The age
+	 * Returns the User instance
+	 * @return The User instance
 	 */
-	public User(String username, String name,
-			String lastName, Email email,
-			long telephoneNumber, String country,
-			Passwd passwd, int age) {
-		this.username = username;
-		this.name = name;
-		this.lastName = lastName;
-		this.email = email;
-		this.telephoneNumber = telephoneNumber;
-		this.country = country;
-		this.passwd = passwd;
-		this.age = age;
+	public static User getInstance() {
+		if(instance == null) {
+			instance = new User();
+		} return instance;
 	}
 	
 	/**
 	 * Sets the email 
 	 * @param email The email
 	 */
-	public void setEmail(Email email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	
-	/**
-	 * Sets the passwd
-	 * @param passwd The passwd
-	 */
-	public void setPasswd(Passwd passwd) {
-		this.passwd = passwd;
-	}
-	
 	
 	/**
 	 * Sets the age
@@ -203,7 +166,7 @@ public class User implements Configurable, Exportable {
 	 * Returns the email
 	 * @return The email
 	 */
-	public Email getEmail() {
+	public String getEmail() {
 		return this.email;
 	}
 	
@@ -226,47 +189,29 @@ public class User implements Configurable, Exportable {
 	}
 
 	
-	/**
-	 * Returns the passwd
-	 * @return The passwd
-	 */
-	public Passwd getPasswd() {
-		return this.passwd;
-	}
-
-	
 	@Override
 	public void configure(Data data) throws DataException {
-		
+
+		// Data consistency check
+		if(!data.getName().equals(UserData.DATA_NAME.name())) {
+			throw new DataException("No " + UserData.DATA_NAME.name() 
+								  + "key found.");
+		}
+
 		Map<String, Object> userData = data.getData();
+		if(Arrays.asList(UserData.values()).stream()
+			.filter(k -> {
+				return !userData.containsKey(k.name());
+			}).count() != 0) {
+			throw new DataException("Corrupted data");
+		}
 		
-		/* Controllo consistenza dati */
-		Arrays.asList(UserData.values()).stream()
-		.forEach(k -> {
-			if(!userData.containsKey(k) &&
-					!k.equals(UserData.DATA_NAME)) {
-				throw new DataException();
-			}
-		});
-		
-		/* Username */
 		this.username = (String) userData.get(UserData.USER_NAME.name());
-
-		/* Name */
 		this.name = (String) userData.get(UserData.NAME.name());
-		
-		/* Lastname */
 		this.lastName = (String) userData.get(UserData.LAST_NAME.name());
-		
-		/* Country */
 		this.country = (String) userData.get(UserData.COUNTRY.name());
-		
-		/* Email */
-		this.emailAddress = 
-
-		/* Passwd */
-
-		/* Telephone number */
+		this.age = (Integer) userData.get(UserData.AGE.name());
+		this.email = (String) userData.get(UserData.EMAIL.name());
 		Object obj = userData.get(UserData.TELEPHONE_NUMBER.name());
 		long temp = 0;
 		if(obj instanceof Long) {
@@ -275,7 +220,7 @@ public class User implements Configurable, Exportable {
 			temp = Integer.toUnsignedLong((Integer)obj);
 		} this.telephoneNumber = temp;
 	} 
-	}
+
 	
 	@Override
 	public Data provideData() {
@@ -285,9 +230,8 @@ public class User implements Configurable, Exportable {
 		data.put(UserData.LAST_NAME.name(), this.lastName);
 		data.put(UserData.COUNTRY.name(), this.country);
 		data.put(UserData.TELEPHONE_NUMBER.name(), this.telephoneNumber);
-		data.put(UserData.EMAIL.name(),this.emailAddress);
+		data.put(UserData.EMAIL.name(),this.email);
 		data.put(UserData.AGE.name(), this.age);
-		data.put(UserData.PASSWD.name(), this.passwd);
 		return (new Data(data, UserData.DATA_NAME.name()));
 	}
 }

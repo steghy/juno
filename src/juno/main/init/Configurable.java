@@ -1,7 +1,5 @@
 package juno.main.init;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import juno.exception.DataException;
 
 /**
@@ -12,10 +10,10 @@ import juno.exception.DataException;
 public interface Configurable {
 		
 	/**
-	 * Configura l'oggetto sul quale viene invocato
-	 * con la mappa passata in input.
-	 * @param data La mappa (contente i dati da passare all'invocante)
-	 * @throws IOException
+	 * Configura l'oggetto invocante con l'oggetto
+	 * data fornito in input.
+	 * @param data Un oggetto Data
+	 * @throws FileNotFoundException 
 	 */
-	void configure(Data data) throws DataException, FileNotFoundException;
+	void configure(Data data) throws DataException;
 }

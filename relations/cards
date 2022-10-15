@@ -1,0 +1,56 @@
+[CARDS] [15/10/2022]
+
+Le carte in totale all'interno di un mazzo da gioco sono 112 così distribuite:
+
+[ Carte Numero ]
+* 19 carte di colore Blu
+* 19 carte di colore Rosso
+* 19 carte di colore Verde
+* 19 carte di colore Giallo
+Nota [ Ciascuna serie di 19 carte è composta da 2x9 carte da 1 a 9 più uno 0. ]
+
+[ Carte Speciali ]
+* 8 carte 'Inverti' o 'Cambio giro' dei quattro colori sopra citati
+* 8 carte 'Salta' o 'Stop' dei quattro colori sopra citati
+* 8 carte 'Pesca Due' dei quattro colori sopra citati
+* 4 carte 'Jolly' o 'Cambio Colore'
+* 4 carte 'Jolly Pesca Quattro' o 'Pesca Quattro'
+
+Regole per vincere:
+Il giocatore che per primo riesce a esaurire tutte le carte che ha nella mano vince
+la partita. Nella versione inglese, invece, ogni giocatore che esaurisce le carte
+nella propria mano ottiene punti in base alle carte rimaste in mano agli altri
+giocatori; il primo giocatore che raggiunge i 500 punti vince la partita.
+
+Regole per il primo giocatore:
+Il primo giocatore viene scelto pseudo-randomicamente direttamente da una funzione
+del programma quindi non mi dilungherò nella realizzazione del procedimento classico
+per la determinazione del primo giocatore. Ne consegue che non esiste neanche alcun
+mazziere (Il mazziere infatti è, e rimarrà, il computer).
+
+Lista delle azioni compiute durante la partita:
+- Ogni giocatore inizia la partita con 7 carte prelevate direttamente dal mazzo.
+- All'inizio della partita, la prima carta in cima al mazzo viene girata, creando
+  così il 'mazzo scarto'. Il mazzo da cui vengono pescate le carte viene chiamato
+  'mazzo pesca'. Nel videogioco è sistematicamente impossivile che venga girata,
+  come prima carta, un 'Jolly Pesca Quattro' o 'Pesca Quattro', pertanto questa
+  situazione non verrà gestita. Nel caso in cui invece, venisse girata come prima
+  carta, una carta speciale, allora si applicherebbero le regole di quella carta,
+  come se fosse stata giocata da un giocatore durante la partita.
+- Da questo punto in poi vengono applicate le regole delle singole carte e le
+  penalità (nel caso in cui si verificassero).
+
+[ Casi speciali ]
+Due giocatori:
+- Il giocatore che gioca una carta 'Salta' o 'Stop' può immediatamente giocare di
+  nuovo.
+- La carta 'Inverti' o 'Cambio giro' ha la stessa valenza della carta 'Salta' o
+  'Stop'
+
+Penalità:
+- Se un giocatore si dimentica di esclamare "UNO!", quando rimane con una sola
+  carta nella propria mano e, il fatto viene notificato da un'altro giocatore
+  quando il turno del successivo giocatore  non è ancora terminato, il giocatore
+  che non ha esclamato il termine "UNO!" deve pescare 2 carte.
+
+

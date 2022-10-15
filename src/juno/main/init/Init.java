@@ -14,6 +14,9 @@ import juno.model.util.PathGenerator;
  */
 public class Init {
 	
+	/* Paths file */
+	static final String PATHS = "paths";
+
 	/* Scanner component */
 	private static Scanner scanner = Scanner.getInstance();
 	
