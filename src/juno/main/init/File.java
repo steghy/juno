@@ -1,6 +1,5 @@
 package juno.main.init;
 
-import juno.annotation.A_Generable;
 
 /**
  * File object list.
@@ -9,7 +8,6 @@ import juno.annotation.A_Generable;
  */
 public enum File {
 	
-	@A_Generable
 	PATHS,
 	
 	/**
@@ -18,7 +16,6 @@ public enum File {
 	 * the program ( screen size,
 	 * card cover, ... ).
 	 */
-	@A_Generable
 	CONFIG,
 	
 	/**
