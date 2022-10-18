@@ -10,11 +10,8 @@ public class DeckTester {
 
 	public static void main(String[] args) {
 
-		// Il mazzo viene generato e successivamente viene
-		// mischiato. 
 		Deck deckInstance = Deck.getInstance();
-		deckInstance.generateDeck(4).shuffle();
-		
+		deckInstance.generateDeck(2).shuffle();
 		
 		/* Counters */
 		int totalNumericCards = 0;
@@ -31,16 +28,9 @@ public class DeckTester {
 		while(true) {
 			
 			try {
-				/* Pescata della carta
-				 * Questo metodo lancia
-				 * una eccezione nel caso 
-				 * in cui il mazzo sia vuoto
-				 * al momento della pescata
-				 * (DeckIsEmptyException)
-				 */
 				Card card = deckInstance.draw();
-
-				/* Card specifications */
+				
+				/* Cards specification */
 				Color color = card.getColor();
 				Action action = card.getAction();
 
@@ -65,7 +55,6 @@ public class DeckTester {
 				System.out.println(count + ")" +  card);
 				count ++;
 			} catch (DeckIsEmptyException e) {
-				e.printStackTrace();
 				break;
 			}
 

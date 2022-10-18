@@ -10,24 +10,7 @@ import juno.model.card.Card;
 import juno.model.card.Color;
 
 /**
- * Questa classe definisce l'oggetto Deck
- * utilizzato durante una partita al gioco Uno.
- * Un oggetto Deck è complesso e comprende, tra
- * i suoi campi, il mazzo pescate e il mazzo delle carte
- * scartate. L'oggetto Deck tiene inoltre contro delle
- * carte attualmente in mano (in totale) di tutti i giocatori.
- * Ci sono metodi per:
- * - Creare il mazzo.
- * - Mischiare il mazzo.
- * - Pescare una carta dal mazzo.
- * - Reciclare le carte scartate.
- * - Inserimento di una carta nella pila delle carte scartate.
- * - Vari metodi di get
- * Nota: La generazione del mazzo, che permette l'invocazione di
- * tutti i restanti metodi dell'istanza, dev'essere effettuata
- * separatamente rispetto al metodo di getInstance().
- * Quindi per invocare un qualsiasi metodo è necessario prima
- * invocare il metodo generateDeck(int playerNumber).
+ * 
  * @author steghy
  * @email steghy.github@proton.me
  */
@@ -61,12 +44,9 @@ public class Deck {
 	
 	
 	/**
-	 * Restituisce la carta in cima al mazzo pescate
-	 * @return La carta pescata
-	 * @throws DeckIsEmptyException Se il mezzo non ha più
-	 * 		   carte a disposizione.
-	 * @throws DeckNotInitializedException Se il deck
-	 * 		   non è stato preventivamente inizializzato
+	 * 
+	 * @return
+	 * @throws DeckIsEmptyException
 	 */
 	public Card draw() throws DeckIsEmptyException {
 		if(this.deck.isEmpty()) {
@@ -79,15 +59,9 @@ public class Deck {
 	
 	
 	/**
-	 * Inserisce la carta passata in input
-	 * nella pila degli scarti
-	 * @param card La carta da inserire nella pila
-	 * 		  degli scarti
-	 * @throws DeckNotInitializedException Se il deck
-	 *         non è stato preventivamente inizializzato
-	 * @throws IncompatibleCardException  Se la carta
-	 * 		   specificata in input non è compatibile con
-	 *         la carta in cima alla pila delle carte scartate.
+	 * 
+	 * @param card
+	 * @throws IncompatibleCardException
 	 */
 	public void putCard(Card card) throws IncompatibleCardException {
 		if(this.discarded.peek().isCompatible(card)) {
@@ -101,13 +75,9 @@ public class Deck {
 	
 	
 	/**
-	 * Aggiunge tutte le carte nella pila degli scarti 
-	 * nel mazzo delle carte da pescare.
-	 * Il mezzo delle carte non viene mescolato durante
-	 * l'esecuzione di questo metodo
-	 * @return Ritorna l'oggetto invocante
-	 * @throws DeckIsNotEmptyException Se il mazzo delle pescate non è 
-	 * 	       vuoto.
+	 * 
+	 * @return
+	 * @throws DeckIsNotEmptyException
 	 */
 	public Deck addDiscardedToDeck() throws DeckIsNotEmptyException {
 		if(this.deck.isEmpty()) {
@@ -121,30 +91,25 @@ public class Deck {
 
 	
 	/**
-	 * Mescola il mazzo delle pescate.
+	 * 
+	 * @return
 	 */
 	public Deck shuffle() {
 		Random random = new Random();
 		for(int i = 0; i < 250; i++) {
 
-			Card card_1 = this.deck.pop();
-			Card card_2 = this.deck.pop();
-			Card card_3 = this.deck.pop();
+			Card card = this.deck.pop();
 
 			int index_1 = random.nextInt(this.deck.size());
-			int index_2 = random.nextInt(this.deck.size());
-			int index_3 = random.nextInt(this.deck.size());
 
-			this.deck.add(index_1, card_1);
-			this.deck.add(index_2, card_2);
-			this.deck.add(index_3, card_3);
+			this.deck.add(index_1, card);
 		} return this;
 	}
 	
 	
 	/**
-	 * Ritorna il mazzo delle pescate
-	 * @return Il mazzo delle pescate
+	 * 
+	 * @return
 	 */
 	public Stack<Card> getDeck() {
 		return this.deck;
@@ -152,8 +117,8 @@ public class Deck {
 	
 	
 	/**
-	 * Ritorna il mazzo delle carte scartate
-	 * @return Il mazzo delle carte scartate
+	 * 
+	 * @return
 	 */
 	public Stack<Card> getDiscarded() {
 		return this.discarded;
@@ -161,8 +126,8 @@ public class Deck {
 	
 	
 	/**
-	 * Ritorna il numero totale di carte in mano in tutti i giocatori
-	 * @return Il numero totale di carte in mano in tutti i giocatori
+	 * 
+	 * @return
 	 */
 	public int getCardsInHand() {
 		return this.cardsInHand;
@@ -170,15 +135,9 @@ public class Deck {
 
 	
 	/**
-	 * Genera il mezzo delle pescate sulla base del 
-	 * numero dei giocatori fornito in input.
-	 * Se il numero dei giocatori è 3 o 4, il numero
-	 * di carte totali è uguale a 108.
-	 * Se il numero dei giocatori è uguale a 2, il 
-	 * numero delle carte del mazzo pescate è uguale
-	 * a 59
-	 * @param playersNumber Il numero di giocatori
-	 * @return L'oggetto invocante
+	 * 
+	 * @param playersNumber
+	 * @return
 	 */
 	public Deck generateDeck(int playersNumber) {
 		

@@ -23,7 +23,7 @@ import juno.model.util.PathGenerator;
 public class GCard {
 	
 	/* Card name = Pathh */
-	private static Map<String, String[]> cards;
+	private Map<String, String[]> cards;
 	
 	/* The instance */
 	private static GCard instance;
@@ -104,16 +104,23 @@ public class GCard {
 		List<String> names = List.of("red", "blue", "green", "yellow", "jolly");
 		for(String name : main.list()) {
 			if(names.contains(name)) {
-				cards.put(name, (new File(PathGenerator
-						.generate(main.getPath(), name))
-						.list()));
-				names.remove(name);
+				File path = new File(PathGenerator.generate(main.getPath(), name));
+				for(String fileName : path.list()) {
+					cards.
+				}
+			} else {
+				throw new FileNotFoundException(name + " not found");
 			}
-		} if(!names.isEmpty()) {
-			throw new FileNotFoundException((String[])names.stream()
-					.map(name -> PathGenerator.generate(main.getPath(), name))
-					.toArray());
 		} 
+	}
+	
+	public static void main(String[] args) {
+		try {
+			GCard.getInstance();
+		} catch (FileNotFoundException | FileAlreadyExistsException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
