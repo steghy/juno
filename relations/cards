@@ -1,6 +1,6 @@
 [CARDS] [15/10/2022]
 
-Le carte in totale all'interno di un mazzo da gioco sono 112 così distribuite:
+Le carte in totale all'interno di un mazzo da gioco sono 108 così distribuite:
 
 [ Carte Numero ]
 * 19 carte di colore Blu
@@ -8,6 +8,8 @@ Le carte in totale all'interno di un mazzo da gioco sono 112 così distribuite:
 * 19 carte di colore Verde
 * 19 carte di colore Giallo
 Nota [ Ciascuna serie di 19 carte è composta da 2x9 carte da 1 a 9 più uno 0. ]
+Nota [ Nel caso in cui i giocatori siano soltanto 2 allora il numero delle
+       carte sopra citate scende a 1x9 carte da 1 a 9 più uno 0. ]
 
 [ Carte Speciali ]
 * 8 carte 'Inverti' o 'Cambio giro' dei quattro colori sopra citati
@@ -15,6 +17,8 @@ Nota [ Ciascuna serie di 19 carte è composta da 2x9 carte da 1 a 9 più uno 0. 
 * 8 carte 'Pesca Due' dei quattro colori sopra citati
 * 4 carte 'Jolly' o 'Cambio Colore'
 * 4 carte 'Jolly Pesca Quattro' o 'Pesca Quattro'
+Nota [ Nel caso in cui i giocatori siano soltanto 2 allora il numero delle carte
+       sopra citate viene diviso, per ciascun tipo, per 2.
 
 Regole per vincere:
 Il giocatore che per primo riesce a esaurire tutte le carte che ha nella mano vince
@@ -36,7 +40,10 @@ Lista delle azioni compiute durante la partita:
   come prima carta, un 'Jolly Pesca Quattro' o 'Pesca Quattro', pertanto questa
   situazione non verrà gestita. Nel caso in cui invece, venisse girata come prima
   carta, una carta speciale, allora si applicherebbero le regole di quella carta,
-  come se fosse stata giocata da un giocatore durante la partita.
+  come se fosse stata giocata da un giocatore durante la partita. Nel caso in cui un
+  giocatore giocasse una carta 'Pesca Due' oppure 'Pesca Quattro', il giocatore
+  che dovrebbere pescare le carte può giocare lo stesso tipo di carta per far 
+  pescare l'ammontare totale al giocatore successivo.
 - Da questo punto in poi vengono applicate le regole delle singole carte e le
   penalità (nel caso in cui si verificassero).
 
