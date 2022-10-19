@@ -41,8 +41,7 @@ public class GCardTester {
 			System.out.println("Red-1 card not exists");
 		}
 
-		BufferedImage myPicture = ImageIO.read(red1CardFile);
-		JLabel picLabel = new JLabel(new ImageIcon(myPicture));
+		JLabel picLabel = new JLabel(new ImageIcon(red1CardPath));
 
 		// Frame options
 		frame.add(picLabel);
