@@ -13,6 +13,8 @@ public class FileNotFoundException extends Exception {
 	/* The paths */
 	private String[] paths;
 	
+	private FileNotFoundException() {}
+	
 	/**
 	 * 
 	 * @param paths

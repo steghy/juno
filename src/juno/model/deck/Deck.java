@@ -97,11 +97,8 @@ public class Deck {
 	public Deck shuffle() {
 		Random random = new Random();
 		for(int i = 0; i < 250; i++) {
-
 			Card card = this.deck.pop();
-
 			int index_1 = random.nextInt(this.deck.size());
-
 			this.deck.add(index_1, card);
 		} return this;
 	}

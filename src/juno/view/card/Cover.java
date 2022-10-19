@@ -2,6 +2,8 @@ package juno.view.card;
 
 import java.io.File;
 
+import javax.swing.ImageIcon;
+
 import juno.model.util.PathGenerator;
 
 /**
@@ -12,11 +14,16 @@ import juno.model.util.PathGenerator;
 public class Cover {
 	
 	/** Graphic covers directories */
-	static final File COVER_DIR = new File(PathGenerator.generate("data/images/cards/cover"));
+	private ImageIcon cover;
 	
 	/* The instance */
 	private static Cover instance;
 	
+	/* Builds the cover object */
+	private Cover() {
+		init();
+	}
+
 	/**
 	 * Returns the instance of this class
 	 * @return The instance of this class
@@ -25,5 +32,11 @@ public class Cover {
 		if(instance == null) {
 			instance = new Cover();
 		} return instance;
+	}
+	
+	private void init() {
+		String[] pathNames = {"data", "images", "card", "cover"};
+		String path = PathGenerator.generate(pathNames);
+		cover = new ImageIcon(path);
 	}
 }

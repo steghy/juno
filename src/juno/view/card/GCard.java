@@ -67,9 +67,9 @@ public class GCard {
 
 		// Colored card case
 		if(color != null) {
-			paths = GCard.cards.get(color.name().toLowerCase());
+			paths = cards.get(color.name().toLowerCase());
 		} else {
-			paths = GCard.cards.get("jolly");
+			paths = cards.get("jolly");
 		} 
 		for(String path : paths){
 			String[] names = path.split(div);
@@ -92,7 +92,8 @@ public class GCard {
 	}
 	
 	private void init() throws FileNotFoundException, FileAlreadyExistsException {
-		File main = new File(PathGenerator.generate("data/images/cards"));
+		String[] fileNames = {"data", "images", "cards"};
+		File main = new File(PathGenerator.generate(fileNames));
 		if(!main.exists()) {
 			throw new FileNotFoundException(main.getPath());
 		} else if(!main.isDirectory()) {
@@ -106,7 +107,6 @@ public class GCard {
 			if(names.contains(name)) {
 				File path = new File(PathGenerator.generate(main.getPath(), name));
 				for(String fileName : path.list()) {
-					cards.
 				}
 			} else {
 				throw new FileNotFoundException(name + " not found");

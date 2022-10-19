@@ -56,28 +56,6 @@ public class Init {
 	 * 		   degli errori ritorna il valore booleano false.
 	 */
 	static void init() throws Exception {
-		File paths = new File(PathGenerator.generate("paths"));
-		if(!paths.exists()) {
-			if(scanner.scan()) {
-				Map<String, String> data = checker.check();
-				if(data.size() != 0){
-					if(resolver.solve(data)) {
-						// Ora è possibile configurare le classi
-					} else {
-						// Non è stato possibile risolvere
-						throw new Exception();
-					}
-				} else {
-					
-				}
-			} else {
-				if(resolver.solve(new HashMap<String, String>())) {
-					// Mappa vuota in input significa risolvi tutti i files
-					// ora è possibile configurare le classi
-				} else {
-					throw new Exception();
-				}
-			}
-		}
+
 	}
 }
