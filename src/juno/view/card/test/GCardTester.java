@@ -2,11 +2,11 @@ package juno.view.card.test;
 
 import javax.swing.*;
 
-import juno.exception.FileAlreadyExistsException;
-import juno.exception.FileNotFoundException;
+import juno.model.card.Card;
+import juno.model.card.Color;
+import juno.model.card.Action;
 import juno.model.util.PathGenerator;
 import juno.view.card.GCard;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -19,6 +19,8 @@ import java.io.IOException;
  */
 public class GCardTester {
 	
+	static int count;
+	
 	/**
 	 * Metodo main per il test della classe GCard
 	 * @param args
@@ -26,13 +28,19 @@ public class GCardTester {
 	 */
 	public static void main(String[] args) throws IOException {
 		// Test here
-		
+
+		GCard.getInstance().init();
+		GCard.getInstance().getCards().entrySet().stream()
+			.forEach(entry -> {
+				System.out.println(entry.getKey() + " | " + entry.getValue());
+				count++;
+			});
+		System.out.println("Number of cards: " + count);
 		// Graphic card image test
-		// cardImageTest();
+		cardImageTest();
 		
 		// Init JButtons cards
-		GCard cardProvider = GCard.getInstance();
-		cardProvider.init();
+
 	}	
 		
 	public static void cardImageTest() {
@@ -68,12 +76,15 @@ public class GCardTester {
 				if(e.getActionCommand().equals(CARD)) {
 					JButton card = (JButton) source;
 					System.out.println("A card was pressed, card : " + card.getName());
-
 				}
-				
 			}
 			
 		}
+
+		GCard cardProvider = GCard.getInstance();
+		cardProvider.init();
+		Card card = new Card(-1, null, Action.WILD_DRAW_FOUR);
+		JButton button = cardProvider.getGraphicCard(card);
 
 		JButton picLabel = new JButton(new ImageIcon(red1CardPath, "RedCard1"));
 		picLabel.addActionListener(new ActionSpy());
@@ -86,7 +97,7 @@ public class GCardTester {
 	
 
 		// Frame options
-		frame.add(picLabel);
+		frame.add(button);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationByPlatform(true);
 		frame.setResizable(true);

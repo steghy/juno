@@ -51,41 +51,63 @@ public class GCard {
 	
 	
 	/**
+	 * Returns the Map of the cards - Jbutton
+	 * @return A Map
+	 */
+	public Map<Card, JButton> getCards(){
+		return this.cards;
+	}
+	
+	
+	/**
 	 * Returns the JButton associated with the
 	 * specified Card object
 	 * @param card A Card object
 	 * @return A JButton object
 	 */
 	public JButton getGraphicCard(Card card) {
-		return this.cards.get(card);
+		Object[] result = cards.keySet().stream()
+			.filter(k -> k.equals(card)).toArray();
+		if(result.length == 0) {
+			throw new IllegalArgumentException(""
+					+ "Error: Cannot find the specified card");
+		} else {
+			return cards.get(result[0]);
+		}
 	}
 
 	
 	/* Initialize the GCard instance */
 	public void init() {
+		this.cards = new HashMap<>();
+		
+		// Cards paths
 		Paths[] cardsDirectories = {Paths.RCARDS, Paths.BCARDS,
 				Paths.YCARDS, Paths.GCARDS, Paths.JCARDS};
-		List<Color> colors = Arrays.asList(Color.values());
+
 		for(Paths pathObject : cardsDirectories) {
 			String path = pathObject.getPath();
 			File cardDir = new File(path); 
 			String dirName = cardDir.getName();
 			Color color = Color.getColorObject(dirName);
+
 			for(String fileName : cardDir.list()) {
-				String absoluteName = fileName.split(".")[0];
+				String absoluteName = fileName.split("[.]")[0];
+				// Card specification
 				int value = -1;
-				Action action = Action.getActionObject(fileName);
+				Action action = Action.getActionObject(absoluteName);
+
+				// Numeric cards starts with a number
 				char firstChar = absoluteName.charAt(0);
 				if(Character.isDigit(firstChar)) {
 					value = firstChar - '0';
 				}
-				Card card = new Card(value, color, action);
+
 				String cardPath = PathGenerator.generate(path, fileName);
-				JButton button = new JButton(new ImageIcon(cardPath));
+				Card card = new Card(value, color, action);
+				JButton button = generateJButton(cardPath);
 				cards.put(card, button);
 			}
-			
-			colors.remove(0);
 		}
 	}
 

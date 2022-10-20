@@ -12,7 +12,7 @@ public enum Action {
 	REVERSE(false),
 	SKIP(false),
 	WILD(true),
-	WILD_CARD_FOUR(true);
+	WILD_DRAW_FOUR(true);
 	
 	/* Jolly field */
 	private boolean isJolly;
@@ -49,7 +49,7 @@ public enum Action {
 		case("REVERSE")       : return Action.REVERSE;
 		case("SKIP")          : return Action.SKIP;
 		case("WILD")          : return Action.WILD;
-		case("WILD_CARD_FOUR"): return Action.WILD_CARD_FOUR;
+		case("WILD_DRAW_FOUR"): return Action.WILD_DRAW_FOUR;
 		} return null;
 	}
 }
