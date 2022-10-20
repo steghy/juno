@@ -1,11 +1,10 @@
 package juno.view.card.test;
-import javax.imageio.ImageIO;
-import javax.swing.*;
 
+import javax.swing.*;
 import juno.model.util.PathGenerator;
 
-import java.awt.*;
-import java.awt.image.BufferedImage;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
@@ -22,8 +21,16 @@ public class GCardTester {
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws IOException {
+		// Test here
+		
+		// Graphic card image test
+		cardImageTest();
 	
-		String[] pathNames = {"data", "image", "card", "red", "png"};
+	}	
+		
+	public static void cardImageTest() {
+		
+		String[] pathNames = {"data", "images", "cards", "red"};
 		String cardsPath = PathGenerator.generate(pathNames);
 		File cardsDirectory = new File(cardsPath);
 		if(cardsDirectory.exists()) {
@@ -41,7 +48,30 @@ public class GCardTester {
 			System.out.println("Red-1 card not exists");
 		}
 
-		JLabel picLabel = new JLabel(new ImageIcon(red1CardPath));
+		class ActionSpy implements ActionListener {
+			
+			public static final String CARD = "CARD ACTION";
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Object source = e.getSource();
+				if(e.getActionCommand().equals(CARD)) {
+					JButton card = (JButton) source;
+
+				}
+				
+			}
+			
+		}
+
+		JButton picLabel = new JButton(new ImageIcon(red1CardPath, "RedCard1"));
+		picLabel.addActionListener(new ActionSpy());
+		picLabel.setActionCommand(ActionSpy.CARD);
+		
+		ImageIcon image = (ImageIcon) picLabel.getIcon();
+		String description =  image.getDescription();
+		System.out.println("Card description: " + description);
+	
 
 		// Frame options
 		frame.add(picLabel);
