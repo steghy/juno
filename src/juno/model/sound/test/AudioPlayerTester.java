@@ -1,9 +1,7 @@
 package juno.model.sound.test;
 
 import java.io.File;
-
 import javax.sound.sampled.Clip;
-
 import juno.exception.FileNotFoundException;
 import juno.exception.NotADirectoryException;
 import juno.model.sound.AudioPlayer;
@@ -37,9 +35,14 @@ public class AudioPlayerTester {
 			System.out.println("Clip | OPEN: " + (clip.isOpen() ? "TRUE" : "FALSE"));
 			System.out.println("Clip | RUNNING: " + (clip.isRunning() ? "TRUE" : "FALSE"));
 			
+			int frameLength = clip.getFrameLength();
+			while(frameLength != clip.getFramePosition()) {
+				
+			}
+			
 		} catch (FileNotFoundException | NotADirectoryException e) {
 			e.printStackTrace();
 		}
-
+		
 	}
 }

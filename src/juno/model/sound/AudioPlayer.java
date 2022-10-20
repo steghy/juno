@@ -10,6 +10,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import juno.exception.FileNotFoundException;
 import juno.exception.NotADirectoryException;
+import juno.main.init.Paths;
 import juno.model.util.PathGenerator;
 
 /**
@@ -145,21 +146,21 @@ public class AudioPlayer {
 		return audioInputStream;
 	}
 	
-	
-	/**
-	 * Returns the Clip component 
-	 * @return The Clip component
-	 */
-	public Clip getClipComponent() {
-		return clip;
-	}
-	
 	/**
 	 * Returns the current track position
 	 * @return The current track position
 	 */
 	public long getCurrenTrackPosition() {
 		return position;
+	}
+	
+	
+	/**
+	 * Returns the Clip component of this object
+	 * @return The Clip component of this object
+	 */
+	public Clip getClipComponent() {
+		return this.clip;
 	}
 	
 	/**
@@ -171,54 +172,31 @@ public class AudioPlayer {
 	}
 
 	/* Initializes the AudioPlayer instance */
-	private void init() throws FileNotFoundException, NotADirectoryException {
+	private void init() {
 		
-		index = 0;
-		
+		// First track index
+		this.index = 0;
+
 		// Music files initialization
 		files = new ArrayList<File>();
-		String[] names = {"data", "audio", "music"};
-		String path = PathGenerator.generate(names);
-		File music = new File(path);
-		if(!music.exists()) {
-			throw new FileNotFoundException(path);
-		} else if(!music.isDirectory()) {
-			throw new NotADirectoryException(path);
-		} else {
-			for(String name : music.list()) {
-				String file = PathGenerator.generate(path, name);
-				files.add(new File(file));
-			}
+
+		String musicDirectoryPath = Paths.MUSIC.getPath();
+		File musicDirectory = new File(musicDirectoryPath);
+		for(String fileName : musicDirectory.list()) {
+			String path = PathGenerator.generate(musicDirectoryPath, fileName);
+			files.add(new File(path));
 		}
 
-		// Clip initialization
-		try {
-			audioInputStream = AudioSystem
-					.getAudioInputStream(files.get(index));
-			clip = AudioSystem.getClip();
-		} catch (LineUnavailableException e) {
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-		} catch (SecurityException e) {
-			e.printStackTrace();
-		} catch (UnsupportedAudioFileException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
+		resetAudioPlayer();
 	}
 
 	
 	/* Reset the AudioPlayer instance */
 	private void resetAudioPlayer() {
-		if(clip.isOpen()) {
-			clip.close();
-		}
 		try {
+			clip = AudioSystem.getClip();
 			audioInputStream = AudioSystem
-					.getAudioInputStream(files.get(index));
+					.getAudioInputStream(files.get(index).getAbsoluteFile());
 			clip.open(audioInputStream);
 			clip.loop(Clip.LOOP_CONTINUOUSLY);
 		} catch (LineUnavailableException e) {
