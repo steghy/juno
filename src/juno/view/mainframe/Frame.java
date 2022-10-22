@@ -13,7 +13,6 @@ import juno.observer.Observer;
 import juno.observer.Subject;
 import juno.view.mainframe.center.CenterPanel;
 import juno.view.mainframe.east.EastPanel;
-import juno.view.mainframe.north.Logo;
 import juno.view.mainframe.north.NorthPanel;
 import juno.view.mainframe.south.SouthPanel;
 import juno.view.mainframe.west.WestPanel;
@@ -39,11 +38,11 @@ public class Frame extends JFrame implements Subject {
 	/* Frame background */
 	private Background background;
 	
-	/* Frame menu */
-	private JPanel menu;
-	
 	/* Icon logo */
 	private JPanel northPanel;
+	
+	/* Center panel */
+	private JPanel centerPanel;
 	
 	/* East Panel */
 	private JPanel eastPanel;
@@ -107,7 +106,7 @@ public class Frame extends JFrame implements Subject {
 		
 		// Components
 		this.background = Background.getInstance();
-		this.menu = CenterPanel.getInstance();
+		this.centerPanel = CenterPanel.getInstance();
 		this.northPanel = NorthPanel.getInstance();
 		this.eastPanel = EastPanel.getInstance();
 		this.westPanel = WestPanel.getInstance();
@@ -117,9 +116,16 @@ public class Frame extends JFrame implements Subject {
 		this.add(background);
 		background.setLayout(new BorderLayout());
 		background.add(this.northPanel, BorderLayout.NORTH);
-		background.add(this.menu, BorderLayout.CENTER);
+		background.add(this.centerPanel, BorderLayout.CENTER);
 		background.add(this.eastPanel, BorderLayout.EAST);
 		background.add(this.westPanel, BorderLayout.WEST);
 		background.add(this.southPanel, BorderLayout.SOUTH);
+		
+		// Bounds
+		this.northPanel.setBounds(0, 50, 500, 500);
+		this.centerPanel.setBounds(0, 100, 500, 500);
+		this.eastPanel.setBounds(0, 50, 500, 500);
+		this.westPanel.setBounds(20, 0, 500, 500);
+		this.southPanel.setBounds(0, 20, 500, 500);
 	}
 }

@@ -54,6 +54,7 @@ public class Main {
 		optionsButton.setIcon(new ImageIcon(optionsImage));
 		exitButton.setIcon(new ImageIcon(exitImage));
 
+		logo.setBounds(0, 0, 200, 200);
 		// Start
 		frame.setVisible(true);
 		

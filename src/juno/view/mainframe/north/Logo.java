@@ -2,7 +2,6 @@ package juno.view.mainframe.north;
 
 import java.awt.Dimension;
 import java.awt.Image;
-import java.awt.Point;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -30,6 +29,9 @@ public class Logo extends JLabel {
 	/* Default JLabel dimension */
 	private Dimension DEF_DIMENSION = new Dimension(500, 500);
 	
+	/* Default JLabel dimension */
+	private Dimension PRF_DIMENSION = new Dimension(500, 500);
+
 	/* Minimun JLabel dimension */
 	private Dimension MIN_DIMENSION = new Dimension(500, 500);
 	
@@ -71,12 +73,15 @@ public class Logo extends JLabel {
 	/* Initialize the Logo instance */
 	private void init() {
 		
-		// Bounds settings
-		// this.setBounds(0, 0, 200, 200);
+		// Dimension settings
+		this.setPreferredSize(PRF_DIMENSION);
+		this.setMaximumSize(MAX_DIMENSION);
+		this.setMinimumSize(MIN_DIMENSION);
+		this.setSize(DEF_DIMENSION);
 
 		// Alignment settings
-		// this.setHorizontalAlignment(JLabel.CENTER);
-		// this.setVerticalAlignment(JLabel.CENTER);
+		this.setHorizontalAlignment(JLabel.CENTER);
+		this.setVerticalAlignment(JLabel.CENTER);
 
 		// Various settings
 		this.setOpaque(false);
