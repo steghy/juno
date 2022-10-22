@@ -12,6 +12,9 @@ public class NorthPanel extends JPanel {
 	/* Default Dimension */
 	private Dimension DEF_DIMENSION = new Dimension();
 	
+	/* Preferred Dimension */
+	private Dimension PRF_DIMENSION = new Dimension();
+	
 	/* Minimun Dimension */
 	private Dimension MIN_DIMENSION = new Dimension();
 	
@@ -20,8 +23,7 @@ public class NorthPanel extends JPanel {
 	
 	/* The NorthPanel instance */
 	private static NorthPanel instance;
-	
-	
+
 	/* Builds the NorthPanel instance */
 	private NorthPanel() {
 		init();
@@ -41,11 +43,12 @@ public class NorthPanel extends JPanel {
 	
 	/* Initialize the NorthPanel instance */
 	private void init() {
-		this.setLayout(null);
 
 		// Logo
 		Logo logo = Logo.getInstance();
 		this.add(logo);
+		
+		this.setOpaque(false);
 
 		// Dimension settings
 		// this.setPreferredSize(DEF_DIMENSION);

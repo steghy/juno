@@ -1,18 +1,16 @@
 package juno.view.mainframe.center;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
- * Menu component.
+ * CenterPanel class
  * @author steghy
  * @email steghy.github@proton.me
  */
-public class Menu extends JPanel {
+public class CenterPanel extends JPanel {
 
 	/* Serial Version UID */
 	private static final long serialVersionUID = 1L;
@@ -35,28 +33,28 @@ public class Menu extends JPanel {
 	/* Exit button */
 	private JButton exit;
 	
-	/* The Menu instance */
-	private static Menu instance;
+	/* The CenterPanel instance */
+	private static CenterPanel instance;
 
 	
-	/* Builds the Menu instance */
-	private Menu() {
+	/* Builds the CenterPanel instance */
+	private CenterPanel() {
 		init();
 	}
 	
 
 	/**
-	 * Returns the Menu instance
+	 * Returns the CenterPanel instance
 	 * @return The Menu instance
 	 */
-	public static Menu getInstance() {
+	public static CenterPanel getInstance() {
 		if(instance == null) {
-			instance = new Menu();
+			instance = new CenterPanel();
 		} return instance;
 	}
 	
 	
-	/* Initialize the Menu instance */
+	/* Initialize the Instance instance */
 	private void init() {
 		// Buttons
 		this.newGameButton = NewGameButton.getInstance();

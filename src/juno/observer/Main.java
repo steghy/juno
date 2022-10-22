@@ -46,6 +46,7 @@ public class Main {
 		String exitImage = PathGenerator
 				.generate(Paths.BUTTONS.getPath(), "style-2/exit.png");
 
+		
 		// Settings
 		logo.setIcon(new ImageIcon(logoImage));
 		background.setIcon(new ImageIcon(backgroundImage));
@@ -53,7 +54,7 @@ public class Main {
 		optionsButton.setIcon(new ImageIcon(optionsImage));
 		exitButton.setIcon(new ImageIcon(exitImage));
 
-		// Show the frame
+		// Start
 		frame.setVisible(true);
 		
 	}

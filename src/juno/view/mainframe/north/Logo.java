@@ -35,8 +35,7 @@ public class Logo extends JLabel {
 	
 	/* Maximun JLabel dimension */
 	private Dimension MAX_DIMENSION = new Dimension(500, 500);
-
-
+	
 	/* The Logo instance */
 	private static Logo instance;
 
@@ -57,7 +56,7 @@ public class Logo extends JLabel {
 		} return instance;
 	}
 
-	
+	@Override
 	public void setIcon(Icon icon) {
 		if(icon instanceof ImageIcon) {
 			ImageIcon temp = (ImageIcon) icon;
@@ -71,9 +70,13 @@ public class Logo extends JLabel {
 	
 	/* Initialize the Logo instance */
 	private void init() {
+		
+		// Bounds settings
+		// this.setBounds(0, 0, 200, 200);
+
 		// Alignment settings
-		this.setHorizontalAlignment(JLabel.CENTER);
-		this.setVerticalAlignment(JLabel.CENTER);
+		// this.setHorizontalAlignment(JLabel.CENTER);
+		// this.setVerticalAlignment(JLabel.CENTER);
 
 		// Various settings
 		this.setOpaque(false);

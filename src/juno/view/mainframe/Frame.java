@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 import juno.observer.Observer;
 import juno.observer.Subject;
-import juno.view.mainframe.center.Menu;
+import juno.view.mainframe.center.CenterPanel;
 import juno.view.mainframe.east.EastPanel;
 import juno.view.mainframe.north.Logo;
 import juno.view.mainframe.north.NorthPanel;
@@ -107,7 +107,7 @@ public class Frame extends JFrame implements Subject {
 		
 		// Components
 		this.background = Background.getInstance();
-		this.menu = Menu.getInstance();
+		this.menu = CenterPanel.getInstance();
 		this.northPanel = NorthPanel.getInstance();
 		this.eastPanel = EastPanel.getInstance();
 		this.westPanel = WestPanel.getInstance();
