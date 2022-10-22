@@ -16,7 +16,9 @@ public enum Paths {
 	YCARDS(generatePath(CARDS, "yellow")),
 	JCARDS(generatePath(CARDS, "jolly")),
 	COVER(generatePath(CARDS, "cover")),
-	BACKGROUNDS(generatePath(IMAGES, "backgrounds"));
+	LOGOS(generatePath(IMAGES, "logos")),
+	BACKGROUNDS(generatePath(IMAGES, "backgrounds")),
+	BUTTONS(generatePath(IMAGES, "buttons"));
 	
 	/* The path */
 	private String path;

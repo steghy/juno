@@ -16,6 +16,7 @@ public class Downloader {
 
 	private Downloader() {}
 
+	
 	/**
 	 * 
 	 * @param urlStr
