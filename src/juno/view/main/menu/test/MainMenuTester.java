@@ -9,7 +9,7 @@ import juno.view.audio.NextButton;
 import juno.view.audio.PreviousButton;
 import juno.view.audio.ToggleSwitch;
 import juno.view.main.menu.Background;
-import juno.view.main.menu.Frame;
+import juno.view.main.menu.MainMenu;
 import juno.view.main.menu.center.ExitButton;
 import juno.view.main.menu.center.NewGameButton;
 import juno.view.main.menu.center.OptionsButton;
@@ -27,7 +27,7 @@ public class MainMenuTester {
 
 		
 		// Main frame components
-		Frame frame = Frame.getInstance();
+		MainMenu frame = MainMenu.getInstance();
 		Logo logo = Logo.getInstance();
 		Background background = Background.getInstance();
 		NewGameButton newGameButton = NewGameButton.getInstance();
@@ -39,36 +39,24 @@ public class MainMenuTester {
 		PreviousButton previousButton = PreviousButton.getInstance();
 		ToggleSwitch toggleButton = ToggleSwitch.getInstance();
 
-		// Logo Image
 		String logoImage = PathGenerator
-				.generate(Paths.LOGOS.getPath(), 
-						"default-logo.png");
-
-		// Background Image
+				.generate(Paths.LOGOS.getPath(), "default-logo.png");
 		String backgroundImage = PathGenerator
-				.generate(Paths.BACKGROUNDS.getPath(), 
-						"default-background.gif");
-		
-		// NewGameButton Image
+				.generate(Paths.BACKGROUNDS.getPath(), "default-background.gif");
 		String newGameImage = PathGenerator
 				.generate(Paths.BUTTONS.getPath(), "style-2/new-game.png");
-
-		// OptionsButton Image
 		String optionsImage = PathGenerator
 				.generate(Paths.BUTTONS.getPath(), "style-2/options.png");
-		
-		// ExitButton Image
 		String exitImage = PathGenerator
 				.generate(Paths.BUTTONS.getPath(), "style-2/exit.png");
-		
 		String previousImage = PathGenerator
 				.generate(Paths.AUDIOPLAYER.getPath(), "previous.png");
-
 		String toggleImage = PathGenerator
 				.generate(Paths.AUDIOPLAYER.getPath(), "play.png");
-		
 		String nextImage = PathGenerator
 				.generate(Paths.AUDIOPLAYER.getPath(), "next.png");
+		
+		
 
 		// Main Frame components Settings
 		logo.setIcon(new ImageIcon(logoImage));

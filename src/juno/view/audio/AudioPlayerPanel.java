@@ -33,6 +33,10 @@ public class AudioPlayerPanel extends JPanel {
 		init();
 	}
 	
+	/**
+	 * Returns the AudioPlayerPanel instance
+	 * @return The AudioPlayerPanel instance
+	 */
 	public static AudioPlayerPanel getInstance() {
 		if(instance == null) {
 			instance = new AudioPlayerPanel();

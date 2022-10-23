@@ -3,16 +3,19 @@ package juno.view.main.menu;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import juno.view.main.menu.factories.AbstractBackgroundFactory;
+
 /**
- * Background component.
+ * Background label component.
  * @author steghy
  * @email steghy.github@proton.me
  */
-public class Background extends JLabel {
+public class Background extends JLabel implements AbstractBackgroundFactory {
 
 	/** Serial Version UID */
 	private static final long serialVersionUID = 1L;
@@ -24,6 +27,11 @@ public class Background extends JLabel {
 	/* Builds the Background instance */
 	private Background() {
 		init();
+	}
+	
+	@Override
+	public JLabel getBackgroundLabel() {
+		return getInstance();
 	}
 
 	
