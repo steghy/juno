@@ -3,11 +3,13 @@ package juno.model.sound;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+
 import juno.main.init.Paths;
 import juno.model.util.PathGenerator;
 
@@ -16,7 +18,7 @@ import juno.model.util.PathGenerator;
  * @author steghy
  * @email steghy.github@proton.me
  */
-public class AudioPlayer {
+public class AudioPlayer implements Runnable {
 	
 	public static final int ACTIVE = 1;
 	
@@ -162,6 +164,12 @@ public class AudioPlayer {
 	}
 
 	
+	@Override
+	public void run() {
+		this.play();
+	}
+
+	
 	/* Initializes the AudioPlayer instance */
 	private void init() {
 		tracks = new ArrayList<File>();
@@ -196,6 +204,7 @@ public class AudioPlayer {
 			e.printStackTrace();
 		}
 	}
+
 
 	
 }

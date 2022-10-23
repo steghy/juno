@@ -101,7 +101,7 @@ public class CardProvider {
 				String cardPath = PathGenerator.generate(path, fileName);
 				Card card = new Card(value, color, action);
 				ImageIcon image = new ImageIcon(cardPath);
-				image.setImage(CardResizer.getScaledImage(image.getImage()));
+				image.setImage(image.getImage().getScaledInstance(200, 400, 1));
 				cards.put(card, image);
 			}
 		}

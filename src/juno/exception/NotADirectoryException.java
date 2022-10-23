@@ -10,10 +10,8 @@ public class NotADirectoryException extends Exception {
 	/* Serail Version UID */
 	private static final long serialVersionUID = 1L;
 
+	/* The paths */
 	String[] paths;
-	
-	/* */
-	private NotADirectoryException() {}
 	
 	/**
 	 * 

@@ -18,6 +18,7 @@ public enum Paths {
 	COVER(generatePath(CARDS, "cover")),
 	LOGOS(generatePath(IMAGES, "logos")),
 	BACKGROUNDS(generatePath(IMAGES, "backgrounds")),
+	AUDIOPLAYER(generatePath(IMAGES, "audio-player")),
 	BUTTONS(generatePath(IMAGES, "buttons"));
 	
 	/* The path */

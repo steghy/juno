@@ -1,7 +1,5 @@
 package juno.model.player;
 
-import juno.view.user.Avatar;
-
 /**
  * Player class
  * @author steghy
@@ -11,9 +9,6 @@ public class Player {
 
 	/* Player object name */
 	private String name;
-	
-	/* Player's Avatar object */
-	private Avatar avatar;
 	
 	/**
 	 * Builds an empty Player object
@@ -26,22 +21,10 @@ public class Player {
 	 * @param name The name of the Player
 	 * @param avatar Image of the Player
 	 */
-	public Player(String name, Avatar avatar) {
+	public Player(String name) {
 		setName(name);
-		this.avatar = avatar;
 	}
 	
-	
-	/**
-	 * Sets the specified Avatar object to this 
-	 * Player object
-	 * @param avatar An Avatar object
-	 */
-	public void setAvatar(Avatar avatar) {
-		this.avatar = avatar;
-	}
-	
-
 	/**
 	 * Sets the name of this Player object
 	 * @param name A name for this Player object
@@ -60,15 +43,6 @@ public class Player {
 	 */
 	public String getname() {
 		return this.name;
-	}
-	
-	
-	/**
-	 * Returns the Avatar object of this Player object
-	 * @return The Avatar object
-	 */
-	public Avatar getAvatar() {
-		return this.avatar;
 	}
 	
 	
