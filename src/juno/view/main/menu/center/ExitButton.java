@@ -1,28 +1,19 @@
 package juno.view.main.menu.center;
 
-import java.awt.Dimension;
-
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+/**
+ * 
+ * @author steghy
+ * @email steghy.github@proton.me
+ */
 public class ExitButton extends JButton {
 
 	/* Serial Version UID */
 	private static final long serialVersionUID = 1L;
 
-	/* Default Dimension */
-	private Dimension DEF_DIMENSION = new Dimension(0, 0);
-	
-	/* Preferred Dimension */
-	private Dimension PRF_DIMENSION = new Dimension(0, 0);
-	
-	/* Minimun Dimension */
-	private Dimension MIN_DIMENSION = new Dimension(0, 0);
-	
-	/* Maximun Dimension */
-	private Dimension MAX_DIMENSION = new Dimension(0, 0);
-	
 	/* Instance */
 	private static ExitButton instance;
 		
@@ -31,6 +22,7 @@ public class ExitButton extends JButton {
 	private ExitButton() {
 		init();
 	}
+
 	
 	/**
 	 * Returns the ExitButton instance
@@ -57,13 +49,6 @@ public class ExitButton extends JButton {
 	
 	/* Initialize the ExitButton instance */
 	private void init() {
-		
-		// Dimensions
-		this.setSize(DEF_DIMENSION);
-		this.setPreferredSize(PRF_DIMENSION);
-		this.setMinimumSize(MIN_DIMENSION);
-		this.setMaximumSize(MAX_DIMENSION);	
-
 		// Trasparent button
 		this.setFocusPainted(false);
 		this.setBorderPainted(false);

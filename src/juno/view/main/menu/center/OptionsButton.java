@@ -1,27 +1,18 @@
 package juno.view.main.menu.center; 
 
-import java.awt.Dimension;
-
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+/**
+ * 
+ * @author steghy
+ * @email steghy.github@proton.me
+ */
 public class OptionsButton extends JButton {
 
 	/* Serial Version UID */
 	private static final long serialVersionUID = 1L;
-
-	/* Default Dimension */
-	private Dimension DEF_DIMENSION = new Dimension(0, 0);
-	
-	/* Preferred Dimension */
-	private Dimension PRF_DIMENSION = new Dimension(0, 0);
-	
-	/* Minimun Dimension */
-	private Dimension MIN_DIMENSION = new Dimension(0, 0);
-
-	/* Maximun Dimension */
-	private Dimension MAX_DIMENSION = new Dimension(0, 0);
 
 	/* Instance */
 	private static OptionsButton instance;
@@ -58,12 +49,6 @@ public class OptionsButton extends JButton {
 	
 	/* Initialize the OptionsButton instance */
 	private void init() {
-		
-		// Dimensions Settings
-		this.setSize(DEF_DIMENSION);
-		this.setPreferredSize(PRF_DIMENSION);
-		this.setMinimumSize(MIN_DIMENSION);
-		this.setMaximumSize(MAX_DIMENSION);	
 
 		// Button settings
 		this.setFocusPainted(false);
@@ -71,5 +56,4 @@ public class OptionsButton extends JButton {
 		this.setContentAreaFilled(false);
 		this.setOpaque(false);
 	}
-
 }

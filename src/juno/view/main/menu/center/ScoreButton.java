@@ -9,28 +9,28 @@ import javax.swing.JButton;
  * @author steghy
  * @email steghy.github@proton.me
  */
-public class NewGameButton extends JButton {
-	
+public class ScoreButton extends JButton {
+
 	/* Serial Version UID */
 	private static final long serialVersionUID = 1L;
 
-	/* Instance */
-	private static NewGameButton instance;
+	/* ScoreButton instance */
+	private static ScoreButton instance;
 		
 	
-	/* Builds the NewGameButton instance */
-	private NewGameButton() {
+	/* Builds the ScoreButton instance */
+	private ScoreButton() {
 		init();
 	}
 
 	
 	/**
-	 * Returns the NewGameButton instance 
-	 * @return The NewGameButton instance
+	 * Returns the ScoreButton instance
+	 * @return The ScoreButton instance
 	 */
-	public static NewGameButton getInstance() {
+	public static ScoreButton getInstance() {
 		if(instance == null) {
-			instance = new NewGameButton();
+			instance = new ScoreButton();
 		} return instance;
 	}
 	
@@ -47,10 +47,10 @@ public class NewGameButton extends JButton {
 	}
 	
 	
-	/* Initialize the NewGameButton instance */
+	/* Initialize the ScoreButton instance */
 	private void init() {
 
-		// Trasparent button
+		// Button settings
 		this.setFocusPainted(false);
 		this.setBorderPainted(false);
 		this.setContentAreaFilled(false);

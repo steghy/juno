@@ -1,10 +1,13 @@
 package juno.view.audio;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 
-import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import juno.view.exception.JLabelNotSettedException;
+import juno.view.exception.JPanelNotSettedException;
 
 /**
  * PlayerPanel Class.
@@ -18,20 +21,19 @@ public class AudioPlayerPanel extends JPanel {
 	
 	/* AudioPlayerPanel instance */
 	private static AudioPlayerPanel instance;
+
+	/* Audio Player panel backgroud */
+	private JLabel background;
+
+	/** North panel */
+	private JPanel northPanel;
 	
-	/* 'next' AudioPlayer button */
-	private JButton nextButton;
-	
-	/* 'previous' AudioPlayer button */
-	private JButton previousButton;
-	
-	/* 'stop' AudioPlayer button */
-	private JButton toggleButton;
+	/* South panel */
+	private JPanel southPanel;
 	
 	/* Builds AudioPlayerPanel instance */
-	private AudioPlayerPanel() {
-		init();
-	}
+	private AudioPlayerPanel() {}
+
 	
 	/**
 	 * Returns the AudioPlayerPanel instance
@@ -42,20 +44,61 @@ public class AudioPlayerPanel extends JPanel {
 			instance = new AudioPlayerPanel();
 		} return instance;
 	}
+
+	
+	/**
+	 * Sets the background of this instance
+	 * @param label A JLabel object
+	 */
+	public void setBackground(JLabel label) {
+		background = label;
+	}
+
+	
+	/**
+	 * Sets the north panel of this instance
+	 * @param panel A JPanel object
+	 */
+	public void setNorthPanel(JPanel panel) {
+		northPanel = panel;
+	}
 	
 	
-	/* Initialize the AudioPlayerPanel button */
-	private void init() {
-
-		// Buttons settings
-		this.nextButton = NextButton.getInstance();
-		this.previousButton = PreviousButton.getInstance();
-		this.toggleButton = ToggleSwitch.getInstance();
-
-		// Layout
-		this.setLayout(new FlowLayout());
-		this.add(this.previousButton, 0);
-		this.add(this.toggleButton, 1);
-		this.add(this.nextButton, 2);
+	/**
+	 * Sets the south panel of this instance
+	 * @param panel A JPanel object
+	 */
+	public void setSouthPanel(JPanel panel) {
+		southPanel = panel;
+	}
+	
+	
+	/**
+	 * Initialize the AudioPlayerPanel instance 
+	 * @throws JPanelNotSettedException 
+	 * @throws JLabelNotSettedException 
+	 */
+	public void init() throws JPanelNotSettedException, JLabelNotSettedException {
+		
+		// CHECK INTEGRITY
+		if(northPanel == null) {
+			throw new JPanelNotSettedException();
+		} if(southPanel == null) {
+			throw new JPanelNotSettedException();
+		} if(background == null) {
+			throw new JLabelNotSettedException();
+		}
+		
+		// DIMENSION
+		this.setSize(new Dimension(400, 200));
+		this.setPreferredSize(new Dimension(400, 200));
+		this.setMinimumSize(new Dimension(400, 200));
+		this.setMaximumSize(new Dimension(400, 200));
+		
+		// ADD COMPONENTS
+		background.setLayout(new BorderLayout());
+		background.add(northPanel, BorderLayout.NORTH);
+		background.add(southPanel, BorderLayout.SOUTH);
+		
 	}
 }

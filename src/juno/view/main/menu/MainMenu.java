@@ -1,45 +1,38 @@
 package juno.view.main.menu;
 
 import java.awt.BorderLayout;
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import juno.view.exception.FactoryNotSettedException;
-import juno.view.factories.AbstractMMenuFactory;
-import juno.view.main.menu.factories.AbstractBackgroundFactory;
-import juno.view.main.menu.factories.AbstractCPanelFactory;
-import juno.view.main.menu.factories.AbstractEPanelFactory;
-import juno.view.main.menu.factories.AbstractNPanelFactory;
-import juno.view.main.menu.factories.AbstractSPanelFactory;
-import juno.view.main.menu.factories.AbstractWPanelFactory;
+import juno.view.exception.JButtonNotSettedException;
+import juno.view.exception.JLabelNotSettedException;
 
 /**
  * Frame class.
  * @author steghy
  * @email steghy.github@proton.me
  */
-public class MainMenu extends JPanel implements AbstractMMenuFactory {
+public class MainMenu extends JPanel {
 
 	/** Serail Version UID */
 	public static final long serialVersionUID = 1L;
 
 	/* Frame background */
-	private static AbstractBackgroundFactory backgroundFactory;
+	private JLabel background;
 	
 	/* Icon logo */
-	private static AbstractNPanelFactory northPanelFactory;
+	private JPanel northPanel;
 	
 	/* Center panel */
-	private static AbstractCPanelFactory centerPanelFactory;
+	private JPanel centerPanel;
 	
 	/* East Panel */
-	private static AbstractEPanelFactory eastPanelFactory;
+	private JPanel eastPanel;
 	
 	/* West Panel */
-	private static AbstractWPanelFactory westPanelFactory;
+	private JPanel westPanel;
 	
 	/* South JPanel */
-	private static AbstractSPanelFactory southPanelFactory;
+	private JPanel southPanel;
 	
 	/* Frame object */
 	private static MainMenu instance;
@@ -47,12 +40,6 @@ public class MainMenu extends JPanel implements AbstractMMenuFactory {
 	
 	/* Builds a Frame object */
 	private MainMenu() {}
-	
-	
-	@Override
-	public JPanel getMMenuPanel() {
-		return getInstance();
-	}
 	
 	
 	/**
@@ -67,90 +54,83 @@ public class MainMenu extends JPanel implements AbstractMMenuFactory {
 	
 	
 	/**
-	 * Sets the NorthPanelFactory of this instance
-	 * @param factory A Factory
+	 * Sets the north panel of this object
+	 * @param panel A JPanel object
 	 */
-	public static void setNorthPanelFactory(AbstractNPanelFactory factory) {
-		northPanelFactory = factory;
+	public void setNorthPanel(JPanel panel) {
+		northPanel = panel;
 	}
+
 	
 	/**
-	 * Sets the CenterPanelFactory of this instance 
-	 * @param factory A Factory
+	 * Sets the center panel of this object
+	 * @param panel A JPanel object
 	 */
-	public static void setCenterPanelFactory(AbstractCPanelFactory factory) {
-		centerPanelFactory = factory;
-	}
-	
-	
-	/**
-	 * Sets the EastPanelFactory of this instance
-	 * @param factory A Factory
-	 */
-	public static void setEastPanelFactory(AbstractEPanelFactory factory) {
-		eastPanelFactory = factory;
+	public void setCenterPanel(JPanel panel) {
+		centerPanel = panel;
 	}
 	
 	
 	/**
-	 * Sets the SouthPanelFactory of this instance
-	 * @param factory A Factory
+	 * Sets the east panel of this object
+	 * @param panel A JPanel object
 	 */
-	public static void setSouthPanelFactory(AbstractSPanelFactory factory) {
-		southPanelFactory = factory;
+	public void setEastPanel(JPanel panel) {
+		eastPanel = panel;
 	}
 	
 	
 	/**
-	 * Sets the WestPanelFactory of this instance 
-	 * @param factory A Factory
+	 * Sets the south panel of this object
+	 * @param panel A JPanel object
 	 */
-	public static void setWestPanelFactory(AbstractWPanelFactory factory) {
-		westPanelFactory = factory;
+	public void setSouthPanel(JPanel panel) {
+		southPanel = panel;
 	}
 	
 	
 	/**
-	 * Sets the BackgroundFactory of this instance
-	 * @param factory A Factory
+	 * Sets the west panel of this object
+	 * @param panel A JPanel object
 	 */
-	public static void setBackgroundFactory(AbstractBackgroundFactory factory) {
-		backgroundFactory = factory;
+	public void setWestPanel(JPanel panel) {
+		westPanel = panel;
+	}
+	
+	
+	/**
+	 * Sets the background of this object
+	 * @param label A JLabel object
+	 */
+	public void setBackground(JLabel label) {
+		background = label;
 	}
 
 	
 	/* Initialize the Frame instance */
-	public void init() throws FactoryNotSettedException {
+	public void init() throws JButtonNotSettedException, JLabelNotSettedException {
 		
 		// Check integrity
-		if(northPanelFactory == null) {
-			throw new FactoryNotSettedException();
-		} else if(centerPanelFactory == null) {
-			throw new FactoryNotSettedException();
-		} else if(eastPanelFactory == null) {
-			throw new FactoryNotSettedException();
-		} else if(southPanelFactory == null) {
-			throw new FactoryNotSettedException();
-		} else if(westPanelFactory == null) {
-			throw new FactoryNotSettedException();
-		} else if(backgroundFactory == null) {
-			throw new FactoryNotSettedException();
+		if(northPanel == null) {
+			throw new JButtonNotSettedException();
+		} if(centerPanel == null) {
+			throw new JButtonNotSettedException();
+		} if(eastPanel == null) {
+			throw new JButtonNotSettedException();
+		} if(southPanel == null) {
+			throw new JButtonNotSettedException();
+		} if(westPanel == null) {
+			throw new JButtonNotSettedException();
+		} if(background == null) {
+			throw new JLabelNotSettedException();
 		}
 		
-		// Getting values
-		JPanel northPanel = northPanelFactory.getNorthPanel();
-		JPanel centerPanel = centerPanelFactory.getCenterPanel();
-		JPanel eastPanel = eastPanelFactory.getEastPanel();
-		JPanel southPanel = southPanelFactory.getSouthPanel();
-		JPanel westPanel = westPanelFactory.getWestPanel();
-		JLabel background = backgroundFactory.getBackgroundLabel();
-
 		// Add components
+		this.add(background);
 		background.add(northPanel, BorderLayout.NORTH);
 		background.add(centerPanel, BorderLayout.CENTER);
 		background.add(eastPanel, BorderLayout.EAST);
 		background.add(westPanel, BorderLayout.WEST);
 		background.add(southPanel, BorderLayout.SOUTH);
-		
 	}
 }

@@ -1,35 +1,25 @@
 package juno.view.main.menu.north;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import juno.view.exception.JLabelNotSettedException;
 
 public class NorthPanel extends JPanel {
 
 	/* Serial Version UID */
 	private static final long serialVersionUID = 1L;
 	
-	/* Default Dimension */
-	private Dimension DEF_DIMENSION = new Dimension(400, 400);
-	
-	/* Preferred Dimension */
-	private Dimension PRF_DIMENSION = new Dimension(400, 400);
-	
-	/* Minimun Dimension */
-	private Dimension MIN_DIMENSION = new Dimension(0, 0);
-	
-	/* Maximun Dimension */
-	private Dimension MAX_DIMENSION = new Dimension(0, 0);
+	private JLabel logo;
 	
 	/* The NorthPanel instance */
 	private static NorthPanel instance;
 
 	
 	/* Builds the NorthPanel instance */
-	private NorthPanel() {
-		init();
-	}
+	private NorthPanel() {}
 	
 	
 	/**
@@ -42,31 +32,23 @@ public class NorthPanel extends JPanel {
 		} return instance;
 	}
 
-	
-	@Override
-	public void setPreferredSize(Dimension dimension) {
-		super.setPreferredSize(dimension);
+
+	/**
+	 * Sets the logo of this object
+	 * @param label A JLabel object
+	 */
+	public void setLogo(JLabel label) {
+		logo = label;
 	}
 	
-	/* Initialize the NorthPanel instance */
-	private void init() {
 	
-		// Setting Layout
-		this.setLayout(new BorderLayout());
-
-		// Logo
-		Logo logo = Logo.getInstance();
-		
-		// Add component
+	/* Initialize the NorthPanel instance */
+	public void init() throws JLabelNotSettedException {
+		if(logo == null) {
+			throw new JLabelNotSettedException();
+		}
 		this.add(logo);
-		
-		// Background settings
+		this.setLayout(new BorderLayout());
 		this.setOpaque(false);
-
-		// Dimension settings
-		this.setPreferredSize(PRF_DIMENSION);
-		this.setSize(DEF_DIMENSION);
-		this.setMinimumSize(MIN_DIMENSION);
-		this.setMaximumSize(MAX_DIMENSION);
 	}
 }
