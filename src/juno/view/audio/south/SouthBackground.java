@@ -53,8 +53,8 @@ public class SouthBackground extends JLabel {
 		if(this.panel != null) {
 			if(icon instanceof ImageIcon) {
 				Image scaledImage = ((ImageIcon)icon).getImage()
-						.getScaledInstance(panel.getWidth(), 
-										   panel.getHeight(), 0);
+						.getScaledInstance(this.panel.getWidth(), 
+										   this.panel.getHeight(), 0);
 				super.setIcon(new ImageIcon(scaledImage));
 			}
 		}

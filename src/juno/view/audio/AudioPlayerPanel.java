@@ -32,7 +32,15 @@ public class AudioPlayerPanel extends JPanel {
 	private JPanel southPanel;
 	
 	/* Builds AudioPlayerPanel instance */
-	private AudioPlayerPanel() {}
+	private AudioPlayerPanel() {
+		
+		// DIMENSION
+		this.setSize(new Dimension(1400, 800));
+		this.setPreferredSize(new Dimension(1400, 800));
+		this.setMinimumSize(new Dimension(1400, 800));
+		this.setMaximumSize(new Dimension(400, 200));
+		
+	}
 
 	
 	/**
@@ -82,18 +90,15 @@ public class AudioPlayerPanel extends JPanel {
 		
 		// CHECK INTEGRITY
 		if(northPanel == null) {
-			throw new JPanelNotSettedException();
+			throw new JPanelNotSettedException(""
+					+ "Panel in NORTH area isn't setted");
 		} if(southPanel == null) {
-			throw new JPanelNotSettedException();
+			throw new JPanelNotSettedException(""
+					+ "Panel in SOUTH area isn't setted");
 		} if(background == null) {
-			throw new JLabelNotSettedException();
+			throw new JLabelNotSettedException(""
+					+ "Label background isn't setted");
 		}
-		
-		// DIMENSION
-		this.setSize(new Dimension(400, 200));
-		this.setPreferredSize(new Dimension(400, 200));
-		this.setMinimumSize(new Dimension(400, 200));
-		this.setMaximumSize(new Dimension(400, 200));
 		
 		// ADD COMPONENTS
 		background.setLayout(new BorderLayout());

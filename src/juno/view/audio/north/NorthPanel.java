@@ -1,9 +1,11 @@
 package juno.view.audio.north;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
-import javax.swing.JButton;
+
 import javax.swing.JPanel;
-import juno.view.exception.JButtonNotSettedException;
+
+import juno.view.exception.JPanelNotSettedException;
 
 /**
  * 
@@ -15,14 +17,14 @@ public class NorthPanel extends JPanel {
 	/* Serial Version UID */
 	private static final long serialVersionUID = 1L;
 	
-	/* The next button */
-	private JButton nextButton;
+	/* The next panel */
+	private JPanel nextPanel;
 	
-	/* The previous button */
-	private JButton previousButton;
+	/* The previous panel */
+	private JPanel previousPanel;
 	
-	/* The toggle switch button */
-	private JButton toggleSwitchButton;
+	/* The toggle switch panel */
+	private JPanel toggleSwitchPanel;
 	
 	/* The NorthPanel instance */
 	private static NorthPanel instance;
@@ -42,54 +44,59 @@ public class NorthPanel extends JPanel {
 	
 	
 	/**
-	 * Sets the next button of this instance
-	 * @param button A JButton object
+	 * Sets the 'next' panel of this instance
+	 * @param panel A JPanel object
 	 */
-	public void setNextButton(JButton button) {
-		nextButton = button;
+	public void setNextPanel(JPanel panel) {
+		nextPanel = panel;
 	}
 	
 	
 	/**
-	 * Sets the previous button of this instance 
-	 * @param button A JButton object
+	 * Sets the 'previous' panel of this instance
+	 * @param panel A JPanel obeject
 	 */
-	public void setPreviousButton(JButton button) {
-		previousButton = button;
+	public void setPreviousPanel(JPanel panel) {
+		previousPanel = panel;
 	}
 	
 	
 	/**
-	 * Sets the toggle switch button of this instance
-	 * @param button A JButton object
+	 * Sets the 'toggle switch' panel of this instance 
+	 * @param panel A JPanel object
 	 */
-	public void setToggleButton(JButton button) {
-		toggleSwitchButton = button;
+	public void setTogglePanel(JPanel panel) {
+		toggleSwitchPanel = panel;
 	}
 	
 	
 	/**
 	 * Initialize the NorthPanel instance 
-	 * @throws JButtonNotSettedException if any of the
-	 * 			required button is not setted.
+	 * @throws JPanelNotSettedException 
 	 */
-	public void init() throws JButtonNotSettedException {
+	public void init() throws JPanelNotSettedException {
 		
 		// CHECK INTEGRITY
-		if(nextButton == null) {
-			throw new JButtonNotSettedException();
-		} if(previousButton == null) {
-			throw new JButtonNotSettedException();
-		} if(toggleSwitchButton == null) {
-			throw new JButtonNotSettedException();
+		if(nextPanel == null) {
+			throw new JPanelNotSettedException("");
+		} if(previousPanel == null) {
+			throw new JPanelNotSettedException("");
+		} if(toggleSwitchPanel == null) {
+			throw new JPanelNotSettedException("");
 		}
 		
-		// ADD COMPONENT
-		this.setLayout(new GridLayout(3, 1));
-		this.add(previousButton, 0);
-		this.add(toggleSwitchButton, 1);
-		this.add(nextButton, 2);
+		// DIMENSION
+		this.setSize(new Dimension(400, 200));
+		this.setPreferredSize(new Dimension(400, 200));
+		this.setMaximumSize(new Dimension(400, 200));
+		this.setMinimumSize(new Dimension(400, 200));
 		
-		this.setOpaque(false);
+		// ADD COMPONENT
+		this.setLayout(new GridLayout(1, 3));
+		this.add(previousPanel, 0);
+		this.add(toggleSwitchPanel, 1);
+		this.add(nextPanel, 2);
+		
+		// this.setOpaque(false);
 	}
 }

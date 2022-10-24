@@ -112,17 +112,23 @@ public class MainMenu extends JPanel {
 		
 		// Check integrity
 		if(northPanel == null) {
-			throw new JButtonNotSettedException();
+			throw new JButtonNotSettedException(""
+					+ "JButton in NORTH area isn't setted");
 		} if(centerPanel == null) {
-			throw new JButtonNotSettedException();
+			throw new JButtonNotSettedException(""
+					+ "JButton is CENTER area isn't setted");
 		} if(eastPanel == null) {
-			throw new JButtonNotSettedException();
+			throw new JButtonNotSettedException(""
+					+ "JButton in EAST area isn't setted");
 		} if(southPanel == null) {
-			throw new JButtonNotSettedException();
+			throw new JButtonNotSettedException(""
+					+ "JButton in SOUTH area isn't setted");
 		} if(westPanel == null) {
-			throw new JButtonNotSettedException();
+			throw new JButtonNotSettedException(""
+					+ "JButton in WEST area isn't setted");
 		} if(background == null) {
-			throw new JLabelNotSettedException();
+			throw new JLabelNotSettedException(""
+					+ "JLabel background isn't setted");
 		}
 		
 		// Add components

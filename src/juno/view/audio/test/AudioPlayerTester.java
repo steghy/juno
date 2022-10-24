@@ -23,16 +23,16 @@ public class AudioPlayerTester {
 		JFrame frame = new JFrame();
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(400, 200);
+		frame.setSize(1400, 800);
 
 		// AUDIO PLAYER SETTINGS
-		AudioPlayerConfigurator.configure();
 		AudioPlayerPanel audioPlayerPanel = AudioPlayerPanel.getInstance();
+		AudioPlayerConfigurator.configure();
 		
 		// CONNECTION
 		Container container = frame.getContentPane();
 		container.setLayout(new BorderLayout());
-		container.add(audioPlayerPanel, BorderLayout.CENTER);
+		container.add(audioPlayerPanel);
 		
 		// VISIBLE
 		frame.setVisible(true);

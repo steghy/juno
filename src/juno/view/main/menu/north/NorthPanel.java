@@ -45,7 +45,8 @@ public class NorthPanel extends JPanel {
 	/* Initialize the NorthPanel instance */
 	public void init() throws JLabelNotSettedException {
 		if(logo == null) {
-			throw new JLabelNotSettedException();
+			throw new JLabelNotSettedException(""
+					+ "JLabel logo isn't setted");
 		}
 		this.add(logo);
 		this.setLayout(new BorderLayout());

@@ -1,5 +1,7 @@
 package juno.view.audio.south;
 
+import java.awt.Dimension;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -23,7 +25,15 @@ public class SouthPanel extends JPanel {
 	
 	
 	/* Builds the SouthPanel instance */
-	private SouthPanel() {}
+	private SouthPanel() {
+		
+		// DIMENSION
+		this.setSize(new Dimension(400, 200));
+		this.setPreferredSize(new Dimension(400, 200));
+		this.setMinimumSize(new Dimension(400, 200));
+		this.setMaximumSize(new Dimension(400, 200));
+
+	}
 
 	
 	/**
@@ -55,11 +65,11 @@ public class SouthPanel extends JPanel {
 		
 		// CHECK INTEGRITY
 		if(background == null) {
-			throw new JLabelNotSettedException();
+			throw new JLabelNotSettedException(""
+					+ "JLabel background isn't setted");
 		}
 		
+		// ADD COMPONENTS
 		this.add(background);
-		
-		this.setOpaque(false);
 	}
 }

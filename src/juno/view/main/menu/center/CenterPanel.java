@@ -86,13 +86,17 @@ public class CenterPanel extends JPanel {
 	public void init() throws JButtonNotSettedException {
 		
 		if(newGameButton == null) {
-			throw new JButtonNotSettedException();
+			throw new JButtonNotSettedException(""
+					+ "JButton 'new game' isn't setted");
 		} if(optionsButton == null) {
-			throw new JButtonNotSettedException();
+			throw new JButtonNotSettedException(""
+					+ "JButton 'options' isn't setted");
 		} if(scoreButton == null) {
-			throw new JButtonNotSettedException();
+			throw new JButtonNotSettedException(""
+					+ "JButton 'score' isn't setted");
 		} if (exitButton == null) {
-			throw new JButtonNotSettedException();
+			throw new JButtonNotSettedException(""
+					+ "JButton 'exit' isn't setted");
 		}
 
 		// Layout Settings

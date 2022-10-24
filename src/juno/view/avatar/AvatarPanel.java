@@ -73,9 +73,11 @@ public class AvatarPanel extends JPanel {
 	/* Initialize this AvatarPanel object */
 	public void init() throws JLabelNotSettedException {
 		if(picture == null) {
-			throw new JLabelNotSettedException();
+			throw new JLabelNotSettedException(""
+					+ "JLabel picture isn't setted");
 		} if(pictureFrame == null) {
-			throw new JLabelNotSettedException();
+			throw new JLabelNotSettedException(""
+					+ "JLabel picture frame isn't setted");
 		}
 		
 		this.add(picture);

@@ -7,6 +7,15 @@ package juno.view.exception;
  */
 public class JLabelNotSettedException extends Exception {
 
+	/* Serial Version UID */
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Builds a JLabelNotSettedException object
+	 * @param message The message
+	 */
+	public JLabelNotSettedException(String message) {
+		super(message);
+	}
 
 }
