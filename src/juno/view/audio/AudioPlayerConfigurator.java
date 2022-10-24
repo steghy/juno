@@ -1,5 +1,7 @@
 package juno.view.audio;
 
+import java.io.File;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -25,17 +27,22 @@ public class AudioPlayerConfigurator {
 
 	// NO INSTANCE 
 	private AudioPlayerConfigurator() {}
-	
-	public static void main(String[] args) {
-		configure();
+
+	public static void checkImagesPath() {
+		File directory = new File(Paths.AUDIOPLAYER.getPath());
+		for(String fileName : directory.list()) {
+			String path = PathGenerator.generate(directory.getAbsolutePath(), fileName);
+			System.out.println(path + " | exists: " + ((new File(path).exists())));
+		}
 	}
+	
 	
 	/*
 	 * Configure the AudioPlayer component
 	 */
 	public static void configure() {
 		
-		JFrame frame = new JFrame();
+		checkImagesPath();
 		
 		/********************** NORTH PANEL *********************************/
 		
@@ -47,6 +54,18 @@ public class AudioPlayerConfigurator {
 		ButtonPanel nextPanel = new ButtonPanel(nextButton);
 		ButtonPanel previousPanel = new ButtonPanel(previousButton);
 		ButtonPanel togglePanel = new ButtonPanel(toggleSwitch);
+		
+		try {
+			nextPanel.init();
+			previousPanel.init();
+			togglePanel.init();
+		} catch (JButtonNotSettedException e) {
+			e.printStackTrace();
+		}
+
+		nextButton.setPanel(nextPanel);
+		previousButton.setPanel(previousPanel);
+		toggleSwitch.setPanel(togglePanel);
 		
 		// [AUDIO PLAYER NORTH PANEL] CONNECTION
 		NorthPanel northPanel = NorthPanel.getInstance();
@@ -72,10 +91,6 @@ public class AudioPlayerConfigurator {
 			e.printStackTrace();
 		}
 		
-		frame.add(northPanel);
-		frame.setSize(500, 500);
-		frame.setVisible(true);
-		
 		/******************** SOUTH PANEL **********************************/
 
 		// [AUDIO PLAYER SOUTH PANEL] CONNECTION
@@ -97,6 +112,8 @@ public class AudioPlayerConfigurator {
 			e.printStackTrace();
 		}
 
+		/******************** MAIN PANEL ***************************************/
+
 		// [AUDIO PLAYER MAIN PANEL] SETTING COMPONENTS
 		AudioPlayerPanel audioPlayerPanel = AudioPlayerPanel.getInstance();
 		MainBackground mainBackground = MainBackground.getInstance();
@@ -117,7 +134,16 @@ public class AudioPlayerConfigurator {
 		} catch (JPanelNotSettedException | JLabelNotSettedException e) {
 			e.printStackTrace();
 		}
-
-
+		
+		
+		JFrame frame = new JFrame();
+		frame.add(audioPlayerPanel);
+		frame.pack();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+	}
+	
+	public static void main(String[] args) {
+		configure();
 	}
 }

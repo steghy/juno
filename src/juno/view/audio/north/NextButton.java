@@ -1,6 +1,9 @@
 package juno.view.audio.north;
 
+import java.awt.Image;
+
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -22,7 +25,10 @@ public class NextButton extends JButton {
 
 	
 	/* Builds the NextButton instance */
-	private NextButton() {}
+	private NextButton() {
+		init();
+	}
+
 	
 	/**
 	 * Returns the NextButton instance 
@@ -35,7 +41,34 @@ public class NextButton extends JButton {
 	}
 	
 	
+	/**
+	 * Sets the panel of this instance
+	 * @param panel A JPanel instance
+	 */
+	public void setPanel(JPanel panel) {
+		if(panel.getHeight() == 0 || panel.getWidth() == 0) {
+			throw new IllegalArgumentException("invalid dimension");
+		} else {
+			this.panel = panel;
+		}
+	}
+
+	
+	@Override
 	public void setIcon(Icon icon) {
-		
+		if(this.panel != null) {
+			if(icon instanceof ImageIcon) {
+				Image scaledImage = ((ImageIcon)icon).getImage()
+						.getScaledInstance(this.panel.getWidth(),
+										   this.panel.getHeight(), 0);
+				super.setIcon(new ImageIcon(scaledImage));
+			}
+		}
+	}
+	
+	private void init() {
+		this.setBorderPainted(false);
+		this.setFocusPainted(false);
+		this.setOpaque(false);
 	}
 }

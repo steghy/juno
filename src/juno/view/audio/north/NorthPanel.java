@@ -86,10 +86,9 @@ public class NorthPanel extends JPanel {
 		}
 		
 		// DIMENSION
-		this.setSize(new Dimension(400, 200));
-		this.setPreferredSize(new Dimension(400, 200));
-		this.setMaximumSize(new Dimension(400, 200));
-		this.setMinimumSize(new Dimension(400, 200));
+		this.setSize(new Dimension(150, 100));
+		this.setPreferredSize(new Dimension(150, 150));
+		this.setMinimumSize(new Dimension(150 ,150));
 		
 		// ADD COMPONENT
 		this.setLayout(new GridLayout(1, 3));
