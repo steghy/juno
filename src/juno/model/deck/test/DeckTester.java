@@ -1,10 +1,10 @@
 package juno.model.deck.test;
 
-import juno.exception.DeckIsEmptyException;
 import juno.model.card.Action;
 import juno.model.card.Card;
 import juno.model.card.Color;
 import juno.model.deck.Deck;
+import juno.model.deck.exceptions.DeckIsEmptyException;
 
 public class DeckTester {
 

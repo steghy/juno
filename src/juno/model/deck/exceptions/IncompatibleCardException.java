@@ -1,20 +1,21 @@
-package juno.exception;
+package juno.model.deck.exceptions;
 
 /**
- * IncompatibleCardException class 
+ * IncompatibleCardException class
  * @author steghy
  * @email steghy.github@proton.me
  */
 public class IncompatibleCardException extends Exception {
 
-	/* Serial VersionUID */
+	/* Serial Version UID */
 	private static final long serialVersionUID = 1L;
 	
 	/**
-	 * Buids an IncompatibleCardException object
+	 * Builds an IncompatibleCardException object
 	 * @param message The message
 	 */
 	public IncompatibleCardException(String message) {
 		super(message);
 	}
+
 }

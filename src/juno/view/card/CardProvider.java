@@ -1,12 +1,14 @@
 package juno.view.card;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.nio.file.FileAlreadyExistsException;
 import java.util.HashMap;
 import java.util.Map;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import juno.exception.FileAlreadyExistsException;
-import juno.exception.FileNotFoundException;
+
 import juno.main.init.Paths;
 import juno.model.card.Action;
 import juno.model.card.Card;

@@ -2,12 +2,13 @@ package juno.model.deck;
 
 import java.util.Random;
 import java.util.Stack;
-import juno.exception.DeckIsEmptyException;
-import juno.exception.DeckIsNotEmptyException;
-import juno.exception.IncompatibleCardException;
+
 import juno.model.card.Action;
 import juno.model.card.Card;
 import juno.model.card.Color;
+import juno.model.deck.exceptions.DeckIsEmptyException;
+import juno.model.deck.exceptions.DeckIsNotEmptyException;
+import juno.model.deck.exceptions.IncompatibleCardException;
 
 /**
  * 
@@ -41,7 +42,7 @@ public class Deck {
 			instance = new Deck();
 		} return instance;
 	}
-	
+
 	
 	/**
 	 * 
