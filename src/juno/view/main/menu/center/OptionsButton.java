@@ -50,7 +50,7 @@ public class OptionsButton extends JButton {
 	/* Initialize the OptionsButton instance */
 	private void init() {
 
-		// Button settings
+		// TRASPARENT BUTTON SETTINGS 
 		this.setFocusPainted(false);
 		this.setBorderPainted(false);
 		this.setContentAreaFilled(false);

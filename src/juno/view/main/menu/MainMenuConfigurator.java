@@ -14,6 +14,9 @@ public class MainMenuConfigurator {
 	 * Configure the MainMenu instance
 	 */
 	public static void configure() {
+	
+		// BOTTOM-UP CONFIGURATION 
 		
+		// [NORTH PANEL MAIN MENU] 
 	}
 }

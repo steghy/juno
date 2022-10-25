@@ -23,7 +23,6 @@ public class AudioPlayerTester {
 		JFrame frame = new JFrame();
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(1400, 800);
 
 		// AUDIO PLAYER SETTINGS
 		AudioPlayerPanel audioPlayerPanel = AudioPlayerPanel.getInstance();
@@ -32,7 +31,9 @@ public class AudioPlayerTester {
 		// CONNECTION
 		Container container = frame.getContentPane();
 		container.setLayout(new BorderLayout());
-		container.add(audioPlayerPanel);
+		container.add(audioPlayerPanel, BorderLayout.NORTH);
+		
+		frame.pack();
 		
 		// VISIBLE
 		frame.setVisible(true);

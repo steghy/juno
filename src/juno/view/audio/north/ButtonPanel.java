@@ -20,7 +20,10 @@ public class ButtonPanel extends JPanel {
 
 	
 	/** Builds an empty ButtonPanel object */
-	public ButtonPanel() {}
+	public ButtonPanel() {
+		this.setSize(70, 100);
+		this.setOpaque(false);
+	}
 
 	
 	/**
@@ -29,6 +32,7 @@ public class ButtonPanel extends JPanel {
 	 * @param button A JButton object
 	 */
 	public ButtonPanel(JButton button) {
+		this.setSize(70, 100);
 		this.button = button;
 	}
 	
@@ -54,9 +58,6 @@ public class ButtonPanel extends JPanel {
 					+ "JButton isn't setted");
 		}
 
-		// DIMENSION
-		this.setSize(50, 50);
-		
 		// ADD COMPONENT
 		this.add(this.button);
 	}

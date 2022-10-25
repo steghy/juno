@@ -1,4 +1,4 @@
-package juno.view.audio.north;
+package juno.view.abstraction;
 
 import java.awt.Image;
 
@@ -12,48 +12,23 @@ import javax.swing.JPanel;
  * @author steghy
  * @email steghy.github@proton.me
  */
-public class NextButton extends JButton {
+public abstract class AbstractButton extends JButton {
 
 	/* Serial Version UID */
 	private static final long serialVersionUID = 1L;
-	
-	/* The panel */
+
+	/* Reference panel */
 	private JPanel panel;
 	
-	/* The NextButton instance */
-	private static NextButton instance;
-
-	
-	/* Builds the NextButton instance */
-	private NextButton() {
-		init();
-	}
-
-	
 	/**
-	 * Returns the NextButton instance 
-	 * @return The NextButton instance
-	 */
-	public static NextButton getInstance() {
-		if(instance == null) {
-			instance = new NextButton();
-		} return instance;
-	}
-	
-	
-	/**
-	 * Sets the panel of this instance
-	 * @param panel A JPanel instance
+	 * Sets the specified JPanel object to 
+	 * this object
+	 * @param panel A JPanel object
 	 */
 	public void setPanel(JPanel panel) {
-		if(panel.getHeight() == 0 || panel.getWidth() == 0) {
-			throw new IllegalArgumentException("invalid dimension");
-		} else {
-			this.panel = panel;
-		}
+		this.panel = panel;
 	}
 
-	
 	@Override
 	public void setIcon(Icon icon) {
 		if(this.panel != null) {
@@ -65,9 +40,13 @@ public class NextButton extends JButton {
 			}
 		}
 	}
-	
-	private void init() {
+
+	/** Initialize this object */
+	public void init() {
+		
+		// TRASPARENT BUTTON SETTING
 		this.setBorderPainted(false);
+		this.setContentAreaFilled(false);
 		this.setFocusPainted(false);
 		this.setOpaque(false);
 	}

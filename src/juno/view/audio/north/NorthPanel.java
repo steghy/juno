@@ -30,7 +30,15 @@ public class NorthPanel extends JPanel {
 	private static NorthPanel instance;
 	
 	/* Builds the NorthPanel instance */
-	private NorthPanel() {}
+	private NorthPanel() {
+
+		// DIMENSION
+		this.setSize(new Dimension(275, 120));
+		this.setPreferredSize(new Dimension(275, 120));
+		this.setMinimumSize(new Dimension(275, 120));
+		this.setMaximumSize(new Dimension(275, 120));
+	}
+		
 	
 	/**
 	 * Returns the NorthPanel instance
@@ -85,17 +93,17 @@ public class NorthPanel extends JPanel {
 			throw new JPanelNotSettedException("");
 		}
 		
-		// DIMENSION
-		this.setSize(new Dimension(150, 100));
-		this.setPreferredSize(new Dimension(150, 150));
-		this.setMinimumSize(new Dimension(150 ,150));
-		
 		// ADD COMPONENT
-		this.setLayout(new GridLayout(1, 3));
+		this.setLayout(new GridLayout(1, 3, 0, 0));
+
+		this.previousPanel.setOpaque(false);
+		this.nextPanel.setOpaque(false);
+		this.toggleSwitchPanel.setOpaque(false);
 		this.add(previousPanel, 0);
 		this.add(toggleSwitchPanel, 1);
 		this.add(nextPanel, 2);
 		
-		// this.setOpaque(false);
+		// SETTINGS
+		this.setOpaque(false);
 	}
 }

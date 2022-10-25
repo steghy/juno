@@ -1,5 +1,6 @@
 package juno.view.audio;
 
+import java.awt.Dimension;
 import java.awt.Image;
 
 import javax.swing.Icon;
@@ -25,7 +26,12 @@ public class MainBackground extends JLabel {
 
 	
 	/* Builds the Background instance */
-	private MainBackground() {}
+	private MainBackground() {
+		this.setSize(new Dimension(350, 200));
+		this.setPreferredSize(new Dimension(350, 200));
+		this.setMinimumSize(new Dimension(350, 200));
+		this.setMaximumSize(new Dimension(250, 200));
+	}
 
 	
 	/**

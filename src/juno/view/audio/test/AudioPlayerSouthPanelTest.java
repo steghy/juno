@@ -24,16 +24,16 @@ public class AudioPlayerSouthPanelTest {
 
 		/******************** SOUTH PANEL **********************************/
 
-		// [AUDIO PLAYER SOUTH PANEL] CONNECTION
+		// [AUDIO PLAYER SOUTH PANEL] BACKGROUND & PANELS
 		SouthPanel southPanel = SouthPanel.getInstance();
 		SouthBackground southPanelBackground = SouthBackground.getInstance();
+		
 		southPanel.setBackground(southPanelBackground);
 		southPanelBackground.setPanel(southPanel); 
 		
-		// [AUDIO PLAYER SOUTH PANEL] BACKGROUND PATH
+		// [AUDIO PLAYER SOUTH PANEL] IMAGE SETTING
 		String southPanelBackgroundImage = PathGenerator.generate(Paths.AUDIOPLAYER.getPath(), "audio-animation.gif");
 		
-		// [AUDIO PLAYER SOUTH PANEL] SETTING ICONS
 		southPanelBackground.setIcon(new ImageIcon(southPanelBackgroundImage));
 		
 		// [AUDIO PLAYER SOUTH PANEL] INITIALIZATION
@@ -49,7 +49,5 @@ public class AudioPlayerSouthPanelTest {
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
-		
 	}
-
 }

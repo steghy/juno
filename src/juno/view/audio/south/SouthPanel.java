@@ -28,10 +28,10 @@ public class SouthPanel extends JPanel {
 	private SouthPanel() {
 		
 		// DIMENSION
-		this.setSize(new Dimension(400, 200));
-		this.setPreferredSize(new Dimension(400, 200));
-		this.setMinimumSize(new Dimension(400, 200));
-		this.setMaximumSize(new Dimension(400, 200));
+		this.setSize(new Dimension(210, 40));
+		this.setPreferredSize(new Dimension(210, 40));
+		this.setMinimumSize(new Dimension(210, 40));
+		this.setMaximumSize(new Dimension(210, 40));
 
 	}
 
@@ -71,5 +71,6 @@ public class SouthPanel extends JPanel {
 		
 		// ADD COMPONENTS
 		this.add(background);
+		this.setOpaque(false);
 	}
 }

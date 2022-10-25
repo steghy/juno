@@ -35,10 +35,10 @@ public class AudioPlayerPanel extends JPanel {
 	private AudioPlayerPanel() {
 		
 		// DIMENSION
-		this.setSize(new Dimension(1400, 800));
-		this.setPreferredSize(new Dimension(1400, 800));
-		this.setMinimumSize(new Dimension(1400, 800));
-		this.setMaximumSize(new Dimension(400, 200));
+		this.setSize(new Dimension(350, 200));
+		this.setPreferredSize(new Dimension(350, 200));
+		this.setMinimumSize(new Dimension(210, 140));
+		this.setMaximumSize(new Dimension(210, 140));
 		
 	}
 
@@ -100,10 +100,15 @@ public class AudioPlayerPanel extends JPanel {
 					+ "Label background isn't setted");
 		}
 		
+		// ALIGNMENTS
+		background.setAlignmentX(JPanel.CENTER_ALIGNMENT);
+		background.setAlignmentY(JPanel.CENTER_ALIGNMENT);
+		
 		// ADD COMPONENTS
 		background.setLayout(new BorderLayout());
 		background.add(northPanel, BorderLayout.NORTH);
 		background.add(southPanel, BorderLayout.SOUTH);
-		
+		this.add(background);
+
 	}
 }
