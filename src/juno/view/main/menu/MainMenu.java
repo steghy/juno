@@ -3,8 +3,8 @@ package juno.view.main.menu;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import juno.view.exception.JButtonNotSettedException;
-import juno.view.exception.JLabelNotSettedException;
+import juno.view.exception.JButtonNotSetException;
+import juno.view.exception.JLabelNotSetException;
 
 /**
  * Frame class.
@@ -108,26 +108,26 @@ public class MainMenu extends JPanel {
 
 	
 	/* Initialize the Frame instance */
-	public void init() throws JButtonNotSettedException, JLabelNotSettedException {
+	public void init() throws JButtonNotSetException, JLabelNotSetException {
 		
 		// Check integrity
 		if(northPanel == null) {
-			throw new JButtonNotSettedException(""
+			throw new JButtonNotSetException(""
 					+ "JButton in NORTH area isn't setted");
 		} if(centerPanel == null) {
-			throw new JButtonNotSettedException(""
+			throw new JButtonNotSetException(""
 					+ "JButton is CENTER area isn't setted");
 		} if(eastPanel == null) {
-			throw new JButtonNotSettedException(""
+			throw new JButtonNotSetException(""
 					+ "JButton in EAST area isn't setted");
 		} if(southPanel == null) {
-			throw new JButtonNotSettedException(""
+			throw new JButtonNotSetException(""
 					+ "JButton in SOUTH area isn't setted");
 		} if(westPanel == null) {
-			throw new JButtonNotSettedException(""
+			throw new JButtonNotSetException(""
 					+ "JButton in WEST area isn't setted");
 		} if(background == null) {
-			throw new JLabelNotSettedException(""
+			throw new JLabelNotSetException(""
 					+ "JLabel background isn't setted");
 		}
 		

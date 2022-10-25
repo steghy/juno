@@ -6,8 +6,8 @@ import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import juno.view.exception.JLabelNotSettedException;
-import juno.view.exception.JPanelNotSettedException;
+import juno.view.exception.JLabelNotSetException;
+import juno.view.exception.JPanelNotSetException;
 
 /**
  * PlayerPanel Class.
@@ -83,20 +83,20 @@ public class AudioPlayerPanel extends JPanel {
 	
 	/**
 	 * Initialize the AudioPlayerPanel instance 
-	 * @throws JPanelNotSettedException 
-	 * @throws JLabelNotSettedException 
+	 * @throws JPanelNotSetException
+	 * @throws JLabelNotSetException
 	 */
-	public void init() throws JPanelNotSettedException, JLabelNotSettedException {
+	public void init() throws JPanelNotSetException, JLabelNotSetException {
 		
 		// CHECK INTEGRITY
 		if(northPanel == null) {
-			throw new JPanelNotSettedException(""
+			throw new JPanelNotSetException(""
 					+ "Panel in NORTH area isn't setted");
 		} if(southPanel == null) {
-			throw new JPanelNotSettedException(""
+			throw new JPanelNotSetException(""
 					+ "Panel in SOUTH area isn't setted");
 		} if(background == null) {
-			throw new JLabelNotSettedException(""
+			throw new JLabelNotSetException(""
 					+ "Label background isn't setted");
 		}
 		

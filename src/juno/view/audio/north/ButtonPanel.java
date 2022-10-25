@@ -3,7 +3,7 @@ package juno.view.audio.north;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import juno.view.exception.JButtonNotSettedException;
+import juno.view.exception.JButtonNotSetException;
 
 /**
  * 
@@ -48,13 +48,13 @@ public class ButtonPanel extends JPanel {
 	
 	/**
 	 * Initialize this object
-	 * @throws JButtonNotSettedException
+	 * @throws JButtonNotSetException
 	 */
-	public void init() throws JButtonNotSettedException {
+	public void init() throws JButtonNotSetException {
 		
 		// CHECK INTEGRITY
 		if(this.button == null) {
-			throw new JButtonNotSettedException(""
+			throw new JButtonNotSetException(""
 					+ "JButton isn't setted");
 		}
 

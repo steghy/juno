@@ -3,7 +3,7 @@ package juno.view.main.menu.center;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import juno.view.exception.JButtonNotSettedException;
+import juno.view.exception.JButtonNotSetException;
 
 /**
  * 
@@ -83,19 +83,19 @@ public class CenterPanel extends JPanel {
 
 	
 	/* Initialize the CenterPanel instance */
-	public void init() throws JButtonNotSettedException {
+	public void init() throws JButtonNotSetException {
 		
 		if(newGameButton == null) {
-			throw new JButtonNotSettedException(""
+			throw new JButtonNotSetException(""
 					+ "JButton 'new game' isn't setted");
 		} if(optionsButton == null) {
-			throw new JButtonNotSettedException(""
+			throw new JButtonNotSetException(""
 					+ "JButton 'options' isn't setted");
 		} if(scoreButton == null) {
-			throw new JButtonNotSettedException(""
+			throw new JButtonNotSetException(""
 					+ "JButton 'score' isn't setted");
 		} if (exitButton == null) {
-			throw new JButtonNotSettedException(""
+			throw new JButtonNotSetException(""
 					+ "JButton 'exit' isn't setted");
 		}
 

@@ -7,8 +7,8 @@ import juno.model.util.PathGenerator;
 import juno.view.audio.north.ButtonPanel;
 import juno.view.audio.north.AudioPlayerButton;
 import juno.view.audio.north.NorthPanel;
-import juno.view.exception.JButtonNotSettedException;
-import juno.view.exception.JPanelNotSettedException;
+import juno.view.exception.JButtonNotSetException;
+import juno.view.exception.JPanelNotSetException;
 
 /**
  * 
@@ -59,7 +59,7 @@ public class AudioPlayerNorthPanelTest {
 			nextPanel.init();
 			previousPanel.init();
 			togglePanel.init();
-		} catch (JButtonNotSettedException e) {
+		} catch (JButtonNotSetException e) {
 			e.printStackTrace();
 		}
 		
@@ -72,7 +72,7 @@ public class AudioPlayerNorthPanelTest {
 	
 		try {
 			northPanel.init();
-		} catch (JPanelNotSettedException e) {
+		} catch (JPanelNotSetException e) {
 			e.printStackTrace();
 		}
 

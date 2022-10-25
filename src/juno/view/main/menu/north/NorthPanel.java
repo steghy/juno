@@ -1,15 +1,17 @@
 package juno.view.main.menu.north;
 
 import java.awt.BorderLayout;
+import java.io.Serial;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import juno.view.exception.JLabelNotSettedException;
+import juno.view.exception.JLabelNotSetException;
 
 public class NorthPanel extends JPanel {
 
 	/* Serial Version UID */
+	@Serial
 	private static final long serialVersionUID = 1L;
 	
 	private JLabel logo;
@@ -43,10 +45,10 @@ public class NorthPanel extends JPanel {
 	
 	
 	/* Initialize the NorthPanel instance */
-	public void init() throws JLabelNotSettedException {
+	public void init() throws JLabelNotSetException {
 		if(logo == null) {
-			throw new JLabelNotSettedException(""
-					+ "JLabel logo isn't setted");
+			throw new JLabelNotSetException(""
+					+ "JLabel logo isn't set");
 		}
 		this.add(logo);
 		this.setLayout(new BorderLayout());

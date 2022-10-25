@@ -2,7 +2,7 @@ package juno.view.avatar;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import juno.view.exception.JLabelNotSettedException;
+import juno.view.exception.JLabelNotSetException;
 
 /**
  * 
@@ -71,12 +71,12 @@ public class AvatarPanel extends JPanel {
 	
 	
 	/* Initialize this AvatarPanel object */
-	public void init() throws JLabelNotSettedException {
+	public void init() throws JLabelNotSetException {
 		if(picture == null) {
-			throw new JLabelNotSettedException(""
+			throw new JLabelNotSetException(""
 					+ "JLabel picture isn't setted");
 		} if(pictureFrame == null) {
-			throw new JLabelNotSettedException(""
+			throw new JLabelNotSetException(""
 					+ "JLabel picture frame isn't setted");
 		}
 		

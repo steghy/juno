@@ -5,7 +5,7 @@ package juno.view.exception;
  * @author steghy
  * @email steghy.github@proton.me
  */
-public class JLabelNotSettedException extends Exception {
+public class JLabelNotSetException extends Exception {
 
 	/* Serial Version UID */
 	private static final long serialVersionUID = 1L;
@@ -14,7 +14,7 @@ public class JLabelNotSettedException extends Exception {
 	 * Builds a JLabelNotSettedException object
 	 * @param message The message
 	 */
-	public JLabelNotSettedException(String message) {
+	public JLabelNotSetException(String message) {
 		super(message);
 	}
 

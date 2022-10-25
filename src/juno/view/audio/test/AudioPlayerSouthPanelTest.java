@@ -7,7 +7,7 @@ import juno.main.init.Paths;
 import juno.model.util.PathGenerator;
 import juno.view.audio.south.SouthBackground;
 import juno.view.audio.south.SouthPanel;
-import juno.view.exception.JLabelNotSettedException;
+import juno.view.exception.JLabelNotSetException;
 
 /**
  * 
@@ -39,7 +39,7 @@ public class AudioPlayerSouthPanelTest {
 		// [AUDIO PLAYER SOUTH PANEL] INITIALIZATION
 		try {
 			southPanel.init();
-		} catch (JLabelNotSettedException e) {
+		} catch (JLabelNotSetException e) {
 			e.printStackTrace();
 		}
 		

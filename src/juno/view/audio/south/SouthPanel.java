@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import juno.view.exception.JLabelNotSettedException;
+import juno.view.exception.JLabelNotSetException;
 
 /**
  * 
@@ -58,14 +58,14 @@ public class SouthPanel extends JPanel {
 	
 	/**
 	 * Initialize the SouthPanel instance
-	 * @throws JLabelNotSettedException if the required
+	 * @throws JLabelNotSetException if the required
 	 * 			label obejct is not setted
 	 */
-	public void init() throws JLabelNotSettedException {
+	public void init() throws JLabelNotSetException {
 		
 		// CHECK INTEGRITY
 		if(background == null) {
-			throw new JLabelNotSettedException(""
+			throw new JLabelNotSetException(""
 					+ "JLabel background isn't setted");
 		}
 		

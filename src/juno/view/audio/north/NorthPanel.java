@@ -5,7 +5,7 @@ import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 
-import juno.view.exception.JPanelNotSettedException;
+import juno.view.exception.JPanelNotSetException;
 
 /**
  * 
@@ -80,17 +80,17 @@ public class NorthPanel extends JPanel {
 	
 	/**
 	 * Initialize the NorthPanel instance 
-	 * @throws JPanelNotSettedException 
+	 * @throws JPanelNotSetException
 	 */
-	public void init() throws JPanelNotSettedException {
+	public void init() throws JPanelNotSetException {
 		
 		// CHECK INTEGRITY
 		if(nextPanel == null) {
-			throw new JPanelNotSettedException("");
+			throw new JPanelNotSetException("");
 		} if(previousPanel == null) {
-			throw new JPanelNotSettedException("");
+			throw new JPanelNotSetException("");
 		} if(toggleSwitchPanel == null) {
-			throw new JPanelNotSettedException("");
+			throw new JPanelNotSetException("");
 		}
 		
 		// ADD COMPONENT

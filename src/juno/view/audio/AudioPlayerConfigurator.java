@@ -1,7 +1,6 @@
 package juno.view.audio;
 
 import java.awt.Dimension;
-import java.io.File;
 
 import javax.swing.ImageIcon;
 
@@ -12,12 +11,12 @@ import juno.view.audio.north.ButtonPanel;
 import juno.view.audio.north.NorthPanel;
 import juno.view.audio.south.SouthBackground;
 import juno.view.audio.south.SouthPanel;
-import juno.view.exception.JButtonNotSettedException;
-import juno.view.exception.JLabelNotSettedException;
-import juno.view.exception.JPanelNotSettedException;
+import juno.view.exception.JButtonNotSetException;
+import juno.view.exception.JLabelNotSetException;
+import juno.view.exception.JPanelNotSetException;
 
 /**
- * 
+ *
  * @author steghy
  * @email steghy.github@proton.me
  */
@@ -26,30 +25,12 @@ public class AudioPlayerConfigurator {
 	// NO INSTANCE 
 	private AudioPlayerConfigurator() {}
 
-	public static void checkImagesPath() {
-		File directory = new File(Paths.AUDIOPLAYER.getPath());
-		for(String fileName : directory.list()) {
-			String path = PathGenerator.generate(directory.getAbsolutePath(), fileName);
-			System.out.println(path + " | exists: " + ((new File(path).exists())));
-		}
-	}
-	
-	
 	/*
 	 * Configure the AudioPlayer component
 	 */
 	public static void configure() {
 
-		/*
-		 * Nota: La dimensione dei pannelli deve essere effettuata
-		 * prima che questi ultimi vengano passati in input al metodo
-		 * setPanel(JPanel panel) dei relativi buttoni. 
-		 * Nota: La configurazione deve essere fatta in maniera 'Button up'
-		 * quindi è necessario configurare e connettere prima i componenti di più
-		 * basso livello andando a salire verso quelli di più alto livello.
-		 */
-
-		/********************* NORTH PANEL ************************************/
+		/* NORTH PANEL */
 
 		// [AUDIO PLAYER NORTH PANEL] PANELS & BUTTONS
 		AudioPlayerButton nextButton = new AudioPlayerButton();
@@ -80,7 +61,7 @@ public class AudioPlayerConfigurator {
 			nextPanel.init();
 			previousPanel.init();
 			togglePanel.init();
-		} catch (JButtonNotSettedException e) {
+		} catch (JButtonNotSetException e) {
 			e.printStackTrace();
 		}
 		
@@ -93,11 +74,11 @@ public class AudioPlayerConfigurator {
 	
 		try {
 			northPanel.init();
-		} catch (JPanelNotSettedException e) {
+		} catch (JPanelNotSetException e) {
 			e.printStackTrace();
 		}
 		
-		/******************** SOUTH PANEL **********************************/
+		/* SOUTH PANEL */
 
 		// [AUDIO PLAYER SOUTH PANEL] BACKGROUND & PANELS
 		SouthPanel southPanel = SouthPanel.getInstance();
@@ -114,11 +95,11 @@ public class AudioPlayerConfigurator {
 		// [AUDIO PLAYER SOUTH PANEL] INITIALIZATION
 		try {
 			southPanel.init();
-		} catch (JLabelNotSettedException e) {
+		} catch (JLabelNotSetException e) {
 			e.printStackTrace();
 		}
 
-		/******************** MAIN PANEL ***************************************/
+		/* MAIN PANEL */
 
 		// [AUDIO PLAYER MAIN PANEL] PANELS & BACKGROUND
 		AudioPlayerPanel audioPlayerPanel = AudioPlayerPanel.getInstance();
@@ -140,7 +121,7 @@ public class AudioPlayerConfigurator {
 		// [AUDIO PLAYER MAIN PANEL] INITIALIZATION
 		try {
 			audioPlayerPanel.init();
-		} catch (JPanelNotSettedException | JLabelNotSettedException e) {
+		} catch (JPanelNotSetException | JLabelNotSetException e) {
 			e.printStackTrace();
 		}
 	}
