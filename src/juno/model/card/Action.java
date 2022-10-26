@@ -8,7 +8,7 @@ package juno.model.card;
  * @author steghy
  * @email steghy.github@proton.me
  */
-public enum Action {
+public enum Action implements AbstractUnoAction {
 
 	/** Draw two action */
 	DRAW_TWO,
@@ -24,18 +24,8 @@ public enum Action {
 
 	/** Wild draw four action */
 	WILD_DRAW_FOUR;
-	
 
-	/**
-	 * Returns true if this object is a jolly,
-	 * otherwise returns false
-	 * @return A boolean
-	 */
-	public boolean isJolly() {
-		return this.name().equals("WILD") ||
-				this.name().equals("WILD_DRAW_FOUR");
-	}
-	
+
 	/**
 	 * Returns the Action object associated with the
 	 * specified action name
@@ -51,5 +41,30 @@ public enum Action {
 			case ("WILD_DRAW_FOUR") -> Action.WILD_DRAW_FOUR;
 			default -> null;
 		};
+	}
+
+	@Override
+	public boolean isWildAction() {
+		return this.name().equals("WILD");
+	}
+
+	@Override
+	public boolean isWildDrawFourAction() {
+		return this.name().equals("WILD_DRAW_FOUR");
+	}
+
+	@Override
+	public boolean isSkipAction() {
+		return this.name().equals("SKIP");
+	}
+
+	@Override
+	public boolean isReverseAction() {
+		return this.name().equals("REVERSE");
+	}
+
+	@Override
+	public boolean isDrawTwoAction() {
+		return this.name().equals("DRAW_TWO");
 	}
 }

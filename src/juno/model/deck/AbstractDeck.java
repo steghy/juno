@@ -1,9 +1,9 @@
 package juno.model.deck;
 
 import juno.model.deck.exceptions.DeckIsEmptyException;
-import java.util.List;
 
-public interface AbstractDeck<E> extends List<E> {
+public interface AbstractDeck<E> {
 
     E draw() throws DeckIsEmptyException;
+
 }

@@ -7,7 +7,7 @@ package juno.model.card;
  * @author steghy
  * @email steghy.github@proton.me
  */
-public enum Color {
+public enum Color implements AbstractUnoColor{
 
 	/** The blue color */
 	BLUE,
@@ -19,8 +19,32 @@ public enum Color {
 	RED,
 
 	/** The yellow color */
-	YELLOW; 
-	
+	YELLOW;
+
+
+	@Override
+	public boolean isBlue() {
+		return this.name().equals("BLUE");
+	}
+
+
+	@Override
+	public boolean isRed(){
+		return this.name().equals("RED");
+	}
+
+
+	@Override
+	public boolean isYellow(){
+		return this.name().equals("YELLOW");
+	}
+
+
+	@Override
+	public boolean isGreen(){
+		return this.name().equals("GREEN");
+	}
+
 	/**
 	 * Returns the Color object associated with
 	 * the specified color name

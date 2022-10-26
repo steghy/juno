@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
 
 import juno.init.Paths;
 import juno.model.card.Action;
-import juno.model.card.Card;
+import juno.model.card.UnoCard;
 import juno.model.card.Color;
 import juno.model.card.AbstractUnoCard;
 import juno.model.util.PathGenerator;
@@ -103,7 +103,7 @@ public class CardProvider {
 				}
 
 				String cardPath = PathGenerator.generate(path, fileName);
-				Card card = new Card(value, color, action);
+				UnoCard card = new UnoCard(value, color, action);
 				ImageIcon image = new ImageIcon(cardPath);
 				image.setImage(image.getImage().getScaledInstance(200, 400, 1));
 				cards.put(card, image);

@@ -3,12 +3,12 @@ package juno.model.deck;
 import java.util.List;
 import java.util.Random;
 
-public class Shuffler<E> {
+public class Shuffler {
 
     /**
-     * Mix the data structure passed in input..
+     * Mix the data structure passed in input.
      */
-    public void shuffle(List<E> data) {
+    public static <E> void shuffle(List<E> data) {
         Random random = new Random();
         int size = data.size();
         for(int i = 0; i < 250; i++) {

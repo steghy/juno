@@ -5,7 +5,7 @@ import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import juno.model.card.Action;
-import juno.model.card.Card;
+import juno.model.card.UnoCard;
 import juno.view.card.CardProvider;
 
 /**
@@ -32,7 +32,7 @@ public class CardProviderTester {
 		// CARD PROVIDER
 		CardProvider cardProvider = CardProvider.getInstance();
 
-		Card card1 = new Card(-1, null, Action.WILD_DRAW_FOUR);
+		UnoCard card1 = new UnoCard(-1, null, Action.WILD_DRAW_FOUR);
 
 		Icon icon1 = cardProvider.getGraphicCard(card1);
 

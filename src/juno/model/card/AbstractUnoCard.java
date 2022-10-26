@@ -10,21 +10,20 @@ public interface AbstractUnoCard {
      * @return An Object that describes the
      *         action of the UnoCard.
      */
-    Object getAction();
+    AbstractUnoAction action();
 
     /**
      * Returns the color.
      * @return An object that describes the
      *         color of the UnoCard.
      */
-    Object getColor();
+    AbstractUnoColor color();
 
     /**
      * Returns the value.
      * @return An int value that describes
      *         the numeric value of the UnoCard
      */
-    int getValue();
+    int value();
 
-    boolean isCompatibleWith(AbstractUnoCard card);
 }
