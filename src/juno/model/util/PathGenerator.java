@@ -1,47 +1,24 @@
 package juno.model.util;
 
 /**
- * 
+ * This class defines the utility method
+ * 'generate(String, String)', that returns
+ * a path.
  * @author steghy
  * @email steghy.github@proton.me
  */
 public class PathGenerator {
 
-	static String currentPath = Os.getCurrentPath();
-	static String div = System.getProperty("file.separator");
-	
 	private PathGenerator() {}
-	
-	/**
-	 * 
-	 * @param fileName
-	 * @return
-	 */
-	public static String generate(String[] names) {
-		for(String name : names) {
-			currentPath += div.concat(name);
-		} return currentPath;
-	}
-	
-	/**
-	 * 
-	 * @param parent
-	 * @param names
-	 * @return
-	 */
-	public static String generate(String parent, String[] names) {
-		for(String name : names) {
-			parent += div.concat(name);
-		} return parent;
-	}
 
 	/**
-	 * 
-	 * @param parent
-	 * @param names
-	 * @return
+	 * Returns the path generated with the specified
+	 * parent path and the specified file name
+	 * @param parent The parent path
+	 * @param name The file name
+	 * @return A String object represents the generated path
 	 */
 	public static String generate(String parent, String name) {
-		return parent.concat(div).concat(name);
+		return parent.concat(System.getProperty("file.separator")).concat(name);
 	}
 }

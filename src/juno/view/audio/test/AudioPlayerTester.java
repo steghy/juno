@@ -18,7 +18,7 @@ import juno.view.audio.AudioPlayerPanel;
 public class AudioPlayerTester {
 
 	public static void checkImagesPath() {
-		File directory = new File(Paths.AUDIOPLAYER.getPath());
+		File directory = new File(Paths.AUDIO_PLAYER.getPath());
 		for(String fileName : Objects.requireNonNull(directory.list())) {
 			String path = PathGenerator.generate(directory.getAbsolutePath(), fileName);
 			System.out.println(path + " | exists: " + ((new File(path).exists())));

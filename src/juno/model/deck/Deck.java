@@ -3,7 +3,6 @@ package juno.model.deck;
 import java.util.List;
 import java.util.Stack;
 import juno.model.card.AbstractUnoCard;
-import juno.model.deck.exceptions.DeckIsEmptyException;
 
 /**
  * This class defines the deck of
@@ -20,12 +19,12 @@ public class Deck extends Stack<AbstractUnoCard> implements AbstractDeck<Abstrac
 	/**
 	 * Returns the top card of the deck.
 	 * @return An AbstractUnoCard object.
-	 * @throws DeckIsEmptyException if the deck is
+	 * @throws IllegalArgumentException if the deck is
 	 * 			empty.
 	 */
-	public AbstractUnoCard draw() throws DeckIsEmptyException {
+	public AbstractUnoCard draw() {
 		if(this.isEmpty()) {
-			throw new DeckIsEmptyException();
+			throw new IllegalArgumentException();
 		} else {
 			return this.pop();
 		}

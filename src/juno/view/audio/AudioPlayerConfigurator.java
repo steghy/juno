@@ -33,9 +33,9 @@ public class AudioPlayerConfigurator {
 		ButtonPanel previousPanel = new ButtonPanel();
 
 		// [AUDIO PLAYER NORTH PANEL] IMAGE SETTING 
-		String nextButtonImage = PathGenerator.generate(Paths.AUDIOPLAYER.getPath(), "next.png");
-		String toggleSwitchImage = PathGenerator.generate(Paths.AUDIOPLAYER.getPath(), "toggle.png");
-		String previousButtonImage = PathGenerator.generate(Paths.AUDIOPLAYER.getPath(), "previous.png");
+		String nextButtonImage = PathGenerator.generate(Paths.AUDIO_PLAYER.getPath(), "next.png");
+		String toggleSwitchImage = PathGenerator.generate(Paths.AUDIO_PLAYER.getPath(), "toggle.png");
+		String previousButtonImage = PathGenerator.generate(Paths.AUDIO_PLAYER.getPath(), "previous.png");
 		
 		nextPanel.setIcon(new ImageIcon(nextButtonImage));
 		togglePanel.setIcon(new ImageIcon(toggleSwitchImage));
@@ -65,7 +65,7 @@ public class AudioPlayerConfigurator {
 		southPanelBackground.setPanel(southPanel); 
 		
 		// [AUDIO PLAYER SOUTH PANEL] IMAGE SETTING
-		String southPanelBackgroundImage = PathGenerator.generate(Paths.AUDIOPLAYER.getPath(), "audio-animation.gif");
+		String southPanelBackgroundImage = PathGenerator.generate(Paths.AUDIO_PLAYER.getPath(), "audio-animation.gif");
 		
 		southPanelBackground.setIcon(new ImageIcon(southPanelBackgroundImage));
 		
@@ -85,7 +85,7 @@ public class AudioPlayerConfigurator {
 		mainBackground.setPanel(audioPlayerPanel); 
 		
 		// [AUDIO PLAYER MAIN PANEL] IMAGES SETTING
-		String mainBackgroundImage = PathGenerator.generate(Paths.AUDIOPLAYER.getPath(), "circle.png");
+		String mainBackgroundImage = PathGenerator.generate(Paths.AUDIO_PLAYER.getPath(), "circle.png");
 		
 		mainBackground.setIcon(new ImageIcon(mainBackgroundImage));
 

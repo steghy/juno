@@ -6,6 +6,16 @@ import java.util.List;
 
 public class FactoryUnoCard implements AbstractFactoryUnoCard {
 
+    private static FactoryUnoCard instance;
+
+    private FactoryUnoCard() {}
+
+    public static FactoryUnoCard getInstance(){
+        if(instance == null){
+            instance = new FactoryUnoCard();
+        } return instance;
+    }
+
     @Override
     public List<AbstractUnoCard> getRedCards() {
         return null;
