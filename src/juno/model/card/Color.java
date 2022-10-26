@@ -1,30 +1,39 @@
 package juno.model.card;
 
 /**
- * This class defines Color object
- * for the Uno cards.
+ * This class defines Color object.
+ * The Color object are:
+ * BLUE, GREEN, RED and YELLOW.
  * @author steghy
  * @email steghy.github@proton.me
  */
 public enum Color {
 
+	/** The blue color */
 	BLUE,
+
+	/** The green color */
 	GREEN,
+
+	/** The red color */
 	RED,
+
+	/** The yellow color */
 	YELLOW; 
 	
 	/**
-	 * Returns the Color object from the specified 
-	 * color name
-	 * @param colorName The color name
-	 * @return The appropriate Color object
+	 * Returns the Color object associated with
+	 * the specified color name
+	 * @param colorName The name of the color
+	 * @return The associated Color object
 	 */
 	public static Color getColorObject(String colorName) {
-		switch(colorName.toUpperCase()) {
-		case("BLUE")  : return Color.BLUE;
-		case("GREEN") : return Color.GREEN;
-		case("RED")   : return Color.RED;
-		case("YELLOW"): return Color.YELLOW;
-		} return null;
+		return switch (colorName.toUpperCase()) {
+			case ("BLUE") -> Color.BLUE;
+			case ("GREEN") -> Color.GREEN;
+			case ("RED") -> Color.RED;
+			case ("YELLOW") -> Color.YELLOW;
+			default -> null;
+		};
 	}
 }

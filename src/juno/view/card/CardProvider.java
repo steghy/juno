@@ -13,6 +13,7 @@ import juno.init.Paths;
 import juno.model.card.Action;
 import juno.model.card.Card;
 import juno.model.card.Color;
+import juno.model.card.AbstractUnoCard;
 import juno.model.util.PathGenerator;
 
 /**
@@ -23,7 +24,7 @@ import juno.model.util.PathGenerator;
 public class CardProvider {
 	
 	/* Card name = Pathh */
-	private Map<Card, Icon> cards;
+	private Map<AbstractUnoCard, Icon> cards;
 	
 	/* The instance */
 	private static CardProvider instance;
@@ -51,7 +52,7 @@ public class CardProvider {
 	 * Returns the Map of the cards - Jbutton
 	 * @return A Map
 	 */
-	public Map<Card, Icon> getCards(){
+	public Map<AbstractUnoCard, Icon> getCards(){
 		return this.cards;
 	}
 	
@@ -62,7 +63,7 @@ public class CardProvider {
 	 * @param card A Card object
 	 * @return An Icon object
 	 */
-	public Icon getGraphicCard(Card card) {
+	public Icon getGraphicCard(AbstractUnoCard card) {
 		Object[] result = cards.keySet().stream()
 			.filter(k -> k.equals(card)).toArray();
 		if(result.length == 0) {
@@ -76,6 +77,7 @@ public class CardProvider {
 	
 	/* Initialize the GCard instance */
 	private void init() {
+
 		this.cards = new HashMap<>();
 		
 		// Cards paths

@@ -1,63 +1,62 @@
 package juno.model.card;
 
 /**
- * This class defines the 'Uno game' cards,
+ * This class defines the UnoCard object that
+ * represents the Uno cards.
  * @author steghy
  * @email steghy.github@proton.me
  */
-public class Card {
-	
-	/* Card numeric value */
-	private int value;
-	
-	/* Card color */
-	private Color color;
-	
-	/* Card action */
-	private Action action;
-	
-	/* Playable parameter */
+public class Card implements AbstractUnoCard {
+
+	/* The value. */
+	private final int value;
+
+	/* The color Object. */
+	private final Color color;
+
+	/* The Action object. */
+	private final Action action;
+
+	/* Playable parameter. */
 	private boolean playable;
 
 	
 	/**
-	 * Builds a Card object with the specified 
-	 * values 
-	 * @param value The numeric card value
-	 * @param color The card color
-	 * @param action The card action
+	 * Builds an UnoCard object with the specified
+	 * parameters: value, color and action.
+	 * @param value The value.
+	 * @param color A Color object.
+	 * @param action An Action object.
 	 */
 	public Card(int value, Color color, Action action) {
 		this.value = value;
 		this.color = color;
 		this.action = action;
 	}
-	
-	
+
+
 	/**
-	 * Returns true if, and only if, this card
-	 * is playable 
-	 * @return A boolean
+	 * Returns true if this UnoCard object is playable,
+	 * otherwise returns false.
+	 * @return A boolean.
 	 */
 	public boolean isPlayable() {
 		return this.playable;
 	}
 
-	
+
 	/**
-	 * Imposta la giocabilità di una carta.
-	 * La giocabilità di una carta dipende dalla carta
-	 * in cima nella pila degli scarti durante la partita.
-	 * @param playable
+	 * Sets the playable fild of this UnoCard object.
+	 * @param value A boolean.
 	 */
-	public void setPlayable(boolean playable) {
-		this.playable = playable;
+	public void setPlayable(boolean value) {
+		this.playable = value;
 	}
 
 	
 	/**
-	 * Returns the value of this card
-	 * @return The numeric value of this card
+	 * Returns the value of this UnoCard object.
+	 * @return A int value.
 	 */
 	public int getValue() {
 		return this.value;
@@ -82,35 +81,25 @@ public class Card {
 		return this.action;
 	}
 
-	
+
 	/**
 	 * Returns true if the specified Card object is compatible
 	 * with this Card object.
-	 * @param otherCard The other Card object
+	 * @param card An AbstractUnoCard object
 	 * @return A boolean
 	 */
-	public boolean isCompatible(Card otherCard) {
-		// Same color case
-		if(this.color == otherCard.getColor()) {
-			return true;
-		}
-			
-		// Same action case
-		else if(this.action == otherCard.getAction()) {
-			return true;
-		}
-			
-		// Jolly Card case
-		else if(otherCard.getAction().isJolly()) {
-			return true;
-		}
-		
-		// Same number case
-		else if(this.value == otherCard.getValue()
-				&& this.action == null && otherCard.getAction() == null) {
-			return true;
+	public boolean isCompatibleWith(AbstractUnoCard card) {
+		if(card instanceof Card) {
+			if (this.color == card.getColor() ||
+					this.action == card.getAction() ||
+					this.value == card.getValue() ||
+					((Card) card).getAction().isJolly()) {
+				return true;
+			} else {
+				return false;
+			}
 		} else {
-			return false;
+			throw new IllegalArgumentException("The card must be a Card object");
 		}
 	}
 

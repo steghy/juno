@@ -47,8 +47,8 @@ public class AudioPlayerConfigurator {
 		northPanel.setNextPanel(nextPanel);
 		northPanel.setTogglePanel(togglePanel);
 		northPanel.setPreviousPanel(previousPanel);
-		
-	
+
+
 		try {
 			northPanel.init();
 		} catch (JPanelNotSetException e) {

@@ -1,55 +1,55 @@
 package juno.model.card;
 
 /**
- * Thid class defines Action object
- * for the Uno cards
+ * This class defines Action object
+ * for the UnoCard class.
+ * The Action object are:
+ * DRAW_TWO, REVERSE, SKIP, WILD, WILD_DRAW_FOUR.
  * @author steghy
  * @email steghy.github@proton.me
  */
 public enum Action {
 
-	DRAW_TWO(false),
-	REVERSE(false),
-	SKIP(false),
-	WILD(true),
-	WILD_DRAW_FOUR(true);
+	/** Draw two action */
+	DRAW_TWO,
+
+	/** Reverse action */
+	REVERSE,
+
+	/** Skip action */
+	SKIP,
+
+	/** Wild jolly action */
+	WILD,
+
+	/** Wild draw four action */
+	WILD_DRAW_FOUR;
 	
-	/* Jolly field */
-	private boolean isJolly;
-	
-	
+
 	/**
-	 * Builds an Action object with
-	 * the specified boolean value
-	 * @param isJolly if is a Jolly action
-	 */
-	private Action(boolean isJolly) {
-		this.isJolly = isJolly;
-	}
-	
-	
-	/**
-	 * Returns true if this object is
-	 * a Jolly action
+	 * Returns true if this object is a jolly,
+	 * otherwise returns false
 	 * @return A boolean
 	 */
 	public boolean isJolly() {
-		return this.isJolly;
+		return this.name().equals("WILD") ||
+				this.name().equals("WILD_DRAW_FOUR");
 	}
 	
 	/**
-	 * Returns the Action object from the specified
-	 * action name
+	 * Returns the Action object associated with the
+	 * specified action name
 	 * @param actionName The action name
 	 * @return An Action object
 	 */
 	public static Action getActionObject(String actionName) {
-		switch(actionName.toUpperCase()) {
-		case("DRAW_TWO")      : return Action.DRAW_TWO;
-		case("REVERSE")       : return Action.REVERSE;
-		case("SKIP")          : return Action.SKIP;
-		case("WILD")          : return Action.WILD;
-		case("WILD_DRAW_FOUR"): return Action.WILD_DRAW_FOUR;
-		} return null;
+		return switch (actionName.toUpperCase()) {
+			case ("DRAW_TWO") -> Action.DRAW_TWO;
+			case ("REVERSE") -> Action.REVERSE;
+			case ("SKIP") -> Action.SKIP;
+			case ("WILD") -> Action.WILD;
+			case ("WILD_DRAW_FOUR") -> Action.WILD_DRAW_FOUR;
+			default -> null;
+		};
 	}
 }

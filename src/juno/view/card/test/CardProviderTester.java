@@ -16,11 +16,11 @@ import juno.view.card.CardProvider;
 public class CardProviderTester {
 	
 	static int count;
-	
+
 	/**
-	 * Metodo main per il test della classe GCard
-	 * @param args
-	 * @throws IOException 
+	 * Main method
+	 * @param args The arguments
+	 * @throws IOException description here
 	 */
 	public static void main(String[] args) throws IOException {
 		cardImageTest();
@@ -29,10 +29,13 @@ public class CardProviderTester {
 	/** CardImageTest */
 	public static void cardImageTest() {
 		
-		// Card options
+		// CARD PROVIDER
 		CardProvider cardProvider = CardProvider.getInstance();
+
 		Card card1 = new Card(-1, null, Action.WILD_DRAW_FOUR);
+
 		Icon icon1 = cardProvider.getGraphicCard(card1);
+
 		JButton cardComponent = new JButton(icon1);
 
 		// Frame options
