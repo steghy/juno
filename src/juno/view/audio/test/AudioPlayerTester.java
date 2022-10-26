@@ -5,7 +5,7 @@ import java.awt.Container;
 import java.io.File;
 import java.util.Objects;
 import javax.swing.JFrame;
-import juno.main.init.Paths;
+import juno.init.Paths;
 import juno.model.util.PathGenerator;
 import juno.view.audio.AudioPlayerConfigurator;
 import juno.view.audio.AudioPlayerPanel;

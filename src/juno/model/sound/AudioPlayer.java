@@ -3,14 +3,13 @@ package juno.model.sound;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-
+import java.util.Objects;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-
-import juno.main.init.Paths;
+import juno.controller.audio.AbstractAudioPlayer;
 import juno.model.util.PathGenerator;
 
 /**
@@ -18,7 +17,7 @@ import juno.model.util.PathGenerator;
  * @author steghy
  * @email steghy.github@proton.me
  */
-public class AudioPlayer implements Runnable {
+public class AudioPlayer implements Runnable, AbstractAudioPlayer {
 	
 	public static final int ACTIVE = 1;
 	
@@ -48,9 +47,7 @@ public class AudioPlayer implements Runnable {
 	
 	
 	/* Builds the AudioPlayer instance */
-	private AudioPlayer() {
-		init();
-	}
+	private AudioPlayer() {}
 
 	
 	/**
@@ -66,8 +63,16 @@ public class AudioPlayer implements Runnable {
 	
 	/** Start the AudioPlayer process */
 	public void play() {
-		clip.start();
-		status = AudioPlayer.ACTIVE;
+		if(status == ACTIVE) {
+			stop();
+			status = INACTIVE;
+		} else if(status == INACTIVE) {
+			if(trackMicrosecondsPosition != 0L) {
+				resume();
+			} else {
+				clip.start();
+			} status = ACTIVE;
+		}
 	}
 	
 	
@@ -169,20 +174,23 @@ public class AudioPlayer implements Runnable {
 		this.play();
 	}
 
-	
-	/* Initializes the AudioPlayer instance */
-	private void init() {
-		tracks = new ArrayList<File>();
-		String musicDirectoryPath = Paths.MUSIC.getPath();
-		File musicDirectory = new File(musicDirectoryPath);
-		for(String fileName : musicDirectory.list()) {
-			String fileNamePath = PathGenerator.generate(musicDirectoryPath, fileName);
+
+	/**
+	 * Sets the tracks list
+	 * @param path A path that represents a directory
+	 *             containing music files in wav format
+	 */
+	public void setTracks(String path) {
+		tracks = new ArrayList<>();
+		File musicDirectory = new File(path);
+		for(String fileName : Objects.requireNonNull(musicDirectory.list())) {
+			String fileNamePath = PathGenerator.generate(path, fileName);
 			if(fileNamePath.endsWith(".wav")) 
 				tracks.add(new File(fileNamePath));
-		} resetAudioPlayer();  // Sets the AudioInputStream object and Clip object
+		} resetAudioPlayer();
 	}
 
-	
+
 	/* Reset the AudioPlayer instance */
 	private void resetAudioPlayer() {
 		try {
@@ -190,17 +198,12 @@ public class AudioPlayer implements Runnable {
 					.getAudioInputStream(tracks.get(trackIndex).getAbsoluteFile());
 			clip = AudioSystem.getClip();
 			clip.open(audioInputStream);
-		} catch (LineUnavailableException e) {
-			e.printStackTrace();
-		} catch (IllegalStateException e) {
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-		} catch (SecurityException e) {
-			e.printStackTrace(); 
-		} catch (UnsupportedAudioFileException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (LineUnavailableException |
+				 IllegalStateException |
+				 IllegalArgumentException |
+				 SecurityException |
+				 UnsupportedAudioFileException |
+				 IOException e) {
 			e.printStackTrace();
 		}
 	}

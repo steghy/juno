@@ -1,64 +1,55 @@
 package juno.view.audio.north;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
-
-import juno.view.exception.JButtonNotSetException;
+import javax.swing.*;
+import java.awt.*;
 
 /**
- * 
  * @author steghy
  * @email steghy.github@proton.me
  */
 public class ButtonPanel extends JPanel {
 
-	/* Serial Version UID */
-	private static final long serialVersionUID = 1L;
-	
-	/* A JButton */
-	private JButton button;
+    private JButton button;
 
-	
-	/** Builds an empty ButtonPanel object */
-	public ButtonPanel() {
-		this.setSize(70, 100);
-		this.setOpaque(false);
-	}
+    public ButtonPanel(){
+       init();
+    }
 
-	
-	/**
-	 * Builds a ButtonPanel object with the specified
-	 * JButton object
-	 * @param button A JButton object
-	 */
-	public ButtonPanel(JButton button) {
-		this.setSize(70, 100);
-		this.button = button;
-	}
-	
 
-	/**
-	 * Sets the button for this object 
-	 * @param button A JButton object
-	 */
-	public void setButton(JButton button) {
-		this.button = button;
-	}
+    public void setIcon(Icon icon){
+        if(icon instanceof ImageIcon){
+            Image scaledImage = ((ImageIcon)icon).getImage()
+                    .getScaledInstance(this.getWidth(), this.getHeight(), 0);
+            button.setIcon(new ImageIcon(scaledImage));
+        }
+    }
 
-	
-	/**
-	 * Initialize this object
-	 * @throws JButtonNotSetException
-	 */
-	public void init() throws JButtonNotSetException {
-		
-		// CHECK INTEGRITY
-		if(this.button == null) {
-			throw new JButtonNotSetException(""
-					+ "JButton isn't setted");
-		}
+    /* Initialize the ButtonPanel object */
+    private void init(){
 
-		// ADD COMPONENT
-		this.add(this.button);
-	}
+        // BUTTON SETTING
+        this.button = new JButton();
+        button.setContentAreaFilled(false);
+        button.setBorderPainted(false);
+        button.setOpaque(false);
+        button.setFocusPainted(false);
+
+        // PANEL DIMENSION
+        Dimension dimension = new Dimension(75, 75);
+        this.setSize(dimension);
+        this.setPreferredSize(dimension);
+        this.setMinimumSize(dimension);
+        this.setMaximumSize(dimension);
+
+
+        // PANERL SETTING
+        this.setOpaque(false);
+
+        // ALIGNMENT
+        this.setAlignmentX(JPanel.CENTER_ALIGNMENT);
+        this.setAlignmentY(JPanel.CENTER_ALIGNMENT);
+
+        // ADD COMPONENT
+        this.add(button);
+    }
 }

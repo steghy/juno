@@ -2,10 +2,9 @@ package juno.view.audio.north;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
-
+import java.io.Serial;
 import javax.swing.JPanel;
-
-import juno.view.exception.JPanelNotSetException;
+import juno.view.exception.*;
 
 /**
  * 
@@ -15,6 +14,7 @@ import juno.view.exception.JPanelNotSetException;
 public class NorthPanel extends JPanel {
 
 	/* Serial Version UID */
+	@Serial
 	private static final long serialVersionUID = 1L;
 	
 	/* The next panel */
@@ -62,7 +62,7 @@ public class NorthPanel extends JPanel {
 	
 	/**
 	 * Sets the 'previous' panel of this instance
-	 * @param panel A JPanel obeject
+	 * @param panel A JPanel object
 	 */
 	public void setPreviousPanel(JPanel panel) {
 		previousPanel = panel;
@@ -76,34 +76,37 @@ public class NorthPanel extends JPanel {
 	public void setTogglePanel(JPanel panel) {
 		toggleSwitchPanel = panel;
 	}
-	
-	
+
+
 	/**
-	 * Initialize the NorthPanel instance 
-	 * @throws JPanelNotSetException
+	 * Initialize the NorthPanel instance
+	 * @throws JPanelNotSetException description here
 	 */
 	public void init() throws JPanelNotSetException {
 		
 		// CHECK INTEGRITY
 		if(nextPanel == null) {
-			throw new JPanelNotSetException("");
+			throw new JPanelNotSetException("JPanel isn't set");
 		} if(previousPanel == null) {
-			throw new JPanelNotSetException("");
+			throw new JPanelNotSetException("JPanel isn't set");
 		} if(toggleSwitchPanel == null) {
-			throw new JPanelNotSetException("");
+			throw new JPanelNotSetException("JPanel isn't set");
 		}
-		
-		// ADD COMPONENT
-		this.setLayout(new GridLayout(1, 3, 0, 0));
 
+		// SETTINGS
+		this.setLayout(new GridLayout(1, 3, 0, 0));
 		this.previousPanel.setOpaque(false);
 		this.nextPanel.setOpaque(false);
 		this.toggleSwitchPanel.setOpaque(false);
+
+		this.nextPanel.setSize(new Dimension(5, 20));
+		this.previousPanel.setSize(new Dimension(5, 20));
+		this.toggleSwitchPanel.setSize(new Dimension(5, 20));
+
+		// ADD COMPONENTS
 		this.add(previousPanel, 0);
 		this.add(toggleSwitchPanel, 1);
 		this.add(nextPanel, 2);
-		
-		// SETTINGS
 		this.setOpaque(false);
 	}
 }

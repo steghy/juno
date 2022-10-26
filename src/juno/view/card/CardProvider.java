@@ -9,7 +9,7 @@ import java.util.Map;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
-import juno.main.init.Paths;
+import juno.init.Paths;
 import juno.model.card.Action;
 import juno.model.card.Card;
 import juno.model.card.Color;

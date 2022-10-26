@@ -1,17 +1,12 @@
 package juno.view.audio;
 
-import java.awt.Dimension;
-
 import javax.swing.ImageIcon;
-
-import juno.main.init.Paths;
+import juno.init.Paths;
 import juno.model.util.PathGenerator;
-import juno.view.audio.north.AudioPlayerButton;
 import juno.view.audio.north.ButtonPanel;
 import juno.view.audio.north.NorthPanel;
 import juno.view.audio.south.SouthBackground;
 import juno.view.audio.south.SouthPanel;
-import juno.view.exception.JButtonNotSetException;
 import juno.view.exception.JLabelNotSetException;
 import juno.view.exception.JPanelNotSetException;
 
@@ -33,38 +28,20 @@ public class AudioPlayerConfigurator {
 		/* NORTH PANEL */
 
 		// [AUDIO PLAYER NORTH PANEL] PANELS & BUTTONS
-		AudioPlayerButton nextButton = new AudioPlayerButton();
-		AudioPlayerButton previousButton = new AudioPlayerButton();
-		AudioPlayerButton toggleSwitch = new AudioPlayerButton();
-		
-		nextButton.setPreferredSize(new Dimension(30, 30));
-		
-		ButtonPanel nextPanel = new ButtonPanel(nextButton);
-		ButtonPanel previousPanel = new ButtonPanel(previousButton);
-		ButtonPanel togglePanel = new ButtonPanel(toggleSwitch);
-		
-		nextButton.setPanel(nextPanel);
-		previousButton.setPanel(previousPanel);
-		toggleSwitch.setPanel(togglePanel);
+		ButtonPanel nextPanel = new ButtonPanel();
+		ButtonPanel togglePanel = new ButtonPanel();
+		ButtonPanel previousPanel = new ButtonPanel();
 
 		// [AUDIO PLAYER NORTH PANEL] IMAGE SETTING 
 		String nextButtonImage = PathGenerator.generate(Paths.AUDIOPLAYER.getPath(), "next.png");
 		String toggleSwitchImage = PathGenerator.generate(Paths.AUDIOPLAYER.getPath(), "toggle.png");
 		String previousButtonImage = PathGenerator.generate(Paths.AUDIOPLAYER.getPath(), "previous.png");
 		
-		nextButton.setIcon(new ImageIcon(nextButtonImage));
-		toggleSwitch.setIcon(new ImageIcon(toggleSwitchImage));
-		previousButton.setIcon(new ImageIcon(previousButtonImage));
-		
-		// [AUDIO PLAYER NORTH PANEL] INITIALIZATION
-		try {
-			nextPanel.init();
-			previousPanel.init();
-			togglePanel.init();
-		} catch (JButtonNotSetException e) {
-			e.printStackTrace();
-		}
-		
+		nextPanel.setIcon(new ImageIcon(nextButtonImage));
+		togglePanel.setIcon(new ImageIcon(toggleSwitchImage));
+		previousPanel.setIcon(new ImageIcon(previousButtonImage));
+
+
 		// [AUDIO PLAYER NORTH PANEL] CONNECTION
 		NorthPanel northPanel = NorthPanel.getInstance();
 		northPanel.setNextPanel(nextPanel);
@@ -77,7 +54,7 @@ public class AudioPlayerConfigurator {
 		} catch (JPanelNotSetException e) {
 			e.printStackTrace();
 		}
-		
+
 		/* SOUTH PANEL */
 
 		// [AUDIO PLAYER SOUTH PANEL] BACKGROUND & PANELS
@@ -108,7 +85,7 @@ public class AudioPlayerConfigurator {
 		mainBackground.setPanel(audioPlayerPanel); 
 		
 		// [AUDIO PLAYER MAIN PANEL] IMAGES SETTING
-		String mainBackgroundImage = PathGenerator.generate(Paths.AUDIOPLAYER.getPath(), "pngwing.com.png");
+		String mainBackgroundImage = PathGenerator.generate(Paths.AUDIOPLAYER.getPath(), "circle.png");
 		
 		mainBackground.setIcon(new ImageIcon(mainBackgroundImage));
 

@@ -2,10 +2,9 @@ package juno.view.audio;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-
+import java.io.Serial;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import juno.view.exception.JLabelNotSetException;
 import juno.view.exception.JPanelNotSetException;
 
@@ -17,12 +16,13 @@ import juno.view.exception.JPanelNotSetException;
 public class AudioPlayerPanel extends JPanel {
 
 	/* Serial Version UID */
+	@Serial
 	private static final long serialVersionUID = 1L;
 	
 	/* AudioPlayerPanel instance */
 	private static AudioPlayerPanel instance;
 
-	/* Audio Player panel backgroud */
+	/* Audio Player panel background */
 	private JLabel background;
 
 	/** North panel */
@@ -83,21 +83,21 @@ public class AudioPlayerPanel extends JPanel {
 	
 	/**
 	 * Initialize the AudioPlayerPanel instance 
-	 * @throws JPanelNotSetException
-	 * @throws JLabelNotSetException
+	 * @throws JPanelNotSetException description here
+	 * @throws JLabelNotSetException description here
 	 */
 	public void init() throws JPanelNotSetException, JLabelNotSetException {
 		
 		// CHECK INTEGRITY
 		if(northPanel == null) {
 			throw new JPanelNotSetException(""
-					+ "Panel in NORTH area isn't setted");
+					+ "Panel in NORTH area isn't set");
 		} if(southPanel == null) {
 			throw new JPanelNotSetException(""
-					+ "Panel in SOUTH area isn't setted");
+					+ "Panel in SOUTH area isn't set");
 		} if(background == null) {
 			throw new JLabelNotSetException(""
-					+ "Label background isn't setted");
+					+ "Label background isn't set");
 		}
 		
 		// ALIGNMENTS
