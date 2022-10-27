@@ -10,20 +10,27 @@ public interface AbstractUnoCard {
      * @return An Object that describes the
      *         action of the UnoCard.
      */
-    AbstractUnoAction action();
+    AbstractUnoCardAction action();
 
     /**
      * Returns the color.
      * @return An object that describes the
      *         color of the UnoCard.
      */
-    AbstractUnoColor color();
+    AbstractUnoCardColor color();
 
     /**
      * Returns the value.
      * @return An int value that describes
      *         the numeric value of the UnoCard
      */
-    int value();
+    AbstractUnoCardValue value();
+
+
+    /**
+     * Sets the special wild card color
+     * @param color An AbstractUnoColor object
+     */
+    void setWildCardColor(AbstractUnoCardColor color);
 
 }

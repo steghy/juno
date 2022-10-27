@@ -3,14 +3,14 @@ package juno.model.card;
 /**
  * This class defines the UnoCard object that
  * represents the Uno cards.
- *
- * @param value  The value.
- * @param color  The color Object.
- * @param action The Action object.
  * @author steghy
  * @email steghy.github@proton.me
  */
-public record UnoCard(int value, AbstractUnoColor color, AbstractUnoAction action) implements AbstractUnoCard {
+public class UnoCard implements AbstractUnoCard {
+
+	private AbstractUnoCardColor color;
+	private final AbstractUnoCardAction action;
+	private final AbstractUnoCardValue value;
 
 	/**
 	 * Builds an UnoCard object with the specified
@@ -20,7 +20,10 @@ public record UnoCard(int value, AbstractUnoColor color, AbstractUnoAction actio
 	 * @param color  A Color object.
 	 * @param action An Action object.
 	 */
-	public UnoCard {
+	public UnoCard(AbstractUnoCardValue value, AbstractUnoCardColor color, AbstractUnoCardAction action) {
+		this.value = value;
+		this.color = color;
+		this.action = action;
 	}
 
 	/**
@@ -29,7 +32,7 @@ public record UnoCard(int value, AbstractUnoColor color, AbstractUnoAction actio
 	 * @return A int value.
 	 */
 	@Override
-	public int value() {
+	public AbstractUnoCardValue value() {
 		return this.value;
 	}
 
@@ -40,7 +43,7 @@ public record UnoCard(int value, AbstractUnoColor color, AbstractUnoAction actio
 	 * @return A Color object
 	 */
 	@Override
-	public AbstractUnoColor color() {
+	public AbstractUnoCardColor color() {
 		return this.color;
 	}
 
@@ -52,14 +55,25 @@ public record UnoCard(int value, AbstractUnoColor color, AbstractUnoAction actio
 	 * @return An Action object
 	 */
 	@Override
-	public AbstractUnoAction action() {
+	public AbstractUnoCardAction action() {
 		return this.action;
+	}
+
+
+	public void setWildCardColor(AbstractUnoCardColor color){
+		if(this.action != null && this.action.isWildAction()){
+			this.color = color;
+		} else {
+			throw new IllegalArgumentException("Not a WILD card");
+		}
 	}
 
 
 	@Override
 	public String toString() {
-		return "UnoCard[" + this.value + ", "
+		return "UnoCard["
+				+ (this.value == null ? "NO_VALUE" : this.value)
+				+ ", "
 				+ (this.color == null ? "NO_COLOR" : this.color)
 				+ ", "
 				+ (this.action == null ? "NO_ACTION" : this.action)
@@ -70,9 +84,9 @@ public record UnoCard(int value, AbstractUnoColor color, AbstractUnoAction actio
 	@Override
 	public boolean equals(Object object) {
 		if (object instanceof UnoCard card) {
-			return this.action == card.action() &&
-					this.color == card.color() &&
-					this.value == card.value();
+			return this.action.equals(card.action) &&
+					this.color.equals(card.color) &&
+					this.value.equals(card.value());
 		} else {
 			throw new IllegalArgumentException("The object needs to"
 					+ "be an instance of type Card");
