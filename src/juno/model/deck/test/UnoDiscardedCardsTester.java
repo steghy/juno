@@ -1,9 +1,8 @@
 package juno.model.deck.test;
 
-import juno.model.card.AbstractUnoCard;
 import juno.model.deck.*;
 
-public class DiscardedCardsTester {
+public class UnoDiscardedCardsTester {
 
     public static void main(String[] args){
 
@@ -16,21 +15,22 @@ public class DiscardedCardsTester {
         // DECK SETTINGS
         deck.setMixer(new Mixer<>());
         deck.setDiscardedCards(discardedCards);
-        deck.setManager(new UnoDeckManager());
+        deck.setManager(UnoDeckManager.getInstance());
 
         // DISCARDED CARDS SETTINGS
-        discardedCards.setUnoCardController(new UnoCardController());
+        discardedCards.setUnoCardController(UnoCardController.getInstance());
 
         // GENERATING THE CARDS OF THE DECK
         UnoDeckGenerator.generate(deck, UnoCardsFactory.getInstance());
 
         // MIXING THE CARDS OF THE DECK
-        // deck.mixDeck();
+        deck.mixDeck();
 
         System.out.println("DECK");
         deck.forEach(System.out::println);
         System.out.println();
         System.out.println("---------------------");
+        System.out.println();
 
         int factor = 104;
 

@@ -1,9 +1,8 @@
 package juno.model.deck.test;
 
-import juno.model.card.AbstractUnoCard;
 import juno.model.deck.*;
 
-public class DeckTester {
+public class UnoDeckTester {
 
     public static void main(String[] args){
 
@@ -16,7 +15,7 @@ public class DeckTester {
         // SETTINGS
         deck.setMixer(new Mixer<>());
         deck.setDiscardedCards(discardedCards);
-        deck.setManager(new UnoDeckManager());
+        deck.setManager(UnoDeckManager.getInstance());
 
         // GENERATING CARDS OF THE DECK
         UnoDeckGenerator.generate(deck, UnoCardsFactory.getInstance());

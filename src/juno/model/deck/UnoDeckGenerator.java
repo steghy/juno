@@ -12,7 +12,8 @@ public class UnoDeckGenerator {
      * Generates the Uno deck
      * @param deck A Generable deck
      */
-    public static void generate(AbstractGenerable<AbstractUnoCard> deck, AbstractUnoCardsFactory factory) {
+    public static void generate(AbstractGenerable<AbstractUnoCard> deck,
+                                AbstractUnoCardsFactory factory) {
 
         // BLUE CARDS
         factory.getBlueCards().forEach(card -> {

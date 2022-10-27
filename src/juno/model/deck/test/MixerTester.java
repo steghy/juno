@@ -2,7 +2,7 @@ package juno.model.deck.test;
 
 import juno.model.deck.*;
 
-public class ShufflerTester {
+public class MixerTester {
 
     public static void main(String[] args){
 
