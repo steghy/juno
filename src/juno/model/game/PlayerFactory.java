@@ -2,19 +2,19 @@ package juno.model.game;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
+import java.util.List;
 
-public class PlayerProvider implements AbstractPlayerProvider{
+public class PlayerFactory implements AbstractPlayerFactory {
 
-    private Collection<AbstractPlayer> players;
+    private List<AbstractPlayer> players;
 
-    private static PlayerProvider instance;
+    private static PlayerFactory instance;
 
-    private PlayerProvider(){}
+    private PlayerFactory(){}
 
-    public static PlayerProvider getInstance(){
+    public static PlayerFactory getInstance(){
         if(instance == null) {
-            instance = new PlayerProvider();
+            instance = new PlayerFactory();
         } return instance;
     }
 
@@ -28,7 +28,7 @@ public class PlayerProvider implements AbstractPlayerProvider{
     }
 
     @Override
-    public Collection<AbstractPlayer> getPlayers() {
+    public List<AbstractPlayer> getPlayers() {
         return players;
     }
 }
