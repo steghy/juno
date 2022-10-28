@@ -27,10 +27,4 @@ public interface AbstractUnoCard {
     AbstractUnoCardValue value();
 
 
-    /**
-     * Sets the special wild card color
-     * @param color An AbstractUnoColor object
-     */
-    void setWildCardColor(AbstractUnoCardColor color);
-
 }

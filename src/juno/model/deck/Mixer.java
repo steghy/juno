@@ -11,6 +11,9 @@ public class Mixer<E> implements AbstractMixer<E> {
     public void shuffle(List<E> data) {
         Random random = new Random();
         int size = data.size();
+        if(size <= 0){
+           throw new IllegalArgumentException("Invalid data length");
+        }
         for(int i = 0; i < 250; i++) {
             E lastObject = data.get(size - 1);
             data.remove(size - 1);

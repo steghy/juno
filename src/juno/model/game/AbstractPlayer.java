@@ -7,5 +7,5 @@ public interface AbstractPlayer {
      * @return A String object that represents the
      *          AbstractPlayer name
      */
-    String getPlayerName();
+    String playerName();
 }

@@ -11,20 +11,24 @@ public class UnoCardControllerTester {
         UnoDeck unoDeck = UnoDeck.getInstance();
 
         // UNO DISCARDED CARDS
-        UnoDiscardedCards unoDiscardedCards = UnoDiscardedCards.getInstance();
+        UnoDiscardPile unoDiscardPile = UnoDiscardPile.getInstance();
+
+        // UNO DECK GENERATOR
+        UnoDeckFactory generator = UnoDeckFactory.getInstance();
 
         // UNO DECK SETTINGS
-        unoDeck.setDiscardedCards(unoDiscardedCards);
-        unoDeck.setManager(UnoDeckManager.getInstance());
+        unoDeck.setDiscardedPile(unoDiscardPile);
+        unoDeck.setRefiller(new UnoDeckRefiller<>());
         unoDeck.setMixer(new Mixer<>());
 
         // UNO DISCARDED CARDS SETTINGS
-        unoDiscardedCards.setUnoCardController(UnoCardController.getInstance());
+        unoDiscardPile.setCompatibilityChecker(UnoCardCompatibilityChecker.getInstance());
+
+        // UNO DECK GENERATOR SETTINGS
+        generator.setFactory(UnoCardFactory.getInstance());
 
         // GENERATING CARDS & SHUFFLE
-        UnoDeckGenerator.generate(unoDeck, UnoCardsFactory.getInstance());
-        unoDeck.mixDeck();
-
+        unoDeck.addAll(generator.getDeck());
 
         boolean colorTest = false;
         boolean numberTest = false;
@@ -38,11 +42,11 @@ public class UnoCardControllerTester {
             AbstractUnoCard cardInTop = new UnoCard(UnoCardValue.ZERO, UnoCardColor.RED, null);
 
             // TESTING COLOR COMPATIBLE
-            unoDiscardedCards.put(cardInTop);
-            System.out.println("Top card on 'DiscardedCardsDeck':" + unoDiscardedCards.peek());
+            unoDiscardPile.discard(cardInTop);
+            System.out.println("Top card on 'DiscardedCardsDeck':" + unoDiscardPile.peek());
 
             System.out.println("Card to put: " + cardToPut);
-            unoDiscardedCards.put(cardToPut);
+            unoDiscardPile.discard(cardToPut);
         }
 
 
@@ -54,11 +58,11 @@ public class UnoCardControllerTester {
             AbstractUnoCard cardInTop = new UnoCard(UnoCardValue.NINE, UnoCardColor.BLUE, null);
 
             // TESTING COLOR COMPATIBLE
-            unoDiscardedCards.put(cardInTop);
-            System.out.println("Top card on 'DiscardedCardsDeck':" + unoDiscardedCards.peek());
+            unoDiscardPile.discard(cardInTop);
+            System.out.println("Top card on 'DiscardedCardsDeck':" + unoDiscardPile.peek());
 
             System.out.println("Card to put: " + cardToPut);
-            unoDiscardedCards.put(cardToPut);
+            unoDiscardPile.discard(cardToPut);
         }
 
         if(jollyTest) {
@@ -69,11 +73,11 @@ public class UnoCardControllerTester {
             AbstractUnoCard cardInTop = new UnoCard(UnoCardValue.ONE, UnoCardColor.BLUE, null);
 
             // TESTING COLOR COMPATIBLE
-            unoDiscardedCards.put(cardInTop);
-            System.out.println("Top card on 'DiscardedCardsDeck':" + unoDiscardedCards.peek());
+            unoDiscardPile.discard(cardInTop);
+            System.out.println("Top card on 'DiscardedCardsDeck':" + unoDiscardPile.peek());
 
             System.out.println("Card to put: " + cardToPut);
-            unoDiscardedCards.put(cardToPut);
+            unoDiscardPile.discard(cardToPut);
         }
     }
 }

@@ -61,11 +61,12 @@ public class UnoCard implements AbstractUnoCard {
 
 
 	public void setWildCardColor(AbstractUnoCardColor color){
-		if(this.action != null && this.action.isWildAction()){
-			this.color = color;
-		} else {
-			throw new IllegalArgumentException("Not a WILD card");
-		}
+		if(this.action != null) {
+			if (this.action.isWildAction() || this.action.isWildDrawFourAction()) {
+				this.color = color;
+				return;
+			}
+		} throw new IllegalArgumentException("Invalid argument");
 	}
 
 

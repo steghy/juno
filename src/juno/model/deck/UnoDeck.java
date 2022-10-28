@@ -1,7 +1,5 @@
 package juno.model.deck;
 
-import java.util.Stack;
-
 import juno.model.card.AbstractUnoCard;
 
 /**
@@ -10,26 +8,43 @@ import juno.model.card.AbstractUnoCard;
  * @author steghy
  * @email steghy.github@proton.me
  */
-public class UnoDeck extends Stack<AbstractUnoCard> implements AbstractUnoDeck<AbstractUnoCard>, AbstractGenerable<AbstractUnoCard> {
+public class UnoDeck extends StackDeck<AbstractUnoCard> {
 
+	private AbstractDeckRefiller<AbstractUnoCard> refiller;
+
+	private AbstractDiscardPile<AbstractUnoCard> discardedPile;
+
+
+	/* The UnoDeck instance */
 	private static UnoDeck instance;
 
-	/* The AbstractMixer object */
-	private AbstractMixer<AbstractUnoCard> mixer;
-
-	/* The AbstractUnoDeckManager object */
-	private AbstractUnoDeckManager manager;
-
-	/* The AbstractUnoDiscardedCards object */
-	private AbstractUnoDiscardedCards<AbstractUnoCard> discardedCards;
-	
 	/* Builds the Deck instance */
 	private UnoDeck() {}
 
+	/**
+	 * Returns the UnoDeck instance.
+	 * @return The UnoDeck instance.
+	 */
 	public static UnoDeck getInstance(){
 		if(instance == null){
 			instance = new UnoDeck();
 		} return instance;
+	}
+
+	/**
+	 * Sets the AbstractDeckRefiller object of this instance.
+	 * @param refiller An AbstractDeckRefiller object
+	 */
+	public void setRefiller(AbstractDeckRefiller<AbstractUnoCard> refiller) {
+		this.refiller = refiller;
+	}
+
+	/**
+	 * Sets the AbstractDiscardedPile object of this instance.
+	 * @param discardedPile An AbstractDiscardedPile object
+	 */
+	public void setDiscardedPile(AbstractDiscardPile<AbstractUnoCard> discardedPile) {
+		this.discardedPile = discardedPile;
 	}
 
 	/**
@@ -41,51 +56,13 @@ public class UnoDeck extends Stack<AbstractUnoCard> implements AbstractUnoDeck<A
 	public AbstractUnoCard draw() {
 		if(this.isEmpty()) {
 			throw new IllegalArgumentException("Empty deck");
-		} else if(this.size() == 4) {
-			manager.reintroduceCards(this, discardedCards);
-			mixDeck();
-		} return this.pop();
+		}
+
+		if(this.size() == 4) {
+			refiller.refill(this, discardedPile);
+			getMixer().shuffle(this);
+		}
+
+		return this.pop();
 	}
-
-	/** Mix this deck */
-	public void mixDeck(){
-		this.mixer.shuffle(this);
-	}
-
-
-	/**
-	 * Sets the Mixer object of this instance
-	 * @param mixer A Mixer object
-	 */
-	public void setMixer(AbstractMixer<AbstractUnoCard> mixer){
-		this.mixer = mixer;
-	}
-
-
-	/**
-	 * Sets the AbstractUnoDeckManager object of this
-	 * instance
-	 * @param manager An AbstractUnoDeckManager object
-	 */
-	public void setManager(AbstractUnoDeckManager manager){
-		this.manager = manager;
-	}
-
-
-	/**
-	 * Sets the AbstractUnoDiscardedCards object of this
-	 * instance
-	 * @param discardedCards An AbstractUnoDiscardedCards
-	 *                                  object
-	 */
-	public void setDiscardedCards(AbstractUnoDiscardedCards<AbstractUnoCard> discardedCards){
-		this.discardedCards = discardedCards;
-	}
-
-
-	@Override
-	public void insert(AbstractUnoCard card){
-		this.add(card);
-	}
-
 }

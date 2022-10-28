@@ -10,23 +10,27 @@ public class UnoDiscardedCardsTester {
         UnoDeck deck = UnoDeck.getInstance();
 
         // DISCARDED CARDS
-        UnoDiscardedCards discardedCards = UnoDiscardedCards.getInstance();
+        UnoDiscardPile discardedPile = UnoDiscardPile.getInstance();
+
+        // UNO DECK GENERATOR
+        UnoDeckFactory generator = UnoDeckFactory.getInstance();
 
         // DECK SETTINGS
         deck.setMixer(new Mixer<>());
-        deck.setDiscardedCards(discardedCards);
-        deck.setManager(UnoDeckManager.getInstance());
+        deck.setDiscardedPile(discardedPile);
+        deck.setRefiller(new UnoDeckRefiller<>());
 
         // DISCARDED CARDS SETTINGS
-        discardedCards.setUnoCardController(UnoCardController.getInstance());
+        discardedPile.setCompatibilityChecker(UnoCardCompatibilityChecker.getInstance());
 
-        // GENERATING THE CARDS OF THE DECK
-        UnoDeckGenerator.generate(deck, UnoCardsFactory.getInstance());
+        // UNO DECK GENERATOR SETTINGS
+        generator.setFactory(UnoCardFactory.getInstance());
 
-        // MIXING THE CARDS OF THE DECK
-        deck.mixDeck();
+        // OPERATIONS
+        deck.addAll(generator.getDeck());
 
         System.out.println("DECK");
+        System.out.println();
         deck.forEach(System.out::println);
         System.out.println();
         System.out.println("---------------------");
@@ -37,20 +41,20 @@ public class UnoDiscardedCardsTester {
         // CARD
         for(int i = 0; i < factor; i++){
            try {
-               discardedCards.push(deck.draw());
+               discardedPile.push(deck.draw());
            } catch (IllegalArgumentException e) {
                 e.printStackTrace();
            }
         }
 
         System.out.println("Deck size before :" + deck.size());
-        System.out.println("DiscardedCards before: " + discardedCards.size());
+        System.out.println("DiscardedCards before: " + discardedPile.size());
 
         System.out.println();
 
-        discardedCards.push(deck.draw());
+        discardedPile.push(deck.draw());
 
         System.out.println("Deck size after :" + deck.size());
-        System.out.println("DiscardedCards after: " + discardedCards.size());
+        System.out.println("DiscardedCards after: " + discardedPile.size());
     }
 }
