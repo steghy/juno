@@ -2,54 +2,37 @@ package juno.model.sound;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Objects;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import juno.controller.audio.AbstractAudioPlayer;
-import juno.model.util.PathGenerator;
+import juno.model.player.Donut;
 
 /**
- * Audio Player class.
  * @author steghy
- * @email steghy.github@proton.me
  */
-public class AudioPlayer implements Runnable, AbstractAudioPlayer {
-	
-	public static final int ACTIVE = 1;
-	
-	/* Paused status */
-	public static final int INACTIVE = 0; 
+public class AudioPlayer implements Runnable, AbstractAdvancedAudioPlayer {
 
-	/* List of all files */
-	private ArrayList<File> tracks;
-	
-	/* AudioInputStream component */
-	private AudioInputStream audioInputStream;
-	
 	/* Clip component */
 	private Clip clip;
-	
-	/* Track position */
-	private long trackMicrosecondsPosition;
-	
-	/* Dynamic status */
-	private int status;
 
-	/* Track index */
-	private int trackIndex;
-	
+	/* Audio tracks */
+	private Donut<File> tracks;
+
+	/* AudioPlayer status */
+	private boolean status;
+
 	/* The AudioPlayer instance */
 	private static AudioPlayer instance;
-	
-	
+
 	/* Builds the AudioPlayer instance */
 	private AudioPlayer() {}
 
-	
 	/**
 	 * Returns the AudioPlayer instance
 	 * @return The AudioPlayer instance 
@@ -59,155 +42,154 @@ public class AudioPlayer implements Runnable, AbstractAudioPlayer {
 			instance = new AudioPlayer();
 		} return instance;
 	}
-	
-	
-	/** Start the AudioPlayer process */
+
+	/**
+	 * Play the current track from
+	 * the beginning.
+	 */
 	public void play() {
-		if(status == ACTIVE) {
-			stop();
-			status = INACTIVE;
-		} else if(status == INACTIVE) {
-			if(trackMicrosecondsPosition != 0L) {
-				resume();
-			} else {
-				clip.start();
-			} status = ACTIVE;
-		}
-	}
-	
-	
-	/** Restart the current track */
-	public void restart() {
-		clip.stop();
-		clip.close();
-		resetAudioPlayer();
-		trackMicrosecondsPosition = 0L;
-		clip.setMicrosecondPosition(trackMicrosecondsPosition);
+		status = true;
 		clip.start();
 	}
 
-	
-	/** Resume the current track */
-	public void resume() {
-		if(status == AudioPlayer.INACTIVE) {
-			clip.close();
-			resetAudioPlayer();
-			clip.setMicrosecondPosition(trackMicrosecondsPosition);
-			play();
-		} else {
-			throw new IllegalArgumentException(""
-					+ "AudioPlayer instance is not running.");
+	/**
+	 * Rewind the audio track.
+	 */
+	public void rewind() {
+		clip.setMicrosecondPosition(0L);
+		play();
+	}
+
+	/**
+	 * Pause the audio player.
+	 */
+	public void pause() {
+		if(status) {
+			status = false;
+			clip.stop();
 		}
 	}
-	
-	
-	/** Stops the current audio track */
-	public void stop() {
-		trackMicrosecondsPosition = this.clip.getMicrosecondPosition();
-		clip.stop();
-		clip.close();
-		status = AudioPlayer.INACTIVE;
-	}
-	
-	
-	/** Plays the next track */
+
+	/**
+	 * Plays the next audio track.
+	 */
 	public void next() {
 		stop();
-		if(trackIndex == tracks.size() - 1) {
-			trackIndex = 0;
-		} else {
-			trackIndex++;
-		}
+		init(this.tracks.next());
 		play();
 	}
-	
-	
-	/** Plays the previous track */
+
+	/**
+	 * Plays the previous audio track.
+	 */
 	public void previous() {
-		if(trackIndex == 0) {
-			trackIndex = tracks.size() - 1;
-		} else {
-			trackIndex--;
-		}
+		stop();
+		init(this.tracks.previous());
 		play();
 	}
 
-	
 	/**
-	 * Returns true if the status is 'Play' 
-	 * @return A boolean value
+	 * Stop the audio player
 	 */
-	public boolean isRunning() {
-		return status == AudioPlayer.ACTIVE;
+	public void stop() {
+		status = false;
+		clip.stop();
+		clip.close();
 	}
 
-	
 	/**
-	 * Returns the AudioInputStream component of this instance
-	 * @return The AudioInputStream component of this instance
+	 * Jumps to the specified position
+	 * @param position A long value
 	 */
-	public AudioInputStream getAudioInputStream() {
-		return audioInputStream;
+	public void move(long position) {
+		if(position < 0 || position > clip.getMicrosecondLength()) {
+			throw new IllegalArgumentException("Invalid input (" + position
+			+ ") for length (" + clip.getMicrosecondLength() + ")");
+		} else {
+			clip.stop();
+			clip.close();
+			init(this.tracks.current());
+			clip.setMicrosecondPosition(position);
+			clip.start();
+			status = true;
+		}
 	}
 
-	
 	/**
-	 * Returns the Clip component of this object
-	 * @return The Clip component of this object
+	 * Sets the audio sound to play with this AudioPlayer instance.
+	 * @param tracks A Collection of String object.
 	 */
-	public Clip getClipComponent() {
-		return this.clip;
+	public void setTracks(Collection<String> tracks) {
+		this.tracks = new Donut<>();
+		this.tracks.addAll(tracks.stream().map(File::new).toList());
+		this.tracks.initialize(0);
+		init(this.tracks.current());
 	}
 
-	
+
 	/**
-	 * Returns the music files
-	 * @return An ArrayList<File>
+	 * Sets the audio sound to play with this AudioPlayer instance.
+	 * @param tracks A Collection of String object.
 	 */
-	public ArrayList<File> getMusicFiles(){
-		return tracks;
+	public void setTracks(List<File> tracks) {
+		this.tracks = new Donut<>();
+		this.tracks.addAll(tracks);
+		this.tracks.initialize(0);
+		init(this.tracks.current());
 	}
 
-	
+	/**
+	 * Sets the audio sound to play with this AudioPlayer instance.
+	 * @param tracks An array of File objects
+	 */
+	public void setTracks(File[] tracks) {
+		this.tracks = new Donut<>();
+		this.tracks.addAll(Arrays.asList(tracks));
+		this.tracks.initialize(0);
+		init(this.tracks.current());
+	}
+
 	@Override
 	public void run() {
-		this.play();
+		if(clip == null) {
+			throw new IllegalArgumentException(
+					"First set the audio tracks. Invoke" +
+							"setTracks(...)");
+		} while(true) {
+			this.play();
+			try {
+				TimeUnit.MICROSECONDS.sleep(clip.getMicrosecondLength());
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+				break;
+			} next();
+		} stop();
 	}
-
 
 	/**
-	 * Sets the tracks list
-	 * @param path A path that represents a directory
-	 *             containing music files in wav format
+	 * Returns the Clip object of this instance
+	 * @return The Clip obejct of this instance
 	 */
-	public void setTracks(String path) {
-		tracks = new ArrayList<>();
-		File musicDirectory = new File(path);
-		for(String fileName : Objects.requireNonNull(musicDirectory.list())) {
-			String fileNamePath = PathGenerator.generate(path, fileName);
-			if(fileNamePath.endsWith(".wav")) 
-				tracks.add(new File(fileNamePath));
-		} resetAudioPlayer();
+	public Clip getClip() {
+		return clip;
 	}
 
-
-	/* Reset the AudioPlayer instance */
-	private void resetAudioPlayer() {
+	/**
+	 * Initialize the AudioPlayer instance with the specified
+	 * File object.
+	 * @param track An object of type File.
+	 */
+	private void init(File track) {
 		try {
-			audioInputStream = AudioSystem
-					.getAudioInputStream(tracks.get(trackIndex).getAbsoluteFile());
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(track);
 			clip = AudioSystem.getClip();
 			clip.open(audioInputStream);
-		} catch (LineUnavailableException |
-				 IllegalStateException |
-				 IllegalArgumentException |
-				 SecurityException |
-				 UnsupportedAudioFileException |
-				 IOException e) {
-			e.printStackTrace();
+		} catch (LineUnavailableException e) {
+			throw new RuntimeException("Line not available: " + e);
+		} catch (IOException e) {
+			throw new RuntimeException("IO error: " + e);
+		} catch (UnsupportedAudioFileException e) {
+			throw new RuntimeException("Unsupported audio file: " + e);
 		}
 	}
-
-
-	
 }

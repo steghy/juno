@@ -2,24 +2,33 @@ package juno.model.deck;
 
 import juno.model.card.AbstractUnoCard;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * This class defines the deck of
  * the Uno card game.
  * @author steghy
  * @email steghy.github@proton.me
  */
-public class UnoDeck extends StackDeck<AbstractUnoCard> {
+public class UnoDeck extends StackDeck<AbstractUnoCard> implements Subject{
 
 	private AbstractDeckRefiller<AbstractUnoCard> refiller;
 
 	private AbstractDiscardPile<AbstractUnoCard> discardedPile;
+
+	private List<Observer> observers;
+
+	private AbstractUnoCard lastCard;
 
 
 	/* The UnoDeck instance */
 	private static UnoDeck instance;
 
 	/* Builds the Deck instance */
-	private UnoDeck() {}
+	private UnoDeck() {
+		observers = new ArrayList<>();
+	}
 
 	/**
 	 * Returns the UnoDeck instance.
@@ -62,7 +71,27 @@ public class UnoDeck extends StackDeck<AbstractUnoCard> {
 			refiller.refill(this, discardedPile);
 			getMixer().shuffle(this);
 		}
+		lastCard = this.pop();
+		updateAll();
+		return lastCard;
+	}
 
-		return this.pop();
+	public AbstractUnoCard getLastCard() {
+		return lastCard;
+	}
+
+	@Override
+	public void addObserver(Observer observer) {
+		observers.add(observer);
+	}
+
+	@Override
+	public void removeObserver(Observer observer) {
+		observers.remove(observer);
+	}
+
+	@Override
+	public void updateAll() {
+		observers.forEach(observer -> observer.update(this));
 	}
 }

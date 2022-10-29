@@ -30,22 +30,22 @@ public class UnoCardControllerTester {
         // GENERATING CARDS & SHUFFLE
         unoDeck.addAll(generator.getDeck());
 
-        boolean colorTest = false;
+        boolean colorTest = true;
         boolean numberTest = false;
-        boolean jollyTest = true;
+        boolean jollyTest = false;
 
         if(colorTest) {
             // NUMERIC CARD : 1 - RED - null
-            AbstractUnoCard cardToPut = new UnoCard(null, UnoCardColor.RED, UnoCardAction.SKIP);
+            AbstractUnoCard cardToPut = new UnoCard(null, UnoCardColor.BLUE, UnoCardAction.SKIP);
 
             // NUMERIC CARD : 1 - BLUE - null
-            AbstractUnoCard cardInTop = new UnoCard(UnoCardValue.ZERO, UnoCardColor.RED, null);
+            AbstractUnoCard cardInTop = new UnoCard(null, UnoCardColor.RED, UnoCardAction.SKIP);
 
             // TESTING COLOR COMPATIBLE
             unoDiscardPile.discard(cardInTop);
-            System.out.println("Top card on 'DiscardedCardsDeck':" + unoDiscardPile.peek());
+            System.out.println("Top card on 'DiscardedPile':" + unoDiscardPile.peek());
 
-            System.out.println("Card to put: " + cardToPut);
+            System.out.println("Card to put from Deck: " + cardToPut);
             unoDiscardPile.discard(cardToPut);
         }
 

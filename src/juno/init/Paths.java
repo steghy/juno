@@ -6,6 +6,8 @@ public enum Paths {
 	DATA(generatePath("data")),
 	AUDIO(generatePath(DATA, "audio")),
 	MUSIC(generatePath(AUDIO, "music")),
+	MUSIC_2(generatePath(AUDIO, "music-2")),
+	MUSIC_3(generatePath(AUDIO, "music-3")),
 	EFFECTS(generatePath(AUDIO, "effects")),
 	VIDEOS(generatePath(DATA, "videos")),
 	IMAGES(generatePath(DATA, "images")),
