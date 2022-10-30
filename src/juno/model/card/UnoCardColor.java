@@ -1,63 +1,49 @@
 package juno.model.card;
 
 /**
- * This class defines Color object.
- * The Color object are:
- * BLUE, GREEN, RED and YELLOW.
  * @author steghy
- * @email steghy.github@proton.me
  */
-public enum UnoCardColor implements AbstractUnoCardColor {
+public class UnoCardColor implements AbstractUnoCardColor {
 
-	/** The blue color */
-	BLUE,
+    /* The AbstractUnoColor object */
+    private AbstractUnoColor color;
 
-	/** The green color */
-	GREEN,
+    /**
+     * Builds an UnoCardColor object with
+     * the specified AbstractUnoColor object
+     * @param color An AbstractUnoColor object
+     */
+    public UnoCardColor(AbstractUnoColor color) {
+       this.color = color;
+    }
 
-	/** The red color */
-	RED,
+    /**
+     * Builds an empty UnoCardColor object
+     */
+    public UnoCardColor(){}
 
-	/** The yellow color */
-	YELLOW;
+    @Override
+    public void setUnoColor(AbstractUnoColor color) {
+        this.color = color;
+    }
 
+    @Override
+    public AbstractUnoColor getUnoColor(){
+        return this.color;
+    }
 
-	@Override
-	public boolean isBlue() {
-		return this.name().equals("BLUE");
-	}
+    @Override
+    public boolean equals(Object object) {
+        if(object instanceof UnoCardColor color) {
+            return this.color.equals(color.getUnoColor());
+        } else {
+            throw new IllegalArgumentException("Invalid type "
+            + object.getClass() + ", expected UnoCardColor type");
+        }
+    }
 
-
-	@Override
-	public boolean isRed(){
-		return this.name().equals("RED");
-	}
-
-
-	@Override
-	public boolean isYellow(){
-		return this.name().equals("YELLOW");
-	}
-
-
-	@Override
-	public boolean isGreen(){
-		return this.name().equals("GREEN");
-	}
-
-	/**
-	 * Returns the Color object associated with
-	 * the specified color name
-	 * @param colorName The name of the color
-	 * @return The associated Color object
-	 */
-	public static UnoCardColor getColorObject(String colorName) {
-		return switch (colorName.toUpperCase()) {
-			case ("BLUE") -> UnoCardColor.BLUE;
-			case ("GREEN") -> UnoCardColor.GREEN;
-			case ("RED") -> UnoCardColor.RED;
-			case ("YELLOW") -> UnoCardColor.YELLOW;
-			default -> null;
-		};
-	}
+    @Override
+    public String toString() {
+        return this.color == null ? "NO_COLOR" : this.color.toString();
+    }
 }

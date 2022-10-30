@@ -3,14 +3,11 @@ package juno.model.card;
 /**
  * This class defines the UnoCard object that
  * represents the Uno cards.
+ *
  * @author steghy
- * @email steghy.github@proton.me
  */
-public class UnoCard implements AbstractUnoCard {
-
-	private AbstractUnoCardColor color;
-	private final AbstractUnoCardAction action;
-	private final AbstractUnoCardValue value;
+public record UnoCard(AbstractUnoCardValue value, AbstractUnoCardColor color,
+					  AbstractUnoCardAction action) implements AbstractUnoCard {
 
 	/**
 	 * Builds an UnoCard object with the specified
@@ -20,10 +17,7 @@ public class UnoCard implements AbstractUnoCard {
 	 * @param color  A Color object.
 	 * @param action An Action object.
 	 */
-	public UnoCard(AbstractUnoCardValue value, AbstractUnoCardColor color, AbstractUnoCardAction action) {
-		this.value = value;
-		this.color = color;
-		this.action = action;
+	public UnoCard {
 	}
 
 	/**
@@ -60,16 +54,6 @@ public class UnoCard implements AbstractUnoCard {
 	}
 
 
-	public void setWildCardColor(AbstractUnoCardColor color){
-		if(this.action != null) {
-			if (this.action.isWildAction() || this.action.isWildDrawFourAction()) {
-				this.color = color;
-				return;
-			}
-		} throw new IllegalArgumentException("Invalid argument");
-	}
-
-
 	@Override
 	public String toString() {
 		return "UnoCard["
@@ -80,7 +64,6 @@ public class UnoCard implements AbstractUnoCard {
 				+ (this.action == null ? "NO_ACTION" : this.action)
 				+ "]";
 	}
-
 
 	@Override
 	public boolean equals(Object object) {

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="49e2aced-c42f-4e71-95f9-23744b048407" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/juno/model/card/AbstractUnoColor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/card/UnoColor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/deck/AbstractUnoDeck.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/deck/DeckComponent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/deck/DiscardedPileComponent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/deck/test/UnoDeckTester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/steghy.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/audio/music/track-1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/audio-player/audio-animation.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/audio-player/circle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/audio-player/fast-backward.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/audio-player/fast-forward.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/audio-player/import.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/audio-player/next.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/audio-player/play.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/audio-player/previous.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/audio-player/right-arrow.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/audio-player/rocket.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/audio-player/speech-bubble.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/audio-player/toggle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/audio-player/volume.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/backgrounds/default-background.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/backgrounds/default-background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/buttons/style-1/exit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/buttons/style-1/new-game.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/buttons/style-1/options.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/buttons/style-2/exit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/buttons/style-2/new-game.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/buttons/style-2/options.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/cards/cover/background.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/cards/cover/default.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/card/AbstractUnoCardColor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/card/AbstractUnoCardColor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/card/UnoCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/card/UnoCard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/card/UnoCardColor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/card/UnoCardColor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/UnoCardCompatibilityChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/UnoCardCompatibilityChecker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/UnoCardFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/UnoCardFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/UnoDeck.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/UnoDeck.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/UnoDeckRefiller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/UnoDiscardPile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/test/UnoCardControllerTester.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/test/UnoDiscardedCardsTester.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/player/UnoGameData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/player/UnoGameData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/card/AbstractUnoCardColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/card/AbstractUnoCardColor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/card/UnoCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/card/UnoCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/card/UnoCardColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/card/UnoCardColor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/AbstractCardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/AbstractCardFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/AbstractCompatibilityChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/AbstractCompatibilityChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/AbstractDeck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/AbstractDeck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/AbstractDeckFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/AbstractDeckFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/AbstractDeckRefiller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/AbstractDeckRefiller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/AbstractDiscardPile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/AbstractDiscardPile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/AbstractMixer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/AbstractMixer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/Mixer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/Mixer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/Observer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/Observer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/ObserverExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/ObserverExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/StackDeck.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/Subject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/Subject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/UnoCardCompatibilityChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/UnoCardCompatibilityChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/UnoCardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/UnoCardFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/UnoDeck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/UnoDeck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/UnoDeckFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/UnoDeckFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/UnoDeckRefiller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/DeckRefiller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/UnoDiscardPile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/test/ObserverPatternTester.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/test/UnoCardControllerTester.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/test/UnoCardFactoryTester.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/test/UnoDiscardedCardsTester.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/player/UnoGameData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/player/UnoGameData.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2Gr9wq3nWWGw7oiVXAlHQgcMzaJ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.2919922&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Application.UnoDeckTester">
+    <configuration name="ObserverPatternTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="juno.model.deck.test.ObserverPatternTester" />
+      <module name="juno-project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="juno.model.deck.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UnoCardControllerTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="juno.model.deck.test.UnoCardControllerTester" />
+      <module name="juno-project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="juno.model.deck.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UnoDeckTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="juno.model.deck.test.UnoDeckTester" />
+      <module name="juno-project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="juno.model.deck.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UnoDiscardedCardsTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="juno.model.deck.test.UnoDiscardedCardsTester" />
+      <module name="juno-project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="juno.model.deck.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.UnoDeckTester" />
+        <item itemvalue="Application.UnoDiscardedCardsTester" />
+        <item itemvalue="Application.ObserverPatternTester" />
+        <item itemvalue="Application.UnoCardControllerTester" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="49e2aced-c42f-4e71-95f9-23744b048407" name="Changes" comment="" />
+      <created>1667136077228</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1667136077228</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

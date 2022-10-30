@@ -1,97 +1,185 @@
 package juno.model.deck;
 
 import juno.model.card.AbstractUnoCard;
-
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * This class defines the deck of
- * the Uno card game.
- * @author steghy
- * @email steghy.github@proton.me
- */
-public class UnoDeck extends StackDeck<AbstractUnoCard> implements Subject{
+public class UnoDeck implements AbstractUnoDeck<AbstractUnoCard>, Subject{
 
-	private AbstractDeckRefiller<AbstractUnoCard> refiller;
+    /* Deck component */
+    private AbstractDeck<AbstractUnoCard> deck;
 
-	private AbstractDiscardPile<AbstractUnoCard> discardedPile;
+    private AbstractDiscardPile<AbstractUnoCard> discardedPile;
 
-	private List<Observer> observers;
+    private AbstractDeckRefiller<AbstractUnoCard> refiller;
 
-	private AbstractUnoCard lastCard;
+    private AbstractCompatibilityChecker<AbstractUnoCard> compatibilityChecker;
+
+    private AbstractMixer<AbstractUnoCard> mixer;
+
+    private AbstractDeckFactory<AbstractUnoCard> factory;
 
 
-	/* The UnoDeck instance */
-	private static UnoDeck instance;
+    private AbstractUnoCard lastCardDrawn;
 
-	/* Builds the Deck instance */
-	private UnoDeck() {
-		observers = new ArrayList<>();
-	}
+    private AbstractUnoCard lastCardInserted;
 
-	/**
-	 * Returns the UnoDeck instance.
-	 * @return The UnoDeck instance.
-	 */
-	public static UnoDeck getInstance(){
-		if(instance == null){
-			instance = new UnoDeck();
-		} return instance;
-	}
+    private boolean init;
 
-	/**
-	 * Sets the AbstractDeckRefiller object of this instance.
-	 * @param refiller An AbstractDeckRefiller object
-	 */
-	public void setRefiller(AbstractDeckRefiller<AbstractUnoCard> refiller) {
-		this.refiller = refiller;
-	}
+    private static UnoDeck instance;
 
-	/**
-	 * Sets the AbstractDiscardedPile object of this instance.
-	 * @param discardedPile An AbstractDiscardedPile object
-	 */
-	public void setDiscardedPile(AbstractDiscardPile<AbstractUnoCard> discardedPile) {
-		this.discardedPile = discardedPile;
-	}
+    private List<Observer> observerList;
 
-	/**
-	 * Returns the top card of the deck.
-	 * @return An AbstractUnoCard object.
-	 * @throws IllegalArgumentException if the deck is
-	 * 			empty.
-	 */
-	public AbstractUnoCard draw() {
-		if(this.isEmpty()) {
-			throw new IllegalArgumentException("Empty deck");
-		}
+    private UnoDeck() {
+        init = false;
+        observerList = new ArrayList<>();
+    }
 
-		if(this.size() == 4) {
-			refiller.refill(this, discardedPile);
-			getMixer().shuffle(this);
-		}
-		lastCard = this.pop();
-		updateAll();
-		return lastCard;
-	}
+    public static UnoDeck getInstance() {
+        if(instance == null) {
+            instance = new UnoDeck();
+        } return instance;
+    }
 
-	public AbstractUnoCard getLastCard() {
-		return lastCard;
-	}
+    @Override
+    public AbstractUnoCard draw() {
+        if(init) {
+          if(deck.size() <= 4) {
+              refiller.refill(deck, discardedPile);
+              mixer.shuffle(deck);
+          }
+          lastCardDrawn = deck.draw();
+          updateAll();
+          return lastCardDrawn;
+        } else {
+            throw new IllegalArgumentException("Not initalized");
+        }
+    }
 
-	@Override
-	public void addObserver(Observer observer) {
-		observers.add(observer);
-	}
+    @Override
+    public void discard(AbstractUnoCard card) {
+        if(init) {
+            if(lastCardInserted != null) {
+                if (compatibilityChecker.areCompatible(lastCardInserted, card)) {
+                    lastCardInserted = card;
+                    updateAll();
+                    discardedPile.discard(card);
+                } else {
+                    throw new IllegalArgumentException("Incompatible card");
+                }
+            }
+        } else {
+            throw new IllegalArgumentException("Not initialized ");
+        }
+    }
 
-	@Override
-	public void removeObserver(Observer observer) {
-		observers.remove(observer);
-	}
+    @Override
+    public AbstractUnoCard getLastCardDrawn() {
+        if(lastCardDrawn == null) {
+            throw new IllegalArgumentException("The last card drawn is empty");
+        } return lastCardDrawn;
+    }
 
-	@Override
-	public void updateAll() {
-		observers.forEach(observer -> observer.update(this));
-	}
+    @Override
+    public AbstractUnoCard getLastCardInserted() {
+        if(lastCardInserted == null) {
+            throw new IllegalArgumentException("The last card inserted is empty");
+        } return lastCardInserted;
+     }
+
+    /**
+     * Initialize the UnoDeck instance
+     */
+    public void initialize() {
+        if(deck == null) {
+            throw new IllegalArgumentException("Deck is not set");
+        } if(discardedPile == null) {
+            throw new IllegalArgumentException("Factory is not set");
+        } if(refiller == null) {
+            throw new IllegalArgumentException("Refiller is not set");
+        } if(compatibilityChecker == null) {
+            throw new IllegalArgumentException("Compatibility checker is not set");
+        } if(mixer == null) {
+            throw new IllegalArgumentException("Mixer not set");
+        } if(factory == null) {
+            throw new IllegalArgumentException("Factory is not set");
+        }
+
+        this.deck.addAll(factory.getDeck());
+        init = true;
+    }
+
+    /**
+     * Start the game.
+     */
+    public void start() {
+       if(init) {
+           discardedPile.discard(deck.draw());
+       } else {
+           throw new IllegalArgumentException("Not initialized");
+       }
+    }
+
+    /**
+     * Sets the AbstractDeck object of this instance
+     * @param deck An AbstractDeck object
+     */
+    public void setDeck(AbstractDeck<AbstractUnoCard> deck) {
+        this.deck = deck;
+    }
+
+    /**
+     * Sets the AbstractDiscardedPile object of this instance.
+     * @param discardedPile An AbstractDiscardedPile object.
+     */
+    public void setDiscardedPile(AbstractDiscardPile<AbstractUnoCard> discardedPile) {
+        this.discardedPile = discardedPile;
+    }
+
+    /**
+     * Sets the AbstractDeckRefiller object of this instance.
+     * @param refiller An AbstractDeckRefiller object
+     */
+    public void setRefiller(AbstractDeckRefiller<AbstractUnoCard> refiller){
+        this.refiller = refiller;
+    }
+
+    /**
+     * Sets the AbstractCompatibilityChecker object of this instance.
+     * @param compatibilityChecker An AbstractCompatibilityChecker object.
+     */
+    public void setCompatibilityChecker(AbstractCompatibilityChecker<AbstractUnoCard> compatibilityChecker) {
+        this.compatibilityChecker = compatibilityChecker;
+    }
+
+    /**
+     * Sets the AbstractMixer object of this instance.
+     * @param mixer An AbstractMixer object.
+     */
+    public void setMixer(AbstractMixer<AbstractUnoCard> mixer) {
+        this.mixer = mixer;
+    }
+
+    /**
+     * Sets the AbstractDeckFactory object of this instance.
+     * @param factory An AbstractDeckFactory object.
+     */
+    public void setFactory(AbstractDeckFactory<AbstractUnoCard> factory) {
+        this.factory = factory;
+    }
+
+    @Override
+    public void addObserver(Observer observer) {
+        observerList.add(observer);
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+        observerList.remove(observer);
+    }
+
+    @Override
+    public void updateAll() {
+        observerList.forEach(observer -> observer.update(this));
+    }
 }

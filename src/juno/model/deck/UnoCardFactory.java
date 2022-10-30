@@ -29,16 +29,17 @@ public class UnoCardFactory implements AbstractCardFactory<AbstractUnoCard> {
 
     @Override
     public Collection<AbstractUnoCard> getCards() {
+
         List<AbstractUnoCard> cards = new ArrayList<>();
 
         // COLORED CARDS
-        Arrays.asList(UnoCardColor.values()).forEach(color -> {
-            Arrays.asList(UnoCardValue.values()).forEach(value -> cards.add(new UnoCard(value, color, null)));
+        Arrays.asList(UnoColor.values()).forEach(color -> {
+            Arrays.asList(UnoCardValue.values()).forEach(value -> cards.add(new UnoCard(value, new UnoCardColor(color), null)));
 
             Arrays.asList(UnoCardAction.values()).forEach(action -> {
                 if(action != null) {
                     if (!action.isWildAction() && !action.isWildDrawFourAction()) {
-                        cards.add(new UnoCard(null, color, action));
+                        cards.add(new UnoCard(null, new UnoCardColor(color), action));
                     }
                 }
             });

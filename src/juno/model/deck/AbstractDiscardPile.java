@@ -2,7 +2,7 @@ package juno.model.deck;
 
 import java.util.List;
 
-public interface AbstractDiscardPile<E> extends List<E> {
+public interface AbstractDiscardPile<T> extends List<T> {
 
-    void discard(E el) throws IllegalArgumentException;
+    void discard(T el) throws IllegalArgumentException;
 }

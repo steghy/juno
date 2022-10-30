@@ -1,19 +1,22 @@
 package juno.model.deck;
 
-import juno.model.card.AbstractUnoCardAction;
-import juno.model.card.AbstractUnoCard;
-import juno.model.card.AbstractUnoCardColor;
-import juno.model.card.AbstractUnoCardValue;
+import juno.model.card.*;
 
 /**
  * @author steghy
  */
 public class UnoCardCompatibilityChecker implements AbstractCompatibilityChecker<AbstractUnoCard> {
 
+    /* The UnoCardCompatibilityChecker instance */
     private static UnoCardCompatibilityChecker instance;
 
+    /* Builds the UnoCardCompatibilityChecker instance */
     private UnoCardCompatibilityChecker(){}
 
+    /**
+     * Returns the UnoCardCompatibilityChecker instance.
+     * @return The UnoCardCompatibilityChecker instance.
+     */
     public static UnoCardCompatibilityChecker getInstance(){
         if(instance == null){
             instance = new UnoCardCompatibilityChecker();
@@ -44,13 +47,15 @@ public class UnoCardCompatibilityChecker implements AbstractCompatibilityChecker
 
         // COLOR CASE
         if(cardColor != null && otherCardColor != null){
-            if(cardColor.isBlue() && otherCardColor.isBlue()){
+            AbstractUnoColor color = cardColor.getUnoColor();
+            AbstractUnoColor otherColor = otherCardColor.getUnoColor();
+            if(color.isBlue() && otherColor.isBlue()){
                 return true;
-            } else if(cardColor.isGreen() && otherCardColor.isGreen()){
+            } else if(color.isGreen() && otherColor.isGreen()){
                 return true;
-            } else if(cardColor.isYellow() && otherCardColor.isYellow()){
+            } else if(color.isYellow() && otherColor.isYellow()){
                 return true;
-            } else if(cardColor.isRed() && otherCardColor.isRed()) {
+            } else if(color.isRed() && otherColor.isRed()) {
                 return true;
             }
         }

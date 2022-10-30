@@ -3,7 +3,7 @@ package juno.model.deck;
 
 import java.util.List;
 
-public interface AbstractMixer<E> {
+public interface AbstractMixer<T> {
 
-    void shuffle(List<E> data);
+    void shuffle(List<T> data);
 }

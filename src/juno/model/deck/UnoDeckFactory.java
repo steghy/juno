@@ -13,8 +13,10 @@ public class UnoDeckFactory extends AbstractDeckFactory<AbstractUnoCard> {
     /* The UnoDeckFactory instance */
     private static UnoDeckFactory instance;
 
+
     /* Builds the UnoDeckFactory */
-    private UnoDeckFactory(){}
+    private UnoDeckFactory() {}
+
 
     /**
      * Returns the UnoDeckFactory instance.
@@ -26,6 +28,7 @@ public class UnoDeckFactory extends AbstractDeckFactory<AbstractUnoCard> {
         } return instance;
     }
 
+    @Override
     public Collection<AbstractUnoCard> getDeck() {
 
         if(this.getFactory() == null) {

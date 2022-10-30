@@ -2,8 +2,8 @@ package juno.model.deck;
 
 import java.util.List;
 
-public interface AbstractDeck<E> extends List<E> {
+public interface AbstractDeck<T> extends List<T> {
 
-    E draw() throws IllegalArgumentException;
+    T draw() throws IllegalArgumentException;
 
 }

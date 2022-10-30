@@ -2,7 +2,17 @@ package juno.model.deck;
 
 import java.util.List;
 
-public interface AbstractDeckRefiller<E> {
+/**
+ * This class defines deck refiller.
+ * @param <T> The items type
+ */
+public interface AbstractDeckRefiller<T> {
 
-    void refill(List<E> deckToSupply, List<E> deckSupplier);
+    /**
+     * Add all the elements contained in the second List
+     * into the first List, then clear the second List.
+     * @param deckToSupply The deck to refill.
+     * @param deckSupplier The supplier deck.
+     */
+    void refill(List<T> deckToSupply, List<T> deckSupplier);
 }

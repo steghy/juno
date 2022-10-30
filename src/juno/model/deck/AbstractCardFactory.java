@@ -2,7 +2,15 @@ package juno.model.deck;
 
 import java.util.Collection;
 
-public interface AbstractCardFactory<E> {
+/**
+ * This interface defines cards factory.
+ * @param <T> The items type.
+ */
+public interface AbstractCardFactory<T> {
 
-    Collection<E> getCards();
+    /**
+     * Returns a Collection of T items.
+     * @return A Collection<T>.
+     */
+    Collection<T> getCards();
 }
