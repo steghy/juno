@@ -27,8 +27,12 @@ public class AudioPlayer implements Runnable, AbstractAdvancedAudioPlayer {
 	/* AudioPlayer status */
 	private boolean status;
 
+	/* Loop parameter */
+	private boolean loop;
+
 	/* The AudioPlayer instance */
 	private static AudioPlayer instance;
+
 
 	/* Builds the AudioPlayer instance */
 	private AudioPlayer() {}
@@ -162,8 +166,20 @@ public class AudioPlayer implements Runnable, AbstractAdvancedAudioPlayer {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 				break;
-			} next();
+			} if(loop) {
+				next();
+			} else {
+				break;
+			}
 		} stop();
+	}
+
+	/**
+	 * Sets the loop parameter.
+	 * @param value A boolean
+	 */
+	public void loop(boolean value) {
+		loop = value;
 	}
 
 	/**

@@ -29,27 +29,19 @@ public class FaderTester {
         // STARTING THREAD
         audioPlayerThread.start();
 
-        // FULL VOLUME
+        audioPlayer.loop(false);
 
-        BigDecimal gain = BigDecimal.valueOf(1.0);
-        float db = (float) (Math.log(gain.floatValue()) / Math.log(10.0) * 20.0);
-        floatControl.setValue(db);
-        BigDecimal subt = BigDecimal.valueOf(0.0006);
-
-        while(gain.floatValue() > -0.0005) {
-            db = (float) (Math.log(gain.floatValue()) / Math.log(10.0) * 20.0);
+        BigDecimal db = BigDecimal.valueOf(0);
+        while(db.floatValue() != -80) {
             System.out.println(db);
-            floatControl.setValue(db);
-            gain = gain.subtract(subt);
-            // System.out.println(gain.floatValue());
+            db = db.subtract(BigDecimal.valueOf(0.001));
+            floatControl.setValue(db.floatValue());
             try {
-                TimeUnit.MILLISECONDS.sleep(3);
+                TimeUnit.MICROSECONDS.sleep(1);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }
-
         audioPlayerThread.interrupt();
-
     }
 }

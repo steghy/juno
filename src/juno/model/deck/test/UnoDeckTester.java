@@ -13,7 +13,9 @@ public class UnoDeckTester {
 
         // SUB COMPONENTS SETTINGS
         DeckComponent<AbstractUnoCard> deckComponent = (DeckComponent<AbstractUnoCard>) DeckComponent.getInstance();
+
         DiscardedPileComponent<AbstractUnoCard> discardedPileComponent = (DiscardedPileComponent<AbstractUnoCard>) DiscardedPileComponent.getInstance();
+
         UnoDeckFactory factory = UnoDeckFactory.getInstance();
         factory.setFactory(UnoCardFactory.getInstance());
 
@@ -27,5 +29,10 @@ public class UnoDeckTester {
 
         // INITIALIZATION
         unoDeck.initialize();
+        unoDeck.start();
+
+        for(int i = 0; i < 200; i++) {
+            System.out.println(unoDeck.draw());
+        }
     }
 }

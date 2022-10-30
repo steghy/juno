@@ -9,25 +9,34 @@ public class UnoDeck implements AbstractUnoDeck<AbstractUnoCard>, Subject{
     /* Deck component */
     private AbstractDeck<AbstractUnoCard> deck;
 
+    /* DiscardedPile component */
     private AbstractDiscardPile<AbstractUnoCard> discardedPile;
 
+    /* Refiller component */
     private AbstractDeckRefiller<AbstractUnoCard> refiller;
 
+    /* The compatibility checker component */
     private AbstractCompatibilityChecker<AbstractUnoCard> compatibilityChecker;
 
+    /* The Mixer component */
     private AbstractMixer<AbstractUnoCard> mixer;
 
+    /* The Deck factory */
     private AbstractDeckFactory<AbstractUnoCard> factory;
 
-
+    /* The last card drawn */
     private AbstractUnoCard lastCardDrawn;
 
+    /* The last card inserted */
     private AbstractUnoCard lastCardInserted;
 
+    /* Init value */
     private boolean init;
 
+    /* The UnoDeck instance */
     private static UnoDeck instance;
 
+    /* The observers list */
     private List<Observer> observerList;
 
     private UnoDeck() {
@@ -44,7 +53,12 @@ public class UnoDeck implements AbstractUnoDeck<AbstractUnoCard>, Subject{
     @Override
     public AbstractUnoCard draw() {
         if(init) {
-          if(deck.size() <= 4) {
+
+            if(deck.isEmpty()) {
+                throw new IllegalArgumentException("Empty deck");
+            }
+
+            if(deck.size() <= 4) {
               refiller.refill(deck, discardedPile);
               mixer.shuffle(deck);
           }
@@ -103,10 +117,7 @@ public class UnoDeck implements AbstractUnoDeck<AbstractUnoCard>, Subject{
             throw new IllegalArgumentException("Mixer not set");
         } if(factory == null) {
             throw new IllegalArgumentException("Factory is not set");
-        }
-
-        this.deck.addAll(factory.getDeck());
-        init = true;
+        } init = true;
     }
 
     /**
@@ -114,7 +125,10 @@ public class UnoDeck implements AbstractUnoDeck<AbstractUnoCard>, Subject{
      */
     public void start() {
        if(init) {
-           discardedPile.discard(deck.draw());
+           this.deck.addAll(factory.getDeck());
+           mixer.shuffle(deck);
+           lastCardInserted = deck.draw();
+           discardedPile.discard(lastCardInserted);
        } else {
            throw new IllegalArgumentException("Not initialized");
        }

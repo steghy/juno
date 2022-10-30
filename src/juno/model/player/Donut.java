@@ -8,8 +8,12 @@ import java.util.Random;
  */
 public class Donut<T> extends ArrayList<T> {
 
+    /* The index of the current item */
     private int index;
 
+    /**
+     * Builds a Donut object
+     */
     public Donut() {}
 
     public void initialize() {
@@ -29,25 +33,29 @@ public class Donut<T> extends ArrayList<T> {
     }
 
     /**
-     * Sets the next item
+     * Returns the next item contained in
+     * this Donut object.
+     * @return An item of type T
      */
     public T next() {
-        if(index == size() - 1) {
+        if(size() == 0) {
+            throw new IllegalArgumentException("Empty donut");
+        } if(index == size() - 1) {
             index = 0;
         } else {
             index++;
-        }
-        return get(index);
+        } return get(index);
     }
 
 
     public T previous() {
-        if(index == 0) {
+        if(size() == 0) {
+            throw new IllegalArgumentException("Empty donut");
+        } if(index == 0) {
             index = size() - 1;
         } else {
             index--;
-        }
-        return get(index);
+        } return get(index);
     }
 
 
@@ -56,6 +64,8 @@ public class Donut<T> extends ArrayList<T> {
      * @return The current Item
      */
     public T current() {
-        return get(index);
+        if(size() == 0) {
+            throw new IllegalArgumentException("Empty donut");
+        } return get(index);
     }
 }
