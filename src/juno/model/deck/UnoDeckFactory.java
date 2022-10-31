@@ -8,7 +8,7 @@ import java.util.Collection;
  * This class defines the method
  * to generate the Uno cards deck.
  */
-public class UnoDeckFactory extends AbstractDeckFactory<AbstractUnoCard> {
+class UnoDeckFactory extends AbstractDeckFactory<AbstractUnoCard> {
 
     /* The UnoDeckFactory instance */
     private static UnoDeckFactory instance;
@@ -22,7 +22,7 @@ public class UnoDeckFactory extends AbstractDeckFactory<AbstractUnoCard> {
      * Returns the UnoDeckFactory instance.
      * @return The UnoDeckFactor instance.
      */
-    public static UnoDeckFactory getInstance(){
+    static UnoDeckFactory getInstance(){
         if(instance == null){
             instance = new UnoDeckFactory();
         } return instance;

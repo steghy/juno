@@ -5,7 +5,7 @@ import juno.model.card.*;
 /**
  * @author steghy
  */
-public class UnoCardCompatibilityChecker implements AbstractCompatibilityChecker<AbstractUnoCard> {
+class UnoCardCompatibilityChecker implements AbstractCompatibilityChecker<AbstractUnoCard> {
 
     /* The UnoCardCompatibilityChecker instance */
     private static UnoCardCompatibilityChecker instance;
@@ -17,7 +17,7 @@ public class UnoCardCompatibilityChecker implements AbstractCompatibilityChecker
      * Returns the UnoCardCompatibilityChecker instance.
      * @return The UnoCardCompatibilityChecker instance.
      */
-    public static UnoCardCompatibilityChecker getInstance(){
+    static UnoCardCompatibilityChecker getInstance(){
         if(instance == null){
             instance = new UnoCardCompatibilityChecker();
         } return instance;

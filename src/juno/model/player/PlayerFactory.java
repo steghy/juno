@@ -1,34 +1,36 @@
 package juno.model.player;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class PlayerFactory implements AbstractUnoGameData.AbstractPlayerFactory {
+/**
+ * @author steghy
+ */
+public class PlayerFactory extends AbstractPlayerFactory<AbstractPlayer> {
 
-    private List<AbstractPlayer> players;
-
+    /* The PlayerFactory instance */
     private static PlayerFactory instance;
 
-    private PlayerFactory(){}
+    /* Builds the PlayerFactory instance */
+    private PlayerFactory() {}
 
-    public static PlayerFactory getInstance(){
+    /**
+     * Returns the PlayerFactory instance.
+     * @return The PlayerFactory instance.
+     */
+    public static PlayerFactory getInstance() {
         if(instance == null) {
             instance = new PlayerFactory();
         } return instance;
     }
 
-    public void setPlayers(AbstractPlayer... players) {
-        if(players == null || players.length < 2 ) {
-            throw new IllegalArgumentException("At least two players");
-        }
-
-        this.players = new ArrayList<>();
-        this.players.addAll(Arrays.asList(players));
-    }
-
     @Override
-    public List<AbstractPlayer> getPlayers() {
+    public List<AbstractPlayer> getPlayers(int num, String name) {
+        List<AbstractPlayer> players = new ArrayList<>(this.getNameFactory().getNames(num)
+                .stream()
+                .map(Player::new)
+                .toList());
+        players.add(new Player(name));
         return players;
     }
 }

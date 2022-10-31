@@ -3,15 +3,13 @@ package juno.model.sound;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import juno.model.player.Donut;
+import juno.model.util.Donut;
 
 /**
  * @author steghy
@@ -79,8 +77,15 @@ public class AudioPlayer implements Runnable, AbstractAdvancedAudioPlayer {
 	 */
 	public void next() {
 		stop();
-		init(this.tracks.next());
-		play();
+		tracks.next();
+		if(tracks.getCurrentIndex() == 0) {
+			if(loop) {
+				init(tracks.current());
+				play();
+			} else {
+				pause();
+			}
+		}
 	}
 
 	/**
@@ -121,44 +126,25 @@ public class AudioPlayer implements Runnable, AbstractAdvancedAudioPlayer {
 
 	/**
 	 * Sets the audio sound to play with this AudioPlayer instance.
-	 * @param tracks A Collection of String object.
-	 */
-	public void setTracks(Collection<String> tracks) {
-		this.tracks = new Donut<>();
-		this.tracks.addAll(tracks.stream().map(File::new).toList());
-		this.tracks.initialize(0);
-		init(this.tracks.current());
-	}
-
-
-	/**
-	 * Sets the audio sound to play with this AudioPlayer instance.
-	 * @param tracks A Collection of String object.
-	 */
-	public void setTracks(List<File> tracks) {
-		this.tracks = new Donut<>();
-		this.tracks.addAll(tracks);
-		this.tracks.initialize(0);
-		init(this.tracks.current());
-	}
-
-	/**
-	 * Sets the audio sound to play with this AudioPlayer instance.
 	 * @param tracks An array of File objects
 	 */
 	public void setTracks(File[] tracks) {
-		this.tracks = new Donut<>();
-		this.tracks.addAll(Arrays.asList(tracks));
-		this.tracks.initialize(0);
-		init(this.tracks.current());
+		if(tracks != null && tracks.length > 0) {
+			this.tracks = new Donut<>();
+			this.tracks.addAll(Arrays.asList(tracks));
+			this.tracks.initialize(0);
+			init(this.tracks.current());
+		} else {
+			throw new IllegalArgumentException("Invalid input");
+		}
 	}
 
 	@Override
 	public void run() {
 		if(clip == null) {
 			throw new IllegalArgumentException(
-					"First set the audio tracks. Invoke" +
-							"setTracks(...)");
+					"AudioPlayer instance isn't initialized"
+			);
 		} while(true) {
 			this.play();
 			try {
@@ -184,7 +170,7 @@ public class AudioPlayer implements Runnable, AbstractAdvancedAudioPlayer {
 
 	/**
 	 * Returns the Clip object of this instance
-	 * @return The Clip obejct of this instance
+	 * @return The Clip object of this instance
 	 */
 	public Clip getClip() {
 		return clip;

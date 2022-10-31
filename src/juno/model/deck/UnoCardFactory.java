@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * @author steghy
  */
-public class UnoCardFactory implements AbstractCardFactory<AbstractUnoCard> {
+ class UnoCardFactory implements AbstractCardFactory<AbstractUnoCard> {
 
     /* The FactoryUnoCard instance */
     private static UnoCardFactory instance;
@@ -21,7 +21,7 @@ public class UnoCardFactory implements AbstractCardFactory<AbstractUnoCard> {
      * Returns the FactoryUnoCard instance
      * @return The FactoryUnoCard instance
      */
-    public static UnoCardFactory getInstance(){
+    static UnoCardFactory getInstance(){
         if(instance == null){
             instance = new UnoCardFactory();
         } return instance;

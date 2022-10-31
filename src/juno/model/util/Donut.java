@@ -1,4 +1,4 @@
-package juno.model.player;
+package juno.model.util;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -11,10 +11,14 @@ public class Donut<T> extends ArrayList<T> {
     /* The index of the current item */
     private int index;
 
+    private boolean inverted;
+
     /**
      * Builds a Donut object
      */
-    public Donut() {}
+    public Donut() {
+        inverted = false;
+    }
 
     public void initialize() {
         if(this.isEmpty()) {
@@ -33,31 +37,27 @@ public class Donut<T> extends ArrayList<T> {
     }
 
     /**
-     * Returns the next item contained in
-     * this Donut object.
-     * @return An item of type T
+     * Invert the order of this object
      */
-    public T next() {
-        if(size() == 0) {
-            throw new IllegalArgumentException("Empty donut");
-        } if(index == size() - 1) {
-            index = 0;
-        } else {
-            index++;
-        } return get(index);
+    public void invert() {
+        inverted = !inverted;
     }
 
+    public T next() {
+        if(inverted) {
+            return counterclockwise();
+        } else {
+            return clockwise();
+        }
+    }
 
     public T previous() {
-        if(size() == 0) {
-            throw new IllegalArgumentException("Empty donut");
-        } if(index == 0) {
-            index = size() - 1;
+        if(inverted) {
+            return clockwise();
         } else {
-            index--;
-        } return get(index);
+            return counterclockwise();
+        }
     }
-
 
     /**
      * Returns the current Item
@@ -68,4 +68,41 @@ public class Donut<T> extends ArrayList<T> {
             throw new IllegalArgumentException("Empty donut");
         } return get(index);
     }
+
+    /**
+     * Returns the index of the current
+     * selected item.
+     * @return An object of type T.
+     */
+    public int getCurrentIndex() {
+        return index;
+    }
+
+    /**
+     * Returns the next item contained in
+     * this Donut object.
+     * @return An item of type T
+     */
+    private T clockwise() {
+        if(size() == 0) {
+            throw new IllegalArgumentException("Empty donut");
+        } if(index == size() - 1) {
+            index = 0;
+        } else {
+            index++;
+        } return get(index);
+    }
+
+
+    private T counterclockwise() {
+        if(size() == 0) {
+            throw new IllegalArgumentException("Empty donut");
+        } if(index == 0) {
+            index = size() - 1;
+        } else {
+            index--;
+        } return get(index);
+    }
+
+
 }

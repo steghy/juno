@@ -4,6 +4,9 @@ import juno.model.card.AbstractUnoCard;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author steghy
+ */
 public class UnoDeck implements AbstractUnoDeck<AbstractUnoCard>, Subject{
 
     /* Deck component */
@@ -37,14 +40,14 @@ public class UnoDeck implements AbstractUnoDeck<AbstractUnoCard>, Subject{
     private static UnoDeck instance;
 
     /* The observers list */
-    private List<Observer> observerList;
+    private final List<Observer> observerList;
 
     private UnoDeck() {
         init = false;
         observerList = new ArrayList<>();
     }
 
-    public static UnoDeck getInstance() {
+     public static UnoDeck getInstance() {
         if(instance == null) {
             instance = new UnoDeck();
         } return instance;
@@ -66,7 +69,7 @@ public class UnoDeck implements AbstractUnoDeck<AbstractUnoCard>, Subject{
           updateAll();
           return lastCardDrawn;
         } else {
-            throw new IllegalArgumentException("Not initalized");
+            throw new IllegalArgumentException("Not initialized");
         }
     }
 
@@ -104,7 +107,7 @@ public class UnoDeck implements AbstractUnoDeck<AbstractUnoCard>, Subject{
     /**
      * Initialize the UnoDeck instance
      */
-    public void initialize() {
+    void initialize() {
         if(deck == null) {
             throw new IllegalArgumentException("Deck is not set");
         } if(discardedPile == null) {
@@ -125,20 +128,32 @@ public class UnoDeck implements AbstractUnoDeck<AbstractUnoCard>, Subject{
      */
     public void start() {
        if(init) {
+           reset();
            this.deck.addAll(factory.getDeck());
            mixer.shuffle(deck);
            lastCardInserted = deck.draw();
            discardedPile.discard(lastCardInserted);
+           updateAll();
        } else {
            throw new IllegalArgumentException("Not initialized");
        }
+    }
+
+    public void reset() {
+        if(init) {
+            this.deck.clear();
+            this.discardedPile.clear();
+            this.lastCardInserted = null;
+            this.lastCardDrawn = null;
+            updateAll();
+        }
     }
 
     /**
      * Sets the AbstractDeck object of this instance
      * @param deck An AbstractDeck object
      */
-    public void setDeck(AbstractDeck<AbstractUnoCard> deck) {
+    void setDeck(AbstractDeck<AbstractUnoCard> deck) {
         this.deck = deck;
     }
 
@@ -146,7 +161,7 @@ public class UnoDeck implements AbstractUnoDeck<AbstractUnoCard>, Subject{
      * Sets the AbstractDiscardedPile object of this instance.
      * @param discardedPile An AbstractDiscardedPile object.
      */
-    public void setDiscardedPile(AbstractDiscardPile<AbstractUnoCard> discardedPile) {
+    void setDiscardedPile(AbstractDiscardPile<AbstractUnoCard> discardedPile) {
         this.discardedPile = discardedPile;
     }
 
@@ -154,7 +169,7 @@ public class UnoDeck implements AbstractUnoDeck<AbstractUnoCard>, Subject{
      * Sets the AbstractDeckRefiller object of this instance.
      * @param refiller An AbstractDeckRefiller object
      */
-    public void setRefiller(AbstractDeckRefiller<AbstractUnoCard> refiller){
+    void setRefiller(AbstractDeckRefiller<AbstractUnoCard> refiller){
         this.refiller = refiller;
     }
 
@@ -162,7 +177,7 @@ public class UnoDeck implements AbstractUnoDeck<AbstractUnoCard>, Subject{
      * Sets the AbstractCompatibilityChecker object of this instance.
      * @param compatibilityChecker An AbstractCompatibilityChecker object.
      */
-    public void setCompatibilityChecker(AbstractCompatibilityChecker<AbstractUnoCard> compatibilityChecker) {
+    void setCompatibilityChecker(AbstractCompatibilityChecker<AbstractUnoCard> compatibilityChecker) {
         this.compatibilityChecker = compatibilityChecker;
     }
 
@@ -170,7 +185,7 @@ public class UnoDeck implements AbstractUnoDeck<AbstractUnoCard>, Subject{
      * Sets the AbstractMixer object of this instance.
      * @param mixer An AbstractMixer object.
      */
-    public void setMixer(AbstractMixer<AbstractUnoCard> mixer) {
+    void setMixer(AbstractMixer<AbstractUnoCard> mixer) {
         this.mixer = mixer;
     }
 
@@ -178,7 +193,7 @@ public class UnoDeck implements AbstractUnoDeck<AbstractUnoCard>, Subject{
      * Sets the AbstractDeckFactory object of this instance.
      * @param factory An AbstractDeckFactory object.
      */
-    public void setFactory(AbstractDeckFactory<AbstractUnoCard> factory) {
+    void setFactory(AbstractDeckFactory<AbstractUnoCard> factory) {
         this.factory = factory;
     }
 

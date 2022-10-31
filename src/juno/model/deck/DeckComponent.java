@@ -7,7 +7,7 @@ import java.util.Stack;
  * the Uno card game.
  * @author steghy
  */
-public class DeckComponent<T> extends Stack<T> implements AbstractDeck<T> {
+class DeckComponent<T> extends Stack<T> implements AbstractDeck<T> {
 
 	/* The UnoDeck instance */
 	private static DeckComponent<?> instance;
@@ -19,7 +19,7 @@ public class DeckComponent<T> extends Stack<T> implements AbstractDeck<T> {
 	 * Returns the UnoDeck instance.
 	 * @return The UnoDeck instance.
 	 */
-	public static DeckComponent<?> getInstance(){
+	static DeckComponent<?> getInstance(){
 		if(instance == null){
 			instance = new DeckComponent<>();
 		} return instance;

@@ -8,7 +8,6 @@ import juno.model.card.AbstractUnoCard;
 /**
  * 
  * @author steghy
- * @email steghy.github@proton.me
  */
 public class ImageCardProvider implements AbstractImageCardProvider {
 

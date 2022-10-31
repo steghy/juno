@@ -5,7 +5,7 @@ import java.util.Stack;
 /**
  * @author steghy
  */
-public class DiscardedPileComponent<T> extends Stack<T> implements AbstractDiscardPile<T> {
+class DiscardedPileComponent<T> extends Stack<T> implements AbstractDiscardPile<T> {
 
     /* The DiscardedCards instance */
     private static DiscardedPileComponent<?> instance;
@@ -16,7 +16,7 @@ public class DiscardedPileComponent<T> extends Stack<T> implements AbstractDisca
      * Returns the DiscardedCards instance
      * @return The DiscardedCards instance
      */
-    public static DiscardedPileComponent<?> getInstance(){
+    static DiscardedPileComponent<?> getInstance(){
         if(instance == null){
             instance = new DiscardedPileComponent<>();
         } return instance;
