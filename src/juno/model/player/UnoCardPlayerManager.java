@@ -1,12 +1,14 @@
 package juno.model.player;
 
 import juno.model.card.AbstractUnoCard;
-import juno.model.deck.Observer;
-import juno.model.deck.Subject;
+import juno.model.util.Observer;
+import juno.model.util.Subject;
 import juno.model.util.Donut;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author steghy
@@ -14,7 +16,7 @@ import java.util.List;
 public class UnoCardPlayerManager implements AbstractCardPlayerManager<AbstractPlayer, AbstractUnoCard>, Subject {
 
     /* The AbstractCardPlayerComponent component */
-    private AbstractCardPlayerMap<AbstractPlayer, List<AbstractUnoCard>> cardPlayerMap;
+    private Map<AbstractPlayer, List<AbstractUnoCard>> cardPlayerMap;
 
     /* AbstractPlayerFactory component */
     private AbstractPlayerFactory<AbstractPlayer> factory;
@@ -28,16 +30,14 @@ public class UnoCardPlayerManager implements AbstractCardPlayerManager<AbstractP
     /* init value */
     private boolean init;
 
+    /* Observer List */
     private List<Observer> observerList;
 
     /* The UnoCardPlayerManager instance */
     private static UnoCardPlayerManager instance;
 
     /* Builds the UnoCardPlayerManager instance */
-    private UnoCardPlayerManager() {
-        observerList = new ArrayList<>();
-        init = false;
-    }
+    private UnoCardPlayerManager() {}
 
     /**
      * Returns the UnoCardPlayerManager instance.
@@ -55,7 +55,13 @@ public class UnoCardPlayerManager implements AbstractCardPlayerManager<AbstractP
             players.addAll(factory.getPlayers(num, humanName));
             players.forEach(player -> cardPlayerMap.put(player, new ArrayList<>()));
             updateAll();
+        } else {
+            throw new IllegalArgumentException("Not initialized");
         }
+    }
+
+    public void setFirstPlayer() {
+
     }
 
     @Override
@@ -69,6 +75,11 @@ public class UnoCardPlayerManager implements AbstractCardPlayerManager<AbstractP
         } else {
             throw new IllegalArgumentException("Not initialized");
         }
+    }
+
+    @Override
+    public AbstractPlayer getNextPlayer() {
+        return players.peek();
     }
 
     @Override
@@ -122,15 +133,14 @@ public class UnoCardPlayerManager implements AbstractCardPlayerManager<AbstractP
         }
     }
 
-    /**
-     * Initialize the UnoCardPlayerManager
-     */
-    public void initialize() {
-        if(cardPlayerMap == null) {
-            throw new IllegalArgumentException("CardPlayer component not set");
-        } if(factory == null) {
-            throw new IllegalArgumentException("Factory not set");
-        } init = true;
+    @Override
+    public AbstractPlayer getCurrentPlayer() {
+        return players.current();
+    }
+
+    @Override
+    public List<AbstractPlayer> getPlayers() {
+        return new ArrayList<>(players);
     }
 
     @Override
@@ -146,5 +156,27 @@ public class UnoCardPlayerManager implements AbstractCardPlayerManager<AbstractP
     @Override
     public void updateAll() {
         observerList.forEach(observer -> observer.update(this));
+    }
+
+    /**
+     * Sets the AbstractPlayerFactory object of this instance.
+     * @param factory An AbstractPlayerFactory object.
+     */
+    void setFactory(AbstractPlayerFactory<AbstractPlayer> factory) {
+        this.factory = factory;
+    }
+
+
+    /**
+     * Initialize the UnoCardPlayerManager
+     */
+    void initialize() {
+        if(factory == null) {
+            throw new IllegalArgumentException("Factory not set");
+        }
+        players = new Donut<>();
+        cardPlayerMap = new HashMap<>();
+        observerList = new ArrayList<>();
+        init = true;
     }
 }

@@ -79,6 +79,16 @@ public class Donut<T> extends ArrayList<T> {
     }
 
     /**
+     * Peeks the next item.
+     * @return The next item.
+     */
+    public T peek() {
+        T el = next();
+        previous();
+        return el;
+    }
+
+    /**
      * Returns the next item contained in
      * this Donut object.
      * @return An item of type T
@@ -103,6 +113,5 @@ public class Donut<T> extends ArrayList<T> {
             index--;
         } return get(index);
     }
-
 
 }

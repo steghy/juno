@@ -1,19 +1,27 @@
 package juno.model.deck;
 
+import juno.model.card.AbstractActionPerformer;
 import juno.model.card.AbstractUnoCard;
+import juno.model.util.Observer;
+import juno.model.util.Subject;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * @author steghy
  */
-public class UnoDeck implements AbstractUnoDeck<AbstractUnoCard>, Subject{
+public class UnoDeck implements AbstractUnoDeck<AbstractUnoCard>, Subject {
 
     /* Deck component */
-    private AbstractDeck<AbstractUnoCard> deck;
+    private Stack<AbstractUnoCard> deck;
 
     /* DiscardedPile component */
-    private AbstractDiscardPile<AbstractUnoCard> discardedPile;
+    private Stack<AbstractUnoCard> discardedPile;
+
+    /* The ActionPerformer component */
+    private AbstractActionPerformer actionPerformer;
 
     /* Refiller component */
     private AbstractDeckRefiller<AbstractUnoCard> refiller;
@@ -33,21 +41,29 @@ public class UnoDeck implements AbstractUnoDeck<AbstractUnoCard>, Subject{
     /* The last card inserted */
     private AbstractUnoCard lastCardInserted;
 
+    /* Start value */
+    private boolean start;
+
     /* Init value */
     private boolean init;
+
+    /* The observers list */
+    private List<Observer> observerList;
 
     /* The UnoDeck instance */
     private static UnoDeck instance;
 
-    /* The observers list */
-    private final List<Observer> observerList;
-
+    /* Builds the UnoDeck instance */
     private UnoDeck() {
         init = false;
-        observerList = new ArrayList<>();
+        start = false;
     }
 
-     public static UnoDeck getInstance() {
+    /**
+     * Returns the UnoDeck instance.
+     * @return The UnoDeck instance.
+     */
+    public static UnoDeck getInstance() {
         if(instance == null) {
             instance = new UnoDeck();
         } return instance;
@@ -56,18 +72,15 @@ public class UnoDeck implements AbstractUnoDeck<AbstractUnoCard>, Subject{
     @Override
     public AbstractUnoCard draw() {
         if(init) {
-
             if(deck.isEmpty()) {
                 throw new IllegalArgumentException("Empty deck");
-            }
-
-            if(deck.size() <= 4) {
+            } if(deck.size() <= 4) {
               refiller.refill(deck, discardedPile);
               mixer.shuffle(deck);
-          }
-          lastCardDrawn = deck.draw();
-          updateAll();
-          return lastCardDrawn;
+            }
+            lastCardDrawn = deck.pop();
+            updateAll();
+            return lastCardDrawn;
         } else {
             throw new IllegalArgumentException("Not initialized");
         }
@@ -80,7 +93,7 @@ public class UnoDeck implements AbstractUnoDeck<AbstractUnoCard>, Subject{
                 if (compatibilityChecker.areCompatible(lastCardInserted, card)) {
                     lastCardInserted = card;
                     updateAll();
-                    discardedPile.discard(card);
+                    discardedPile.push(card);
                 } else {
                     throw new IllegalArgumentException("Incompatible card");
                 }
@@ -104,41 +117,27 @@ public class UnoDeck implements AbstractUnoDeck<AbstractUnoCard>, Subject{
         } return lastCardInserted;
      }
 
-    /**
-     * Initialize the UnoDeck instance
-     */
-    void initialize() {
-        if(deck == null) {
-            throw new IllegalArgumentException("Deck is not set");
-        } if(discardedPile == null) {
-            throw new IllegalArgumentException("Factory is not set");
-        } if(refiller == null) {
-            throw new IllegalArgumentException("Refiller is not set");
-        } if(compatibilityChecker == null) {
-            throw new IllegalArgumentException("Compatibility checker is not set");
-        } if(mixer == null) {
-            throw new IllegalArgumentException("Mixer not set");
-        } if(factory == null) {
-            throw new IllegalArgumentException("Factory is not set");
-        } init = true;
-    }
-
-    /**
-     * Start the game.
-     */
+     @Override
     public void start() {
        if(init) {
            reset();
            this.deck.addAll(factory.getDeck());
            mixer.shuffle(deck);
-           lastCardInserted = deck.draw();
-           discardedPile.discard(lastCardInserted);
+           lastCardInserted = deck.pop();
+           discardedPile.push(lastCardInserted);
+           start = true;
            updateAll();
        } else {
            throw new IllegalArgumentException("Not initialized");
        }
     }
 
+    @Override
+    public boolean status() {
+        return start;
+    }
+
+    @Override
     public void reset() {
         if(init) {
             this.deck.clear();
@@ -149,20 +148,19 @@ public class UnoDeck implements AbstractUnoDeck<AbstractUnoCard>, Subject{
         }
     }
 
-    /**
-     * Sets the AbstractDeck object of this instance
-     * @param deck An AbstractDeck object
-     */
-    void setDeck(AbstractDeck<AbstractUnoCard> deck) {
-        this.deck = deck;
+    @Override
+    public void addObserver(Observer observer) {
+        observerList.add(observer);
     }
 
-    /**
-     * Sets the AbstractDiscardedPile object of this instance.
-     * @param discardedPile An AbstractDiscardedPile object.
-     */
-    void setDiscardedPile(AbstractDiscardPile<AbstractUnoCard> discardedPile) {
-        this.discardedPile = discardedPile;
+    @Override
+    public void removeObserver(Observer observer) {
+        observerList.remove(observer);
+    }
+
+    @Override
+    public void updateAll() {
+        observerList.forEach(observer -> observer.update(this));
     }
 
     /**
@@ -197,18 +195,32 @@ public class UnoDeck implements AbstractUnoDeck<AbstractUnoCard>, Subject{
         this.factory = factory;
     }
 
-    @Override
-    public void addObserver(Observer observer) {
-        observerList.add(observer);
+    /**
+     * Sets the AbstractActionPerfomer object of this instance.
+     * @param actionPerformer An AbstractActionPerformer object.
+     */
+    void setActionPerformer(AbstractActionPerformer actionPerformer) {
+        this.actionPerformer = actionPerformer;
     }
 
-    @Override
-    public void removeObserver(Observer observer) {
-        observerList.remove(observer);
-    }
-
-    @Override
-    public void updateAll() {
-        observerList.forEach(observer -> observer.update(this));
+    /**
+     * Initialize the UnoDeck instance
+     */
+    void initialize() {
+        if(refiller == null) {
+            throw new IllegalArgumentException("Refiller is not set");
+        } if(compatibilityChecker == null) {
+            throw new IllegalArgumentException("Compatibility checker is not set");
+        } if(mixer == null) {
+            throw new IllegalArgumentException("Mixer not set");
+        } if(factory == null) {
+            throw new IllegalArgumentException("Factory is not set");
+        } if(actionPerformer == null) {
+            throw new IllegalArgumentException("Action performer not set");
+        }
+        deck = new Stack<>();
+        discardedPile = new Stack<>();
+        observerList = new ArrayList<>();
+        init = true;
     }
 }

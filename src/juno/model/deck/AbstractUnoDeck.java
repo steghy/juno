@@ -34,4 +34,11 @@ public interface AbstractUnoDeck<T> {
      * Initialize this AbstractUnoDeck to play a new game.
      */
     void start();
+
+    /**
+     * Reset the entire instance
+     */
+    void reset();
+
+    boolean status();
 }

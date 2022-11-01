@@ -1,4 +1,4 @@
-package juno.model.deck;
+package juno.model.util;
 
 /**
  * Observer interface.

@@ -2,54 +2,50 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="49e2aced-c42f-4e71-95f9-23744b048407" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/juno/model/deck/UnoDeckConfigurator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/AbstractCardPlayerManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/AbstractCardPlayerMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/AbstractNameFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/AbstractPlayerFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/CardPlayerMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/NameFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/UnoCardPlayerManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/test/NameFactoryTester.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/test/PlayerFactoryTester.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/util/test/DonutTester.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/GameTester.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/card/AbstractActionPerformer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/card/AbstractFirstPlayerManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/card/ActionPerformer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/card/ActionPerformerConfigurator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/player/ObserverExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/player/UnoCardPlayerManagerConfigurator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/player/test/UnoCardPlayerManagerTester.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/DeckComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/DeckComponent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/DiscardedPileComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/DiscardedPileComponent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/ObserverExample.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/UnoCardCompatibilityChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/UnoCardCompatibilityChecker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/UnoCardFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/UnoCardFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/card/UnoCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/card/UnoCard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/AbstractDeck.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/AbstractDiscardPile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/AbstractUnoDeck.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/AbstractUnoDeck.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/DeckComponent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/DeckRefiller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/DiscardedPileComponent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/Observer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/Subject.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/UnoDeck.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/UnoDeck.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/UnoDeckFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/UnoDeckFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/test/UnoDeckTester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/test/UnoDeckTester.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/player/AbstractUnoGameData$AbstractPlayerFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/player/AbstractUnoGameData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/player/Donut.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/player/PlayerFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/player/PlayerFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/player/UnoGameData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/player/test/DonutTester.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/sound/AudioPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/sound/AudioPlayer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/sound/Fader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/sound/test/FaderTester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/sound/test/FaderTester.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/card/ImageCardProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/card/ImageCardProvider.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/UnoDeckConfigurator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/UnoDeckConfigurator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/test/ObserverExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/test/ObserverExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/player/AbstractCardPlayerComponent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/player/CardPlayerComponent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/player/UnoCardPlayerManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/player/UnoCardPlayerManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/player/test/PlayerFactoryTester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/player/test/PlayerFactoryTester.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/util/Donut.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/util/Donut.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/card/UnoCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/card/UnoCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/AbstractDeck.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/AbstractDiscardPile.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/model/deck/AbstractUnoDeck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/AbstractUnoDeck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/DeckComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/DeckComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/DiscardedPileComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/DiscardedPileComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/ObserverExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/test/ObserverExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/UnoCardCompatibilityChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/UnoCardCompatibilityChecker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/UnoCardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/UnoCardFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/DeckComponent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/DeckRefiller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/UnoDeckRefiller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/DiscardedPileComponent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/Observer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/util/Observer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/Subject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/util/Subject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/model/deck/UnoDeck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/UnoDeck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/UnoDeckFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/UnoDeckFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/test/UnoDeckTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/test/UnoDeckTester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/AbstractUnoGameData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/Donut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/util/Donut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/PlayerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/player/PlayerFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/UnoGameData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/test/DonutTester.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/sound/AudioPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/sound/AudioPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/sound/Fader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/sound/test/FaderTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/sound/test/FaderTester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/card/ImageCardProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/card/ImageCardProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/UnoDeckConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/UnoDeckConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/test/ObserverExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/test/ObserverExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/player/AbstractCardPlayerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/player/AbstractCardPlayerManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/player/AbstractCardPlayerMap.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/player/CardPlayerMap.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/player/UnoCardPlayerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/player/UnoCardPlayerManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/player/test/PlayerFactoryTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/player/test/PlayerFactoryTester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/util/Donut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/util/Donut.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,8 +55,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -69,6 +65,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2Gr9wq3nWWGw7oiVXAlHQgcMzaJ" />
   <component name="ProjectLevelVcsManager">
@@ -88,39 +87,13 @@
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.PlayerFactoryTester">
-    <configuration name="AudioPlayerThreadTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="juno.model.sound.test.AudioPlayerThreadTester" />
+  <component name="RunManager" selected="Application.GameTester">
+    <configuration name="GameTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="juno.model.GameTester" />
       <module name="juno-project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="juno.model.sound.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DonutTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="juno.model.util.test.DonutTester" />
-      <module name="juno-project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="juno.model.util.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FaderTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="juno.model.sound.test.FaderTester" />
-      <module name="juno-project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="juno.model.sound.test.*" />
+          <option name="PATTERN" value="juno.model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -154,13 +127,39 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UnoCardPlayerManagerTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="juno.model.player.test.UnoCardPlayerManagerTester" />
+      <module name="juno-project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="juno.model.player.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UnoDeckTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="juno.model.deck.test.UnoDeckTester" />
+      <module name="juno-project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="juno.model.deck.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.GameTester" />
+        <item itemvalue="Application.UnoDeckTester" />
+        <item itemvalue="Application.UnoCardPlayerManagerTester" />
         <item itemvalue="Application.PlayerFactoryTester" />
         <item itemvalue="Application.NameFactoryTester" />
-        <item itemvalue="Application.DonutTester" />
-        <item itemvalue="Application.FaderTester" />
-        <item itemvalue="Application.AudioPlayerThreadTester" />
       </list>
     </recent_temporary>
   </component>

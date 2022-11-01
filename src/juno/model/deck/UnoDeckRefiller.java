@@ -6,21 +6,21 @@ import java.util.List;
 /**
  * @author steghy
  */
-public class DeckRefiller<T> implements AbstractDeckRefiller<T>  {
+public class UnoDeckRefiller<T> implements AbstractDeckRefiller<T>  {
 
     /* The DeckRefiller instance */
-    private static DeckRefiller<?> instance;
+    private static UnoDeckRefiller<?> instance;
 
     /* Builds the DeckRefiller instance */
-    private DeckRefiller() {}
+    private UnoDeckRefiller() {}
 
     /**
      * Returns the DeckRefiller instance.
      * @return The DeckRefiller instance.
      */
-    public static DeckRefiller<?> getInstance() {
+    public static UnoDeckRefiller<?> getInstance() {
         if(instance == null) {
-            instance = new DeckRefiller<>();
+            instance = new UnoDeckRefiller<>();
         } return instance;
     }
     @Override

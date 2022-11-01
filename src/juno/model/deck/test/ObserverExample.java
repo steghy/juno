@@ -1,9 +1,7 @@
 package juno.model.deck.test;
 
-import juno.model.card.AbstractUnoCard;
-import juno.model.deck.AbstractDiscardPile;
-import juno.model.deck.Observer;
-import juno.model.deck.Subject;
+import juno.model.util.Observer;
+import juno.model.util.Subject;
 import juno.model.deck.UnoDeck;
 
 public class ObserverExample implements Observer {

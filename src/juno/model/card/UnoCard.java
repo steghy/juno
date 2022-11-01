@@ -76,4 +76,8 @@ public record UnoCard(AbstractUnoCardValue value, AbstractUnoCardColor color,
 					+ "be an instance of type Card");
 		}
 	}
+
+	public Object clone() {
+		return new UnoCard(this.value, this.color, this.action);
+	}
 }
