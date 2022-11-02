@@ -7,31 +7,24 @@ import juno.model.util.Subject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Nexter extends AbstractNexter<AbstractPlayer> implements Subject {
+public class Inverter<T> implements AbstractInverter<T>, Subject {
 
     private final List<Observer> observerList;
-    private AbstractInverter<AbstractPlayer> inverter;
-    private static ShiftManager instance;
+    private static Inverter<?> instance;
 
-    private ShiftManager() {
+    private Inverter() {
         observerList = new ArrayList<>();
     }
 
-    private static ShiftManager getInstance(){
-        if(instance == null) {
-            instance = new ShiftManager();
-        } return instance;
+    public static Inverter<?> getInstance() {
+       if(instance == null) {
+           instance = new Inverter<>();
+       } return instance;
     }
 
     @Override
-    public void next() {
-        Donut<AbstractPlayer> players = getDonut();
-        if(players != null) {
-            players.next();
-            updateAll();
-        } else {
-            throw new IllegalArgumentException("");
-        }
+    public void invert(Donut<T> items) {
+        items.invert();
     }
 
     @Override

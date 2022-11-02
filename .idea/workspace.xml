@@ -2,36 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/juno/model/card/InterfaceActionPerformer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/deck/InterfaceDeck.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/deck/InterfaceDeckFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/deck/InterfaceDeckRefiller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/deck/InterfaceDiscardedPile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/AbstractHandsManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/AbstractShiftManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/HandsManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/InterfaceHandsManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/InterfacePlayerFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/InterfaceShiftManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/ShiftManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/player/AbstractFirstPlayerManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/player/AbstractInverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/player/AbstractNexter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/player/FirstPlayerManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/player/InterfaceFirstPlayerManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/player/Inverter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/model/card/AbstractActionPerformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/card/AbstractActionPerformer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/model/card/ActionPerformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/card/ActionPerformer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/AbstractDeck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/AbstractDeck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/AbstractDeckFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/AbstractDeckFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/AbstractDeckRefiller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/AbstractDeckRefiller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/AbstractDiscardedPile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/AbstractDiscardedPile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/Deck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/DeckRefiller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/DeckRefiller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/DiscardedPile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/DiscardedPile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/AbstractCardPlayerManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/AbstractPlayerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/player/AbstractPlayerFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/ObserverExample.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/PlayerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/player/PlayerFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/UnoCardPlayerManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/UnoCardPlayerManagerConfigurator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/test/PlayerFactoryTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/player/test/PlayerFactoryTester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/util/Donut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/util/Donut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/player/ShiftManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/player/ShiftManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>

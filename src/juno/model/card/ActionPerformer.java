@@ -46,9 +46,9 @@ public class ActionPerformer extends AbstractActionPerformer<AbstractPlayer, Abs
                 } else if(action.isSkipAction()) {
 
                 } else if(action.isReverseAction()) {
-
+                    getShiftManager().invert();
                 } else if(action.isDrawTwoAction()) {
-                    performDrawAction(4);
+                    performDrawAction(2);
                 }
             } else {
                 throw new IllegalArgumentException("Not an action card");

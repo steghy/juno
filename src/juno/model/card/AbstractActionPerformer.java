@@ -19,11 +19,19 @@ public abstract class AbstractActionPerformer<T, E, C> implements InterfaceActio
     }
 
     /**
-     * Sets the AbstractCardPlayerManager object of this instance.
-     * @param cardPlayerManager An AbstractCardPlayerManager object.
+     * Sets the InterfaceHandsManager object of this instance.
+     * @param handsManager An InterfaceHandsManager object.
      */
-    public void setCardPlayerManager(AbstractCardPlayerManager<T, E> cardPlayerManager) {
-        this.cardPlayerManager = cardPlayerManager;
+    public void setCardPlayerManager(InterfaceHandsManager<T, E> handsManager) {
+        this.handsManager = handsManager;
+    }
+
+    /**
+     * Sets the InterfaceShiftManager object of this instance.
+     * @param shiftManager An InterfaceShiftManager object.
+     */
+    public void setShiftManager(InterfaceShiftManager<T> shiftManager) {
+        this.shiftManager = shiftManager;
     }
 
     /**
@@ -35,11 +43,18 @@ public abstract class AbstractActionPerformer<T, E, C> implements InterfaceActio
     }
 
     /**
-     * Returns the AbstractCardPlayerManager object of this instance.
-     * @return An AbstractCardPlayerManager object.
+     * Returns the InterfaceHandsManager object of this instance.
+     * @return An InterfaceHandsManager object.
      */
-    public AbstractCardPlayerManager<T, E> getCardPlayerManager() {
-        return cardPlayerManager;
+    public InterfaceHandsManager<T, E> getCardPlayerManager() {
+        return handsManager;
     }
 
+    /**
+     * Returns the InterfaceShiftManager object of this instance.
+     * @return An InterfaceShiftManager object.
+     */
+    public InterfaceShiftManager<T> getShiftManager() {
+        return shiftManager;
+    }
 }
