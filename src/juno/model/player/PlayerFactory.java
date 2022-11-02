@@ -1,23 +1,18 @@
 package juno.model.player;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 /**
  * @author steghy
  */
 public class PlayerFactory extends AbstractPlayerFactory<AbstractPlayer> {
 
-    /* The PlayerFactory instance */
+    private Collection<AbstractPlayer> players;
     private static PlayerFactory instance;
 
-    /* Builds the PlayerFactory instance */
     private PlayerFactory() {}
 
-    /**
-     * Returns the PlayerFactory instance.
-     * @return The PlayerFactory instance.
-     */
     public static PlayerFactory getInstance() {
         if(instance == null) {
             instance = new PlayerFactory();
@@ -25,12 +20,24 @@ public class PlayerFactory extends AbstractPlayerFactory<AbstractPlayer> {
     }
 
     @Override
-    public List<AbstractPlayer> getPlayers(int num, String name) {
-        List<AbstractPlayer> players = new ArrayList<>(this.getNameFactory().getNames(num)
-                .stream()
-                .map(Player::new)
-                .toList());
-        players.add(new Player(name));
-        return players;
+    public void generate(int num, String name) {
+        if(this.getNameFactory() != null) {
+            players = new ArrayList<>(this.getNameFactory().getNames(num)
+                    .stream()
+                    .map(Player::new)
+                    .toList());
+            players.add(new Player(name));
+        } else {
+            throw new IllegalArgumentException("AbstractNameFactory isn't set");
+        }
+    }
+
+    @Override
+    public Collection<AbstractPlayer> getPlayers() {
+        if(players != null) {
+            return players;
+        } else {
+            throw new IllegalArgumentException("Players has not been generated");
+        }
     }
 }

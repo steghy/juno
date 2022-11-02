@@ -1,18 +1,10 @@
 package juno.model.deck;
 
-public abstract class AbstractDeck<T> {
+public abstract class AbstractDeck<T> implements InterfaceDeck<T>{
 
     private AbstractDeckRefiller<T> deckRefiller;
     private AbstractDeckFactory<T> deckFactory;
     private AbstractMixer<T> deckMixer;
-
-    public abstract T draw();
-
-    public abstract int size();
-
-    public abstract T lastCard();
-
-    public abstract void generate();
 
     /**
      * Sets the AbstractDeckFactory of this instance.

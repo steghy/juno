@@ -29,7 +29,7 @@ public class DeckRefiller extends AbstractDeckRefiller<AbstractUnoCard> implemen
         if(discardedPile == null) {
             throw new IllegalArgumentException("AbstractDiscardedPile isn't set");
         }
-        AbstractUnoCard lastCard = discardedPile.lastCard();
+        AbstractUnoCard lastCard = discardedPile.lastItem();
         List<AbstractUnoCard> cards = discardedPile.items();
         cards.remove(cards.size() - 1);
         deck.addAll(cards);

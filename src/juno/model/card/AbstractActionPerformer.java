@@ -1,14 +1,14 @@
 package juno.model.card;
 
 import juno.model.deck.AbstractDeck;
-import juno.model.player.AbstractCardPlayerManager;
+import juno.model.player.InterfaceHandsManager;
+import juno.model.player.InterfaceShiftManager;
 
-public abstract class AbstractActionPerformer<T, E> {
+public abstract class AbstractActionPerformer<T, E, C> implements InterfaceActionPerformer<E, C> {
 
     private AbstractDeck<E> deck;
-    private AbstractCardPlayerManager<T, E> cardPlayerManager;
-
-    public abstract void performAction(AbstractUnoCard card, AbstractUnoColor color);
+    private InterfaceShiftManager<T> shiftManager;
+    private InterfaceHandsManager<T, E> handsManager;
 
     /**
      * Sets the AbstractDeck object of this instance.
@@ -41,4 +41,5 @@ public abstract class AbstractActionPerformer<T, E> {
     public AbstractCardPlayerManager<T, E> getCardPlayerManager() {
         return cardPlayerManager;
     }
+
 }

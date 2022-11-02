@@ -114,4 +114,12 @@ public class Donut<T> extends ArrayList<T> {
         } return get(index);
     }
 
+    /**
+     * Returns true if this Donut is inverted.
+     * @return A boolean
+     */
+    public boolean isInverted() {
+        return inverted;
+    }
+
 }

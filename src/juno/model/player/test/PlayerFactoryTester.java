@@ -5,7 +5,7 @@ import juno.model.player.AbstractPlayerFactory;
 import juno.model.player.NameFactory;
 import juno.model.player.PlayerFactory;
 
-import java.util.List;
+import java.util.Collection;
 
 public class PlayerFactoryTester {
 
@@ -15,7 +15,8 @@ public class PlayerFactoryTester {
         playerFactory.setNameFactory(NameFactory.getInstance());
 
         // PLAYERS
-        List<AbstractPlayer> players = playerFactory.getPlayers(3, "Human player");
+        playerFactory.generate(3, "Human Player Name");
+        Collection<AbstractPlayer> players = playerFactory.getPlayers();
         players.forEach(System.out::println);
     }
 }

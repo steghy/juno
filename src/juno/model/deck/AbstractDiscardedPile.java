@@ -2,19 +2,9 @@ package juno.model.deck;
 
 import java.util.List;
 
-public abstract class AbstractDiscardedPile<T> {
+public abstract class AbstractDiscardedPile<T> implements InterfaceDiscardedPile<T> {
 
     private AbstractCompatibilityChecker<T> compatibilityChecker;
-
-    public abstract void discard(T item);
-
-    public abstract int size();
-
-    public abstract T lastCard();
-
-    public abstract void clear();
-
-    public abstract List<T> items();
 
     /**
      * Sets the AbstractCompatibilityChecker object of this instance.

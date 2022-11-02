@@ -1,16 +1,19 @@
 package juno.model.card;
 
+import juno.model.deck.AbstractDiscardedPile;
 import juno.model.player.AbstractPlayer;
+import juno.model.util.Observer;
+import juno.model.util.Subject;
+
+import java.util.List;
 
 /**
  * @author steghy
  */
-public class ActionPerformer extends AbstractActionPerformer<AbstractPlayer, AbstractUnoCard> {
+public class ActionPerformer extends AbstractActionPerformer<AbstractPlayer, AbstractUnoCard, AbstractUnoColor> implements Subject, Observer {
 
-    /* Init value */
+    private List<Observer> observerList;
     private boolean init;
-
-    /* The ActionPerformer instance */
     private static ActionPerformer instance;
 
     /* Builds the ActionPerformer instance. */
@@ -47,28 +50,69 @@ public class ActionPerformer extends AbstractActionPerformer<AbstractPlayer, Abs
                 } else if(action.isDrawTwoAction()) {
                     performDrawAction(4);
                 }
+            } else {
+                throw new IllegalArgumentException("Not an action card");
             }
         } else {
             throw new IllegalArgumentException("Not initialized");
         }
     }
 
-    private void performWildAction(AbstractUnoCard card, AbstractUnoColor color) {
-         card.color().setUnoColor(color);
+    @Override
+    public void update(Object object) {
+        if(init) {
+            if(object instanceof AbstractDiscardedPile<?> discardedPile) {
+                Object lastCard = discardedPile.lastItem();
+                if(lastCard instanceof AbstractUnoCard card) {
+                    AbstractUnoCardAction action = card.action();
+                    if(action != null) {
+                        if(!action.isWildAction() && !action.isWildDrawFourAction()) {
+                            performAction(card, null);
+                        }
+                    }
+                } else {
+                    throw new IllegalArgumentException("Invalid card");
+                }
+            } else {
+                throw new IllegalArgumentException("Invalid Subject");
+            }
+        } else {
+            throw new IllegalArgumentException("ActionPerformer not initialized");
+        }
     }
 
-    private void performDrawAction(int num) {
-         for(int i = 0; i < num; i++) {
+    @Override
+    public void addObserver(Observer observer) {
+        observerList.add(observer);
+    }
 
-         }
+    @Override
+    public void removeObserver(Observer observer) {
+        observerList.remove(observer);
+    }
+
+    @Override
+    public void updateAll() {
+        observerList.forEach(observer -> observer.update(null));
     }
 
     /** Initialize the ActionPerformer instance */
     void initialize() {
-         if(this.getDeck() == null) {
-             throw new IllegalArgumentException("AbstractUnoDeck not set");
-         } if(this.getCardPlayerManager() == null) {
-             throw new IllegalArgumentException("AbstractCardPlayerManager not set");
+        if(this.getDeck() == null) {
+            throw new IllegalArgumentException("AbstractUnoDeck not set");
+        } if(this.getCardPlayerManager() == null) {
+            throw new IllegalArgumentException("AbstractCardPlayerManager not set");
         } init = true;
     }
+
+    private void performWildAction(AbstractUnoCard card, AbstractUnoColor color) {
+        card.color().setUnoColor(color);
+    }
+
+    private void performDrawAction(int num) {
+        for(int i = 0; i < num; i++) {
+
+        }
+    }
+
 }

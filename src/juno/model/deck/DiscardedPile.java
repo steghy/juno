@@ -44,26 +44,17 @@ public class DiscardedPile extends AbstractDiscardedPile<AbstractUnoCard> implem
     }
 
     @Override
-    public int size() {
-        if(init) {
-            return discardedPile.size();
-        } else {
-            throw new IllegalArgumentException("DiscardedPile isn't initialized");
-        }
-    }
-
-    @Override
     public void clear() {
         discardedPile.clear();
     }
 
     @Override
     public List<AbstractUnoCard> items() {
-        return discardedPile;
+        return new ArrayList<>(discardedPile);
     }
 
     @Override
-    public AbstractUnoCard lastCard() {
+    public AbstractUnoCard lastItem() {
         return discardedPile.peek();
     }
 

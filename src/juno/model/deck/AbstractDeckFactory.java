@@ -7,7 +7,7 @@ import java.util.Collection;
  * This abstract class defines deck factories.
  * @param <T> The items type.
  */
-public abstract class AbstractDeckFactory<T> {
+public abstract class AbstractDeckFactory<T> implements InterfaceDeckFactory<T> {
 
     /**
      * An AbstractCardFactory object.
@@ -30,9 +30,4 @@ public abstract class AbstractDeckFactory<T> {
         return factory;
     }
 
-    /**
-     * Returns a Collection with items of type T.
-     * @return A Collection<T>
-     */
-    public abstract Collection<T> getDeck();
 }

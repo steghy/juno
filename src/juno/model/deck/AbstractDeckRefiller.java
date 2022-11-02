@@ -6,15 +6,9 @@ import java.util.List;
  * This class defines deck refiller.
  * @param <T> The items type
  */
-public abstract class AbstractDeckRefiller<T> {
+public abstract class AbstractDeckRefiller<T> implements InterfaceDeckRefiller<T> {
 
     private AbstractDiscardedPile<T> discardedPile;
-
-    /**
-     * Refill the specified deck.
-     * @param deck A List of T items.
-     */
-    public abstract void refill(List<T> deck);
 
     /**
      * Sets the AbstractDiscardedPile object of this instance.

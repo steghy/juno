@@ -41,12 +41,7 @@ public class Deck extends AbstractDeck<AbstractUnoCard> implements Subject {
     }
 
     @Override
-    public int size() {
-        return deck.size();
-    }
-
-    @Override
-    public AbstractUnoCard lastCard() {
+    public AbstractUnoCard lastItem() {
         return lastCard;
     }
 

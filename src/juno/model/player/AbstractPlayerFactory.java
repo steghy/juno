@@ -6,17 +6,17 @@ import java.util.List;
  * @author steghy
  * @param <T> The items type
  */
-public abstract class AbstractPlayerFactory<T> {
+public abstract class AbstractPlayerFactory<T> implements InterfacePlayerFactory<T> {
 
     /* The AbstractNameFactory component */
-    private AbstractNameFactory factory;
+    private AbstractNameFactory nameFactory;
 
     /**
      * Sets the AbstractNameFactory object of this instance.
      * @param factory An AbstractNameFactory.
      */
-    public void setNameFactory(AbstractNameFactory factory) {
-        this.factory = factory;
+    public void setNameFactory(AbstractNameFactory nameFactory) {
+        this.nameFactory = nameFactory;
     }
 
     /**
@@ -25,14 +25,6 @@ public abstract class AbstractPlayerFactory<T> {
      * @return An AbstractNameFactory object
      */
     public AbstractNameFactory getNameFactory() {
-        return factory;
+        return nameFactory;
     }
-
-    /**
-     * Returns the List of players of length num + 1.
-     * @param num The number of AI players.
-     * @param name The name of the human player.
-     * @return A List of items of type T
-     */
-    public abstract List<T> getPlayers(int num, String name);
 }
