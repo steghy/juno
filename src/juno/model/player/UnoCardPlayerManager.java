@@ -128,7 +128,7 @@ public class UnoCardPlayerManager implements AbstractCardPlayerManager<AbstractP
         if(init) {
             currentPlayer = players.next();
             updateAll();
-        } else {
+        } else  {
             throw new IllegalArgumentException("Not initialized");
         }
     }

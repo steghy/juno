@@ -1,5 +1,9 @@
 package juno.model.deck;
 
+import juno.model.util.Observer;
+import juno.model.util.Subject;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -7,13 +11,17 @@ import java.util.Random;
  * This class defines mixer.
  * @param <T> The items type
  */
-public class Mixer<T> implements AbstractMixer<T> {
+public class Mixer<T> implements AbstractMixer<T>, Subject {
+
+    private List<Observer> observerList;
 
     /** The Mixer instance */
     private static Mixer<?> instance;
 
     /* Builds the Mixer instance */
-    private Mixer() {}
+    private Mixer() {
+        observerList = new ArrayList<>();
+    }
 
     /**
      * Returns the Mixer instance.
@@ -37,5 +45,20 @@ public class Mixer<T> implements AbstractMixer<T> {
             data.remove(size - 1);
             data.add(random.nextInt(size), lastObject);
         }
+    }
+
+    @Override
+    public void addObserver(Observer observer) {
+        observerList.add(observer);
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+        observerList.add(observer);
+    }
+
+    @Override
+    public void updateAll() {
+        observerList.forEach(observer -> observer.update(null));
     }
 }

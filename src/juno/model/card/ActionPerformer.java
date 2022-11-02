@@ -1,19 +1,11 @@
 package juno.model.card;
 
-import juno.model.deck.AbstractUnoDeck;
-import juno.model.player.AbstractCardPlayerManager;
 import juno.model.player.AbstractPlayer;
 
 /**
  * @author steghy
  */
-public class ActionPerformer implements AbstractActionPerformer {
-
-    /* The AbstractUnoDeck object */
-    private AbstractUnoDeck<AbstractUnoCard> unoDeck;
-
-    /* The AbstractCardPlayerManager object */
-    private AbstractCardPlayerManager<AbstractPlayer, AbstractUnoCard> cardPlayerManager;
+public class ActionPerformer extends AbstractActionPerformer<AbstractPlayer, AbstractUnoCard> {
 
     /* Init value */
     private boolean init;
@@ -49,9 +41,9 @@ public class ActionPerformer implements AbstractActionPerformer {
                     performWildAction(card, color);
                     performDrawAction(4);
                 } else if(action.isSkipAction()) {
-                    cardPlayerManager.next();
+
                 } else if(action.isReverseAction()) {
-                    cardPlayerManager.invert();
+
                 } else if(action.isDrawTwoAction()) {
                     performDrawAction(4);
                 }
@@ -67,33 +59,16 @@ public class ActionPerformer implements AbstractActionPerformer {
 
     private void performDrawAction(int num) {
          for(int i = 0; i < num; i++) {
-             cardPlayerManager.addCardTo(cardPlayerManager.getNextPlayer(), unoDeck.draw());
+
          }
     }
 
     /** Initialize the ActionPerformer instance */
     void initialize() {
-         if(unoDeck == null) {
+         if(this.getDeck() == null) {
              throw new IllegalArgumentException("AbstractUnoDeck not set");
-         } if(cardPlayerManager == null) {
+         } if(this.getCardPlayerManager() == null) {
              throw new IllegalArgumentException("AbstractCardPlayerManager not set");
         } init = true;
-    }
-
-    /**
-     * Sets the AbstractUnoDeck object of this instance.
-     * @param unoDeck An AbstractUnoDeck object.
-     */
-    void setUnoDeck(AbstractUnoDeck<AbstractUnoCard> unoDeck) {
-        this.unoDeck = unoDeck;
-    }
-
-    /**
-     * Sets the AbstractCardPlayerManager object of this
-     * instance.
-     * @param cardPlayerManager An AbstractCardPlayerManager object.
-     */
-    void setCardPlayerManager(AbstractCardPlayerManager<AbstractPlayer, AbstractUnoCard> cardPlayerManager) {
-        this.cardPlayerManager = cardPlayerManager;
     }
 }

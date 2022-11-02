@@ -18,7 +18,7 @@ public abstract class AbstractDeckFactory<T> {
      * Sets the AbstractCardFactory of this object.
      * @param factory An AbstractCardFactory object.
      */
-    public void setFactory(AbstractCardFactory<T> factory){
+    public void setCardFactory(AbstractCardFactory<T> factory){
         this.factory = factory;
     }
 
@@ -26,7 +26,7 @@ public abstract class AbstractDeckFactory<T> {
      * Returns the AbstractCardFactory of this object.
      * @return An AbstractCardFactory object.
      */
-    public AbstractCardFactory<T> getFactory(){
+    public AbstractCardFactory<T> getCardFactory(){
         return factory;
     }
 
