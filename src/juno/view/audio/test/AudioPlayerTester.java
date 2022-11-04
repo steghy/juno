@@ -1,15 +1,15 @@
 package juno.view.audio.test;
 
-import java.awt.Container;
+import java.awt.*;
 import java.io.File;
 import javax.swing.JFrame;
+import javax.swing.border.Border;
 
 import juno.init.Paths;
 import juno.model.sound.AudioPlayer;
 import juno.model.util.PathGenerator;
-import juno.view.audio.container.AudioPlayerPanelConfigurator;
-import juno.view.audio.container.AudioPlayerPanel;
-import juno.view.audio.panel.PanelConfigurator;
+import juno.view.audio.AudioPlayerPanelConfigurator;
+import juno.view.audio.AudioPlayerPanel;
 
 public class AudioPlayerTester {
 
@@ -23,11 +23,9 @@ public class AudioPlayerTester {
 		String audioTracksPath = PathGenerator.generate(Paths.AUDIO.getPath(), "music-1");
 		audioPlayer.setTracks((new File(audioTracksPath)).listFiles());
 
-		PanelConfigurator.configure();
 		AudioPlayerPanelConfigurator.configure();
 
-		Container container = frame.getContentPane();
-		container.add(AudioPlayerPanel.getInstance());
+		frame.add(AudioPlayerPanel.getInstance(), BorderLayout.CENTER);
 
 		frame.pack();
 		frame.setVisible(true);
