@@ -1,56 +1,35 @@
 package juno.view.audio.test;
 
-import java.awt.BorderLayout;
 import java.awt.Container;
 import java.io.File;
-import java.util.Objects;
 import javax.swing.JFrame;
-import juno.init.Paths;
-import juno.model.util.PathGenerator;
-import juno.view.audio.AudioPlayerConfigurator;
-import juno.view.audio.AudioPlayerPanel;
 
-/**
- * Audio Player class tester 
- * @author steghy
- * @email steghy.github@proton.me
- */
+import juno.init.Paths;
+import juno.model.sound.AudioPlayer;
+import juno.model.util.PathGenerator;
+import juno.view.audio.container.AudioPlayerPanelConfigurator;
+import juno.view.audio.container.AudioPlayerPanel;
+import juno.view.audio.panel.PanelConfigurator;
+
 public class AudioPlayerTester {
 
-	public static void checkImagesPath() {
-		File directory = new File(Paths.AUDIO_PLAYER.getPath());
-		for(String fileName : Objects.requireNonNull(directory.list())) {
-			String path = PathGenerator.generate(directory.getAbsolutePath(), fileName);
-			System.out.println(path + " | exists: " + ((new File(path).exists())));
-		}
-
-	}
-
-	/**
-	 * Main method
-	 * @param args The arguments
-	 */
 	public static void main(String[] args) {
-
-		checkImagesPath();
-
-		// FRAME SETTINGS
 		JFrame frame = new JFrame();
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		// AUDIO PLAYER SETTINGS
-		AudioPlayerPanel audioPlayerPanel = AudioPlayerPanel.getInstance();
-		AudioPlayerConfigurator.configure();
-		
-		// CONNECTION
+		// AUDIO PLAYER CONFIGURATION
+		AudioPlayer audioPlayer = AudioPlayer.getInstance();
+		String audioTracksPath = PathGenerator.generate(Paths.AUDIO.getPath(), "music-1");
+		audioPlayer.setTracks((new File(audioTracksPath)).listFiles());
+
+		PanelConfigurator.configure();
+		AudioPlayerPanelConfigurator.configure();
+
 		Container container = frame.getContentPane();
-		container.setLayout(new BorderLayout());
-		container.add(audioPlayerPanel, BorderLayout.NORTH);
-		
+		container.add(AudioPlayerPanel.getInstance());
+
 		frame.pack();
-		
-		// VISIBLE
 		frame.setVisible(true);
 	}
 }

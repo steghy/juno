@@ -1,60 +1,56 @@
 package juno.model.card;
 
 import juno.model.deck.AbstractDeck;
-import juno.model.player.InterfaceHandsManager;
-import juno.model.player.InterfaceShiftManager;
+import juno.model.player.shift.AbstractInverter;
+import juno.model.player.players.AbstractPlayersManager;
+import juno.model.player.hands.AbstractHandsManager;
+import juno.model.player.shift.AbstractTurnMover;
+import juno.model.player.shift.AbstractTurnJumper;
 
 public abstract class AbstractActionPerformer<T, E, C> implements InterfaceActionPerformer<E, C> {
 
     private AbstractDeck<E> deck;
-    private InterfaceShiftManager<T> shiftManager;
-    private InterfaceHandsManager<T, E> handsManager;
+    private AbstractTurnMover nextTurnClass;
+    private AbstractTurnJumper skipper;
+    private AbstractHandsManager<T, E> handsManager;
+    private AbstractInverter<T> inverter;
+    private AbstractPlayersManager<T> playersManager;
 
-    /**
-     * Sets the AbstractDeck object of this instance.
-     * @param deck An AbstractDeck object.
-     */
-    public void setDeck(AbstractDeck<E> deck) {
+    void setDeck(AbstractDeck<E> deck) {
         this.deck = deck;
     }
-
-    /**
-     * Sets the InterfaceHandsManager object of this instance.
-     * @param handsManager An InterfaceHandsManager object.
-     */
-    public void setCardPlayerManager(InterfaceHandsManager<T, E> handsManager) {
+    void setHandsManager(AbstractHandsManager<T, E> handsManager) {
         this.handsManager = handsManager;
     }
-
-    /**
-     * Sets the InterfaceShiftManager object of this instance.
-     * @param shiftManager An InterfaceShiftManager object.
-     */
-    public void setShiftManager(InterfaceShiftManager<T> shiftManager) {
-        this.shiftManager = shiftManager;
+    void setSkipper(AbstractTurnJumper skipper) {
+        this.skipper = skipper;
+    }
+    void setNextTurnClass(AbstractTurnMover nextTurnClass) {
+        this.nextTurnClass = nextTurnClass;
+    }
+    void setInverter(AbstractInverter<T> inverter) {
+        this.inverter = inverter;
+    }
+    void setPlayersManager(AbstractPlayersManager<T> playersManager){
+        this.playersManager = playersManager;
     }
 
-    /**
-     * Returns the AbstractDeck object of this instance.
-     * @return An AbstractDeck object.
-     */
-    public AbstractDeck<E> getDeck() {
+    AbstractDeck<E> getDeck() {
         return deck;
     }
-
-    /**
-     * Returns the InterfaceHandsManager object of this instance.
-     * @return An InterfaceHandsManager object.
-     */
-    public InterfaceHandsManager<T, E> getCardPlayerManager() {
+    AbstractHandsManager<T, E> getHandsManager() {
         return handsManager;
     }
-
-    /**
-     * Returns the InterfaceShiftManager object of this instance.
-     * @return An InterfaceShiftManager object.
-     */
-    public InterfaceShiftManager<T> getShiftManager() {
-        return shiftManager;
+    AbstractTurnMover getNextTurn() {
+        return nextTurnClass;
+    }
+    AbstractTurnJumper getSkipper() {
+        return skipper;
+    }
+    AbstractInverter<T> getInverter() {
+        return this.inverter;
+    }
+    AbstractPlayersManager<T> getPlayersManager() {
+        return this.playersManager;
     }
 }

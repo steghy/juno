@@ -1,7 +1,7 @@
 package juno.model.card;
 
 import juno.model.deck.AbstractDiscardedPile;
-import juno.model.player.AbstractPlayer;
+import juno.model.player.factory.AbstractPlayer;
 import juno.model.util.Observer;
 import juno.model.util.Subject;
 
@@ -16,15 +16,10 @@ public class ActionPerformer extends AbstractActionPerformer<AbstractPlayer, Abs
     private boolean init;
     private static ActionPerformer instance;
 
-    /* Builds the ActionPerformer instance. */
     private ActionPerformer(){
         init = false;
     }
 
-    /**
-     * Returns the ActionPerformer instance.
-     * @return The ActionPerformer instance.
-     */
      public static ActionPerformer getInstance() {
         if(instance == null) {
             instance = new ActionPerformer();
@@ -44,9 +39,9 @@ public class ActionPerformer extends AbstractActionPerformer<AbstractPlayer, Abs
                     performWildAction(card, color);
                     performDrawAction(4);
                 } else if(action.isSkipAction()) {
-
+                    getSkipper().skip();
                 } else if(action.isReverseAction()) {
-                    getShiftManager().invert();
+                    getInverter().invert();
                 } else if(action.isDrawTwoAction()) {
                     performDrawAction(2);
                 }
@@ -96,12 +91,19 @@ public class ActionPerformer extends AbstractActionPerformer<AbstractPlayer, Abs
         observerList.forEach(observer -> observer.update(null));
     }
 
-    /** Initialize the ActionPerformer instance */
     void initialize() {
-        if(this.getDeck() == null) {
-            throw new IllegalArgumentException("AbstractUnoDeck not set");
-        } if(this.getCardPlayerManager() == null) {
-            throw new IllegalArgumentException("AbstractCardPlayerManager not set");
+        if(getDeck() == null) {
+            throw new IllegalArgumentException("AbstractUnoDeck isn't set");
+        } if(getHandsManager() == null) {
+            throw new IllegalArgumentException("InterfaceHandsManager isn'2 set");
+        } if(getNextTurn() == null) {
+            throw new IllegalArgumentException("InterfaceShiftManager isn't set");
+        } if(getInverter() == null) {
+            throw new IllegalArgumentException("AbstractInverter isn't set");
+        } if(getPlayersManager() == null) {
+            throw new IllegalArgumentException("AbstractPlayerManager isn't set");
+        } if(getSkipper() == null) {
+            throw new IllegalArgumentException("AbstractSkipper isn't set");
         } init = true;
     }
 
@@ -111,8 +113,7 @@ public class ActionPerformer extends AbstractActionPerformer<AbstractPlayer, Abs
 
     private void performDrawAction(int num) {
         for(int i = 0; i < num; i++) {
-
+            getHandsManager().addItem(getPlayersManager().nextPlayer(), getDeck().draw());
         }
     }
-
 }

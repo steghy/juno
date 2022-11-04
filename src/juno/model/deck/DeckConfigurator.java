@@ -9,20 +9,15 @@ public class DeckConfigurator {
     @SuppressWarnings("unchecked")
     public static void configure() {
 
-        // MAIN COMPONENTS
+        // MAIN-COMPONENT
         Deck deck = Deck.getInstance();
-        AbstractDiscardedPile<AbstractUnoCard> discardedPile = DiscardedPile.getInstance();
 
         // SUB-COMPONENTS
         AbstractDeckFactory<AbstractUnoCard> deckFactory = DeckFactory.getInstance();
         AbstractCardFactory<AbstractUnoCard> cardFactory = CardFactory.getInstance();
         AbstractDeckRefiller<AbstractUnoCard> deckRefiller = DeckRefiller.getInstance();
 
-        // SETTING SUB-COMPONENTS
-        deckFactory.setCardFactory(cardFactory);
-        deckRefiller.setDiscardedPile(discardedPile);
-
-        // MAIN COMPONENT SETTINGS
+        // MAIN-COMPONENT SETTINGS
         deck.setDeckRefiller(deckRefiller);
         deck.setMixer((AbstractMixer<AbstractUnoCard>) Mixer.getInstance());
         deck.setDeckFactory(deckFactory);

@@ -16,23 +16,11 @@ import juno.model.util.Donut;
  */
 public class AudioPlayer implements Runnable, AbstractAdvancedAudioPlayer {
 
-	/* Clip component */
 	private Clip clip;
-
-	/* Audio tracks */
 	private Donut<File> tracks;
-
-	/* AudioPlayer status */
 	private boolean status;
-
-	/* Loop parameter */
 	private boolean loop;
-
-	/* The AudioPlayer instance */
 	private static AudioPlayer instance;
-
-
-	/* Builds the AudioPlayer instance */
 	private AudioPlayer() {}
 
 	/**
@@ -78,14 +66,8 @@ public class AudioPlayer implements Runnable, AbstractAdvancedAudioPlayer {
 	public void next() {
 		stop();
 		tracks.next();
-		if(tracks.getCurrentIndex() == 0) {
-			if(loop) {
-				init(tracks.current());
-				play();
-			} else {
-				pause();
-			}
-		}
+		init(tracks.current());
+		play();
 	}
 
 	/**

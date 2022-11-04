@@ -18,7 +18,7 @@ public class Deck extends AbstractDeck<AbstractUnoCard> implements Subject {
 
     private Deck() {}
 
-     static Deck getInstance() {
+     public static Deck getInstance() {
         if(instance == null) {
             instance = new Deck();
         } return instance;

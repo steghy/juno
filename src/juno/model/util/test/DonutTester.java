@@ -1,7 +1,7 @@
 package juno.model.util.test;
 
-import juno.model.player.AbstractPlayer;
-import juno.model.player.Player;
+import juno.model.player.factory.AbstractPlayer;
+import juno.model.player.factory.Player;
 import juno.model.util.Donut;
 
 import java.util.Arrays;

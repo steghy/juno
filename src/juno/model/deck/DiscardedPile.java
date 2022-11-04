@@ -1,6 +1,7 @@
 package juno.model.deck;
 
 import juno.model.card.AbstractUnoCard;
+import juno.model.card.AbstractUnoCardAction;
 import juno.model.util.Observer;
 import juno.model.util.Subject;
 
@@ -11,11 +12,13 @@ import java.util.Stack;
 public class DiscardedPile extends AbstractDiscardedPile<AbstractUnoCard> implements Subject {
 
     private Stack<AbstractUnoCard> discardedPile;
-    private List<Observer> observerList;
+    private final List<Observer> observerList;
     private boolean init;
     private static DiscardedPile instance;
 
-    private DiscardedPile() {}
+    private DiscardedPile() {
+        observerList = new ArrayList<>();
+    }
 
     public static DiscardedPile getInstance() {
         if(instance == null) {
@@ -27,7 +30,7 @@ public class DiscardedPile extends AbstractDiscardedPile<AbstractUnoCard> implem
     public void discard(AbstractUnoCard card) {
         if(init) {
             if(discardedPile.isEmpty()) {
-                throw new IllegalArgumentException("DiscardedPile is empty");
+                discardedPile.push(card);
             } else {
                 if(this.getCompatibilityChecker().areCompatible(discardedPile.peek(), card)) {
                     discardedPile.push(card);
@@ -73,14 +76,10 @@ public class DiscardedPile extends AbstractDiscardedPile<AbstractUnoCard> implem
         observerList.forEach(observer -> observer.update(this));
     }
 
-    /**
-     * Initialize this instance
-     */
     public void initialize() {
         if(this.getCompatibilityChecker() == null) {
             throw new IllegalArgumentException("AbstractCompatibilityChecker isn't set");
         }
-        observerList = new ArrayList<>();
         discardedPile = new Stack<>();
         init = true;
     }
