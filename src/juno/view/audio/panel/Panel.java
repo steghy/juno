@@ -13,7 +13,7 @@ public class Panel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JButton next;
 	private JButton back;
-	private JButton toggle;
+	private JToggleButton toggle;
 
 	private static Panel instance;
 	
@@ -35,17 +35,17 @@ public class Panel extends JPanel {
 		back = button;
 	}
 
-	public void setTogle(JButton button) {
+	public void setToggle(JToggleButton button) {
 		 toggle = button;
 	}
 
 	public void init() throws JPanelNotSetException {
 		if(next == null) {
-			throw new JPanelNotSetException("Button not set");
+			throw new JPanelNotSetException("NextButton not set");
 		} if(back == null) {
-			throw new JPanelNotSetException("Button not set");
+			throw new JPanelNotSetException("BackButton not set");
 		} if(toggle == null) {
-			throw new JPanelNotSetException("Button not set");
+			throw new JPanelNotSetException("JToggleButton not set");
 		}
 
 		this.setLayout(new GridLayout(1, 3, 0, 0));

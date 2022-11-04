@@ -12,6 +12,7 @@ public abstract class AbstractDiscardedPile<T> implements InterfaceDiscardedPile
         this.compatibilityChecker = compatibilityChecker;
     }
 
+
     /**
      * Returns the AbstractCompatibilityChecker object of this instance.
      * @return An AbstractCompatibilityChecker object.

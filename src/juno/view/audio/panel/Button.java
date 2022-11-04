@@ -20,17 +20,5 @@ public class Button extends JButton {
 
     private void init(){
 
-        this.setContentAreaFilled(false);
-        this.setBorderPainted(false);
-        this.setOpaque(false);
-        this.setFocusPainted(false);
-
-        Dimension dimension = new Dimension(50, 50);
-        this.setSize(dimension);
-        this.setPreferredSize(dimension);
-        this.setMinimumSize(dimension);
-        this.setMaximumSize(dimension);
-
-        this.setOpaque(false);
     }
 }

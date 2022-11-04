@@ -159,6 +159,14 @@ public class AudioPlayer implements Runnable, AbstractAdvancedAudioPlayer {
 	}
 
 	/**
+	 * Returns the status of the AudioPlayer instance.
+	 * @return A boolean
+	 */
+	public boolean getStatus() {
+		return status;
+	}
+
+	/**
 	 * Initialize the AudioPlayer instance with the specified
 	 * File object.
 	 * @param track An object of type File.

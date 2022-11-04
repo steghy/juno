@@ -5,6 +5,7 @@ import juno.model.player.factory.AbstractPlayer;
 import juno.model.util.Observer;
 import juno.model.util.Subject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,11 +13,12 @@ import java.util.List;
  */
 public class ActionPerformer extends AbstractActionPerformer<AbstractPlayer, AbstractUnoCard, AbstractUnoColor> implements Subject, Observer {
 
-    private List<Observer> observerList;
+    private final List<Observer> observerList;
     private boolean init;
     private static ActionPerformer instance;
 
     private ActionPerformer(){
+        observerList = new ArrayList<>();
         init = false;
     }
 

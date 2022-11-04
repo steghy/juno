@@ -2,97 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/data/audio/music-1/track-2.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/images/audio-player/background-6.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/images/audio-player/next-track.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/images/audio-player/next.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/images/audio-player/pause-button.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/images/audio-player/rewind.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/images/buttons/about-us.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/images/buttons/back.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/images/buttons/contacts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/images/buttons/exit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/images/buttons/how-to-play.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/images/buttons/multiplayer.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/images/buttons/new-game.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/images/buttons/options.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/images/buttons/rules.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/images/buttons/score.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/images/buttons/single-player.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/card/test/ActionPerformerConfiguratorTester.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/factory/InterfacePlayersGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/players/AbstractPlayersManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/players/AbstractPlayersMantainer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/players/PlayersMaintainer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/players/PlayersManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/shift/AbstractFirstPlayerManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/shift/AbstractInverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/shift/AbstractTurnJumper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/shift/AbstractTurnMover.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/shift/FirstPlayerManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/shift/Inverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/shift/TurnMover.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/test/FirstPlayerObserver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/test/InverterObserver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/test/MainTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/test/NextTurnObserver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/test/PlayersManagerObserver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/player/test/SkipperObserver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/audio/container/AudioPlayerPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/audio/container/AudioPlayerPanelConfigurator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/audio/panel/ActionButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/audio/panel/Back.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/audio/panel/Next.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/audio/panel/Panel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/audio/panel/PanelConfigurator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/audio/panel/Pause.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/audio/panel/Play.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/menu/center/CenterPanelConfigurator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/audio-player/play-button.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/audio/panel/ImageResizer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/audio/music-2/track-1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/images/logos/not_a_png.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/card/AbstractActionPerformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/card/AbstractActionPerformer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/card/AbstractFirstPlayerManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/audio-player/next-track.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/sound/AudioPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/sound/AudioPlayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/audio/panel/ActionButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/audio/panel/ActionButton.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/audio/panel/Button.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/audio/panel/Button.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/audio/panel/Panel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/audio/panel/Panel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/audio/panel/PanelConfigurator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/audio/panel/PanelConfigurator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/model/card/ActionPerformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/card/ActionPerformer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/card/ActionPerformerConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/card/ActionPerformerConfigurator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/card/FirstPlayerManager.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/model/deck/AbstractDiscardedPile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/AbstractDiscardedPile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/Deck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/DeckConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/DeckConfigurator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/DiscardedPile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/DiscardedPile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/AbstractFirstPlayerManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/AbstractHandsManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/AbstractInverter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/AbstractNameFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/player/factory/AbstractNameFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/AbstractNexter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/AbstractPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/player/factory/AbstractPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/AbstractPlayerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/player/factory/AbstractPlayersFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/AbstractShiftManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/FirstPlayerManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/HandsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/player/hands/HandsManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/InterfaceFirstPlayerManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/InterfaceHandsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/player/hands/AbstractHandsManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/InterfacePlayerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/player/factory/InterfacePlayersFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/InterfaceShiftManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/Inverter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/NameFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/player/factory/NameFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/player/factory/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/PlayerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/player/factory/PlayersFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/ShiftManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/player/shift/TurnJumper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/test/NameFactoryTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/player/factory/test/NameFactoryTester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/player/test/PlayerFactoryTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/player/factory/test/PlayerFactoryTester.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/model/sound/AudioPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/sound/AudioPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/util/test/DonutTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/util/test/DonutTester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/audio/AudioPlayerConfigurator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/audio/AudioPlayerPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/audio/MainBackground.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/audio/north/ButtonPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/audio/panel/Button.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/audio/north/NorthPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/audio/south/SouthBackground.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/audio/container/Background.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/audio/south/SouthPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/audio/test/AudioPlayerTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/audio/test/AudioPlayerTester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/menu/center/CenterPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/menu/center/CenterPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/audio/panel/ActionButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/audio/panel/ActionButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/audio/panel/Back.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/audio/panel/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/audio/panel/Button.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/audio/panel/Next.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/audio/panel/ButtonConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/audio/panel/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/audio/panel/Panel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/audio/panel/PanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/audio/panel/PanelConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/audio/panel/Pause.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/audio/panel/Play.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
