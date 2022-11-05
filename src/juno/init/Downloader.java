@@ -7,22 +7,10 @@ import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 
-/**
- * 
- * @author steghy
- * @email steghy.github@proton.me
- */
 public class Downloader {
 
 	private Downloader() {}
 
-	
-	/**
-	 * 
-	 * @param urlStr
-	 * @param file
-	 * @throws IOException
-	 */
     public static void downloadUsingStream(String urlStr, String file) throws IOException{
         URL url = new URL(urlStr);
         BufferedInputStream bis = new BufferedInputStream(url.openStream());
@@ -37,13 +25,6 @@ public class Downloader {
         bis.close();
     }
 
-    
-    /**
-     * 
-     * @param urlStr
-     * @param file
-     * @throws IOException
-     */
     public static void downloadUsingNIO(String urlStr, String file) throws IOException {
         URL url = new URL(urlStr);
         ReadableByteChannel rbc = Channels.newChannel(url.openStream());

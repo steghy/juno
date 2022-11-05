@@ -1,27 +1,19 @@
 package juno.model.deck;
 
-import juno.model.card.AbstractUnoCard;
+import juno.model.card.*;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
-/**
- * This class defines the method
- * to generate the Uno cards deck.
- */
-class DeckFactory extends AbstractDeckFactory<AbstractUnoCard> {
+class DeckFactory extends AbstractDeckFactory<AbstractUnoCard<
+        AbstractUnoCardAction,
+        AbstractUnoCardColor<AbstractUnoColor>,
+        AbstractUnoCardValue>> {
 
-    /* The UnoDeckFactory instance */
     private static DeckFactory instance;
 
-
-    /* Builds the UnoDeckFactory */
     private DeckFactory() {}
 
-
-    /**
-     * Returns the UnoDeckFactory instance.
-     * @return The UnoDeckFactor instance.
-     */
     static DeckFactory getInstance(){
         if(instance == null){
             instance = new DeckFactory();
@@ -29,14 +21,23 @@ class DeckFactory extends AbstractDeckFactory<AbstractUnoCard> {
     }
 
     @Override
-    public Collection<AbstractUnoCard> getDeck() {
+    public Collection<AbstractUnoCard<
+            AbstractUnoCardAction,
+            AbstractUnoCardColor<AbstractUnoColor>,
+            AbstractUnoCardValue>> getDeck() {
 
         if(this.getCardFactory() == null) {
             throw new IllegalArgumentException("Factory not set");
         }
 
-        Collection<AbstractUnoCard> cards = this.getCardFactory().getCards();
-        Collection<AbstractUnoCard> deck = new ArrayList<>();
+        Collection<AbstractUnoCard<
+                AbstractUnoCardAction,
+                AbstractUnoCardColor<AbstractUnoColor>,
+                AbstractUnoCardValue>> cards = this.getCardFactory().getCards();
+        Collection<AbstractUnoCard<
+                AbstractUnoCardAction,
+                AbstractUnoCardColor<AbstractUnoColor>,
+                AbstractUnoCardValue>> deck = new ArrayList<>();
         cards.forEach(card -> {
             deck.add(card);
             if(card.action() != null) {

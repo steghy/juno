@@ -1,6 +1,5 @@
 package juno.model.player.players;
 
-import juno.model.player.factory.AbstractPlayer;
 import juno.model.player.factory.InterfacePlayersFactory;
 import juno.model.util.Donut;
 import juno.model.util.Observer;
@@ -10,24 +9,24 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class PlayersMaintainer implements AbstractPlayersMantainer<AbstractPlayer>, Subject, Observer {
+public class PlayersMaintainer<T> implements AbstractPlayersMantainer<T>, Subject, Observer {
 
-    private Donut<AbstractPlayer> players;
+    private Donut<T> players;
     private final List<Observer> observerList;
-    private static PlayersMaintainer instance;
+    private static PlayersMaintainer<?> instance;
 
     private PlayersMaintainer() {
         observerList = new ArrayList<>();
     }
 
-    public static PlayersMaintainer getInstance() {
+    public static PlayersMaintainer<?> getInstance() {
         if(instance == null) {
-            instance = new PlayersMaintainer();
+            instance = new PlayersMaintainer<>();
         } return instance;
     }
 
     @Override
-    public Donut<AbstractPlayer> getPlayers() {
+    public Donut<T> getPlayers() {
         if(players != null) {
             return players;
         } else {
@@ -56,7 +55,7 @@ public class PlayersMaintainer implements AbstractPlayersMantainer<AbstractPlaye
     public void update(Object object) {
         if(object instanceof InterfacePlayersFactory<?> playersFactory) {
             players = new Donut<>();
-            players.addAll((Collection<? extends AbstractPlayer>) playersFactory.getPlayers());
+            players.addAll((Collection<? extends T>) playersFactory.getPlayers());
             updateAll();
         }
     }

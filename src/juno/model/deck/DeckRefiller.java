@@ -1,40 +1,39 @@
 package juno.model.deck;
 
-
-import juno.model.card.AbstractUnoCard;
 import juno.model.util.Observer;
 import juno.model.util.Subject;
 
+import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author steghy
- */
-public class DeckRefiller extends AbstractDeckRefiller<AbstractUnoCard> implements Subject {
+public class DeckRefiller<T> extends AbstractDeckRefiller<T> implements Subject {
 
-    private List<Observer> observerList;
-    private static DeckRefiller instance;
+    private final List<Observer> observerList;
+    private static DeckRefiller<?> instance;
 
-    private DeckRefiller() {}
+    private DeckRefiller() {
+        observerList = new ArrayList<>();
+    }
 
-    public static DeckRefiller getInstance() {
+    public static DeckRefiller<?> getInstance() {
         if(instance == null) {
-            instance = new DeckRefiller();
+            instance = new DeckRefiller<>();
         } return instance;
     }
 
     @Override
-    public void refill(List<AbstractUnoCard> deck) {
-        AbstractDiscardedPile<AbstractUnoCard> discardedPile = this.getDiscardedPile();
+    public void refill(List<T> deck) {
+        AbstractDiscardedPile<T> discardedPile = this.getDiscardedPile();
         if(discardedPile == null) {
             throw new IllegalArgumentException("AbstractDiscardedPile isn't set");
         }
-        AbstractUnoCard lastCard = discardedPile.lastItem();
-        List<AbstractUnoCard> cards = discardedPile.items();
+        T lastCard = discardedPile.lastItem();
+        List<T> cards = discardedPile.items();
         cards.remove(cards.size() - 1);
         deck.addAll(cards);
         discardedPile.clear();
         discardedPile.discard(lastCard);
+        updateAll();
     }
 
     @Override

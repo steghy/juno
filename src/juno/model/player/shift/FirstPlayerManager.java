@@ -1,34 +1,27 @@
 package juno.model.player.shift;
 
-import juno.model.card.AbstractUnoCard;
-import juno.model.deck.AbstractDeck;
-import juno.model.player.factory.AbstractPlayer;
-import juno.model.player.hands.AbstractHandsManager;
 import juno.model.player.players.AbstractPlayersMantainer;
 import juno.model.util.Donut;
 import juno.model.util.Observer;
 import juno.model.util.Subject;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
-public class FirstPlayerManager implements AbstractFirstPlayerManager, Subject, Observer {
+public class FirstPlayerManager<T, E> extends AbstractFirstPlayerManager<T, E> implements Subject, Observer {
 
-
-    private AbstractHandsManager<AbstractPlayer, AbstractUnoCard> handsManager;
-    private AbstractDeck<AbstractUnoCard> deck;
-    private Donut<AbstractPlayer> players;
+    private Donut<T> players;
     private final List<Observer> observerList;
-    private static FirstPlayerManager instance;
+    private static FirstPlayerManager<?, ?> instance;
 
     private FirstPlayerManager() {
        observerList = new ArrayList<>();
     }
 
-    public static FirstPlayerManager getInstance() {
+    public static FirstPlayerManager<?, ?> getInstance() {
         if(instance == null) {
-            instance = new FirstPlayerManager();
+            instance = new FirstPlayerManager<>();
         } return instance;
     }
 
@@ -36,8 +29,9 @@ public class FirstPlayerManager implements AbstractFirstPlayerManager, Subject, 
     @Override
     public void setFirst() {
         if(players != null) {
-            if(handsManager != null) {
+            if(getHandsManager() != null) {
                 players.initialize(0);
+                setFirstRecursive(null);
                 updateAll();
             } else {
                 throw new IllegalArgumentException("AbstractHandsManager isn't set");
@@ -47,7 +41,7 @@ public class FirstPlayerManager implements AbstractFirstPlayerManager, Subject, 
         }
     }
 
-    private void setFirstRecursive(List<AbstractPlayer> playersList) {
+    private void setFirstRecursive(Collection<T> subjects) {
 
     }
 
@@ -70,7 +64,7 @@ public class FirstPlayerManager implements AbstractFirstPlayerManager, Subject, 
     @SuppressWarnings("unchecked")
     public void update(Object object) {
         if(object instanceof AbstractPlayersMantainer<?> obj) {
-            this.players = (Donut<AbstractPlayer>) obj.getPlayers();
+            this.players = (Donut<T>) obj.getPlayers();
         }
     }
 }

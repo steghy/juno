@@ -1,37 +1,13 @@
 package juno.model.card;
 
-/**
- * This class defines Action object
- * for the UnoCard class.
- * The Action object are:
- * DRAW_TWO, REVERSE, SKIP, WILD, WILD_DRAW_FOUR.
- * @author steghy
- * @email steghy.github@proton.me
- */
 public enum UnoCardAction implements AbstractUnoCardAction {
 
-	/** Draw two action */
 	DRAW_TWO,
-
-	/** Reverse action */
 	REVERSE,
-
-	/** Skip action */
 	SKIP,
-
-	/** Wild jolly action */
 	WILD,
-
-	/** Wild draw four action */
 	WILD_DRAW_FOUR;
 
-
-	/**
-	 * Returns the Action object associated with the
-	 * specified action name
-	 * @param actionName The action name
-	 * @return An Action object
-	 */
 	public static UnoCardAction getActionObject(String actionName) {
 		return switch (actionName.toUpperCase()) {
 			case ("DRAW_TWO") -> UnoCardAction.DRAW_TWO;

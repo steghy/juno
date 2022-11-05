@@ -7,26 +7,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-/**
- * This class defines mixer.
- * @param <T> The items type
- */
 public class Mixer<T> implements AbstractMixer<T>, Subject {
 
-    private List<Observer> observerList;
+    private final List<Observer> observerList;
 
-    /** The Mixer instance */
     private static Mixer<?> instance;
 
-    /* Builds the Mixer instance */
     private Mixer() {
         observerList = new ArrayList<>();
     }
 
-    /**
-     * Returns the Mixer instance.
-     * @return The Mixer instance.
-     */
     public static Mixer<?> getInstance() {
         if(instance == null) {
             instance = new Mixer<>();

@@ -8,10 +8,14 @@ import juno.model.util.Subject;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author steghy
- */
-public class ActionPerformer extends AbstractActionPerformer<AbstractPlayer, AbstractUnoCard, AbstractUnoColor> implements Subject, Observer {
+public class ActionPerformer extends AbstractActionPerformer<
+        AbstractPlayer,
+        AbstractUnoCard<
+                AbstractUnoCardAction,
+                AbstractUnoCardColor<AbstractUnoColor>,
+                AbstractUnoCardValue>,
+        AbstractUnoColor>
+        implements Subject, Observer {
 
     private final List<Observer> observerList;
     private boolean init;
@@ -29,7 +33,11 @@ public class ActionPerformer extends AbstractActionPerformer<AbstractPlayer, Abs
     }
 
     @Override
-    public void performAction(AbstractUnoCard card, AbstractUnoColor color) {
+    public void performAction(AbstractUnoCard<
+            AbstractUnoCardAction,
+            AbstractUnoCardColor<AbstractUnoColor>,
+            AbstractUnoCardValue> card,
+                              AbstractUnoColor color) {
         if(init) {
             if(card.action() != null) {
                 AbstractUnoCardAction action = card.action();
@@ -56,15 +64,20 @@ public class ActionPerformer extends AbstractActionPerformer<AbstractPlayer, Abs
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public void update(Object object) {
         if(init) {
             if(object instanceof AbstractDiscardedPile<?> discardedPile) {
                 Object lastCard = discardedPile.lastItem();
-                if(lastCard instanceof AbstractUnoCard card) {
-                    AbstractUnoCardAction action = card.action();
+                if(lastCard instanceof AbstractUnoCard<?, ?, ?> card) {
+                    AbstractUnoCardAction action = (AbstractUnoCardAction) card.action();
                     if(action != null) {
                         if(!action.isWildAction() && !action.isWildDrawFourAction()) {
-                            performAction(card, null);
+                            performAction((AbstractUnoCard<
+                                    AbstractUnoCardAction,
+                                    AbstractUnoCardColor<AbstractUnoColor>,
+                                    AbstractUnoCardValue>) card,
+                                    null);
                         }
                     }
                 } else {
@@ -109,7 +122,11 @@ public class ActionPerformer extends AbstractActionPerformer<AbstractPlayer, Abs
         } init = true;
     }
 
-    private void performWildAction(AbstractUnoCard card, AbstractUnoColor color) {
+    private void performWildAction(AbstractUnoCard<
+            AbstractUnoCardAction,
+            AbstractUnoCardColor<AbstractUnoColor>,
+            AbstractUnoCardValue> card,
+                                   AbstractUnoColor color) {
         card.color().setUnoColor(color);
     }
 

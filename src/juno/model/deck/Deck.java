@@ -1,18 +1,16 @@
 package juno.model.deck;
 
-import juno.model.card.AbstractUnoCard;
 import juno.model.util.Observer;
 import juno.model.util.Subject;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class Deck extends AbstractDeck<AbstractUnoCard> implements Subject {
+public class Deck<T> extends AbstractDeck<T> implements Subject {
 
     private List<Observer> observerList;
-    private Stack<AbstractUnoCard> deck;
-    private AbstractUnoCard lastCard;
+    private Stack<T> deck;
+    private T lastCard;
     private static Deck instance;
     private boolean init;
 
@@ -22,10 +20,10 @@ public class Deck extends AbstractDeck<AbstractUnoCard> implements Subject {
         if(instance == null) {
             instance = new Deck();
         } return instance;
-    }
+     }
 
     @Override
-    public AbstractUnoCard draw() {
+    public T draw() {
         if(init) {
             if(deck.isEmpty()) {
                 throw new IllegalArgumentException("Deck is empty");
@@ -41,7 +39,7 @@ public class Deck extends AbstractDeck<AbstractUnoCard> implements Subject {
     }
 
     @Override
-    public AbstractUnoCard lastItem() {
+    public T lastItem() {
         return lastCard;
     }
 
@@ -66,9 +64,6 @@ public class Deck extends AbstractDeck<AbstractUnoCard> implements Subject {
         observerList.forEach(observer -> observer.update(this));
     }
 
-    /**
-     * Initialize this instance
-     */
      void initialize() {
         if(this.getDeckRefiller() == null) {
             throw new IllegalArgumentException("AbstractDeckRefiller isn't set");

@@ -28,7 +28,7 @@ public class AudioPlayerTester {
 
 				// PREVIOUS
 				if(value == 1) {
-					audioPlayer.previous();
+					audioPlayer.back();
 				}
 
 				// PAUSE

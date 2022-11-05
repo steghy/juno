@@ -4,7 +4,7 @@ public interface AbstractAdvancedAudioPlayer extends AbstractAudioPlayer {
 
     void next();
 
-    void previous();
+    void back();
 
     void stop();
 

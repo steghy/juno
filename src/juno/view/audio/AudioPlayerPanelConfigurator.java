@@ -20,6 +20,7 @@ public class AudioPlayerPanelConfigurator {
 		// MAIN-COMPONENT
 		AudioPlayerPanel audioPlayerPanel = AudioPlayerPanel.getInstance();
 
+		// MAIN-COMPONENT DIMENSION
 		Dimension dimension = new Dimension(300,80);
 		audioPlayerPanel.setSize(dimension);
 		audioPlayerPanel.setPreferredSize(dimension);
@@ -32,16 +33,16 @@ public class AudioPlayerPanelConfigurator {
 		JToggleButton toggle = new JToggleButton();
 		JLabel background = new JLabel();
 
+		// BUTTON CONFIGURATION
+		ButtonConfigurator.configure(next, 78, 60);
+		ButtonConfigurator.configure(back, 78, 60);
+		ButtonConfigurator.configure(toggle, 78, 60);
+
 		// SETTING BUTTONS
 		audioPlayerPanel.setNextButton(next);
 		audioPlayerPanel.setBackButton(back);
 		audioPlayerPanel.setToggleButton(toggle);
 		audioPlayerPanel.setBackground(background);
-
-		// BUTTONS CONFIGURATIONS
-		ButtonConfigurator.configure(next, 78, 60);
-		ButtonConfigurator.configure(back, 78, 60);
-		ButtonConfigurator.configure(toggle, 78, 60);
 
 		// [AUDIO PLAYER MAIN PANEL] IMAGES SETTING
 		String backgroundImage = PathGenerator.generate(Paths.AUDIO_PLAYER.getPath(), "background2.png");

@@ -1,6 +1,6 @@
 package juno.model.player.shift;
 
-public interface AbstractInverter<T> {
+public interface AbstractInverter {
 
     void invert();
 }

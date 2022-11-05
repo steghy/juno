@@ -1,30 +1,16 @@
 package juno.model.player.factory;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
-/**
- * @author steghy
- */
 public class NameFactory implements AbstractNameFactory {
 
-    /* List of names */
-    private List<String> names;
-
-    /* The NameProvider instance */
+    private Collection<String> names;
     private static NameFactory instance;
 
-    /* Builds the RandomNameProvider instance */
     private NameFactory() {
         init();
     }
 
-    /**
-     * Returns the NameProvider instance.
-     * @return The NameProvider instance.
-     */
     public static NameFactory getInstance() {
         if(instance == null) {
             instance = new NameFactory();
@@ -32,7 +18,7 @@ public class NameFactory implements AbstractNameFactory {
     }
 
     @Override
-    public List<String> getNames(int num) {
+    public Collection<String> getNames(int num) {
         if(num > names.size()) {
             throw new IllegalArgumentException("" +
                     "Only up to twenty");
@@ -49,7 +35,6 @@ public class NameFactory implements AbstractNameFactory {
         return outputNames;
     }
 
-    /* Initialize the NameProvider instance */
     private void init() {
         names = Arrays.asList(
                 "Wade",

@@ -1,33 +1,30 @@
 package juno.model.deck;
 
-import juno.model.card.AbstractUnoCard;
-import juno.model.card.AbstractUnoCardAction;
 import juno.model.util.Observer;
 import juno.model.util.Subject;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class DiscardedPile extends AbstractDiscardedPile<AbstractUnoCard> implements Subject {
+public class DiscardedPile<T> extends AbstractDiscardedPile<T> implements Subject {
 
-    private Stack<AbstractUnoCard> discardedPile;
+    private Stack<T> discardedPile;
     private final List<Observer> observerList;
     private boolean init;
-    private static DiscardedPile instance;
+    private static DiscardedPile<?> instance;
 
     private DiscardedPile() {
         observerList = new ArrayList<>();
     }
 
-    public static DiscardedPile getInstance() {
+    public static DiscardedPile<?> getInstance() {
         if(instance == null) {
-            instance = new DiscardedPile();
+            instance = new DiscardedPile<>();
         } return instance;
     }
 
     @Override
-    public void discard(AbstractUnoCard card) {
+    public void discard(T card) {
         if(init) {
             if(discardedPile.isEmpty()) {
                 discardedPile.push(card);
@@ -52,12 +49,12 @@ public class DiscardedPile extends AbstractDiscardedPile<AbstractUnoCard> implem
     }
 
     @Override
-    public List<AbstractUnoCard> items() {
+    public List<T> items() {
         return new ArrayList<>(discardedPile);
     }
 
     @Override
-    public AbstractUnoCard lastItem() {
+    public T lastItem() {
         return discardedPile.peek();
     }
 

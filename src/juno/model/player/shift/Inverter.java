@@ -1,6 +1,5 @@
 package juno.model.player.shift;
 
-import juno.model.player.factory.AbstractPlayer;
 import juno.model.player.players.AbstractPlayersMantainer;
 import juno.model.util.Donut;
 import juno.model.util.Observer;
@@ -9,29 +8,29 @@ import juno.model.util.Subject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Inverter implements AbstractInverter<AbstractPlayer>, Subject, Observer{
+public class Inverter<T> implements AbstractInverter, Subject, Observer{
 
-    private Donut<AbstractPlayer> players;
+    private Donut<T> subjects;
     private final List<Observer> observerList;
-    private static Inverter instance;
+    private static Inverter<?> instance;
 
     private Inverter() {
         observerList = new ArrayList<>();
     }
 
-    public static Inverter getInstance() {
+    public static Inverter<?> getInstance() {
        if(instance == null) {
-           instance = new Inverter();
+           instance = new Inverter<>();
        } return instance;
     }
 
     @Override
     public void invert() {
-        if(players != null) {
-            players.invert();
+        if(subjects != null) {
+            subjects.invert();
             updateAll();
         } else {
-            throw new IllegalArgumentException("Players aren't set");
+            throw new IllegalArgumentException("Subjects not present");
         }
     }
 
@@ -54,7 +53,7 @@ public class Inverter implements AbstractInverter<AbstractPlayer>, Subject, Obse
     @SuppressWarnings("unchecked")
     public void update(Object object) {
         if(object instanceof AbstractPlayersMantainer<?> obj) {
-            this.players = (Donut<AbstractPlayer>) obj.getPlayers();
+            subjects = (Donut<T>) obj.getPlayers();
         }
     }
 }

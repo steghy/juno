@@ -20,4 +20,17 @@ public class ButtonConfigurator extends Button {
         button.setMinimumSize(dimension);
         button.setMaximumSize(dimension);
     }
+
+    public static void configure(AbstractButton button, Dimension dimension) {
+        button.setContentAreaFilled(false);
+        button.setBorderPainted(false);
+        button.setOpaque(false);
+        button.setFocusPainted(false);
+
+        // DIMENSION
+        button.setSize(dimension);
+        button.setPreferredSize(dimension);
+        button.setMinimumSize(dimension);
+        button.setMaximumSize(dimension);
+    }
 }

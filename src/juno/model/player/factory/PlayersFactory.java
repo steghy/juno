@@ -7,9 +7,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-/**
- * @author steghy
- */
 public class PlayersFactory extends AbstractPlayersFactory<AbstractPlayer> implements Subject {
 
     private final List<Observer> observerList;

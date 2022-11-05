@@ -23,31 +23,16 @@ public enum Paths {
 	AUDIO_PLAYER(generatePath(IMAGES, "audio-player")),
 	BUTTONS(generatePath(IMAGES, "buttons"));
 	
-	/* The path */
 	private final String path;
 	
-	/*
-	 * Builds a Path object
-	 * with the specified path
-	 */
 	Paths(String path) {
 		this.path = path;
 	}
 	
-	/**
-	 * Returns the path of this object
-	 * @return The path
-	 */
 	public String getPath() {
 		return this.path;
 	}
 
-	
-	/**
-	 * Generates a path with the specified names
-	 * @param names The names of the path's component
-	 * @return A String that represent a path
-	 */
 	private static String generatePath(String... names) {
 		String div = System.getProperty("file.separator");
 		StringBuilder path = new StringBuilder(System.getProperty("user.dir"));
@@ -56,12 +41,6 @@ public enum Paths {
 		} return path.toString();
 	}
 	
-	/*
-	 * Returns a path 
-	 * @param pathObject A Paths object
-	 * @param names The names
-	 * @return A path
-	 */
 	private static String generatePath(Paths pathObject, String... names) {
 		String div = System.getProperty("file.separator");
 		StringBuilder path = new StringBuilder(pathObject.getPath());

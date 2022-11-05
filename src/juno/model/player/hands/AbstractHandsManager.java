@@ -1,6 +1,6 @@
 package juno.model.player.hands;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface AbstractHandsManager<T, E> {
 
@@ -8,5 +8,5 @@ public interface AbstractHandsManager<T, E> {
 
     void removeItemTo(T subject, E item);
 
-    List<E> getCardsOf(T subject);
+    Collection<E> getItemsOf(T subject);
 }

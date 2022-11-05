@@ -6,21 +6,15 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-/**
- * @author steghy
- */
- class CardFactory implements AbstractCardFactory<AbstractUnoCard> {
+ class CardFactory implements AbstractCardFactory<AbstractUnoCard<
+         AbstractUnoCardAction,
+         AbstractUnoCardColor<AbstractUnoColor>,
+         AbstractUnoCardValue>> {
 
-    /* The FactoryUnoCard instance */
     private static CardFactory instance;
 
-    /* Builds the FactoryUnoCard instance */
     private CardFactory() {}
 
-    /**
-     * Returns the FactoryUnoCard instance
-     * @return The FactoryUnoCard instance
-     */
     static CardFactory getInstance(){
         if(instance == null){
             instance = new CardFactory();
@@ -28,26 +22,33 @@ import java.util.List;
     }
 
     @Override
-    public Collection<AbstractUnoCard> getCards() {
+    public Collection<AbstractUnoCard<
+            AbstractUnoCardAction,
+            AbstractUnoCardColor<AbstractUnoColor>,
+            AbstractUnoCardValue>> getCards() {
 
-        List<AbstractUnoCard> cards = new ArrayList<>();
+        List<AbstractUnoCard<
+                AbstractUnoCardAction,
+                AbstractUnoCardColor<AbstractUnoColor>,
+                AbstractUnoCardValue>> cards = new ArrayList<>();
 
         // COLORED CARDS
         Arrays.asList(UnoColor.values()).forEach(color -> {
-            Arrays.asList(UnoCardValue.values()).forEach(value -> cards.add(new UnoCard(value, new UnoCardColor(color), null)));
+            Arrays.asList(UnoCardValue.values()).forEach(value ->
+                    cards.add(new UnoCard<>(null, new UnoCardColor<>(color), value)));
 
             Arrays.asList(UnoCardAction.values()).forEach(action -> {
                 if(action != null) {
                     if (!action.isWildAction() && !action.isWildDrawFourAction()) {
-                        cards.add(new UnoCard(null, new UnoCardColor(color), action));
+                        cards.add(new UnoCard<>(action, new UnoCardColor<>(color), null));
                     }
                 }
             });
         });
 
         // JOLLY CARDS
-        cards.add(new UnoCard(null, null, UnoCardAction.WILD));
-        cards.add(new UnoCard(null, null, UnoCardAction.WILD_DRAW_FOUR));
+        cards.add(new UnoCard<>(UnoCardAction.WILD, null, null));
+        cards.add(new UnoCard<>(UnoCardAction.WILD_DRAW_FOUR, null, null));
         return cards;
     }
 

@@ -1,22 +1,17 @@
 package juno.model.deck;
 
+
 import juno.model.card.*;
 
-/**
- * @author steghy
- */
-class CompatibilityChecker implements AbstractCompatibilityChecker<AbstractUnoCard> {
+class CompatibilityChecker implements AbstractCompatibilityChecker<AbstractUnoCard<
+        AbstractUnoCardAction,
+        AbstractUnoCardColor<AbstractUnoColor>,
+        AbstractUnoCardValue>> {
 
-    /* The UnoCardCompatibilityChecker instance */
     private static CompatibilityChecker instance;
 
-    /* Builds the UnoCardCompatibilityChecker instance */
     private CompatibilityChecker(){}
 
-    /**
-     * Returns the UnoCardCompatibilityChecker instance.
-     * @return The UnoCardCompatibilityChecker instance.
-     */
     static CompatibilityChecker getInstance(){
         if(instance == null){
             instance = new CompatibilityChecker();
@@ -24,15 +19,21 @@ class CompatibilityChecker implements AbstractCompatibilityChecker<AbstractUnoCa
     }
 
     @Override
-    public boolean areCompatible(AbstractUnoCard card, AbstractUnoCard otherCard){
+    public boolean areCompatible(AbstractUnoCard<
+            AbstractUnoCardAction,
+            AbstractUnoCardColor<AbstractUnoColor>,
+            AbstractUnoCardValue> card, AbstractUnoCard<
+            AbstractUnoCardAction,
+            AbstractUnoCardColor<AbstractUnoColor>,
+            AbstractUnoCardValue> otherCard){
 
         // CARD SPECIFICATIONS
-        AbstractUnoCardColor cardColor = card.color();
+        AbstractUnoCardColor<AbstractUnoColor> cardColor = card.color();
         AbstractUnoCardAction cardAction = card.action();
         AbstractUnoCardValue cardValue = card.value();
 
         // OTHER CARD SPECIFICATIONS
-        AbstractUnoCardColor otherCardColor = otherCard.color();
+        AbstractUnoCardColor<AbstractUnoColor> otherCardColor = otherCard.color();
         AbstractUnoCardAction otherCardAction = otherCard.action();
         AbstractUnoCardValue otherCardValue = otherCard.value();
 

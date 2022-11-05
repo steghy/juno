@@ -13,7 +13,7 @@ public abstract class AbstractActionPerformer<T, E, C> implements InterfaceActio
     private AbstractTurnMover nextTurnClass;
     private AbstractTurnJumper skipper;
     private AbstractHandsManager<T, E> handsManager;
-    private AbstractInverter<T> inverter;
+    private AbstractInverter inverter;
     private AbstractPlayersManager<T> playersManager;
 
     void setDeck(AbstractDeck<E> deck) {
@@ -28,7 +28,7 @@ public abstract class AbstractActionPerformer<T, E, C> implements InterfaceActio
     void setNextTurnClass(AbstractTurnMover nextTurnClass) {
         this.nextTurnClass = nextTurnClass;
     }
-    void setInverter(AbstractInverter<T> inverter) {
+    void setInverter(AbstractInverter inverter) {
         this.inverter = inverter;
     }
     void setPlayersManager(AbstractPlayersManager<T> playersManager){
@@ -47,7 +47,7 @@ public abstract class AbstractActionPerformer<T, E, C> implements InterfaceActio
     AbstractTurnJumper getSkipper() {
         return skipper;
     }
-    AbstractInverter<T> getInverter() {
+    AbstractInverter getInverter() {
         return this.inverter;
     }
     AbstractPlayersManager<T> getPlayersManager() {

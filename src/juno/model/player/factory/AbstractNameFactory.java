@@ -1,8 +1,8 @@
 package juno.model.player.factory;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface AbstractNameFactory {
 
-    List<String> getNames(int num);
+    Collection<String> getNames(int num);
 }

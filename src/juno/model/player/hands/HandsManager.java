@@ -1,34 +1,29 @@
 package juno.model.player.hands;
 
-import juno.model.card.AbstractUnoCard;
-import juno.model.player.factory.AbstractPlayer;
 import juno.model.player.factory.InterfacePlayersFactory;
 import juno.model.util.Observer;
 import juno.model.util.Subject;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-public class HandsManager implements AbstractHandsManager<AbstractPlayer, AbstractUnoCard>, Subject, Observer{
+public class HandsManager<T, E> implements AbstractHandsManager<T, E>, Subject, Observer{
 
-    private Map<AbstractPlayer, List<AbstractUnoCard>> map;
+    private Map<T, Collection<E>> map;
     private final List<Observer> observerList;
-    private static HandsManager instance;
+    private static HandsManager<?, ?> instance;
 
     private HandsManager() {
         observerList = new ArrayList<>();
     }
 
-    public static HandsManager getInstance() {
+    public static HandsManager<?, ?> getInstance() {
         if(instance == null) {
-            instance = new HandsManager();
+            instance = new HandsManager<>();
         } return instance;
     }
 
     @Override
-    public void addItem(AbstractPlayer subject, AbstractUnoCard item) {
+    public void addItem(T subject, E item) {
         if(map != null) {
             if(map.containsKey(subject)) {
                 map.get(subject).add(item);
@@ -41,7 +36,7 @@ public class HandsManager implements AbstractHandsManager<AbstractPlayer, Abstra
     }
 
     @Override
-    public void removeItemTo(AbstractPlayer subject, AbstractUnoCard item) {
+    public void removeItemTo(T subject, E item) {
         if(map != null) {
             if(map.containsKey(subject)) {
                 map.get(subject).remove(item);
@@ -54,7 +49,7 @@ public class HandsManager implements AbstractHandsManager<AbstractPlayer, Abstra
     }
 
     @Override
-    public List<AbstractUnoCard> getCardsOf(AbstractPlayer subject) {
+    public Collection<E> getItemsOf(T subject) {
         if(map != null) {
             if(map.containsKey(subject)) {
                 return map.get(subject);
@@ -82,10 +77,11 @@ public class HandsManager implements AbstractHandsManager<AbstractPlayer, Abstra
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public void update(Object object) {
         if(object instanceof InterfacePlayersFactory<?> playersFactory) {
             map = new HashMap<>();
-            playersFactory.getPlayers().forEach(player -> map.put((AbstractPlayer) player, new ArrayList<>()));
+            playersFactory.getPlayers().forEach(subject -> map.put((T)subject, new ArrayList<>()));
         }
     }
 }

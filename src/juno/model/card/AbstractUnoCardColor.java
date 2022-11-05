@@ -1,8 +1,8 @@
 package juno.model.card;
 
-public interface AbstractUnoCardColor {
+public interface AbstractUnoCardColor<T> {
 
-    void setUnoColor(AbstractUnoColor color);
+    void setUnoColor(T color);
 
-    AbstractUnoColor getUnoColor();
+    T getUnoColor();
 }

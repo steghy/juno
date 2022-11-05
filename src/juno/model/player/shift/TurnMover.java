@@ -1,6 +1,5 @@
 package juno.model.player.shift;
 
-import juno.model.player.factory.AbstractPlayer;
 import juno.model.player.players.AbstractPlayersMantainer;
 import juno.model.util.Donut;
 import juno.model.util.Observer;
@@ -9,26 +8,26 @@ import juno.model.util.Subject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TurnMover implements AbstractTurnMover, Subject, Observer {
+public class TurnMover<T> implements AbstractTurnMover, Subject, Observer {
 
-    private Donut<AbstractPlayer> players;
+    private Donut<T> subjects;
     private final List<Observer> observerList;
-    private static TurnMover instance;
+    private static TurnMover<?> instance;
 
     private TurnMover() {
         observerList = new ArrayList<>();
     }
 
-    public static TurnMover getInstance(){
+    public static TurnMover<?> getInstance(){
         if(instance == null) {
-            instance = new TurnMover();
+            instance = new TurnMover<>();
         } return instance;
     }
 
     @Override
     public void next() {
-        if(players != null) {
-            players.next();
+        if(subjects != null) {
+            subjects.next();
             updateAll();
         } else {
             throw new IllegalArgumentException("Players aren't set");
@@ -54,7 +53,7 @@ public class TurnMover implements AbstractTurnMover, Subject, Observer {
     @SuppressWarnings("unchecked")
     public void update(Object object) {
         if(object instanceof AbstractPlayersMantainer<?> obj) {
-            this.players = (Donut<AbstractPlayer>) obj.getPlayers();
+            this.subjects = (Donut<T>) obj.getPlayers();
         }
     }
 }

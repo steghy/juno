@@ -1,41 +1,27 @@
 package juno.model.card;
 
-/**
- * @author steghy
- */
-public class UnoCardColor implements AbstractUnoCardColor {
+public class UnoCardColor<T> implements AbstractUnoCardColor<T> {
 
-    /* The AbstractUnoColor object */
-    private AbstractUnoColor color;
+    private T color;
 
-    /**
-     * Builds an UnoCardColor object with
-     * the specified AbstractUnoColor object
-     * @param color An AbstractUnoColor object
-     */
-    public UnoCardColor(AbstractUnoColor color) {
+    public UnoCardColor(T color) {
        this.color = color;
     }
 
-    /**
-     * Builds an empty UnoCardColor object
-     */
-    public UnoCardColor(){}
-
     @Override
-    public void setUnoColor(AbstractUnoColor color) {
+    public void setUnoColor(T color) {
         this.color = color;
     }
 
     @Override
-    public AbstractUnoColor getUnoColor(){
+    public T getUnoColor(){
         return this.color;
     }
 
     @Override
     public boolean equals(Object object) {
-        if(object instanceof UnoCardColor color) {
-            return this.color.equals(color.getUnoColor());
+        if(object instanceof UnoCardColor<?> obj) {
+            return this.color.equals(obj.getUnoColor());
         } else {
             throw new IllegalArgumentException("Invalid type "
             + object.getClass() + ", expected UnoCardColor type");

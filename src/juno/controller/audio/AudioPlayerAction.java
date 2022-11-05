@@ -27,21 +27,22 @@ public class AudioPlayerAction implements ActionListener {
         Object source = e.getSource();
         if(source instanceof AbstractButton button) {
             AudioPlayer audioPlayer = AudioPlayer.getInstance();
-
-            // TOGGLE CASE
-            if(button.getActionCommand().equals(toggleButton)) {
-                if(audioPlayer.getStatus()) {
-                    audioPlayer.pause();
-                } else {
-                    audioPlayer.play();
-                }
-            }
-
-            // NEXT / BACK CASE
             switch(e.getActionCommand()) {
                 case(nextButton) -> audioPlayer.next();
-                case(backButton) -> audioPlayer.previous();
+                case(toggleButton) -> {
+                    if(button instanceof JToggleButton toggle) {
+                        if(audioPlayer.isRunning()) {
+                            audioPlayer.pause();
+
+                        } else {
+                            audioPlayer.play();
+                        }
+                    }
+                }
+                case(backButton) -> audioPlayer.back();
             }
+        } else {
+            throw new IllegalArgumentException("Invalid usage");
         }
     }
 }
