@@ -17,6 +17,7 @@ public enum Paths {
 	GREEN_CARDS(generatePath(CARDS, "green")),
 	YELLOW_CARDS(generatePath(CARDS, "yellow")),
 	JOLLY_CARDS(generatePath(CARDS, "jolly")),
+	GIFS(generatePath(IMAGES, "gifs")),
 	COVER(generatePath(CARDS, "cover")),
 	LOGOS(generatePath(IMAGES, "logos")),
 	BACKGROUNDS(generatePath(IMAGES, "backgrounds")),
