@@ -1,6 +1,6 @@
 package juno.view.pages.backgrounds;
 
-import juno.init.Paths;
+import juno.init.Directories;
 import juno.model.util.PathGenerator;
 import juno.view.util.ImageResizer;
 
@@ -23,7 +23,7 @@ public class Background extends JLabel {
         this.setMaximumSize(dimension);
         this.setMinimumSize(dimension);
 
-        String backgroundImage = PathGenerator.generate(Paths.BACKGROUNDS.getPath(), "background.gif");
+        String backgroundImage = PathGenerator.generate(Directories.BACKGROUNDS.getPath(), "background.gif");
         this.setIcon(new ImageIcon(ImageResizer.resize(this, backgroundImage)));
     }
 }

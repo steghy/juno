@@ -1,6 +1,5 @@
 package juno.view.pages.main.menuPanel;
 
-import juno.controller.menu.NewGameListener;
 import juno.view.util.ImageButton;
 
 public class NewGameButton extends ImageButton {

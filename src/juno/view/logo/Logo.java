@@ -1,6 +1,6 @@
 package juno.view.logo;
 
-import juno.init.Paths;
+import juno.init.Directories;
 import juno.model.util.PathGenerator;
 import juno.view.util.ImageResizer;
 
@@ -45,8 +45,8 @@ public class Logo extends JButton {
             super.setMinimumSize(dimension);
             super.setMaximumSize(dimension);
             // LOGO IMAGES
-            String logoImageNF = PathGenerator.generate(Paths.LOGOS.getPath(), "logo-3.png");
-            String logoImageF = PathGenerator.generate(Paths.LOGOS.getPath(), "logo-3.png");
+            String logoImageNF = PathGenerator.generate(Directories.LOGOS.getPath(), "logo-3.png");
+            String logoImageF = PathGenerator.generate(Directories.LOGOS.getPath(), "logo-3.png");
             this.setIcon(new ImageIcon(ImageResizer.resize(this, logoImageNF)));
             this.setRolloverIcon(new ImageIcon(ImageResizer.resize(this, logoImageF)));
         }

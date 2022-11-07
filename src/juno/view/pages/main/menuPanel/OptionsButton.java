@@ -1,6 +1,6 @@
 package juno.view.pages.main.menuPanel;
 
-import juno.init.Paths;
+import juno.init.Directories;
 import juno.model.util.PathGenerator;
 import juno.view.util.ImageResizer;
 
@@ -28,8 +28,8 @@ public class OptionsButton extends JButton {
         this.setMinimumSize(dimension);
 
         // IMAGE SETTINGS
-        String imageNF = PathGenerator.generate(Paths.BUTTONS.getPath(), "options-not-focus.png");
-        String imageF = PathGenerator.generate(Paths.BUTTONS.getPath(), "options-focus.png");
+        String imageNF = PathGenerator.generate(Directories.BUTTONS.getPath(), "options-not-focus.png");
+        String imageF = PathGenerator.generate(Directories.BUTTONS.getPath(), "options-focus.png");
         this.setIcon(new ImageIcon(ImageResizer.resize(this, imageNF)));
         this.setRolloverIcon(new ImageIcon(ImageResizer.resize(this, imageF)));
 

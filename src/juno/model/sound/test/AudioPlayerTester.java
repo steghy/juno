@@ -1,6 +1,6 @@
 package juno.model.sound.test;
 
-import juno.init.Paths;
+import juno.init.Directories;
 import juno.model.sound.AudioPlayer;
 
 import java.io.File;
@@ -11,7 +11,7 @@ public class AudioPlayerTester {
 	public static void main(String[] args) {
 
 		// MUSIC PATH
-		String musicDirectory = Paths.MUSIC.getPath();
+		String musicDirectory = Directories.MUSIC.getPath();
 		File directory = new File(musicDirectory);
 
 		// AUDIO PLAYER INITIALIZATION
