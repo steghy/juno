@@ -2,60 +2,104 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/juno/view/example2/Frame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/example2/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/example2/panel/Background.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/example2/panel/Panel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/example2/panel/logoPanel/Logo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/example2/panel/logoPanel/LogoPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/example2/panel/menuPanel/ExitButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/example2/panel/menuPanel/MenuPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/example2/panel/menuPanel/NewGameButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/example2/panel/menuPanel/OptionsButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/example2/panel/menuPanel/ScoreButton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/buttons/new-game-button-rollover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/buttons/new-game-button.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/controller/menu/NewGameListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/ViewInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/exceptions/DimensionException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/logo/Logo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/pages/main/menuPanel/NewGameButton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/pages/main/menuPanel/NewGameButtonInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/util/ImageButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/frame/AbstractFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/frame/Frame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/frame/Frame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/frame/FrameConfigurator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/AbstractPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/Panel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/Panel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/PanelConfigurator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/center/CenterPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/center/CenterPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/center/CenterPanelConfigurator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/center/center/MenuPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/center/center/MenuPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/center/center/MenuPanelConfigurator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/center/center/menu/buttons/ButtonsPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/center/center/menu/buttons/ButtonsPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/center/center/menu/buttons/ButtonsPanelConfigurator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/east/EastPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/east/EastPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/east/EastPanelConfigurator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/north/NorthPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/north/NorthPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/north/NorthPanelConfigurator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/south/SouthPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/south/SouthPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/south/SouthPanelConfigurator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/west/WestPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/west/WestPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/west/WestPanelConfigurator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/example/frame/AbstractFrame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/example/frame/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/example/frame/Frame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/example/frame/FrameConfigurator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/example/panel/AbstractPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/example/panel/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/example/panel/Panel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/example/panel/PanelConfigurator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/example/panel/center/CenterPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/example/panel/center/CenterPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/example/panel/center/CenterPanelConfigurator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/example/panel/center/center/MenuPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/example/panel/center/center/MenuPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/example/panel/center/center/MenuPanelConfigurator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/example/panel/center/center/menu/buttons/ButtonsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/example/panel/center/center/menu/buttons/ButtonsPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/example/panel/center/center/menu/buttons/ButtonsPanelConfigurator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/example/panel/east/EastPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/example/panel/east/EastPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/example/panel/east/EastPanelConfigurator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/example/panel/north/NorthPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/example/panel/north/NorthPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/example/panel/north/NorthPanelConfigurator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/example/panel/south/SouthPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/example/panel/south/SouthPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/example/panel/south/SouthPanelConfigurator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/example/panel/west/WestPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/example/panel/west/WestPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/example/panel/west/WestPanelConfigurator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/buttons/new-game-focus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/buttons/new-game-not-focus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/controller/audio/AudioPlayerAction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/frame/Frame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/Panel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/center/CenterPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/center/center/MenuPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/center/center/menu/buttons/ButtonsPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/east/EastPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/north/NorthPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/south/SouthPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example/panel/west/WestPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example2/Frame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example2/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example2/panel/Background.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example2/panel/Panel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example2/panel/logoPanel/Logo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example2/panel/logoPanel/LogoPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example2/panel/menuPanel/ExitButton.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example2/panel/menuPanel/MenuPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example2/panel/menuPanel/NewGameButton.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example2/panel/menuPanel/OptionsButton.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/example2/panel/menuPanel/ScoreButton.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/BLPage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/MainPageConfigurator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/MainPageFullConfigurator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/main/center/CenterPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/main/center/CenterPanelConfigurator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/main/east/EastPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/main/east/EastPanelConfigurator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/main/north/NorthPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/main/north/NorthPanelConfigurator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/main/south/SouthPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/main/south/SouthPanelConfigurator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/main/west/WestPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/main/west/WestPanelConfigurator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/ngame/mplayer/multiplayer-info.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/ngame/splayer/single-player.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/util/ButtonConfigurator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/util/ComponentResizer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/util/FrameConfigurator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/util/ImageResizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/util/ImageResizer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/util/LabelConfigurator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/util/PanelConfigurator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/audio/AudioPlayerAction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/example/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/example/frame/Frame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/example/panel/Panel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/example/panel/center/CenterPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/example/panel/center/center/MenuPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/example/panel/center/center/menu/buttons/ButtonsPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/example/panel/east/EastPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/example/panel/north/NorthPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/example/panel/south/SouthPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/example/panel/west/WestPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/example2/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/frame/Frame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/example2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/init/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/example2/panel/Background.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/backgrounds/Background.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/example2/panel/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/main/Panel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/example2/panel/logoPanel/Logo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/example2/panel/logoPanel/LogoPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/main/logoPanel/LogoPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/example2/panel/menuPanel/ExitButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/main/menuPanel/ExitButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/example2/panel/menuPanel/MenuPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/main/menuPanel/MenuPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/example2/panel/menuPanel/NewGameButton.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/example2/panel/menuPanel/OptionsButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/main/menuPanel/OptionsButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/example2/panel/menuPanel/ScoreButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/main/menuPanel/ScoreButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/BLPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/MainPageConfigurator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/MainPageFullConfigurator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/main/center/CenterPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/main/center/CenterPanelConfigurator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/main/east/EastPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/main/east/EastPanelConfigurator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/main/north/NorthPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/main/north/NorthPanelConfigurator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/main/south/SouthPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/main/south/SouthPanelConfigurator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/main/west/WestPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/main/west/WestPanelConfigurator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/ngame/mplayer/multiplayer-info.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/logo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/ngame/splayer/single-player.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/util/ButtonConfigurator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/util/ComponentResizer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/util/FrameConfigurator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/util/ImageResizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/util/ImageResizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/util/LabelConfigurator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/util/PanelConfigurator.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +153,7 @@
       <recent name="juno.model.deck2" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.juno.view.example2.Main">
+  <component name="RunManager" selected="Application.juno.init.Main">
     <configuration name="AudioPlayerTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="juno.view.audio.test.AudioPlayerTester" />
       <module name="juno-project" />
@@ -162,12 +206,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="juno.view.example2.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="juno.view.example2.Main" />
+    <configuration name="juno.init.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="juno.init.Main" />
       <module name="juno-project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="juno.view.example2.*" />
+          <option name="PATTERN" value="juno.view.frame.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -177,7 +221,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.juno.view.example2.Main" />
+        <item itemvalue="Application.juno.init.Main" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.MainPageTester" />
         <item itemvalue="Application.AudioPlayerTester" />
