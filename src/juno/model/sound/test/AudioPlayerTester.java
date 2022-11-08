@@ -11,7 +11,7 @@ public class AudioPlayerTester {
 	public static void main(String[] args) {
 
 		// MUSIC PATH
-		String musicDirectory = Directories.MUSIC.getPath();
+		String musicDirectory = Directories.MUSIC.absolutePath();
 		File directory = new File(musicDirectory);
 
 		// AUDIO PLAYER INITIALIZATION

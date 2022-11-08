@@ -1,14 +1,31 @@
 package juno.view.pages.main.menuPanel;
 
 import juno.view.util.ImageButton;
+import juno.view.util.ImageResizer;
 
 import javax.swing.*;
-import java.awt.*;
+
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Color;
+import java.awt.Insets;
+import java.awt.Dimension;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MenuPanel extends JPanel {
 
-    public MenuPanel() {
+    private static MenuPanel instance;
+
+    private MenuPanel() {
         init();
+    }
+
+    public static MenuPanel getInstance() {
+        if(instance == null) {
+            instance = new MenuPanel();
+        } return instance;
     }
 
     private void init() {
@@ -18,19 +35,18 @@ public class MenuPanel extends JPanel {
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        JButton newGameButton = NewGameButton.getInstance();
-        JButton scoreButton = new ScoreButton();
-        JButton optionsButton = new OptionsButton();
-        JButton exitButton = new ExitButton();
+        AbstractButton newGameButton = NewGameButton.getInstance();
+        AbstractButton scoreButton = ScoreButton.getInstance();
+        AbstractButton optionsButton = OptionsButton.getInstance();
+        AbstractButton exitButton = ExitButton.getInstance();
 
-        // NEW GAME BUTTON RESIZE
-        int newGameButtonWidth = newGameButton.getWidth();
-        int newGameButtonHeight = newGameButton.getHeight();
-        double newGameButtonDivisor = 1.8;
-        Dimension newGameButtonDimension = new Dimension(
-                (int) (newGameButtonWidth / newGameButtonDivisor),
-                (int)(newGameButtonHeight / newGameButtonDivisor));
-        newGameButton.setPreferredSize(newGameButtonDimension);
+        Map<AbstractButton, Double> map = new HashMap<>();
+        map.put(newGameButton, 2.2);
+        map.put(scoreButton, 4.2);
+        map.put(optionsButton, 4.2);
+        map.put(exitButton, 4.2);
+
+        ImageResizer.resize(map);
 
         // NEW GAME BUTTON
         gbc.gridx = 0;
@@ -41,7 +57,7 @@ public class MenuPanel extends JPanel {
 
         gbc.anchor = GridBagConstraints.PAGE_START;
 
-        gbc.insets = new Insets(10,0,10,0);
+        gbc.insets = new Insets(0,0,17,0);
 
         gbc.ipadx = 0;
         gbc.ipady = 0;
@@ -57,7 +73,7 @@ public class MenuPanel extends JPanel {
 
         gbc.anchor = GridBagConstraints.PAGE_START;
 
-        gbc.insets = new Insets(10,0,10,0);
+        gbc.insets = new Insets(17,0,17,0);
 
         gbc.ipadx = 0;
         gbc.ipady = 0;
@@ -73,7 +89,7 @@ public class MenuPanel extends JPanel {
 
         gbc.anchor = GridBagConstraints.PAGE_START;
 
-        gbc.insets = new Insets(10,0,10,0);
+        gbc.insets = new Insets(17,0,17,0);
 
         gbc.ipadx = 0;
         gbc.ipady = 0;
@@ -89,7 +105,7 @@ public class MenuPanel extends JPanel {
 
         gbc.anchor = GridBagConstraints.PAGE_START;
 
-        gbc.insets = new Insets(10,0,10,0);
+        gbc.insets = new Insets(17,0,17,0);
 
         gbc.ipadx = 0;
         gbc.ipady = 0;

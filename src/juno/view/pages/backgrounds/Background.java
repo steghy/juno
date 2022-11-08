@@ -2,28 +2,34 @@ package juno.view.pages.backgrounds;
 
 import juno.init.Directories;
 import juno.model.util.PathGenerator;
-import juno.view.util.ImageResizer;
+import juno.view.util.Constant;
+import juno.view.util.ImageComponentInitializer;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class Background extends JLabel {
 
-    public Background() {
-        init();
+    private static Background instance;
+
+    private Background() {
+        initialize();
     }
 
-    private void init() {
-        this.setOpaque(false);
+    public static Background getInstance() {
+        if(instance == null) {
+            instance = new Background();
+        } return instance;
+    }
 
-        // DIMENSION
-        Dimension dimension = new Dimension(1920, 1080);
-        this.setSize(dimension);
-        this.setPreferredSize(dimension);
-        this.setMaximumSize(dimension);
-        this.setMinimumSize(dimension);
-
-        String backgroundImage = PathGenerator.generate(Directories.BACKGROUNDS.getPath(), "background.gif");
-        this.setIcon(new ImageIcon(ImageResizer.resize(this, backgroundImage)));
+    private void initialize() {
+        ImageComponentInitializer.initialize(
+                this,
+                Directories.BACKGROUNDS,
+                "background",
+                "background.gif",
+                new Dimension(1000, 1000),
+                Constant.CYAN_LABEL
+        );
     }
 }

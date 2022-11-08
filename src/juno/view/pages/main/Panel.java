@@ -9,19 +9,26 @@ import java.awt.*;
 
 public class Panel extends JPanel {
 
-    public Panel() {
+    private static Panel instance;
+
+    private Panel() {
         init();
     }
 
+    public static Panel getInstance() {
+        if(instance == null) {
+            instance = new Panel();
+        } return instance;
+    }
+
     private void init() {
-        // DEFAULT SETTINGS
         this.setOpaque(false);
         this.setLayout(new BorderLayout());
 
         // COMPONENTS
-        Background background = new Background();
-        LogoPanel logoPanel = new LogoPanel();
-        MenuPanel menuPanel = new MenuPanel();
+        Background background = Background.getInstance();
+        LogoPanel logoPanel = LogoPanel.getInstance();
+        MenuPanel menuPanel = MenuPanel.getInstance();
 
         background.setLayout(new GridBagLayout());
 
@@ -31,12 +38,12 @@ public class Panel extends JPanel {
         gbc.gridx = 0;
         gbc.gridy = 0;
 
-        gbc.weightx = 0.3;
-        gbc.weighty = 0.3;
+        gbc.weightx = 0.5;
+        gbc.weighty = 0.5;
 
-        gbc.anchor = GridBagConstraints.PAGE_START;
+        gbc.anchor = GridBagConstraints.CENTER;
 
-        gbc.fill = GridBagConstraints.BOTH;
+        gbc.fill = GridBagConstraints.VERTICAL;
 
         background.add(logoPanel, gbc);
 
@@ -49,7 +56,7 @@ public class Panel extends JPanel {
 
         gbc.anchor = GridBagConstraints.CENTER;
 
-        gbc.fill = GridBagConstraints.BOTH;
+        // gbc.fill = GridBagConstraints.BOTH;
 
         background.add(menuPanel, gbc);
 

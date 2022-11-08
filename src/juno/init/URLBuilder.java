@@ -20,35 +20,31 @@ public class URLBuilder {
         } return instance;
     }
 
-    public String getURL(Path pathObject) {
+    public String getURL(String path) {
         String div = "/";
-        String path = pathObject.getPath();
-        if(path != null) {
-            String subPath = pathObject.getPath().replace('\\', '/');
-        }
         StringBuilder builder = new StringBuilder();
         builder.append(prefix == null ? PREFIX : prefix);
         builder.append(adminName == null ? "" : div.concat(adminName));
         builder.append(repositoryName == null ? "" : div.concat(repositoryName));
         builder.append(branchName == null ? "" : div.concat(branchName));
-        builder.append(path);
+        path = path.replace('\\', '/');
+        builder.append(path.startsWith("/") ? path : div.concat(path));
         builder.append(token == null ? "" : "?token=".concat(token));
         return builder.toString();
     }
 
-    public String getURL(Path pathObject, String fileName) {
+    public String getURL(String directory, String file) {
         String div = "/";
-        String path = pathObject.getPath();
-        if(path != null) {
-            String subPath = pathObject.getPath().replace('\\', '/');
-        }
         StringBuilder builder = new StringBuilder();
         builder.append(prefix == null ? PREFIX : prefix);
         builder.append(adminName == null ? "" : div.concat(adminName));
         builder.append(repositoryName == null ? "" : div.concat(repositoryName));
         builder.append(branchName == null ? "" : div.concat(branchName));
-        builder.append(path);
-        builder.append(fileName == null ? "" : div.concat(fileName));
+        if(directory != null) {
+            builder.append(directory.startsWith("/") ? directory : div.concat(directory));
+        } if(file != null) {
+            builder.append(file.startsWith("/") ? file : div.concat(file));
+        }
         builder.append(token == null ? "" : "?token=".concat(token));
         return builder.toString();
     }
@@ -56,10 +52,10 @@ public class URLBuilder {
     public static void main(String[] args) {
         URLBuilder urlBuilder = URLBuilder.getInstance();
         urlBuilder.adminName = "steghy";
-        urlBuilder.repositoryName = "juno";
+        urlBuilder.repositoryName = "configurator";
         urlBuilder.branchName = "main";
-        urlBuilder.token = "GHSAT0AAAAAABZZHKB4WTRFN4R52KTYJDB6Y3JSW2A";
-        String result = urlBuilder.getURL(Directories.BUTTONS);
+        // urlBuilder.token = "GHSAT0AAAAAABZZHKB4WTRFN4R52KTYJDB6Y3JSW2A";
+        String result = urlBuilder.getURL("configurator.py");
         System.out.println(result);
     }
 

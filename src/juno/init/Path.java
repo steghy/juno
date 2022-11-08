@@ -2,5 +2,7 @@ package juno.init;
 
 public interface Path {
 
-    String getPath();
+    String path();
+
+    String absolutePath();
 }

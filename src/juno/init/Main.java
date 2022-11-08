@@ -1,7 +1,8 @@
 package juno.init;
 
-import juno.view.ViewInitializer;
 import juno.view.frame.Frame;
+
+import javax.swing.*;
 
 public class Main {
 
@@ -13,8 +14,13 @@ public class Main {
         url.branchName = "main";
         url.token = "GHSAT0AAAAAABZZHKB4WTRFN4R52KTYJDB6Y3JSW2A";
 
-        ViewInitializer.initialize();
-        Frame frame = new Frame();
-        frame.setVisible(true);
+        try {
+            Frame frame = new Frame();
+            frame.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "An unknown error has occurred. " +
+                    "Consult the program logs for more information.");
+        }
     }
 }

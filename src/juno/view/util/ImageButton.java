@@ -11,8 +11,9 @@ public abstract class ImageButton extends JButton {
             super.setSize(dimension);
             Icon icon = getIcon();
             Icon rolloverIcon = getRolloverIcon();
-            if(icon != null && rolloverIcon != null) {
+            if(icon != null) {
                 setIcon(new ImageIcon(ImageResizer.resize(this, icon)));
+            } if(rolloverIcon != null) {
                 setRolloverIcon(new ImageIcon(ImageResizer.resize(this, rolloverIcon)));
             }
         }
@@ -23,32 +24,26 @@ public abstract class ImageButton extends JButton {
             super.setSize(width, height);
             Icon icon = getIcon();
             Icon rolloverIcon = getRolloverIcon();
-            if(icon != null && rolloverIcon != null) {
+            if(icon != null) {
                 setIcon(new ImageIcon(ImageResizer.resize(this, icon)));
+            } if(rolloverIcon != null) {
                 setRolloverIcon(new ImageIcon(ImageResizer.resize(this, rolloverIcon)));
             }
         }
     }
 
     public void setPreferredSize(Dimension dimension) {
-        System.out.println(dimension);
         if(dimension != null &&
                 dimension.getWidth() != 0 && dimension.getHeight() != 0) {
             super.setPreferredSize(dimension);
             super.setSize(dimension);
-            System.out.println(dimension);
             Icon icon = getIcon();
             Icon rolloverIcon = getRolloverIcon();
-            if(icon != null && rolloverIcon != null) {
+            if(icon != null) {
                 setIcon(new ImageIcon(ImageResizer.resize(this, icon)));
+            } if(rolloverIcon != null) {
                 setRolloverIcon(new ImageIcon(ImageResizer.resize(this, rolloverIcon)));
             }
         }
-    }
-
-    public void init() {
-        this.setOpaque(false);
-        this.setContentAreaFilled(false);
-        this.setBorderPainted(false);
     }
 }

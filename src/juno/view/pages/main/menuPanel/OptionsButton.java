@@ -1,38 +1,39 @@
 package juno.view.pages.main.menuPanel;
 
 import juno.init.Directories;
-import juno.model.util.PathGenerator;
-import juno.view.util.ImageResizer;
+import juno.view.util.Constant;
+import juno.view.util.ImageButton;
+import juno.view.util.ImageComponentInitializer;
 
-import javax.swing.*;
 import java.awt.*;
 
-public class OptionsButton extends JButton {
+public class OptionsButton extends ImageButton {
 
-    public OptionsButton() {
-        init();
+    private static OptionsButton instance;
+
+    private OptionsButton() {
+        initialize();
     }
 
-    private void init() {
-        // DEFAULT SETTINGS
-        this.setOpaque(false);
-        this.setContentAreaFilled(false);
-        this.setBorderPainted(false);
-        this.setName("options button");
+    public static OptionsButton getInstance() {
+        if(instance == null) {
+            instance = new OptionsButton();
+        } return instance;
+    }
 
-        // DIMENSION SETTINGS
-        Dimension dimension = new Dimension(150, 50);
-        this.setSize(dimension);
-        this.setPreferredSize(dimension);
-        this.setMaximumSize(dimension);
-        this.setMinimumSize(dimension);
+    private void initialize() {
+        ImageComponentInitializer.initialize(
+                this,
+                Directories.BUTTONS,
+                "Options button",
+                "options-button.png",
+                "options-button-rollover.png",
+                new Dimension(600, 300),
+                Constant.BLUE_BUTTON,
+                Constant.KEEP_ROLLOVER_ICON,
+                Constant.KEEP_ICON
+        );
 
-        // IMAGE SETTINGS
-        String imageNF = PathGenerator.generate(Directories.BUTTONS.getPath(), "options-not-focus.png");
-        String imageF = PathGenerator.generate(Directories.BUTTONS.getPath(), "options-focus.png");
-        this.setIcon(new ImageIcon(ImageResizer.resize(this, imageNF)));
-        this.setRolloverIcon(new ImageIcon(ImageResizer.resize(this, imageF)));
-
-        // ACTION LISTENER
+        this.addActionListener(null);
     }
 }

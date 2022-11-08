@@ -2,6 +2,7 @@ package juno.view.util;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Map;
 
 public class ImageResizer {
 
@@ -50,5 +51,17 @@ public class ImageResizer {
         } else {
             return null;
         }
+    }
+
+    public static void resize(Map<AbstractButton, Double> map) {
+        map.entrySet().forEach(entry -> {
+            AbstractButton button = entry.getKey();
+            double div = entry.getValue();
+            button.setPreferredSize(new Dimension(
+                    (int) (button.getWidth() / div),
+                    (int) (button.getHeight()/ div)
+            ));
+        });
+
     }
 }

@@ -46,11 +46,11 @@ public enum Directories implements Path{
 		generatePath(null, name);
 	}
 
-	public String getPath() {
+	public String path() {
 		return this.path;
 	}
 
-	public String getAbsolutePath() {
+	public String absolutePath() {
 		return absolutePath;
 	}
 
