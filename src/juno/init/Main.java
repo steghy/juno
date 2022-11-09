@@ -1,6 +1,8 @@
 package juno.init;
 
+import juno.view.frame.CardPanel;
 import juno.view.frame.Frame;
+import juno.view.pages.options.OptionsPanel;
 
 import javax.swing.*;
 
@@ -15,7 +17,8 @@ public class Main {
         url.token = "GHSAT0AAAAAABZZHKB4WTRFN4R52KTYJDB6Y3JSW2A";
 
         try {
-            Frame frame = new Frame();
+            Frame frame = Frame.getInstance();
+            CardPanel.getInstance().add(OptionsPanel.getInstance(), "2");
             frame.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();

@@ -62,17 +62,19 @@ public class ImageComponentInitializer {
         if(!iconExits && !rolloverIconExists) {
             solve(button, BOTH_MISSING, dimension);
         } else if(rolloverIconExists && !iconExits) {
-            if(ICON_MISSING == Constant.KEEP_ROLLOVER_ICON) {
+            if(ICON_MISSING == Constant.KEEP_ROLLOVER_IMAGE) {
                 Icon rolloverIcon = new ImageIcon(rolloverImageAbsolutePath);
                 button.setIcon(rolloverIcon);
+                button.setSize(rolloverIcon.getIconWidth(), rolloverIcon.getIconHeight());
                 makeTransparent(button);
             } else {
                 solve(button, ICON_MISSING, dimension);
             }
-        } else if(iconExits && !rolloverIconExists) {
-            if(ROLLOVER_ICON_MISSING == Constant.KEEP_ICON) {
+        } else if(!rolloverIconExists) {
+            if(ROLLOVER_ICON_MISSING == Constant.KEEP_IMAGE) {
                 Icon icon = new ImageIcon(imageAbsolutePath);
                 button.setIcon(icon);
+                button.setSize(icon.getIconWidth(), icon.getIconHeight());
                 makeTransparent(button);
             } else {
                 solve(button, ROLLOVER_ICON_MISSING, dimension);
@@ -82,6 +84,165 @@ public class ImageComponentInitializer {
             Icon rolloverIcon = new ImageIcon(rolloverImageAbsolutePath);
             button.setIcon(icon);
             button.setRolloverIcon(rolloverIcon);
+            button.setSize(icon.getIconWidth(), icon.getIconHeight());
+            makeTransparent(button);
+        }
+    }
+
+    public static void initialize(JToggleButton button,
+                                  Path path,
+                                  String name,
+                                  String file,
+                                  String rolloverFile,
+                                  String selectedFile,
+                                  String rolloverSelectedFile,
+                                  Dimension dimension,
+
+                                  Constant BOTH_MISSING,
+                                  Constant BOTH_SELECTED_MISSING,
+
+                                  Constant ALL_MISSING,
+
+                                  Constant IMAGE_MISSING,
+                                  Constant ROLLOVER_IMAGE_MISSING,
+
+                                  Constant SELECTED_IMAGE_MISSING,
+                                  Constant ROLLOVER_SELECTED_IMAGE_MISSING) {
+        button.setName(name);
+
+
+        // IMAGE
+        String imageAbsolutePath = PathGenerator.generate(path.absolutePath(), file);
+        String imagePath = PathGenerator.generate(path.path(), file);
+
+        URLBuilder url = URLBuilder.getInstance();
+        boolean imageExists = true;
+        if (!Os.exists(imageAbsolutePath)) {
+            try {
+                Downloader.downloadUsingNIO(url.getURL(imagePath), imageAbsolutePath);
+            } catch (IOException e) {
+                if(IMAGE_MISSING == Constant.THROW_EXCEPTION) {
+                    throw new RuntimeException(imageAbsolutePath + " is missing.");
+                }
+                e.printStackTrace();
+                imageExists = false;
+            }
+        }
+
+        // ROLLOVER IMAGE
+        String rolloverImageAbsolutePath = PathGenerator.generate(path.absolutePath(), rolloverFile);
+        String rolloverImagePath = PathGenerator.generate(path.path(), rolloverFile);
+
+        boolean rolloverImageExists = true;
+        if(!Os.exists(rolloverImageAbsolutePath)) {
+            try {
+                Downloader.downloadUsingNIO(url.getURL(rolloverImagePath), rolloverImageAbsolutePath);
+            } catch (IOException e) {
+                if(ROLLOVER_IMAGE_MISSING == Constant.THROW_EXCEPTION) {
+                    throw new IllegalArgumentException(rolloverImageAbsolutePath + " is missing");
+                }
+                e.printStackTrace();
+                rolloverImageExists = false;
+            }
+        }
+
+        // SELECTED IMAGE
+        String selectedImageAbsolutePath = PathGenerator.generate(path.absolutePath(), selectedFile);
+        String selectedImagePath = PathGenerator.generate(path.path(), selectedFile);
+
+        boolean selectedImageExists = true;
+        if (!Os.exists(selectedImageAbsolutePath)) {
+            try {
+                Downloader.downloadUsingNIO(url.getURL(selectedImagePath), selectedImageAbsolutePath);
+            } catch (IOException e) {
+                if(SELECTED_IMAGE_MISSING == Constant.THROW_EXCEPTION) {
+                    throw new RuntimeException(selectedImageAbsolutePath + " is missing.");
+                }
+                e.printStackTrace();
+                selectedImageExists = false;
+            }
+        }
+
+        // ROLLOVER SELECTED IMAGE
+        String rolloverSelectedImageAbsolutePath = PathGenerator.generate(path.absolutePath(), rolloverSelectedFile);
+        String rolloverSelectedImagePath = PathGenerator.generate(path.path(), rolloverSelectedFile);
+
+        boolean rolloverSelectedImageExists = true;
+        if(!Os.exists(rolloverSelectedImageAbsolutePath)) {
+            try {
+                Downloader.downloadUsingNIO(url.getURL(rolloverSelectedImagePath), rolloverSelectedImageAbsolutePath);
+            } catch (IOException e) {
+                if(ROLLOVER_SELECTED_IMAGE_MISSING == Constant.THROW_EXCEPTION) {
+                    throw new IllegalArgumentException(rolloverImageAbsolutePath + " is missing");
+                }
+                e.printStackTrace();
+                rolloverSelectedImageExists = false;
+            }
+        }
+
+        if(!imageExists && !rolloverImageExists && !selectedImageExists && !rolloverSelectedImageExists) {
+            solve(button, ALL_MISSING, dimension);
+        }
+
+        // IMAGE & ROLLOVER_IMAGE
+        if(!imageExists && !rolloverImageExists) {
+            solve(button, BOTH_MISSING, dimension);
+        } else if(rolloverImageExists && !imageExists) {
+            if(IMAGE_MISSING == Constant.KEEP_ROLLOVER_IMAGE) {
+                Icon rolloverIcon = new ImageIcon(rolloverImageAbsolutePath);
+                button.setIcon(rolloverIcon);
+                button.setSize(rolloverIcon.getIconWidth(), rolloverIcon.getIconHeight());
+                makeTransparent(button);
+            } else {
+                solve(button, IMAGE_MISSING, dimension);
+                return;
+            }
+        } else if(!rolloverImageExists) {
+            if(ROLLOVER_IMAGE_MISSING == Constant.KEEP_IMAGE) {
+                Icon icon = new ImageIcon(imageAbsolutePath);
+                button.setIcon(icon);
+                button.setSize(icon.getIconWidth(), icon.getIconHeight());
+                makeTransparent(button);
+            } else {
+                solve(button, ROLLOVER_IMAGE_MISSING, dimension);
+                return;
+            }
+        } else {
+            Icon icon = new ImageIcon(imageAbsolutePath);
+            Icon rolloverIcon = new ImageIcon(rolloverImageAbsolutePath);
+            button.setIcon(icon);
+            button.setRolloverIcon(rolloverIcon);
+            button.setSize(icon.getIconWidth(), icon.getIconHeight());
+            makeTransparent(button);
+        }
+
+        // SELECTED_IMAGE & ROLLOVER_SELECTED_IMAGE
+        if(!selectedImageExists && !rolloverSelectedImageExists) {
+            solve(button, BOTH_SELECTED_MISSING, dimension);
+        } else if(rolloverSelectedImageExists && !selectedImageExists) {
+            if(SELECTED_IMAGE_MISSING == Constant.KEEP_ROLLOVER_SELECTED_IMAGE) {
+                Icon selectedRolloverIcon = new ImageIcon(rolloverSelectedImageAbsolutePath);
+                button.setSelectedIcon(selectedRolloverIcon);
+                button.setSize(selectedRolloverIcon.getIconWidth(), selectedRolloverIcon.getIconHeight());
+                makeTransparent(button);
+            } else {
+                solve(button, SELECTED_IMAGE_MISSING, dimension);
+            }
+        } else if(!rolloverSelectedImageExists) {
+            if(ROLLOVER_SELECTED_IMAGE_MISSING == Constant.KEEP_SELECTED_IMAGE) {
+                Icon selectedIcon = new ImageIcon(selectedImageAbsolutePath);
+                button.setIcon(selectedIcon);
+                button.setSize(selectedIcon.getIconWidth(), selectedIcon.getIconHeight());
+                makeTransparent(button);
+            } else {
+                solve(button, ROLLOVER_SELECTED_IMAGE_MISSING, dimension);
+            }
+        } else {
+            Icon selectedIcon = new ImageIcon(selectedImageAbsolutePath);
+            Icon rolloverSelectedIcon = new ImageIcon(rolloverSelectedImageAbsolutePath);
+            button.setSelectedIcon(selectedIcon);
+            button.setRolloverSelectedIcon(rolloverSelectedIcon);
+            button.setSize(rolloverSelectedIcon.getIconWidth(), rolloverSelectedIcon.getIconHeight());
             makeTransparent(button);
         }
     }
@@ -115,7 +276,6 @@ public class ImageComponentInitializer {
         if(iconExists) {
             Icon icon = new ImageIcon(imageAbsolutePath);
             button.setIcon(icon);
-            button.setSize(icon.getIconWidth(), icon.getIconHeight());
             makeTransparent(button);
         } else {
             solve(button, ICON_MISSING, dimension);
@@ -151,7 +311,6 @@ public class ImageComponentInitializer {
         if(iconExists) {
             Icon icon = new ImageIcon(imageAbsolutePath);
             label.setIcon(icon);
-            label.setSize(icon.getIconWidth(), icon.getIconWidth());
             label.setOpaque(false);
         } else {
             solve(label, ICON_MISSING, dimension);
@@ -160,6 +319,7 @@ public class ImageComponentInitializer {
 
     private static void makeTransparent(AbstractButton button) {
         button.setBorderPainted(false);
+        button.setFocusPainted(false);
         button.setOpaque(false);
         button.setContentAreaFilled(false);
     }
@@ -204,6 +364,7 @@ public class ImageComponentInitializer {
         button.setOpaque(true);
         button.setContentAreaFilled(true);
         button.setBorderPainted(true);
+        button.setFocusPainted(true);
         button.setSize(dimension);
     }
 }

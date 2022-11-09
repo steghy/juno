@@ -14,7 +14,7 @@ import juno.model.util.Donut;
 import juno.model.util.Observer;
 import juno.model.util.Subject;
 
-public class AudioPlayer implements AbstractAdvancedAudioPlayer, Subject {
+public class AudioPlayer implements AbstractAdvancedAudioPlayer, Subject, Runnable{
 
 	private final List<Observer> observerList;
 	private Clip clip;
@@ -34,48 +34,64 @@ public class AudioPlayer implements AbstractAdvancedAudioPlayer, Subject {
 	}
 
 	public void play() {
-		status = true;
-		clip.start();
-		updateAll();
-	}
-
-	public void rewind() {
-		clip.setMicrosecondPosition(0L);
-		play();
-	}
-
-	public void pause() {
-		if(status) {
-			status = false;
-			clip.stop();
+		if(clip != null) {
+			status = true;
+			clip.start();
 			updateAll();
 		}
 	}
 
-	public void next() {
-		stop();
-		tracks.next();
-		if(tracks.getCurrentIndex() == 0) {
-			if(loop) {
-				init(tracks.current());
-				play();
-			} else {
-				pause();
-			} updateAll();
+	public void rewind() {
+		if(clip != null) {
+			clip.setMicrosecondPosition(0L);
+			play();
 		}
 	}
 
-	public void back() {
-		stop();
-		init(this.tracks.previous());
+	public void pause() {
+		if(status) {
+			if(clip != null) {
+				status = false;
+				clip.stop();
+				updateAll();
+			}
+		}
+	}
+
+	public void next() {
+		if(tracks != null) {
+			if(tracks.getCurrentIndex() == tracks.size() - 1) {
+				if(loop) {
+					nextTrack();
+				} else {
+					pause();
+				}
+			} else {
+				nextTrack();
+			}
+		}
+	}
+
+	private void nextTrack() {
+		pause();
+		tracks.next();
+		load(tracks.current());
 		play();
 	}
 
+	public void back() {
+		if(tracks != null) {
+			stop();
+			load(tracks.previous());
+			play();
+		}
+	}
+
 	public void stop() {
-		status = false;
-		clip.stop();
-		clip.close();
-		updateAll();
+		if(status) {
+			pause();
+			clip.close();
+		}
 	}
 
 	public void move(long position) {
@@ -85,7 +101,7 @@ public class AudioPlayer implements AbstractAdvancedAudioPlayer, Subject {
 		} else {
 			clip.stop();
 			clip.close();
-			init(this.tracks.current());
+			load(this.tracks.current());
 			clip.setMicrosecondPosition(position);
 			clip.start();
 			status = true;
@@ -115,13 +131,13 @@ public class AudioPlayer implements AbstractAdvancedAudioPlayer, Subject {
 			this.tracks = new Donut<>();
 			this.tracks.addAll(Arrays.asList(tracks));
 			this.tracks.initialize(0);
-			init(this.tracks.current());
+			load(this.tracks.current());
 		} else {
 			throw new IllegalArgumentException("Invalid input");
 		}
 	}
 
-	private void init(File track) {
+	private void load(File track) {
 		try {
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(track);
 			clip = AudioSystem.getClip();
@@ -148,5 +164,10 @@ public class AudioPlayer implements AbstractAdvancedAudioPlayer, Subject {
 	@Override
 	public void updateAll() {
 		observerList.forEach(observer -> observer.update(this));
+	}
+
+	@Override
+	public void run() {
+
 	}
 }

@@ -9,19 +9,11 @@ import java.awt.*;
 
 public class Logo extends ImageButton {
 
-    private static Logo instance;
-
-    private Logo() {
-        initialize();
+    public Logo() {
+        init();
     }
 
-    public static Logo getInstance() {
-        if(instance == null) {
-            instance = new Logo();
-        } return instance;
-    }
-
-    private void initialize() {
+    private void init() {
         ImageComponentInitializer.initialize(
                 this,
                 Directories.LOGOS,
@@ -30,8 +22,8 @@ public class Logo extends ImageButton {
                 "logo-rollover.png",
                 new Dimension(300, 300),
                 Constant.BLUE_BUTTON,
-                Constant.KEEP_ROLLOVER_ICON,
-                Constant.KEEP_ICON
+                Constant.KEEP_ROLLOVER_IMAGE,
+                Constant.KEEP_IMAGE
         );
     }
 }

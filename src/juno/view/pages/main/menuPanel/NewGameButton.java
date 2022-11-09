@@ -26,12 +26,12 @@ public class NewGameButton extends ImageButton {
                 this,
                 Directories.BUTTONS,
                 "New game button",
-                "new-game-buttonz.png",
+                "new-game-button.png",
                 "new-game-button-rollover.png",
                 new Dimension(600, 300),
                 Constant.THROW_EXCEPTION,
-                Constant.KEEP_ROLLOVER_ICON,
-                Constant.KEEP_ICON
+                Constant.KEEP_ROLLOVER_IMAGE,
+                Constant.KEEP_IMAGE
         );
 
         this.addActionListener(null);

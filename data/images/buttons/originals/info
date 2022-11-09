@@ -1,0 +1,17 @@
+Normal:
+Font=Audiowide
+Font_size=200
+Background=none
+Direction=264
+Color1=#ffffff
+Color2=#ffffff
+Thickness=0
+
+Rollover:
+Font=Audiowide
+Font_size=200
+Background=none
+Direction=264
+Color1=#ffffff
+Color2=#ffffff
+Thickness=5

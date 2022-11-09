@@ -17,6 +17,7 @@ public class AudioPlayerTester {
 		// AUDIO PLAYER INITIALIZATION
 		AudioPlayer audioPlayer = AudioPlayer.getInstance();
 		audioPlayer.setTracks(directory.listFiles());
+		// audioPlayer.setLoop(true);
 
 		// GETS INPUTS
 		Scanner scanner = new Scanner(System.in);
