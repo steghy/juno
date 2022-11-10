@@ -21,8 +21,8 @@ public class ImageComponentInitializer {
                                   String rolloverFile,
                                   Dimension dimension,
                                   Constant BOTH_MISSING,
-                                  Constant ICON_MISSING,
-                                  Constant ROLLOVER_ICON_MISSING) {
+                                  Constant IMAGE_MISSING,
+                                  Constant ROLLOVER_IMAGE_MISSING) {
         // IMAGE
         button.setName(name);
         String imageAbsolutePath = PathGenerator.generate(path.absolutePath(), file);
@@ -34,7 +34,7 @@ public class ImageComponentInitializer {
             try {
                 Downloader.downloadUsingNIO(url.getURL(imagePath), imageAbsolutePath);
             } catch (IOException e) {
-                if(ICON_MISSING == Constant.THROW_EXCEPTION) {
+                if(IMAGE_MISSING == Constant.THROW_EXCEPTION) {
                     throw new RuntimeException(imageAbsolutePath + " is missing.");
                 }
                 e.printStackTrace();
@@ -51,7 +51,7 @@ public class ImageComponentInitializer {
             try {
                 Downloader.downloadUsingNIO(url.getURL(rolloverImagePath), rolloverImageAbsolutePath);
             } catch (IOException e) {
-                if(ROLLOVER_ICON_MISSING == Constant.THROW_EXCEPTION) {
+                if(ROLLOVER_IMAGE_MISSING == Constant.THROW_EXCEPTION) {
                     throw new IllegalArgumentException(rolloverImageAbsolutePath + " is missing");
                 }
                 e.printStackTrace();
@@ -59,25 +59,27 @@ public class ImageComponentInitializer {
             }
         }
 
+        // BOTH MISSING
         if(!iconExits && !rolloverIconExists) {
             solve(button, BOTH_MISSING, dimension);
         } else if(rolloverIconExists && !iconExits) {
-            if(ICON_MISSING == Constant.KEEP_ROLLOVER_IMAGE) {
+            if(IMAGE_MISSING == Constant.KEEP_ROLLOVER_IMAGE) {
                 Icon rolloverIcon = new ImageIcon(rolloverImageAbsolutePath);
                 button.setIcon(rolloverIcon);
                 button.setSize(rolloverIcon.getIconWidth(), rolloverIcon.getIconHeight());
                 makeTransparent(button);
             } else {
-                solve(button, ICON_MISSING, dimension);
+                solve(button, IMAGE_MISSING, dimension);
             }
+
         } else if(!rolloverIconExists) {
-            if(ROLLOVER_ICON_MISSING == Constant.KEEP_IMAGE) {
+            if(ROLLOVER_IMAGE_MISSING == Constant.KEEP_IMAGE) {
                 Icon icon = new ImageIcon(imageAbsolutePath);
                 button.setIcon(icon);
                 button.setSize(icon.getIconWidth(), icon.getIconHeight());
                 makeTransparent(button);
             } else {
-                solve(button, ROLLOVER_ICON_MISSING, dimension);
+                solve(button, ROLLOVER_IMAGE_MISSING, dimension);
             }
         } else {
             Icon icon = new ImageIcon(imageAbsolutePath);
@@ -180,11 +182,12 @@ public class ImageComponentInitializer {
             }
         }
 
+        // ALL MISSING
         if(!imageExists && !rolloverImageExists && !selectedImageExists && !rolloverSelectedImageExists) {
             solve(button, ALL_MISSING, dimension);
         }
 
-        // IMAGE & ROLLOVER_IMAGE
+        // IMAGE & ROLLOVER_IMAGE MISSING
         if(!imageExists && !rolloverImageExists) {
             solve(button, BOTH_MISSING, dimension);
         } else if(rolloverImageExists && !imageExists) {
@@ -216,7 +219,7 @@ public class ImageComponentInitializer {
             makeTransparent(button);
         }
 
-        // SELECTED_IMAGE & ROLLOVER_SELECTED_IMAGE
+        // SELECTED_IMAGE & ROLLOVER_SELECTED_IMAGE MISSING
         if(!selectedImageExists && !rolloverSelectedImageExists) {
             solve(button, BOTH_SELECTED_MISSING, dimension);
         } else if(rolloverSelectedImageExists && !selectedImageExists) {

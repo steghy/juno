@@ -64,4 +64,19 @@ public class ImageResizer {
         });
 
     }
+
+    public static void resize(AbstractButton button, double divisor) {
+        if(button == null) {
+            throw new IllegalArgumentException("Button is null");
+        } if(divisor == 0) {
+            throw new IllegalArgumentException("Divisor is zero");
+        } if(button.getIcon() == null) {
+            throw new IllegalArgumentException("Icon is null");
+        } else {
+            Icon icon = button.getIcon();
+            button.setPreferredSize(new Dimension(
+                    (int) (icon.getIconWidth() / divisor),
+                    (int) (icon.getIconHeight()/ divisor)));
+        }
+    }
 }

@@ -1,24 +1,24 @@
 package juno.init;
 
-import juno.view.frame.CardPanel;
+import juno.model.sound.AudioPlayer;
 import juno.view.frame.Frame;
-import juno.view.pages.options.OptionsPanel;
+import juno.view.pages.optionsPanel.menuPanel.ToggleSwitchScreenSize;
 
 import javax.swing.*;
+import java.io.File;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        URLBuilder url = URLBuilder.getInstance();
-        url.adminName = "steghy";
-        url.repositoryName = "juno";
-        url.branchName = "main";
-        url.token = "GHSAT0AAAAAABZZHKB4WTRFN4R52KTYJDB6Y3JSW2A";
+        Repository.setRepository();
 
         try {
+            ViewInitializer.initialize();
+            AudioPlayer audioPlayer = AudioPlayer.getInstance();
+            audioPlayer.setTracks(new File(Directories.MUSIC.absolutePath()).listFiles());
+            audioPlayer.play();
             Frame frame = Frame.getInstance();
-            CardPanel.getInstance().add(OptionsPanel.getInstance(), "2");
             frame.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();

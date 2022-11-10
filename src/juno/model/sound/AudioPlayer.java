@@ -5,11 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.sound.sampled.*;
+
 import juno.model.util.Donut;
 import juno.model.util.Observer;
 import juno.model.util.Subject;
@@ -20,6 +17,8 @@ public class AudioPlayer implements AbstractAdvancedAudioPlayer, Subject, Runnab
 	private Clip clip;
 	private Donut<File> tracks;
 	private boolean status;
+	private FloatControl floatControl;
+	private boolean mute;
 	private boolean loop;
 	private static AudioPlayer instance;
 
@@ -126,6 +125,29 @@ public class AudioPlayer implements AbstractAdvancedAudioPlayer, Subject, Runnab
 		return loop;
 	}
 
+	public void mute() {
+		if(!mute) {
+			mute = true;
+			floatControl.setValue(-80);
+		}
+	}
+
+	public void unmute() {
+		if(mute) {
+			mute = false;
+			floatControl.setValue(0);
+		}
+	}
+
+	public boolean isMuted() {
+		return mute;
+	}
+
+	public void playEffect(String path) {
+		load(new File(path));
+		play();
+	}
+
 	public void setTracks(File[] tracks) {
 		if(tracks != null && tracks.length > 0) {
 			this.tracks = new Donut<>();
@@ -142,6 +164,11 @@ public class AudioPlayer implements AbstractAdvancedAudioPlayer, Subject, Runnab
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(track);
 			clip = AudioSystem.getClip();
 			clip.open(audioInputStream);
+			floatControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+			if(mute) {
+				floatControl.setValue(-80);
+			}
+			System.out.println(floatControl.getValue());
 		} catch (LineUnavailableException e) {
 			throw new RuntimeException("Line not available: " + e);
 		} catch (IOException e) {
