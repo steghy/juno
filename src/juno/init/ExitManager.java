@@ -1,6 +1,6 @@
 package juno.init;
 
-public class ExitManager {
+public class ExitManager implements AbstractExitManager{
 
     private static ExitManager instance;
 

@@ -30,7 +30,8 @@ public class MenuPanel extends JPanel {
             throw new IllegalArgumentException("Exit button is null");
         }
 
-        setDefaultSettings();
+        setOpaque(false);
+        setLayout(new GridBagLayout());
 
         // GRID BAG LAYOUT SETTINGS
         GridBagConstraints gbc = new GridBagConstraints();
@@ -98,11 +99,6 @@ public class MenuPanel extends JPanel {
         gbc.ipady = 0;
 
         this.add(exitButton, gbc);
-    }
-
-    private void setDefaultSettings() {
-        this.setOpaque(false);
-        this.setLayout(new GridBagLayout());
     }
 
     public void setNewGameButton(AbstractButton newGameButton) {

@@ -143,7 +143,7 @@ public class AudioPlayer implements AbstractAdvancedAudioPlayer, Subject, Runnab
 		return mute;
 	}
 
-	public void playEffect(String path) {
+	public void playEffect(final String path) {
 		load(new File(path));
 		play();
 	}

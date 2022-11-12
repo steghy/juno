@@ -1,6 +1,6 @@
 package juno.model.sound;
 
-public interface AbstractAdvancedAudioPlayer extends AbstractAudioPlayer {
+public interface AbstractAdvancedAudioPlayer extends MutableAudioPlayer {
 
     void next();
 

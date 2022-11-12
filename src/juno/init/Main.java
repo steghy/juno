@@ -2,7 +2,6 @@ package juno.init;
 
 import juno.model.sound.AudioPlayer;
 import juno.view.frame.Frame;
-import juno.view.pages.optionsPanel.menuPanel.ToggleSwitchScreenSize;
 
 import javax.swing.*;
 import java.io.File;
@@ -18,6 +17,7 @@ public class Main {
             AudioPlayer audioPlayer = AudioPlayer.getInstance();
             audioPlayer.setTracks(new File(Directories.MUSIC.absolutePath()).listFiles());
             audioPlayer.play();
+            audioPlayer.setLoop(true);
             Frame frame = Frame.getInstance();
             frame.setVisible(true);
         } catch (Exception e) {

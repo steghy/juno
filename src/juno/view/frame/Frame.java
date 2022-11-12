@@ -38,6 +38,12 @@ public class Frame extends JFrame implements AbstractResizableFrame {
         add(background, BorderLayout.CENTER);
     }
 
+    public static void addKeyBinding(JComponent c, String key, final Action action) {
+        c.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(key), key);
+        c.getActionMap().put(key, action);
+        c.setFocusable(true);
+    }
+
     public void setDefaultDimension() {
         Dimension dimension = new Dimension(DEFAULT_WIDTH, DEFAULT_HEIGHT);
         this.setSize(dimension);

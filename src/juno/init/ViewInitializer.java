@@ -1,30 +1,29 @@
 package juno.init;
 
-import juno.view.frame.CardPanelConfigurator;
-import juno.view.frame.FrameConfigurator;
-import juno.view.logo.LogoPanelConfigurator;
-import juno.view.pages.mainPanel.MainPanelConfigurator;
-import juno.view.pages.optionsPanel.OptionsPanelConfigurator;
-import juno.view.pages.optionsPanel.menuPanel.MenuPanelConfigurator;
-import juno.view.pages.optionsPanel.titlePanel.TitlePanelConfigurator;
+import juno.view.frame.FrameInitializer;
+import juno.view.pages.mainPanel.MainPanelInitializer;
+import juno.view.pages.newGamePanel.NewGameInitializer;
+import juno.view.pages.optionsPanel.OptionsInitializer;
+import juno.view.pages.scorePanel.ScorePanelInitializer;
 
 public class ViewInitializer {
 
     private ViewInitializer() {}
 
     public static void initialize() {
-        // MAIN PANEL
-        LogoPanelConfigurator.configure();
-        juno.view.pages.mainPanel.menuPanel.MenuPanelConfigurator.configure();
-        MainPanelConfigurator.configure();
+        // NEW GAME
+        NewGameInitializer.initialize();
 
-        // OPTIONS PANEL
-        TitlePanelConfigurator.configure();
-        MenuPanelConfigurator.configure();
-        OptionsPanelConfigurator.configure();
+        // SCORE
+        ScorePanelInitializer.initialize();
+
+        // OPTIONS
+        OptionsInitializer.initialize();
+
+        // MAIN PANEL
+        MainPanelInitializer.initialize();
 
         // FRAME
-        CardPanelConfigurator.configure();
-        FrameConfigurator.configure();
+        FrameInitializer.initializer();
     }
 }

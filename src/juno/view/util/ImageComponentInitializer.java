@@ -91,7 +91,7 @@ public class ImageComponentInitializer {
         }
     }
 
-    public static void initialize(JToggleButton button,
+    public static void initialize(AbstractButton button,
                                   Path path,
                                   String name,
                                   String file,

@@ -13,7 +13,7 @@ public class MainPanelConfigurator {
         LogoPanel logoPanel = LogoPanel.getInstance();
         MenuPanel menuPanel = MenuPanel.getInstance();
 
-        mainPanel.setLogoPanel(logoPanel);
+        mainPanel.setTitlePanel(logoPanel);
         mainPanel.setMenuPanel(menuPanel);
 
         mainPanel.init();

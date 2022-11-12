@@ -6,7 +6,7 @@ import java.awt.*;
 public class MainPanel extends JPanel {
 
     private JPanel menuPanel;
-    private JPanel logoPanel;
+    private JPanel titlePanel;
     private static MainPanel instance;
 
     private MainPanel() {}
@@ -20,8 +20,8 @@ public class MainPanel extends JPanel {
     public void init() {
         if(menuPanel == null) {
             throw new IllegalArgumentException("Menu panel is null");
-        } if(logoPanel == null) {
-            throw new IllegalArgumentException("Logo panel is null");
+        } if(titlePanel == null) {
+            throw new IllegalArgumentException("Title panel is null");
         }
 
         this.setOpaque(false);
@@ -29,7 +29,7 @@ public class MainPanel extends JPanel {
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        // LOGO PANEL
+        // TITLE PANEL
         gbc.gridx = 0;
         gbc.gridy = 0;
 
@@ -40,7 +40,7 @@ public class MainPanel extends JPanel {
 
         gbc.fill = GridBagConstraints.CENTER;
 
-        this.add(logoPanel, gbc);
+        this.add(titlePanel, gbc);
 
         // MENU PANEL
         gbc.gridx = 0;
@@ -64,7 +64,7 @@ public class MainPanel extends JPanel {
         this.menuPanel = menuPanel;
     }
 
-    public void setLogoPanel(JPanel logoPanel) {
-        this.logoPanel = logoPanel;
+    public void setTitlePanel(JPanel titlePanel) {
+        this.titlePanel = titlePanel;
     }
 }
