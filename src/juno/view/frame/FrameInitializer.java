@@ -1,7 +1,7 @@
 package juno.view.frame;
 
 import juno.init.Directories;
-import juno.view.pages.mainPanel.MainCardPanel;
+import juno.view.pages.main.card.MainCardPanel;
 import juno.view.util.Constant;
 import juno.view.util.ImageComponentInitializer;
 

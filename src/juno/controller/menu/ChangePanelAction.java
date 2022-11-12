@@ -18,7 +18,6 @@ public class ChangePanelAction extends AbstractAction {
     public void actionPerformed(ActionEvent e) {
         LayoutManager layoutManager = cardPanel.getLayout();
         if(layoutManager instanceof CardLayout cardLayout) {
-            System.out.println(cardPanel);
             cardLayout.show(cardPanel, panel);
         } else {
             throw new IllegalArgumentException("Invalid JPanel");

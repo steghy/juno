@@ -1,10 +1,10 @@
 package juno.init;
 
 import juno.view.frame.FrameInitializer;
-import juno.view.pages.mainPanel.MainPanelInitializer;
-import juno.view.pages.newGamePanel.NewGameInitializer;
-import juno.view.pages.optionsPanel.OptionsInitializer;
-import juno.view.pages.scorePanel.ScorePanelInitializer;
+import juno.view.pages.main.MainPanelInitializer;
+import juno.view.pages.newgame.NewGameInitializer;
+import juno.view.pages.options.OptionsInitializer;
+import juno.view.pages.score.ScorePanelInitializer;
 
 public class ViewInitializer {
 
