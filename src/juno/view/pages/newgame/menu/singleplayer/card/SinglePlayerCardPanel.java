@@ -5,15 +5,15 @@ import java.awt.*;
 
 public class SinglePlayerCardPanel extends JPanel {
 
-    public static final String DIFFICULTY_PANEL = "Difficulty panel";
     public static final String PLAYERS_NUMBER_PANEL = "Players number panel";
+    public static final String DIFFICULTY_PANEL = "Difficulty panel";
     public static final String MODE_PANEL = "Mode panel";
     public static final String MATCH_PANEL = "Match panel";
 
-    private JPanel difficultyPanel;
-    private JPanel matchPanel;
     private JPanel playersNumberPanel;
+    private JPanel difficultyPanel;
     private JPanel modePanel;
+    private JPanel matchPanel;
 
     private static SinglePlayerCardPanel instance;
 
@@ -25,7 +25,7 @@ public class SinglePlayerCardPanel extends JPanel {
 
     public void init() {
         if(playersNumberPanel == null) {
-            throw new IllegalArgumentException("Main panel is null");
+            throw new IllegalArgumentException("Players number panel is null");
         } if(modePanel == null) {
             throw new IllegalArgumentException("Mode panel is null");
         } if(difficultyPanel == null) {

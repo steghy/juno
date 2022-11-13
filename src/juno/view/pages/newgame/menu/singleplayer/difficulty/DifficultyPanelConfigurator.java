@@ -20,6 +20,6 @@ public class DifficultyPanelConfigurator {
         difficultyPanel.setMenuPanel(menuPanel);
 
         // INITIALIZATION
-        menuPanel.init();
+        difficultyPanel.init();
     }
 }

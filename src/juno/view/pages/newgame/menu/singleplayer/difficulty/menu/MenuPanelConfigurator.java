@@ -1,8 +1,10 @@
 package juno.view.pages.newgame.menu.singleplayer.difficulty.menu;
 
+import juno.controller.ChangePanelAction;
 import juno.controller.SetDifficultyAction;
 import juno.view.factories.buttons.ButtonFactory;
 import juno.view.factories.buttons.ButtonLibrary;
+import juno.view.pages.newgame.menu.singleplayer.card.SinglePlayerCardPanel;
 import juno.view.util.ImageResizer;
 import juno.view.util.RoundedBorder;
 
@@ -15,8 +17,10 @@ public class MenuPanelConfigurator {
     private MenuPanelConfigurator() {}
 
     public static void configure() {
+        // MAIN-COMPONENTS
         MenuPanel difficultyPanel = MenuPanel.getInstance();
 
+        // SUB-COMPONENTS
         AbstractButton easyButton = ButtonFactory.createButton(ButtonLibrary.EASY);
         AbstractButton mediumButton = ButtonFactory.createButton(ButtonLibrary.MEDIUM);
         AbstractButton hardButton = ButtonFactory.createButton(ButtonLibrary.HARD);
@@ -32,6 +36,7 @@ public class MenuPanelConfigurator {
         easyButton.addActionListener(new SetDifficultyAction());
         mediumButton.addActionListener(new SetDifficultyAction());
         hardButton.addActionListener(new SetDifficultyAction());
+        backButton.addActionListener(new ChangePanelAction(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.PLAYERS_NUMBER_PANEL));
 
         // BORDER
         RoundedBorder insideBorder = new RoundedBorder(50, 2, null, Color.WHITE);
@@ -45,6 +50,7 @@ public class MenuPanelConfigurator {
         difficultyPanel.setHardButton(hardButton);
         difficultyPanel.setBackButton(backButton);
 
+        // INITIALIZATION
         difficultyPanel.init();
     }
 }

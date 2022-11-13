@@ -30,7 +30,7 @@ public class TitlePanelConfigurator {
         titlePanel.setBorder(border);
 
         // ADDING COMPONENTS
-        titlePanel.setTitle(title);
+        titlePanel.setTitleButton(title);
 
         // INITIALIZATION
         titlePanel.init();

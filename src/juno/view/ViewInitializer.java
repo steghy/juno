@@ -1,4 +1,4 @@
-package juno.init;
+package juno.view;
 
 import juno.view.frame.FrameInitializer;
 import juno.view.pages.main.MainPanelInitializer;

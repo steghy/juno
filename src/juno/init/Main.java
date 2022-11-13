@@ -1,6 +1,7 @@
 package juno.init;
 
 import juno.model.sound.AudioPlayer;
+import juno.view.ViewInitializer;
 import juno.view.frame.Frame;
 
 import javax.swing.*;

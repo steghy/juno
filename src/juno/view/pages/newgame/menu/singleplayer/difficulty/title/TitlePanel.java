@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class TitlePanel extends JPanel {
 
-    private AbstractButton title;
+    private AbstractButton titleButton;
     private static TitlePanel instance;
 
     private TitlePanel() {}
@@ -17,8 +17,8 @@ public class TitlePanel extends JPanel {
     }
 
     public void init() {
-        if(title == null) {
-            throw new IllegalArgumentException("Title is null");
+        if(titleButton == null) {
+            throw new IllegalArgumentException("Title button is null");
         }
 
         setOpaque(false);
@@ -26,7 +26,7 @@ public class TitlePanel extends JPanel {
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        // TITLE
+        // TITLE BUTTON
         gbc.gridx = 0;
         gbc.gridy = 0;
 
@@ -37,14 +37,14 @@ public class TitlePanel extends JPanel {
 
         gbc.fill = GridBagConstraints.CENTER;
 
-        this.add(title, gbc);
+        this.add(titleButton, gbc);
     }
 
-    public void setTitle(AbstractButton title) {
-        this.title = title;
+    public void setTitleButton(AbstractButton title) {
+        this.titleButton = title;
     }
 
-    public AbstractButton getTitle() {
-        return title;
+    public AbstractButton getTitleButton() {
+        return titleButton;
     }
 }

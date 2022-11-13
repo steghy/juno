@@ -5,6 +5,7 @@ import juno.controller.SetDifficultyAction;
 import juno.view.factories.buttons.ButtonFactory;
 import juno.view.factories.buttons.ButtonLibrary;
 import juno.view.pages.main.card.MainCardPanel;
+import juno.view.pages.newgame.card.NewGameCardPanel;
 import juno.view.pages.newgame.menu.singleplayer.card.SinglePlayerCardPanel;
 import juno.view.util.ImageResizer;
 import juno.view.util.RoundedBorder;
@@ -36,7 +37,7 @@ public class MenuPanelConfigurator {
         twoPlayers.addActionListener(new ChangePanelAction(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.DIFFICULTY_PANEL));
         threePlayers.addActionListener(new ChangePanelAction(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.DIFFICULTY_PANEL));
         fourPlayers.addActionListener(new ChangePanelAction(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.DIFFICULTY_PANEL));
-        backButton.addActionListener(new ChangePanelAction(MainCardPanel.getInstance(), MainCardPanel.NEW_GAME_PANEL));
+        backButton.addActionListener(new ChangePanelAction(NewGameCardPanel.getInstance(), NewGameCardPanel.NEW_GAME_PANEL));
         // [ SET DIFFICULTY-ACTION]
         twoPlayers.addActionListener(new SetDifficultyAction());
         threePlayers.addActionListener(new SetDifficultyAction());

@@ -8,8 +8,8 @@ public class DifficultyInitializer {
     private DifficultyInitializer() {}
 
     public static void initialize() {
-        MenuPanelConfigurator.configure();
         TitlePanelConfigurator.configure();
+        MenuPanelConfigurator.configure();
         DifficultyPanelConfigurator.configure();
     }
 }

@@ -27,6 +27,7 @@ public class DifficultyPanel extends JPanel {
 
         setOpaque(false);
         setLayout(new GridBagLayout());
+
         GridBagConstraints gbc = new GridBagConstraints();
 
         // TITLE PANEL

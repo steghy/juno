@@ -33,24 +33,24 @@ public class PlayersNumberPanel extends JPanel {
         gbc.gridx = 0;
         gbc.gridy = 0;
 
-        gbc.weightx = 0.5;
-        gbc.weighty = 0.5;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
 
         gbc.anchor = GridBagConstraints.CENTER;
 
-        gbc.fill = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(0,0,30,0);
 
         add(titlePanel, gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 1;
 
-        gbc.weightx = 0.5;
-        gbc.weighty = 0.5;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
 
         gbc.anchor = GridBagConstraints.CENTER;
 
-        gbc.fill = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(0,0,0,0);
 
         add(menuPanel, gbc);
     }

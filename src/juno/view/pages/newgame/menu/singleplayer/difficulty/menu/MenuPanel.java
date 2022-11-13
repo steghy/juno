@@ -97,8 +97,8 @@ public class MenuPanel extends JPanel {
         this.easyButton = easyButton;
     }
 
-    public void setMedium(AbstractButton medium) {
-        this.mediumButton = medium;
+    public void setMedium(AbstractButton mediumButton) {
+        this.mediumButton = mediumButton;
     }
 
     public void setHardButton(AbstractButton hardButton) {
@@ -113,7 +113,7 @@ public class MenuPanel extends JPanel {
         return easyButton;
     }
 
-    public AbstractButton getMedium() {
+    public AbstractButton getMediumButton() {
         return mediumButton;
     }
 
