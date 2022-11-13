@@ -20,6 +20,7 @@ public class FrameInitializer {
         ImageComponentInitializer.initialize(
                 background,
                 Directories.BACKGROUNDS,
+                true,
                 "Background",
                 "background.gif",
                 null,

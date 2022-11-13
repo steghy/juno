@@ -33,6 +33,12 @@ public class MenuPanelConfigurator {
         ImageResizer.resize(backButton, 3.0);
 
         // ACTION LISTENERS
+        // [ CHANGE PANEL ]
+        easyButton.addActionListener(new ChangePanelAction(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MATCH_PANEL));
+        mediumButton.addActionListener(new ChangePanelAction(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MATCH_PANEL));
+        hardButton.addActionListener(new ChangePanelAction(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MATCH_PANEL));
+
+        // [ SET DIFFICULTIES ]
         easyButton.addActionListener(new SetDifficultyAction());
         mediumButton.addActionListener(new SetDifficultyAction());
         hardButton.addActionListener(new SetDifficultyAction());

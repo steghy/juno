@@ -31,6 +31,10 @@ public enum ButtonLibrary {
     FOUR_PLAYERS,
     PLAYERS,
 
+    // MODE
+    MODE,
+    STACKING,
+
     // MULTI_PLAYER
     UNAVAILABLE_SERVICE,
 

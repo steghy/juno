@@ -25,6 +25,7 @@ public class ButtonFactory {
             ImageComponentInitializer.initialize(
                     button,
                     Directories.BUTTONS,
+                    true,
                     BUTTON.name(),
                     BUTTON.name() + EXTENSION,
                     BUTTON.name() + ROLLOVER + EXTENSION,
@@ -44,6 +45,7 @@ public class ButtonFactory {
             ImageComponentInitializer.initialize(
                     button,
                     Directories.BUTTONS,
+                    true,
                     BUTTON.name(),
                     BUTTON.name() + EXTENSION,
                     BUTTON.name() + ROLLOVER + EXTENSION,

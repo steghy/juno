@@ -1,0 +1,56 @@
+L'ai di juno ha bisogno delle seguenti risorse per poter
+lavorare correttamente ed in modo sensato:
+
+1) Accesso alla pila della carte scartate: Nel model è rappresentata
+   dalla classe DiscardedPile<T>
+
+2) Deve poter controllare il numero delle carte del giocatore successivo.
+   Quest'ultima operazione è possibile eseguirla mediante l'ausilio della
+   classe HandsManager<T, E>.
+
+3) Necessità di una classe che esponga il metodo per stabilire quali carte
+   siano effettivamente giocabili e quali invece non lo siano.
+
+4) Una classe che stabilisca, in base alle carte disponibili per essere
+   giocate, quali sia la carta migliore da giocare in quel particolare
+   momento (mediante i vincoli definiti più avanti).
+
+
+VINCOLI:
+    I vincoli dell'AI per questo gioco sono 3:
+    - EASY
+    - MEDIUM
+    - HARD
+
+[EASY]:
+    Nel caso l'ai fosse settata al valore EASY, quest'ultima dovrebbe
+    comportarsi in modo coerente rispetto alla difficoltà selezionata.
+    In questo particolare caso di impostazione dunque le operazione che
+    l'ai seguirà saranno sempre contro producenti rispetto se stessa.
+    Ciò significa in termini concreti che, date n carte possibili da
+    giocare, se tra queste n carte esiste una carte più 'ottimale' da
+    giocare, allora l'ai deve giocare quella menu ottimale tra tutte
+    quelle disponibili (il modo nel quale viene stabilità una classifica
+    delle carte ottimali è definito più avanti).
+
+[MEDIUM]:
+
+
+[HARD]:
+
+[REGOLE PER STABILIRE LA CLASSIFICA DELLE CARTE MIGLIORI TRA QUELLE GIOCABILI]:
+    Le regole per stabilire quale è la classifica delle carte migliori da giocare
+    in ordine crescente è basata principalmente sulla quantità di carte
+    possedute dal giocatore avversario successivo.
+    Infatti, se il giocatore successivo possiede un numero di carte inferiore o
+    uguale a 3, è da preferire l'utilizzo di una carta azione. Le carte azione
+    tuttavia, nel caso in cui l'ai dovesse possederne di diversi tipi, dovranno
+    essere a loro volta regolate. Privilegiando l'utilizzo di carte quali 'pesca 4',
+    'pesca 2', successivamente le carte azione 'inverti turno' e 'salta turno',
+    ed infine la carta azione jolly cambia colore.
+    Nel caso in cui l'ai non possedesse nessuna di queste carte azione, allora,
+    nel caso possieda comunque una carta compatibile, potrà tirarla. Caso finale ed
+    indipendente dalla difficoltà con la quale l'ai è impostata, si verifica quando
+    l'ai non possiede carte da inserire nella pila delle scartate, caso in cui
+    dunque, l'ai dovrà pescare una carta.
+

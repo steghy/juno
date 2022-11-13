@@ -5,6 +5,7 @@ import juno.init.Path;
 import juno.init.URLBuilder;
 import juno.model.util.Os;
 import juno.model.util.PathGenerator;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,8 +15,9 @@ public class ImageComponentInitializer {
 
     private ImageComponentInitializer() {}
 
-    public static void initialize(AbstractButton button,
-                                  Path path,
+    public static void initialize(@NotNull AbstractButton button,
+                                  @NotNull Path path,
+                                  boolean download,
                                   String name,
                                   String file,
                                   String rolloverFile,
@@ -29,16 +31,20 @@ public class ImageComponentInitializer {
         String imagePath = PathGenerator.generate(path.path(), file);
 
         URLBuilder url = URLBuilder.getInstance();
-        boolean iconExits = true;
+        boolean imageExists = true;
         if (!Os.exists(imageAbsolutePath)) {
-            try {
-                Downloader.downloadUsingNIO(url.getURL(imagePath), imageAbsolutePath);
-            } catch (IOException e) {
-                if(IMAGE_MISSING == Constant.THROW_EXCEPTION) {
-                    throw new RuntimeException(imageAbsolutePath + " is missing.");
+            if(download) {
+                try {
+                    Downloader.downloadUsingNIO(url.getURL(imagePath), imageAbsolutePath);
+                } catch (IOException e) {
+                    if(IMAGE_MISSING == Constant.THROW_EXCEPTION) {
+                        throw new RuntimeException(imageAbsolutePath + " is missing.");
+                    }
+                    e.printStackTrace();
+                    imageExists = false;
                 }
-                e.printStackTrace();
-                iconExits = false;
+            } else {
+                imageExists = false;
             }
         }
 
@@ -46,23 +52,27 @@ public class ImageComponentInitializer {
         String rolloverImageAbsolutePath = PathGenerator.generate(path.absolutePath(), rolloverFile);
         String rolloverImagePath = PathGenerator.generate(path.path(), rolloverFile);
 
-        boolean rolloverIconExists = true;
+        boolean rolloverImageExists = true;
         if(!Os.exists(rolloverImageAbsolutePath)) {
-            try {
-                Downloader.downloadUsingNIO(url.getURL(rolloverImagePath), rolloverImageAbsolutePath);
-            } catch (IOException e) {
-                if(ROLLOVER_IMAGE_MISSING == Constant.THROW_EXCEPTION) {
-                    throw new IllegalArgumentException(rolloverImageAbsolutePath + " is missing");
+            if(download) {
+                try {
+                    Downloader.downloadUsingNIO(url.getURL(rolloverImagePath), rolloverImageAbsolutePath);
+                } catch (IOException e) {
+                    if(ROLLOVER_IMAGE_MISSING == Constant.THROW_EXCEPTION) {
+                        throw new IllegalArgumentException(rolloverImageAbsolutePath + " is missing");
+                    }
+                    e.printStackTrace();
+                    rolloverImageExists = false;
                 }
-                e.printStackTrace();
-                rolloverIconExists = false;
+            } else {
+                rolloverImageExists = false;
             }
         }
 
         // BOTH MISSING
-        if(!iconExits && !rolloverIconExists) {
+        if(!imageExists && !rolloverImageExists) {
             solve(button, BOTH_MISSING, dimension);
-        } else if(rolloverIconExists && !iconExits) {
+        } else if(rolloverImageExists && !imageExists) {
             if(IMAGE_MISSING == Constant.KEEP_ROLLOVER_IMAGE) {
                 Icon rolloverIcon = new ImageIcon(rolloverImageAbsolutePath);
                 button.setIcon(rolloverIcon);
@@ -72,7 +82,7 @@ public class ImageComponentInitializer {
                 solve(button, IMAGE_MISSING, dimension);
             }
 
-        } else if(!rolloverIconExists) {
+        } else if(!rolloverImageExists) {
             if(ROLLOVER_IMAGE_MISSING == Constant.KEEP_IMAGE) {
                 Icon icon = new ImageIcon(imageAbsolutePath);
                 button.setIcon(icon);
@@ -82,17 +92,19 @@ public class ImageComponentInitializer {
                 solve(button, ROLLOVER_IMAGE_MISSING, dimension);
             }
         } else {
-            Icon icon = new ImageIcon(imageAbsolutePath);
-            Icon rolloverIcon = new ImageIcon(rolloverImageAbsolutePath);
+            // button size -> image size [ not from rollover image ]
+            Icon icon = new ImageIcon(rolloverImageAbsolutePath);
+            button.setRolloverIcon(icon);
+            icon = new ImageIcon(imageAbsolutePath);
             button.setIcon(icon);
-            button.setRolloverIcon(rolloverIcon);
             button.setSize(icon.getIconWidth(), icon.getIconHeight());
             makeTransparent(button);
         }
     }
 
-    public static void initialize(AbstractButton button,
-                                  Path path,
+    public static void initialize(@NotNull AbstractButton button,
+                                  @NotNull Path path,
+                                  boolean download,
                                   String name,
                                   String file,
                                   String rolloverFile,
@@ -120,13 +132,17 @@ public class ImageComponentInitializer {
         URLBuilder url = URLBuilder.getInstance();
         boolean imageExists = true;
         if (!Os.exists(imageAbsolutePath)) {
-            try {
-                Downloader.downloadUsingNIO(url.getURL(imagePath), imageAbsolutePath);
-            } catch (IOException e) {
-                if(IMAGE_MISSING == Constant.THROW_EXCEPTION) {
-                    throw new RuntimeException(imageAbsolutePath + " is missing.");
+            if(download) {
+                try {
+                    Downloader.downloadUsingNIO(url.getURL(imagePath), imageAbsolutePath);
+                } catch (IOException e) {
+                    if(IMAGE_MISSING == Constant.THROW_EXCEPTION) {
+                        throw new RuntimeException(imageAbsolutePath + " is missing.");
+                    }
+                    e.printStackTrace();
+                    imageExists = false;
                 }
-                e.printStackTrace();
+            } else {
                 imageExists = false;
             }
         }
@@ -137,13 +153,17 @@ public class ImageComponentInitializer {
 
         boolean rolloverImageExists = true;
         if(!Os.exists(rolloverImageAbsolutePath)) {
-            try {
-                Downloader.downloadUsingNIO(url.getURL(rolloverImagePath), rolloverImageAbsolutePath);
-            } catch (IOException e) {
-                if(ROLLOVER_IMAGE_MISSING == Constant.THROW_EXCEPTION) {
-                    throw new IllegalArgumentException(rolloverImageAbsolutePath + " is missing");
+            if(download) {
+                try {
+                    Downloader.downloadUsingNIO(url.getURL(rolloverImagePath), rolloverImageAbsolutePath);
+                } catch (IOException e) {
+                    if(ROLLOVER_IMAGE_MISSING == Constant.THROW_EXCEPTION) {
+                        throw new IllegalArgumentException(rolloverImageAbsolutePath + " is missing");
+                    }
+                    e.printStackTrace();
+                    rolloverImageExists = false;
                 }
-                e.printStackTrace();
+            } else {
                 rolloverImageExists = false;
             }
         }
@@ -154,13 +174,17 @@ public class ImageComponentInitializer {
 
         boolean selectedImageExists = true;
         if (!Os.exists(selectedImageAbsolutePath)) {
-            try {
-                Downloader.downloadUsingNIO(url.getURL(selectedImagePath), selectedImageAbsolutePath);
-            } catch (IOException e) {
-                if(SELECTED_IMAGE_MISSING == Constant.THROW_EXCEPTION) {
-                    throw new RuntimeException(selectedImageAbsolutePath + " is missing.");
+            if(download) {
+                try {
+                    Downloader.downloadUsingNIO(url.getURL(selectedImagePath), selectedImageAbsolutePath);
+                } catch (IOException e) {
+                    if(SELECTED_IMAGE_MISSING == Constant.THROW_EXCEPTION) {
+                        throw new RuntimeException(selectedImageAbsolutePath + " is missing.");
+                    }
+                    e.printStackTrace();
+                    selectedImageExists = false;
                 }
-                e.printStackTrace();
+            } else {
                 selectedImageExists = false;
             }
         }
@@ -171,13 +195,17 @@ public class ImageComponentInitializer {
 
         boolean rolloverSelectedImageExists = true;
         if(!Os.exists(rolloverSelectedImageAbsolutePath)) {
-            try {
-                Downloader.downloadUsingNIO(url.getURL(rolloverSelectedImagePath), rolloverSelectedImageAbsolutePath);
-            } catch (IOException e) {
-                if(ROLLOVER_SELECTED_IMAGE_MISSING == Constant.THROW_EXCEPTION) {
-                    throw new IllegalArgumentException(rolloverImageAbsolutePath + " is missing");
+            if(download) {
+                try {
+                    Downloader.downloadUsingNIO(url.getURL(rolloverSelectedImagePath), rolloverSelectedImageAbsolutePath);
+                } catch (IOException e) {
+                    if(ROLLOVER_SELECTED_IMAGE_MISSING == Constant.THROW_EXCEPTION) {
+                        throw new IllegalArgumentException(rolloverImageAbsolutePath + " is missing");
+                    }
+                    e.printStackTrace();
+                    rolloverSelectedImageExists = false;
                 }
-                e.printStackTrace();
+            } else {
                 rolloverSelectedImageExists = false;
             }
         }
@@ -211,10 +239,11 @@ public class ImageComponentInitializer {
                 return;
             }
         } else {
-            Icon icon = new ImageIcon(imageAbsolutePath);
-            Icon rolloverIcon = new ImageIcon(rolloverImageAbsolutePath);
+            // button size -> image size [ not from rollover image ]
+            Icon icon = new ImageIcon(rolloverImageAbsolutePath);
+            button.setRolloverIcon(icon);
+            icon = new ImageIcon(imageAbsolutePath);
             button.setIcon(icon);
-            button.setRolloverIcon(rolloverIcon);
             button.setSize(icon.getIconWidth(), icon.getIconHeight());
             makeTransparent(button);
         }
@@ -241,17 +270,19 @@ public class ImageComponentInitializer {
                 solve(button, ROLLOVER_SELECTED_IMAGE_MISSING, dimension);
             }
         } else {
-            Icon selectedIcon = new ImageIcon(selectedImageAbsolutePath);
-            Icon rolloverSelectedIcon = new ImageIcon(rolloverSelectedImageAbsolutePath);
-            button.setSelectedIcon(selectedIcon);
-            button.setRolloverSelectedIcon(rolloverSelectedIcon);
-            button.setSize(rolloverSelectedIcon.getIconWidth(), rolloverSelectedIcon.getIconHeight());
+            // button size -> selected image size [ not from rollover selected image ]
+            Icon icon = new ImageIcon(rolloverSelectedImageAbsolutePath);
+            button.setRolloverSelectedIcon(icon);
+            icon = new ImageIcon(selectedImageAbsolutePath);
+            button.setSelectedIcon(icon);
+            button.setSize(icon.getIconWidth(), icon.getIconHeight());
             makeTransparent(button);
         }
     }
 
     public static void initialize(AbstractButton button,
-                                  Path path,
+                                  @NotNull Path path,
+                                  boolean download,
                                   String name,
                                   String file,
                                   Dimension dimension,
@@ -261,24 +292,29 @@ public class ImageComponentInitializer {
         String imagePath = PathGenerator.generate(path.path(), file);
 
         URLBuilder url = URLBuilder.getInstance();
-        boolean iconExists = true;
+        boolean imageExists = true;
         if(!Os.exists(imageAbsolutePath)) {
-            try {
-                Downloader.downloadUsingNIO(url.getURL(imagePath), imageAbsolutePath);
-            } catch (IOException e) {
-                if(ICON_MISSING == Constant.THROW_EXCEPTION) {
-                    throw new RuntimeException(imageAbsolutePath + " is missing");
+            if(download) {
+                try {
+                    Downloader.downloadUsingNIO(url.getURL(imagePath), imageAbsolutePath);
+                } catch (IOException e) {
+                    if(ICON_MISSING == Constant.THROW_EXCEPTION) {
+                        throw new RuntimeException(imageAbsolutePath + " is missing");
+                    }
+                    e.printStackTrace();
+                    imageExists = false;
                 }
-                e.printStackTrace();
-                iconExists = false;
+            } else {
+                imageExists = false;
             }
         }
 
         button.setName(name);
 
-        if(iconExists) {
+        if(imageExists) {
             Icon icon = new ImageIcon(imageAbsolutePath);
             button.setIcon(icon);
+            button.setSize(icon.getIconWidth(), icon.getIconHeight());
             makeTransparent(button);
         } else {
             solve(button, ICON_MISSING, dimension);
@@ -287,6 +323,7 @@ public class ImageComponentInitializer {
 
     public static void initialize(JLabel label,
                                   Path path,
+                                  boolean download,
                                   String name,
                                   String file,
                                   Dimension dimension,
@@ -296,22 +333,26 @@ public class ImageComponentInitializer {
         String imagePath = PathGenerator.generate(path.path(), file);
 
         URLBuilder url = URLBuilder.getInstance();
-        boolean iconExists = true;
+        boolean imageExists = true;
         if(!Os.exists(imageAbsolutePath)) {
-            try {
-                Downloader.downloadUsingNIO(url.getURL(imagePath), imageAbsolutePath);
-            } catch (IOException e) {
-                if(ICON_MISSING == Constant.THROW_EXCEPTION) {
-                    throw new RuntimeException(imageAbsolutePath + " is missing");
+            if(download) {
+                try {
+                    Downloader.downloadUsingNIO(url.getURL(imagePath), imageAbsolutePath);
+                } catch (IOException e) {
+                    if(ICON_MISSING == Constant.THROW_EXCEPTION) {
+                        throw new RuntimeException(imageAbsolutePath + " is missing");
+                    }
+                    e.printStackTrace();
+                    imageExists = false;
                 }
-                e.printStackTrace();
-                iconExists = false;
+            } else {
+                imageExists = false;
             }
         }
 
         label.setName(name);
 
-        if(iconExists) {
+        if(imageExists) {
             Icon icon = new ImageIcon(imageAbsolutePath);
             label.setIcon(icon);
             label.setOpaque(false);
@@ -320,7 +361,7 @@ public class ImageComponentInitializer {
         }
     }
 
-    private static void makeTransparent(AbstractButton button) {
+    private static void makeTransparent(@NotNull AbstractButton button) {
         button.setBorderPainted(false);
         button.setFocusPainted(false);
         button.setOpaque(false);

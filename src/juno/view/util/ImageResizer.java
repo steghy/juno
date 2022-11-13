@@ -53,18 +53,6 @@ public class ImageResizer {
         }
     }
 
-    public static void resize(Map<AbstractButton, Double> map) {
-        map.entrySet().forEach(entry -> {
-            AbstractButton button = entry.getKey();
-            double div = entry.getValue();
-            button.setPreferredSize(new Dimension(
-                    (int) (button.getWidth() / div),
-                    (int) (button.getHeight()/ div)
-            ));
-        });
-
-    }
-
     public static void resize(AbstractButton button, double divisor) {
         if(button == null) {
             throw new IllegalArgumentException("Button is null");
