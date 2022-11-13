@@ -19,7 +19,7 @@ public class TitlePanelConfigurator {
         TitlePanel titlePanel = TitlePanel.getInstance();
 
         // SUB-COMPONENTS
-        AbstractButton titleButton = ButtonFactory.createButton(ButtonLibrary.NEW_GAME_TITLE);
+        AbstractButton titleButton = ButtonFactory.createButton(ButtonLibrary.NEW_GAME);
 
         // RESIZE IMAGE
         ImageResizer.resize(titleButton, 3.0);

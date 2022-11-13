@@ -1,6 +1,6 @@
 package juno.view.pages.newgame.menu.multiplayer.unavailable.menu;
 
-import juno.controller.menu.ChangePanelAction;
+import juno.controller.ChangePanelAction;
 import juno.view.factories.buttons.ButtonFactory;
 import juno.view.factories.buttons.ButtonLibrary;
 import juno.view.pages.newgame.card.NewGameCardPanel;

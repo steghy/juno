@@ -1,6 +1,6 @@
 package juno.view.pages.newgame.menu;
 
-import juno.controller.menu.ChangePanelAction;
+import juno.controller.ChangePanelAction;
 import juno.view.factories.buttons.ButtonFactory;
 import juno.view.factories.buttons.ButtonLibrary;
 import juno.view.pages.main.card.MainCardPanel;
@@ -11,7 +11,6 @@ import juno.view.util.RoundedBorder;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.nio.ReadOnlyBufferException;
 
 public class MenuPanelConfigurator {
 

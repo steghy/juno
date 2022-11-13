@@ -1,8 +1,8 @@
 package juno.view.pages.options.menu;
 
-import juno.controller.menu.AudioToggleAction;
-import juno.controller.menu.ChangePanelAction;
-import juno.controller.menu.FullscreenToggleAction;
+import juno.controller.AudioToggleAction;
+import juno.controller.ChangePanelAction;
+import juno.controller.FullscreenToggleAction;
 import juno.model.sound.AudioPlayer;
 import juno.view.factories.buttons.ButtonFactory;
 import juno.view.factories.buttons.ButtonLibrary;

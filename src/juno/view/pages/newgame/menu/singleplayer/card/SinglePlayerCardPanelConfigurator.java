@@ -1,6 +1,7 @@
 package juno.view.pages.newgame.menu.singleplayer.card;
 
-import juno.view.pages.newgame.menu.singleplayer.SinglePlayerPanel;
+import juno.view.pages.newgame.menu.singleplayer.difficulty.DifficultyPanel;
+import juno.view.pages.newgame.menu.singleplayer.players.PlayersNumberPanel;
 
 import javax.swing.*;
 
@@ -13,11 +14,14 @@ public class SinglePlayerCardPanelConfigurator {
         SinglePlayerCardPanel singlePlayerCardPanel = SinglePlayerCardPanel.getInstance();
 
         // SUB-COMPONENTS
-        SinglePlayerPanel singlePlayerPanel = SinglePlayerPanel.getInstance();
+        PlayersNumberPanel playersNumberPanel = PlayersNumberPanel.getInstance();
+        DifficultyPanel difficultyPanel = DifficultyPanel.getInstance();
 
         // ADDING COMPONENTS
-        singlePlayerCardPanel.setMainPanel(singlePlayerPanel);
+        singlePlayerCardPanel.setPlayersNumberPanel(playersNumberPanel);
+        singlePlayerCardPanel.setDifficultyPanel(difficultyPanel);
         singlePlayerCardPanel.setModePanel(new JPanel());
+        singlePlayerCardPanel.setMatchPanel(new JPanel());
 
         // INITIALIZATION
         singlePlayerCardPanel.init();

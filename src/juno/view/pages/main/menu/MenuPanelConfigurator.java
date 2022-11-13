@@ -1,7 +1,7 @@
 package juno.view.pages.main.menu;
 
-import juno.controller.menu.ChangePanelAction;
-import juno.controller.menu.ExitAction;
+import juno.controller.ChangePanelAction;
+import juno.controller.ExitAction;
 import juno.init.ExitManager;
 import juno.view.factories.buttons.ButtonFactory;
 import juno.view.factories.buttons.ButtonLibrary;
