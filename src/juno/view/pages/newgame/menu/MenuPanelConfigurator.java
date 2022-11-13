@@ -6,8 +6,12 @@ import juno.view.factories.buttons.ButtonLibrary;
 import juno.view.pages.main.card.MainCardPanel;
 import juno.view.pages.newgame.card.NewGameCardPanel;
 import juno.view.util.ImageResizer;
+import juno.view.util.RoundedBorder;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
+import java.nio.ReadOnlyBufferException;
 
 public class MenuPanelConfigurator {
 
@@ -23,9 +27,16 @@ public class MenuPanelConfigurator {
         AbstractButton backButton = ButtonFactory.createButton(ButtonLibrary.BACK);
 
         // RESIZE IMAGES
-        ImageResizer.resize(singlePlayer, 2.0);
-        ImageResizer.resize(multiPlayer, 2.0);
-        ImageResizer.resize(backButton, 2.0);
+        ImageResizer.resize(singlePlayer, 3.0);
+        ImageResizer.resize(multiPlayer, 3.0);
+        ImageResizer.resize(backButton, 3.0);
+
+
+        // BORDER
+        RoundedBorder insideBorder = new RoundedBorder(50, 1, null, Color.WHITE);
+        RoundedBorder outsideBorder = new RoundedBorder(50, 1, null, Color.RED);
+        Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
+        newGameMenuPanel.setBorder(border);
 
         // ACTION LISTENERS
         singlePlayer.addActionListener(new ChangePanelAction(NewGameCardPanel.getInstance(), NewGameCardPanel.SINGLE_PLAYER_PANEL));

@@ -34,7 +34,7 @@ public class DifficultyPanelConfigurator {
 
         // BORDER
         RoundedBorder roundedBorder = new RoundedBorder(50, 2, null, Color.WHITE);
-        difficultyPanel.setBorder(roundedBorder);
+        // difficultyPanel.setBorder(roundedBorder);
 
         // ADDING COMPONENTS
         difficultyPanel.setDifficultyTitle(difficultyTitle);

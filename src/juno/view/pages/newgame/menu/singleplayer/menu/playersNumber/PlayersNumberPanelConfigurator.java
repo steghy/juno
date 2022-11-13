@@ -32,7 +32,7 @@ public class PlayersNumberPanelConfigurator {
 
         // BORDER SETTING
         RoundedBorder roundedBorder = new RoundedBorder(50, 2, null, Color.WHITE);
-        playerNumbersPanel.setBorder(roundedBorder);
+        // playerNumbersPanel.setBorder(roundedBorder);
 
         // ADDING COMPONENTS
         playerNumbersPanel.setTwoPlayers(twoPlayers);

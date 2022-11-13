@@ -10,6 +10,7 @@ import juno.view.util.ImageResizer;
 import juno.view.util.RoundedBorder;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 public class MenuPanelConfigurator {
@@ -26,7 +27,12 @@ public class MenuPanelConfigurator {
         AbstractButton backButton = ButtonFactory.createButton(ButtonLibrary.BACK);
 
         // RESIZE IMAGE
-        ImageResizer.resize(backButton, 2.0);
+        ImageResizer.resize(backButton, 3.0);
+
+        RoundedBorder insideBorder = new RoundedBorder(50, 1, null, Color.WHITE);
+        RoundedBorder outsideBorder = new RoundedBorder(50, 1, null, Color.RED);
+        Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
+        menuPanel.setBorder(border);
 
         // ACTION LISTENERS
         backButton.addActionListener(new ChangePanelAction(NewGameCardPanel.getInstance(), NewGameCardPanel.NEW_GAME_PANEL));

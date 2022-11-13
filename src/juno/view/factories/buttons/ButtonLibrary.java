@@ -3,7 +3,7 @@ package juno.view.factories.buttons;
 public enum ButtonLibrary {
 
     // LOGO
-    LOGO,
+    JUNO,
 
     // MAIN MENU
     NEW_GAME,

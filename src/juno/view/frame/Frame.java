@@ -28,10 +28,12 @@ public class Frame extends JFrame implements AbstractResizableFrame {
         } if(panel == null) {
             throw new IllegalArgumentException("Panel is null");
         }
+
         setLayout(new BorderLayout());
         setDefaultDimension();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+
         background.setLayout(new BorderLayout());
         background.setOpaque(false);
         background.add(panel, BorderLayout.CENTER);

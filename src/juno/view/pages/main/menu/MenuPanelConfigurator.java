@@ -9,6 +9,7 @@ import juno.view.pages.main.card.MainCardPanel;
 import juno.view.util.*;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 public class MenuPanelConfigurator {
@@ -23,10 +24,10 @@ public class MenuPanelConfigurator {
         AbstractButton scoreButton = ButtonFactory.createButton(ButtonLibrary.SCORE);
         AbstractButton exitButton = ButtonFactory.createButton(ButtonLibrary.EXIT);
 
-        ImageResizer.resize(newGameButton, 2.0);
-        ImageResizer.resize(optionsButton, 2.0);
-        ImageResizer.resize(scoreButton, 2.0);
-        ImageResizer.resize(exitButton, 2.0);
+        ImageResizer.resize(newGameButton, 1.0);
+        ImageResizer.resize(optionsButton, 3.0);
+        ImageResizer.resize(scoreButton, 3.0);
+        ImageResizer.resize(exitButton, 3.0);
 
         // ACTION LISTENERS
         newGameButton.addActionListener(new ChangePanelAction(MainCardPanel.getInstance(), MainCardPanel.NEW_GAME_PANEL));
@@ -35,7 +36,9 @@ public class MenuPanelConfigurator {
         exitButton.addActionListener(new ExitAction(ExitManager.getInstance()));
 
         // BORDER
-        RoundedBorder border = new RoundedBorder(50, 2, null, Color.WHITE);
+        RoundedBorder insideBorder = new RoundedBorder(50, 1, null, Color.WHITE);
+        RoundedBorder outsideBorder = new RoundedBorder(50, 1, null, Color.RED);
+        Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
         menuPanel.setBorder(border);
 
         // ADDING COMPONENTS

@@ -11,14 +11,14 @@ public class Deck<T> extends AbstractDeck<T> implements Subject {
     private List<Observer> observerList;
     private Stack<T> deck;
     private T lastCard;
-    private static Deck instance;
+    private static Deck<?> instance;
     private boolean init;
 
     private Deck() {}
 
-     public static Deck getInstance() {
+     public static Deck<?> getInstance() {
         if(instance == null) {
-            instance = new Deck();
+            instance = new Deck<>();
         } return instance;
      }
 

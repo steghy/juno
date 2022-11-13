@@ -1,5 +1,7 @@
 package juno.view.pages.main.menu;
 
+import juno.view.util.RoundedBorder;
+
 import javax.swing.*;
 import java.awt.*;
 

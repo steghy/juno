@@ -11,6 +11,7 @@ import juno.view.frame.Frame;
 import juno.view.util.*;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 public class MenuPanelConfigurator {
@@ -24,9 +25,9 @@ public class MenuPanelConfigurator {
         AbstractButton fullscreenToggle = ButtonFactory.createButton(ButtonLibrary.FULLSCREEN_TOGGLE);
         AbstractButton backButton = ButtonFactory.createButton(ButtonLibrary.BACK);
 
-        ImageResizer.resize(audioToggle, 2.0);
-        ImageResizer.resize(fullscreenToggle, 2.0);
-        ImageResizer.resize(backButton, 2.0);
+        ImageResizer.resize(audioToggle, 3.5);
+        ImageResizer.resize(fullscreenToggle, 3.0);
+        ImageResizer.resize(backButton, 3.0);
 
         // ADDING COMPONENTS
         menuPanel.setToggleButtonMusic(audioToggle);
@@ -39,7 +40,9 @@ public class MenuPanelConfigurator {
         backButton.addActionListener(new ChangePanelAction(MainCardPanel.getInstance(), MainCardPanel.MAIN_PANEL));
 
         // BORDER SETTINGS
-        RoundedBorder border = new RoundedBorder(50, 2, null, Color.WHITE);
+        RoundedBorder insideBorder = new RoundedBorder(50, 1, null, Color.WHITE);
+        RoundedBorder outsideBorder = new RoundedBorder(50, 1, null, Color.RED);
+        Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
         menuPanel.setBorder(border);
 
         // INITIALIZATION
