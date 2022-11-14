@@ -1,5 +1,7 @@
-package juno.view.pages.welcolme.registration.title;
+package juno.view.pages.preaccess.registration.menu;
 
+import juno.controller.ExitAction;
+import juno.init.ExitManager;
 import juno.view.factories.buttons.ButtonFactory;
 import juno.view.factories.buttons.ButtonLibrary;
 import juno.view.util.ImageResizer;
@@ -9,27 +11,29 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 
-public class TitlePanelConfigurator {
+public class MenuPanelConfigurator {
 
-    private TitlePanelConfigurator() {}
+    private MenuPanelConfigurator() {}
 
     public static void configure() {
-        TitlePanel titlePanel = TitlePanel.getInstance();
+        // MAIN COMPONENT
+        MenuPanel menuPanel = MenuPanel.getInstance();
 
-        AbstractButton title = ButtonFactory.createButton(ButtonLibrary.REGISTRATION);
+        // SUB-COMPONENTS
 
-        ImageResizer.resize(title, 3.0);
+        // RESIZE IMAGES
 
-        // SETTING COMPONENTS
-        titlePanel.setTitle(title);
+        // ADDING COMPONENTS
 
-        // BORDER
+        // ACTION LISTENERS
+
+        // BORDER SETTINGS
         RoundedBorder insideBorder = new RoundedBorder(50, 1, null, Color.WHITE);
         RoundedBorder outsideBorder = new RoundedBorder(50, 1, null, Color.RED);
         Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
-        titlePanel.setBorder(border);
+        menuPanel.setBorder(border);
 
         // INITIALIZATION
-        titlePanel.init();
+        // menuPanel.init();
     }
 }

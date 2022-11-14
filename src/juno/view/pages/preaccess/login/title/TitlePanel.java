@@ -1,4 +1,6 @@
-package juno.view.pages.welcolme.registration.title;
+package juno.view.pages.preaccess.login.title;
+
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
@@ -41,7 +43,7 @@ public class TitlePanel extends JPanel {
         this.add(title, gbc);
     }
 
-    public void setTitle(AbstractButton title) {
+    public void setTitle(@NotNull AbstractButton title) {
         this.title = title;
     }
 

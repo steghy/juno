@@ -1,4 +1,4 @@
-package juno.view.pages.welcolme;
+package juno.view.pages.preaccess.welcome;
 
 import org.jetbrains.annotations.NotNull;
 

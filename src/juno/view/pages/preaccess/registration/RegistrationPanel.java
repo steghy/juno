@@ -1,4 +1,4 @@
-package juno.view.pages.welcolme.registration;
+package juno.view.pages.preaccess.registration;
 
 import org.jetbrains.annotations.NotNull;
 

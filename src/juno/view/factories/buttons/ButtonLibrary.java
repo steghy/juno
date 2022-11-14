@@ -7,6 +7,7 @@ public enum ButtonLibrary {
 
     // WELCOME
     WELCOME,
+    WELCOME_BACK,
 
     // REGISTRATION
     REGISTRATION,

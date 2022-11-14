@@ -1,4 +1,4 @@
-package juno.view.pages.welcolme.menu;
+package juno.view.pages.preaccess.access.menu;
 
 import javax.swing.*;
 import java.awt.*;

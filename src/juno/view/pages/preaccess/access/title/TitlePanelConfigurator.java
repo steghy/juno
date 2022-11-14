@@ -1,4 +1,4 @@
-package juno.view.pages.welcolme.title;
+package juno.view.pages.preaccess.access.title;
 
 import juno.view.factories.buttons.ButtonFactory;
 import juno.view.factories.buttons.ButtonLibrary;
@@ -16,7 +16,7 @@ public class TitlePanelConfigurator {
     public static void configure() {
         TitlePanel titlePanel = TitlePanel.getInstance();
 
-        AbstractButton title = ButtonFactory.createButton(ButtonLibrary.WELCOME);
+        AbstractButton title = ButtonFactory.createButton(ButtonLibrary.WELCOME_BACK);
 
         ImageResizer.resize(title, 3.0);
 
