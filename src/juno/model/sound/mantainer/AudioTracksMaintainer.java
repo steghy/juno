@@ -1,14 +1,14 @@
 package juno.model.sound.mantainer;
 
 import juno.model.util.Observer;
-import juno.model.util.Subject;
+import juno.model.util.Observable;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class AudioTracksMaintainer implements AbstractTracksMaintainer, AbstractTracksGenerator, Subject {
+public class AudioTracksMaintainer implements AbstractTracksMaintainer, AbstractTracksGenerator, Observable {
 
     private Collection<File> files;
     private final List<Observer> observerList;

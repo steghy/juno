@@ -1,8 +1,8 @@
 package juno.view.pages.newgame.card;
 
 import juno.view.pages.newgame.NewGamePanel;
-import juno.view.pages.newgame.menu.multiplayer.card.MultiplayerCardPanel;
-import juno.view.pages.newgame.menu.singleplayer.card.SinglePlayerCardPanel;
+import juno.view.pages.newgame.multiplayer.card.MultiplayerCardPanel;
+import juno.view.pages.newgame.singleplayer.card.SinglePlayerCardPanel;
 
 public class NewGameCardPanelConfigurator {
 

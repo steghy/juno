@@ -1,13 +1,13 @@
 package juno.model.deck;
 
 import juno.model.util.Observer;
-import juno.model.util.Subject;
+import juno.model.util.Observable;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Mixer<T> implements AbstractMixer<T>, Subject {
+public class Mixer<T> implements AbstractMixer<T>, Observable {
 
     private final List<Observer> observerList;
 

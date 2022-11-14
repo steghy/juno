@@ -1,21 +1,21 @@
 package juno.model.card;
 
 import juno.model.deck.AbstractDiscardedPile;
-import juno.model.player.factory.AbstractPlayer;
+import juno.model.subjects.factory.AbstractSubject;
 import juno.model.util.Observer;
-import juno.model.util.Subject;
+import juno.model.util.Observable;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ActionPerformer extends AbstractActionPerformer<
-        AbstractPlayer,
+        AbstractSubject,
         AbstractUnoCard<
                 AbstractUnoCardAction,
                 AbstractUnoCardColor<AbstractUnoColor>,
                 AbstractUnoCardValue>,
         AbstractUnoColor>
-        implements Subject, Observer {
+        implements Observable, Observer {
 
     private final List<Observer> observerList;
     private boolean init;
@@ -109,7 +109,7 @@ public class ActionPerformer extends AbstractActionPerformer<
     void initialize() {
         if(getDeck() == null) {
             throw new IllegalArgumentException("AbstractUnoDeck isn't set");
-        } if(getHandsManager() == null) {
+        } if(getItemAdder() == null) {
             throw new IllegalArgumentException("InterfaceHandsManager isn'2 set");
         } if(getNextTurn() == null) {
             throw new IllegalArgumentException("InterfaceShiftManager isn't set");
@@ -132,7 +132,7 @@ public class ActionPerformer extends AbstractActionPerformer<
 
     private void performDrawAction(int num) {
         for(int i = 0; i < num; i++) {
-            getHandsManager().addItem(getPlayersManager().nextPlayer(), getDeck().draw());
+            getItemAdder().addItemTo(getPlayersManager().nextSubject(), getDeck().draw());
         }
     }
 }

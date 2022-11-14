@@ -1,26 +1,27 @@
 package juno.model.card;
 
 import juno.model.deck.AbstractDeck;
-import juno.model.player.shift.AbstractInverter;
-import juno.model.player.players.AbstractPlayersManager;
-import juno.model.player.hands.AbstractHandsManager;
-import juno.model.player.shift.AbstractTurnMover;
-import juno.model.player.shift.AbstractTurnJumper;
+import juno.model.subjects.hands.AbstractItemAdder;
+import juno.model.subjects.shift.AbstractInverter;
+import juno.model.subjects.players.AbstractPlayersManager;
+import juno.model.subjects.hands.AbstractHandsManager;
+import juno.model.subjects.shift.AbstractTurnMover;
+import juno.model.subjects.shift.AbstractTurnJumper;
 
 public abstract class AbstractActionPerformer<T, E, C> implements InterfaceActionPerformer<E, C> {
 
     private AbstractDeck<E> deck;
     private AbstractTurnMover nextTurnClass;
     private AbstractTurnJumper skipper;
-    private AbstractHandsManager<T, E> handsManager;
+    private AbstractItemAdder<T, E> itemAdder;
     private AbstractInverter inverter;
     private AbstractPlayersManager<T> playersManager;
 
     void setDeck(AbstractDeck<E> deck) {
         this.deck = deck;
     }
-    void setHandsManager(AbstractHandsManager<T, E> handsManager) {
-        this.handsManager = handsManager;
+    void setItemAdder(AbstractItemAdder<T, E> itemAdder) {
+        this.itemAdder = itemAdder;
     }
     void setSkipper(AbstractTurnJumper skipper) {
         this.skipper = skipper;
@@ -38,8 +39,8 @@ public abstract class AbstractActionPerformer<T, E, C> implements InterfaceActio
     AbstractDeck<E> getDeck() {
         return deck;
     }
-    AbstractHandsManager<T, E> getHandsManager() {
-        return handsManager;
+    AbstractItemAdder<T, E> getItemAdder() {
+        return itemAdder;
     }
     AbstractTurnMover getNextTurn() {
         return nextTurnClass;

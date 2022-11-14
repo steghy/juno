@@ -1,12 +1,12 @@
 package juno.model.deck;
 
 import juno.model.util.Observer;
-import juno.model.util.Subject;
+import juno.model.util.Observable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class DiscardedPile<T> extends AbstractDiscardedPile<T> implements Subject {
+public class DiscardedPile<T> extends AbstractDiscardedPile<T> implements Observable {
 
     private Stack<T> discardedPile;
     private final List<Observer> observerList;

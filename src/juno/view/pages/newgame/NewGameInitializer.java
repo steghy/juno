@@ -6,8 +6,8 @@ import juno.view.pages.newgame.menu.MenuPanelConfigurator;
 import juno.view.pages.newgame.title.TitlePanelConfigurator;
 
 // SUB COMPONENT
-import juno.view.pages.newgame.menu.multiplayer.MultiplayerInitializer;
-import juno.view.pages.newgame.menu.singleplayer.card.SinglePlayerInitializer;
+import juno.view.pages.newgame.multiplayer.MultiplayerInitializer;
+import juno.view.pages.newgame.singleplayer.card.SinglePlayerInitializer;
 
 
 public class NewGameInitializer {

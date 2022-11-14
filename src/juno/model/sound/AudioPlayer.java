@@ -9,9 +9,9 @@ import javax.sound.sampled.*;
 
 import juno.model.util.Donut;
 import juno.model.util.Observer;
-import juno.model.util.Subject;
+import juno.model.util.Observable;
 
-public class AudioPlayer implements AbstractAdvancedAudioPlayer, Subject, Runnable{
+public class AudioPlayer implements AbstractAdvancedAudioPlayer, Observable, Runnable{
 
 	private final List<Observer> observerList;
 	private Clip clip;

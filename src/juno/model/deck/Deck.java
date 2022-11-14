@@ -1,12 +1,12 @@
 package juno.model.deck;
 
 import juno.model.util.Observer;
-import juno.model.util.Subject;
+import juno.model.util.Observable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class Deck<T> extends AbstractDeck<T> implements Subject {
+public class Deck<T> extends AbstractDeck<T> implements Observable {
 
     private List<Observer> observerList;
     private Stack<T> deck;

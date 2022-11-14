@@ -5,6 +5,15 @@ public enum ButtonLibrary {
     // LOGO
     JUNO,
 
+    // WELCOME
+    WELCOME,
+
+    // REGISTRATION
+    REGISTRATION,
+    CREATE_AN_ACCOUNT,
+    CONTINUE_WITHOUT_AN_ACCOUNT,
+    LOG_IN,
+
     // MAIN MENU
     NEW_GAME,
     SCORE,
