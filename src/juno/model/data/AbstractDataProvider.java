@@ -1,9 +1,8 @@
 package juno.model.data;
 
-
 import java.util.Map;
 
-public interface AbstractData<T, E> {
+public interface AbstractDataProvider<T, E> {
 
     Map<T, E> getDataMap();
 }
