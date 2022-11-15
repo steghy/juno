@@ -1,4 +1,4 @@
-package juno.model.profile;
+package juno.model.data.profile;
 
 public class GuestProfileGenerator implements AbstractGuestProfileGenerator {
 

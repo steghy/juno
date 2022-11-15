@@ -1,6 +1,6 @@
 package juno.controller;
 
-import juno.model.profile.AbstractGuestProfileGenerator;
+import juno.model.data.profile.AbstractGuestProfileGenerator;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.event.ActionEvent;
