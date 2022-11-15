@@ -1,5 +1,7 @@
 package juno.view.pages.newgame.multiplayer.unavailable.menu;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -57,11 +59,11 @@ public class MenuPanel extends JPanel{
         add(backButton, gbc);
     }
 
-    public void setUnavailableServiceLabel(JLabel unavailableServiceLabel) {
+    public void setUnavailableServiceLabel(@NotNull JLabel unavailableServiceLabel) {
         this.unavailableServiceLabel = unavailableServiceLabel;
     }
 
-    public void setBackButton(AbstractButton backButton) {
+    public void setBackButton(@NotNull AbstractButton backButton) {
         this.backButton = backButton;
     }
 

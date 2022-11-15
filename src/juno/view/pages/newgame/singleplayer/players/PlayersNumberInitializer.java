@@ -8,8 +8,11 @@ public class PlayersNumberInitializer {
     private PlayersNumberInitializer() {}
 
     public static void initialize() {
+        // SUB COMPONENTS CONFIGURATION
         TitlePanelConfigurator.configure();
         MenuPanelConfigurator.configure();
+
+        // MAIN COMPONENT CONFIGURATION
         PlayersNumberPanelConfigurator.configure();
     }
 }

@@ -1,6 +1,8 @@
 package juno.view.pages.preaccess.card;
 
 import juno.view.pages.preaccess.access.AccessPanel;
+import juno.view.pages.preaccess.login.LogInPanel;
+import juno.view.pages.preaccess.registration.RegistrationPanel;
 import juno.view.pages.preaccess.welcome.WelcomePanel;
 
 public class PreAccessCardPanelConfigurator {
@@ -11,15 +13,19 @@ public class PreAccessCardPanelConfigurator {
         // MAIN COMPONENT
         PreAccessCardPanel preAccessCardPanel = PreAccessCardPanel.getInstance();
 
-        // SUB-COMPONENTS
+        // SUB COMPONENTS
         WelcomePanel welcomePanel = WelcomePanel.getInstance();
         AccessPanel accessPanel = AccessPanel.getInstance();
+        RegistrationPanel registrationPanel = RegistrationPanel.getInstance();
+        LogInPanel logInPanel = LogInPanel.getInstance();
 
         // ADDING COMPONENTS
         preAccessCardPanel.setWelcomePanel(welcomePanel);
         preAccessCardPanel.setAccessPanel(accessPanel);
+        preAccessCardPanel.setRegistrationPanel(registrationPanel);
+        preAccessCardPanel.setLogInPanel(logInPanel);
 
-        // INITIALIZATION
+        // MAIN COMPONENT INITIALIZATION
         preAccessCardPanel.init();
     }
 }

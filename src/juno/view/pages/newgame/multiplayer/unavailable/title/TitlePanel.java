@@ -1,5 +1,7 @@
 package juno.view.pages.newgame.multiplayer.unavailable.title;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -40,7 +42,7 @@ public class TitlePanel extends JPanel {
         add(titleButton, gbc);
     }
 
-    public void setTitleButton(AbstractButton titleButton) {
+    public void setTitleButton(@NotNull AbstractButton titleButton) {
         this.titleButton = titleButton;
     }
 

@@ -11,10 +11,10 @@ public class TitlePanelConfigurator {
     private TitlePanelConfigurator() {}
 
     public static void configure() {
-        // MAIN-COMPONENT
+        // MAIN COMPONENT
         TitlePanel titlePanel = TitlePanel.getInstance();
 
-        // SUB-COMPONENTS
+        // SUB COMPONENTS
         AbstractButton titleButton = ButtonFactory.createButton(ButtonLibrary.UNAVAILABLE_SERVICE);
 
         // RESIZE COMPONENT
@@ -23,7 +23,7 @@ public class TitlePanelConfigurator {
         // ADDING COMPONENT
         titlePanel.setTitleButton(titleButton);
 
-        // INITIALIZATION
+        // MAIN COMPONENT INITIALIZATION
         titlePanel.init();
     }
 }

@@ -9,6 +9,7 @@ public class RegistrationPanel extends JPanel {
 
     private JPanel titlePanel;
     private JPanel menuPanel;
+    private boolean fromWelcomePanel = false;
     private static RegistrationPanel instance;
 
     private RegistrationPanel() {}
@@ -40,11 +41,19 @@ public class RegistrationPanel extends JPanel {
         this.menuPanel = menuPanel;
     }
 
+    public void setFromWelcomePanel(boolean value) {
+        this.fromWelcomePanel = value;
+    }
+
     public JPanel getTitlePanel() {
         return titlePanel;
     }
 
     public JPanel getMenuPanel() {
         return menuPanel;
+    }
+
+    public boolean isFromWelcomePanel() {
+        return fromWelcomePanel;
     }
 }

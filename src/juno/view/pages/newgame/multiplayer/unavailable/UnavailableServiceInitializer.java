@@ -8,8 +8,11 @@ public class UnavailableServiceInitializer {
     private UnavailableServiceInitializer() {}
 
     public static void initialize() {
+        // SUB COMPONENTS CONFIGURATION
         MenuPanelConfigurator.configure();
         TitlePanelConfigurator.configure();
+
+        // MAIN COMPONENT CONFIGURATION
         UnavailableServicePanelConfigurator.configure();
     }
 }

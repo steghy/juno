@@ -4,6 +4,8 @@ import juno.controller.ExitAction;
 import juno.init.ExitManager;
 import juno.view.factories.buttons.ButtonFactory;
 import juno.view.factories.buttons.ButtonLibrary;
+import juno.view.pages.preaccess.card.PreAccessCardPanel;
+import juno.view.pages.preaccess.registration.RegistrationPanel;
 import juno.view.pages.preaccess.welcome.menu.MenuPanel;
 import juno.view.util.ImageResizer;
 import juno.view.util.RoundedBorder;
@@ -36,7 +38,15 @@ public class MenuPanelConfigurator {
         menuPanel.setExitButton(exitButton);
 
         // ACTION LISTENERS
-        createAnAccountButton.addActionListener(null);
+        createAnAccountButton.addActionListener(listener -> {
+            RegistrationPanel.getInstance().setFromWelcomePanel(true);
+            LayoutManager layoutManager = PreAccessCardPanel.getInstance().getLayout();
+            if(layoutManager instanceof CardLayout cardLayout) {
+                cardLayout.show(PreAccessCardPanel.getInstance(), PreAccessCardPanel.REGISTRATION_PANEL);
+            } else {
+                throw new IllegalArgumentException("Invalid layout type (" + layoutManager.getClass() +")");
+            }
+        });
         continueWithoutAnAccountButton.addActionListener(null);
         exitButton.addActionListener(new ExitAction(ExitManager.getInstance()));
 

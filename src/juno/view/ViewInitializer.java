@@ -1,9 +1,11 @@
 package juno.view;
 
 import juno.view.frame.FrameInitializer;
+import juno.view.pages.card.TopCardPanelConfigurator;
 import juno.view.pages.main.MainPanelInitializer;
 import juno.view.pages.newgame.NewGameInitializer;
 import juno.view.pages.options.OptionsInitializer;
+import juno.view.pages.preaccess.PreAccessInitializer;
 import juno.view.pages.score.ScorePanelInitializer;
 
 public class ViewInitializer {
@@ -11,19 +13,25 @@ public class ViewInitializer {
     private ViewInitializer() {}
 
     public static void initialize() {
-        // NEW GAME
+        // NEW GAME SECTION
         NewGameInitializer.initialize();
 
-        // SCORE
+        // SCORE SECTION
         ScorePanelInitializer.initialize();
 
-        // OPTIONS
+        // OPTIONS SECTION
         OptionsInitializer.initialize();
 
-        // MAIN PANEL
+        // MAIN PANEL SECTION
         MainPanelInitializer.initialize();
 
-        // FRAME
+        // PRE ACCESS PANEL
+        PreAccessInitializer.initialize();
+
+        // TOP CARD PANEL CONFIGURATION
+        TopCardPanelConfigurator.configure();
+
+        // FRAME SECTION
         FrameInitializer.initializer();
     }
 }

@@ -1,7 +1,5 @@
 package juno.model.profile;
 
-import juno.controller.AbstractGuestProfileGenerator;
-
 public class GuestProfileGenerator implements AbstractGuestProfileGenerator {
 
     private static GuestProfileGenerator instance;

@@ -9,9 +9,14 @@ public class MainPanelInitializer {
     private MainPanelInitializer() {}
 
     public static void initialize() {
-        MenuPanelConfigurator.configure();
+        // MAIN COMPONENT CONFIGURATION
         MainPanelConfigurator.configure();
+
+        // SUB COMPONENT CONFIGURATION
         TitlePanelConfigurator.configure();
+        MenuPanelConfigurator.configure();
+
+        // CARD PANEL CONFIGURATION
         MainCardPanelConfigurator.configure();
     }
 }

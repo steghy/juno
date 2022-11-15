@@ -8,11 +8,11 @@ public class MatchInitializer {
     private MatchInitializer() {}
 
     public static void initialize() {
-        // SUB-COMPONENTS
+        // SUB COMPONENTS CONFIGURATION
         MenuPanelConfigurator.configure();
         TitlePanelConfigurator.configure();
 
-        // MAIN-COMPONENT
+        // MAIN COMPONENT CONFIGURATION
         MatchPanelConfigurator.configure();
     }
 }

@@ -8,11 +8,11 @@ public class ModeInitializer {
     private ModeInitializer() {}
 
     public static void initialize() {
-        // SUB-COMPONENTS
+        // SUB COMPONENTS CONFIGURATION
         TitlePanelConfigurator.configure();
         MenuPanelConfigurator.configure();
 
-        // MAIN-COMPONENT
+        // MAIN COMPONENT CONFIGURATION
         ModePanelConfigurator.configure();
     }
 }

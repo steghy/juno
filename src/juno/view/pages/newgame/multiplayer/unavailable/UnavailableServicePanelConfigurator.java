@@ -11,7 +11,7 @@ public class UnavailableServicePanelConfigurator {
         // MAIN COMPONENT
         UnavailableServicePanel unavailableServicePanel = UnavailableServicePanel.getInstance();
 
-        // SUB-COMPONENT
+        // SUB COMPONENT
         TitlePanel titlePanel = TitlePanel.getInstance();
         MenuPanel menuPanel = MenuPanel.getInstance();
 
@@ -19,7 +19,7 @@ public class UnavailableServicePanelConfigurator {
         unavailableServicePanel.setTitlePanel(titlePanel);
         unavailableServicePanel.setMenuPanel(menuPanel);
 
-        // INITIALIZATION
+        // MAIN COMPONENT INITIALIZATION
         unavailableServicePanel.init();
     }
 }

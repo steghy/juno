@@ -1,7 +1,7 @@
 package juno.view.factories.buttons;
 
 import juno.init.Directories;
-import juno.view.factories.buttons.ButtonLibrary;
+import juno.init.Path;
 import juno.view.util.Constant;
 import juno.view.util.ImageButton;
 import juno.view.util.ImageComponentInitializer;

@@ -14,7 +14,7 @@ public class SinglePlayerCardPanelConfigurator {
         // MAIN COMPONENT
         SinglePlayerCardPanel singlePlayerCardPanel = SinglePlayerCardPanel.getInstance();
 
-        // SUB-COMPONENTS
+        // SUB COMPONENTS
         PlayersNumberPanel playersNumberPanel = PlayersNumberPanel.getInstance();
         DifficultyPanel difficultyPanel = DifficultyPanel.getInstance();
         ModePanel modePanel = ModePanel.getInstance();
@@ -25,7 +25,7 @@ public class SinglePlayerCardPanelConfigurator {
         singlePlayerCardPanel.setModePanel(modePanel);
         singlePlayerCardPanel.setMatchPanel(new JPanel());
 
-        // INITIALIZATION
+        // MAIN COMPONENT INITIALIZATION
         singlePlayerCardPanel.init();
     }
 }

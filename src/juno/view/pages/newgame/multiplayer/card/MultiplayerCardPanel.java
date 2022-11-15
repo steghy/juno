@@ -1,5 +1,7 @@
 package juno.view.pages.newgame.multiplayer.card;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -32,11 +34,11 @@ public class MultiplayerCardPanel extends JPanel {
         add(availableServicePanel, AVAILABLE_SERVICE_PANEL);
     }
 
-    public void setAvailableServicePanel(JPanel availableServicePanel) {
+    public void setAvailableServicePanel(@NotNull JPanel availableServicePanel) {
         this.availableServicePanel = availableServicePanel;
     }
 
-    public void setUnavailableServicePanel(JPanel unavailableServicePanel) {
+    public void setUnavailableServicePanel(@NotNull JPanel unavailableServicePanel) {
         this.unavailableServicePanel = unavailableServicePanel;
     }
 

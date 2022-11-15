@@ -1,5 +1,7 @@
 package juno.view.pages.newgame.multiplayer.unavailable;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -55,11 +57,11 @@ public class UnavailableServicePanel extends JPanel {
         add(menuPanel, gbc);
     }
 
-    public void setTitlePanel(JPanel titlePanel) {
+    public void setTitlePanel(@NotNull JPanel titlePanel) {
         this.titlePanel = titlePanel;
     }
 
-    public void setMenuPanel(JPanel menuPanel) {
+    public void setMenuPanel(@NotNull JPanel menuPanel) {
         this.menuPanel = menuPanel;
     }
 

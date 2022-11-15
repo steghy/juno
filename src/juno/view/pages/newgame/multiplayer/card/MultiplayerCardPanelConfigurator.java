@@ -11,7 +11,7 @@ public class MultiplayerCardPanelConfigurator {
         // MAIN COMPONENT
         MultiplayerCardPanel multiplayerCardPanel = MultiplayerCardPanel.getInstance();
 
-        // SUB-COMPONENTS
+        // SUB COMPONENTS
         AvailableServicePanel availableServicePanel = AvailableServicePanel.getInstance();
         UnavailableServicePanel unavailableServicePanel = UnavailableServicePanel.getInstance();
 

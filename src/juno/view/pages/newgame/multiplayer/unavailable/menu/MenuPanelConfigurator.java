@@ -17,7 +17,7 @@ public class MenuPanelConfigurator {
         // MAIN COMPONENT
         MenuPanel menuPanel = MenuPanel.getInstance();
 
-        // SUB-COMPONENT
+        // SUB COMPONENT
         AbstractButton backButton = ButtonFactory.createButton(ButtonLibrary.BACK);
         JLabel unavailableServiceLabel = new JLabel();
 
@@ -31,7 +31,7 @@ public class MenuPanelConfigurator {
                         "want to contribute to the development of this video game, " +
                         "please visit the site 'site here'.";
         unavailableServiceLabel.setText(unavailableServiceText);
-        unavailableServiceLabel.setFont(new Font(Font.DIALOG, Font.BOLD, 10));
+        unavailableServiceLabel.setFont(new Font(Font.DIALOG, Font.BOLD, 50));
 
         // ADDING COMPONENTS
         menuPanel.setUnavailableServiceLabel(unavailableServiceLabel);
@@ -40,7 +40,7 @@ public class MenuPanelConfigurator {
         // ACTION LISTENERS
         backButton.addActionListener(new ChangePanelAction(NewGameCardPanel.getInstance(), NewGameCardPanel.NEW_GAME_PANEL));
 
-        // INITIALIZATION
+        // MAIN COMPONENT INITIALIZATION
         menuPanel.init();
     }
 }
