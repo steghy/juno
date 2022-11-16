@@ -1,6 +1,8 @@
 package juno.model.data;
 
+import java.util.Map;
+
 public interface Exportable<T, E> {
 
-    AbstractDataProvider<T, E> export();
+    Map<T, E> export();
 }

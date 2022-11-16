@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class TopCardPanel extends JPanel {
 
-    public static final String PRE_ACCESS_PANE = "Pre access panel";
+    public static final String PRE_ACCESS_PANEL = "Pre access panel";
     public static final String MAIN_PANEL = "Main panel";
 
     private JPanel preAccessPanel;
@@ -32,7 +32,7 @@ public class TopCardPanel extends JPanel {
         setOpaque(false);
         setLayout(new CardLayout());
         add(mainPanel, MAIN_PANEL);
-        add(preAccessPanel, PRE_ACCESS_PANE);
+        add(preAccessPanel, PRE_ACCESS_PANEL);
     }
 
     public void setPreAccessPanel(@NotNull JPanel preAccessPanel) {

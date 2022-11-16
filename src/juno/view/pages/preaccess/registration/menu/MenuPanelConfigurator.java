@@ -25,20 +25,12 @@ public class MenuPanelConfigurator {
         JLabel userNameLabel = new JLabel("username:");
         JLabel nameLabel = new JLabel("name:");
         JLabel lastNameLabel= new JLabel("last name:");
-        JLabel emailLabel= new JLabel("email:");
-        JLabel countryLabel = new JLabel("country:");
-        JLabel cellphoneLabel = new JLabel("cellphone");
-        JLabel password1Label = new JLabel("password:");
-        JLabel password2Label = new JLabel("repeat password:");
+        JLabel ageLabel = new JLabel("age:");
         // [ TEXT FIELDS ]
         JTextField userNameTextField = new JTextField(15);
         JTextField nameTextField = new JTextField(15);
         JTextField lastNameTextField = new JTextField(15);
-        JTextField emailTextField = new JTextField(15);
-        JTextField countryTextField = new JTextField(15);
-        JTextField cellphoneTextField = new JTextField(15);
-        JTextField password1TextField = new JTextField(15);
-        JTextField password2TextField = new JTextField(15);
+        JTextField ageTextField = new JTextField(15);
         // [ BUTTONS ]
         AbstractButton confirmButton = ButtonFactory.createButton(ButtonLibrary.CONFIRM);
         AbstractButton backButton = ButtonFactory.createButton(ButtonLibrary.BACK);
@@ -48,20 +40,12 @@ public class MenuPanelConfigurator {
         menuPanel.setUserNameLabel(userNameLabel);
         menuPanel.setNameLabel(nameLabel);
         menuPanel.setLastNameLabel(lastNameLabel);
-        menuPanel.setEmailLabel(emailLabel);
-        menuPanel.setCountryLabel(countryLabel);
-        menuPanel.setCellphoneLabel(cellphoneLabel);
-        menuPanel.setPassword1Label(password1Label);
-        menuPanel.setPassword2Label(password2Label);
+        menuPanel.setAgeLabel(ageLabel);
         // [ TEXT FIELDS ]
         menuPanel.setUserNameTextField(userNameTextField);
         menuPanel.setNameTextField(nameTextField);
         menuPanel.setLastNameTextField(lastNameTextField);
-        menuPanel.setEmailTextField(emailTextField);
-        menuPanel.setCountryTextField(countryTextField);
-        menuPanel.setCellphoneTextField(cellphoneTextField);
-        menuPanel.setPassword1TextField(password1TextField);
-        menuPanel.setPassword2TextField(password2TextField);
+        menuPanel.setAgeTextField(ageTextField);
         // [ BUTTONS ]
         menuPanel.setConfirmButton(confirmButton);
         menuPanel.setBackButton(backButton);
@@ -80,7 +64,6 @@ public class MenuPanelConfigurator {
                 throw new IllegalArgumentException("Invalid layout type (" + layoutManager.getClass() +")");
             }
         });
-
 
         // BORDER SETTINGS
         RoundedBorder insideBorder = new RoundedBorder(50, 1, null, Color.WHITE);
