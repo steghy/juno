@@ -1,4 +1,4 @@
-package juno.model.data.user;
+package juno.model.data.profile;
 
 import juno.model.data.io.Configurable;
 import juno.model.data.io.Exportable;
@@ -9,39 +9,39 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class User implements Configurable, Exportable {
+public class Profile implements AbstractProfile, Configurable, Exportable {
 
     public static final int MAXIMUM_LENGTH = 15;
     public static final int MAXIMUM_AGE = 150;
 
-    public static final String USERNAME = "username";
+    public static final String PROFILE_NAME = "profile name";
     public static final String NAME = "name";
     public static final String LAST_NAME = "last name";
     public static final String AGE = "age";
 
-    private String username;
+    private String profileName;
     private String name;
     private String lastName;
     private Integer age;
 
-    public User() {}
+    public Profile() {}
 
     @Override
     public void configure(@NotNull Map<String, Object> map) {
-        // USERNAME
-        if(map.containsKey(USERNAME)) {
-            if(map.get(USERNAME) instanceof String usernameFromMap) {
+        // PROFILE NAME
+        if(map.containsKey(PROFILE_NAME)) {
+            if(map.get(PROFILE_NAME) instanceof String usernameFromMap) {
                 int length = usernameFromMap.length();
                 if(length > 0 && length < MAXIMUM_LENGTH) {
-                    this.username = usernameFromMap;
+                    this.profileName = usernameFromMap;
                 } else {
                     throw new IllegalArgumentException("Invalid length " + length);
                 }
             } else {
-                throw new IllegalArgumentException("Invalid type " + map.get(USERNAME).getClass());
+                throw new IllegalArgumentException("Invalid type " + map.get(PROFILE_NAME).getClass());
             }
         } else {
-            throw new IllegalArgumentException(USERNAME + " key not found in " + map);
+            throw new IllegalArgumentException(PROFILE_NAME + " key not found in " + map);
         }
 
         // NAME
@@ -89,19 +89,19 @@ public class User implements Configurable, Exportable {
     @Override
     public Map<String, Object> getDataMap() {
         Map<String, Object> map = new HashMap<>();
-        map.put(USERNAME, username);
+        map.put(PROFILE_NAME, profileName);
         map.put(NAME, name);
         map.put(LAST_NAME, lastName);
         map.put(AGE, age);
         return map;
     }
 
-    public void setUsername(@NotNull String username) {
-        int length = username.length();
+    public void setProfileName(@NotNull String profileName) {
+        int length = profileName.length();
         if(length == 0 || length > MAXIMUM_LENGTH) {
             throw new IllegalArgumentException("Invalid length " + length);
         }
-        this.username = username;
+        this.profileName = profileName;
     }
 
     public void setName(@NotNull String name) {
@@ -128,8 +128,8 @@ public class User implements Configurable, Exportable {
         }
     }
 
-    public String getUsername() {
-        return username;
+    public String getProfileName() {
+        return profileName;
     }
 
     public String getName() {
@@ -142,5 +142,20 @@ public class User implements Configurable, Exportable {
 
     public Integer getAge() {
         return age;
+    }
+
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder
+                .append("[")
+                .append(this.profileName)
+                .append(", ")
+                .append(this.name)
+                .append(", ")
+                .append(this.lastName)
+                .append(", ")
+                .append(this.age)
+                .append("]");
+        return stringBuilder.toString();
     }
 }

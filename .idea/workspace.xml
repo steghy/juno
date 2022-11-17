@@ -2,61 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/data/profiles/profile-1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/profiles/profile-2.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/profiles/profile-3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/profiles/profile-4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/profiles/profile-5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/data/io/AbstractConfigurationFilesProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/data/io/AbstractDataCompatibilityChecker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/data/io/AbstractDataExporter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/data/io/AbstractDataImporter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/data/io/CONFIGDataExporter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/data/io/CONFIGDataImporter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/data/io/Configurable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/data/io/ConfigurationFilesProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/data/io/DataCompatibilityChecker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/data/io/DataIOInitializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/data/io/Exportable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/data/io/JSONDataExporter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/data/io/JSONDataImporter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/data/io/test/ConfigurationFilesProviderTester.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/config/profiles/profile-1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/config/profiles/profile-2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/config/profiles/profile-3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/config/profiles/profile-4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/config/profiles/profile-5.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/data/profile/AbstractProfile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/users/guest-data.config" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/users/user-data-1.config" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/juno-project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/juno-project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/controller/CreateGuestProfileAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/controller/CreateGuestProfileAction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/AbstractData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/AbstractDataExporter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/AbstractQuantityController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/Data.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/DataExporter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/profile/AbstractGuestProfileGenerator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/profile/GuestProfileGenerator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/profile/ProfileGenerator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/test/DataTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/util/PathGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/util/PathGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/frame/FrameInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/frame/FrameInitializer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/card/TopCardPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/card/TopCardPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/preaccess/access/menu/MenuPanelConfigurator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/preaccess/access/menu/MenuPanelConfigurator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/preaccess/registration/menu/MenuPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/preaccess/registration/menu/MenuPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/preaccess/registration/menu/MenuPanelConfigurator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/preaccess/registration/menu/MenuPanelConfigurator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/controller/CreateGuestProfileAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/CreateGuestProfileAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/AbstractDataConfigurable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/AbstractDataProvider.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/AbstractJSONDataExporter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/AbstractJSONDataImporter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/Configurable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/Constant.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/Exportable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/JSONDataExporter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/JSONDataImporter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/profile/AbstractGuestProfileGenerator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/profile/GuestProfileGenerator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/profile/ProfileGenerator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/util/PathGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/util/PathGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/preaccess/access/menu/MenuPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/preaccess/access/menu/MenuPanelConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/profiles/profile-1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/profiles/profile-2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/profiles/profile-3.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/profiles/profile-4.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/profiles/profile-5.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/test/ConfigurationFilesProviderTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/test/ConfigurationFilesProviderTester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/user/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/profile/Country.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/user/Email.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/profile/Email.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/user/Password.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/profile/Password.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/user/Telephone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/profile/Telephone.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/profile/Profile.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
