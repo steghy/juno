@@ -1,8 +1,8 @@
-package juno.model.data.io;
+package juno.model.data.io.input;
 
-public class DataIOInitializer {
+public class InputDataInitializer {
 
-    private DataIOInitializer() {}
+    private InputDataInitializer() {}
 
     public static void initialize() {
         ConfigurationFilesProvider configurationFilesProvider = ConfigurationFilesProvider.getInstance();

@@ -1,4 +1,4 @@
-package juno.init;
+package juno.model.data.io.output;
 
 public interface AbstractExitManager {
 

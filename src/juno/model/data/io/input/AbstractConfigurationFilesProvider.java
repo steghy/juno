@@ -1,4 +1,4 @@
-package juno.model.data.io;
+package juno.model.data.io.input;
 
 import java.io.File;
 import java.util.List;

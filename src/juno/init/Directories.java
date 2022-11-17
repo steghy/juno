@@ -1,13 +1,13 @@
 package juno.init;
 
-
-import juno.model.util.Os;
-
-import java.util.Arrays;
-
 public enum Directories implements Path{
+
 	// DATA
 	DATA("data"),
+
+	// DATA -> CONFIG
+	CONFIG("config"),
+	PROFILES(CONFIG, "profiles"),
 
 	// DATA -> AUDIO
 	AUDIO(DATA, "audio"),
@@ -61,11 +61,5 @@ public enum Directories implements Path{
 		this.path = builder.toString();
 		builder.insert(0, System.getProperty("user.dir"));
 		this.absolutePath = builder.toString();
-	}
-
-	public static void main(String[] args) {
-		Arrays.asList(Directories.values()).stream().map(dir -> dir.absolutePath).forEach(path -> {
-			System.out.println(path + " exists ? " + Os.exists(path));
-		});
 	}
 }

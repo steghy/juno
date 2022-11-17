@@ -1,5 +1,6 @@
-package juno.model.data.io;
+package juno.model.data.io.output;
 
+import juno.model.data.io.output.AbstractDataExporter;
 import org.json.JSONArray;
 
 import java.io.FileWriter;

@@ -1,4 +1,4 @@
-package juno.model.data.io;
+package juno.model.data.io.input;
 
 import org.json.JSONArray;
 

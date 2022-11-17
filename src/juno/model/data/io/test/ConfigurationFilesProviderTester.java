@@ -1,8 +1,8 @@
 package juno.model.data.io.test;
 
-import juno.model.data.io.ConfigurationFilesProvider;
-import juno.model.data.io.DataIOInitializer;
-import juno.model.data.io.JSONDataImporter;
+import juno.model.data.io.input.ConfigurationFilesProvider;
+import juno.model.data.io.input.InputDataInitializer;
+import juno.model.data.io.input.JSONDataImporter;
 import juno.model.data.profile.Profile;
 import juno.model.util.PathGenerator;
 
@@ -19,7 +19,7 @@ public class ConfigurationFilesProviderTester {
 
         Profile profile = new Profile();
 
-        DataIOInitializer.initialize();
+        InputDataInitializer.initialize();
 
         List<File> configurationFiles = ConfigurationFilesProvider.getInstance().getConfigurationFiles(profilesDirectory, profile);
 

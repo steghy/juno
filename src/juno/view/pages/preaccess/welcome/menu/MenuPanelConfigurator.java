@@ -1,12 +1,11 @@
 package juno.view.pages.preaccess.welcome.menu;
 
 import juno.controller.ExitAction;
-import juno.init.ExitManager;
+import juno.model.data.io.output.ExitManager;
 import juno.view.factories.buttons.ButtonFactory;
 import juno.view.factories.buttons.ButtonLibrary;
 import juno.view.pages.preaccess.card.PreAccessCardPanel;
 import juno.view.pages.preaccess.registration.RegistrationPanel;
-import juno.view.pages.preaccess.welcome.menu.MenuPanel;
 import juno.view.util.ImageResizer;
 import juno.view.util.RoundedBorder;
 

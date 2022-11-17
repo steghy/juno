@@ -1,10 +1,5 @@
 package juno.view.pages.preaccess.login.menu;
 
-import juno.controller.ExitAction;
-import juno.init.ExitManager;
-import juno.view.factories.buttons.ButtonFactory;
-import juno.view.factories.buttons.ButtonLibrary;
-import juno.view.util.ImageResizer;
 import juno.view.util.RoundedBorder;
 
 import javax.swing.*;

@@ -48,16 +48,4 @@ public class URLBuilder {
         builder.append(token == null ? "" : "?token=".concat(token));
         return builder.toString();
     }
-
-    public static void main(String[] args) {
-        URLBuilder urlBuilder = URLBuilder.getInstance();
-        urlBuilder.adminName = "steghy";
-        urlBuilder.repositoryName = "configurator";
-        urlBuilder.branchName = "main";
-        // urlBuilder.token = "GHSAT0AAAAAABZZHKB4WTRFN4R52KTYJDB6Y3JSW2A";
-        String result = urlBuilder.getURL("configurator.py");
-        System.out.println(result);
-    }
-
-
 }

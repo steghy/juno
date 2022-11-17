@@ -1,6 +1,6 @@
 package juno.controller;
 
-import juno.init.AbstractExitManager;
+import juno.model.data.io.output.AbstractExitManager;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

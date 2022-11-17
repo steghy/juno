@@ -1,7 +1,7 @@
 package juno.model.data.profile;
 
-import juno.model.data.io.Configurable;
-import juno.model.data.io.Exportable;
+import juno.model.data.io.input.Configurable;
+import juno.model.data.io.output.Exportable;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
