@@ -3,14 +3,20 @@ package juno.model.data.io.input;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class DataCompatibilityChecker implements AbstractDataCompatibilityChecker {
 
+    private final Map<Configurable, File> incompatibleFiles;
     private AbstractDataImporter dataImporter;
 
     private static DataCompatibilityChecker instance;
 
-    private DataCompatibilityChecker() {}
+    private DataCompatibilityChecker() {
+        incompatibleFiles = new HashMap<>();
+    }
 
     public static DataCompatibilityChecker getInstance() {
         if(instance == null) {
@@ -24,7 +30,7 @@ public class DataCompatibilityChecker implements AbstractDataCompatibilityChecke
             configurable.configure(dataImporter.importData(file.getAbsolutePath()));
             return true;
         } catch(Exception e) {
-            e.printStackTrace();
+            incompatibleFiles.put(configurable, file);
             return false;
         }
     }
@@ -35,5 +41,9 @@ public class DataCompatibilityChecker implements AbstractDataCompatibilityChecke
 
     public AbstractDataImporter getDataImporter() {
         return dataImporter;
+    }
+
+    public Map<Configurable, File> getIncompatibleFiles() {
+        return incompatibleFiles;
     }
 }

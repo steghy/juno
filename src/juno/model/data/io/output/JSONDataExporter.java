@@ -2,6 +2,7 @@ package juno.model.data.io.output;
 
 import juno.model.data.io.output.AbstractDataExporter;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.FileWriter;
 import java.io.IOException;

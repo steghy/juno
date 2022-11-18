@@ -16,12 +16,15 @@ public class ConfigurationFilesProviderTester {
         String dataDirectory = PathGenerator.generate("data");
         String configDirectory = PathGenerator.generate(dataDirectory, "config");
         String profilesDirectory = PathGenerator.generate(configDirectory, "profiles");
+	    String profileConfigurationFile = PathGenerator.generate(profilesDirectory, "profile-1.json");
 
         Profile profile = new Profile();
 
         InputDataInitializer.initialize();
 
         List<File> configurationFiles = ConfigurationFilesProvider.getInstance().getConfigurationFiles(profilesDirectory, profile);
+
+        // List<File> configurationFiles = configurationFiles = ConfigurationFilesProvider.getInstance().getConfigurationFiles(profileConfigurationFile, profile);
 
         List<Profile> profiles = configurationFiles.stream().map(configurationFile -> {
             try {
@@ -36,5 +39,9 @@ public class ConfigurationFilesProviderTester {
         // configurationFiles.forEach(System.out::println);
 
         profiles.forEach(System.out::println);
+
+        List<String> profileNames = profiles.stream().map(Profile::getProfileName).toList();
+
+        profileNames.forEach(System.out::println);
     }
 }
