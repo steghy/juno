@@ -26,6 +26,10 @@ public class ItemAdder<T, E> implements AbstractItemAdder<T, E>, Observable, Obs
         } return instance;
     }
 
+    public void setHandsMap(Map<T, List<E>> handsMap) {
+        this.handsMap = handsMap;
+    }
+
     @Override
     @SuppressWarnings("unchecked")
     public void addItemTo(@NotNull T subject,@NotNull E item) {
@@ -43,12 +47,12 @@ public class ItemAdder<T, E> implements AbstractItemAdder<T, E>, Observable, Obs
 
 
     @Override
-    public void addObserver(Observer observer) {
+    public void addObserver(@NotNull Observer observer) {
         observerList.add(observer);
     }
 
     @Override
-    public void removeObserver(Observer observer) {
+    public void removeObserver(@NotNull Observer observer) {
         observerList.remove(observer);
     }
 
@@ -58,7 +62,7 @@ public class ItemAdder<T, E> implements AbstractItemAdder<T, E>, Observable, Obs
     }
 
     @Override
-    public void update(Object object) {
+    public void update(@NotNull Object object) {
         if(object instanceof AbstractHandsProvider<?, ?> handsMaintainer) {
             handsMap = new HashMap<>();
             this.handsMap = handsMaintainer.getHandsMap();

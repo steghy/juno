@@ -4,7 +4,7 @@ import juno.model.util.Donut;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
-public class SubjectsManager<T> implements AbstractPlayersManager<T>, Observer {
+public class SubjectsManager<T> implements AbstractSubjectsManager<T>, Observer {
 
     private Donut<T> subjects;
     private static SubjectsManager<?> instance;

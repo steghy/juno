@@ -1,6 +1,6 @@
 package juno.model.subjects.players;
 
-public interface AbstractPlayersManager<T> {
+public interface AbstractSubjectsManager<T> {
 
     T currentSubject();
 

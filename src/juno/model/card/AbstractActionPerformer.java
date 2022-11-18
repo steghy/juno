@@ -3,8 +3,7 @@ package juno.model.card;
 import juno.model.deck.AbstractDeck;
 import juno.model.subjects.hands.AbstractItemAdder;
 import juno.model.subjects.shift.AbstractInverter;
-import juno.model.subjects.players.AbstractPlayersManager;
-import juno.model.subjects.hands.AbstractHandsManager;
+import juno.model.subjects.players.AbstractSubjectsManager;
 import juno.model.subjects.shift.AbstractTurnMover;
 import juno.model.subjects.shift.AbstractTurnJumper;
 
@@ -15,7 +14,7 @@ public abstract class AbstractActionPerformer<T, E, C> implements InterfaceActio
     private AbstractTurnJumper skipper;
     private AbstractItemAdder<T, E> itemAdder;
     private AbstractInverter inverter;
-    private AbstractPlayersManager<T> playersManager;
+    private AbstractSubjectsManager<T> playersManager;
 
     void setDeck(AbstractDeck<E> deck) {
         this.deck = deck;
@@ -32,7 +31,7 @@ public abstract class AbstractActionPerformer<T, E, C> implements InterfaceActio
     void setInverter(AbstractInverter inverter) {
         this.inverter = inverter;
     }
-    void setPlayersManager(AbstractPlayersManager<T> playersManager){
+    void setPlayersManager(AbstractSubjectsManager<T> playersManager){
         this.playersManager = playersManager;
     }
 
@@ -51,7 +50,7 @@ public abstract class AbstractActionPerformer<T, E, C> implements InterfaceActio
     AbstractInverter getInverter() {
         return this.inverter;
     }
-    AbstractPlayersManager<T> getPlayersManager() {
+    AbstractSubjectsManager<T> getPlayersManager() {
         return this.playersManager;
     }
 }

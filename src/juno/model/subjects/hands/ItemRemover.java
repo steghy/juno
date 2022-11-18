@@ -25,6 +25,10 @@ public class ItemRemover<T, E> implements AbstractItemRemover<T, E>, Observable,
         } return instance;
     }
 
+    public void setHandsMap(Map<T, List<E>> handsMap) {
+        this.handsMap = handsMap;
+    }
+
     @Override
     public void removeItemTo(@NotNull T subject,@NotNull E item) {
         if(handsMap != null) {
