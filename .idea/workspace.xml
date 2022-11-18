@@ -2,17 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/juno/model/ai/AbstractExaminer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/ai/AbstractUnoAi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/ai/Difficulty.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/ai/InterfaceUnoAi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/ai/UnoAi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/ai/AbstractUnoExaminer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/ai/InterfaceUnoExaminer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/ai/UnoExaminer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/card/AbstractCompatibleItemsProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/card/CompatibleItemsProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/card/InterfaceCompatibleItemsProvider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/card/AbstractActionPerformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/card/AbstractActionPerformer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/hands/ItemAdder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/hands/ItemAdder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/hands/ItemRemover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/hands/ItemRemover.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/players/AbstractPlayersManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/players/AbstractSubjectsManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/players/SubjectsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/players/SubjectsManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/ai/AbstractExaminer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/ai/AbstractUnoAi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/ai/AbstractUnoAi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/ai/InterfaceUnoAi.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/ai/UnoAi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/ai/UnoAi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/ai/ai-info.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +26,8 @@
         <option value="package-info" />
         <option value="Kotlin Class" />
         <option value="AnnotationType" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
