@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/juno/model/subjects/players/UnoPlayerConfigurationTester.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/factories/buttons/BrutalConfigurator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/info" beforeDir="false" afterPath="$PROJECT_DIR$/data/config/info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/factories/buttons/ReflectionClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/factories/buttons/ReflectionClass.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/factories/buttons/ButtonFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/factories/buttons/ButtonFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/factories/buttons/ReflectionClass.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/factories/buttons/ReflectionTarget.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/factories/buttons/ReflectionTester.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/players/UnoPlayerConfigurationTester.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/util/Donut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/util/Donut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/factories/buttons/BrutalConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/init/BrutalConfigurator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,11 +76,11 @@
   </component>
   <component name="RunManager" selected="Application.BrutalConfigurator">
     <configuration name="BrutalConfigurator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="juno.view.factories.buttons.BrutalConfigurator" />
+      <option name="MAIN_CLASS_NAME" value="juno.init.BrutalConfigurator" />
       <module name="juno-project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="juno.view.factories.buttons.*" />
+          <option name="PATTERN" value="juno.init.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>

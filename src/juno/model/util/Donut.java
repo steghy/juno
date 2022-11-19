@@ -3,19 +3,11 @@ package juno.model.util;
 import java.util.ArrayList;
 import java.util.Random;
 
-/**
- * @author steghy
- */
 public class Donut<T> extends ArrayList<T> {
 
-    /* The index of the current item */
     private int index;
-
     private boolean inverted;
 
-    /**
-     * Builds a Donut object
-     */
     public Donut() {
         inverted = false;
     }
@@ -36,9 +28,6 @@ public class Donut<T> extends ArrayList<T> {
         this.index = index;
     }
 
-    /**
-     * Invert the order of this object
-     */
     public void invert() {
         inverted = !inverted;
     }
@@ -59,40 +48,22 @@ public class Donut<T> extends ArrayList<T> {
         }
     }
 
-    /**
-     * Returns the current Item
-     * @return The current Item
-     */
     public T current() {
         if(size() == 0) {
             throw new IllegalArgumentException("Empty donut");
         } return get(index);
     }
 
-    /**
-     * Returns the index of the current
-     * selected item.
-     * @return An object of type T.
-     */
     public int getCurrentIndex() {
         return index;
     }
 
-    /**
-     * Peeks the next item.
-     * @return The next item.
-     */
     public T peek() {
         T el = next();
         previous();
         return el;
     }
 
-    /**
-     * Returns the next item contained in
-     * this Donut object.
-     * @return An item of type T
-     */
     private T clockwise() {
         if(size() == 0) {
             throw new IllegalArgumentException("Empty donut");
@@ -114,12 +85,7 @@ public class Donut<T> extends ArrayList<T> {
         } return get(index);
     }
 
-    /**
-     * Returns true if this Donut is inverted.
-     * @return A boolean
-     */
     public boolean isInverted() {
         return inverted;
     }
-
 }

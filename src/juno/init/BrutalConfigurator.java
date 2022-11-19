@@ -1,4 +1,4 @@
-package juno.view.factories.buttons;
+package juno.init;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
@@ -6,12 +6,13 @@ import java.util.Map;
 
 public class BrutalConfigurator {
 
-    public static void configure(Map<String, Object> map, Object object) {
+    public static void configure(Map<?, ?> map, Object object) {
         Class<?> objectType = object.getClass();
         map.forEach((key, value) -> {
             try {
+
                 // Field target
-                Field field = objectType.getDeclaredField(key);
+                Field field = objectType.getDeclaredField((String) key);
 
                 // Access guaranteed
                 field.setAccessible(true);
@@ -20,12 +21,13 @@ public class BrutalConfigurator {
                 Class<?> fieldType = field.getType();
                 Class<?> valueType = value.getClass();
 
-                // Actual types
-                System.out.println("Actual field type: " + fieldType);
-                System.out.println("Actual value type: " + valueType);
+                // Complex object case - NOT TESTED !!!
+                if(value instanceof Map<?, ?> anotherMap) {
+                    configure(anotherMap, field.get(object));
+                }
 
                 // Class case
-                if (fieldType == valueType) {
+                else if (fieldType == valueType) {
                     field.set(object, value);
                 }
 
@@ -41,7 +43,7 @@ public class BrutalConfigurator {
                  * - boolean
                  * - byte
                  */
-                if(fieldType.isPrimitive()) {
+                else if (fieldType.isPrimitive()) {
                     String fieldTypeName = fieldType.getName();
                     switch (fieldTypeName) {
                         case "int":
@@ -114,7 +116,6 @@ public class BrutalConfigurator {
                             }
                     }
                 }
-
 
             } catch (NoSuchFieldException | IllegalAccessException e) {
                 e.printStackTrace();
