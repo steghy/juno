@@ -1,13 +1,13 @@
 package juno.view.factories.buttons;
 
 import juno.init.Directories;
-import juno.init.Path;
 import juno.model.data.io.input.AbstractDataImporter;
 import juno.model.data.io.input.JSONDataImporter;
 import juno.model.util.PathGenerator;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.math.BigDecimal;
 import java.util.Map;
 
 public class ReflectionClass {
@@ -18,9 +18,26 @@ public class ReflectionClass {
             try {
                 Field field = objectType.getDeclaredField(key);
                 field.setAccessible(true);
+                Class<?> fieldType = field.getType();
+                Class<?> valueType = value.getClass();
+
+                System.out.println("Class type for field: " + fieldType);
+                System.out.println("Class type for value: " + valueType);
+
+                if(fieldType.isPrimitive()) {
+                    if(value instanceof BigDecimal bigDecimal) {
+                        String stringNumber = bigDecimal.toString();
+                        System.out.println(stringNumber);
+                    } else if(value instanceof Integer integer) {
+                        String stringNumber = integer.toString();
+                        System.out.println(stringNumber);
+                    }
+                }
+
                 if (field.getType() == value.getClass()) {
                     field.set(object, value);
                 }
+
             } catch (NoSuchFieldException | IllegalAccessException e) {
                 e.printStackTrace();
             }
