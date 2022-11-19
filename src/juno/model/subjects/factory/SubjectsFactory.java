@@ -1,6 +1,6 @@
 package juno.model.subjects.factory;
 
-import juno.model.ai.Difficulty;
+import juno.model.subjects.ai.Difficulty;
 import juno.model.util.Observer;
 import juno.model.util.Observable;
 import org.jetbrains.annotations.NotNull;

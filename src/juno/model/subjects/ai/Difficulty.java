@@ -1,10 +1,9 @@
-package juno.model.ai;
+package juno.model.subjects.ai;
 
 public enum Difficulty {
 
     EASY,
     MEDIUM,
     HARD,
-    CASUAL,
 
 }

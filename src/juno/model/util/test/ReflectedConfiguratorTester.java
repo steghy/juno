@@ -5,9 +5,8 @@ import juno.model.data.io.input.AbstractDataImporter;
 import juno.model.data.io.input.JSONDataImporter;
 import juno.model.data.io.output.JSONDataExporter;
 import juno.model.util.PathGenerator;
-import juno.model.util.ReflectedConfigurator;
+import juno.model.data.io.input.ReflectedConfigurator;
 import juno.view.factories.buttons.ButtonFactory;
-import juno.view.factories.buttons.MyObject;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -17,7 +16,6 @@ public class ReflectedConfiguratorTester {
     static String configFilePath = PathGenerator.generate(Directories.CONFIG.absolutePath(), "button-factory.json");
 
     public static void main(String[] args) throws IOException {
-        // exportData();
         importData();
     }
 
@@ -51,9 +49,5 @@ public class ReflectedConfiguratorTester {
                 throw new RuntimeException(e);
             }
         });
-    }
-
-    public static void exportData() throws IOException {
-        JSONDataExporter.getInstance().exportData(configFilePath, (new ButtonFactory()).getDataMap());
     }
 }

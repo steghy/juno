@@ -1,5 +1,6 @@
-package juno.model.ai;
+package juno.model.subjects.ai;
 
+import juno.model.util.MyRandom;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -27,27 +28,7 @@ public class UnoAI<T> extends AbstractUnoAI<T> {
 
     @Override
     public T makeAChoice() {
-        if(getCompatibleItemsProvider() != null) {
-            if(getUnoExaminer() != null) {
-                if(items != null) {
-                    if(items.size() != 0) {
-                        if(difficulty != null) {
-                            return getUnoExaminer().responseRelativeTo(items, difficulty);
-                        } else {
-                            throw new IllegalArgumentException("Difficulty is null");
-                        }
-                    } else {
-                        throw new IllegalArgumentException("Items size is zero");
-                    }
-                } else {
-                    throw new IllegalArgumentException("Items is null");
-                }
-            } else {
-                throw new IllegalArgumentException("UnoExaminer is null");
-            }
-        } else {
-            throw new IllegalArgumentException("CompatibleItemsProvider is null");
-        }
+        return getUnoExaminer().responseRelativeTo(items, difficulty);
     }
 
     @Override

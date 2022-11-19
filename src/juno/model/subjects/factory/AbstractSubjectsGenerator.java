@@ -1,6 +1,6 @@
 package juno.model.subjects.factory;
 
-import juno.model.ai.Difficulty;
+import juno.model.subjects.ai.Difficulty;
 
 public interface AbstractSubjectsGenerator<T> {
 

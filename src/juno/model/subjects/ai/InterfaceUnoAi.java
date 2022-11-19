@@ -1,4 +1,4 @@
-package juno.model.ai;
+package juno.model.subjects.ai;
 
 import juno.model.subjects.players.AbstractUnoPlayer;
 

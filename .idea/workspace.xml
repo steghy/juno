@@ -2,24 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/data/config/button-factory.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/util/test/ReflectedConfiguratorTester.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/factories/buttons/MyObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/util/MyRandom.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/button-factory-config.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/info" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/json-data-test.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/init/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/init/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/util/Donut.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/util/Donut.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/JSONDataImporter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/JSONDataImporter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/util/ReflectedConfigurator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/util/test/ReflectedConfiguratorTester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/util/test/ReflectedConfiguratorTester.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/factories/buttons/ButtonFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/factories/buttons/ButtonFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/factories/buttons/ButtonFactoryConfigurator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/factories/buttons/ReflectionClass.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/factories/buttons/ReflectionTarget.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/factories/buttons/ReflectionTester.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/init/BrutalConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/util/ReflectedConfigurator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/init/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/init/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/factories/buttons/MyObject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/ai/AbstractUnoAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/ai/AbstractUnoAI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/ai/AbstractUnoExaminer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/ai/AbstractUnoExaminer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/ai/Difficulty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/ai/Difficulty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/ai/InterfaceUnoAi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/ai/InterfaceUnoAi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/ai/InterfaceUnoExaminer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/ai/InterfaceUnoExaminer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/ai/UnoAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/ai/UnoAI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/ai/UnoAIExaminer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/ai/UnoAIExaminer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/JSONDataImporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/JSONDataImporter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/factory/AbstractSubjectsGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/factory/AbstractSubjectsGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/factory/SubjectsFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/factory/SubjectsFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/util/ReflectedConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/ReflectedConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/util/test/ReflectedConfiguratorTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/util/test/ReflectedConfiguratorTester.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/view/factories/buttons/ButtonFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/factories/buttons/ButtonFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/factories/buttons/ButtonFactoryConfigurator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/factories/buttons/MyObject.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +66,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_opened_file_path": "/home/steghy/Documents/codes/juno-project/src/juno/view/pages/preaccess/login",
     "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
+    "project.structure.proportion": "0.2919922",
     "project.structure.side.proportion": "0.29955947",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "preferences.pluginManager"
@@ -129,11 +132,11 @@
       </method>
     </configuration>
     <configuration name="ReflectedConfigurator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="juno.model.util.ReflectedConfigurator" />
+      <option name="MAIN_CLASS_NAME" value="juno.model.data.io.input.ReflectedConfigurator" />
       <module name="juno-project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="juno.model.util.*" />
+          <option name="PATTERN" value="juno.model.data.io.input.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>

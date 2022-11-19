@@ -1,11 +1,11 @@
-package juno.model.ai;
+package juno.model.subjects.ai;
 
 import juno.model.card.*;
+import juno.model.util.MyRandom;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class UnoAIExaminer extends AbstractUnoExaminer<AbstractUnoCard> {
 
@@ -13,12 +13,9 @@ public class UnoAIExaminer extends AbstractUnoExaminer<AbstractUnoCard> {
     private List<AbstractUnoCard> numericCards;
     private List<AbstractUnoCard> actionCards;
     private List<AbstractUnoCard> jollyCards;
-    private final Random random;
     private static UnoAIExaminer instance;
 
-    private UnoAIExaminer() {
-        random = new Random();
-    }
+    private UnoAIExaminer() {}
 
     public static UnoAIExaminer getInstance() {
         if(instance == null) {
@@ -84,15 +81,15 @@ public class UnoAIExaminer extends AbstractUnoExaminer<AbstractUnoCard> {
     }
 
     private AbstractUnoCard randomNumericCard() {
-        return numericCards.get(random.nextInt(numericCards.size()));
+        return numericCards.get(MyRandom.getInstance().nextInt(numericCards.size()));
     }
 
     private AbstractUnoCard randomActionCard() {
-        return actionCards.get(random.nextInt(actionCards.size()));
+        return actionCards.get(MyRandom.getInstance().nextInt(actionCards.size()));
     }
 
     private AbstractUnoCard randomJollyCard() {
-        return jollyCards.get(random.nextInt(jollyCards.size()));
+        return jollyCards.get(MyRandom.getInstance().nextInt(jollyCards.size()));
     }
 
     private void setCards() {

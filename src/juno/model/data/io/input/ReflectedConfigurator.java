@@ -1,4 +1,4 @@
-package juno.model.util;
+package juno.model.data.io.input;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -45,7 +45,7 @@ public class ReflectedConfigurator {
                             throw new IllegalArgumentException("Invalid value type: " + valueType);
                         }
                     } catch (NoSuchMethodException | InvocationTargetException e) {
-                        throw new RuntimeException(e);
+                        e.printStackTrace();
                     }
                 }
 
