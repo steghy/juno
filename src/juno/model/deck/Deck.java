@@ -2,19 +2,23 @@ package juno.model.deck;
 
 import juno.model.util.Observer;
 import juno.model.util.Observable;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
 public class Deck<T> extends AbstractDeck<T> implements Observable {
 
-    private List<Observer> observerList;
-    private Stack<T> deck;
+    private final List<Observer> observerList;
+    private final Stack<T> deck;
     private T lastCard;
     private static Deck<?> instance;
-    private boolean init;
 
-    private Deck() {}
+    private Deck() {
+        observerList = new ArrayList<>();
+        deck = new Stack<>();
+    }
 
      public static Deck<?> getInstance() {
         if(instance == null) {
@@ -24,18 +28,14 @@ public class Deck<T> extends AbstractDeck<T> implements Observable {
 
     @Override
     public T draw() {
-        if(init) {
-            if(deck.isEmpty()) {
-                throw new IllegalArgumentException("Deck is empty");
-            } else if(deck.size() <= 4) {
-                this.getDeckRefiller().refill(deck);
-                this.getMixer().shuffle(deck);
-            } lastCard = deck.pop();
-            updateAll();
-            return lastCard;
-        } else {
-            throw new IllegalArgumentException("Deck not initialized");
-        }
+        if(deck.isEmpty()) {
+            throw new IllegalArgumentException("Deck is empty");
+        } else if(deck.size() <= 4) {
+            this.getDeckRefiller().refill(deck);
+            this.getMixer().shuffle(deck);
+        } lastCard = deck.pop();
+        updateAll();
+        return lastCard;
     }
 
     @Override
@@ -50,30 +50,17 @@ public class Deck<T> extends AbstractDeck<T> implements Observable {
     }
 
     @Override
-    public void addObserver(Observer observer) {
+    public void addObserver(@NotNull Observer observer) {
         observerList.add(observer);
     }
 
     @Override
-    public void removeObserver(Observer observer) {
+    public void removeObserver(@NotNull Observer observer) {
         observerList.remove(observer);
     }
 
     @Override
     public void updateAll() {
         observerList.forEach(observer -> observer.update(this));
-    }
-
-     void initialize() {
-        if(this.getDeckRefiller() == null) {
-            throw new IllegalArgumentException("AbstractDeckRefiller isn't set");
-        } if(this.getMixer() == null) {
-            throw new IllegalArgumentException("AbstractMixer isn't set");
-        } if(this.getDeckFactory() == null) {
-            throw new IllegalArgumentException("AbstractDeckFactory isn't set");
-         }
-        observerList = new ArrayList<>();
-        deck = new Stack<>();
-        init = true;
     }
 }

@@ -2,6 +2,7 @@ package juno.model.deck;
 
 import juno.model.util.Observer;
 import juno.model.util.Observable;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +23,8 @@ public class DeckRefiller<T> extends AbstractDeckRefiller<T> implements Observab
     }
 
     @Override
-    public void refill(List<T> deck) {
+    public void refill(@NotNull List<T> deck) {
         AbstractDiscardedPile<T> discardedPile = this.getDiscardedPile();
-        if(discardedPile == null) {
-            throw new IllegalArgumentException("AbstractDiscardedPile isn't set");
-        }
         T lastCard = discardedPile.lastItem();
         List<T> cards = discardedPile.items();
         cards.remove(cards.size() - 1);
@@ -37,12 +35,12 @@ public class DeckRefiller<T> extends AbstractDeckRefiller<T> implements Observab
     }
 
     @Override
-    public void addObserver(Observer observer) {
+    public void addObserver(@NotNull Observer observer) {
         observerList.add(observer);
     }
 
     @Override
-    public void removeObserver(Observer observer) {
+    public void removeObserver(@NotNull Observer observer) {
         observerList.remove(observer);
     }
 

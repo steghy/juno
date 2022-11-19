@@ -1,5 +1,6 @@
 package juno.model.subjects.factory;
 
+import juno.model.ai.Difficulty;
 import juno.model.util.Observer;
 import juno.model.util.Observable;
 import org.jetbrains.annotations.NotNull;
@@ -24,26 +25,13 @@ public class SubjectsFactory extends AbstractSubjectsFactory<AbstractSubject> im
     }
 
     @Override
-    public void generate(int num,@NotNull String name) {
-        if(this.getNameFactory() != null) {
-                subjects = new ArrayList<>(this.getNameFactory().getNames(num)
-                        .stream()
-                        .map(Subject::new)
-                        .toList());
-                subjects.add(new Subject(name));
-                updateAll();
-        } else {
-            throw new IllegalArgumentException("AbstractNameFactory is null");
-        }
+    public void generate(@NotNull Difficulty difficulty, int num, @NotNull String name) {
+
     }
 
     @Override
     public List<AbstractSubject> getSubjects() {
-        if(subjects != null) {
-            return subjects;
-        } else {
-            throw new IllegalArgumentException("Subjects is null");
-        }
+        return subjects;
     }
 
     @Override

@@ -1,11 +1,11 @@
 package juno.model.card;
 
-public interface AbstractUnoCard<T, E, C> {
+public interface AbstractUnoCard {
 
-    T action();
+    AbstractUnoCardAction action();
 
-    E color();
+    AbstractUnoCardColor<AbstractUnoColor> color();
 
-    C value();
+    AbstractUnoCardValue value();
 
 }

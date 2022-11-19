@@ -4,11 +4,11 @@ public class URLBuilder {
 
     public static final String PREFIX = "https://raw.githubusercontent.com";
 
-    public String prefix;
-    public String repositoryName;
-    public String adminName;
-    public String branchName;
-    public String token;
+    protected String prefix;
+    protected String repositoryName;
+    protected String adminName;
+    protected String branchName;
+    protected String token;
 
     private static URLBuilder instance;
 

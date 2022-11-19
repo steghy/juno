@@ -7,11 +7,11 @@ import java.util.Random;
 
 public class NameFactory implements AbstractNameFactory {
 
-    private List<String> names;
+    private final List<String> names;
     private static NameFactory instance;
 
     private NameFactory() {
-        init();
+        names = new ArrayList<>();
     }
 
     public static NameFactory getInstance() {
@@ -23,8 +23,7 @@ public class NameFactory implements AbstractNameFactory {
     @Override
     public List<String> getNames(int num) {
         if(num > names.size()) {
-            throw new IllegalArgumentException("" +
-                    "Only up to twenty");
+            throw new IllegalArgumentException("Only up to twenty");
         }
         List<String> outputNames = new ArrayList<>();
         List<String> namesClone = new ArrayList<>(names);
@@ -39,7 +38,7 @@ public class NameFactory implements AbstractNameFactory {
     }
 
     private void init() {
-        names = Arrays.asList(
+        names.addAll(Arrays.asList(
                 "Wade",
                 "Dave",
                 "Seth",
@@ -59,6 +58,6 @@ public class NameFactory implements AbstractNameFactory {
                 "Neil",
                 "Ted",
                 "Benjamin",
-                "Fred");
+                "Fred"));
     }
 }

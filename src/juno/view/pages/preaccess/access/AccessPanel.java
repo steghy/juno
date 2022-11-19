@@ -30,6 +30,38 @@ public class AccessPanel extends JPanel {
         setLayout(new GridBagLayout());
 
         GridBagConstraints gbc = new GridBagConstraints();
+
+        // TITLE PANEL
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
+
+        gbc.anchor = GridBagConstraints.CENTER;
+
+        gbc.insets = new Insets(0,0,5,0);
+
+        this.add(titlePanel, gbc);
+
+        // MENU PANEL
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
+
+        gbc.anchor = GridBagConstraints.CENTER;
+
+        gbc.insets = new Insets(0,0,5,0);
+
+        this.add(menuPanel, gbc);
     }
 
     public void setTitlePanel(@NotNull JPanel titlePanel) {

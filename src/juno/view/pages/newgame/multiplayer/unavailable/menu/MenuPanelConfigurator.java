@@ -26,12 +26,13 @@ public class MenuPanelConfigurator {
 
         // UNAVAILABLE SERVICE LABEL SETTING
         String unavailableServiceText =
-                "We are sorry to inform you that unfortunately " +
-                        "this mode is not yet available, however if you " +
-                        "want to contribute to the development of this video game, " +
-                        "please visit the site 'site here'.";
+                """
+                        We are sorry to inform you that unfortunately\s
+                        this mode is not yet available, however if you\s
+                        want to contribute to the development of this video game,\s
+                        please visit the site 'site here'.""";
         unavailableServiceLabel.setText(unavailableServiceText);
-        unavailableServiceLabel.setFont(new Font(Font.DIALOG, Font.BOLD, 50));
+        unavailableServiceLabel.setFont(new Font(Font.DIALOG, Font.BOLD, 30));
 
         // ADDING COMPONENTS
         menuPanel.setUnavailableServiceLabel(unavailableServiceLabel);

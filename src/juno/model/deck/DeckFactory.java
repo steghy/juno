@@ -5,10 +5,7 @@ import juno.model.card.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
-class DeckFactory extends AbstractDeckFactory<AbstractUnoCard<
-        AbstractUnoCardAction,
-        AbstractUnoCardColor<AbstractUnoColor>,
-        AbstractUnoCardValue>> {
+class DeckFactory extends AbstractDeckFactory<AbstractUnoCard> {
 
     private static DeckFactory instance;
 
@@ -21,23 +18,9 @@ class DeckFactory extends AbstractDeckFactory<AbstractUnoCard<
     }
 
     @Override
-    public Collection<AbstractUnoCard<
-            AbstractUnoCardAction,
-            AbstractUnoCardColor<AbstractUnoColor>,
-            AbstractUnoCardValue>> getDeck() {
-
-        if(this.getCardFactory() == null) {
-            throw new IllegalArgumentException("Factory not set");
-        }
-
-        Collection<AbstractUnoCard<
-                AbstractUnoCardAction,
-                AbstractUnoCardColor<AbstractUnoColor>,
-                AbstractUnoCardValue>> cards = this.getCardFactory().getCards();
-        Collection<AbstractUnoCard<
-                AbstractUnoCardAction,
-                AbstractUnoCardColor<AbstractUnoColor>,
-                AbstractUnoCardValue>> deck = new ArrayList<>();
+    public Collection<AbstractUnoCard> getDeck() {
+        Collection<AbstractUnoCard> cards = this.getCardFactory().getCards();
+        Collection<AbstractUnoCard> deck = new ArrayList<>();
         cards.forEach(card -> {
             deck.add(card);
             if(card.action() != null) {
@@ -45,13 +28,9 @@ class DeckFactory extends AbstractDeckFactory<AbstractUnoCard<
                         card.action().isWildDrawFourAction()) {
                     deck.add(card); deck.add(card);
                 }
-            }
-
-            if(card.action() != null || card.value() != null && !card.value().isValueZero()) {
+            } if(card.action() != null || card.value() != null && !card.value().isValueZero()) {
                 deck.add(card);
             }
-        });
-
-        return deck;
+        }); return deck;
     }
 }

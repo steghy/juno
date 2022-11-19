@@ -6,6 +6,7 @@ import juno.view.factories.buttons.ButtonFactory;
 import juno.view.factories.buttons.ButtonLibrary;
 import juno.view.pages.preaccess.card.PreAccessCardPanel;
 import juno.view.pages.preaccess.registration.RegistrationPanel;
+import juno.view.util.ImageResizer;
 import juno.view.util.RoundedBorder;
 
 import javax.swing.*;
@@ -49,6 +50,10 @@ public class MenuPanelConfigurator {
         // [ BUTTONS ]
         menuPanel.setConfirmButton(confirmButton);
         menuPanel.setBackButton(backButton);
+
+        // RESIZE IMAGES
+        ImageResizer.resize(confirmButton, 3.0);
+        ImageResizer.resize(backButton, 3.0);
 
         // ACTION LISTENERS
         confirmButton.addActionListener(new SendRegistrationDataAction(menuPanel));

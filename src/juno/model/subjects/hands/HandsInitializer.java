@@ -10,18 +10,18 @@ public class HandsInitializer {
     @SuppressWarnings("unchecked")
     public static void initialize() {
         // OBSERVERS
-        ItemAdder<AbstractSubject, AbstractUnoCard<?, ?, ?>> itemAdder =
-                (ItemAdder<AbstractSubject, AbstractUnoCard<?, ?, ?>>) ItemAdder.getInstance();
+        ItemAdder<AbstractSubject, AbstractUnoCard> itemAdder =
+                (ItemAdder<AbstractSubject, AbstractUnoCard>) ItemAdder.getInstance();
 
-        ItemRemover<AbstractSubject, AbstractUnoCard<?, ?, ?>> itemRemover =
-                (ItemRemover<AbstractSubject, AbstractUnoCard<?,?,?>>) ItemRemover.getInstance();
+        ItemRemover<AbstractSubject, AbstractUnoCard> itemRemover =
+                (ItemRemover<AbstractSubject, AbstractUnoCard>) ItemRemover.getInstance();
 
-        HandsManager<AbstractSubject, AbstractUnoCard<?, ?, ?>> handsManager =
-                (HandsManager<AbstractSubject, AbstractUnoCard<?,?,?>>) HandsManager.getInstance();
+        HandsManager<AbstractSubject, AbstractUnoCard> handsManager =
+                (HandsManager<AbstractSubject, AbstractUnoCard>) HandsManager.getInstance();
 
         // SUBJECT
-        HandsProvider<AbstractSubject, AbstractUnoCard<?, ?, ?>> handsProvider =
-                (HandsProvider<AbstractSubject, AbstractUnoCard<?,?,?>>) HandsProvider.getInstance();
+        HandsProvider<AbstractSubject, AbstractUnoCard> handsProvider =
+                (HandsProvider<AbstractSubject, AbstractUnoCard>) HandsProvider.getInstance();
 
         // ADDING OBSERVERS
         handsProvider.addObserver(itemAdder);

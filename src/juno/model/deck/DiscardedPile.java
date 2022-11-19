@@ -2,18 +2,20 @@ package juno.model.deck;
 
 import juno.model.util.Observer;
 import juno.model.util.Observable;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
 public class DiscardedPile<T> extends AbstractDiscardedPile<T> implements Observable {
 
-    private Stack<T> discardedPile;
+    private final Stack<T> discardedPile;
     private final List<Observer> observerList;
-    private boolean init;
     private static DiscardedPile<?> instance;
 
     private DiscardedPile() {
+        discardedPile = new Stack<>();
         observerList = new ArrayList<>();
     }
 
@@ -25,21 +27,17 @@ public class DiscardedPile<T> extends AbstractDiscardedPile<T> implements Observ
 
     @Override
     public void discard(T card) {
-        if(init) {
-            if(discardedPile.isEmpty()) {
-                discardedPile.push(card);
-            } else {
-                if(this.getCompatibilityChecker().areCompatible(discardedPile.peek(), card)) {
-                    discardedPile.push(card);
-                    updateAll();
-                } else {
-                    throw new IllegalArgumentException(
-                            "Incompatible card: " +
-                            discardedPile.peek() + ", " + card);
-                }
-            }
+        if(discardedPile.isEmpty()) {
+            discardedPile.push(card);
         } else {
-            throw new IllegalArgumentException("DiscardedPile isn't initialized");
+            if(this.getCompatibilityChecker().areCompatible(discardedPile.peek(), card)) {
+                discardedPile.push(card);
+                updateAll();
+            } else {
+                throw new IllegalArgumentException(
+                        "Incompatible card: " +
+                        discardedPile.peek() + ", " + card);
+            }
         }
     }
 
@@ -59,25 +57,17 @@ public class DiscardedPile<T> extends AbstractDiscardedPile<T> implements Observ
     }
 
     @Override
-    public void addObserver(Observer observer) {
+    public void addObserver(@NotNull Observer observer) {
         observerList.add(observer);
     }
 
     @Override
-    public void removeObserver(Observer observer) {
+    public void removeObserver(@NotNull Observer observer) {
         observerList.remove(observer);
     }
 
     @Override
     public void updateAll() {
         observerList.forEach(observer -> observer.update(this));
-    }
-
-    public void initialize() {
-        if(this.getCompatibilityChecker() == null) {
-            throw new IllegalArgumentException("AbstractCompatibilityChecker isn't set");
-        }
-        discardedPile = new Stack<>();
-        init = true;
     }
 }

@@ -26,14 +26,4 @@ public enum UnoColor implements AbstractUnoColor {
 	public boolean isGreen(){
 		return this.name().equals("GREEN");
 	}
-
-	public static UnoColor getColorObject(String colorName) {
-		return switch (colorName.toUpperCase()) {
-			case ("BLUE") -> UnoColor.BLUE;
-			case ("GREEN") -> UnoColor.GREEN;
-			case ("RED") -> UnoColor.RED;
-			case ("YELLOW") -> UnoColor.YELLOW;
-			default -> null;
-		};
-	}
 }

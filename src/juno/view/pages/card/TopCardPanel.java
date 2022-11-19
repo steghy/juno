@@ -31,8 +31,8 @@ public class TopCardPanel extends JPanel {
 
         setOpaque(false);
         setLayout(new CardLayout());
-        add(mainPanel, MAIN_PANEL);
         add(preAccessPanel, PRE_ACCESS_PANEL);
+        add(mainPanel, MAIN_PANEL);
     }
 
     public void setPreAccessPanel(@NotNull JPanel preAccessPanel) {

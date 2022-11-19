@@ -1,5 +1,7 @@
 package juno.model.card;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 public class CompatibleItemsProvider<T> extends AbstractCompatibleItemsProvider<T> {
@@ -15,19 +17,11 @@ public class CompatibleItemsProvider<T> extends AbstractCompatibleItemsProvider<
     }
 
     @Override
-    public List<T> getCompatibleItems(List<T> items) {
-        if(getCompatibilityChecker() != null) {
-            if(getDiscardedPile() != null) {
-                return items.stream()
-                        .filter(item -> getCompatibilityChecker()
-                                .areCompatible(getDiscardedPile()
-                                        .lastItem(), item))
-                        .toList();
-            } else {
-                throw new IllegalArgumentException("DiscardedPile is null");
-            }
-        } else {
-            throw new IllegalArgumentException("CompatibilityChecker is null");
-        }
+    public List<T> getCompatibleItems(@NotNull List<T> items) {
+        return items.stream()
+                .filter(item -> getCompatibilityChecker()
+                        .areCompatible(getDiscardedPile()
+                                .lastItem(), item))
+                .toList();
     }
 }

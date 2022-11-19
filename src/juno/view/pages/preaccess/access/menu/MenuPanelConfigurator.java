@@ -35,6 +35,7 @@ public class MenuPanelConfigurator {
 
         // ADDING COMPONENTS
         menuPanel.setCreateAnAccountButton(createAnAccountButton);
+        menuPanel.setLogInButton(logInButton);
         menuPanel.setContinueWithoutAnAccountButton(continueWithoutAnAccountButton);
         menuPanel.setExitButton(exitButton);
 

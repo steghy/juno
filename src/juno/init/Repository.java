@@ -11,6 +11,6 @@ public class Repository {
         url.adminName = "steghy";
         url.repositoryName = "juno";
         url.branchName = "main";
-        url.token = "GHSAT0AAAAAABZZHKB4WTRFN4R52KTYJDB6Y3JSW2A";
+        // url.token = "GHSAT0AAAAAABZZHKB4WTRFN4R52KTYJDB6Y3JSW2A";
     }
 }

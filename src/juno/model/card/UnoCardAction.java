@@ -8,17 +8,6 @@ public enum UnoCardAction implements AbstractUnoCardAction {
 	WILD,
 	WILD_DRAW_FOUR;
 
-	public static UnoCardAction getActionObject(String actionName) {
-		return switch (actionName.toUpperCase()) {
-			case ("DRAW_TWO") -> UnoCardAction.DRAW_TWO;
-			case ("REVERSE") -> UnoCardAction.REVERSE;
-			case ("SKIP") -> UnoCardAction.SKIP;
-			case ("WILD") -> UnoCardAction.WILD;
-			case ("WILD_DRAW_FOUR") -> UnoCardAction.WILD_DRAW_FOUR;
-			default -> null;
-		};
-	}
-
 	@Override
 	public boolean isWildAction() {
 		return this.name().equals("WILD");

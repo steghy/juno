@@ -1,12 +1,8 @@
 package juno.model.deck;
 
-
 import juno.model.card.*;
 
-class CompatibilityChecker implements AbstractCompatibilityChecker<AbstractUnoCard<
-        AbstractUnoCardAction,
-        AbstractUnoCardColor<AbstractUnoColor>,
-        AbstractUnoCardValue>> {
+class CompatibilityChecker implements AbstractCompatibilityChecker<AbstractUnoCard> {
 
     private static CompatibilityChecker instance;
 
@@ -19,13 +15,7 @@ class CompatibilityChecker implements AbstractCompatibilityChecker<AbstractUnoCa
     }
 
     @Override
-    public boolean areCompatible(AbstractUnoCard<
-            AbstractUnoCardAction,
-            AbstractUnoCardColor<AbstractUnoColor>,
-            AbstractUnoCardValue> card, AbstractUnoCard<
-            AbstractUnoCardAction,
-            AbstractUnoCardColor<AbstractUnoColor>,
-            AbstractUnoCardValue> otherCard){
+    public boolean areCompatible(AbstractUnoCard card, AbstractUnoCard otherCard){
 
         // CARD SPECIFICATIONS
         AbstractUnoCardColor<AbstractUnoColor> cardColor = card.color();
@@ -36,8 +26,6 @@ class CompatibilityChecker implements AbstractCompatibilityChecker<AbstractUnoCa
         AbstractUnoCardColor<AbstractUnoColor> otherCardColor = otherCard.color();
         AbstractUnoCardAction otherCardAction = otherCard.action();
         AbstractUnoCardValue otherCardValue = otherCard.value();
-
-
 
         // JOLLY CASE
         if(otherCardAction != null){
@@ -76,25 +64,24 @@ class CompatibilityChecker implements AbstractCompatibilityChecker<AbstractUnoCa
         if(cardValue != null && otherCardValue != null){
             if(cardValue.isValueZero() && otherCardValue.isValueZero()){
                 return true;
-            } else if(cardValue.isValueOne() && otherCardValue.isValueOne()){
+            } if(cardValue.isValueOne() && otherCardValue.isValueOne()){
                 return true;
-            } else if(cardValue.isValueTwo() && otherCardValue.isValueTwo()){
+            } if(cardValue.isValueTwo() && otherCardValue.isValueTwo()){
                 return true;
-            } else if(cardValue.isValueThree() && otherCardValue.isValueThree()){
+            } if(cardValue.isValueThree() && otherCardValue.isValueThree()){
                 return true;
-            } else if(cardValue.isValueFour() && otherCardValue.isValueFour()){
+            } if(cardValue.isValueFour() && otherCardValue.isValueFour()){
                 return true;
-            } else if(cardValue.isValueFive() && otherCardValue.isValueFive()){
+            } if(cardValue.isValueFive() && otherCardValue.isValueFive()){
                 return true;
-            } else if(cardValue.isValueSix() && otherCardValue.isValueSix()){
+            } if(cardValue.isValueSix() && otherCardValue.isValueSix()){
                 return true;
-            } else if(cardValue.isValueSeven() && otherCardValue.isValueSeven()){
+            } if(cardValue.isValueSeven() && otherCardValue.isValueSeven()){
                 return true;
-            } else if(cardValue.isValueEight() && otherCardValue.isValueEight()){
-                return true;
-            } else if(cardValue.isValueNine() && otherCardValue.isValueNine()){
+            } if(cardValue.isValueEight() && otherCardValue.isValueEight()){
                 return true;
             }
+            return cardValue.isValueNine() && otherCardValue.isValueNine();
         }
 
         return false;

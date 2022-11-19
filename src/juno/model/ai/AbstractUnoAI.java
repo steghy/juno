@@ -2,7 +2,7 @@ package juno.model.ai;
 
 import juno.model.card.AbstractCompatibleItemsProvider;
 
-public abstract class AbstractUnoAi<T> implements InterfaceUnoAi<T> {
+public abstract class AbstractUnoAI<T> implements InterfaceUnoAi<T> {
 
     private AbstractCompatibleItemsProvider<T> compatibleItemsProvider;
     private InterfaceUnoExaminer<T> unoExaminer;

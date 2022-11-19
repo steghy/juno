@@ -6,7 +6,7 @@ public enum Directories implements Path{
 	DATA("data"),
 
 	// DATA -> CONFIG
-	CONFIG("config"),
+	CONFIG(DATA,"config"),
 	PROFILES(CONFIG, "profiles"),
 
 	// DATA -> AUDIO

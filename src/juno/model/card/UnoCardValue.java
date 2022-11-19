@@ -62,9 +62,4 @@ public enum UnoCardValue implements AbstractUnoCardValue {
     public boolean isValueNine() {
         return this.name().equals("NINE");
     }
-
-    @Override
-    public String toString(){
-       return this.name();
-    }
 }

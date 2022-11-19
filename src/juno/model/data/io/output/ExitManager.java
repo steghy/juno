@@ -39,7 +39,7 @@ public class ExitManager implements AbstractExitManager {
             });
             System.exit(0);
         } else {
-            throw new IllegalArgumentException("DataExporter is null");
+            System.exit(0);
         }
     }
 }

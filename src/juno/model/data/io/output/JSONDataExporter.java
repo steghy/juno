@@ -1,6 +1,6 @@
 package juno.model.data.io.output;
 
-import juno.model.data.io.output.AbstractDataExporter;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -10,12 +10,21 @@ import java.util.Map;
 
 public class JSONDataExporter implements AbstractDataExporter {
 
+    private static JSONDataExporter instance;
+
+    private JSONDataExporter() {}
+
+    public static JSONDataExporter getInstance() {
+        if(instance == null) {
+            instance = new JSONDataExporter();
+        } return instance;
+    }
+
     @Override
-    public void exportData(String path, Map<String, Object> dataMap) throws IOException {
-        JSONArray jsonArray = new JSONArray();
-        jsonArray.put(dataMap);
+    public void exportData(@NotNull String path, @NotNull Map<String, Object> dataMap) throws IOException {
+        JSONObject jsonObject = new JSONObject(dataMap);
         FileWriter fileWriter = new FileWriter(path);
-        fileWriter.write(jsonArray.toString());
+        fileWriter.write(jsonObject.toString());
         fileWriter.close();
     }
 }

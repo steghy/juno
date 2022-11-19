@@ -1,7 +1,6 @@
 package juno.view.factories.buttons;
 
 import juno.init.Directories;
-import juno.init.Path;
 import juno.view.util.Constant;
 import juno.view.util.ImageButton;
 import juno.view.util.ImageComponentInitializer;
@@ -12,9 +11,10 @@ import java.awt.*;
 
 public class ButtonFactory {
 
-    public static final String EXTENSION = ".png";
-    public static final String ROLLOVER = "_ROLLOVER";
-    public static final String SELECTED = "_SELECTED";
+    protected static String extension = ".png";
+    protected static String rollover = "_ROLLOVER";
+    protected static String selected = "_SELECTED";
+    protected static boolean download = true;
 
     private ButtonFactory() {}
 
@@ -25,12 +25,12 @@ public class ButtonFactory {
             ImageComponentInitializer.initialize(
                     button,
                     Directories.BUTTONS,
-                    true,
+                    download,
                     BUTTON.name(),
-                    BUTTON.name() + EXTENSION,
-                    BUTTON.name() + ROLLOVER + EXTENSION,
-                    BUTTON.name() + SELECTED + EXTENSION,
-                    BUTTON.name() + SELECTED + ROLLOVER + EXTENSION,
+                    BUTTON.name() + extension,
+                    BUTTON.name() + rollover + extension,
+                    BUTTON.name() + selected + extension,
+                    BUTTON.name() + selected + rollover + extension,
                     new Dimension(600, 300),
                     Constant.THROW_EXCEPTION,
                     Constant.THROW_EXCEPTION,
@@ -47,8 +47,8 @@ public class ButtonFactory {
                     Directories.BUTTONS,
                     true,
                     BUTTON.name(),
-                    BUTTON.name() + EXTENSION,
-                    BUTTON.name() + ROLLOVER + EXTENSION,
+                    BUTTON.name() + extension,
+                    BUTTON.name() + rollover + extension,
                     new Dimension(600, 300),
                     Constant.THROW_EXCEPTION,
                     Constant.KEEP_ROLLOVER_IMAGE,
