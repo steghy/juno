@@ -12,18 +12,18 @@ import java.awt.*;
 
 public class ButtonFactory {
 
-    protected static String extension = ".png";
-    protected static String rollover = "_ROLLOVER";
-    protected static String selected = "_SELECTED";
-    protected static boolean download = true;
-    protected static Constant bothMissing = Constant.THROW_EXCEPTION;
-    protected static Constant bothSelectedMissing = Constant.THROW_EXCEPTION;
-    protected static Constant allMissing = Constant.THROW_EXCEPTION;
-    protected static Constant imageMissing = Constant.KEEP_ROLLOVER_IMAGE;
-    protected static Constant rolloverImageMissing = Constant.KEEP_IMAGE;
-    protected static Constant selectedImageMissing = Constant.KEEP_ROLLOVER_SELECTED_IMAGE;
-    protected static Constant rolloverSelectedImageMissing = Constant.KEEP_SELECTED_IMAGE;
-    protected static Dimension dimension = new Dimension(500, 250);
+    private static String extension = ".png";
+    private static String rollover = "_ROLLOVER";
+    private static String selected = "_SELECTED";
+    private static boolean download = true;
+    private static Constant bothMissing = Constant.THROW_EXCEPTION;
+    private static Constant bothSelectedMissing = Constant.THROW_EXCEPTION;
+    private static Constant allMissing = Constant.THROW_EXCEPTION;
+    private static Constant imageMissing = Constant.KEEP_ROLLOVER_IMAGE;
+    private static Constant rolloverImageMissing = Constant.KEEP_IMAGE;
+    private static Constant selectedImageMissing = Constant.KEEP_ROLLOVER_SELECTED_IMAGE;
+    private static Constant rolloverSelectedImageMissing = Constant.KEEP_SELECTED_IMAGE;
+    private static Dimension dimension = new Dimension(500, 250);
 
     private ButtonFactory() {}
 
