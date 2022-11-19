@@ -1,3 +1,5 @@
 # juno
 
-Just a GUI vg
+
+Repository not ready.
+Just testing.
