@@ -4,11 +4,9 @@ import juno.model.data.io.input.JSONDataImporter;
 import juno.model.sound.AudioPlayer;
 import juno.model.util.PathGenerator;
 import juno.view.ViewInitializer;
-import juno.view.factories.buttons.ButtonFactoryConfigurator;
 import juno.view.frame.Frame;
 
 import javax.swing.*;
-import javax.xml.crypto.Data;
 import java.io.File;
 
 public class Main {
@@ -19,11 +17,6 @@ public class Main {
         Repository.setRepository();
 
         try {
-            // BUTTON FACTORY SETTING
-            ButtonFactoryConfigurator.getInstance()
-                    .configure(JSONDataImporter.getInstance()
-                            .importData(PathGenerator.generate(Directories.CONFIG
-                                    .absolutePath(), "button-factory-config.json")));
 
             // VIEW INITIALIZATION
             ViewInitializer.initialize();
