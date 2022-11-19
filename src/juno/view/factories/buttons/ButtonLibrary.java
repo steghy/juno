@@ -23,8 +23,6 @@ public enum ButtonLibrary {
     OPTIONS,
     EXIT,
 
-
-
     // SCORE MENU //
 
     // AVATARS PANEL //

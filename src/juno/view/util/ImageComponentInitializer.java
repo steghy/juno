@@ -103,13 +103,18 @@ public class ImageComponentInitializer {
     }
 
     public static void initialize(@NotNull AbstractButton button,
+
                                   @NotNull Path path,
+
                                   boolean download,
+
                                   String name,
+
                                   String file,
                                   String rolloverFile,
                                   String selectedFile,
                                   String rolloverSelectedFile,
+
                                   Dimension dimension,
 
                                   Constant BOTH_MISSING,
@@ -122,6 +127,7 @@ public class ImageComponentInitializer {
 
                                   Constant SELECTED_IMAGE_MISSING,
                                   Constant ROLLOVER_SELECTED_IMAGE_MISSING) {
+
         button.setName(name);
 
 
