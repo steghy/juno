@@ -4,13 +4,12 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class DataCompatibilityChecker implements AbstractDataCompatibilityChecker {
 
     private final Map<Configurable, File> incompatibleFiles;
-    private AbstractDataImporter dataImporter;
+    private InterfaceDataImporter dataImporter;
 
     private static DataCompatibilityChecker instance;
 
@@ -35,11 +34,11 @@ public class DataCompatibilityChecker implements AbstractDataCompatibilityChecke
         }
     }
 
-    public void setDataImporter(AbstractDataImporter dataImporter) {
+    public void setDataImporter(InterfaceDataImporter dataImporter) {
         this.dataImporter = dataImporter;
     }
 
-    public AbstractDataImporter getDataImporter() {
+    public InterfaceDataImporter getDataImporter() {
         return dataImporter;
     }
 

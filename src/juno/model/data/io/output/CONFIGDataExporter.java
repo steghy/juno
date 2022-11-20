@@ -1,11 +1,11 @@
 package juno.model.data.io.output;
 
-import juno.model.data.io.input.AbstractDataImporter;
+import juno.model.data.io.input.InterfaceDataImporter;
 
 import java.io.IOException;
 import java.util.Map;
 
-public class CONFIGDataExporter implements AbstractDataImporter {
+public class CONFIGDataExporter implements InterfaceDataImporter {
 
     private static CONFIGDataExporter instance;
 

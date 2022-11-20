@@ -1,9 +1,8 @@
 package juno.model.util.test;
 
 import juno.init.Directories;
-import juno.model.data.io.input.AbstractDataImporter;
+import juno.model.data.io.input.InterfaceDataImporter;
 import juno.model.data.io.input.JSONDataImporter;
-import juno.model.data.io.output.JSONDataExporter;
 import juno.model.util.PathGenerator;
 import juno.model.data.io.input.ReflectedConfigurator;
 import juno.view.factories.buttons.ButtonFactory;
@@ -20,7 +19,7 @@ public class ReflectedConfiguratorTester {
     }
 
     public static void importData() throws IOException {
-        AbstractDataImporter dataImporter = JSONDataImporter.getInstance();
+        InterfaceDataImporter dataImporter = JSONDataImporter.getInstance();
 
         System.out.println("//////////// PRE CONFIGURATION ///////////");
         Arrays.stream(ButtonFactory.class

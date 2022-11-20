@@ -1,13 +1,13 @@
 package juno.view.factories.buttons;
 
-import juno.model.data.io.input.AbstractDataImporter;
+import juno.model.data.io.input.InterfaceDataImporter;
 import juno.model.data.io.input.ReflectedConfigurator;
 
 import java.io.IOException;
 
 public class ButtonFactoryConfigurator {
 
-    private AbstractDataImporter dataImporter;
+    private InterfaceDataImporter dataImporter;
 
     private static ButtonFactoryConfigurator instance;
 

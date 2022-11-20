@@ -7,7 +7,7 @@ public class InputDataInitializer {
     public static void initialize() {
         ConfigurationFilesProvider configurationFilesProvider = ConfigurationFilesProvider.getInstance();
         DataCompatibilityChecker dataCompatibilityChecker = DataCompatibilityChecker.getInstance();
-        AbstractDataImporter dataImporter = JSONDataImporter.getInstance();
+        InterfaceDataImporter dataImporter = JSONDataImporter.getInstance();
 
         dataCompatibilityChecker.setDataImporter(dataImporter);
         configurationFilesProvider.setDataCompatibilityChecker(dataCompatibilityChecker);

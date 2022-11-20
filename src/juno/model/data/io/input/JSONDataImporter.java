@@ -1,6 +1,5 @@
 package juno.model.data.io.input;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -8,7 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Map;
 
-public class JSONDataImporter implements AbstractDataImporter {
+public class JSONDataImporter implements InterfaceDataImporter {
 
     private static JSONDataImporter instance;
 

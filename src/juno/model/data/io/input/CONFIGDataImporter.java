@@ -3,7 +3,7 @@ package juno.model.data.io.input;
 import java.io.IOException;
 import java.util.Map;
 
-public class CONFIGDataImporter implements AbstractDataImporter {
+public class CONFIGDataImporter implements InterfaceDataImporter {
 
     private static CONFIGDataImporter instance;
 
