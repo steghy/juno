@@ -41,7 +41,7 @@ public class CConfigurationFilesProvider extends AbstractCConfigurationFilesProv
                 }
             }
         } else {
-            throw new IllegalAccessException("Not exists: " + file.getAbsolutePath());
+            throw new IllegalArgumentException("Not exists: " + file.getAbsolutePath());
         }
     }
 }

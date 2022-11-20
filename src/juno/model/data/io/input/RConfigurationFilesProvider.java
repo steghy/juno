@@ -10,10 +10,10 @@ public class RConfigurationFilesProvider extends AbstractRConfigurationFilesProv
     @Override
     public List<File> getConfigurationFiles(Object object, String path) {
         File file = new File(path);
-        if(file.exists()) {
-            if(file.isDirectory()) {
+        if (file.exists()) {
+            if (file.isDirectory()) {
                 File[] files = file.listFiles();
-                if(files != null) {
+                if (files != null) {
                     return Arrays.stream(files)
                             .filter(obj -> getRCompatibilityChecker()
                                     .checkCompatibilityOf(object, path))
@@ -22,24 +22,24 @@ public class RConfigurationFilesProvider extends AbstractRConfigurationFilesProv
                     return new ArrayList<>();
                 }
             } else {
-                if(getRCompatibilityChecker().checkCompatibilityOf(object, path)) {
+                if (getRCompatibilityChecker().checkCompatibilityOf(object, path)) {
                     return List.of(file);
                 } else {
                     return new ArrayList<>();
                 }
             }
         } else {
-            throw new IllegalAccessException("Not exists: " + file.getAbsolutePath());
+            throw new IllegalArgumentException("Not exists: " + file.getAbsolutePath());
         }
     }
 
     @Override
     public List<File> getConfigurationFiles(Class<?> clazz, String path) {
         File file = new File(path);
-        if(file.exists()) {
-            if(file.isDirectory()) {
+        if (file.exists()) {
+            if (file.isDirectory()) {
                 File[] files = file.listFiles();
-                if(files != null) {
+                if (files != null) {
                     return Arrays.stream(files)
                             .filter(obj -> getRCompatibilityChecker()
                                     .checkCompatibilityOf(clazz, path))
@@ -48,16 +48,14 @@ public class RConfigurationFilesProvider extends AbstractRConfigurationFilesProv
                     return new ArrayList<>();
                 }
             } else {
-                if(getRCompatibilityChecker().checkCompatibilityOf(clazz, path)) {
+                if (getRCompatibilityChecker().checkCompatibilityOf(clazz, path)) {
                     return List.of(file);
                 } else {
                     return new ArrayList<>();
                 }
             }
         } else {
-            throw new IllegalAccessException("Not exists: " + file.getAbsolutePath());
+            throw new IllegalArgumentException("Not exists: " + file.getAbsolutePath());
         }
     }
-
-
 }

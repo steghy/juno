@@ -22,7 +22,7 @@ public class PreAccessInitialChooser {
     }
 
     public void setFirstPanelToShow(String path, Configurable configurable) {
-        List<File> files = configurationFilesProvider.getConfigurationFiles(path, configurable);
+        List<File> files = configurationFilesProvider.getConfigurationFiles(configurable, path);
         if(files.size() != 0) {
             LayoutManager layoutManager = PreAccessCardPanel.getInstance().getLayout();
             if(layoutManager instanceof CardLayout cardLayout) {
