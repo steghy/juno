@@ -1,5 +1,9 @@
 package juno.view.pages.preaccess.card;
 
+import juno.init.Directories;
+import juno.model.data.io.input.AbstractDataCompatibilityChecker;
+import juno.model.data.io.input.ConfigurationFilesProvider;
+import juno.model.data.profile.Profile;
 import juno.view.pages.preaccess.access.AccessPanel;
 import juno.view.pages.preaccess.login.LogInPanel;
 import juno.view.pages.preaccess.registration.RegistrationPanel;
@@ -14,6 +18,7 @@ public class PreAccessCardPanelConfigurator {
         PreAccessCardPanel preAccessCardPanel = PreAccessCardPanel.getInstance();
 
         // SUB COMPONENTS
+        PreAccessInitialChooser preAccessInitialChooser = PreAccessInitialChooser.getInstance();
         WelcomePanel welcomePanel = WelcomePanel.getInstance();
         AccessPanel accessPanel = AccessPanel.getInstance();
         RegistrationPanel registrationPanel = RegistrationPanel.getInstance();
@@ -27,5 +32,9 @@ public class PreAccessCardPanelConfigurator {
 
         // MAIN COMPONENT INITIALIZATION
         preAccessCardPanel.init();
+
+        // SELECTOR
+        preAccessInitialChooser.setDataCompatibilityChecker(ConfigurationFilesProvider.getInstance());
+        PreAccessInitialChooser.getInstance().setFirstPanelToShow(Directories.PROFILES.absolutePath(), new Profile());
     }
 }

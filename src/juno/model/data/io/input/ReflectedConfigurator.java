@@ -72,8 +72,7 @@ public class ReflectedConfigurator {
                             } else {
                                 throw new IllegalArgumentException("Incompatible types:" +
                                         "[Field type: " + fieldType + "], [Value type: " + valueType + "]");
-                            }
-                            break;
+                            } break;
                         case "double":
                             if (value instanceof BigDecimal bigDecimal) {
                                 field.set(object, bigDecimal.doubleValue());

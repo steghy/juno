@@ -1,9 +1,6 @@
 package juno.init;
 
-import juno.model.data.io.input.JSONDataImporter;
 import juno.model.sound.AudioPlayer;
-import juno.model.util.PathGenerator;
-import juno.view.ViewInitializer;
 import juno.view.frame.Frame;
 
 import javax.swing.*;
@@ -17,11 +14,13 @@ public class Main {
         Repository.setRepository();
 
         try {
+            // MODEL INITIALIZATION
+            ModelInitializer.initialize();
 
             // VIEW INITIALIZATION
             ViewInitializer.initialize();
 
-            // AUDIO
+            // AUDIO SETTINGS
             AudioPlayer audioPlayer = AudioPlayer.getInstance();
             audioPlayer.setTracks(new File(Directories.MUSIC.absolutePath()).listFiles());
             audioPlayer.play();
