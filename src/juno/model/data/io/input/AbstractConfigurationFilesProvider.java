@@ -1,9 +1,24 @@
 package juno.model.data.io.input;
 
-import java.io.File;
-import java.util.List;
+public abstract class AbstractConfigurationFilesProvider {
 
-public interface AbstractConfigurationFilesProvider {
+    private InterfaceRConfigurationFilesProvider rConfigurationFilesProvider;
 
-    List<File> getConfigurationFiles(String path, Configurable configurable);
+    private InterfaceCConfigurationFilesProvider cConfigurationFilesProvider;
+
+    public void setRConfigurationFilesProvider(InterfaceRConfigurationFilesProvider rConfigurationFilesProvider) {
+        this.rConfigurationFilesProvider = rConfigurationFilesProvider;
+    }
+
+    public void setCConfigurationFilesProvider(InterfaceCConfigurationFilesProvider cConfigurationFilesProvider) {
+        this.cConfigurationFilesProvider = cConfigurationFilesProvider;
+    }
+
+    public InterfaceRConfigurationFilesProvider getRConfigurationFilesProvider() {
+        return rConfigurationFilesProvider;
+    }
+
+    public InterfaceCConfigurationFilesProvider getCConfigurationFilesProvider() {
+        return cConfigurationFilesProvider;
+    }
 }

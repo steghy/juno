@@ -1,6 +1,6 @@
 package juno.view.pages.preaccess.card;
 
-import juno.model.data.io.input.AbstractConfigurationFilesProvider;
+import juno.model.data.io.input.InterfaceConfigurationFilesProvider;
 import juno.model.data.io.input.Configurable;
 
 import java.awt.*;
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class PreAccessInitialChooser {
 
-    private AbstractConfigurationFilesProvider configurationFilesProvider;
+    private InterfaceConfigurationFilesProvider configurationFilesProvider;
 
     private static PreAccessInitialChooser instance;
 
@@ -33,7 +33,7 @@ public class PreAccessInitialChooser {
         }
     }
 
-    public void setDataCompatibilityChecker(AbstractConfigurationFilesProvider configurationFilesProvider) {
+    public void setDataCompatibilityChecker(InterfaceConfigurationFilesProvider configurationFilesProvider) {
         this.configurationFilesProvider = configurationFilesProvider;
     }
 }

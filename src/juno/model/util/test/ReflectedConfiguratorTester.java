@@ -1,14 +1,8 @@
 package juno.model.util.test;
 
 import juno.init.Directories;
-import juno.model.data.io.input.InterfaceDataImporter;
-import juno.model.data.io.input.JSONDataImporter;
 import juno.model.util.PathGenerator;
-import juno.model.data.io.input.ReflectedConfigurator;
-import juno.view.factories.buttons.ButtonFactory;
-
 import java.io.IOException;
-import java.util.Arrays;
 
 public class ReflectedConfiguratorTester {
 
@@ -19,34 +13,6 @@ public class ReflectedConfiguratorTester {
     }
 
     public static void importData() throws IOException {
-        InterfaceDataImporter dataImporter = JSONDataImporter.getInstance();
 
-        System.out.println("//////////// PRE CONFIGURATION ///////////");
-        Arrays.stream(ButtonFactory.class
-                .getDeclaredFields()).forEach(field -> {
-            System.out.print("Field: " + field.getName() + " ");
-            System.out.print("Type: " + field.getType() + " ");
-            field.setAccessible(true);
-            try {
-                System.out.println("Value: " + field.get(null));
-            } catch (IllegalAccessException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-        ReflectedConfigurator.configure(dataImporter.importData(configFilePath), ButtonFactory.class);
-
-        System.out.println("//////////// POST CONFIGURATION ///////////");
-        Arrays.stream(ButtonFactory.class
-                .getDeclaredFields()).forEach(field -> {
-            System.out.print("Field: " + field.getName() + " ");
-            System.out.print("Type: " + field.getType() + " ");
-            field.setAccessible(true);
-            try {
-                System.out.println("Value: " + field.get(null));
-            } catch (IllegalAccessException e) {
-                throw new RuntimeException(e);
-            }
-        });
     }
 }

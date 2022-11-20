@@ -1,56 +1,22 @@
 package juno.model.data.io.input;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class ConfigurationFilesProvider implements AbstractConfigurationFilesProvider {
+public class ConfigurationFilesProvider extends AbstractConfigurationFilesProvider implements InterfaceConfigurationFilesProvider {
 
-    private AbstractDataCompatibilityChecker dataCompatibilityChecker;
-
-    private static ConfigurationFilesProvider instance;
-
-    private ConfigurationFilesProvider() {}
-
-    public static ConfigurationFilesProvider getInstance() {
-        if(instance == null) {
-            instance = new ConfigurationFilesProvider();
-        } return instance;
+    @Override
+    public List<File> getConfigurationFiles(Configurable configurable, String path) {
+        return getCConfigurationFilesProvider().getConfigurationFiles(configurable, path);
     }
 
     @Override
-    public List<File> getConfigurationFiles(String path, Configurable configurable) {
-        File file = new File(path);
-        if(file.exists()) {
-            if(file.isDirectory()) {
-                File[] files = file.listFiles();
-                if(files != null) {
-                    return Arrays.stream(files)
-                            .filter(obj -> dataCompatibilityChecker
-                                    .checkCompatibilityOf(configurable, obj))
-                            .toList();
-                } else {
-                    return new ArrayList<>();
-                }
-            } else {
-                if(dataCompatibilityChecker.checkCompatibilityOf(configurable, file)) {
-                    return List.of(file);
-                } else {
-                    return new ArrayList<>();
-                }
-            }
-        } else {
-            throw new IllegalArgumentException("Not exists: " + file.getAbsolutePath());
-        }
+    public List<File> getConfigurationFiles(Object object, String path) {
+        return getRConfigurationFilesProvider().getConfigurationFiles(object, path);
     }
 
-    public void setDataCompatibilityChecker(AbstractDataCompatibilityChecker dataCompatibilityChecker) {
-        this.dataCompatibilityChecker = dataCompatibilityChecker;
+    @Override
+    public List<File> getConfigurationFiles(Class<?> clazz, String path) {
+        return getRConfigurationFilesProvider().getConfigurationFiles(clazz, path);
     }
-
-    public AbstractDataCompatibilityChecker getDataCompatibilityChecker() {
-        return dataCompatibilityChecker;
-    }
-
 }

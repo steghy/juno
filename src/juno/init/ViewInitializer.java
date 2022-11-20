@@ -1,6 +1,5 @@
 package juno.init;
 
-import juno.view.factories.buttons.ButtonFactoryConfigurator;
 import juno.view.frame.FrameInitializer;
 import juno.view.pages.card.TopCardPanelConfigurator;
 import juno.view.pages.main.MainPanelInitializer;

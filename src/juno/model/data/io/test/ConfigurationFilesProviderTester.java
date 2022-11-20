@@ -1,6 +1,6 @@
 package juno.model.data.io.test;
 
-import juno.model.data.io.input.ConfigurationFilesProvider;
+import juno.model.data.io.input.CConfigurationFilesProvider;
 import juno.model.data.io.input.InputDataInitializer;
 import juno.model.data.io.input.JSONDataImporter;
 import juno.model.data.profile.Profile;
@@ -13,35 +13,5 @@ import java.util.List;
 public class ConfigurationFilesProviderTester {
 
     public static void main(String[] args) {
-        String dataDirectory = PathGenerator.generate("data");
-        String configDirectory = PathGenerator.generate(dataDirectory, "config");
-        String profilesDirectory = PathGenerator.generate(configDirectory, "profiles");
-	    String profileConfigurationFile = PathGenerator.generate(profilesDirectory, "profile-1.json");
-
-        Profile profile = new Profile();
-
-        InputDataInitializer.initialize();
-
-        List<File> configurationFiles = ConfigurationFilesProvider.getInstance().getConfigurationFiles(profilesDirectory, profile);
-
-        // List<File> configurationFiles = configurationFiles = ConfigurationFilesProvider.getInstance().getConfigurationFiles(profileConfigurationFile, profile);
-
-        List<Profile> profiles = configurationFiles.stream().map(configurationFile -> {
-            try {
-                Profile newProfile = new Profile();
-                newProfile.configure(JSONDataImporter.getInstance().importData(configurationFile.getAbsolutePath()));
-                return newProfile;
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }).toList();
-
-        // configurationFiles.forEach(System.out::println);
-
-        profiles.forEach(System.out::println);
-
-        List<String> profileNames = profiles.stream().map(Profile::getProfileName).toList();
-
-        profileNames.forEach(System.out::println);
     }
 }

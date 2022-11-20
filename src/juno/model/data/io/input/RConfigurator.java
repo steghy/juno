@@ -2,40 +2,39 @@ package juno.model.data.io.input;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.IllegalAccessException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.util.Map;
 
-public class ReflectedConfigurator {
+public class RConfigurator implements InterfaceRConfigurator{
 
-    public static void configure(@NotNull Map<?, ?> map, @NotNull Object object) {
+    private static RConfigurator instance;
+
+    private RConfigurator() {}
+
+    public static RConfigurator getInstance() {
+        if(instance == null) {
+            instance = new RConfigurator();
+        } return instance;
+    }
+
+    @Override
+    public void configure(@NotNull Map<?, ?> map, @NotNull Object object) {
         Class<?> objectType = object.getClass();
         map.forEach((key, value) -> {
             try {
-                // Field target
                 Field field = objectType.getDeclaredField((String) key);
-
-                // Access guaranteed
                 field.setAccessible(true);
-
-                // Object types
                 Class<?> fieldType = field.getType();
                 Class<?> valueType = value.getClass();
-
-                // Complex object case
                 if(value instanceof Map<?, ?> anotherMap) {
                     configure(anotherMap, field.get(object));
-                }
-
-                // Same class type case
-                else if (fieldType == valueType) {
+                } else if (fieldType == valueType) {
                     field.set(object, value);
-                }
-
-                // Enum class case
-                else if(fieldType.isEnum()) {
+                } else if(fieldType.isEnum()) {
                     try {
                         if(value instanceof String enumObjectName) {
                             Method valueOf = fieldType.getMethod("valueOf", String.class);
@@ -47,21 +46,7 @@ public class ReflectedConfigurator {
                     } catch (NoSuchMethodException | InvocationTargetException e) {
                         e.printStackTrace();
                     }
-                }
-
-                /*
-                 * Primitive case
-                 * All Java primitive types:
-                 * - int
-                 * - double
-                 * - short
-                 * - long
-                 * - float
-                 * - char
-                 * - boolean
-                 * - byte
-                 */
-                else if (fieldType.isPrimitive()) {
+                } else if (fieldType.isPrimitive()) {
                     String fieldTypeName = fieldType.getName();
                     switch (fieldTypeName) {
                         case "int":
@@ -133,136 +118,110 @@ public class ReflectedConfigurator {
                             }
                     }
                 }
-
-            } catch (NoSuchFieldException | IllegalAccessException e) {
-                e.printStackTrace();
+            } catch(NoSuchFieldException e) {
+                throw new IllegalArgumentException();
+            } catch(IllegalAccessException e) {
+               e.printStackTrace();
+                throw new juno.model.data.io.input.IllegalAccessException();
             }
         });
     }
 
-    public static void configure(@NotNull Map<?, ?> map, @NotNull Class<?> type) {
+    @Override
+    public void configure(@NotNull Map<?, ?> map, @NotNull Class<?> clazz) {
         map.forEach((key, value) -> {
             try {
-                // Field target
-                Field field = type.getDeclaredField((String) key);
-
-                // Access guaranteed
+                Field field = clazz.getDeclaredField((String) key);
                 field.setAccessible(true);
-
-                // Object types
                 Class<?> fieldType = field.getType();
                 Class<?> valueType = value.getClass();
-
-                // Complex object case
                 if(value instanceof Map<?, ?> anotherMap) {
-                    configure(anotherMap, field.get(type));
-                }
-
-                // Same class type case
-                else if(fieldType == valueType) {
-                    field.set(type, value);
-                }
-
-                // Enum class case
-                else if(fieldType.isEnum()) {
+                    configure(anotherMap, field.get(clazz));
+                } else if(fieldType == valueType) {
+                    field.set(clazz, value);
+                } else if(fieldType.isEnum()) {
                     try {
                         if(value instanceof String enumObjectName) {
                             Method valueOf = fieldType.getMethod("valueOf", String.class);
                             Object enumObject = valueOf.invoke(null, enumObjectName);
-                            field.set(type, enumObject);
+                            field.set(clazz, enumObject);
                         } else {
                             throw new IllegalArgumentException("Invalid value type: " + valueType);
                         }
                     } catch (NoSuchMethodException | InvocationTargetException e) {
                         throw new RuntimeException(e);
                     }
-                }
-
-
-                /*
-                 * Primitive case
-                 * All Java primitive types:
-                 * - int
-                 * - double
-                 * - short
-                 * - long
-                 * - float
-                 * - char
-                 * - boolean
-                 * - byte
-                 */
-                else if(fieldType.isPrimitive()) {
+                }  else if(fieldType.isPrimitive()) {
                     String fieldTypeName = fieldType.getName();
                     switch (fieldTypeName) {
                         case "int":
                             if (value instanceof BigDecimal bigDecimal) {
-                                field.set(type, bigDecimal.intValue());
+                                field.set(clazz, bigDecimal.intValue());
                             } else if (value instanceof Integer integerValue) {
-                                field.set(type, integerValue);
+                                field.set(clazz, integerValue);
                             } else {
                                 throw new IllegalArgumentException("Incompatible types:" +
                                         "[Field type: " + fieldType + "], [Value type: " + valueType + "]");
                             } break;
                         case "double":
                             if (value instanceof BigDecimal bigDecimal) {
-                                field.set(type, bigDecimal.doubleValue());
+                                field.set(clazz, bigDecimal.doubleValue());
                             } else if (value instanceof Double doubleValue) {
-                                field.set(type, doubleValue);
+                                field.set(clazz, doubleValue);
                             } else {
                                 throw new IllegalArgumentException("Incompatible types:" +
                                         "[Field type: " + fieldType + "], [Value type: " + valueType + "]");
                             } break;
                         case "short":
                             if (value instanceof BigDecimal bigDecimal) {
-                                field.set(type, bigDecimal.shortValue());
+                                field.set(clazz, bigDecimal.shortValue());
                             } else if (value instanceof Short shortValue) {
-                                field.set(type, shortValue);
+                                field.set(clazz, shortValue);
                             } else {
                                 throw new IllegalArgumentException("Incompatible types:" +
                                         "[Field type: " + fieldType + "], [Value type: " + valueType + "]");
                             } break;
                         case "long":
                             if (value instanceof BigDecimal bigDecimal) {
-                                field.set(type, bigDecimal.longValue());
+                                field.set(clazz, bigDecimal.longValue());
                             } else if (value instanceof Long longValue) {
-                                field.set(type, longValue);
+                                field.set(clazz, longValue);
                             } else {
                                 throw new IllegalArgumentException("Incompatible types:" +
                                         "[Field type: " + fieldType + "], [Value type: " + valueType + "]");
                             } break;
                         case "float":
                             if (value instanceof BigDecimal bigDecimal) {
-                                field.set(type, bigDecimal.floatValue());
+                                field.set(clazz, bigDecimal.floatValue());
                             } else if (value instanceof Float floatValue) {
-                                field.set(type, floatValue);
+                                field.set(clazz, floatValue);
                             } else {
                                 throw new IllegalArgumentException("Incompatible types:" +
                                         "[Field type: " + fieldType + "], [Value type: " + valueType + "]");
                             } break;
                         case "char":
                             if (value instanceof Character characterValue) {
-                                field.set(type, characterValue);
+                                field.set(clazz, characterValue);
                             } else {
                                 throw new IllegalArgumentException("Incompatible types:" +
                                         "[Field type: " + fieldType + "], [Value type: " + valueType + "]");
                             }
                         case "boolean":
                             if (value instanceof Boolean booleanValue) {
-                                field.set(type, booleanValue);
+                                field.set(clazz, booleanValue);
                             } else {
                                 throw new IllegalArgumentException("Incompatible types:" +
                                         "[Field type: " + fieldType + "], [Value type: " + valueType + "]");
                             } break;
                         case "byte":
                             if (value instanceof Byte byteValue) {
-                                field.set(type, byteValue);
+                                field.set(clazz, byteValue);
                             } else {
                                 throw new IllegalArgumentException("Incompatible types:" +
                                         "[Field type: " + fieldType + "], [Value type: " + valueType + "]");
                             } break;
                     }
                 }
-
             } catch (NoSuchFieldException | IllegalAccessException e) {
                 e.printStackTrace();
             }
