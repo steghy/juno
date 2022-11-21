@@ -8,7 +8,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.math.BigDecimal;
-import java.util.Arrays;
 import java.util.Map;
 
 public class RConfigurator implements InterfaceRConfigurator{
@@ -81,8 +80,7 @@ public class RConfigurator implements InterfaceRConfigurator{
                         } else {
                             throw new IllegalArgumentException("Incompatible types:" +
                                     "[Field type: " + fieldType + "], [Value type: " + valueType + "]");
-                        }
-                        break;
+                        } break;
                     case "double":
                         if (value instanceof BigDecimal bigDecimal) {
                             field.set(object, bigDecimal.doubleValue());
@@ -91,7 +89,7 @@ public class RConfigurator implements InterfaceRConfigurator{
                         } else {
                             throw new IllegalArgumentException("Incompatible types:" +
                                     "[Field type: " + fieldType + "], [Value type: " + valueType + "]");
-                        }
+                        } break;
                     case "short":
                         if (value instanceof BigDecimal bigDecimal) {
                             field.set(object, bigDecimal.shortValue());
@@ -100,7 +98,7 @@ public class RConfigurator implements InterfaceRConfigurator{
                         } else {
                             throw new IllegalArgumentException("Incompatible types:" +
                                     "[Field type: " + fieldType + "], [Value type: " + valueType + "]");
-                        }
+                        } break;
                     case "long":
                         if (value instanceof BigDecimal bigDecimal) {
                             field.set(object, bigDecimal.longValue());
@@ -109,7 +107,7 @@ public class RConfigurator implements InterfaceRConfigurator{
                         } else {
                             throw new IllegalArgumentException("Incompatible types:" +
                                     "[Field type: " + fieldType + "], [Value type: " + valueType + "]");
-                        }
+                        } break;
                     case "float":
                         if (value instanceof BigDecimal bigDecimal) {
                             field.set(object, bigDecimal.floatValue());
@@ -118,29 +116,28 @@ public class RConfigurator implements InterfaceRConfigurator{
                         } else {
                             throw new IllegalArgumentException("Incompatible types:" +
                                     "[Field type: " + fieldType + "], [Value type: " + valueType + "]");
-                        }
-                        break;
+                        } break;
                     case "char":
                         if (value instanceof Character characterValue) {
                             field.set(object, characterValue);
                         } else {
                             throw new IllegalArgumentException("Incompatible types:" +
                                     "[Field type: " + fieldType + "], [Value type: " + valueType + "]");
-                        }
+                        } break;
                     case "boolean":
                         if (value instanceof Boolean booleanValue) {
                             field.set(object, booleanValue);
                         } else {
                             throw new IllegalArgumentException("Incompatible types:" +
                                     "[Field type: " + fieldType + "], [Value type: " + valueType + "]");
-                        }
+                        } break;
                     case "byte":
                         if (value instanceof Byte byteValue) {
                             field.set(object, byteValue);
                         } else {
                             throw new IllegalArgumentException("Incompatible types:" +
                                     "[Field type: " + fieldType + "], [Value type: " + valueType + "]");
-                        }
+                        } break;
                 }
             }
         }
@@ -161,6 +158,11 @@ public class RConfigurator implements InterfaceRConfigurator{
             field.setAccessible(true);
 
             if(!Modifier.isStatic(field.getModifiers())) {
+                continue;
+            }
+
+            // NOT ALLOWED AT THE MOMENT
+            if(Modifier.isFinal(field.getModifiers())) {
                 continue;
             }
 
@@ -200,8 +202,7 @@ public class RConfigurator implements InterfaceRConfigurator{
                         } else {
                             throw new IllegalArgumentException("Incompatible types:" +
                                     "[Field type: " + fieldType + "], [Value type: " + valueType + "]");
-                        }
-                        break;
+                        } break;
                     case "double":
                         if (value instanceof BigDecimal bigDecimal) {
                             field.set(clazz, bigDecimal.doubleValue());
@@ -210,8 +211,7 @@ public class RConfigurator implements InterfaceRConfigurator{
                         } else {
                             throw new IllegalArgumentException("Incompatible types:" +
                                     "[Field type: " + fieldType + "], [Value type: " + valueType + "]");
-                        }
-                        break;
+                        } break;
                     case "short":
                         if (value instanceof BigDecimal bigDecimal) {
                             field.set(clazz, bigDecimal.shortValue());
@@ -220,8 +220,7 @@ public class RConfigurator implements InterfaceRConfigurator{
                         } else {
                             throw new IllegalArgumentException("Incompatible types:" +
                                     "[Field type: " + fieldType + "], [Value type: " + valueType + "]");
-                        }
-                        break;
+                        } break;
                     case "long":
                         if (value instanceof BigDecimal bigDecimal) {
                             field.set(clazz, bigDecimal.longValue());
@@ -230,8 +229,7 @@ public class RConfigurator implements InterfaceRConfigurator{
                         } else {
                             throw new IllegalArgumentException("Incompatible types:" +
                                     "[Field type: " + fieldType + "], [Value type: " + valueType + "]");
-                        }
-                        break;
+                        } break;
                     case "float":
                         if (value instanceof BigDecimal bigDecimal) {
                             field.set(clazz, bigDecimal.floatValue());
@@ -240,31 +238,28 @@ public class RConfigurator implements InterfaceRConfigurator{
                         } else {
                             throw new IllegalArgumentException("Incompatible types:" +
                                     "[Field type: " + fieldType + "], [Value type: " + valueType + "]");
-                        }
-                        break;
+                        } break;
                     case "char":
                         if (value instanceof Character characterValue) {
                             field.set(clazz, characterValue);
                         } else {
                             throw new IllegalArgumentException("Incompatible types:" +
                                     "[Field type: " + fieldType + "], [Value type: " + valueType + "]");
-                        }
+                        } break;
                     case "boolean":
                         if (value instanceof Boolean booleanValue) {
                             field.set(clazz, booleanValue);
                         } else {
                             throw new IllegalArgumentException("Incompatible types:" +
                                     "[Field type: " + fieldType + "], [Value type: " + valueType + "]");
-                        }
-                        break;
+                        } break;
                     case "byte":
                         if (value instanceof Byte byteValue) {
                             field.set(clazz, byteValue);
                         } else {
                             throw new IllegalArgumentException("Incompatible types:" +
                                     "[Field type: " + fieldType + "], [Value type: " + valueType + "]");
-                        }
-                        break;
+                        } break;
                 }
             }
         }

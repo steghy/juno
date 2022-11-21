@@ -1,5 +1,8 @@
 package juno.model.data.io.input;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,26 +26,49 @@ public class RCompatibilityChecker extends AbstractRCompatibilityChecker impleme
 
     @Override
     public boolean checkCompatibilityOf(Object object, String path) {
+        objectIncompatibleFiles.clear();
+        Map<String, Object> properties = getPropertyCopier().copy(object);
+        boolean isValid = false;
         try {
-            getRConfigurator().configure(getDataImporter().importData(path), object);
-            return true;
+            Map<String, Object> map = getDataImporter().importData(path);
+            if(!map.isEmpty())
+                getRConfigurator().configure(map, object);
+            isValid = true;
         } catch(Exception e) {
             e.printStackTrace();
             objectIncompatibleFiles.put(object, path);
-            return false;
         }
+        try {
+            getRConfigurator().configure(properties, object);
+        } catch (IllegalAccessException |
+                 NoSuchFieldException |
+                 InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
+        return isValid;
     }
 
     @Override
-    public boolean checkCompatibilityOf(Class<?> clazz, String path) {
+    public boolean checkCompatibilityOf(@NotNull Class<?> clazz, @NotNull String path) {
+        objectIncompatibleFiles.clear();
+        Map<String, Object> properties = getPropertyCopier().copy(clazz);
+        boolean isValid = false;
         try {
             getRConfigurator().configure(getDataImporter().importData(path), clazz);
-            return true;
+            isValid = true;
         } catch(Exception e) {
             e.printStackTrace();
             objectIncompatibleFiles.put(clazz, path);
-            return false;
         }
+        try {
+            getRConfigurator().configure(properties, clazz);
+        } catch (IllegalAccessException |
+                 NoSuchFieldException |
+                 InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
+        return isValid;
+
     }
 
     public Map<Object, String> getObjectIncompatibleFiles() {

@@ -14,6 +14,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class ConfiguratorTester {
 
@@ -42,7 +43,7 @@ public class ConfiguratorTester {
         printObjectDetails();
         // printClassDetails();
 
-        configurationFilesObject(myObjectConfigPath).forEach(System.out::println);
+        Objects.requireNonNull(configurationFilesObject(myObjectConfigPath)).forEach(System.out::println);
         // configureObjectWithRConfigurator(myObjectConfigPath);
         // configureClassWithRConfigurator(myClassConfigPath);
 

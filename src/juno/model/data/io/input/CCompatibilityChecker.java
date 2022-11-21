@@ -22,16 +22,20 @@ public class CCompatibilityChecker
     }
 
     @Override
-    public boolean checkCompatibilityOf(@NotNull Configurable configurable, @NotNull String path) {
+    public boolean checkCompatibilityOf(@NotNull Configurable configurable,
+                                        @NotNull String path) {
         incompatibleFiles.clear();
+        Map<String, Object> properties = getPropertyCopier().copy(configurable);
+        boolean isValid = false;
         try {
             configurable.configure(getDataImporter().importData(path));
-            return true;
+            isValid = true;
         } catch(Exception e) {
             e.printStackTrace();
             incompatibleFiles.put(configurable, path);
-            return false;
         }
+        configurable.configure(properties);
+        return isValid;
     }
 
     public Map<Configurable, String> getIncompatibleFiles() {

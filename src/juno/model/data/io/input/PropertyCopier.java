@@ -19,24 +19,28 @@ public class PropertyCopier implements InterfacePropertyCopier {
     }
 
     @Override
-    public Map<String, Object> copy(@NotNull Object object) 
-            throws IllegalAccessException {
+    public Map<String, Object> copy(@NotNull Object object) {
         Map<String, Object> map = new HashMap<>();
-        for(Field field : object.getClass().getDeclaredFields())
-            if(!Modifier.isStatic(field.getModifiers()) && 
-                    !Modifier.isFinal(field.getModifiers())) 
+        for(Field field : object.getClass().getDeclaredFields()) {
+            field.setAccessible(true);
+            try {
                 map.put(field.getName(), field.get(object));
-        return map;
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
+            }
+        } return map;
     }
-    
+
     @Override
-    public Map<String, Object> copy(@NotNull Class<?> clazz)
-            throws IllegalAccessException {
+    public Map<String, Object> copy(@NotNull Class<?> clazz) {
         Map<String, Object> map = new HashMap<>();
-        for(Field field : clazz.getDeclaredFields())
-            if(!Modifier.isStatic(field.getModifiers()) &&
-                    !Modifier.isFinal(field.getModifiers()))
-                map.put(field.getName(), field.get(clazz));
-        return map;
+        for(Field field : clazz.getDeclaredFields()) {
+            field.setAccessible(true);
+            try {
+                map.put(field.getName(), field.get(null));
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
+            }
+        } return map;
     }
 }
