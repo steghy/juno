@@ -31,9 +31,11 @@ public class RCompatibilityChecker extends AbstractRCompatibilityChecker impleme
         boolean isValid = false;
         try {
             Map<String, Object> map = getDataImporter().importData(path);
-            if(!map.isEmpty())
+            System.out.println(map);
+            if(!map.isEmpty()) {
                 getRConfigurator().configure(map, object);
-            isValid = true;
+                isValid = true;
+            }
         } catch(Exception e) {
             e.printStackTrace();
             objectIncompatibleFiles.put(object, path);
@@ -54,8 +56,11 @@ public class RCompatibilityChecker extends AbstractRCompatibilityChecker impleme
         Map<String, Object> properties = getPropertyCopier().copy(clazz);
         boolean isValid = false;
         try {
-            getRConfigurator().configure(getDataImporter().importData(path), clazz);
-            isValid = true;
+            Map<String, Object> map = getDataImporter().importData(path);
+            if(!map.isEmpty()) {
+                getRConfigurator().configure(map, clazz);
+                isValid = true;
+            }
         } catch(Exception e) {
             e.printStackTrace();
             objectIncompatibleFiles.put(clazz, path);

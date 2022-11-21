@@ -33,7 +33,7 @@ public class ConfiguratorTester {
     public static void main(String[] args) {
         // TEST TARGETS
         String myClassConfigPath = PathGenerator.generate(Directories.CONFIG.absolutePath(), "my-lass-config.json");
-        String myObjectConfigPath = PathGenerator.generate(Directories.CONFIG.absolutePath(), "");
+        String myObjectConfigPath = PathGenerator.generate("");
 
         // INITIALIZATION
         InputDataInitializer.initialize();
