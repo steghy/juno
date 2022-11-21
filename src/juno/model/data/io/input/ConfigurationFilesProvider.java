@@ -5,6 +5,16 @@ import java.util.List;
 
 public class ConfigurationFilesProvider extends AbstractConfigurationFilesProvider implements InterfaceConfigurationFilesProvider {
 
+    private static ConfigurationFilesProvider instance;
+
+    private ConfigurationFilesProvider() {}
+
+    public static ConfigurationFilesProvider getInstance() {
+        if(instance == null) {
+            instance = new ConfigurationFilesProvider();
+        } return instance;
+    }
+
     @Override
     public List<File> getConfigurationFiles(Configurable configurable, String path) {
         return getCConfigurationFilesProvider().getConfigurationFiles(configurable, path);

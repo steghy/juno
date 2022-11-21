@@ -1,7 +1,6 @@
 package juno.model.data.io.input;
 
 import org.jetbrains.annotations.NotNull;
-
 import java.util.HashMap;
 import java.util.Map;
 

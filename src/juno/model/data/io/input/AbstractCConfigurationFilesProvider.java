@@ -4,7 +4,7 @@ public class AbstractCConfigurationFilesProvider {
 
     InterfaceCCompatibilityChecker cCompatibilityChecker;
 
-    private void setCCompatibilityChecker(InterfaceCCompatibilityChecker cCompatibilityChecker) {
+    public void setCCompatibilityChecker(InterfaceCCompatibilityChecker cCompatibilityChecker) {
         this.cCompatibilityChecker = cCompatibilityChecker;
     }
 

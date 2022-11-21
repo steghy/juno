@@ -7,6 +7,16 @@ import java.util.List;
 
 public class RConfigurationFilesProvider extends AbstractRConfigurationFilesProvider implements InterfaceRConfigurationFilesProvider {
 
+    private static RConfigurationFilesProvider instance;
+
+    private RConfigurationFilesProvider() {}
+
+    public static RConfigurationFilesProvider getInstance() {
+        if(instance == null) {
+            instance = new RConfigurationFilesProvider();
+        } return instance;
+    }
+
     @Override
     public List<File> getConfigurationFiles(Object object, String path) {
         File file = new File(path);

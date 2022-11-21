@@ -22,7 +22,6 @@ public class JSONDataImporter implements InterfaceDataImporter {
     @Override
     public Map<String, Object> importData(String path) throws IOException {
         String source = new String(Files.readAllBytes(Paths.get(path)));
-        System.out.println(source);
         JSONObject jsonObject = new JSONObject(source);
         return jsonObject.toMap();
     }

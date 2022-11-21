@@ -6,7 +6,9 @@ import java.lang.IllegalAccessException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.Map;
 
 public class RConfigurator implements InterfaceRConfigurator{
@@ -41,15 +43,20 @@ public class RConfigurator implements InterfaceRConfigurator{
             Class<?> fieldType = field.getType();
             Class<?> valueType = value.getClass();
 
-            if (value instanceof Map<?, ?> anotherMap) {
+            if(Modifier.isStatic(field.getModifiers()) &&
+                    Modifier.isFinal(field.getModifiers())) {
+                continue;
+            }
+
+            if(value instanceof Map<?, ?> anotherMap) {
                 configure(anotherMap, field.get(object));
             }
 
-            else if (fieldType == valueType) {
+            else if(fieldType == valueType) {
                 field.set(object, value);
             }
 
-            else if (fieldType.isEnum()) {
+            else if(fieldType.isEnum()) {
                 try {
                     if (value instanceof String enumObjectName) {
                         Method valueOf = fieldType.getMethod("valueOf", String.class);
@@ -152,6 +159,10 @@ public class RConfigurator implements InterfaceRConfigurator{
             Field field = clazz.getDeclaredField((String) key);
 
             field.setAccessible(true);
+
+            if(!Modifier.isStatic(field.getModifiers())) {
+                continue;
+            }
 
             Class<?> fieldType = field.getType();
             Class<?> valueType = value.getClass();
