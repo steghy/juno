@@ -3,11 +3,11 @@ package juno.model.data.io.input;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PropertyCopier implements InterfacePropertyCopier {
+public class PropertyCopier
+        implements InterfacePropertyCopier {
 
     private static PropertyCopier instance;
 

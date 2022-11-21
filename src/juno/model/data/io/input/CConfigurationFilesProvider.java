@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class CConfigurationFilesProvider extends AbstractCConfigurationFilesProvider implements InterfaceCConfigurationFilesProvider {
+public class CConfigurationFilesProvider
+        extends AbstractCConfigurationFilesProvider
+        implements InterfaceCConfigurationFilesProvider {
 
     private final List<File> configurationFiles;
 

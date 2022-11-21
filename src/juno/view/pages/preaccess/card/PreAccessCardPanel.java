@@ -1,9 +1,12 @@
 package juno.view.pages.preaccess.card;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class PreAccessCardPanel extends JPanel {
+public class PreAccessCardPanel
+        extends JPanel {
 
     public static final String WELCOME_PANEL = "Welcome panel";
     public static final String ACCESS_PANEL = "Access panel";
@@ -20,9 +23,8 @@ public class PreAccessCardPanel extends JPanel {
     private PreAccessCardPanel() {}
 
     public static PreAccessCardPanel getInstance() {
-        if(instance == null) {
-            instance = new PreAccessCardPanel();
-        } return instance;
+        if(instance == null) instance = new PreAccessCardPanel();
+        return instance;
     }
 
     public void init() {
@@ -45,35 +47,19 @@ public class PreAccessCardPanel extends JPanel {
         add(logInPanel, LOG_IN_PANEL);
     }
 
-    public void setWelcomePanel(JPanel welcomePanel) {
+    public void setWelcomePanel(@NotNull JPanel welcomePanel) {
         this.welcomePanel = welcomePanel;
     }
 
-    public void setAccessPanel(JPanel accessPanel) {
+    public void setAccessPanel(@NotNull JPanel accessPanel) {
         this.accessPanel = accessPanel;
     }
 
-    public void setRegistrationPanel(JPanel registrationPanel) {
+    public void setRegistrationPanel(@NotNull JPanel registrationPanel) {
         this.registrationPanel = registrationPanel;
     }
 
-    public void setLogInPanel(JPanel logInPanel) {
+    public void setLogInPanel(@NotNull JPanel logInPanel) {
         this.logInPanel = logInPanel;
-    }
-
-    public JPanel getWelcomePanel() {
-        return welcomePanel;
-    }
-
-    public JPanel getAccessPanel() {
-        return accessPanel;
-    }
-
-    public JPanel getRegistrationPanel() {
-        return registrationPanel;
-    }
-
-    public JPanel getLogInPanel() {
-        return logInPanel;
     }
 }

@@ -5,7 +5,8 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.*;
 
-public class AccessPanel extends JPanel {
+public class AccessPanel
+        extends JPanel {
 
     private JPanel titlePanel;
     private JPanel menuPanel;
@@ -14,9 +15,8 @@ public class AccessPanel extends JPanel {
     private AccessPanel() {}
 
     public static AccessPanel getInstance() {
-        if(instance == null) {
-            instance = new AccessPanel();
-        } return instance;
+        if(instance == null) instance = new AccessPanel();
+        return instance;
     }
 
     public void init() {

@@ -10,16 +10,16 @@ import java.lang.reflect.Modifier;
 import java.math.BigDecimal;
 import java.util.Map;
 
-public class RConfigurator implements InterfaceRConfigurator{
+public class RConfigurator
+        implements InterfaceRConfigurator{
 
     private static RConfigurator instance;
 
     private RConfigurator() {}
 
     public static RConfigurator getInstance() {
-        if(instance == null) {
-            instance = new RConfigurator();
-        } return instance;
+        if(instance == null) instance = new RConfigurator();
+        return instance;
     }
 
     @Override

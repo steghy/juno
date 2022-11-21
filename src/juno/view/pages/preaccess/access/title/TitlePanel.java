@@ -5,7 +5,8 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.*;
 
-public class TitlePanel extends JPanel {
+public class TitlePanel
+        extends JPanel {
 
     private AbstractButton title;
     private static TitlePanel instance;
@@ -13,15 +14,15 @@ public class TitlePanel extends JPanel {
     private TitlePanel() {}
 
     public static TitlePanel getInstance() {
-        if(instance == null) {
-            instance = new TitlePanel();
-        } return instance;
+        if(instance == null) instance = new TitlePanel();
+        return instance;
     }
 
     public void init() {
         if(title == null) {
             throw new IllegalArgumentException("Title is null");
         }
+
         this.setOpaque(false);
         this.setLayout(new GridBagLayout());
 

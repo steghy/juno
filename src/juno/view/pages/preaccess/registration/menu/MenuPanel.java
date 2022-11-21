@@ -8,7 +8,9 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MenuPanel extends JPanel implements AbstractDataProvider<String, String> {
+public class MenuPanel
+        extends JPanel
+        implements AbstractDataProvider<String, String> {
 
     private JLabel userNameLabel;
     private JLabel nameLabel;
@@ -273,42 +275,6 @@ public class MenuPanel extends JPanel implements AbstractDataProvider<String, St
 
     public void setBackButton(@NotNull AbstractButton backButton) {
         this.backButton = backButton;
-    }
-
-    public JLabel getUserNameLabel() {
-        return userNameLabel;
-    }
-
-    public JLabel getNameLabel() {
-        return nameLabel;
-    }
-
-    public JLabel getLastNameLabel() {
-        return lastNameLabel;
-    }
-
-    public JLabel getAgeLabel() {
-        return ageLabel;
-    }
-
-    public JTextField getUserNameTextField() {
-        return userNameTextField;
-    }
-
-    public JTextField getNameTextField() {
-        return nameTextField;
-    }
-
-    public JTextField getLastNameTextField() {
-        return lastNameTextField;
-    }
-
-    public AbstractButton getConfirmButton() {
-        return confirmButton;
-    }
-
-    public AbstractButton getBackButton() {
-        return backButton;
     }
 
     @Override

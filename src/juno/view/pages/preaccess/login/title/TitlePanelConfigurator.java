@@ -14,10 +14,13 @@ public class TitlePanelConfigurator {
     private TitlePanelConfigurator() {}
 
     public static void configure() {
+        // MAIN COMPONENT
         TitlePanel titlePanel = TitlePanel.getInstance();
 
+        // SUB COMPONENTS
         AbstractButton title = ButtonFactory.createButton(ButtonLibrary.LOG_IN);
 
+        // RESIZE IMAGE
         ImageResizer.resize(title, 3.0);
 
         // SETTING COMPONENTS

@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class RConfigurationFilesProvider extends AbstractRConfigurationFilesProvider implements InterfaceRConfigurationFilesProvider {
+public class RConfigurationFilesProvider
+        extends AbstractRConfigurationFilesProvider
+        implements InterfaceRConfigurationFilesProvider {
 
     private final List<File> configurationFiles;
     private static RConfigurationFilesProvider instance;
@@ -18,9 +20,8 @@ public class RConfigurationFilesProvider extends AbstractRConfigurationFilesProv
     }
 
     public static RConfigurationFilesProvider getInstance() {
-        if(instance == null) {
-            instance = new RConfigurationFilesProvider();
-        } return instance;
+        if(instance == null) instance = new RConfigurationFilesProvider();
+        return instance;
     }
 
     @Override

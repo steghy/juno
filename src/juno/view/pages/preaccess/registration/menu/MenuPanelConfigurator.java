@@ -1,6 +1,5 @@
 package juno.view.pages.preaccess.registration.menu;
 
-import juno.controller.ChangePanelAction;
 import juno.controller.SendRegistrationDataAction;
 import juno.view.factories.buttons.ButtonFactory;
 import juno.view.factories.buttons.ButtonLibrary;

@@ -3,30 +3,24 @@ package juno.model.data.io.input;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.HashMap;
 import java.util.Map;
 
-public class RCompatibilityChecker extends AbstractRCompatibilityChecker implements InterfaceRCompatibilityChecker{
-
-    private final Map<Object, String> objectIncompatibleFiles;
-    private final Map<Class<?>, String> classIncompatibleFiles;
+public class RCompatibilityChecker
+        extends AbstractRCompatibilityChecker
+        implements InterfaceRCompatibilityChecker{
 
     private static RCompatibilityChecker instance;
 
-    private RCompatibilityChecker() {
-        objectIncompatibleFiles = new HashMap<>();
-        classIncompatibleFiles = new HashMap<>();
-    }
+    private RCompatibilityChecker() {}
 
     public static RCompatibilityChecker getInstance() {
-        if(instance == null) {
-            instance = new RCompatibilityChecker();
-        } return instance;
+        if(instance == null) instance = new RCompatibilityChecker();
+        return instance;
     }
 
     @Override
-    public boolean checkCompatibilityOf(Object object, String path) {
-        objectIncompatibleFiles.clear();
+    public boolean checkCompatibilityOf(@NotNull Object object,
+                                        @NotNull String path) {
         Map<String, Object> properties = getPropertyCopier().copy(object);
         boolean isValid = false;
         try {
@@ -38,7 +32,6 @@ public class RCompatibilityChecker extends AbstractRCompatibilityChecker impleme
             }
         } catch(Exception e) {
             e.printStackTrace();
-            objectIncompatibleFiles.put(object, path);
         }
         try {
             getRConfigurator().configure(properties, object);
@@ -51,8 +44,8 @@ public class RCompatibilityChecker extends AbstractRCompatibilityChecker impleme
     }
 
     @Override
-    public boolean checkCompatibilityOf(@NotNull Class<?> clazz, @NotNull String path) {
-        objectIncompatibleFiles.clear();
+    public boolean checkCompatibilityOf(@NotNull Class<?> clazz,
+                                        @NotNull String path) {
         Map<String, Object> properties = getPropertyCopier().copy(clazz);
         boolean isValid = false;
         try {
@@ -63,7 +56,6 @@ public class RCompatibilityChecker extends AbstractRCompatibilityChecker impleme
             }
         } catch(Exception e) {
             e.printStackTrace();
-            objectIncompatibleFiles.put(clazz, path);
         }
         try {
             getRConfigurator().configure(properties, clazz);
@@ -74,13 +66,5 @@ public class RCompatibilityChecker extends AbstractRCompatibilityChecker impleme
         }
         return isValid;
 
-    }
-
-    public Map<Object, String> getObjectIncompatibleFiles() {
-        return objectIncompatibleFiles;
-    }
-
-    public Map<Class<?>, String> getClassIncompatibleFiles() {
-        return classIncompatibleFiles;
     }
 }

@@ -1,9 +1,12 @@
 package juno.view.pages.preaccess.access.menu;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class MenuPanel extends JPanel {
+public class MenuPanel
+        extends JPanel {
 
     private AbstractButton createAnAccountButton;
     private AbstractButton logInButton;
@@ -14,9 +17,8 @@ public class MenuPanel extends JPanel {
     private MenuPanel() {}
 
     public static MenuPanel getInstance() {
-        if(instance == null) {
-            instance = new MenuPanel();
-        } return instance;
+        if(instance == null) instance = new MenuPanel();
+        return instance;
     }
 
     public void init() {
@@ -29,6 +31,7 @@ public class MenuPanel extends JPanel {
         } if(exitButton == null) {
             throw new IllegalArgumentException("Exit button is null");
         }
+
         this.setOpaque(false);
         this.setLayout(new GridBagLayout());
 
@@ -99,35 +102,19 @@ public class MenuPanel extends JPanel {
         this.add(exitButton, gbc);
     }
 
-    public void setCreateAnAccountButton(AbstractButton createAnAccountButton) {
+    public void setCreateAnAccountButton(@NotNull AbstractButton createAnAccountButton) {
         this.createAnAccountButton = createAnAccountButton;
     }
 
-    public void setLogInButton(AbstractButton logInButton) {
+    public void setLogInButton(@NotNull AbstractButton logInButton) {
         this.logInButton = logInButton;
     }
 
-    public void setContinueWithoutAnAccountButton(AbstractButton continueWithoutAnAccountButton) {
+    public void setContinueWithoutAnAccountButton(@NotNull AbstractButton continueWithoutAnAccountButton) {
         this.continueWithoutAnAccountButton = continueWithoutAnAccountButton;
     }
 
-    public void setExitButton(AbstractButton exitButton) {
+    public void setExitButton(@NotNull AbstractButton exitButton) {
         this.exitButton = exitButton;
-    }
-
-    public AbstractButton getCreateAnAccountButton() {
-        return createAnAccountButton;
-    }
-
-    public AbstractButton getLogInButton() {
-        return logInButton;
-    }
-
-    public AbstractButton getContinueWithoutAnAccountButton() {
-        return continueWithoutAnAccountButton;
-    }
-
-    public AbstractButton getExitButton() {
-        return exitButton;
     }
 }

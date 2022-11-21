@@ -1,16 +1,18 @@
 package juno.model.data.io.input;
 
+import org.jetbrains.annotations.NotNull;
+
 public abstract class AbstractConfigurationFilesProvider {
 
     private InterfaceRConfigurationFilesProvider rConfigurationFilesProvider;
 
     private InterfaceCConfigurationFilesProvider cConfigurationFilesProvider;
 
-    public void setRConfigurationFilesProvider(InterfaceRConfigurationFilesProvider rConfigurationFilesProvider) {
+    public void setRConfigurationFilesProvider(@NotNull InterfaceRConfigurationFilesProvider rConfigurationFilesProvider) {
         this.rConfigurationFilesProvider = rConfigurationFilesProvider;
     }
 
-    public void setCConfigurationFilesProvider(InterfaceCConfigurationFilesProvider cConfigurationFilesProvider) {
+    public void setCConfigurationFilesProvider(@NotNull InterfaceCConfigurationFilesProvider cConfigurationFilesProvider) {
         this.cConfigurationFilesProvider = cConfigurationFilesProvider;
     }
 

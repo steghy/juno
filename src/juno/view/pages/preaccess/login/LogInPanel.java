@@ -5,7 +5,8 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.*;
 
-public class LogInPanel extends JPanel {
+public class LogInPanel
+        extends JPanel {
 
     private JPanel titlePanel;
     private JPanel menuPanel;
@@ -14,9 +15,8 @@ public class LogInPanel extends JPanel {
     private LogInPanel() {}
 
     public static LogInPanel getInstance() {
-        if(instance == null) {
-            instance = new LogInPanel();
-        } return instance;
+        if(instance == null) instance = new LogInPanel();
+        return instance;
     }
 
     public void init() {
@@ -38,13 +38,5 @@ public class LogInPanel extends JPanel {
 
     public void setMenuPanel(@NotNull JPanel menuPanel) {
         this.menuPanel = menuPanel;
-    }
-
-    public JPanel getTitlePanel() {
-        return titlePanel;
-    }
-
-    public JPanel getMenuPanel() {
-        return menuPanel;
     }
 }

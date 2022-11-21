@@ -2,6 +2,7 @@ package juno.view.pages.preaccess.card;
 
 import juno.init.Directories;
 import juno.model.data.io.input.CConfigurationFilesProvider;
+import juno.model.data.io.input.ConfigurationFilesProvider;
 import juno.model.data.profile.Profile;
 import juno.view.pages.preaccess.access.AccessPanel;
 import juno.view.pages.preaccess.login.LogInPanel;
@@ -33,7 +34,7 @@ public class PreAccessCardPanelConfigurator {
         preAccessCardPanel.init();
 
         // SELECTOR
-        preAccessInitialChooser.setDataCompatibilityChecker(null);
+        preAccessInitialChooser.setConfigurationFilesProvider(ConfigurationFilesProvider.getInstance());
         PreAccessInitialChooser.getInstance().setFirstPanelToShow(Directories.PROFILES.absolutePath(), new Profile());
     }
 }
