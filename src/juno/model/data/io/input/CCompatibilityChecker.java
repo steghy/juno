@@ -4,7 +4,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CCompatibilityChecker extends AbstractCompatibilityChecker implements InterfaceCCompatibilityChecker {
+public class CCompatibilityChecker
+        extends AbstractCompatibilityChecker
+        implements InterfaceCCompatibilityChecker {
 
     private final Map<Configurable, String> incompatibleFiles;
 
@@ -15,13 +17,13 @@ public class CCompatibilityChecker extends AbstractCompatibilityChecker implemen
     }
 
     public static CCompatibilityChecker getInstance() {
-        if(instance == null) {
-            instance = new CCompatibilityChecker();
-        } return instance;
+        if(instance == null) instance = new CCompatibilityChecker();
+        return instance;
     }
 
     @Override
-    public boolean checkCompatibilityOf(@NotNull Configurable configurable, String path) {
+    public boolean checkCompatibilityOf(@NotNull Configurable configurable, @NotNull String path) {
+        incompatibleFiles.clear();
         try {
             configurable.configure(getDataImporter().importData(path));
             return true;
@@ -33,6 +35,6 @@ public class CCompatibilityChecker extends AbstractCompatibilityChecker implemen
     }
 
     public Map<Configurable, String> getIncompatibleFiles() {
-        return incompatibleFiles;
+        return new HashMap<>(incompatibleFiles);
     }
 }

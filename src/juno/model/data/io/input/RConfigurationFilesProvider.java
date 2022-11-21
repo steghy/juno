@@ -1,15 +1,21 @@
 package juno.model.data.io.input;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class RConfigurationFilesProvider extends AbstractRConfigurationFilesProvider implements InterfaceRConfigurationFilesProvider {
 
+    private final List<File> configurationFiles;
     private static RConfigurationFilesProvider instance;
 
-    private RConfigurationFilesProvider() {}
+    private RConfigurationFilesProvider() {
+        configurationFiles = new ArrayList<>();
+    }
 
     public static RConfigurationFilesProvider getInstance() {
         if(instance == null) {
@@ -18,54 +24,56 @@ public class RConfigurationFilesProvider extends AbstractRConfigurationFilesProv
     }
 
     @Override
-    public List<File> getConfigurationFiles(Object object, String path) {
-        File file = new File(path);
-        if (file.exists()) {
-            if (file.isDirectory()) {
-                File[] files = file.listFiles();
-                if (files != null) {
-                    return Arrays.stream(files)
-                            .filter(obj -> getRCompatibilityChecker()
-                                    .checkCompatibilityOf(object, path))
-                            .toList();
-                } else {
-                    return new ArrayList<>();
-                }
-            } else {
-                if (getRCompatibilityChecker().checkCompatibilityOf(object, path)) {
-                    return List.of(file);
-                } else {
-                    return new ArrayList<>();
-                }
-            }
-        } else {
-            throw new IllegalArgumentException("Not exists: " + file.getAbsolutePath());
-        }
+    public List<File> getConfigurationFiles(@NotNull Object object,
+                                            @NotNull String path) throws FileNotFoundException {
+        configurationFiles.clear();
+        setConfigurationFilesRecursive(object, path);
+        return new ArrayList<>(configurationFiles);
     }
 
     @Override
-    public List<File> getConfigurationFiles(Class<?> clazz, String path) {
-        File file = new File(path);
-        if (file.exists()) {
-            if (file.isDirectory()) {
-                File[] files = file.listFiles();
-                if (files != null) {
-                    return Arrays.stream(files)
-                            .filter(obj -> getRCompatibilityChecker()
-                                    .checkCompatibilityOf(clazz, path))
-                            .toList();
-                } else {
-                    return new ArrayList<>();
-                }
-            } else {
-                if (getRCompatibilityChecker().checkCompatibilityOf(clazz, path)) {
-                    return List.of(file);
-                } else {
-                    return new ArrayList<>();
-                }
+    public List<File> getConfigurationFiles(@NotNull Class<?> clazz,
+                                            @NotNull String path) throws FileNotFoundException {
+       configurationFiles.clear();
+       setConfigurationFilesRecursive(clazz, path);
+       return new ArrayList<>(configurationFiles);
+    }
+
+    private void setConfigurationFilesRecursive(@NotNull Object object,
+                                                @NotNull String path) throws FileNotFoundException {
+        File inputFile = new File(path);
+        if (!inputFile.exists()) throw new FileNotFoundException(path);
+        if (inputFile.isFile() &&
+                getRCompatibilityChecker().checkCompatibilityOf(object, path))
+            configurationFiles.add(inputFile);
+        else
+        if (inputFile.listFiles() != null)
+            for(File file : Objects.requireNonNull(inputFile.listFiles())) {
+                if(file.isFile() &&
+                        getRCompatibilityChecker()
+                                .checkCompatibilityOf(object, file.getAbsolutePath()))
+                    configurationFiles.add(file);
+                else
+                    setConfigurationFilesRecursive(object, file.getAbsolutePath());
             }
-        } else {
-            throw new IllegalArgumentException("Not exists: " + file.getAbsolutePath());
-        }
+    }
+
+    private void setConfigurationFilesRecursive(@NotNull Class<?> clazz,
+                                                @NotNull String path) throws FileNotFoundException {
+        File inputFile = new File(path);
+        if (!inputFile.exists()) throw new FileNotFoundException(path);
+        if (inputFile.isFile() &&
+                getRCompatibilityChecker().checkCompatibilityOf(clazz, path))
+            configurationFiles.add(inputFile);
+        else
+        if (inputFile.listFiles() != null)
+            for(File file : Objects.requireNonNull(inputFile.listFiles())) {
+                if(file.isFile() &&
+                        getRCompatibilityChecker()
+                                .checkCompatibilityOf(clazz, file.getAbsolutePath()))
+                    configurationFiles.add(file);
+                else
+                    setConfigurationFilesRecursive(clazz, file.getAbsolutePath());
+            }
     }
 }

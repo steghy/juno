@@ -4,7 +4,8 @@ import juno.model.data.io.input.Configurable;
 
 import java.util.Map;
 
-public class MyObject implements Configurable {
+public class MyObject
+        implements Configurable {
 
     private final String value1 = "myObject string field";
     private int value2 = 999;

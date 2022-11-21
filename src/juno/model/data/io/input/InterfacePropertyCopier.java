@@ -6,4 +6,6 @@ import java.util.Map;
 public interface InterfacePropertyCopier {
 
     Map<String, Object> copy(Object object) throws IllegalAccessException;
+
+    Map<String, Object> copy(Class<?> clazz) throws IllegalAccessException;
 }

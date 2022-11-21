@@ -5,6 +5,7 @@ import juno.model.data.io.input.Configurable;
 
 import java.awt.*;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.List;
 
 public class PreAccessInitialChooser {
@@ -22,8 +23,12 @@ public class PreAccessInitialChooser {
     }
 
     public void setFirstPanelToShow(String path, Configurable configurable) {
-        List<File> files = configurationFilesProvider.getConfigurationFiles(configurable, path);
-        if(files.size() != 0) {
+        List<File> files = null;
+        try {
+            files = configurationFilesProvider.getConfigurationFiles(configurable, path);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } if(files != null) {
             LayoutManager layoutManager = PreAccessCardPanel.getInstance().getLayout();
             if(layoutManager instanceof CardLayout cardLayout) {
                 cardLayout.show(PreAccessCardPanel.getInstance(), PreAccessCardPanel.ACCESS_PANEL);
