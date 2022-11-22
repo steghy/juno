@@ -5,7 +5,8 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.*;
 
-public class MultiplayerCardPanel extends JPanel {
+public class MultiplayerCardPanel
+        extends JPanel {
 
     public static final String UNAVAILABLE_SERVICE_PANEL = "Unavailable service panel";
     public static final String AVAILABLE_SERVICE_PANEL = "Available service panel";
@@ -16,9 +17,8 @@ public class MultiplayerCardPanel extends JPanel {
     private MultiplayerCardPanel() {}
 
     public static MultiplayerCardPanel getInstance() {
-        if(instance == null){
-            instance = new MultiplayerCardPanel();
-        } return instance;
+        if(instance == null) instance = new MultiplayerCardPanel();
+        return instance;
     }
 
     public void init() {
@@ -40,13 +40,5 @@ public class MultiplayerCardPanel extends JPanel {
 
     public void setUnavailableServicePanel(@NotNull JPanel unavailableServicePanel) {
         this.unavailableServicePanel = unavailableServicePanel;
-    }
-
-    public JPanel getAvailableServicePanel() {
-        return availableServicePanel;
-    }
-
-    public JPanel getUnavailableServicePanel() {
-        return unavailableServicePanel;
     }
 }

@@ -13,8 +13,6 @@ public class ViewInitializer {
     private ViewInitializer() {}
 
     public static void initialize() {
-        // BUTTON FACTORY
-
         // NEW GAME SECTION
         NewGameInitializer.initialize();
 

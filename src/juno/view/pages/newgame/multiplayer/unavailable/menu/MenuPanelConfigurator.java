@@ -33,6 +33,7 @@ public class MenuPanelConfigurator {
                         please visit the site 'site here'.""";
         unavailableServiceLabel.setText(unavailableServiceText);
         unavailableServiceLabel.setFont(new Font(Font.DIALOG, Font.BOLD, 30));
+        unavailableServiceLabel.setForeground(Color.WHITE);
 
         // ADDING COMPONENTS
         menuPanel.setUnavailableServiceLabel(unavailableServiceLabel);

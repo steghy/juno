@@ -1,14 +1,17 @@
 package juno.model.deck;
 
-public abstract class AbstractDiscardedPile<T> implements InterfaceDiscardedPile<T> {
+import org.jetbrains.annotations.NotNull;
 
-    private AbstractCompatibilityChecker<T> compatibilityChecker;
+public abstract class AbstractDiscardedPile<T>
+        implements InterfaceDiscardedPile<T> {
 
-    public void setCompatibilityChecker(AbstractCompatibilityChecker<T> compatibilityChecker) {
+    private InterfaceCompatibilityChecker<T> compatibilityChecker;
+
+    public void setCompatibilityChecker(@NotNull InterfaceCompatibilityChecker<T> compatibilityChecker) {
         this.compatibilityChecker = compatibilityChecker;
     }
 
-    public AbstractCompatibilityChecker<T> getCompatibilityChecker() {
+    public InterfaceCompatibilityChecker<T> getCompatibilityChecker() {
         return this.compatibilityChecker;
     }
 

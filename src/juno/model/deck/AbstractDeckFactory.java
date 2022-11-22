@@ -1,14 +1,17 @@
 package juno.model.deck;
 
-public abstract class AbstractDeckFactory<T> implements InterfaceDeckFactory<T> {
+import org.jetbrains.annotations.NotNull;
 
-    private AbstractCardFactory<T> factory;
+public abstract class AbstractDeckFactory<T>
+        implements InterfaceDeckFactory<T> {
 
-    public void setCardFactory(AbstractCardFactory<T> factory){
+    private InterfaceCardFactory<T> factory;
+
+    public void setCardFactory(@NotNull InterfaceCardFactory<T> factory){
         this.factory = factory;
     }
 
-    public AbstractCardFactory<T> getCardFactory(){
+    public InterfaceCardFactory<T> getCardFactory(){
         return factory;
     }
 

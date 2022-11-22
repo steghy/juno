@@ -1,17 +1,19 @@
 package juno.model.subjects.ai;
 
 import juno.model.card.AbstractCompatibleItemsProvider;
+import org.jetbrains.annotations.NotNull;
 
-public abstract class AbstractUnoAI<T> implements InterfaceUnoAi<T> {
+public abstract class AbstractUnoAI<T>
+        implements InterfaceUnoAi<T> {
 
     private AbstractCompatibleItemsProvider<T> compatibleItemsProvider;
     private InterfaceUnoExaminer<T> unoExaminer;
 
-    public void setCompatibleItemsProvider(AbstractCompatibleItemsProvider<T> compatibleItemsProvider) {
+    public void setCompatibleItemsProvider(@NotNull AbstractCompatibleItemsProvider<T> compatibleItemsProvider) {
         this.compatibleItemsProvider = compatibleItemsProvider;
     }
 
-    public void setUnoExaminer(InterfaceUnoExaminer<T> unoExaminer) {
+    public void setUnoExaminer(@NotNull InterfaceUnoExaminer<T> unoExaminer) {
         this.unoExaminer = unoExaminer;
     }
 

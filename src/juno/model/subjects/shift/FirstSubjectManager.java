@@ -1,6 +1,6 @@
 package juno.model.subjects.shift;
 
-import juno.model.subjects.players.AbstractSubjectsProvider;
+import juno.model.subjects.players.InterfaceSubjectsProvider;
 import juno.model.util.Donut;
 import juno.model.util.Observer;
 import juno.model.util.Observable;
@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class FirstSubjectManager<T, E> extends AbstractFirstSubjectManager<T, E> implements Observable, Observer {
+public class FirstSubjectManager<T, E>
+        extends AbstractFirstSubjectManager<T, E>
+        implements Observable, Observer {
 
     private Donut<T> subjects;
     private final List<Observer> observerList;
@@ -21,9 +23,8 @@ public class FirstSubjectManager<T, E> extends AbstractFirstSubjectManager<T, E>
     }
 
     public static FirstSubjectManager<?, ?> getInstance() {
-        if(instance == null) {
-            instance = new FirstSubjectManager<>();
-        } return instance;
+        if(instance == null) instance = new FirstSubjectManager<>();
+        return instance;
     }
 
 
@@ -64,10 +65,11 @@ public class FirstSubjectManager<T, E> extends AbstractFirstSubjectManager<T, E>
     @Override
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof AbstractSubjectsProvider<?> obj) {
+        if(object instanceof InterfaceSubjectsProvider<?> obj) {
             this.subjects = (Donut<T>) obj.getSubjects();
         } else {
-            throw new IllegalArgumentException("Invalid Subject object (" + object + ")");
+            throw new IllegalArgumentException("Invalid Subject type (" + object.getClass() + ") " +
+                    "InterfaceSubjectsProvider expected.");
         }
     }
 }

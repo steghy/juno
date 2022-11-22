@@ -3,6 +3,7 @@ package juno.model.data.io.input;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,7 +25,8 @@ public class PropertyCopier
         for(Field field : object.getClass().getDeclaredFields()) {
             field.setAccessible(true);
             try {
-                map.put(field.getName(), field.get(object));
+                if(!Modifier.isFinal(Modifier.fieldModifiers()))
+                    map.put(field.getName(), field.get(object));
             } catch (IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
@@ -37,7 +39,9 @@ public class PropertyCopier
         for(Field field : clazz.getDeclaredFields()) {
             field.setAccessible(true);
             try {
-                map.put(field.getName(), field.get(null));
+                if(Modifier.isStatic(field.getModifiers()))
+                    if(!Modifier.isFinal(field.getModifiers()))
+                        map.put(field.getName(), field.get(null));
             } catch (IllegalAccessException e) {
                 throw new RuntimeException(e);
             }

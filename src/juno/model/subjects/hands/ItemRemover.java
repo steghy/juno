@@ -9,7 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ItemRemover<T, E> implements AbstractItemRemover<T, E>, Observable, Observer {
+public class ItemRemover<T, E> implements
+        InterfaceItemRemover<T, E>, Observable, Observer {
 
     private Map<?, ? extends List<?>> handsMap;
     private final List<Observer> observerList;
@@ -20,17 +21,17 @@ public class ItemRemover<T, E> implements AbstractItemRemover<T, E>, Observable,
     }
 
     public static ItemRemover<?, ?> getInstance() {
-        if(instance == null) {
-            instance = new ItemRemover<>();
-        } return instance;
+        if(instance == null) instance = new ItemRemover<>();
+        return instance;
     }
 
-    public void setHandsMap(Map<T, List<E>> handsMap) {
+    public void setHandsMap(@NotNull Map<T, List<E>> handsMap) {
         this.handsMap = handsMap;
     }
 
     @Override
-    public void removeItemTo(@NotNull T subject,@NotNull E item) {
+    public void removeItemTo(@NotNull T subject,
+                             @NotNull E item) {
         if(handsMap != null) {
             if(handsMap.containsKey(subject)) {
                 // is index usage better ? maybe
@@ -45,12 +46,12 @@ public class ItemRemover<T, E> implements AbstractItemRemover<T, E>, Observable,
     }
 
     @Override
-    public void addObserver(Observer observer) {
+    public void addObserver(@NotNull Observer observer) {
         observerList.add(observer);
     }
 
     @Override
-    public void removeObserver(Observer observer) {
+    public void removeObserver(@NotNull Observer observer) {
         observerList.remove(observer);
     }
 
@@ -60,13 +61,13 @@ public class ItemRemover<T, E> implements AbstractItemRemover<T, E>, Observable,
     }
 
     @Override
-    public void update(Object object) {
-        if(object instanceof AbstractHandsProvider<?,?> handsMaintainer) {
+    public void update(@NotNull Object object) {
+        if(object instanceof InterfaceHandsProvider<?,?> handsMaintainer) {
             handsMap = new HashMap<>();
             this.handsMap = handsMaintainer.getHandsMap();
         } else {
-            throw new IllegalArgumentException("Invalid Subject object (" + object + ")");
+            throw new IllegalArgumentException("Invalid Subject object (" + object + ") " +
+                    "InterfaceHandsProvider expected.");
         }
     }
-
 }

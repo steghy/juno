@@ -1,56 +1,56 @@
 package juno.model.card;
 
 import juno.model.deck.AbstractDeck;
-import juno.model.subjects.hands.AbstractItemAdder;
-import juno.model.subjects.shift.AbstractInverter;
-import juno.model.subjects.players.AbstractSubjectsManager;
-import juno.model.subjects.shift.AbstractTurnMover;
-import juno.model.subjects.shift.AbstractTurnJumper;
+import juno.model.subjects.hands.InterfaceItemAdder;
+import juno.model.subjects.shift.InterfaceInverter;
+import juno.model.subjects.players.InterfaceSubjectsManager;
+import juno.model.subjects.shift.InterfaceTurnMover;
+import juno.model.subjects.shift.InterfaceTurnJumper;
 
 public abstract class AbstractActionPerformer<T, E, C> implements InterfaceActionPerformer<E, C> {
 
     private AbstractDeck<E> deck;
-    private AbstractTurnMover nextTurnClass;
-    private AbstractTurnJumper skipper;
-    private AbstractItemAdder<T, E> itemAdder;
-    private AbstractInverter inverter;
-    private AbstractSubjectsManager<T> playersManager;
+    private InterfaceTurnMover nextTurnClass;
+    private InterfaceTurnJumper skipper;
+    private InterfaceItemAdder<T, E> itemAdder;
+    private InterfaceInverter inverter;
+    private InterfaceSubjectsManager<T> playersManager;
 
     void setDeck(AbstractDeck<E> deck) {
         this.deck = deck;
     }
-    void setItemAdder(AbstractItemAdder<T, E> itemAdder) {
+    void setItemAdder(InterfaceItemAdder<T, E> itemAdder) {
         this.itemAdder = itemAdder;
     }
-    void setSkipper(AbstractTurnJumper skipper) {
+    void setSkipper(InterfaceTurnJumper skipper) {
         this.skipper = skipper;
     }
-    void setNextTurnClass(AbstractTurnMover nextTurnClass) {
+    void setNextTurnClass(InterfaceTurnMover nextTurnClass) {
         this.nextTurnClass = nextTurnClass;
     }
-    void setInverter(AbstractInverter inverter) {
+    void setInverter(InterfaceInverter inverter) {
         this.inverter = inverter;
     }
-    void setPlayersManager(AbstractSubjectsManager<T> playersManager){
+    void setPlayersManager(InterfaceSubjectsManager<T> playersManager){
         this.playersManager = playersManager;
     }
 
     AbstractDeck<E> getDeck() {
         return deck;
     }
-    AbstractItemAdder<T, E> getItemAdder() {
+    InterfaceItemAdder<T, E> getItemAdder() {
         return itemAdder;
     }
-    AbstractTurnMover getNextTurn() {
+    InterfaceTurnMover getNextTurn() {
         return nextTurnClass;
     }
-    AbstractTurnJumper getSkipper() {
+    InterfaceTurnJumper getSkipper() {
         return skipper;
     }
-    AbstractInverter getInverter() {
+    InterfaceInverter getInverter() {
         return this.inverter;
     }
-    AbstractSubjectsManager<T> getPlayersManager() {
+    InterfaceSubjectsManager<T> getPlayersManager() {
         return this.playersManager;
     }
 }

@@ -3,7 +3,8 @@ package juno.model.util;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Donut<T> extends ArrayList<T> {
+public class Donut<T>
+        extends ArrayList<T> {
 
     private int index;
     private boolean inverted;
@@ -15,8 +16,7 @@ public class Donut<T> extends ArrayList<T> {
     public void initialize() {
         if(this.isEmpty()) {
             throw new IllegalArgumentException("Empty donut");
-        }
-       Random random = new Random();
+        } Random random = new Random();
        index = random.nextInt(size());
     }
 

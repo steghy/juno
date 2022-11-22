@@ -1,6 +1,7 @@
 package juno.model.card;
 
-public enum UnoCardValue implements AbstractUnoCardValue {
+public enum UnoCardValue
+        implements InterfaceUnoCardValue {
 
     ZERO,
     ONE,

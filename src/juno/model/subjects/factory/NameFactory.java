@@ -5,7 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class NameFactory implements AbstractNameFactory {
+public class NameFactory
+        implements InterfaceNameFactory {
 
     private final List<String> names;
     private static NameFactory instance;
@@ -15,9 +16,8 @@ public class NameFactory implements AbstractNameFactory {
     }
 
     public static NameFactory getInstance() {
-        if(instance == null) {
-            instance = new NameFactory();
-        } return instance;
+        if(instance == null) instance = new NameFactory();
+        return instance;
     }
 
     @Override

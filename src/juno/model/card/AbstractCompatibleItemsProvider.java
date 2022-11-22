@@ -1,14 +1,14 @@
 package juno.model.card;
 
-import juno.model.deck.AbstractCompatibilityChecker;
+import juno.model.deck.InterfaceCompatibilityChecker;
 import juno.model.deck.InterfaceDiscardedPile;
 
 public abstract class AbstractCompatibleItemsProvider<T> implements InterfaceCompatibleItemsProvider<T> {
 
-    private AbstractCompatibilityChecker<T> compatibilityChecker;
+    private InterfaceCompatibilityChecker<T> compatibilityChecker;
     private InterfaceDiscardedPile<T> discardedPile;
 
-    public void setCompatibilityChecker(AbstractCompatibilityChecker<T> compatibilityChecker) {
+    public void setCompatibilityChecker(InterfaceCompatibilityChecker<T> compatibilityChecker) {
         this.compatibilityChecker = compatibilityChecker;
     }
 
@@ -16,7 +16,7 @@ public abstract class AbstractCompatibleItemsProvider<T> implements InterfaceCom
         this.discardedPile = discardedPile;
     }
 
-    public AbstractCompatibilityChecker<T> getCompatibilityChecker() {
+    public InterfaceCompatibilityChecker<T> getCompatibilityChecker() {
         return compatibilityChecker;
     }
 

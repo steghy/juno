@@ -48,7 +48,8 @@ public class RConfigurator
             }
 
             if(value instanceof Map<?, ?> anotherMap) {
-                configure(anotherMap, field.get(object));
+                if(!anotherMap.isEmpty())
+                    configure(anotherMap, field.get(object));
             }
 
             else if(fieldType == valueType) {
@@ -170,7 +171,9 @@ public class RConfigurator
             Class<?> valueType = value.getClass();
 
             if (value instanceof Map<?, ?> anotherMap) {
-                configure(anotherMap, field.get(clazz));
+                if(!anotherMap.isEmpty()) {
+                    configure(anotherMap, field.get(clazz));
+                }
             }
 
             else if (fieldType == valueType) {

@@ -4,16 +4,16 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class CompatibleItemsProvider<T> extends AbstractCompatibleItemsProvider<T> {
+public class CompatibleItemsProvider<T>
+        extends AbstractCompatibleItemsProvider<T> {
 
     private static CompatibleItemsProvider<?> instance;
 
     private CompatibleItemsProvider() {}
 
     private static CompatibleItemsProvider<?> getInstance() {
-        if(instance == null) {
-            instance = new CompatibleItemsProvider<>();
-        } return instance;
+        if(instance == null) instance = new CompatibleItemsProvider<>();
+        return instance;
     }
 
     @Override

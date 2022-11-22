@@ -5,31 +5,24 @@ import juno.view.frame.Frame;
 
 import javax.swing.*;
 import java.io.File;
+import java.util.Objects;
 
 public class Main {
 
     public static void main(String[] args) {
-
-        // SET REPOSITORY
         Repository.setRepository();
-
         try {
-            // MODEL INITIALIZATION
             ModelInitializer.initialize();
-
-            // VIEW INITIALIZATION
             ViewInitializer.initialize();
 
-            // AUDIO SETTINGS
             AudioPlayer audioPlayer = AudioPlayer.getInstance();
-            audioPlayer.setTracks(new File(Directories.MUSIC.absolutePath()).listFiles());
+            audioPlayer.setTracks(Objects
+                    .requireNonNull(new File(Directories.MUSIC.absolutePath()).listFiles()));
             audioPlayer.play();
             audioPlayer.setLoop(true);
 
-            // FRAME
             Frame frame = Frame.getInstance();
             frame.setVisible(true);
-
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "An unknown error has occurred. " +

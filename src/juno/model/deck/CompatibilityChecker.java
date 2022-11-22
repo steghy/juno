@@ -1,31 +1,33 @@
 package juno.model.deck;
 
 import juno.model.card.*;
+import org.jetbrains.annotations.NotNull;
 
-class CompatibilityChecker implements AbstractCompatibilityChecker<AbstractUnoCard> {
+class CompatibilityChecker
+        implements InterfaceCompatibilityChecker<InterfaceUnoCard> {
 
     private static CompatibilityChecker instance;
 
     private CompatibilityChecker(){}
 
     static CompatibilityChecker getInstance(){
-        if(instance == null){
-            instance = new CompatibilityChecker();
-        } return instance;
+        if(instance == null) instance = new CompatibilityChecker();
+        return instance;
     }
 
     @Override
-    public boolean areCompatible(AbstractUnoCard card, AbstractUnoCard otherCard){
+    public boolean areCompatible(@NotNull InterfaceUnoCard card,
+                                 @NotNull InterfaceUnoCard otherCard){
 
         // CARD SPECIFICATIONS
-        AbstractUnoCardColor<AbstractUnoColor> cardColor = card.color();
-        AbstractUnoCardAction cardAction = card.action();
-        AbstractUnoCardValue cardValue = card.value();
+        InterfaceUnoCardColor<InterfaceUnoColor> cardColor = card.color();
+        InterfaceUnoCardAction cardAction = card.action();
+        InterfaceUnoCardValue cardValue = card.value();
 
         // OTHER CARD SPECIFICATIONS
-        AbstractUnoCardColor<AbstractUnoColor> otherCardColor = otherCard.color();
-        AbstractUnoCardAction otherCardAction = otherCard.action();
-        AbstractUnoCardValue otherCardValue = otherCard.value();
+        InterfaceUnoCardColor<InterfaceUnoColor> otherCardColor = otherCard.color();
+        InterfaceUnoCardAction otherCardAction = otherCard.action();
+        InterfaceUnoCardValue otherCardValue = otherCard.value();
 
         // JOLLY CASE
         if(otherCardAction != null){
@@ -36,8 +38,8 @@ class CompatibilityChecker implements AbstractCompatibilityChecker<AbstractUnoCa
 
         // COLOR CASE
         if(cardColor != null && otherCardColor != null){
-            AbstractUnoColor color = cardColor.getUnoColor();
-            AbstractUnoColor otherColor = otherCardColor.getUnoColor();
+            InterfaceUnoColor color = cardColor.getUnoColor();
+            InterfaceUnoColor otherColor = otherCardColor.getUnoColor();
             if(color.isBlue() && otherColor.isBlue()){
                 return true;
             } else if(color.isGreen() && otherColor.isGreen()){
@@ -82,8 +84,6 @@ class CompatibilityChecker implements AbstractCompatibilityChecker<AbstractUnoCa
                 return true;
             }
             return cardValue.isValueNine() && otherCardValue.isValueNine();
-        }
-
-        return false;
+        } return false;
     }
 }

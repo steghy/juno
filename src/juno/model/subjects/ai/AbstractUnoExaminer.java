@@ -3,7 +3,8 @@ package juno.model.subjects.ai;
 import juno.model.card.AbstractCompatibleItemsProvider;
 import org.jetbrains.annotations.NotNull;
 
-public abstract class AbstractUnoExaminer<T> implements InterfaceUnoExaminer<T> {
+public abstract class AbstractUnoExaminer<T>
+        implements InterfaceUnoExaminer<T> {
 
     private AbstractCompatibleItemsProvider<T> compatibleItemsProvider;
 

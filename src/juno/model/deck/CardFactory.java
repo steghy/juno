@@ -6,22 +6,21 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
- class CardFactory implements AbstractCardFactory<AbstractUnoCard> {
+ class CardFactory
+         implements InterfaceCardFactory<InterfaceUnoCard> {
 
     private static CardFactory instance;
 
     private CardFactory() {}
 
     static CardFactory getInstance(){
-        if(instance == null){
-            instance = new CardFactory();
-        } return instance;
+        if(instance == null) instance = new CardFactory();
+        return instance;
     }
 
     @Override
-    public Collection<AbstractUnoCard> getCards() {
-
-        List<AbstractUnoCard> cards = new ArrayList<>();
+    public Collection<InterfaceUnoCard> getCards() {
+        List<InterfaceUnoCard> cards = new ArrayList<>();
 
         // COLORED CARDS
         Arrays.asList(UnoColor.values()).forEach(color -> {
@@ -42,5 +41,4 @@ import java.util.List;
         cards.add(new UnoCard(UnoCardAction.WILD_DRAW_FOUR, null, null));
         return cards;
     }
-
 }

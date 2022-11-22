@@ -7,7 +7,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DeckRefiller<T> extends AbstractDeckRefiller<T> implements Observable {
+public class DeckRefiller<T>
+        extends AbstractDeckRefiller<T>
+        implements Observable {
 
     private final List<Observer> observerList;
     private static DeckRefiller<?> instance;
@@ -17,9 +19,8 @@ public class DeckRefiller<T> extends AbstractDeckRefiller<T> implements Observab
     }
 
     public static DeckRefiller<?> getInstance() {
-        if(instance == null) {
-            instance = new DeckRefiller<>();
-        } return instance;
+        if(instance == null) instance = new DeckRefiller<>();
+        return instance;
     }
 
     @Override

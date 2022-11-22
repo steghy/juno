@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Mixer<T> implements AbstractMixer<T>, Observable {
+public class Mixer<T> implements
+        InterfaceMixer<T>, Observable {
 
     private final List<Observer> observerList;
 
@@ -19,9 +20,8 @@ public class Mixer<T> implements AbstractMixer<T>, Observable {
     }
 
     public static Mixer<?> getInstance() {
-        if(instance == null) {
-            instance = new Mixer<>();
-        } return instance;
+        if(instance == null) instance = new Mixer<>();
+        return instance;
     }
 
     @Override

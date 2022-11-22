@@ -9,7 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class Profile implements AbstractProfile, Configurable, Exportable {
+public class Profile
+        implements AbstractProfile, Configurable, Exportable {
 
     public static final int MAXIMUM_LENGTH = 15;
     public static final int MAXIMUM_AGE = 150;
@@ -24,70 +25,20 @@ public class Profile implements AbstractProfile, Configurable, Exportable {
     private String lastName;
     private Integer age;
 
-    public Profile() {}
+    private Profile() {}
 
-    @Override
-    public void configure(@NotNull Map<String, Object> map) {
-        // PROFILE NAME
-        if(map.containsKey(PROFILE_NAME)) {
-            if(map.get(PROFILE_NAME) instanceof String usernameFromMap) {
-                int length = usernameFromMap.length();
-                if(length > 0 && length < MAXIMUM_LENGTH) {
-                    this.profileName = usernameFromMap;
-                } else {
-                    throw new IllegalArgumentException("Invalid length " + length);
-                }
-            } else {
-                throw new IllegalArgumentException("Invalid type " + map.get(PROFILE_NAME).getClass());
-            }
-        } else {
-            throw new IllegalArgumentException(PROFILE_NAME + " key not found in " + map);
-        }
+    private static Profile instance;
 
-        // NAME
-        if(map.containsKey(NAME)) {
-            if(map.get(NAME) instanceof String nameFromMap) {
-                int length = nameFromMap.length();
-                if(length > 0 && length < MAXIMUM_LENGTH) {
-                    this.name = nameFromMap;
-                } else {
-                    throw new IllegalArgumentException("Invalid length " + length);
-                }
-            } else {
-                throw new IllegalArgumentException("Invalid type " + map.get(NAME).getClass());
-            }
-        }
-
-        // LAST NAME
-        if(map.containsKey(LAST_NAME)) {
-            if(map.get(LAST_NAME) instanceof String lastNameFromMap) {
-                int length = lastNameFromMap.length();
-                if(length > 0 && length < MAXIMUM_LENGTH) {
-                    this.lastName = lastNameFromMap;
-                } else {
-                    throw new IllegalArgumentException("Invalid length " + length);
-                }
-            } else {
-                throw new IllegalArgumentException("Invalid type " + map.get(LAST_NAME).getClass());
-            }
-        }
-
-        // AGE
-        if(map.containsKey(AGE)) {
-            if(map.get(AGE) instanceof Integer ageFromMap) {
-                if(ageFromMap > 1 && ageFromMap < MAXIMUM_AGE) {
-                    this.age = ageFromMap;
-                } else {
-                    throw new IllegalArgumentException("Invalid age: " + ageFromMap);
-                }
-            } else {
-                throw new IllegalArgumentException("Invalid type " + map.get(AGE).getClass());
-            }
-        }
+    public static Profile getInstance() {
+        if(instance == null) instance = new Profile();
+        return instance;
     }
 
     @Override
-    public Map<String, Object> getDataMap() {
+    public void configure(@NotNull Map<String, Object> map) {}
+
+    @Override
+    public Map<String, Object> exportData() {
         Map<String, Object> map = new HashMap<>();
         map.put(PROFILE_NAME, profileName);
         map.put(NAME, name);
@@ -145,17 +96,14 @@ public class Profile implements AbstractProfile, Configurable, Exportable {
     }
 
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder
-                .append("[")
-                .append(this.profileName)
-                .append(", ")
-                .append(this.name)
-                .append(", ")
-                .append(this.lastName)
-                .append(", ")
-                .append(this.age)
-                .append("]");
-        return stringBuilder.toString();
+        return "[" +
+                this.profileName +
+                ", " +
+                this.name +
+                ", " +
+                this.lastName +
+                ", " +
+                this.age +
+                "]";
     }
 }

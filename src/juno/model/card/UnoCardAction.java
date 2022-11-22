@@ -1,6 +1,7 @@
 package juno.model.card;
 
-public enum UnoCardAction implements AbstractUnoCardAction {
+public enum UnoCardAction
+		implements InterfaceUnoCardAction {
 
 	DRAW_TWO,
 	REVERSE,

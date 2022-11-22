@@ -8,14 +8,18 @@ public class MainPanelConfigurator {
     private MainPanelConfigurator() {}
 
     public static void configure() {
+        // MAIN COMPONENT
         MainPanel mainPanel = MainPanel.getInstance();
 
+        // SUB COMPONENTS
         TitlePanel logoPanel = TitlePanel.getInstance();
         MenuPanel menuPanel = MenuPanel.getInstance();
 
+        // ADDING COMPONENTS
         mainPanel.setTitlePanel(logoPanel);
         mainPanel.setMenuPanel(menuPanel);
 
+        // INITIALIZATION
         mainPanel.init();
     }
 }

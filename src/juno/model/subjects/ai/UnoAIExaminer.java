@@ -7,24 +7,25 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UnoAIExaminer extends AbstractUnoExaminer<AbstractUnoCard> {
+public class UnoAIExaminer
+        extends AbstractUnoExaminer<InterfaceUnoCard> {
 
-    private List<AbstractUnoCard> compatibleCards;
-    private List<AbstractUnoCard> numericCards;
-    private List<AbstractUnoCard> actionCards;
-    private List<AbstractUnoCard> jollyCards;
+    private List<InterfaceUnoCard> compatibleCards;
+    private List<InterfaceUnoCard> numericCards;
+    private List<InterfaceUnoCard> actionCards;
+    private List<InterfaceUnoCard> jollyCards;
     private static UnoAIExaminer instance;
 
     private UnoAIExaminer() {}
 
     public static UnoAIExaminer getInstance() {
-        if(instance == null) {
-            instance = new UnoAIExaminer();
-        } return instance;
+        if(instance == null) instance = new UnoAIExaminer();
+        return instance;
     }
 
     @Override
-    public AbstractUnoCard responseRelativeTo(@NotNull List<AbstractUnoCard> items,@NotNull Difficulty difficulty) {
+    public InterfaceUnoCard responseRelativeTo(@NotNull List<InterfaceUnoCard> items,
+                                               @NotNull Difficulty difficulty) {
         compatibleCards = getCompatibleItemsProvider().getCompatibleItems(items);
         if(compatibleCards.size() == 0) {
             return null;
@@ -44,7 +45,7 @@ public class UnoAIExaminer extends AbstractUnoExaminer<AbstractUnoCard> {
         }
     }
 
-    private AbstractUnoCard easy() {
+    private InterfaceUnoCard easy() {
         if(numericCards.size() != 0) {
             return randomNumericCard();
         } if(actionCards.size() != 0) {
@@ -56,7 +57,7 @@ public class UnoAIExaminer extends AbstractUnoExaminer<AbstractUnoCard> {
         }
     }
 
-    private AbstractUnoCard medium() {
+    private InterfaceUnoCard medium() {
         if(actionCards.size() != 0) {
             return randomActionCard();
         } if(numericCards.size() != 0) {
@@ -68,7 +69,7 @@ public class UnoAIExaminer extends AbstractUnoExaminer<AbstractUnoCard> {
         }
     }
 
-    private AbstractUnoCard hard() {
+    private InterfaceUnoCard hard() {
         if(jollyCards.size() != 0) {
             return randomJollyCard();
         } if(actionCards.size() != 0) {
@@ -80,15 +81,15 @@ public class UnoAIExaminer extends AbstractUnoExaminer<AbstractUnoCard> {
         }
     }
 
-    private AbstractUnoCard randomNumericCard() {
+    private InterfaceUnoCard randomNumericCard() {
         return numericCards.get(MyRandom.getInstance().nextInt(numericCards.size()));
     }
 
-    private AbstractUnoCard randomActionCard() {
+    private InterfaceUnoCard randomActionCard() {
         return actionCards.get(MyRandom.getInstance().nextInt(actionCards.size()));
     }
 
-    private AbstractUnoCard randomJollyCard() {
+    private InterfaceUnoCard randomJollyCard() {
         return jollyCards.get(MyRandom.getInstance().nextInt(jollyCards.size()));
     }
 

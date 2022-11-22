@@ -1,6 +1,7 @@
 package juno.model.card;
 
-public enum UnoColor implements AbstractUnoColor {
+public enum UnoColor
+		implements InterfaceUnoColor {
 
 	BLUE,
 	GREEN,

@@ -5,7 +5,8 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.*;
 
-public class TopCardPanel extends JPanel {
+public class TopCardPanel
+        extends JPanel {
 
     public static final String PRE_ACCESS_PANEL = "Pre access panel";
     public static final String MAIN_PANEL = "Main panel";
@@ -17,9 +18,8 @@ public class TopCardPanel extends JPanel {
     private TopCardPanel() {}
 
     public static TopCardPanel getInstance() {
-        if(instance == null) {
-            instance = new TopCardPanel();
-        } return instance;
+        if(instance == null) instance = new TopCardPanel();
+        return instance;
     }
 
     public void init() {
@@ -41,13 +41,5 @@ public class TopCardPanel extends JPanel {
 
     public void setMainPanel(@NotNull JPanel mainPanel) {
         this.mainPanel = mainPanel;
-    }
-
-    public JPanel getPreAccessPanel() {
-        return preAccessPanel;
-    }
-
-    public JPanel getMainPanel() {
-        return mainPanel;
     }
 }

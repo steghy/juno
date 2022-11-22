@@ -1,7 +1,7 @@
 package juno.model.card;
 
 import juno.model.deck.AbstractDiscardedPile;
-import juno.model.subjects.factory.AbstractSubject;
+import juno.model.subjects.factory.InterfaceSubject;
 import juno.model.util.Observer;
 import juno.model.util.Observable;
 import org.jetbrains.annotations.NotNull;
@@ -9,7 +9,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActionPerformer extends AbstractActionPerformer<AbstractSubject, AbstractUnoCard, AbstractUnoColor> implements Observable, Observer {
+public class ActionPerformer
+        extends AbstractActionPerformer<InterfaceSubject, InterfaceUnoCard, InterfaceUnoColor>
+        implements Observable, Observer {
 
     private final List<Observer> observerList;
     private static ActionPerformer instance;
@@ -19,14 +21,14 @@ public class ActionPerformer extends AbstractActionPerformer<AbstractSubject, Ab
     }
 
      public static ActionPerformer getInstance() {
-        if(instance == null) {
-            instance = new ActionPerformer();
-        } return instance;
+        if(instance == null) instance = new ActionPerformer();
+        return instance;
     }
 
     @Override
-    public void performAction(@NotNull AbstractUnoCard card, AbstractUnoColor color) {
-        AbstractUnoCardAction action = card.action();
+    public void performAction(@NotNull InterfaceUnoCard card,
+                              InterfaceUnoColor color) {
+        InterfaceUnoCardAction action = card.action();
         if(action.isWildAction()) {
             performWildAction(card, color);
         } else if(action.isWildDrawFourAction()) {
@@ -42,11 +44,11 @@ public class ActionPerformer extends AbstractActionPerformer<AbstractSubject, Ab
     }
 
     @Override
-    public void update(Object object) {
+    public void update(@NotNull Object object) {
         if(object instanceof AbstractDiscardedPile<?> discardedPile) {
             Object lastCard = discardedPile.lastItem();
-            if (lastCard instanceof AbstractUnoCard card) {
-                AbstractUnoCardAction action = card.action();
+            if (lastCard instanceof InterfaceUnoCard card) {
+                InterfaceUnoCardAction action = card.action();
                 if (!action.isWildAction() && !action.isWildDrawFourAction()) {
                     performAction(card, null);
                 }
@@ -60,7 +62,7 @@ public class ActionPerformer extends AbstractActionPerformer<AbstractSubject, Ab
 
 
     @Override
-    public void addObserver(Observer observer) {
+    public void addObserver(@NotNull Observer observer) {
         observerList.add(observer);
     }
 
@@ -74,7 +76,8 @@ public class ActionPerformer extends AbstractActionPerformer<AbstractSubject, Ab
         observerList.forEach(observer -> observer.update(null));
     }
 
-    private void performWildAction(@NotNull AbstractUnoCard card, @NotNull AbstractUnoColor color) {
+    private void performWildAction(@NotNull InterfaceUnoCard card,
+                                   @NotNull InterfaceUnoColor color) {
         card.color().setUnoColor(color);
     }
 

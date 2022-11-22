@@ -8,10 +8,12 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SubjectsFactory extends AbstractSubjectsFactory<AbstractSubject> implements Observable {
+public class SubjectsFactory
+        extends AbstractSubjectsFactory<InterfaceSubject>
+        implements Observable {
 
     private final List<Observer> observerList;
-    private List<AbstractSubject> subjects;
+    private List<InterfaceSubject> subjects;
     private static SubjectsFactory instance;
 
     private SubjectsFactory() {
@@ -19,18 +21,19 @@ public class SubjectsFactory extends AbstractSubjectsFactory<AbstractSubject> im
     }
 
     public static SubjectsFactory getInstance() {
-        if(instance == null) {
-            instance = new SubjectsFactory();
-        } return instance;
+        if(instance == null) instance = new SubjectsFactory();
+        return instance;
     }
 
     @Override
-    public void generate(@NotNull Difficulty difficulty, int num, @NotNull String name) {
+    public void generate(@NotNull Difficulty difficulty,
+                         int num,
+                         @NotNull String name) {
 
     }
 
     @Override
-    public List<AbstractSubject> getSubjects() {
+    public List<InterfaceSubject> getSubjects() {
         return subjects;
     }
 

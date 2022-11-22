@@ -1,7 +1,7 @@
 package juno.model.subjects.hands;
 
-import juno.model.card.AbstractUnoCard;
-import juno.model.subjects.factory.AbstractSubject;
+import juno.model.card.InterfaceUnoCard;
+import juno.model.subjects.factory.InterfaceSubject;
 
 public class HandsInitializer {
 
@@ -10,18 +10,18 @@ public class HandsInitializer {
     @SuppressWarnings("unchecked")
     public static void initialize() {
         // OBSERVERS
-        ItemAdder<AbstractSubject, AbstractUnoCard> itemAdder =
-                (ItemAdder<AbstractSubject, AbstractUnoCard>) ItemAdder.getInstance();
+        ItemAdder<InterfaceSubject, InterfaceUnoCard> itemAdder =
+                (ItemAdder<InterfaceSubject, InterfaceUnoCard>) ItemAdder.getInstance();
 
-        ItemRemover<AbstractSubject, AbstractUnoCard> itemRemover =
-                (ItemRemover<AbstractSubject, AbstractUnoCard>) ItemRemover.getInstance();
+        ItemRemover<InterfaceSubject, InterfaceUnoCard> itemRemover =
+                (ItemRemover<InterfaceSubject, InterfaceUnoCard>) ItemRemover.getInstance();
 
-        HandsManager<AbstractSubject, AbstractUnoCard> handsManager =
-                (HandsManager<AbstractSubject, AbstractUnoCard>) HandsManager.getInstance();
+        HandsManager<InterfaceSubject, InterfaceUnoCard> handsManager =
+                (HandsManager<InterfaceSubject, InterfaceUnoCard>) HandsManager.getInstance();
 
         // SUBJECT
-        HandsProvider<AbstractSubject, AbstractUnoCard> handsProvider =
-                (HandsProvider<AbstractSubject, AbstractUnoCard>) HandsProvider.getInstance();
+        HandsProvider<InterfaceSubject, InterfaceUnoCard> handsProvider =
+                (HandsProvider<InterfaceSubject, InterfaceUnoCard>) HandsProvider.getInstance();
 
         // ADDING OBSERVERS
         handsProvider.addObserver(itemAdder);

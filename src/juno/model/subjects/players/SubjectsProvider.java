@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class SubjectsProvider<T> implements AbstractSubjectsProvider<T>, Observable, Observer {
+public class SubjectsProvider<T>
+        implements InterfaceSubjectsProvider<T>, Observable, Observer {
 
     private Donut<T> subjects;
     private final List<Observer> observerList;
@@ -21,9 +22,8 @@ public class SubjectsProvider<T> implements AbstractSubjectsProvider<T>, Observa
     }
 
     public static SubjectsProvider<?> getInstance() {
-        if(instance == null) {
-            instance = new SubjectsProvider<>();
-        } return instance;
+        if(instance == null) instance = new SubjectsProvider<>();
+        return instance;
     }
 
     @Override
@@ -58,7 +58,8 @@ public class SubjectsProvider<T> implements AbstractSubjectsProvider<T>, Observa
             subjects.addAll((Collection<? extends T>) playersFactory.getSubjects());
             updateAll();
         } else {
-            throw new IllegalArgumentException("Invalid Subject object (" + object + ")");
+            throw new IllegalArgumentException("Invalid Subject type (" + object.getClass() + ") " +
+                    "InterfaceSubjectsFactory expected.");
         }
     }
 }

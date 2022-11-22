@@ -1,9 +1,12 @@
 package juno.view.pages.newgame;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class NewGamePanel extends JPanel {
+public class NewGamePanel
+        extends JPanel {
 
     private JPanel titlePanel;
     private JPanel menuPanel;
@@ -63,19 +66,11 @@ public class NewGamePanel extends JPanel {
         this.add(menuPanel, gbc);
     }
 
-    public void setTitlePanel(JPanel titlePanel) {
+    public void setTitlePanel(@NotNull JPanel titlePanel) {
         this.titlePanel = titlePanel;
     }
 
-    public void setMenuPanel(JPanel menuPanel) {
+    public void setMenuPanel(@NotNull JPanel menuPanel) {
         this.menuPanel = menuPanel;
-    }
-
-    public JPanel getTitlePanel() {
-        return titlePanel;
-    }
-
-    public JPanel getMenuPanel() {
-        return menuPanel;
     }
 }

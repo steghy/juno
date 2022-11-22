@@ -3,7 +3,8 @@ package juno.view.pages.newgame.singleplayer.difficulty.title;
 import javax.swing.*;
 import java.awt.*;
 
-public class TitlePanel extends JPanel {
+public class TitlePanel
+        extends JPanel {
 
     private AbstractButton titleButton;
     private static TitlePanel instance;
@@ -11,9 +12,8 @@ public class TitlePanel extends JPanel {
     private TitlePanel() {}
 
     public static TitlePanel getInstance() {
-        if(instance == null) {
-            instance = new TitlePanel();
-        } return instance;
+        if(instance == null) instance = new TitlePanel();
+        return instance;
     }
 
     public void init() {
@@ -42,9 +42,5 @@ public class TitlePanel extends JPanel {
 
     public void setTitleButton(AbstractButton title) {
         this.titleButton = title;
-    }
-
-    public AbstractButton getTitleButton() {
-        return titleButton;
     }
 }

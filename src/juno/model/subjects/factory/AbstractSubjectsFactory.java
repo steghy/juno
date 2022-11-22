@@ -2,15 +2,16 @@ package juno.model.subjects.factory;
 
 import org.jetbrains.annotations.NotNull;
 
-public abstract class AbstractSubjectsFactory<T> implements InterfaceSubjectsFactory<T>, AbstractSubjectsGenerator<T> {
+public abstract class AbstractSubjectsFactory<T>
+        implements InterfaceSubjectsFactory<T>, InterfaceSubjectsGenerator<T> {
 
-    private AbstractNameFactory nameFactory;
+    private InterfaceNameFactory nameFactory;
 
-    public void setNameFactory(@NotNull AbstractNameFactory nameFactory) {
+    public void setNameFactory(@NotNull InterfaceNameFactory nameFactory) {
         this.nameFactory = nameFactory;
     }
 
-    public AbstractNameFactory getNameFactory() {
+    public InterfaceNameFactory getNameFactory() {
         return nameFactory;
     }
 }

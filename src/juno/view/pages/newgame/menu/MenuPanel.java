@@ -3,7 +3,8 @@ package juno.view.pages.newgame.menu;
 import javax.swing.*;
 import java.awt.*;
 
-public class MenuPanel extends JPanel{
+public class MenuPanel
+        extends JPanel{
 
     private AbstractButton singlePlayer;
     private AbstractButton multiPlayer;
@@ -92,17 +93,5 @@ public class MenuPanel extends JPanel{
 
     public void setBackButton(AbstractButton backButton) {
         this.backButton = backButton;
-    }
-
-    public AbstractButton getSinglePlayer() {
-        return singlePlayer;
-    }
-
-    public AbstractButton getMultiPlayer() {
-        return multiPlayer;
-    }
-
-    public AbstractButton getBackButton() {
-        return backButton;
     }
 }

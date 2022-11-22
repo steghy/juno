@@ -5,22 +5,22 @@ import juno.model.card.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
-class DeckFactory extends AbstractDeckFactory<AbstractUnoCard> {
+class DeckFactory
+        extends AbstractDeckFactory<InterfaceUnoCard> {
 
     private static DeckFactory instance;
 
     private DeckFactory() {}
 
     static DeckFactory getInstance(){
-        if(instance == null){
-            instance = new DeckFactory();
-        } return instance;
+        if(instance == null) instance = new DeckFactory();
+        return instance;
     }
 
     @Override
-    public Collection<AbstractUnoCard> getDeck() {
-        Collection<AbstractUnoCard> cards = this.getCardFactory().getCards();
-        Collection<AbstractUnoCard> deck = new ArrayList<>();
+    public Collection<InterfaceUnoCard> getDeck() {
+        Collection<InterfaceUnoCard> cards = this.getCardFactory().getCards();
+        Collection<InterfaceUnoCard> deck = new ArrayList<>();
         cards.forEach(card -> {
             deck.add(card);
             if(card.action() != null) {

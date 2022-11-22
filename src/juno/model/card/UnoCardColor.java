@@ -1,6 +1,9 @@
 package juno.model.card;
 
-public class UnoCardColor<T> implements AbstractUnoCardColor<T> {
+import org.jetbrains.annotations.NotNull;
+
+public class UnoCardColor<T>
+        implements InterfaceUnoCardColor<T> {
 
     private T color;
 
@@ -19,7 +22,7 @@ public class UnoCardColor<T> implements AbstractUnoCardColor<T> {
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(@NotNull Object object) {
         if(object instanceof UnoCardColor<?> obj) {
             return this.color.equals(obj.getUnoColor());
         } else {

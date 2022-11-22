@@ -5,7 +5,8 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.*;
 
-public class UnavailableServicePanel extends JPanel {
+public class UnavailableServicePanel
+        extends JPanel {
 
     private JPanel titlePanel;
     private JPanel menuPanel;
@@ -15,9 +16,8 @@ public class UnavailableServicePanel extends JPanel {
     private UnavailableServicePanel() {}
 
     public static UnavailableServicePanel getInstance() {
-        if(instance == null) {
-            instance = new UnavailableServicePanel();
-        } return instance;
+        if(instance == null) instance = new UnavailableServicePanel();
+        return instance;
     }
 
     public void init() {
@@ -32,6 +32,7 @@ public class UnavailableServicePanel extends JPanel {
 
         GridBagConstraints gbc = new GridBagConstraints();
 
+        // TITLE PANEL
         gbc.gridx = 0;
         gbc.gridy = 0;
 
@@ -44,6 +45,7 @@ public class UnavailableServicePanel extends JPanel {
 
         add(titlePanel, gbc);
 
+        // MENU PANEL
         gbc.gridx = 0;
         gbc.gridy = 1;
 
@@ -64,13 +66,4 @@ public class UnavailableServicePanel extends JPanel {
     public void setMenuPanel(@NotNull JPanel menuPanel) {
         this.menuPanel = menuPanel;
     }
-
-    public JPanel getTitlePanel() {
-        return titlePanel;
-    }
-
-    public JPanel getMenuPanel() {
-        return menuPanel;
-    }
 }
-

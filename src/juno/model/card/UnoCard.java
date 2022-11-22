@@ -1,19 +1,22 @@
 package juno.model.card;
 
-public record UnoCard(AbstractUnoCardAction action, AbstractUnoCardColor<AbstractUnoColor> color, AbstractUnoCardValue value) implements AbstractUnoCard {
+public record UnoCard(InterfaceUnoCardAction action,
+					  InterfaceUnoCardColor<InterfaceUnoColor> color,
+					  InterfaceUnoCardValue value)
+		implements InterfaceUnoCard {
 
 	@Override
-	public AbstractUnoCardAction action() {
+	public InterfaceUnoCardAction action() {
 		return action;
 	}
 
 	@Override
-	public AbstractUnoCardColor<AbstractUnoColor> color() {
+	public InterfaceUnoCardColor<InterfaceUnoColor> color() {
 		return color;
 	}
 
 	@Override
-	public AbstractUnoCardValue value() {
+	public InterfaceUnoCardValue value() {
 		return value;
 	}
 }

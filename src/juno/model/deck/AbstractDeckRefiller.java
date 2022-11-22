@@ -1,10 +1,13 @@
 package juno.model.deck;
 
-public abstract class AbstractDeckRefiller<T> implements InterfaceDeckRefiller<T> {
+import org.jetbrains.annotations.NotNull;
+
+public abstract class AbstractDeckRefiller<T>
+        implements InterfaceDeckRefiller<T> {
 
     private AbstractDiscardedPile<T> discardedPile;
 
-    public void setDiscardedPile(AbstractDiscardedPile<T> discardedPile) {
+    public void setDiscardedPile(@NotNull AbstractDiscardedPile<T> discardedPile) {
         this.discardedPile = discardedPile;
     }
 

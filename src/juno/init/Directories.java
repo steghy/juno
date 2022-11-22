@@ -1,6 +1,7 @@
 package juno.init;
 
-public enum Directories implements Path{
+public enum Directories
+		implements InterfaceDirectories {
 
 	// DATA
 	DATA("data"),

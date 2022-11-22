@@ -3,7 +3,8 @@ package juno.view.pages.newgame.singleplayer.difficulty.menu;
 import javax.swing.*;
 import java.awt.*;
 
-public class MenuPanel extends JPanel {
+public class MenuPanel
+        extends JPanel {
 
     private AbstractButton easyButton;
     private AbstractButton mediumButton;
@@ -15,9 +16,8 @@ public class MenuPanel extends JPanel {
     private MenuPanel() {}
 
     public static MenuPanel getInstance() {
-        if(instance == null) {
-            instance = new MenuPanel();
-        } return instance;
+        if(instance == null) instance = new MenuPanel();
+        return instance;
     }
 
     public void init() {
@@ -107,18 +107,6 @@ public class MenuPanel extends JPanel {
 
     public void setBackButton(AbstractButton backButton) {
         this.backButton = backButton;
-    }
-
-    public AbstractButton getEasyButton() {
-        return easyButton;
-    }
-
-    public AbstractButton getMediumButton() {
-        return mediumButton;
-    }
-
-    public AbstractButton getHardButton() {
-        return hardButton;
     }
 
     public AbstractButton getBackButton() {

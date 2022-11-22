@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class DiscardedPile<T> extends AbstractDiscardedPile<T> implements Observable {
+public class DiscardedPile<T>
+        extends AbstractDiscardedPile<T>
+        implements Observable {
 
     private final Stack<T> discardedPile;
     private final List<Observer> observerList;
@@ -20,13 +22,12 @@ public class DiscardedPile<T> extends AbstractDiscardedPile<T> implements Observ
     }
 
     public static DiscardedPile<?> getInstance() {
-        if(instance == null) {
-            instance = new DiscardedPile<>();
-        } return instance;
+        if(instance == null) instance = new DiscardedPile<>();
+        return instance;
     }
 
     @Override
-    public void discard(T card) {
+    public void discard(@NotNull T card) {
         if(discardedPile.isEmpty()) {
             discardedPile.push(card);
         } else {

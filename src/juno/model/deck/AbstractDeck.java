@@ -1,20 +1,23 @@
 package juno.model.deck;
 
-public abstract class AbstractDeck<T> implements InterfaceDeck<T>{
+import org.jetbrains.annotations.NotNull;
+
+public abstract class AbstractDeck<T>
+        implements InterfaceDeck<T>{
 
     private AbstractDeckRefiller<T> deckRefiller;
     private AbstractDeckFactory<T> deckFactory;
-    private AbstractMixer<T> deckMixer;
+    private InterfaceMixer<T> deckMixer;
 
-    public void setDeckFactory(AbstractDeckFactory<T> deckFactory) {
+    public void setDeckFactory(@NotNull AbstractDeckFactory<T> deckFactory) {
         this.deckFactory = deckFactory;
     }
 
-    public void setDeckRefiller(AbstractDeckRefiller<T> deckRefiller) {
+    public void setDeckRefiller(@NotNull AbstractDeckRefiller<T> deckRefiller) {
         this.deckRefiller = deckRefiller;
     }
 
-    public void setMixer(AbstractMixer<T> deckMixer) {
+    public void setMixer(@NotNull InterfaceMixer<T> deckMixer) {
         this.deckMixer = deckMixer;
     }
 
@@ -26,7 +29,7 @@ public abstract class AbstractDeck<T> implements InterfaceDeck<T>{
         return this.deckRefiller;
     }
 
-    public AbstractMixer<T> getMixer() {
+    public InterfaceMixer<T> getMixer() {
         return this.deckMixer;
     }
 }

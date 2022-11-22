@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class Deck<T> extends AbstractDeck<T> implements Observable {
+public class Deck<T>
+        extends AbstractDeck<T>
+        implements Observable {
 
     private final List<Observer> observerList;
     private final Stack<T> deck;
@@ -21,9 +23,8 @@ public class Deck<T> extends AbstractDeck<T> implements Observable {
     }
 
      public static Deck<?> getInstance() {
-        if(instance == null) {
-            instance = new Deck<>();
-        } return instance;
+        if(instance == null) instance = new Deck<>();
+        return instance;
      }
 
     @Override

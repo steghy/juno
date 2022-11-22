@@ -5,7 +5,8 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.*;
 
-public class MenuPanel extends JPanel{
+public class MenuPanel
+        extends JPanel{
 
     private JLabel unavailableServiceLabel;
     private AbstractButton backButton;
@@ -15,9 +16,8 @@ public class MenuPanel extends JPanel{
     private MenuPanel() {}
 
     public static MenuPanel getInstance() {
-        if(instance == null) {
-            instance = new MenuPanel();
-        } return instance;
+        if(instance == null) instance = new MenuPanel();
+        return instance;
     }
 
     public void init() {
@@ -65,13 +65,5 @@ public class MenuPanel extends JPanel{
 
     public void setBackButton(@NotNull AbstractButton backButton) {
         this.backButton = backButton;
-    }
-
-    public JLabel getUnavailableServiceLabel() {
-        return unavailableServiceLabel;
-    }
-
-    public AbstractButton getBackButton() {
-        return backButton;
     }
 }

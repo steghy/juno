@@ -10,7 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class HandsProvider<T, E> implements AbstractHandsProvider<T, E>, Observable, Observer {
+public class HandsProvider<T, E>
+        implements InterfaceHandsProvider<T, E>, Observable, Observer {
 
     private Map<T, List<E>> handsMap;
     private final List<Observer> observerList;
@@ -21,9 +22,8 @@ public class HandsProvider<T, E> implements AbstractHandsProvider<T, E>, Observa
     }
 
     public static HandsProvider<?, ?> getInstance() {
-        if(instance == null) {
-            instance = new HandsProvider<>();
-        } return instance;
+        if(instance == null) instance = new HandsProvider<>();
+        return instance;
     }
 
     @Override
@@ -32,17 +32,6 @@ public class HandsProvider<T, E> implements AbstractHandsProvider<T, E>, Observa
             return handsMap;
         } else {
             throw new IllegalArgumentException("Hands map is null");
-        }
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void update(Object object) {
-        if(object instanceof InterfaceSubjectsFactory<?> subjectFactory) {
-            handsMap = new HashMap<>();
-            subjectFactory.getSubjects().forEach(subject -> handsMap.put((T) subject, new ArrayList<>()));
-        } else {
-            throw new IllegalArgumentException("Invalid Subject object (" + object + ")");
         }
     }
 
@@ -59,5 +48,17 @@ public class HandsProvider<T, E> implements AbstractHandsProvider<T, E>, Observa
     @Override
     public void updateAll() {
         observerList.forEach(observer -> observer.update(this));
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public void update(@NotNull Object object) {
+        if (object instanceof InterfaceSubjectsFactory<?> subjectFactory) {
+            handsMap = new HashMap<>();
+            subjectFactory.getSubjects().forEach(subject -> handsMap.put((T) subject, new ArrayList<>()));
+        } else {
+            throw new IllegalArgumentException("Invalid Subject object (" + object + ") " +
+                    "InterfaceSubjectsFactory expected.");
+        }
     }
 }

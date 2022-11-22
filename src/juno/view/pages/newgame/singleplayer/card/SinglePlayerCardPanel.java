@@ -3,7 +3,8 @@ package juno.view.pages.newgame.singleplayer.card;
 import javax.swing.*;
 import java.awt.*;
 
-public class SinglePlayerCardPanel extends JPanel {
+public class SinglePlayerCardPanel
+        extends JPanel {
 
     public static final String PLAYERS_NUMBER_PANEL = "Players number panel";
     public static final String DIFFICULTY_PANEL = "Difficulty panel";
@@ -18,9 +19,8 @@ public class SinglePlayerCardPanel extends JPanel {
     private static SinglePlayerCardPanel instance;
 
     public static SinglePlayerCardPanel getInstance() {
-        if(instance == null) {
-            instance = new SinglePlayerCardPanel();
-        } return instance;
+        if(instance == null) instance = new SinglePlayerCardPanel();
+        return instance;
     }
 
     public void init() {
@@ -56,21 +56,5 @@ public class SinglePlayerCardPanel extends JPanel {
 
     public void setDifficultyPanel(JPanel difficultyPanel) {
         this.difficultyPanel = difficultyPanel;
-    }
-
-    public JPanel getPlayersNumberPanel() {
-        return playersNumberPanel;
-    }
-
-    public JPanel getModePanel() {
-        return modePanel;
-    }
-
-    public JPanel getMatchPanel() {
-        return matchPanel;
-    }
-
-    public JPanel getDifficultyPanel() {
-        return difficultyPanel;
     }
 }

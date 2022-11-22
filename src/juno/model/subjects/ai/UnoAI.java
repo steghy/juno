@@ -1,23 +1,20 @@
 package juno.model.subjects.ai;
 
-import juno.model.util.MyRandom;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class UnoAI<T> extends AbstractUnoAI<T> {
+public class UnoAI<T>
+        extends AbstractUnoAI<T> {
 
     private Difficulty difficulty;
     private String name;
     private List<T> items;
 
-    public UnoAI(@NotNull String name, @NotNull Difficulty difficulty) {
+    public UnoAI(@NotNull String name,
+                 @NotNull Difficulty difficulty) {
         this.name = name;
         this.difficulty = difficulty;
-    }
-
-    public UnoAI(@NotNull String name) {
-        this.name = name;
     }
 
     public UnoAI(@NotNull Difficulty difficulty) {

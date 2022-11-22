@@ -7,8 +7,7 @@ public class MyRandom extends java.util.Random {
     private MyRandom() {}
 
     public static MyRandom getInstance() {
-        if(instance == null) {
-            instance = new MyRandom();
-        } return instance;
+        if(instance == null) instance = new MyRandom();
+        return instance;
     }
 }

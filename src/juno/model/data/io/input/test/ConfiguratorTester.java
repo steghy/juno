@@ -1,10 +1,7 @@
 package juno.model.data.io.input.test;
 
 import juno.init.Directories;
-import juno.model.data.io.input.ConfigurationFilesProvider;
-import juno.model.data.io.input.InputDataInitializer;
-import juno.model.data.io.input.JSONDataImporter;
-import juno.model.data.io.input.RConfigurator;
+import juno.model.data.io.input.*;
 import juno.model.util.PathGenerator;
 
 import java.io.File;
@@ -32,29 +29,40 @@ public class ConfiguratorTester {
 
     public static void main(String[] args) {
         // TEST TARGETS
-        String myClassConfigPath = PathGenerator.generate(Directories.CONFIG.absolutePath(), "my-lass-config.json");
+        String myClassConfigPath = PathGenerator.generate(Directories.CONFIG.absolutePath(), "");
         String myObjectConfigPath = PathGenerator.generate("");
+
+        PropertyDeepCopier deepCopier = PropertyDeepCopier.getInstance();
 
         // INITIALIZATION
         InputDataInitializer.initialize();
 
         // RCONFIGURATOR TEST
         System.out.println("///// Pre configuration /////");
-        printObjectDetails();
-        // printClassDetails();
+        System.out.println(deepCopier.deepCopy(clazz));
 
-        Objects.requireNonNull(configurationFilesObject(myObjectConfigPath)).forEach(System.out::println);
+
+        // Objects.requireNonNull(configurationFilesObject(myObjectConfigPath)).forEach(System.out::println);
         // configureObjectWithRConfigurator(myObjectConfigPath);
+        Objects.requireNonNull(configurationFilesClass(myClassConfigPath)).forEach(System.out::println);
         // configureClassWithRConfigurator(myClassConfigPath);
 
         System.out.println("///// Post configuration /////");
-        printObjectDetails();
-        // printClassDetails();
+        System.out.println(deepCopier.deepCopy(clazz));
     }
 
     private static List<File> configurationFilesObject(String path) {
         try {
             return configurationFilesProvider.getConfigurationFiles((Object)object, path);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    private static List<File> configurationFilesClass(String path) {
+        try {
+            return configurationFilesProvider.getConfigurationFiles(clazz, path);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             return null;
@@ -83,30 +91,5 @@ public class ConfiguratorTester {
                  IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private static void printClassDetails() {
-        Arrays.stream(clazz.getDeclaredFields()).forEach(field -> {
-            field.setAccessible(true);
-            try {
-                // Prevent NullPointerException
-                if(Modifier.isStatic(field.getModifiers())) {
-                    System.out.println(field.getName() + " = " + field.get(null));
-                }
-            } catch (IllegalAccessException e) {
-                throw new RuntimeException(e);
-            }
-        });
-    }
-
-    private static void printObjectDetails() {
-        Arrays.stream(object.getClass().getDeclaredFields()).forEach(field -> {
-            field.setAccessible(true);
-            try {
-                System.out.println(field.getName() + " = " + field.get(object));
-            } catch (IllegalAccessException e) {
-                throw new RuntimeException(e);
-            }
-        });
     }
 }

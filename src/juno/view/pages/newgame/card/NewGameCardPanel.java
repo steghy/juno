@@ -3,7 +3,8 @@ package juno.view.pages.newgame.card;
 import javax.swing.*;
 import java.awt.*;
 
-public class NewGameCardPanel extends JPanel {
+public class NewGameCardPanel
+        extends JPanel {
 
     public static final String NEW_GAME_PANEL = "New game panel";
     public static final String SINGLE_PLAYER_PANEL = "Single player panel";
@@ -47,17 +48,5 @@ public class NewGameCardPanel extends JPanel {
 
     public void setMultiplayerPanel(JPanel multiplayerPanel) {
         this.multiplayerPanel = multiplayerPanel;
-    }
-
-    public JPanel getNewGamePanel() {
-        return newGamePanel;
-    }
-
-    public JPanel getSinglePlayerPanel() {
-        return singlePlayerPanel;
-    }
-
-    public JPanel getMultiplayerPanel() {
-        return multiplayerPanel;
     }
 }

@@ -5,7 +5,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
-public class HandsManager<T, E> implements AbstractHandsManager<T, E>, Observer{
+public class HandsManager<T, E>
+        implements InterfaceHandsManager<T, E>, Observer{
 
     private Map<?, ? extends List<?>> handsMap;
     private static HandsManager<?, ?> instance;
@@ -13,9 +14,8 @@ public class HandsManager<T, E> implements AbstractHandsManager<T, E>, Observer{
     private HandsManager() {}
 
     public static HandsManager<?, ?> getInstance() {
-        if(instance == null) {
-            instance = new HandsManager<>();
-        } return instance;
+        if(instance == null) instance = new HandsManager<>();
+        return instance;
     }
 
     @Override
@@ -34,11 +34,12 @@ public class HandsManager<T, E> implements AbstractHandsManager<T, E>, Observer{
 
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof AbstractHandsProvider<?, ?> handsMaintainer) {
+        if(object instanceof InterfaceHandsProvider<?, ?> handsMaintainer) {
             handsMap = new HashMap<>();
             this.handsMap = handsMaintainer.getHandsMap();
         } else {
-            throw new IllegalArgumentException("Invalid Subject object (" + object + ")");
+            throw new IllegalArgumentException("Invalid Subject object (" + object + ") " +
+                    "InterfaceHandsProvider expected.");
         }
     }
 }

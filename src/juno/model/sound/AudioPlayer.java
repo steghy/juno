@@ -10,8 +10,10 @@ import javax.sound.sampled.*;
 import juno.model.util.Donut;
 import juno.model.util.Observer;
 import juno.model.util.Observable;
+import org.jetbrains.annotations.NotNull;
 
-public class AudioPlayer implements AbstractAdvancedAudioPlayer, Observable, Runnable{
+public class AudioPlayer
+		implements InterfaceAdvancedAudioPlayer, Observable, Runnable{
 
 	private final List<Observer> observerList;
 	private Clip clip;
@@ -27,9 +29,8 @@ public class AudioPlayer implements AbstractAdvancedAudioPlayer, Observable, Run
 	}
 
 	public static AudioPlayer getInstance() {
-		if(instance == null) {
-			instance = new AudioPlayer();
-		} return instance;
+		if(instance == null) instance = new AudioPlayer();
+		return instance;
 	}
 
 	public void play() {
@@ -143,23 +144,23 @@ public class AudioPlayer implements AbstractAdvancedAudioPlayer, Observable, Run
 		return mute;
 	}
 
-	public void playEffect(final String path) {
+	public void playEffect(@NotNull final String path) {
 		load(new File(path));
 		play();
 	}
 
-	public void setTracks(File[] tracks) {
-		if(tracks != null && tracks.length > 0) {
+	public void setTracks(@NotNull File[] tracks) {
+		if(tracks.length > 0) {
 			this.tracks = new Donut<>();
 			this.tracks.addAll(Arrays.asList(tracks));
 			this.tracks.initialize(0);
 			load(this.tracks.current());
 		} else {
-			throw new IllegalArgumentException("Invalid input");
+			throw new IllegalArgumentException("Length 0.");
 		}
 	}
 
-	private void load(File track) {
+	private void load(@NotNull File track) {
 		try {
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(track);
 			clip = AudioSystem.getClip();
@@ -179,12 +180,12 @@ public class AudioPlayer implements AbstractAdvancedAudioPlayer, Observable, Run
 	}
 
 	@Override
-	public void addObserver(Observer observer) {
+	public void addObserver(@NotNull Observer observer) {
 		observerList.add(observer);
 	}
 
 	@Override
-	public void removeObserver(Observer observer) {
+	public void removeObserver(@NotNull Observer observer) {
 		observerList.remove(observer);
 	}
 

@@ -2,13 +2,16 @@ package juno.model.sound.mantainer;
 
 import juno.model.util.Observer;
 import juno.model.util.Observable;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class AudioTracksMaintainer implements AbstractTracksMaintainer, AbstractTracksGenerator, Observable {
+public class AudioTracksMaintainer
+        implements InterfaceTracksMaintainer,
+        InterfaceTracksGenerator, Observable {
 
     private Collection<File> files;
     private final List<Observer> observerList;
@@ -19,18 +22,17 @@ public class AudioTracksMaintainer implements AbstractTracksMaintainer, Abstract
     }
 
     public static AudioTracksMaintainer getInstance() {
-        if(instance == null) {
-            instance = new AudioTracksMaintainer();
-        } return instance;
+        if(instance == null) instance = new AudioTracksMaintainer();
+        return instance;
     }
 
     @Override
-    public void addObserver(Observer observer) {
+    public void addObserver(@NotNull Observer observer) {
         observerList.add(observer);
     }
 
     @Override
-    public void removeObserver(Observer observer) {
+    public void removeObserver(@NotNull Observer observer) {
         observerList.remove(observer);
     }
 
@@ -45,7 +47,7 @@ public class AudioTracksMaintainer implements AbstractTracksMaintainer, Abstract
     }
 
     @Override
-    public void setTracks(Collection<File> files) {
+    public void setTracks(@NotNull Collection<File> files) {
         this.files = files;
         updateAll();
     }
