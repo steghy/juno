@@ -122,8 +122,14 @@ public class RConfigurator
                         if (value instanceof Character characterValue) {
                             field.set(object, characterValue);
                         } else {
-                            throw new IllegalArgumentException("Incompatible types:" +
-                                    "[Field type: " + fieldType + "], [Value type: " + valueType + "]");
+                            if(value instanceof String stringValue) {
+                                if(stringValue.length() == 1) {
+                                    field.set(object, stringValue.charAt(0));
+                                }
+                            } else {
+                                throw new IllegalArgumentException("Incompatible types:" +
+                                        "[Field type: " + fieldType + "], [Value type: " + valueType + "]");
+                            }
                         } break;
                     case "boolean":
                         if (value instanceof Boolean booleanValue) {
