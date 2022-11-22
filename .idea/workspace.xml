@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/test/JSONDataImporterTester.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/test/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/output-file.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/config/output-file.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/RConfigurator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/RConfigurator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/RConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/RConfigurator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/test/PropertyDeepCopierTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/test/PropertyDeepCopierTester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/test/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/test/Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +72,7 @@
       <recent name="juno.view.pages.newgame.menu.singleplayer.title" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.PropertyDeepCopierTester">
+  <component name="RunManager" selected="Application.Test">
     <configuration name="ConfiguratorTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="juno.model.data.io.input.test.ConfiguratorTester" />
       <module name="juno-project" />
@@ -117,19 +112,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RConfigurator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="juno.model.data.io.input.RConfigurator" />
-      <module name="juno-project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="juno.model.data.io.input.IllegalAccessException" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ReflectedConfiguratorTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="juno.model.util.test.ReflectedConfiguratorTester" />
       <module name="juno-project" />
@@ -143,13 +125,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="juno.model.data.io.input.test.Test" />
+      <module name="juno-project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="juno.model.data.io.input.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Test" />
         <item itemvalue="Application.PropertyDeepCopierTester" />
         <item itemvalue="Application.ConfiguratorTester" />
         <item itemvalue="Application.JSONDataImporterTester" />
         <item itemvalue="Application.ReflectedConfiguratorTester" />
-        <item itemvalue="Application.RConfigurator" />
       </list>
     </recent_temporary>
   </component>
