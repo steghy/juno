@@ -1,6 +1,5 @@
 package juno.model.data.io.input;
 
-import juno.model.data.io.InterfaceDeepCopier;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Field;

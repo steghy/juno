@@ -55,7 +55,7 @@ public class MenuPanel
 
         // LOG IN BUTTON
         gbc.gridx = 0;
-        gbc.gridy = 2;
+        gbc.gridy = 1;
 
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;

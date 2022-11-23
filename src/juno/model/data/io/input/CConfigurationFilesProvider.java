@@ -29,6 +29,7 @@ public class CConfigurationFilesProvider
     public List<File> getConfigurationFiles(@NotNull Configurable configurable,
                                             @NotNull String path) throws FileNotFoundException{
         configurationFiles.clear();
+        if (!new File(path).exists()) throw new FileNotFoundException(path);
         setConfigurationFilesRecursive(configurable, path);
         return configurationFiles;
     }

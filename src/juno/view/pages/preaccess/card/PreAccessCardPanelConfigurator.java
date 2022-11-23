@@ -35,6 +35,10 @@ public class PreAccessCardPanelConfigurator {
 
         // SELECTOR
         preAccessInitialChooser.setConfigurationFilesProvider(ConfigurationFilesProvider.getInstance());
-        PreAccessInitialChooser.getInstance().setFirstPanelToShow(Directories.PROFILES.absolutePath(), Profile.getInstance());
+
+        // CALL
+        PreAccessInitialChooser.getInstance()
+                .setFirstPanelToShow(Directories.PROFILES.absolutePath(),
+                                     Profile.getInstance());
     }
 }

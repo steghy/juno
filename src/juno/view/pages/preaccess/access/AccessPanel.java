@@ -26,7 +26,7 @@ public class AccessPanel
             throw new IllegalArgumentException("Menu panel is null");
         }
 
-        setOpaque(true);
+        setOpaque(false);
         setLayout(new GridBagLayout());
 
         GridBagConstraints gbc = new GridBagConstraints();

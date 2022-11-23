@@ -13,5 +13,5 @@ public class ExitManager
         return instance;
     }
 
-    public void exit() {}
+    public void exit() {System.exit(0);}
 }
