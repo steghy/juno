@@ -1,6 +1,6 @@
 package juno.view.pages.preaccess.registration.menu;
 
-import juno.controller.AbstractDataProvider;
+import juno.controller.InterfaceRegistrationDataProvider;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class MenuPanel
         extends JPanel
-        implements AbstractDataProvider {
+        implements InterfaceRegistrationDataProvider {
 
     private JLabel userNameLabel;
     private JLabel nameLabel;
@@ -278,7 +278,7 @@ public class MenuPanel
     }
 
     @Override
-    public Map<String, Object> getData() {
+    public Map<String, Object> provideRegistrationData() {
         if(init) {
             Map<String, Object> map = new HashMap<>();
             map.put("username", userNameTextField.getText());

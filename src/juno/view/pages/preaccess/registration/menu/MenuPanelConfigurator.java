@@ -1,6 +1,6 @@
 package juno.view.pages.preaccess.registration.menu;
 
-import juno.controller.SendRegistrationDataAction;
+import juno.controller.RegistrationDataChecker;
 import juno.view.factories.ButtonFactory;
 import juno.view.factories.ButtonLibrary;
 import juno.view.pages.preaccess.card.PreAccessCardPanel;
@@ -68,7 +68,8 @@ public class MenuPanelConfigurator {
         ImageResizer.resize(backButton, 3.0);
 
         // ACTION LISTENERS
-        confirmButton.addActionListener(new SendRegistrationDataAction(menuPanel));
+        confirmButton.addActionListener(new RegistrationDataChecker(menuPanel));
+
         backButton.addActionListener(listener -> {
             LayoutManager layoutManager = PreAccessCardPanel.getInstance().getLayout();
             if(layoutManager instanceof CardLayout cardLayout) {

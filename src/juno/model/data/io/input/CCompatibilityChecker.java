@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class CCompatibilityChecker
         extends AbstractCompatibilityChecker
-        implements InterfaceCCompatibilityChecker {
+        implements InterfaceStringCCompatibilityChecker, InterfaceMapCCompatibilityChecker {
 
     private static CCompatibilityChecker instance;
 
@@ -23,6 +23,25 @@ public class CCompatibilityChecker
         boolean isValid = false;
         try {
             Map<String, Object> map = getDataImporter().importData(path);
+            if(!map.isEmpty()) {
+                configurable.configure(map);
+                isValid = true;
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        if(!properties.isEmpty())
+            configurable.configure(properties);
+        return isValid;
+    }
+
+    @Override
+    public boolean checkCompatibilityOf(@NotNull Configurable configurable,
+                                        @NotNull Map<String, Object> map) {
+        Map<String, Object> properties = getPropertyCopier().copy(configurable);
+        boolean isValid = false;
+        try {
             if(!map.isEmpty()) {
                 configurable.configure(map);
                 isValid = true;

@@ -4,13 +4,13 @@ import org.jetbrains.annotations.NotNull;
 
 public class AbstractCConfigurationFilesProvider {
 
-    InterfaceCCompatibilityChecker cCompatibilityChecker;
+    InterfaceStringCCompatibilityChecker cCompatibilityChecker;
 
-    public void setCCompatibilityChecker(@NotNull InterfaceCCompatibilityChecker cCompatibilityChecker) {
+    public void setCCompatibilityChecker(@NotNull InterfaceStringCCompatibilityChecker cCompatibilityChecker) {
         this.cCompatibilityChecker = cCompatibilityChecker;
     }
 
-    public InterfaceCCompatibilityChecker getCCompatibilityChecker() {
+    public InterfaceStringCCompatibilityChecker getCCompatibilityChecker() {
         return cCompatibilityChecker;
     }
 }
