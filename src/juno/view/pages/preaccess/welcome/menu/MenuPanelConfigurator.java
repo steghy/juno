@@ -2,8 +2,8 @@ package juno.view.pages.preaccess.welcome.menu;
 
 import juno.controller.ExitAction;
 import juno.model.data.io.output.ExitManager;
-import juno.view.factories.buttons.ButtonFactory;
-import juno.view.factories.buttons.ButtonLibrary;
+import juno.view.factories.ButtonFactory;
+import juno.view.factories.ButtonLibrary;
 import juno.view.pages.preaccess.card.PreAccessCardPanel;
 import juno.view.pages.preaccess.registration.RegistrationPanel;
 import juno.view.util.ImageResizer;

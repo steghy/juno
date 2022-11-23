@@ -1,9 +1,12 @@
 package juno.view.pages.newgame.singleplayer.mode.title;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class TitlePanel extends JPanel {
+public class TitlePanel
+        extends JPanel {
 
     private AbstractButton titleButton;
     private static TitlePanel instance;
@@ -11,9 +14,8 @@ public class TitlePanel extends JPanel {
     private TitlePanel() {}
 
     public static TitlePanel getInstance() {
-        if(instance == null) {
-            instance = new TitlePanel();
-        } return instance;
+        if(instance == null) instance = new TitlePanel();
+        return instance;
     }
 
     public void init() {
@@ -40,11 +42,7 @@ public class TitlePanel extends JPanel {
         this.add(titleButton, gbc);
     }
 
-    public void setTitleButton(AbstractButton title) {
+    public void setTitleButton(@NotNull AbstractButton title) {
         this.titleButton = title;
-    }
-
-    public AbstractButton getTitleButton() {
-        return titleButton;
     }
 }

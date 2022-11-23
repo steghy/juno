@@ -19,12 +19,12 @@ public class ImageComponentInitializer {
                                   @NotNull InterfaceDirectories path,
                                   boolean download,
                                   String name,
-                                  String file,
-                                  String rolloverFile,
+                                  @NotNull String file,
+                                  @NotNull String rolloverFile,
                                   Dimension dimension,
-                                  Constant BOTH_MISSING,
-                                  Constant IMAGE_MISSING,
-                                  Constant ROLLOVER_IMAGE_MISSING) {
+                                  @NotNull Constant BOTH_MISSING,
+                                  @NotNull Constant IMAGE_MISSING,
+                                  @NotNull Constant ROLLOVER_IMAGE_MISSING) {
         // IMAGE
         button.setName(name);
         String imageAbsolutePath = PathGenerator.generate(path.absolutePath(), file);

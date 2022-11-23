@@ -19,7 +19,7 @@ public class TitlePanel extends JPanel {
     }
 
     public void init() {
-        if(titleButton == null) {
+        if (titleButton == null) {
             throw new IllegalArgumentException("Title button is null");
         }
 
@@ -45,10 +45,4 @@ public class TitlePanel extends JPanel {
     public void setTitleButton(@NotNull AbstractButton titleButton) {
         this.titleButton = titleButton;
     }
-
-    public AbstractButton getTitleButton() {
-        return titleButton;
-    }
-
-
 }

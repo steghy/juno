@@ -1,5 +1,7 @@
 package juno.view.pages.newgame.singleplayer.card;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -26,11 +28,11 @@ public class SinglePlayerCardPanel
     public void init() {
         if(playersNumberPanel == null) {
             throw new IllegalArgumentException("Players number panel is null");
-        } if(modePanel == null) {
-            throw new IllegalArgumentException("Mode panel is null");
-        } if(difficultyPanel == null) {
+        } if (difficultyPanel == null) {
             throw new IllegalArgumentException("Difficulty panel is null");
-        } if(matchPanel == null) {
+        } if (modePanel == null) {
+            throw new IllegalArgumentException("Mode panel is null");
+        } if (matchPanel == null) {
             throw new IllegalArgumentException("Match panel is null");
         }
 
@@ -42,19 +44,19 @@ public class SinglePlayerCardPanel
         add(matchPanel, MATCH_PANEL);
     }
 
-    public void setPlayersNumberPanel(JPanel playersNumberPanel) {
+    public void setPlayersNumberPanel(@NotNull JPanel playersNumberPanel) {
         this.playersNumberPanel = playersNumberPanel;
     }
 
-    public void setModePanel(JPanel modePanel) {
+    public void setModePanel(@NotNull JPanel modePanel) {
         this.modePanel = modePanel;
     }
 
-    public void setMatchPanel(JPanel matchPanel) {
+    public void setMatchPanel(@NotNull JPanel matchPanel) {
         this.matchPanel = matchPanel;
     }
 
-    public void setDifficultyPanel(JPanel difficultyPanel) {
+    public void setDifficultyPanel(@NotNull JPanel difficultyPanel) {
         this.difficultyPanel = difficultyPanel;
     }
 }

@@ -3,7 +3,8 @@ package juno.view.avatar;
 import javax.swing.*;
 import java.awt.*;
 
-public class AvatarsPanel extends JPanel {
+public class AvatarsPanel
+        extends JPanel {
 
     private GridBagConstraints gbc;
 
@@ -12,9 +13,8 @@ public class AvatarsPanel extends JPanel {
     private AvatarsPanel() {}
 
     public static AvatarsPanel getInstance() {
-        if(instance == null) {
-            instance = new AvatarsPanel();
-        } return instance;
+        if(instance == null) instance = new AvatarsPanel();
+        return instance;
     }
 
     public void init() {

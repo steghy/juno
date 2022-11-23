@@ -21,16 +21,16 @@ public class MenuPanel
     }
 
     public void init() {
-       if(unavailableServiceLabel == null) {
-           throw new IllegalArgumentException("Unavailable service label is null");
-       } if(backButton == null) {
-           throw new IllegalArgumentException("Back button is null");
-       }
+        if (unavailableServiceLabel == null) {
+            throw new IllegalArgumentException("Unavailable service label is null");
+        } if (backButton == null) {
+            throw new IllegalArgumentException("Back button is null");
+        }
 
-       setOpaque(false);
-       setLayout(new GridBagLayout());
+        setOpaque(false);
+        setLayout(new GridBagLayout());
 
-       GridBagConstraints gbc = new GridBagConstraints();
+        GridBagConstraints gbc = new GridBagConstraints();
 
         // UNAVAILABLE SERVICE LABEL
         gbc.gridx = 0;

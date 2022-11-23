@@ -16,7 +16,6 @@ public class MenuPanel
     }
 
     public void init() {
-
         this.setOpaque(false);
         this.setLayout(new GridBagLayout());
 

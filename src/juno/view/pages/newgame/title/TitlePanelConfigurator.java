@@ -1,7 +1,7 @@
 package juno.view.pages.newgame.title;
 
-import juno.view.factories.buttons.ButtonFactory;
-import juno.view.factories.buttons.ButtonLibrary;
+import juno.view.factories.ButtonFactory;
+import juno.view.factories.ButtonLibrary;
 import juno.view.util.ImageResizer;
 import juno.view.util.RoundedBorder;
 
@@ -14,11 +14,10 @@ public class TitlePanelConfigurator {
     private TitlePanelConfigurator() {}
 
     public static void configure() {
-
-        // COMPONENTS
+        // COMPONENT
         TitlePanel titlePanel = TitlePanel.getInstance();
 
-        // SUB-COMPONENTS
+        // SUB COMPONENTS
         AbstractButton titleButton = ButtonFactory.createButton(ButtonLibrary.NEW_GAME);
 
         // RESIZE IMAGE

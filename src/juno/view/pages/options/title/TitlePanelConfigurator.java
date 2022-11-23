@@ -1,7 +1,7 @@
 package juno.view.pages.options.title;
 
-import juno.view.factories.buttons.ButtonFactory;
-import juno.view.factories.buttons.ButtonLibrary;
+import juno.view.factories.ButtonFactory;
+import juno.view.factories.ButtonLibrary;
 import juno.view.util.*;
 
 import javax.swing.*;
@@ -13,10 +13,13 @@ public class TitlePanelConfigurator {
     private TitlePanelConfigurator() {}
 
     public static void configure() {
+        // MAIN COMPONENT
         TitlePanel titlePanel = TitlePanel.getInstance();
 
+        // SUB COMPONENTS
         AbstractButton title = ButtonFactory.createButton(ButtonLibrary.SETTINGS);
 
+        // RESIZE IMAGE
         ImageResizer.resize(title, 3.0);
 
         // SETTING COMPONENTS

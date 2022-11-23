@@ -1,16 +1,13 @@
-package juno.view.factories.buttons;
+package juno.view.factories;
 
 public enum ButtonLibrary {
 
     // LOGO //
     JUNO,
 
-    // PRE ACCESS SECTIONI //
-
-    // WELCOME //
+    // PRE ACCESS PANEL //
     WELCOME,
     WELCOME_BACK,
-
     REGISTRATION,
     CREATE_AN_ACCOUNT,
     CONTINUE_WITHOUT_AN_ACCOUNT,
@@ -22,8 +19,6 @@ public enum ButtonLibrary {
     SCORE,
     OPTIONS,
     EXIT,
-
-    // SCORE MENU //
 
     // AVATARS PANEL //
     AVATAR_1,

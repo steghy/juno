@@ -9,6 +9,8 @@ public enum Directories
 	// DATA -> CONFIG
 	CONFIG(DATA,"config"),
 	PROFILES(CONFIG, "profiles"),
+	AWARDS(CONFIG, "awards"),
+	SCORES(CONFIG, "scores"),
 
 	// DATA -> AUDIO
 	AUDIO(DATA, "audio"),

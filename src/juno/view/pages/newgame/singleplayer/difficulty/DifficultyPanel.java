@@ -1,5 +1,7 @@
 package juno.view.pages.newgame.singleplayer.difficulty;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -21,7 +23,7 @@ public class DifficultyPanel
     public void init() {
         if(titlePanel == null) {
             throw new IllegalArgumentException("Title panel is null");
-        } if(menuPanel == null) {
+        } if (menuPanel == null) {
             throw new IllegalArgumentException("Menu panel is null");
         }
 
@@ -63,11 +65,11 @@ public class DifficultyPanel
         this.add(menuPanel, gbc);
     }
 
-    public void setTitlePanel(JPanel titlePanel) {
+    public void setTitlePanel(@NotNull JPanel titlePanel) {
         this.titlePanel = titlePanel;
     }
 
-    public void setMenuPanel(JPanel menuPanel) {
+    public void setMenuPanel(@NotNull JPanel menuPanel) {
         this.menuPanel = menuPanel;
     }
 }

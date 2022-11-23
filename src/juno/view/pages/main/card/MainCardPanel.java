@@ -1,9 +1,12 @@
 package juno.view.pages.main.card;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class MainCardPanel extends JPanel {
+public class MainCardPanel
+        extends JPanel {
 
     private JPanel mainPanel;
     private JPanel optionsPanel;
@@ -20,9 +23,8 @@ public class MainCardPanel extends JPanel {
     private MainCardPanel() {}
 
     public static MainCardPanel getInstance() {
-        if(instance == null) {
-            instance = new MainCardPanel();
-        } return instance;
+        if(instance == null) instance = new MainCardPanel();
+        return instance;
     }
 
     public void init() {
@@ -44,35 +46,19 @@ public class MainCardPanel extends JPanel {
         add(newGamePanel, NEW_GAME_PANEL);
     }
 
-    public void setMainPanel(JPanel mainPanel) {
+    public void setMainPanel(@NotNull JPanel mainPanel) {
         this.mainPanel = mainPanel;
     }
 
-    public void setOptionsPanel(JPanel optionsPanel) {
+    public void setOptionsPanel(@NotNull JPanel optionsPanel) {
         this.optionsPanel = optionsPanel;
     }
 
-    public void setScorePanel(JPanel scorePanel) {
+    public void setScorePanel(@NotNull JPanel scorePanel) {
         this.scorePanel = scorePanel;
     }
 
-    public void setNewGamePanel(JPanel newGamePanel) {
+    public void setNewGamePanel(@NotNull JPanel newGamePanel) {
         this.newGamePanel = newGamePanel;
-    }
-
-    public JPanel getMainPanel() {
-        return mainPanel;
-    }
-
-    public JPanel getOptionsPanel() {
-        return optionsPanel;
-    }
-
-    public JPanel getScorePanel() {
-        return scorePanel;
-    }
-
-    public JPanel getNewGamePanel() {
-        return newGamePanel;
     }
 }

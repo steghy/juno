@@ -10,8 +10,10 @@ public class MultiplayerCardPanel
 
     public static final String UNAVAILABLE_SERVICE_PANEL = "Unavailable service panel";
     public static final String AVAILABLE_SERVICE_PANEL = "Available service panel";
+
     private JPanel availableServicePanel;
     private JPanel unavailableServicePanel;
+
     private static MultiplayerCardPanel instance;
 
     private MultiplayerCardPanel() {}
@@ -22,10 +24,10 @@ public class MultiplayerCardPanel
     }
 
     public void init() {
-        if(unavailableServicePanel == null) {
-            throw new IllegalArgumentException("Unavailable service panel is null");
-        } if(availableServicePanel == null) {
+        if (availableServicePanel == null) {
             throw new IllegalArgumentException("Available service panel is null");
+        } if (unavailableServicePanel == null) {
+            throw new IllegalArgumentException("Unavailable service panel is null");
         }
 
         setOpaque(false);

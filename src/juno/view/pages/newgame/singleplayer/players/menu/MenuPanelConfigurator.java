@@ -2,8 +2,8 @@ package juno.view.pages.newgame.singleplayer.players.menu;
 
 import juno.controller.ChangePanelAction;
 import juno.controller.SetDifficultyAction;
-import juno.view.factories.buttons.ButtonFactory;
-import juno.view.factories.buttons.ButtonLibrary;
+import juno.view.factories.ButtonFactory;
+import juno.view.factories.ButtonLibrary;
 import juno.view.pages.newgame.card.NewGameCardPanel;
 import juno.view.pages.newgame.singleplayer.card.SinglePlayerCardPanel;
 import juno.view.util.ImageResizer;
@@ -18,8 +18,10 @@ public class MenuPanelConfigurator {
     private MenuPanelConfigurator() {}
 
     public static void configure() {
+        // MAIN COMPONENT
         MenuPanel menuPanel = MenuPanel.getInstance();
 
+        // SUB COMPONENTS
         AbstractButton twoPlayers = ButtonFactory.createButton(ButtonLibrary.TWO_PLAYERS);
         AbstractButton threePlayers = ButtonFactory.createButton(ButtonLibrary.THREE_PLAYERS);
         AbstractButton fourPlayers = ButtonFactory.createButton(ButtonLibrary.FOUR_PLAYERS);

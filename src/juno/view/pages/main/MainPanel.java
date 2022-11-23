@@ -1,9 +1,12 @@
 package juno.view.pages.main;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class MainPanel extends JPanel {
+public class MainPanel
+        extends JPanel {
 
     private JPanel menuPanel;
     private JPanel titlePanel;
@@ -12,9 +15,8 @@ public class MainPanel extends JPanel {
     private MainPanel() {}
 
     public static MainPanel getInstance() {
-        if(instance == null) {
-            instance = new MainPanel();
-        } return instance;
+        if(instance == null) instance = new MainPanel();
+        return instance;
     }
 
     public void init() {
@@ -63,11 +65,11 @@ public class MainPanel extends JPanel {
 
     }
 
-    public void setMenuPanel(JPanel menuPanel) {
+    public void setMenuPanel(@NotNull JPanel menuPanel) {
         this.menuPanel = menuPanel;
     }
 
-    public void setTitlePanel(JPanel titlePanel) {
+    public void setTitlePanel(@NotNull JPanel titlePanel) {
         this.titlePanel = titlePanel;
     }
 }

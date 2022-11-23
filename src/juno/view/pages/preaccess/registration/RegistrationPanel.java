@@ -5,7 +5,8 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.*;
 
-public class RegistrationPanel extends JPanel {
+public class RegistrationPanel
+        extends JPanel {
 
     private JPanel titlePanel;
     private JPanel menuPanel;
@@ -15,15 +16,14 @@ public class RegistrationPanel extends JPanel {
     private RegistrationPanel() {}
 
     public static RegistrationPanel getInstance() {
-        if(instance == null) {
-            instance = new RegistrationPanel();
-        } return instance;
+        if(instance == null) instance = new RegistrationPanel();
+        return instance;
     }
 
     public void init() {
-        if(titlePanel == null) {
+        if (titlePanel == null) {
             throw new IllegalArgumentException("Title panel is null");
-        } if(menuPanel == null) {
+        } if (menuPanel == null) {
             throw new IllegalArgumentException("Menu panel is null");
         }
 
@@ -75,14 +75,6 @@ public class RegistrationPanel extends JPanel {
 
     public void setFromWelcomePanel(boolean value) {
         this.fromWelcomePanel = value;
-    }
-
-    public JPanel getTitlePanel() {
-        return titlePanel;
-    }
-
-    public JPanel getMenuPanel() {
-        return menuPanel;
     }
 
     public boolean isFromWelcomePanel() {

@@ -1,26 +1,29 @@
 package juno.view.pages.newgame.singleplayer.mode;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class ModePanel extends JPanel {
+public class ModePanel
+        extends JPanel {
 
     private JPanel titlePanel;
     private JPanel menuPanel;
+
     private static ModePanel instance;
 
     private ModePanel() {}
 
     public static ModePanel getInstance() {
-        if(instance == null) {
-            instance = new ModePanel();
-        } return instance;
+        if(instance == null) instance = new ModePanel();
+        return instance;
     }
 
     public void init() {
         if(titlePanel == null) {
             throw new IllegalArgumentException("Title panel is null");
-        } if(menuPanel == null) {
+        } if (menuPanel == null) {
             throw new IllegalArgumentException("Menu panel is null");
         }
 
@@ -62,19 +65,11 @@ public class ModePanel extends JPanel {
         this.add(menuPanel, gbc);
     }
 
-    public void setTitlePanel(JPanel titlePanel) {
+    public void setTitlePanel(@NotNull JPanel titlePanel) {
         this.titlePanel = titlePanel;
     }
 
-    public void setMenuPanel(JPanel menuPanel) {
+    public void setMenuPanel(@NotNull JPanel menuPanel) {
         this.menuPanel = menuPanel;
-    }
-
-    public JPanel getTitlePanel() {
-        return titlePanel;
-    }
-
-    public JPanel getMenuPanel() {
-        return menuPanel;
     }
 }

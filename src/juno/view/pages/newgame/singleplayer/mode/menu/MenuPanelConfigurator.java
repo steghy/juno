@@ -1,8 +1,8 @@
 package juno.view.pages.newgame.singleplayer.mode.menu;
 
 import juno.controller.ChangePanelAction;
-import juno.view.factories.buttons.ButtonFactory;
-import juno.view.factories.buttons.ButtonLibrary;
+import juno.view.factories.ButtonFactory;
+import juno.view.factories.ButtonLibrary;
 import juno.view.pages.newgame.singleplayer.card.SinglePlayerCardPanel;
 import juno.view.util.ImageResizer;
 import juno.view.util.RoundedBorder;

@@ -8,8 +8,11 @@ public class OptionsInitializer {
     private OptionsInitializer() {}
 
     public static void initialize() {
+        // SUB COMPONENTS
         MenuPanelConfigurator.configure();
         TitlePanelConfigurator.configure();
+
+        // MAIN COMPONENT
         OptionsPanelConfigurator.configure();
     }
 }

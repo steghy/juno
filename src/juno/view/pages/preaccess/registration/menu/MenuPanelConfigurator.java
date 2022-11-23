@@ -1,8 +1,8 @@
 package juno.view.pages.preaccess.registration.menu;
 
 import juno.controller.SendRegistrationDataAction;
-import juno.view.factories.buttons.ButtonFactory;
-import juno.view.factories.buttons.ButtonLibrary;
+import juno.view.factories.ButtonFactory;
+import juno.view.factories.ButtonLibrary;
 import juno.view.pages.preaccess.card.PreAccessCardPanel;
 import juno.view.pages.preaccess.registration.RegistrationPanel;
 import juno.view.util.ImageResizer;
@@ -26,6 +26,19 @@ public class MenuPanelConfigurator {
         JLabel nameLabel = new JLabel("name:");
         JLabel lastNameLabel= new JLabel("last name:");
         JLabel ageLabel = new JLabel("age:");
+        // [ LABELS SETTINGS ]
+        // COLORS
+        userNameLabel.setForeground(Color.WHITE);
+        nameLabel.setForeground(Color.WHITE);
+        lastNameLabel.setForeground(Color.WHITE);
+        ageLabel.setForeground(Color.WHITE);
+        // TEXT DIMENSION
+        Font font = new Font(Font.MONOSPACED, Font.BOLD, 18);
+        userNameLabel.setFont(font);
+        nameLabel.setFont(font);
+        lastNameLabel.setFont(font);
+        ageLabel.setFont(font);
+
         // [ TEXT FIELDS ]
         JTextField userNameTextField = new JTextField(15);
         JTextField nameTextField = new JTextField(15);

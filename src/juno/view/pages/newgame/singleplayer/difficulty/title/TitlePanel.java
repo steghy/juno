@@ -1,5 +1,7 @@
 package juno.view.pages.newgame.singleplayer.difficulty.title;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -40,7 +42,7 @@ public class TitlePanel
         this.add(titleButton, gbc);
     }
 
-    public void setTitleButton(AbstractButton title) {
+    public void setTitleButton(@NotNull AbstractButton title) {
         this.titleButton = title;
     }
 }

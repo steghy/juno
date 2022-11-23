@@ -1,7 +1,7 @@
 package juno.view.avatar;
 
-import juno.view.factories.buttons.ButtonFactory;
-import juno.view.factories.buttons.ButtonLibrary;
+import juno.view.factories.ButtonFactory;
+import juno.view.factories.ButtonLibrary;
 
 import javax.swing.*;
 import java.util.Arrays;

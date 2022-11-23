@@ -1,9 +1,12 @@
 package juno.view.pages.preaccess.welcome.title;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class TitlePanel extends JPanel {
+public class TitlePanel
+        extends JPanel {
 
     private AbstractButton title;
     private static TitlePanel instance;
@@ -11,15 +14,15 @@ public class TitlePanel extends JPanel {
     private TitlePanel() {}
 
     public static TitlePanel getInstance() {
-        if(instance == null) {
-            instance = new TitlePanel();
-        } return instance;
+        if(instance == null) instance = new TitlePanel();
+        return instance;
     }
 
     public void init() {
         if(title == null) {
             throw new IllegalArgumentException("Title is null");
         }
+
         this.setOpaque(false);
         this.setLayout(new GridBagLayout());
 
@@ -41,11 +44,7 @@ public class TitlePanel extends JPanel {
         this.add(title, gbc);
     }
 
-    public void setTitle(AbstractButton title) {
+    public void setTitle(@NotNull AbstractButton title) {
         this.title = title;
-    }
-
-    public AbstractButton getTitle() {
-        return title;
     }
 }

@@ -1,9 +1,12 @@
 package juno.view.pages.options;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class OptionsPanel extends JPanel {
+public class OptionsPanel
+        extends JPanel {
 
     private JPanel titlePanel;
     private JPanel menuPanel;
@@ -12,9 +15,8 @@ public class OptionsPanel extends JPanel {
     private OptionsPanel() {}
 
     public static OptionsPanel getInstance() {
-        if(instance == null) {
-            instance = new OptionsPanel();
-        } return instance;
+        if(instance == null) instance = new OptionsPanel();
+        return instance;
     }
 
     public void init() {
@@ -23,6 +25,7 @@ public class OptionsPanel extends JPanel {
         } if(menuPanel == null) {
             throw new IllegalArgumentException("Menu panel is null");
         }
+
         this.setOpaque(false);
         this.setLayout(new GridBagLayout());
 
@@ -61,19 +64,11 @@ public class OptionsPanel extends JPanel {
         this.add(menuPanel, gbc);
     }
 
-    public void setTitlePanel(JPanel titlePanel) {
+    public void setTitlePanel(@NotNull JPanel titlePanel) {
         this.titlePanel = titlePanel;
     }
 
-    public void setMenuPanel(JPanel menuPanel) {
+    public void setMenuPanel(@NotNull JPanel menuPanel) {
         this.menuPanel = menuPanel;
-    }
-
-    public JPanel getTitlePanel() {
-        return titlePanel;
-    }
-
-    public JPanel getMenuPanel() {
-        return menuPanel;
     }
 }

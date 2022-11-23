@@ -21,9 +21,9 @@ public class UnavailableServicePanel
     }
 
     public void init() {
-        if(titlePanel == null) {
+        if (titlePanel == null) {
             throw new IllegalArgumentException("Title panel is null");
-        } if(menuPanel == null) {
+        } if (menuPanel == null) {
             throw new IllegalArgumentException("Menu panel is null");
         }
 

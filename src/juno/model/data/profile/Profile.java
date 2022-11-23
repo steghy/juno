@@ -35,7 +35,57 @@ public class Profile
     }
 
     @Override
-    public void configure(@NotNull Map<String, Object> map) {}
+    public void configure(@NotNull Map<String, Object> map) {
+        // PROFILE NAME
+        if(map.containsKey(PROFILE_NAME)) {
+            if(map.get(PROFILE_NAME) instanceof String profileNameFromMap) {
+                setProfileName(profileNameFromMap);
+            } else {
+                throw new IllegalArgumentException("Invalid object type " + map.get(PROFILE_NAME) +
+                        ". String expected");
+            }
+        } else {
+            throw new IllegalArgumentException(PROFILE_NAME + " not found in " + map);
+        }
+
+
+        // NAME
+        if(map.containsKey(NAME)) {
+            if (map.get(NAME) instanceof String nameFromMap) {
+                setName(nameFromMap);
+            } else {
+                throw new IllegalArgumentException("Invalid object type " + map.get(NAME).getClass() +
+                        ". String expected");
+            }
+        } else {
+            throw new IllegalArgumentException(NAME + " key not found in " + map);
+        }
+
+        // LAST NAME
+        if(map.containsKey(LAST_NAME)) {
+            if(map.get(LAST_NAME) instanceof String lastNameFromMap) {
+                setLastName(lastNameFromMap);
+            } else {
+                throw new IllegalArgumentException("Invalid object type " + map.get(LAST_NAME).getClass() +
+                        ". String expected");
+            }
+        }
+        else {
+            throw new IllegalArgumentException(LAST_NAME + " key not found in " + map);
+        }
+
+        // AGE
+        if(map.containsKey(AGE)) {
+            if(map.get(AGE) instanceof Integer ageFromMap) {
+                setAge(ageFromMap);
+            } else {
+                throw new IllegalArgumentException("Invalid object type " + map.get(AGE) +
+                        ". Integer expected");
+            }
+        } else {
+            throw new IllegalArgumentException(AGE + " key not found in " + map);
+        }
+    }
 
     @Override
     public Map<String, Object> exportData() {

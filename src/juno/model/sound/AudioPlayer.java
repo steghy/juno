@@ -169,7 +169,6 @@ public class AudioPlayer
 			if(mute) {
 				floatControl.setValue(-80);
 			}
-			System.out.println(floatControl.getValue());
 		} catch (LineUnavailableException e) {
 			throw new RuntimeException("Line not available: " + e);
 		} catch (IOException e) {

@@ -1,9 +1,12 @@
 package juno.view.pages.newgame.singleplayer.mode.menu;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class MenuPanel extends JPanel {
+public class MenuPanel
+        extends JPanel {
 
     private AbstractButton stackingModeButton;
 
@@ -12,14 +15,13 @@ public class MenuPanel extends JPanel {
     private MenuPanel() {}
 
     public static MenuPanel getInstance() {
-        if(instance == null) {
-            instance = new MenuPanel();
-        } return instance;
+        if(instance == null) instance = new MenuPanel();
+        return instance;
     }
 
     public void init() {
         if(stackingModeButton == null) {
-            throw new IllegalArgumentException("Stacking mode button is null");
+            throw new IllegalArgumentException("Stacking button is null");
         }
 
         setOpaque(false);
@@ -42,12 +44,7 @@ public class MenuPanel extends JPanel {
         this.add(stackingModeButton, gbc);
     }
 
-    public void setStackingModeButton(AbstractButton stackingModeButton) {
+    public void setStackingModeButton(@NotNull AbstractButton stackingModeButton) {
         this.stackingModeButton = stackingModeButton;
     }
-
-    public AbstractButton getStackingModeButton() {
-        return stackingModeButton;
-    }
-
 }

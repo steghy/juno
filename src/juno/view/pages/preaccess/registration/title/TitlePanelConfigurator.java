@@ -1,7 +1,7 @@
 package juno.view.pages.preaccess.registration.title;
 
-import juno.view.factories.buttons.ButtonFactory;
-import juno.view.factories.buttons.ButtonLibrary;
+import juno.view.factories.ButtonFactory;
+import juno.view.factories.ButtonLibrary;
 import juno.view.util.ImageResizer;
 import juno.view.util.RoundedBorder;
 

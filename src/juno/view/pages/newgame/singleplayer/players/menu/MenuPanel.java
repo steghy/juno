@@ -1,9 +1,12 @@
 package juno.view.pages.newgame.singleplayer.players.menu;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class MenuPanel extends JPanel {
+public class MenuPanel
+        extends JPanel {
 
     private AbstractButton twoPlayers;
     private AbstractButton threePlayers;
@@ -16,9 +19,7 @@ public class MenuPanel extends JPanel {
     }
 
     public static MenuPanel getInstance() {
-        if (instance == null) {
-            instance = new MenuPanel();
-        }
+        if (instance == null) instance = new MenuPanel();
         return instance;
     }
 
@@ -103,35 +104,19 @@ public class MenuPanel extends JPanel {
         this.add(backButton, gbc);
     }
 
-    public void setTwoPlayers(AbstractButton twoPlayers) {
+    public void setTwoPlayers(@NotNull AbstractButton twoPlayers) {
         this.twoPlayers = twoPlayers;
     }
 
-    public void setThreePlayers(AbstractButton threePlayers) {
+    public void setThreePlayers(@NotNull AbstractButton threePlayers) {
         this.threePlayers = threePlayers;
     }
 
-    public void setFourPlayers(AbstractButton fourPlayers) {
+    public void setFourPlayers(@NotNull AbstractButton fourPlayers) {
         this.fourPlayers = fourPlayers;
     }
 
-    public void setBackButton(AbstractButton backButton) {
+    public void setBackButton(@NotNull AbstractButton backButton) {
         this.backButton = backButton;
-    }
-
-    public AbstractButton getTwoPlayers() {
-        return twoPlayers;
-    }
-
-    public AbstractButton getThreePlayers() {
-        return threePlayers;
-    }
-
-    public AbstractButton getFourPlayers() {
-        return fourPlayers;
-    }
-
-    public AbstractButton getBackButton() {
-        return backButton;
     }
 }

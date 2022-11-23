@@ -1,5 +1,7 @@
 package juno.view.pages.newgame.menu;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -15,17 +17,16 @@ public class MenuPanel
     private MenuPanel() {}
     
     public static MenuPanel getInstance() {
-        if(instance == null) {
-            instance = new MenuPanel();
-        } return instance;
+        if(instance == null) instance = new MenuPanel();
+        return instance;
     }
     
     public void init() {
-        if(singlePlayer == null) {
-            throw new IllegalArgumentException("Single player is null");
-        } if(multiPlayer == null) {
-            throw new IllegalArgumentException("Multiplayer is null");
-        } if(backButton == null) {
+        if (singlePlayer == null) {
+            throw new IllegalArgumentException("Single player button is null");
+        } if (multiPlayer == null) {
+            throw new IllegalArgumentException("Multiplayer button is null");
+        } if (backButton == null) {
             throw new IllegalArgumentException("Back button is null");
         }
 
@@ -83,15 +84,15 @@ public class MenuPanel
         this.add(backButton, gbc);
     }
     
-    public void setSinglePlayer(AbstractButton singlePlayer) {
+    public void setSinglePlayer(@NotNull AbstractButton singlePlayer) {
         this.singlePlayer = singlePlayer;
     }
 
-    public void setMultiPlayer(AbstractButton multiPlayer) {
+    public void setMultiPlayer(@NotNull AbstractButton multiPlayer) {
         this.multiPlayer = multiPlayer;
     }
 
-    public void setBackButton(AbstractButton backButton) {
+    public void setBackButton(@NotNull AbstractButton backButton) {
         this.backButton = backButton;
     }
 }

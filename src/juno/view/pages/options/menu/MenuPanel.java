@@ -1,9 +1,12 @@
 package juno.view.pages.options.menu;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class MenuPanel extends JPanel {
+public class MenuPanel
+        extends JPanel {
 
     private AbstractButton toggleButtonMusic;
     private AbstractButton toggleButtonFullScreen;
@@ -13,9 +16,8 @@ public class MenuPanel extends JPanel {
     private MenuPanel() {}
 
     public static MenuPanel getInstance() {
-        if(instance == null) {
-            instance = new MenuPanel();
-        } return instance;
+        if(instance == null) instance = new MenuPanel();
+        return instance;
     }
 
     public void init() {
@@ -26,6 +28,7 @@ public class MenuPanel extends JPanel {
         } if(backButton == null) {
             throw new IllegalArgumentException("Back button is null");
         }
+
         this.setOpaque(false);
         this.setLayout(new GridBagLayout());
 
@@ -80,27 +83,15 @@ public class MenuPanel extends JPanel {
         this.add(backButton, gbc);
     }
 
-    public void setToggleButtonMusic(AbstractButton toggleButtonMusic) {
+    public void setToggleButtonMusic(@NotNull AbstractButton toggleButtonMusic) {
         this.toggleButtonMusic = toggleButtonMusic;
     }
 
-    public void setToggleButtonFullScreen(AbstractButton toggleButtonFullScreen) {
+    public void setToggleButtonFullScreen(@NotNull AbstractButton toggleButtonFullScreen) {
         this.toggleButtonFullScreen = toggleButtonFullScreen;
     }
 
-    public void setBackButton(AbstractButton backButton) {
+    public void setBackButton(@NotNull AbstractButton backButton) {
         this.backButton = backButton;
-    }
-
-    public AbstractButton getToggleButtonMusic() {
-        return toggleButtonMusic;
-    }
-
-    public AbstractButton getToggleButtonFullScreen() {
-        return toggleButtonFullScreen;
-    }
-
-    public AbstractButton getBackButton() {
-        return backButton;
     }
 }

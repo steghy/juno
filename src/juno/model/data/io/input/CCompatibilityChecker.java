@@ -30,7 +30,9 @@ public class CCompatibilityChecker
         } catch(Exception e) {
             e.printStackTrace();
         }
-        configurable.configure(properties);
+
+        if(!properties.isEmpty())
+            configurable.configure(properties);
         return isValid;
     }
 }

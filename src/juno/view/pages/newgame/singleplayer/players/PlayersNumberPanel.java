@@ -1,9 +1,12 @@
 package juno.view.pages.newgame.singleplayer.players;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class PlayersNumberPanel extends JPanel {
+public class PlayersNumberPanel
+        extends JPanel {
 
     private JPanel titlePanel;
     private JPanel menuPanel;
@@ -13,9 +16,8 @@ public class PlayersNumberPanel extends JPanel {
     private PlayersNumberPanel() {}
 
     public static PlayersNumberPanel getInstance() {
-        if(instance == null) {
-            instance = new PlayersNumberPanel();
-        } return instance;
+        if(instance == null) instance = new PlayersNumberPanel();
+        return instance;
     }
 
     public void init() {
@@ -55,11 +57,11 @@ public class PlayersNumberPanel extends JPanel {
         add(menuPanel, gbc);
     }
 
-    public void setTitlePanel(JPanel titlePanel) {
+    public void setTitlePanel(@NotNull JPanel titlePanel) {
         this.titlePanel = titlePanel;
     }
 
-    public void setMenuPanel(JPanel menuPanel) {
+    public void setMenuPanel(@NotNull JPanel menuPanel) {
         this.menuPanel = menuPanel;
     }
 

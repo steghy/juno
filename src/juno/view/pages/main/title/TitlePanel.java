@@ -1,9 +1,12 @@
 package juno.view.pages.main.title;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class TitlePanel extends JPanel {
+public class TitlePanel
+        extends JPanel {
 
     private AbstractButton logo;
 
@@ -12,9 +15,8 @@ public class TitlePanel extends JPanel {
     private TitlePanel() {}
 
     public static TitlePanel getInstance() {
-        if(instance == null) {
-            instance = new TitlePanel();
-        } return instance;
+        if(instance == null) instance = new TitlePanel();
+        return instance;
     }
 
     public void init() {
@@ -40,7 +42,7 @@ public class TitlePanel extends JPanel {
         this.add(logo, gbc);
     }
 
-    public void setLogo(AbstractButton logo) {
+    public void setLogo(@NotNull AbstractButton logo) {
         this.logo = logo;
     }
 }

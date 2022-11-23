@@ -20,7 +20,7 @@ public class TitlePanel
 
     public void init() {
         if(title == null) {
-            throw new IllegalArgumentException("Title is null");
+            throw new IllegalArgumentException("Title panel is null");
         }
 
         this.setOpaque(false);

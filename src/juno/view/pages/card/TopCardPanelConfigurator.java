@@ -11,7 +11,7 @@ public class TopCardPanelConfigurator {
         // MAIN COMPONENT
         TopCardPanel topCardPanel = TopCardPanel.getInstance();
 
-        // SUB-COMPONENTS
+        // SUB COMPONENTS
         PreAccessCardPanel preAccessCardPanel = PreAccessCardPanel.getInstance();
         MainCardPanel mainCardPanel = MainCardPanel.getInstance();
 

@@ -1,5 +1,7 @@
 package juno.view.pages.newgame.singleplayer.difficulty.menu;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -21,13 +23,13 @@ public class MenuPanel
     }
 
     public void init() {
-        if(easyButton == null) {
+        if (easyButton == null) {
             throw new IllegalArgumentException("Easy button is null");
-        } if(mediumButton == null) {
+        } if (mediumButton == null) {
             throw new IllegalArgumentException("Medium button is null");
-        } if(hardButton == null) {
+        } if (hardButton == null) {
             throw new IllegalArgumentException("Hard button is null");
-        } if(backButton == null) {
+        } if (backButton == null) {
             throw new IllegalArgumentException("Back button is null");
         }
 
@@ -93,23 +95,19 @@ public class MenuPanel
         this.add(backButton, gbc);
     }
 
-    public void setEasyButton(AbstractButton easyButton) {
+    public void setEasyButton(@NotNull AbstractButton easyButton) {
         this.easyButton = easyButton;
     }
 
-    public void setMedium(AbstractButton mediumButton) {
+    public void setMedium(@NotNull AbstractButton mediumButton) {
         this.mediumButton = mediumButton;
     }
 
-    public void setHardButton(AbstractButton hardButton) {
+    public void setHardButton(@NotNull AbstractButton hardButton) {
         this.hardButton = hardButton;
     }
 
-    public void setBackButton(AbstractButton backButton) {
+    public void setBackButton(@NotNull AbstractButton backButton) {
         this.backButton = backButton;
-    }
-
-    public AbstractButton getBackButton() {
-        return backButton;
     }
 }

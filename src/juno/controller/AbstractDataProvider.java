@@ -2,8 +2,8 @@ package juno.controller;
 
 import java.util.Map;
 
-public interface AbstractDataProvider<T, E> {
+public interface AbstractDataProvider {
 
-    Map<T, E> getData();
+    Map<String, Object> getData();
 
 }

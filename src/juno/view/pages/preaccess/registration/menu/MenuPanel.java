@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class MenuPanel
         extends JPanel
-        implements AbstractDataProvider<String, String> {
+        implements AbstractDataProvider {
 
     private JLabel userNameLabel;
     private JLabel nameLabel;
@@ -86,7 +86,7 @@ public class MenuPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
 
-        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.anchor = GridBagConstraints.LINE_END;
 
         gbc.insets = new Insets(0,0,5,0);
 
@@ -102,7 +102,7 @@ public class MenuPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
 
-        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.anchor = GridBagConstraints.LINE_END;
 
         gbc.insets = new Insets(0,0,5,0);
 
@@ -118,7 +118,7 @@ public class MenuPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
 
-        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.anchor = GridBagConstraints.LINE_END;
 
         gbc.insets = new Insets(0,0,5,0);
 
@@ -134,7 +134,7 @@ public class MenuPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
 
-        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.anchor = GridBagConstraints.LINE_END;
 
         gbc.insets = new Insets(0,0,5,0);
 
@@ -150,7 +150,7 @@ public class MenuPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
 
-        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.anchor = GridBagConstraints.LINE_START;
 
         gbc.insets = new Insets(0,0,5,0);
 
@@ -166,7 +166,7 @@ public class MenuPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
 
-        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.anchor = GridBagConstraints.LINE_START;
 
         gbc.insets = new Insets(0,0,5,0);
 
@@ -182,7 +182,7 @@ public class MenuPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
 
-        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.anchor = GridBagConstraints.LINE_START;
 
         gbc.insets = new Insets(0,0,5,0);
 
@@ -198,7 +198,7 @@ public class MenuPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
 
-        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.anchor = GridBagConstraints.LINE_START;
 
         gbc.insets = new Insets(0,0,5,0);
 
@@ -278,9 +278,9 @@ public class MenuPanel
     }
 
     @Override
-    public Map<String, String> getData() {
+    public Map<String, Object> getData() {
         if(init) {
-            Map<String, String> map = new HashMap<>();
+            Map<String, Object> map = new HashMap<>();
             map.put("username", userNameTextField.getText());
             map.put("name", nameTextField.getText());
             map.put("last name", lastNameTextField.getText());

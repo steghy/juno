@@ -18,7 +18,7 @@ public class Main {
             AudioPlayer audioPlayer = AudioPlayer.getInstance();
             audioPlayer.setTracks(Objects
                     .requireNonNull(new File(Directories.MUSIC.absolutePath()).listFiles()));
-            audioPlayer.play();
+            // audioPlayer.play();
             audioPlayer.setLoop(true);
 
             Frame frame = Frame.getInstance();

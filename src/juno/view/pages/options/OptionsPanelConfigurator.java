@@ -10,14 +10,18 @@ public class OptionsPanelConfigurator {
     private OptionsPanelConfigurator() {}
 
     public static void configure() {
+        // MAIN COMPONENT
         OptionsPanel optionsPanel = OptionsPanel.getInstance();
 
+        // SUB COMPONENTS
         JPanel titlePanel = TitlePanel.getInstance();
         JPanel menuPanel = MenuPanel.getInstance();
 
+        // ADDING COMPONENTS
         optionsPanel.setTitlePanel(titlePanel);
         optionsPanel.setMenuPanel(menuPanel);
 
+        // INITIALIZATION
         optionsPanel.init();
     }
 }

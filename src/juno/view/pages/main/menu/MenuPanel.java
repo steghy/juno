@@ -1,11 +1,12 @@
 package juno.view.pages.main.menu;
 
-import juno.view.util.RoundedBorder;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class MenuPanel extends JPanel {
+public class MenuPanel
+        extends JPanel {
 
     private AbstractButton newGameButton;
     private AbstractButton optionsButton;
@@ -16,9 +17,8 @@ public class MenuPanel extends JPanel {
     private MenuPanel() {}
 
     public static MenuPanel getInstance() {
-        if(instance == null) {
-            instance = new MenuPanel();
-        } return instance;
+        if(instance == null) instance = new MenuPanel();
+        return instance;
     }
 
     public void init() {
@@ -103,36 +103,19 @@ public class MenuPanel extends JPanel {
         this.add(exitButton, gbc);
     }
 
-    public void setNewGameButton(AbstractButton newGameButton) {
+    public void setNewGameButton(@NotNull AbstractButton newGameButton) {
         this.newGameButton = newGameButton;
     }
 
-    public void setOptionsButton(AbstractButton optionsButton) {
+    public void setOptionsButton(@NotNull AbstractButton optionsButton) {
         this.optionsButton = optionsButton;
     }
 
-    public void setScoreButton(AbstractButton scoreButton) {
+    public void setScoreButton(@NotNull AbstractButton scoreButton) {
         this.scoreButton = scoreButton;
     }
 
-    public void setExitButton(AbstractButton exitButton) {
+    public void setExitButton(@NotNull AbstractButton exitButton) {
         this.exitButton = exitButton;
     }
-
-    public AbstractButton getNewGameButton() {
-        return newGameButton;
-    }
-
-    public AbstractButton getOptionsButton() {
-        return optionsButton;
-    }
-
-    public AbstractButton getScoreButton() {
-        return scoreButton;
-    }
-
-    public AbstractButton getExitButton() {
-        return exitButton;
-    }
-
 }
