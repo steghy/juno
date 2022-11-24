@@ -93,7 +93,7 @@ public class MenuPanelConfigurator {
         ImageResizer.resize(backButton, 3.0);
 
         // ACTION LISTENERS
-        confirmButton.addActionListener(new RegistrationDataChecker(menuPanel));
+        confirmButton.addActionListener(null);
 
         backButton.addActionListener(listener -> {
             LayoutManager layoutManager = PreAccessCardPanel.getInstance().getLayout();

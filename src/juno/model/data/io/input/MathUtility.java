@@ -23,14 +23,33 @@
  * SOFTWARE.
  */
 
+
 package juno.model.data.io.input;
 
+import org.jetbrains.annotations.Nullable;
+
+import java.math.BigDecimal;
 import java.math.BigInteger;
 
+/**
+ * This class contains utility methods.
+ * It is not possible to instantiate objects
+ * and therefore the public methods are
+ * all static.
+ * @author Simone Gentili
+ */
 public class MathUtility {
 
+    /* Builds a MathUtility object */
     private MathUtility() {}
 
+    /**
+     * Checks if the number obtained from the specified
+     * string is out of range for the specified type.
+     * @param stringNumber A String object that represents a number.
+     * @param clazz The type of the number.
+     * @return A boolean value.
+     */
     public static boolean isOutOfRange(String stringNumber, Class<?> clazz) {
         String min, max;
 
@@ -59,18 +78,25 @@ public class MathUtility {
         else
             throw new IllegalArgumentException("Invalid Class type");
 
-        BigInteger number = new BigInteger(stringNumber);
-        BigInteger minNumber = new BigInteger(min);
-        BigInteger maxNumber = new BigInteger(max);
+        BigDecimal number = new BigDecimal(stringNumber);
+        BigDecimal minNumber = new BigDecimal(min);
+        BigDecimal maxNumber = new BigDecimal(max);
 
         return number.compareTo(maxNumber) > 0 || number.compareTo(minNumber) < 0;
     }
 
-    public static boolean isNumber(Class<?> clazz) {
-        return  clazz == Integer.class || clazz == int.class    ||
-                clazz == Double.class  || clazz == double.class ||
-                clazz == Float.class   || clazz == float.class  ||
-                clazz == Long.class    || clazz == long.class   ||
-                clazz == Short.class   || clazz == short.class;
+    /**
+     * Returns true if, and only if, the specified type
+     * is a number representation class.
+     * @param clazz The type.
+     * @return A boolean value.
+     */
+    public static boolean isNumberType(Class<?> clazz) {
+        return  clazz == Integer.class    || clazz == int.class    ||
+                clazz == Double.class     || clazz == double.class ||
+                clazz == Float.class      || clazz == float.class  ||
+                clazz == Long.class       || clazz == long.class   ||
+                clazz == Short.class      || clazz == short.class  ||
+                clazz == BigInteger.class || clazz == BigDecimal.class;
     }
 }

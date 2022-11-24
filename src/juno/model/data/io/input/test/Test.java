@@ -25,13 +25,16 @@
 
 package juno.model.data.io.input.test;
 
+import java.math.BigDecimal;
+
 public class Test {
 
     public static void main(String[] args) {
-        float val = 32767;
 
-        double val2 = val;
+        double d = 1;
 
-        System.out.println(val2);
+        BigDecimal bigDecimal = new BigDecimal("324.423");
+
+        System.out.println(bigDecimal.doubleValue());
     }
 }

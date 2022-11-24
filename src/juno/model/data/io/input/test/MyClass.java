@@ -33,8 +33,4 @@ public class MyClass {
     private static MyObject value3 = new MyObject();
 
     private MyClass() {}
-
-    public static void doSomething() {
-
-    }
 }

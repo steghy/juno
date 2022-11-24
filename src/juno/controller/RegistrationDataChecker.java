@@ -65,7 +65,7 @@ public class RegistrationDataChecker
 
     @Override
     public Map<String, String> getResponse() {
-
+        return null;
     }
 
     public void setProvider(@NotNull InterfaceRegistrationDataProvider provider) {

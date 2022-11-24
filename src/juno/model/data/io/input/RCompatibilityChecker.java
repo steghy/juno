@@ -111,10 +111,10 @@ public class RCompatibilityChecker
 
         // Attempt to restore the initial state of the object.
         try {
-            getRConfigurator().configure(properties, clazz);
+             getRConfigurator().configure(properties, clazz);
         } catch (IllegalAccessException |
-                 NoSuchFieldException |
-                 InvocationTargetException e) {
+                  NoSuchFieldException |
+                  InvocationTargetException e) {
             throw new RuntimeException(e);
         } return isCompatible;
     }
