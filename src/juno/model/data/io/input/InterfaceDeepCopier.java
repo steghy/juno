@@ -29,7 +29,7 @@ import java.util.Map;
 
 public interface InterfaceDeepCopier {
 
-    Map<String, Object> deepCopy(Object object);
+    Map<String, Object> deepCopy(Object object) throws IllegalAccessException;
 
     Map<String, Object> deepCopy(Class<?> clazz);
 }

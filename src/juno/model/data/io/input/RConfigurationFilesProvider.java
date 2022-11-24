@@ -31,20 +31,36 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
+/**
+ * This class provides two methods for providing the
+ * configuration files of a specified Object instance
+ * or Class type. A file is considered compatible
+ * for a given object if no exceptions are thrown when
+ * the object is configured with that file.
+ * The component that checks compatibility is the
+ * 'RCompatibilityChecker' (see the associated documentation
+ * for more information on this).
+ * @author Simone Gentili
+ */
 public class RConfigurationFilesProvider
         extends AbstractRConfigurationFilesProvider
         implements InterfaceRConfigurationFilesProvider {
 
-    private final List<File> configurationFiles;
-    private boolean isRecursive = true;
+    /* Recursive boolean value */
+    private boolean recursive = true;
 
+    /* The RConfigurationFilesProvider instance */
     private static RConfigurationFilesProvider instance;
 
-    private RConfigurationFilesProvider() {
-        configurationFiles = new ArrayList<>();
-    }
+    /* Builds the RConfigurationFilesProvider */
+    private RConfigurationFilesProvider() {}
 
+    /**
+     * Returns the RConfigurationFilesProvider instance.
+     * @return The RConfigurationFilesProvider instance.
+     */
     public static RConfigurationFilesProvider getInstance() {
         if(instance == null) instance = new RConfigurationFilesProvider();
         return instance;
@@ -53,72 +69,65 @@ public class RConfigurationFilesProvider
     @Override
     public List<File> getConfigurationFiles(@NotNull Object object,
                                             @NotNull String path) throws FileNotFoundException {
-        configurationFiles.clear();
-        setConfigurationFilesRecursive(object, path);
-        return new ArrayList<>(configurationFiles);
+        List<File> files = new ArrayList<>();
+        File inputFile = new File(path);
+        if(!inputFile.exists()) throw new FileNotFoundException(path);
+        if(inputFile.isFile()) {
+            if(getRCompatibilityChecker().checkCompatibilityOf(object, path)) {
+                files.add(inputFile);
+            }
+        } else {
+            if(inputFile.listFiles() != null) {
+                // Objects.requireNonNull suppress the Nullable warning
+                for(File file : Objects.requireNonNull(inputFile.listFiles())) {
+                    if(file.isFile()) {
+                        if(getRCompatibilityChecker().checkCompatibilityOf(object, file.getAbsolutePath())) {
+                            files.add(file);
+                        }
+                    } else {
+                        if(recursive) {
+                            files.addAll(getConfigurationFiles(object, file.getAbsolutePath()));
+                        }
+                    }
+                }
+            }
+        } return files;
     }
 
     @Override
     public List<File> getConfigurationFiles(@NotNull Class<?> clazz,
                                             @NotNull String path) throws FileNotFoundException {
-       configurationFiles.clear();
-       setConfigurationFilesRecursive(clazz, path);
-       return new ArrayList<>(configurationFiles);
-    }
-
-    public void setRecursive(boolean value) {
-        this.isRecursive =  value;
-    }
-
-    @SuppressWarnings("ALL")
-    private void setConfigurationFilesRecursive(@NotNull Object object,
-                                                @NotNull String path) throws FileNotFoundException {
-        File inputFile = new File(path);
-        if(!inputFile.exists()) throw new FileNotFoundException(path);
-        if(inputFile.isFile()) {
-            if(getRCompatibilityChecker().checkCompatibilityOf(object, path)) {
-                configurationFiles.add(inputFile);
-            }
-        } else {
-            if(inputFile.listFiles() != null) {
-                for(File file : inputFile.listFiles()) {
-                    if(file.isFile()) {
-                        if(getRCompatibilityChecker().checkCompatibilityOf(object, file.getAbsolutePath())) {
-                            configurationFiles.add(file);
-                        }
-                    } else {
-                        if(isRecursive) {
-                            setConfigurationFilesRecursive(object, file.getAbsolutePath());
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    @SuppressWarnings("ALL")
-    private void setConfigurationFilesRecursive(@NotNull Class<?> clazz,
-                                                @NotNull String path) throws FileNotFoundException {
+        List<File> files = new ArrayList<>();
         File inputFile = new File(path);
         if(!inputFile.exists()) throw new FileNotFoundException(path);
         if(inputFile.isFile()) {
             if(getRCompatibilityChecker().checkCompatibilityOf(clazz, path)) {
-                configurationFiles.add(inputFile);
+                files.add(inputFile);
             }
         } else {
             if(inputFile.listFiles() != null) {
-                for(File file : inputFile.listFiles()) {
+                // Objects.requireNonNull suppress the Nullable warning
+                for(File file : Objects.requireNonNull(inputFile.listFiles())) {
                     if(file.isFile()) {
                        if(getRCompatibilityChecker().checkCompatibilityOf(clazz, file.getAbsolutePath())) {
-                           configurationFiles.add(file);
+                           files.add(file);
                        }
                     } else {
-                        if(isRecursive) {
-                            setConfigurationFilesRecursive(clazz, file.getAbsolutePath());
+                        if(recursive) {
+                            files.addAll(getConfigurationFiles(clazz, file.getAbsolutePath()));
                         }
                     }
                 }
             }
-        }
+        } return files;
+    }
+
+    /**
+     * Sets the recursion of the getConfigurationFiles()
+     * methods.
+     * @param value A boolean value.
+     */
+    public void setRecursive(boolean value) {
+        this.recursive = value;
     }
 }

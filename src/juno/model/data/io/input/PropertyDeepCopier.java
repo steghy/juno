@@ -26,51 +26,70 @@
 package juno.model.data.io.input;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author Simone Gentili
+ */
 public class PropertyDeepCopier
         implements InterfaceDeepCopier {
 
+    /* The PropertyDeepCopier instance */
     private static PropertyDeepCopier instance;
 
+    /* Builds the PropertyDeepCopier instance. */
     private PropertyDeepCopier() {}
 
+    /**
+     * Returns the PropertyDeepCopier instance.
+     * @return The PropertyDeepCopier instance.
+     */
     public static PropertyDeepCopier getInstance() {
         if (instance == null) instance = new PropertyDeepCopier();
         return instance;
     }
 
     @Override
-    public Map<String, Object> deepCopy(@NotNull Object object) {
+    public Map<String, Object> deepCopy(@NotNull Object object) throws IllegalAccessException {
         Map<String, Object> map = new HashMap<>();
         for(Field field : object.getClass().getDeclaredFields()) {
-            try {
                 if(!Modifier.isFinal(field.getModifiers())) {
                     field.setAccessible(true);
-                    Class<?> type = field.getType();
-                    if(type == object.getClass()) continue;
-                    switch (type.getSimpleName()) {
-                        case    ("String"), ("BigDecimal"),
-                                ("Integer") , ("Double"),
-                                ("Float"), ("Character"),
-                                ("Boolean"), ("Short"),
-                                ("Byte"), ("Long"),
-                                ("int"), ("double"),
-                                ("float"), ("short"),
-                                ("long"), ("char"),
-                                ("byte"), ("boolean")
+                    Class<?> fieldType = field.getType();
+                    if(fieldType == object.getClass()) continue;
+                    switch (fieldType.getSimpleName()) {
+                        /*
+                        Inspection for these values is unnecessary and
+                        would result in an exception (InaccessibleObjectException)
+                        anyway.
+                         */
+                        case    ("String"),
+                                ("Integer"),   ("int"),
+                                ("Double"),    ("double"),
+                                ("Float"),     ("float"),
+                                ("Short"),     ("short"),
+                                ("Long"),      ("long"),
+                                ("Character"), ("char"),
+                                ("Byte"),      ("byte"),
+                                ("Boolean"),   ("boolean")
                                 -> map.put(field.getName(), field.get(object));
+                        // BigDecimal to double.
+                        case    ("BigDecimal")
+                                -> map.put(field.getName(), ((BigDecimal)field.get(object)).doubleValue());
+                        // BigInteger to int.
+                        case    ("BigInteger")
+                                -> map.put(field.getName(), ((BigInteger)field.get(object)).intValue());
+                        // Recursive call to fetch the values from the object.
+                        // Possible InaccessibleObjectException
                         default -> map.put(field.getName(), deepCopy(field.get(object)));
                     }
                 }
-            } catch (IllegalAccessException e) {
-                throw new RuntimeException(e);
-            }
         } return map;
     }
 

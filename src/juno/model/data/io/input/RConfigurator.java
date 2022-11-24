@@ -36,7 +36,13 @@ import java.math.BigInteger;
 import java.util.Map;
 
 /**
- *
+ * This class exposes two methods for configuring Object
+ * and Class types using Map objects. The 'reflected' package
+ * is used to insert compatible into the object fields.
+ * For numeric fields (like Integer, int, BigInteger, Double, ..)
+ * in case the value from the map is also a number, but of
+ * a different type, it is evaluated whether it is possible
+ * to cast, and if it is, the value is inserted in the field.
  * @author Simone Gentili
  */
 public class RConfigurator
@@ -62,22 +68,19 @@ public class RConfigurator
                           @NotNull Object object) throws NoSuchFieldException,
                                                          IllegalAccessException,
                                                          InvocationTargetException {
-
         Class<?> objectType = object.getClass();
         for(Map.Entry<?, ?> entry : map.entrySet()) {
-
             Object key = entry.getKey();
             Field field = objectType.getDeclaredField((String) key);
 
             // Not allowed.
             if(Modifier.isStatic(field.getModifiers()) &&
                     Modifier.isFinal(field.getModifiers())) {
-                continue;
+                continue; // throw RuntimeException() ?
             }
 
             Object value = entry.getValue();
             field.setAccessible(true);
-
             Class<?> fieldType = field.getType();
             Class<?> valueType = value.getClass();
 
@@ -101,7 +104,8 @@ public class RConfigurator
                         Object enumObject = valueOf.invoke(null, enumObjectName);
                         field.set(object, enumObject);
                     } else {
-                        throw new IllegalArgumentException("Invalid value type: " + valueType);
+                        throw new IllegalArgumentException("Invalid value type: " + valueType +
+                                " associated with the key " + key + ". Expected: " + fieldType);
                     }
                     // it can't happen.
                 } catch (NoSuchMethodException e) {
@@ -130,8 +134,9 @@ public class RConfigurator
                 } else {
                     stringValue = String.valueOf(value);
                 } if(MathUtility.isOutOfRange(stringValue, fieldType)) {
-                    throw new IllegalArgumentException(
-                            stringValue + " is out of range for type " + fieldType);
+                    throw new IllegalArgumentException("value " + stringValue +
+                            " associated with the key " + key + " is out of " +
+                            "range for type (" + fieldType + ")");
                 } else {
                     BigDecimal temp = new BigDecimal(stringValue);
                     switch (fieldType.getSimpleName()) {
@@ -142,8 +147,12 @@ public class RConfigurator
                         case ("short"), ("Short")   -> field.set(object, temp.shortValue());
                         case ("long"), ("Long")     -> field.set(object, temp.longValue());
                         case ("BigDecimal")         -> field.set(object, temp);
+                        default -> throw new RuntimeException("Unexpected type: " + fieldType);
                     }
                 }
+            } else {
+                throw new IllegalArgumentException("Invalid value type (" + valueType +
+                        ") for key (" + key + "). Expected type (" + fieldType + ")");
             }
         }
     }
@@ -154,21 +163,18 @@ public class RConfigurator
                                                            IllegalAccessException,
                                                            InvocationTargetException {
         for(Map.Entry<?, ?> entry : map.entrySet()) {
-
             Object key = entry.getKey();
             Field field = clazz.getDeclaredField((String) key);
 
             // The field must be static and not final.
             if(!Modifier.isStatic(field.getModifiers())) {
-                continue;
+                continue; // throw RuntimeException() ?
             } if(Modifier.isFinal(field.getModifiers())) {
-                continue;
+                continue; // throw RuntimeException() ?
             }
 
             Object value = entry.getValue();
-
             field.setAccessible(true);
-
             Class<?> fieldType = field.getType();
             Class<?> valueType = value.getClass();
 
@@ -193,7 +199,8 @@ public class RConfigurator
                         Object enumObject = valueOf.invoke(null, enumObjectName);
                         field.set(clazz, enumObject);
                     } else {
-                        throw new IllegalArgumentException("Invalid value type: " + valueType);
+                        throw new IllegalArgumentException("Invalid value type: " + valueType +
+                                " associated with the key " + key + ". Expected: " + fieldType);
                     }
                     // It can't happen
                 } catch (NoSuchMethodException e) {
@@ -227,8 +234,9 @@ public class RConfigurator
 
                 // Checking range
                 if(MathUtility.isOutOfRange(stringValue, fieldType)) {
-                    throw new IllegalArgumentException(
-                            stringValue + " is out of range for type " + fieldType);
+                    throw new IllegalArgumentException("value " + stringValue +
+                            " associated with the key " + key + " is out of " +
+                            "range for type (" + fieldType + ")");
                 } else {
                     BigDecimal temp = new BigDecimal(stringValue);
                     switch (fieldType.getSimpleName()) {
@@ -239,8 +247,14 @@ public class RConfigurator
                         case ("short"), ("Short")   -> field.set(clazz, temp.shortValue());
                         case ("long"), ("Long")     -> field.set(clazz, temp.longValue());
                         case ("BigDecimal")         -> field.set(clazz, temp);
+                        default -> throw new RuntimeException("Unexpected type: " + fieldType);
                     }
                 }
+
+                // Invalid type case.
+            } else {
+                throw new IllegalArgumentException("Invalid value type (" + valueType +
+                        ") for key (" + key + "). Expected type (" + fieldType + ")");
             }
         }
     }
