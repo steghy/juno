@@ -30,19 +30,32 @@ import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
+/**
+ * @author Simone Gentili
+ * @param <T>
+ */
 public class DeckRefiller<T>
-        extends AbstractDeckRefiller<T>
-        implements Observable {
+        extends AbstractUnoDeckRefiller<T>
+        implements InterfaceDeckRefiller<T>, Observable {
 
+    /* The Observers List */
     private final List<Observer> observerList;
+
+    /* The DeckRefiller instance */
     private static DeckRefiller<?> instance;
 
+    /* Builds the DeckRefiller instance */
     private DeckRefiller() {
         observerList = new ArrayList<>();
     }
 
+    /**
+     * Returns the DeckRefiller instance.
+     * @return The DeckRefiller instance.
+     */
     public static DeckRefiller<?> getInstance() {
         if(instance == null) instance = new DeckRefiller<>();
         return instance;
@@ -50,14 +63,19 @@ public class DeckRefiller<T>
 
     @Override
     public void refill(@NotNull List<T> deck) {
-        AbstractDiscardedPile<T> discardedPile = this.getDiscardedPile();
+        AbstractUnoDiscardedPile<T> discardedPile = this.getDiscardedPile();
         T lastCard = discardedPile.lastItem();
         List<T> cards = discardedPile.items();
         cards.remove(cards.size() - 1);
         deck.addAll(cards);
         discardedPile.clear();
-        discardedPile.discard(lastCard);
-        updateAll();
+
+        try {
+            discardedPile.discard(lastCard);
+            // It can't happen.
+        } catch (IncompatibleItemException e) {
+            throw new RuntimeException(e);
+        } updateAll();
     }
 
     @Override

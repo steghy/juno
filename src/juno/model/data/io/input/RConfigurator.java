@@ -116,14 +116,14 @@ public class RConfigurator
 
             /*
             Numbers type case:
-            MathUtility.isNumberType(Class<?>) returns true if, and only if
-            the specified Class is one of the following Class:
+            MathUtility.isNumberType(Class<?>) returns true if, and
+            only if, the specified Class is one of the following Classes:
             Integer, int, Double, double, Short, short, Long, long,
-            Float, float, BigDecimal, BigInteger.
-            The value is converted to a String object, then checked if that
-            number (converter to a String object for convenience) is out
-            of range for the Field type. If it's not out of range then is
-            converter and set in the field. Check for Byte/byte case.
+            Float, float, BigDecimal, BigInteger. It is checked if the
+            numerical value coming from the map is out of range for the
+            numeric type of the field. If it's not out of range, then
+            the value coming from the map is converted to the type of the
+            field (if necessary) and set to it.
              */
             else if(MathUtility.isNumberType(fieldType) &&
                     MathUtility.isNumberType(valueType)) {
@@ -212,15 +212,14 @@ public class RConfigurator
 
             /*
             Numbers type case:
-            MathUtility.isNumberType(Class<?>) returns true if, and only if
-            the specified Class is one of the following Class:
+            MathUtility.isNumberType(Class<?>) returns true if, and
+            only if, the specified Class is one of the following Classes:
             Integer, int, Double, double, Short, short, Long, long,
-            Float, float, BigDecimal, BigInteger.
-            The value is converted to a String object, then checked if that
-            number (converter to a String object for convenience) is out
-            of range for the Field type. If it's not out of range then is
-            converter and set in the field.
-            TASK: Check for Byte/byte case.
+            Float, float, BigDecimal, BigInteger. It is checked if the
+            numerical value coming from the map is out of range for the
+            numeric type of the field. If it's not out of range, then
+            the value coming from the map is converted to the type of the
+            field (if necessary) and set to it.
              */
             else if(MathUtility.isNumberType(fieldType) &&
                     MathUtility.isNumberType(valueType)) {

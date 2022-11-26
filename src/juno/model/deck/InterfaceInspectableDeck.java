@@ -25,15 +25,17 @@
 
 package juno.model.deck;
 
+import java.util.List;
+
 /**
- * @author Simone Genetili
+ * @author Simone Gentili
+ * @param <T> The type of items to return.
  */
-@FunctionalInterface
 public interface InterfaceInspectableDeck<T> {
 
     /**
-     *
-     * @return
+     * Returns a Collection of items.
+     * @return A Collection of T items.
      */
-    T lastItem();
+    List<T> items();
 }

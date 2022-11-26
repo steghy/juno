@@ -26,19 +26,18 @@
 package juno.model.card;
 
 import juno.model.deck.InterfaceCompatibilityChecker;
-import juno.model.deck.InterfaceDiscardedPile;
-import juno.model.deck.InterfaceInspectableDeck;
+import juno.model.deck.InterfaceLastItemSupplier;
 
 public abstract class AbstractCompatibleItemsProvider<T> {
 
     private InterfaceCompatibilityChecker<T> compatibilityChecker;
-    private InterfaceInspectableDeck<T> discardedPile;
+    private InterfaceLastItemSupplier<T> discardedPile;
 
     public void setCompatibilityChecker(InterfaceCompatibilityChecker<T> compatibilityChecker) {
         this.compatibilityChecker = compatibilityChecker;
     }
 
-    public void setDiscardedPile(InterfaceInspectableDeck<T> discardedPile) {
+    public void setDiscardedPile(InterfaceLastItemSupplier<T> discardedPile) {
         this.discardedPile = discardedPile;
     }
 
@@ -46,7 +45,7 @@ public abstract class AbstractCompatibleItemsProvider<T> {
         return compatibilityChecker;
     }
 
-    public InterfaceInspectableDeck<T> getDiscardedPile() {
+    public InterfaceLastItemSupplier<T> getDiscardedPile() {
         return discardedPile;
     }
 }

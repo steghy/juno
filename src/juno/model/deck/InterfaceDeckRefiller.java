@@ -27,7 +27,15 @@ package juno.model.deck;
 
 import java.util.List;
 
+/**
+ * @author Simone Gentili
+ * @param <T> The type of the items.
+ */
 public interface InterfaceDeckRefiller<T> {
 
+    /**
+     * Replenishes the specified List of T items.
+     * @param deck A List of T items.
+     */
     void refill(List<T> deck);
 }

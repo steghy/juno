@@ -25,13 +25,18 @@
 
 package juno.model.deck;
 
-import java.util.List;
-
+/**
+ * @author Simone Gentili
+ * @param <T> The type of the items to discard.
+ */
+@FunctionalInterface
 public interface InterfaceDiscardedPile<T> {
 
+    /**
+     * Discard the specified item to the pile.
+     * @param item An item of type T.
+     * @throws IncompatibleItemException if
+     */
     void discard(T item) throws IncompatibleItemException;
 
-    void clear();
-
-    List<T> items();
 }

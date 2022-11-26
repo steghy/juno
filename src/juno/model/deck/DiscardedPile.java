@@ -30,6 +30,7 @@ import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Stack;
 
@@ -39,30 +40,14 @@ import java.util.Stack;
  */
 public class DiscardedPile<T>
         extends AbstractDiscardedPile<T>
-        implements InterfaceDiscardedPile<T>, InterfaceInspectableDeck<T>, Observable {
+        implements InterfaceDiscardedPile<T>, InterfaceLastItemSupplier<T>, InterfaceInspectableDeck<T> {
 
     /* The Stack of T items */
     private final Stack<T> discardedPile;
 
-    /* The Observers List */
-    private final List<Observer> observerList;
-
-    /* The DiscardedPile instance */
-    private static DiscardedPile<?> instance;
-
     /* Builds the DiscardedPile instance */
-    private DiscardedPile() {
+    public DiscardedPile() {
         discardedPile = new Stack<>();
-        observerList = new ArrayList<>();
-    }
-
-    /**
-     * Returns the DiscardedPile instance.
-     * @return The DiscardedPile instance.
-     */
-    public static DiscardedPile<?> getInstance() {
-        if(instance == null) instance = new DiscardedPile<>();
-        return instance;
     }
 
     @Override
@@ -82,32 +67,12 @@ public class DiscardedPile<T>
     }
 
     @Override
-    public void clear() {
-        discardedPile.clear();
-    }
-
-    @Override
-    public List<T> items() {
+    public Collection<T> items() {
         return new ArrayList<>(discardedPile);
     }
 
     @Override
     public T lastItem() {
         return discardedPile.peek();
-    }
-
-    @Override
-    public void addObserver(@NotNull Observer observer) {
-        observerList.add(observer);
-    }
-
-    @Override
-    public void removeObserver(@NotNull Observer observer) {
-        observerList.remove(observer);
-    }
-
-    @Override
-    public void updateAll() {
-        observerList.forEach(observer -> observer.update(this));
     }
 }

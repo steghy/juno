@@ -39,7 +39,7 @@ import java.util.Stack;
  */
 public class Deck<T>
         extends AbstractDeck<T>
-        implements InterfaceDeck<T>, InterfaceGenerableDeck, InterfaceInspectableDeck<T>, Observable{
+        implements InterfaceDeck<T>, InterfaceGenerableDeck, InterfaceLastItemSupplier<T>, Observable{
 
     private final List<Observer> observerList;
     private final Stack<T> deck;
