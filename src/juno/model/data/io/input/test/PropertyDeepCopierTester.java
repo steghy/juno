@@ -25,29 +25,17 @@
 
 package juno.model.data.io.input.test;
 
-import juno.init.Directories;
 import juno.model.data.io.input.PropertyDeepCopier;
-import juno.model.data.io.output.JSONDataExporter;
-import juno.model.util.PathGenerator;
-
 import java.io.IOException;
 import java.util.Map;
 
 public class PropertyDeepCopierTester {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, IllegalAccessException {
         PropertyDeepCopier deepCopier = PropertyDeepCopier.getInstance();
-
         Class<?> clazz = MyClass.class;
-
-        JSONDataExporter jsonDataExporter = JSONDataExporter.getInstance();
-
-        Map<String, Object> map = deepCopier.deepCopy(clazz);
-
+        Map<String, Object> map = deepCopier.betterDeepCopyMethod(clazz);
         printMap(map);
-
-        String path = PathGenerator.generate(Directories.CONFIG.absolutePath(), "output-file.json");
-        jsonDataExporter.exportData(path, map);
     }
 
     @SuppressWarnings("unchecked")

@@ -32,17 +32,28 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Simone Gentili
+ */
 public class UnoAIExaminer
-        extends AbstractUnoExaminer<InterfaceUnoCard> {
+        extends AbstractUnoExaminer<InterfaceUnoCard>
+        implements InterfaceUnoExaminer<InterfaceUnoCard> {
 
     private List<InterfaceUnoCard> compatibleCards;
     private List<InterfaceUnoCard> numericCards;
     private List<InterfaceUnoCard> actionCards;
     private List<InterfaceUnoCard> jollyCards;
+
+    /* The UnoAIExaminer instance */
     private static UnoAIExaminer instance;
 
+    /* Builds the UnoAIExaminer instance */
     private UnoAIExaminer() {}
 
+    /**
+     * Returns the UnoAIExaminer instance.
+     * @return The UnoAIExaminer instance.
+     */
     public static UnoAIExaminer getInstance() {
         if(instance == null) instance = new UnoAIExaminer();
         return instance;

@@ -33,34 +33,47 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+/**
+ * @author Simone Gentili@FunctionalInterface
+ * @param <T> The type of the Cards.
+ */
 public class Deck<T>
         extends AbstractDeck<T>
-        implements Observable {
+        implements InterfaceDeck<T>, InterfaceGenerableDeck, InterfaceInspectableDeck<T>, Observable{
 
     private final List<Observer> observerList;
     private final Stack<T> deck;
     private T lastCard;
+
+    /* The Deck instance */
     private static Deck<?> instance;
 
+    /* Builds the Deck instance */
     private Deck() {
         observerList = new ArrayList<>();
         deck = new Stack<>();
     }
 
+    /**
+     * Returns the Deck instance.
+     * @return The Deck instance.
+     */
      public static Deck<?> getInstance() {
         if(instance == null) instance = new Deck<>();
         return instance;
      }
 
     @Override
-    public T draw() {
+    public T draw() throws EmptyDeckException {
+         // Case not allowed.
         if(deck.isEmpty()) {
-            throw new IllegalArgumentException("Deck is empty");
+            throw new EmptyDeckException("Deck is empty");
+            // Automatic Deck fill.
         } else if(deck.size() <= 4) {
             this.getDeckRefiller().refill(deck);
             this.getMixer().shuffle(deck);
         } lastCard = deck.pop();
-        updateAll();
+        updateAll(); // Observers update
         return lastCard;
     }
 

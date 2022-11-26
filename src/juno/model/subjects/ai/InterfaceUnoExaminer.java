@@ -27,7 +27,18 @@ package juno.model.subjects.ai;
 
 import java.util.List;
 
+/**
+ * @author Simone Gentili
+ * @param <T> The type of the items.
+ */
+@FunctionalInterface
 public interface InterfaceUnoExaminer<T> {
 
+    /**
+     *
+     * @param items
+     * @param difficulty
+     * @return
+     */
     T responseRelativeTo(List<T> items, Difficulty difficulty);
 }

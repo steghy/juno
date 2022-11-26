@@ -27,33 +27,69 @@ package juno.model.deck;
 
 import org.jetbrains.annotations.NotNull;
 
-public abstract class AbstractDeck<T>
-        implements InterfaceDeck<T>{
+/**
+ * This abstract class encapsulates some utility objects
+ * for a generic deck. The objects are:
+ * - InterfaceDeckRefiller<T> (It might fill the deck when it's nearly empty).
+ * - InterfaceDeckFactory<T> (Provides the deck of T cards).
+ * - InterfaceDeckMixer<T> (Can shuffles the deck).
+ * @param <T> The type of the cards.
+ */
+public abstract class AbstractDeck<T> {
 
-    private AbstractDeckRefiller<T> deckRefiller;
-    private AbstractDeckFactory<T> deckFactory;
+    /* The Refiller */
+    private InterfaceDeckRefiller<T> deckRefiller;
+
+    /* The Factory */
+    private InterfaceDeckFactory<T> deckFactory;
+
+    /* The Mixer */
     private InterfaceMixer<T> deckMixer;
 
-    public void setDeckFactory(@NotNull AbstractDeckFactory<T> deckFactory) {
+    /**
+     * Sets the Factory that providers the deck of T cards.
+     * @param deckFactory An InterfaceDeckFactory object.
+     */
+    public void setDeckFactory(@NotNull InterfaceDeckFactory<T> deckFactory) {
         this.deckFactory = deckFactory;
     }
 
-    public void setDeckRefiller(@NotNull AbstractDeckRefiller<T> deckRefiller) {
+    /**
+     * Sets the Refiller that fill the deck.
+     * @param deckRefiller An InterfaceDeckRefiller object.
+     */
+    public void setDeckRefiller(@NotNull InterfaceDeckRefiller<T> deckRefiller) {
         this.deckRefiller = deckRefiller;
     }
 
+    /**
+     * Sets the Mixer that can shuffle the deck.
+     * @param deckMixer An InterfaceMixer object.
+     */
     public void setMixer(@NotNull InterfaceMixer<T> deckMixer) {
         this.deckMixer = deckMixer;
     }
 
-    public AbstractDeckFactory<T> getDeckFactory() {
+    /**
+     * Returns the InterfaceDeckFactory object.
+     * @return An InterfaceDeckFactory object.
+     */
+    public InterfaceDeckFactory<T> getDeckFactory() {
         return this.deckFactory;
     }
 
-    public AbstractDeckRefiller<T> getDeckRefiller() {
+    /**
+     * Returns the InterfaceDeckRefiller object.
+     * @return An InterfaceDeckRefiller object.
+     */
+    public InterfaceDeckRefiller<T> getDeckRefiller() {
         return this.deckRefiller;
     }
 
+    /**
+     * Returns the InterfaceMixer object.
+     * @return An InterfaceMixer object.
+     */
     public InterfaceMixer<T> getMixer() {
         return this.deckMixer;
     }

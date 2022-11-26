@@ -26,7 +26,7 @@
 package juno.view.pages.main.card;
 
 import juno.view.pages.main.MainPanel;
-import juno.view.pages.newgame.card.NewGameCardPanel;
+import juno.view.pages.new_game.card.NewGameCardPanel;
 import juno.view.pages.options.OptionsPanel;
 import juno.view.pages.score.ScorePanel;
 

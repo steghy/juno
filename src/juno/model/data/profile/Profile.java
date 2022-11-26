@@ -34,7 +34,8 @@ import java.util.List;
 import java.util.Map;
 
 
-public class Profile
+public class
+Profile
         implements AbstractProfile, Configurable, Exportable {
 
     public static final int MAXIMUM_LENGTH = 15;

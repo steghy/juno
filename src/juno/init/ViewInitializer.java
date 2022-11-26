@@ -28,9 +28,9 @@ package juno.init;
 import juno.view.frame.FrameInitializer;
 import juno.view.pages.card.TopCardPanelConfigurator;
 import juno.view.pages.main.MainPanelInitializer;
-import juno.view.pages.newgame.NewGameInitializer;
+import juno.view.pages.new_game.NewGameInitializer;
 import juno.view.pages.options.OptionsInitializer;
-import juno.view.pages.preaccess.PreAccessInitializer;
+import juno.view.pages.pre_access.PreAccessInitializer;
 import juno.view.pages.score.ScorePanelInitializer;
 
 public class ViewInitializer {

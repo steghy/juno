@@ -28,13 +28,22 @@ package juno.model.deck;
 import juno.model.card.*;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * @author Simone Gentili
+ */
 class CompatibilityChecker
         implements InterfaceCompatibilityChecker<InterfaceUnoCard> {
 
+    /* The CompatibilityChecker instance */
     private static CompatibilityChecker instance;
 
+    /* Builds the CompatibilityChecker instance */
     private CompatibilityChecker(){}
 
+    /**
+     * Returns the CompatibilityChecker instance.
+     * @return The CompatibilityChecker instance.
+     */
     static CompatibilityChecker getInstance(){
         if(instance == null) instance = new CompatibilityChecker();
         return instance;

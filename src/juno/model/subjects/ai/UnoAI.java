@@ -26,26 +26,46 @@
 package juno.model.subjects.ai;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
+/**
+ * @author Simone Gentili
+ * @param <T> The type of the items.
+ */
 public class UnoAI<T>
-        extends AbstractUnoAI<T> {
+        extends AbstractUnoAI<T>
+        implements InterfaceUnoAi<T> {
 
     private Difficulty difficulty;
     private String name;
     private List<T> items;
 
+    /**
+     * Builds a UnoAi object with the
+     * specified name and difficulty.
+     * @param name A String object.
+     * @param difficulty A Difficulty object.
+     */
     public UnoAI(@NotNull String name,
                  @NotNull Difficulty difficulty) {
         this.name = name;
         this.difficulty = difficulty;
     }
 
+    /**
+     * Builds a UnoAi object with the
+     * specified Difficulty object.
+     * @param difficulty A Difficulty object.
+     */
     public UnoAI(@NotNull Difficulty difficulty) {
         this.difficulty = difficulty;
     }
 
+    /**
+     * Builds a UnoAI object.
+     */
     public UnoAI() {}
 
     @Override
@@ -68,14 +88,27 @@ public class UnoAI<T>
         items.remove(item);
     }
 
+    /**
+     * Sets the difficulty of this UnoAi object.
+     * @param difficulty A Difficulty object.
+     */
     public void setDifficulty(@NotNull Difficulty difficulty) {
         this.difficulty = difficulty;
     }
 
+    /**
+     * Sets the name of this UnoAi object.
+     * @param name A String object.
+     */
     public void setName(@NotNull String name) {
         this.name = name;
     }
 
+    /**
+     * Returns the Difficulty object of this instance.
+     * @return A Difficulty object.
+     */
+    @Nullable
     public Difficulty getDifficulty() {
         return difficulty;
     }

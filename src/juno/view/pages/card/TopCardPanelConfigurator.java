@@ -26,25 +26,31 @@
 package juno.view.pages.card;
 
 import juno.view.pages.main.card.MainCardPanel;
-import juno.view.pages.preaccess.card.PreAccessCardPanel;
+import juno.view.pages.pre_access.card.PreAccessCardPanel;
 
+/**
+ * @author Simone Gentili
+ */
 public class TopCardPanelConfigurator {
 
+    /* Builds a TopCardPanelConfigurator object */
     private TopCardPanelConfigurator() {}
 
+    /** Configure juno.view.pages.card.TopCardPanel instance. */
     public static void configure() {
-        // MAIN COMPONENT
+
+        // Main component.
         TopCardPanel topCardPanel = TopCardPanel.getInstance();
 
-        // SUB COMPONENTS
+        // Sub components.
         PreAccessCardPanel preAccessCardPanel = PreAccessCardPanel.getInstance();
         MainCardPanel mainCardPanel = MainCardPanel.getInstance();
 
-        // ADDING COMPONENTS
+        // Main component setting.
         topCardPanel.setPreAccessPanel(preAccessCardPanel);
         topCardPanel.setMainPanel(mainCardPanel);
 
-        // INITIALIZATION
+        // Main component initialization.
         topCardPanel.init();
     }
 }

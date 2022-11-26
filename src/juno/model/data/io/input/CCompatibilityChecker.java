@@ -29,14 +29,23 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
+/**
+ * @author Simone Gentili
+ */
 public class CCompatibilityChecker
         extends AbstractCompatibilityChecker
         implements InterfaceStringCCompatibilityChecker, InterfaceMapCCompatibilityChecker {
 
+    /* The CCompatibilityChecker instance */
     private static CCompatibilityChecker instance;
 
+    /* Builds the CCompatibilityChecker instance */
     private CCompatibilityChecker() {}
 
+    /**
+     * Returns the CCompatibilityChecker instance.
+     * @return The CCompatibilityChecker instance.
+     */
     public static CCompatibilityChecker getInstance() {
         if(instance == null) instance = new CCompatibilityChecker();
         return instance;

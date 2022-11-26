@@ -33,26 +33,40 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+/**
+ * @author Simone Gentili
+ * @param <T> The type of the items.
+ */
 public class DiscardedPile<T>
         extends AbstractDiscardedPile<T>
-        implements Observable {
+        implements InterfaceDiscardedPile<T>, InterfaceInspectableDeck<T>, Observable {
 
+    /* The Stack of T items */
     private final Stack<T> discardedPile;
+
+    /* The Observers List */
     private final List<Observer> observerList;
+
+    /* The DiscardedPile instance */
     private static DiscardedPile<?> instance;
 
+    /* Builds the DiscardedPile instance */
     private DiscardedPile() {
         discardedPile = new Stack<>();
         observerList = new ArrayList<>();
     }
 
+    /**
+     * Returns the DiscardedPile instance.
+     * @return The DiscardedPile instance.
+     */
     public static DiscardedPile<?> getInstance() {
         if(instance == null) instance = new DiscardedPile<>();
         return instance;
     }
 
     @Override
-    public void discard(@NotNull T card) {
+    public void discard(@NotNull T card) throws IncompatibleItemException {
         if(discardedPile.isEmpty()) {
             discardedPile.push(card);
         } else {
@@ -60,7 +74,7 @@ public class DiscardedPile<T>
                 discardedPile.push(card);
                 updateAll();
             } else {
-                throw new IllegalArgumentException(
+                throw new IncompatibleItemException(
                         "Incompatible card: " +
                         discardedPile.peek() + ", " + card);
             }

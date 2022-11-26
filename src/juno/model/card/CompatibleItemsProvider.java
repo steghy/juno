@@ -29,13 +29,24 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+/**
+ * @author Simone Gentili
+ * @param <T> The type of the items.
+ */
 public class CompatibleItemsProvider<T>
-        extends AbstractCompatibleItemsProvider<T> {
+        extends AbstractCompatibleItemsProvider<T>
+        implements InterfaceCompatibleItemsProvider<T> {
 
+    /* The CompatibleItemsProvider instance */
     private static CompatibleItemsProvider<?> instance;
 
+    /* Builds the CompatibleItemsProvider instance */
     private CompatibleItemsProvider() {}
 
+    /**
+     * Returns the CompatibleItemsProvider instance.
+     * @return The CompatibleItemsProvider instance.
+     */
     private static CompatibleItemsProvider<?> getInstance() {
         if(instance == null) instance = new CompatibleItemsProvider<>();
         return instance;

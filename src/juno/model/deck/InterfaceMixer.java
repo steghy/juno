@@ -28,7 +28,17 @@ package juno.model.deck;
 
 import java.util.List;
 
+/**
+ * This interface provides Mixer to
+ * shuffle List of T items.
+ * @param <T> The type of the List items.
+ */
+@FunctionalInterface
 public interface InterfaceMixer<T> {
 
-    void shuffle(List<T> data);
+    /**
+     * Shuffle the specified List of T items
+     * @param items The List of T items.
+     */
+    void shuffle(List<T> items);
 }

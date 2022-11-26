@@ -30,23 +30,40 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * @author Simone Gentili
+ */
 public class TopCardPanel
         extends JPanel {
 
+    /* Card layout keys. */
     public static final String PRE_ACCESS_PANEL = "Pre access panel";
     public static final String MAIN_PANEL = "Main panel";
 
+    /* Sub components */
     private JPanel preAccessPanel;
     private JPanel mainPanel;
+
+    /* The TopCardPanel instance */
     private static TopCardPanel instance;
 
+    /* Builds the TopCardPanel instance */
     private TopCardPanel() {}
 
+    /**
+     * Returns the TopCardPanel instance.
+     * @return The TopCardPanel instance.
+     */
     public static TopCardPanel getInstance() {
         if(instance == null) instance = new TopCardPanel();
         return instance;
     }
 
+    /**
+     * Initialize the TopCardPanel instance.
+     * @throws IllegalArgumentException if one of the components
+     *         of this instance has not been set.
+     */
     public void init() {
         if(preAccessPanel == null) {
             throw new IllegalArgumentException("Pre access panel is null");
@@ -60,10 +77,18 @@ public class TopCardPanel
         add(mainPanel, MAIN_PANEL);
     }
 
+    /**
+     * Sets the 'Pre-access panel' component.
+     * @param preAccessPanel A JPanel object.
+     */
     public void setPreAccessPanel(@NotNull JPanel preAccessPanel) {
         this.preAccessPanel = preAccessPanel;
     }
 
+    /**
+     * Sets the 'Main panel' component.
+     * @param mainPanel A JPanel instance.
+     */
     public void setMainPanel(@NotNull JPanel mainPanel) {
         this.mainPanel = mainPanel;
     }

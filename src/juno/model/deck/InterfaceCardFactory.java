@@ -27,7 +27,16 @@ package juno.model.deck;
 
 import java.util.Collection;
 
+/**
+ * This interface defines an abstract Factory that
+ * provides all the different card types of some card game.
+ * @param <T> The type of the cards.
+ */
 public interface InterfaceCardFactory<T> {
 
+    /**
+     * Returns all the different cards of some card game.
+     * @return A Collection of T cards.
+     */
     Collection<T> getCards();
 }

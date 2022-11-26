@@ -74,8 +74,9 @@ public class RConfigurator
             Field field = objectType.getDeclaredField((String) key);
 
             // Not allowed.
-            if(Modifier.isStatic(field.getModifiers()) &&
-                    Modifier.isFinal(field.getModifiers())) {
+            int modifiers = field.getModifiers();
+            if(Modifier.isStatic(modifiers) &&
+                    Modifier.isFinal(modifiers)) {
                 continue; // throw RuntimeException() ?
             }
 
@@ -122,7 +123,7 @@ public class RConfigurator
             The value is converted to a String object, then checked if that
             number (converter to a String object for convenience) is out
             of range for the Field type. If it's not out of range then is
-            converter and set in the field.
+            converter and set in the field. Check for Byte/byte case.
              */
             else if(MathUtility.isNumberType(fieldType) &&
                     MathUtility.isNumberType(valueType)) {
@@ -166,10 +167,11 @@ public class RConfigurator
             Object key = entry.getKey();
             Field field = clazz.getDeclaredField((String) key);
 
+            int modifiers = field.getModifiers();
             // The field must be static and not final.
-            if(!Modifier.isStatic(field.getModifiers())) {
+            if(!Modifier.isStatic(modifiers)) {
                 continue; // throw RuntimeException() ?
-            } if(Modifier.isFinal(field.getModifiers())) {
+            } if(Modifier.isFinal(modifiers)) {
                 continue; // throw RuntimeException() ?
             }
 
@@ -218,6 +220,7 @@ public class RConfigurator
             number (converter to a String object for convenience) is out
             of range for the Field type. If it's not out of range then is
             converter and set in the field.
+            TASK: Check for Byte/byte case.
              */
             else if(MathUtility.isNumberType(fieldType) &&
                     MathUtility.isNumberType(valueType)) {

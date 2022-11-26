@@ -25,11 +25,18 @@
 
 package juno.model.deck;
 
+/**
+ * This class represents a deck containing generic cards.
+ * The possible operations are: draw(), lastItem() and generate().
+ * @param <T> The type of the Cards.
+ */
+@FunctionalInterface
 public interface InterfaceDeck<T> {
 
-    T draw();
-
-    T lastItem();
-
-    void generate();
+    /**
+     *
+     * @return
+     * @throws EmptyDeckException
+     */
+    T draw() throws EmptyDeckException;
 }

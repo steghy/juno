@@ -33,33 +33,44 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * @author Simone Gentili
+ * @param <T> The type of List items.
+ */
 public class Mixer<T> implements
         InterfaceMixer<T>, Observable {
 
+    /* Observers list */
     private final List<Observer> observerList;
 
+    /* The Mixer instance */
     private static Mixer<?> instance;
 
+    /* Builds the Mixer instance */
     private Mixer() {
         observerList = new ArrayList<>();
     }
 
+    /**
+     * Returns the Mixer instance.
+     * @return The Mixer instance.
+     */
     public static Mixer<?> getInstance() {
         if(instance == null) instance = new Mixer<>();
         return instance;
     }
 
     @Override
-    public void shuffle(@NotNull List<T> data) {
-        int size = data.size();
+    public void shuffle(@NotNull List<T> items) {
+        int size = items.size();
         if(size == 0){
            throw new IllegalArgumentException("Invalid data length");
         }
         Random random = new Random();
         for(int i = 0; i < 250; i++) {
-            T lastObject = data.get(size - 1);
-            data.remove(size - 1);
-            data.add(random.nextInt(size), lastObject);
+            T lastObject = items.get(size - 1);
+            items.remove(size - 1);
+            items.add(random.nextInt(size), lastObject);
         }
     }
 

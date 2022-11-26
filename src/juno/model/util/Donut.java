@@ -31,9 +31,12 @@ import java.util.Random;
 public class Donut<T>
         extends ArrayList<T> {
 
+    /* The index of the current selected item */
     private int index;
+    /* Inverter boolean value */
     private boolean inverted;
 
+    /** Builds a Donut object. */
     public Donut() {
         inverted = false;
     }

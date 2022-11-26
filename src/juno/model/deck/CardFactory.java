@@ -32,13 +32,21 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * @author Simone Gentili
+ */
  class CardFactory
-         implements InterfaceCardFactory<InterfaceUnoCard> {
+        implements InterfaceCardFactory<InterfaceUnoCard> {
 
     private static CardFactory instance;
 
+    /* Builds the CardFactory object */
     private CardFactory() {}
 
+    /**
+     * Returns the CardFactory instance.
+     * @return The CardFactory instance.
+     */
     static CardFactory getInstance(){
         if(instance == null) instance = new CardFactory();
         return instance;

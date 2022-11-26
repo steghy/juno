@@ -29,9 +29,7 @@ import java.util.List;
 
 public interface InterfaceDiscardedPile<T> {
 
-    void discard(T item);
-
-    T lastItem();
+    void discard(T item) throws IncompatibleItemException;
 
     void clear();
 

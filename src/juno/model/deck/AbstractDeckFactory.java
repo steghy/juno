@@ -27,15 +27,28 @@ package juno.model.deck;
 
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * @author Simone Gentili
+ * @param <T>
+ */
 public abstract class AbstractDeckFactory<T>
         implements InterfaceDeckFactory<T> {
 
+    /* The InterfaceCardFactory object. */
     private InterfaceCardFactory<T> factory;
 
+    /**
+     * Sets the InterfaceCardFactory object.
+     * @param factory An InterfaceCardFactory.
+     */
     public void setCardFactory(@NotNull InterfaceCardFactory<T> factory){
         this.factory = factory;
     }
 
+    /**
+     * Returns the InterfaceCardFactory object.
+     * @return An InterfaceCardFactory object.
+     */
     public InterfaceCardFactory<T> getCardFactory(){
         return factory;
     }

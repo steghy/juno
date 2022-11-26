@@ -25,12 +25,23 @@
 
 package juno.model.util;
 
-public class MyRandom extends java.util.Random {
+import java.util.Random;
 
+/**
+ * @author Simone Gentili
+ */
+public class MyRandom extends Random {
+
+    /* The MyRandom instance */
     private static MyRandom instance;
 
+    /* Builds the MyRandom instance */
     private MyRandom() {}
 
+    /**
+     * Returns the MyRandom instance.
+     * @return The MyRandom instance.
+     */
     public static MyRandom getInstance() {
         if(instance == null) instance = new MyRandom();
         return instance;

@@ -26,18 +26,31 @@
 package juno.model.subjects.ai;
 
 import juno.model.card.AbstractCompatibleItemsProvider;
+import juno.model.card.InterfaceCompatibleItemsProvider;
 import org.jetbrains.annotations.NotNull;
 
-public abstract class AbstractUnoExaminer<T>
-        implements InterfaceUnoExaminer<T> {
+/**
+ * @author Simone Gentili
+ * @param <T> The type of the items.
+ */
+public abstract class AbstractUnoExaminer<T> {
 
-    private AbstractCompatibleItemsProvider<T> compatibleItemsProvider;
+    /* The InterfaceCompatibleItemsProvider object */
+    private InterfaceCompatibleItemsProvider<T> compatibleItemsProvider;
 
-    public void setCompatibleItemsProvider(@NotNull AbstractCompatibleItemsProvider<T> compatibleItemsProvider) {
+    /**
+     * Sets the InterfaceCompatibleItemsProvider object.
+     * @param compatibleItemsProvider An InterfaceCompatibleItemsProvider object.
+     */
+    public void setCompatibleItemsProvider(@NotNull InterfaceCompatibleItemsProvider<T> compatibleItemsProvider) {
         this.compatibleItemsProvider = compatibleItemsProvider;
     }
 
-    public AbstractCompatibleItemsProvider<T> getCompatibleItemsProvider() {
+    /**
+     * Returns the InterfaceCompatibleItemsProvider object.
+     * @return An InterfaceCompatibleItemsProvider object.
+     */
+    public InterfaceCompatibleItemsProvider<T> getCompatibleItemsProvider() {
         return compatibleItemsProvider;
     }
 }
