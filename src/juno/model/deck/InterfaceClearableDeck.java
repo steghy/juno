@@ -25,31 +25,16 @@
 
 package juno.model.deck;
 
-import org.jetbrains.annotations.NotNull;
-
 /**
+ * This interface defines the behavior of
+ * 'removing all the cards from the deck'.
+ * The method clear should be implemented
+ * in order to remove all the cards from
+ * the encapsulated deck.
  * @author Simone Gentili
- * @param <T> The type of the items.
  */
-public abstract class AbstractDiscardedPile<T> {
+public interface InterfaceClearableDeck {
 
-    /* The InterfaceCompatibilityChecker object */
-    private InterfaceCompatibilityChecker<T> compatibilityChecker;
-
-    /**
-     * Sets the InterfaceCompatibilityChecker object.
-     * @param compatibilityChecker An InterfaceCompatibilityChecker object.
-     */
-    public void setCompatibilityChecker(@NotNull InterfaceCompatibilityChecker<T> compatibilityChecker) {
-        this.compatibilityChecker = compatibilityChecker;
-    }
-
-    /**
-     * Returns the InterfaceCompatibilityChecker object.
-     * @return An InterfaceCompatibilityChecker object.
-     */
-    public InterfaceCompatibilityChecker<T> getCompatibilityChecker() {
-        return this.compatibilityChecker;
-    }
-
+    /* Remove all the cards from the deck */
+    void clear();
 }

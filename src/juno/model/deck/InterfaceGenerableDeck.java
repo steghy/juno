@@ -32,7 +32,7 @@ package juno.model.deck;
 public interface InterfaceGenerableDeck {
 
     /**
-     *
+     * Generate the deck.
      */
     void generate();
 }

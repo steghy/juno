@@ -28,6 +28,10 @@ package juno.model.deck;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * This abstract class defines abstract cards re-inserters
+ * of the game 'Uno card game'. The abstract class of the
+ * discard pile is also encapsulated to help you code concrete
+ * classes.
  * @author Simone Gentili
  * @param <T> The type of the items.
  */

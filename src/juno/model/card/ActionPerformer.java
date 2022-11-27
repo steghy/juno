@@ -25,7 +25,6 @@
 
 package juno.model.card;
 
-import juno.model.deck.AbstractDiscardedPile;
 import juno.model.subjects.factory.InterfaceSubject;
 import juno.model.util.Observable;
 import juno.model.util.Observer;

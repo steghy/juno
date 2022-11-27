@@ -30,12 +30,16 @@ import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**
+ * This class defines a card re-inserter of the
+ * 'Uno card game'. There is a method that allows
+ * you to insert cards from the 'Discarded pile'
+ * into the 'Deck' following the rules of the
+ * 'Uno card game'.
  * @author Simone Gentili
- * @param <T>
+ * @param <T> The type of the cards.
  */
 public class DeckRefiller<T>
         extends AbstractUnoDeckRefiller<T>
@@ -64,18 +68,14 @@ public class DeckRefiller<T>
     @Override
     public void refill(@NotNull List<T> deck) {
         AbstractUnoDiscardedPile<T> discardedPile = this.getDiscardedPile();
+        // The top card of the 'Discarded pile' must remain.
         T lastCard = discardedPile.lastItem();
         List<T> cards = discardedPile.items();
         cards.remove(cards.size() - 1);
         deck.addAll(cards);
         discardedPile.clear();
-
-        try {
-            discardedPile.discard(lastCard);
-            // It can't happen.
-        } catch (IncompatibleItemException e) {
-            throw new RuntimeException(e);
-        } updateAll();
+        discardedPile.discard(lastCard);
+        updateAll();
     }
 
     @Override
@@ -91,6 +91,5 @@ public class DeckRefiller<T>
     @Override
     public void updateAll() {
         observerList.forEach(observer -> observer.update(null));
-
     }
 }

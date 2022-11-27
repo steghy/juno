@@ -29,7 +29,7 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Simone Gentili
- * @param <T>
+ * @param <T> The type of the cards.
  */
 public abstract class AbstractDeckFactory<T>
         implements InterfaceDeckFactory<T> {

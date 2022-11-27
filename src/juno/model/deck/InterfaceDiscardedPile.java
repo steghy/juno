@@ -35,8 +35,7 @@ public interface InterfaceDiscardedPile<T> {
     /**
      * Discard the specified item to the pile.
      * @param item An item of type T.
-     * @throws IncompatibleItemException if
      */
-    void discard(T item) throws IncompatibleItemException;
+    void discard(T item);
 
 }

@@ -25,25 +25,9 @@
 
 package juno.model.deck;
 
-import juno.model.util.Observable;
-import juno.model.util.Observer;
-
-import java.util.ArrayList;
-import java.util.List;
-
-public abstract class AbstractUnoDiscardedPile<T> extends DiscardedPile<T> implements Observable {
-
-    private List<Observer> observerList = new ArrayList<>();
-
-    public void addObserver(Observer observer) {
-        observerList.add(observer);
-    }
-
-    public void removeObserver(Observer observer) {
-        observerList.remove(observer);
-    }
-
-    public void updateAll() {
-        observerList.forEach(observer -> observer.update(this));
-    }
+public abstract class AbstractUnoDiscardedPile<T>
+        implements InterfaceDiscardedPile<T>,
+        InterfaceClearableDeck,
+                   InterfaceInspectableDeck<T>,
+                   InterfaceLastItemSupplier<T> {
 }
