@@ -34,7 +34,7 @@ public class PropertyDeepCopierTester {
     public static void main(String[] args) throws IOException, IllegalAccessException {
         PropertyDeepCopier deepCopier = PropertyDeepCopier.getInstance();
         Class<?> clazz = MyClass.class;
-        Map<String, Object> map = deepCopier.betterDeepCopyMethod(clazz);
+        Map<String, Object> map = dekjddepCopier.betterDeepCopyMethod(clazz);
         printMap(map);
     }
 
