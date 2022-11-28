@@ -28,17 +28,27 @@ package juno.model.data.io.input;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InaccessibleObjectException;
 import java.lang.reflect.Modifier;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author Simone Gentili
+ */
 public class PropertyCopier
         implements InterfacePropertyCopier {
 
+    /* The PropertyCopier instance */
     private static PropertyCopier instance;
 
+    /* Builds the PropertyCopier instance */
     private PropertyCopier() {}
 
+    /**
+     * Returns the PropertyCopier instance.
+     * @return The PropertyCopier instance.
+     */
     public static PropertyCopier getInstance() {
         if(instance == null) instance = new PropertyCopier();
         return instance;
@@ -48,13 +58,15 @@ public class PropertyCopier
     public Map<String, Object> copy(@NotNull Object object) {
         Map<String, Object> map = new HashMap<>();
         for(Field field : object.getClass().getDeclaredFields()) {
-            field.setAccessible(true);
             try {
+                field.setAccessible(true);
                 if(!Modifier.isFinal(Modifier.fieldModifiers()))
                     map.put(field.getName(), field.get(object));
             } catch (IllegalAccessException e) {
                 throw new RuntimeException(e);
-            }
+            } catch (InaccessibleObjectException e) {
+                throw new IllegalArgumentException("object" + object + " contains a field which cannot be" +  " accessible. Field: " + field);
+        }
         } return map;
     }
 
@@ -62,13 +74,17 @@ public class PropertyCopier
     public Map<String, Object> copy(@NotNull Class<?> clazz) {
         Map<String, Object> map = new HashMap<>();
         for(Field field : clazz.getDeclaredFields()) {
-            field.setAccessible(true);
             try {
+                field.setAccessible(true);
                 if(Modifier.isStatic(field.getModifiers()))
                     if(!Modifier.isFinal(field.getModifiers()))
                         map.put(field.getName(), field.get(null));
             } catch (IllegalAccessException e) {
                 throw new RuntimeException(e);
+            } catch (InaccessibleObjectException e) {
+                throw new IllegalArgumentException(clazz +
+                        " contains a field which cannot be" +
+                        " accessible. Field: " + field);
             }
         } return map;
     }

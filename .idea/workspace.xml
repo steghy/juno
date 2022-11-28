@@ -1,7 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="" />
+    <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/test/ProperyCopierTester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/test-json.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/config/test-json.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/AbstractCompatibilityChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/AbstractCompatibilityChecker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/AbstractConfigurationFilesProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/AbstractConfigurationFilesProvider.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/AbstractRCompatibilityChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/AbstractRCompatibilityChecker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/CCompatibilityChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/CCompatibilityChecker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/JSONDataImporter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/JSONDataImporter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/RCompatibilityChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/RCompatibilityChecker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/test/ConfiguratorTester.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/test/JSONDataImporterTester.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/test/MyClass.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/test/MyObject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/test/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/output/JSONDataExporter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/output/JSONDataExporter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/card/ActionPerformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/card/ActionPerformer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/CCompatibilityChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/CCompatibilityChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/JSONDataImporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/JSONDataImporter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/MathUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/MathUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/PropertyCopier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/PropertyCopier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/RConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/RConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/test/ConfiguratorTester.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/test/JSONDataImporterTester.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/test/MyClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/test/MyObject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/test/PropertyDeepCopierTester.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/test/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/AbstractDeck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/AbstractDeck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/Deck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/InterfaceDeck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/InterfaceDeck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/factory/InterfaceNameFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/factory/InterfaceNameFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/factory/InterfaceSubject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/factory/InterfaceSubject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/factory/InterfaceSubjectsFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/factory/InterfaceSubjectsFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/factory/InterfaceSubjectsGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/factory/InterfaceSubjectsGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/pre_access/PreAccessInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/pre_access/PreAccessInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/util/ImageComponentInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/util/ImageComponentInitializer.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,8 +50,8 @@
         <option value="package-info" />
         <option value="Kotlin Class" />
         <option value="AnnotationType" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -25,7 +62,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2GxPRSYigRLpPL1cn3NoRU3F8zo" />
   <component name="ProjectLevelVcsManager">
@@ -69,7 +106,7 @@
       <recent name="juno.view.pages.newgame.menu.singleplayer.title" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.ProperyCopierTester">
     <configuration name="ConfiguratorTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="juno.model.data.io.input.test.ConfiguratorTester" />
       <module name="juno-project" />
@@ -96,12 +133,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProfileTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="juno.model.data.profile.test.ProfileTester" />
+    <configuration name="PropertyDeepCopierTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="juno.model.data.io.input.test.PropertyDeepCopierTester" />
       <module name="juno-project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="juno.model.data.profile.test.*" />
+          <option name="PATTERN" value="juno.model.data.io.input.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -109,8 +146,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PropertyDeepCopierTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="juno.model.data.io.input.test.PropertyDeepCopierTester" />
+    <configuration name="ProperyCopierTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="juno.model.data.io.input.test.ProperyCopierTester" />
       <module name="juno-project" />
       <extension name="coverage">
         <pattern>
@@ -137,11 +174,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ProperyCopierTester" />
+        <item itemvalue="Application.ConfiguratorTester" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.PropertyDeepCopierTester" />
-        <item itemvalue="Application.ConfiguratorTester" />
         <item itemvalue="Application.Test" />
-        <item itemvalue="Application.ProfileTester" />
       </list>
     </recent_temporary>
   </component>

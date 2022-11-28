@@ -25,6 +25,7 @@
 
 package juno.model.card;
 
+import juno.model.deck.AbstractUnoDiscardedPile;
 import juno.model.subjects.factory.InterfaceSubject;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
@@ -69,7 +70,7 @@ public class ActionPerformer
 
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof AbstractDiscardedPile<?> discardedPile) {
+        if(object instanceof AbstractUnoDiscardedPile<?> discardedPile) {
             Object lastCard = discardedPile.lastItem();
             if (lastCard instanceof InterfaceUnoCard card) {
                 InterfaceUnoCardAction action = card.action();

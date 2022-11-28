@@ -26,8 +26,6 @@
 
 package juno.model.data.io.input;
 
-import org.jetbrains.annotations.Nullable;
-
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
@@ -53,31 +51,40 @@ public class MathUtility {
     public static boolean isOutOfRange(String stringNumber, Class<?> clazz) {
         String min, max;
 
+            // Integer case
         if (clazz == Integer.class || clazz == int.class) {
             min = String.valueOf(Integer.MIN_VALUE);
             max = String.valueOf(Integer.MAX_VALUE);
 
+            // Double case
         } else if (clazz == Double.class || clazz == double.class) {
             min = String.valueOf(Double.MIN_VALUE);
             max = String.valueOf(Double.MAX_VALUE);
 
+            // Float case
         } else if (clazz == Float.class || clazz == float.class) {
             min = String.valueOf(Float.MIN_VALUE);
             max = String.valueOf(Float.MAX_VALUE);
 
+            // Long case
         } else if (clazz == Long.class || clazz == long.class) {
             min = String.valueOf(Long.MIN_VALUE);
             max = String.valueOf(Long.MAX_VALUE);
-        }
 
-        else if (clazz == Short.class || clazz == short.class) {
+            // Short case
+        } else if (clazz == Short.class || clazz == short.class) {
             min = String.valueOf(Short.MIN_VALUE);
             max = String.valueOf(Short.MAX_VALUE);
         }
 
+        // clazz must be one of the following type:
+        // Integer, int, Double, double, Float, float,
+        // Short, short, Long, long.
         else
             throw new IllegalArgumentException("Invalid Class type");
 
+        // Checking if the number is out of range for
+        // the specified type.
         BigDecimal number = new BigDecimal(stringNumber);
         BigDecimal minNumber = new BigDecimal(min);
         BigDecimal maxNumber = new BigDecimal(max);

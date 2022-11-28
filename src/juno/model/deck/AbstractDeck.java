@@ -35,9 +35,10 @@ import org.jetbrains.annotations.NotNull;
  * - InterfaceDeckMixer<T> (Can shuffles the deck).
  * @param <T> The type of the cards.
  */
-public abstract class AbstractDeck<T> {
+public abstract class AbstractDeck<T>
+    implements InterfaceDeck<T>, InterfaceGenerableDeck, InterfaceLastItemSupplier<T> {
 
-    /* The Refiller */
+    /* The Re-filler */
     private InterfaceDeckRefiller<T> deckRefiller;
 
     /* The Factory */

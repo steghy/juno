@@ -48,6 +48,12 @@ import java.util.Map;
 public class RConfigurator
         implements InterfaceRConfigurator{
 
+    public static final boolean THROW_EXCEPTION = true;
+    public static final boolean GO_AHEAD = false;
+
+    /* Throw runtime exception */
+    private boolean throwRuntimeException;
+
     /* The RConfigurator instance */
     private static RConfigurator instance;
 
@@ -77,7 +83,10 @@ public class RConfigurator
             int modifiers = field.getModifiers();
             if(Modifier.isStatic(modifiers) &&
                     Modifier.isFinal(modifiers)) {
-                continue; // throw RuntimeException() ?
+                if(throwRuntimeException) {
+                    throw new RuntimeException(
+                            "Static final key: " + key  + " not permitted");
+                }
             }
 
             Object value = entry.getValue();
@@ -103,7 +112,7 @@ public class RConfigurator
                     if(value instanceof String enumObjectName) {
                         Method valueOf = fieldType.getMethod("valueOf", String.class);
                         Object enumObject = valueOf.invoke(null, enumObjectName);
-                        field.set(object, enumObject);
+                       field.set(object, enumObject);
                     } else {
                         throw new IllegalArgumentException("Invalid value type: " + valueType +
                                 " associated with the key " + key + ". Expected: " + fieldType);
@@ -170,9 +179,15 @@ public class RConfigurator
             int modifiers = field.getModifiers();
             // The field must be static and not final.
             if(!Modifier.isStatic(modifiers)) {
-                continue; // throw RuntimeException() ?
+                if(throwRuntimeException) {
+                    throw new RuntimeException("Non static fields " +
+                            "are not permitted. Key: " + key);
+                }
             } if(Modifier.isFinal(modifiers)) {
-                continue; // throw RuntimeException() ?
+                if(throwRuntimeException) {
+                    throw new RuntimeException(
+                    "Static final key: " + key  + " not permitted");
+                }
             }
 
             Object value = entry.getValue();

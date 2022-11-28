@@ -27,7 +27,7 @@ package juno.model.subjects.factory;
 
 import java.util.Collection;
 
+@FunctionalInterface
 public interface InterfaceNameFactory {
-
     Collection<String> getNames(int num);
 }

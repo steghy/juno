@@ -27,6 +27,7 @@ package juno.model.subjects.factory;
 
 import java.util.List;
 
+@FunctionalInterface
 public interface InterfaceSubjectsFactory<T> {
 
     List<T> getSubjects();

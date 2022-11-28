@@ -16,7 +16,7 @@
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
@@ -34,12 +34,12 @@ import java.util.List;
 import java.util.Stack;
 
 /**
- * @author Simone Gentili@FunctionalInterface
+ * @author Simone Gentili
  * @param <T> The type of the Cards.
  */
 public class Deck<T>
         extends AbstractDeck<T>
-        implements InterfaceDeck<T>, InterfaceGenerableDeck, InterfaceLastItemSupplier<T>, Observable{
+        implements Observable{
 
     private final List<Observer> observerList;
     private final Stack<T> deck;
@@ -64,10 +64,10 @@ public class Deck<T>
      }
 
     @Override
-    public T draw() throws EmptyDeckException {
+    public T draw() {
          // Case not allowed.
         if(deck.isEmpty()) {
-            throw new EmptyDeckException("Deck is empty");
+            throw new IllegalArgumentException("Empty deck");
             // Automatic Deck fill.
         } else if(deck.size() <= 4) {
             this.getDeckRefiller().refill(deck);

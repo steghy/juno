@@ -32,11 +32,5 @@ package juno.model.deck;
  */
 @FunctionalInterface
 public interface InterfaceDeck<T> {
-
-    /**
-     *
-     * @return
-     * @throws EmptyDeckException
-     */
-    T draw() throws EmptyDeckException;
+    T draw();
 }

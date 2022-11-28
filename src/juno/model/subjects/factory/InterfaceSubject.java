@@ -25,7 +25,7 @@
 
 package juno.model.subjects.factory;
 
+@FunctionalInterface
 public interface InterfaceSubject {
-
     String name();
 }

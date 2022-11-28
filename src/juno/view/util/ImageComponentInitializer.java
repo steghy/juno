@@ -50,7 +50,7 @@ public class ImageComponentInitializer {
                                   @NotNull Constant BOTH_MISSING,
                                   @NotNull Constant IMAGE_MISSING,
                                   @NotNull Constant ROLLOVER_IMAGE_MISSING) {
-        // IMAGE
+        // Image section
         button.setName(name);
         String imageAbsolutePath = PathGenerator.generate(path.absolutePath(), file);
         String imagePath = PathGenerator.generate(path.path(), file);
