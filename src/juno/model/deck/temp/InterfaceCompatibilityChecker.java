@@ -23,14 +23,20 @@
  * SOFTWARE.
  */
 
-package juno.model.deck;
+package juno.model.deck.temp;
 
 /**
- * @author Simone Gentili.
+ * @author Simone Gentili
+ * @param <T>
  */
-public class IncompatibleItemException extends Exception {
+public interface InterfaceCompatibilityChecker<T> {
 
-    public IncompatibleItemException(String message) {
-        super(message);
-    }
+    /**
+     *
+     * @param el1
+     * @param el2
+     * @return
+     */
+    boolean areCompatible(T el1, T el2);
+
 }

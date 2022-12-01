@@ -25,8 +25,18 @@
 
 package juno.model.card.temp.values;
 
+/**
+ * This interface defines a method that determines
+ * whether a card is 'Seven' or not.
+ */
 @FunctionalInterface
 public interface InterfaceSeven {
 
+    /**
+     * Returns true if, and only if, this object
+     * is 'Seven'.
+     * @return A boolean.
+     */
     boolean isSeven();
+
 }

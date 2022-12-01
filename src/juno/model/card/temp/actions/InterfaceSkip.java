@@ -25,8 +25,19 @@
 
 package juno.model.card.temp.actions;
 
+/**
+ * This interface defines a method that determines
+ * whether a card is a 'Skip' action card or not.
+ * @author Simone Gentili
+ */
 @FunctionalInterface
 public interface InterfaceSkip {
 
+    /**
+     * Returns true if, and only if, this object
+     * is a 'Skip' action card.
+     * @return A boolean.
+     */
     boolean isSkip();
+
 }

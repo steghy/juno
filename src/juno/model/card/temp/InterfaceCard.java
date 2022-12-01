@@ -25,8 +25,15 @@
 
 package juno.model.card.temp;
 
+/**
+ * This interface groups the following interfaces
+ * for determining the attributes of cards:
+ * - InterfaceCardAction
+ * - InterfaceCardColor
+ * - InterfaceCardValue
+ * @author Simone Gentili
+ */
 public interface InterfaceCard extends
         InterfaceCardAction,
         InterfaceCardColor,
-        InterfaceCardValue {
-}
+        InterfaceCardValue {}

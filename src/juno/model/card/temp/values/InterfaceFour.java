@@ -25,8 +25,18 @@
 
 package juno.model.card.temp.values;
 
+/**
+ * This interface defines a method that determines
+ * whether a card is 'Four' or not.
+ * @author Simone Gentili
+ */
 @FunctionalInterface
 public interface InterfaceFour {
 
+    /**
+     * Returns true if, and only if, this object
+     * is 'Four'.
+     * @return A boolean
+     */
     boolean isFour();
 }

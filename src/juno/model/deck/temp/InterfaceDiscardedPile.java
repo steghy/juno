@@ -23,18 +23,24 @@
  * SOFTWARE.
  */
 
-package juno.model.deck;
+package juno.model.deck.temp;
+
+import java.util.List;
 
 /**
- * This Exception is thrown when the draw() method of
- * the 'InterfaceDeck' functional interface is invoked
- * and the deck is empty.
+ * This interface defines a method for discarding an
+ * item to the 'discard pile'. Also this interface
+ * extends the List interface.
  * @author Simone Gentili
+ * @param <T> The type of the items.
  */
-public class EmptyDeckException extends Exception {
+public interface InterfaceDiscardedPile<T> extends List<T> {
 
-    public EmptyDeckException(String message) {
-        super(message);
-    }
+    /**
+     * Discard the specified item on top of the
+     * discard pile.
+     * @param item The item to discard.
+     */
+    void discard(T item);
 
 }

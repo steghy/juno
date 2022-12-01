@@ -25,8 +25,19 @@
 
 package juno.model.card.temp.values;
 
+/**
+ * This interface defines a method that determines
+ * whether a card is 'Nine' or not.
+ * @author Simone Gentili
+ */
 @FunctionalInterface
 public interface InterfaceNine {
 
+    /**
+     * Returns true if, and only if, this object
+     * is 'Nine'.
+     * @return A boolean
+     */
     boolean isNine();
+
 }

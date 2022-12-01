@@ -25,8 +25,19 @@
 
 package juno.model.card.temp.colors;
 
+/**
+ * This interface defines a method that determines
+ * whether a card is 'Red' or not.
+ * @author Simone Gentili
+ */
 @FunctionalInterface
 public interface InterfaceRed {
 
+    /**
+     * Returns true if, and only if, this object
+     * is 'Red'.
+     * @return A boolean
+     */
     boolean isRed();
+
 }

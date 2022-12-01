@@ -30,32 +30,48 @@ import juno.model.card.temp.colors.InterfaceColor;
 import juno.model.card.temp.values.InterfaceValue;
 import org.jetbrains.annotations.Nullable;
 
-public class Card
-        implements InterfaceCard{
+/**
+ * This class defines the model of the 'Uno' card.
+ * A 'Uno' card has the following attributes:
+ * - Color
+ * - Value
+ * - Action
+ * An attribute of a card can also be null, if the
+ * card type does not allow it.
+ *
+ * @param color  The Color
+ * @param value  The Value
+ * @param action The Action
+ * @author Simone Gentili
+ */
+public record Card(InterfaceColor color, InterfaceValue value, InterfaceAction action)
+        implements InterfaceCard {
 
-    private InterfaceColor color;
-    private final InterfaceValue value;
-    private final InterfaceAction action;
-
-    public Card(InterfaceColor color,
-                InterfaceValue value,
-                InterfaceAction action) {
-        this.color = color;
-        this.value = value;
-        this.action = action;
+    /**
+     * Builds a Card object with the specified
+     * parameters.
+     *
+     * @param color  An InterfaceColor object.
+     * @param value  An InterfaceValue object.
+     * @param action An InterfaceAction object.
+     */
+    public Card {
     }
 
-    @Override @Nullable
+    @Override
+    @Nullable
     public InterfaceAction action() {
         return action;
     }
 
-    @Override @Nullable
+    @Override
+    @Nullable
     public InterfaceColor color() {
         return color;
     }
 
-    @Override @Nullable
+    @Override
+    @Nullable
     public InterfaceValue value() {
         return value;
     }

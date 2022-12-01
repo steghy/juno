@@ -27,9 +27,19 @@ package juno.model.card.temp;
 
 import juno.model.card.temp.colors.InterfaceColor;
 
+/**
+ * This interface defines a method that returns the
+ * 'Color' attribute of a card.
+ * @author Simone Gentili
+ */
 @FunctionalInterface
 public interface InterfaceCardColor {
 
+    /**
+     * Returns the InterfaceColor object of this
+     * object.
+     * @return An InterfaceColor object
+     */
     InterfaceColor color();
 
 }

@@ -25,9 +25,30 @@
 
 package juno.model.card.temp.actions;
 
+/**
+ * This Interface groups the following interfaces
+ * for determining the action of cards:
+ * - InterfaceDrawTwo
+ * - InterfaceSkip
+ * - InterfaceInvert
+ * - InterfaceDrawFour
+ * - InterfaceChangeColor
+ * Also this interface defines a method to recognize
+ * when an action is wildcard or not.
+ * @author Simone Gentili
+ */
 public interface InterfaceAction extends
         InterfaceDrawTwo,
         InterfaceSkip,
         InterfaceInvert,
         InterfaceDrawFour,
-        InterfaceChangeColor {}
+        InterfaceChangeColor {
+
+    /**
+     * Returns true if, and only if, this object is
+     * a 'jolly' action card.
+     * @return A boolean.
+     */
+    boolean isJolly();
+
+}

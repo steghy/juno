@@ -25,8 +25,19 @@
 
 package juno.model.card.temp.actions;
 
+/**
+ * This interface defines a method that determines
+ * whether a card is a 'Change color' action card or not.
+ * @author Simone Gentili
+ */
 @FunctionalInterface
 public interface InterfaceChangeColor {
 
+    /**
+     * Returns true if, and only if, this object
+     * is a 'Change color' action card.
+     * @return A boolean.
+     */
     boolean isChangeColor();
+
 }

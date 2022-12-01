@@ -25,8 +25,19 @@
 
 package juno.model.card.temp.values;
 
+/**
+ * This interface defines a method that determines
+ * whether a card is 'Eight' or not.
+ * @author Simone Gentili
+ */
 @FunctionalInterface
 public interface InterfaceEight {
 
+    /**
+     * Returns true if, and only if, this object
+     * is 'Eight'.
+     * @return A boolean.
+     */
     boolean isEight();
+
 }

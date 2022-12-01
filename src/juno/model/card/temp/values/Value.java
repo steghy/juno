@@ -25,16 +25,44 @@
 
 package juno.model.card.temp.values;
 
+/**
+ * This class defines nine objects one for each
+ * numerical value of the 'Uno' card game. The
+ * class implements the 'InterfaceValue' interface
+ * and, with it, the methods for determining whether
+ * an object of this class is a particular number.
+ * @author Simone Gentili
+ */
 public enum Value implements InterfaceValue {
 
+    /** The 'Zero' value. */
+    ZERO,
+
+    /** The 'One' value. */
     ONE,
+
+    /** The 'Two' value. */
     TWO,
+
+    /** The 'Three' value. */
     THREE,
+
+    /** The 'Four' value. */
     FOUR,
+
+    /** The 'Five' value. */
     FIVE,
+
+    /** The 'Six' value. */
     SIX,
+
+    /** The 'Seven' value. */
     SEVEN,
+
+    /** The 'Eight' value. */
     EIGHT,
+
+    /** The 'Nine' value. */
     NINE;
 
     @Override
@@ -81,4 +109,10 @@ public enum Value implements InterfaceValue {
     public boolean isTwo() {
         return this.name().equals("TWO");
     }
+
+    @Override
+    public boolean isZero() {
+        return this.name().equals("ZERO");
+    }
+
 }

@@ -25,11 +25,26 @@
 
 package juno.model.card.temp.colors;
 
+/**
+ * This class defines four objects, one for each
+ * color of the 'Uno' card game. The class implements
+ * the 'InterfaceColor' interface and, with it, the
+ * methods for determining whether an object of this
+ * class is a particular color.
+ * @author Simone Gentili
+ */
 public enum Color implements InterfaceColor {
 
+    /** The 'Red' color. */
     RED,
+
+    /** The 'Blue' color. */
     BLUE,
+
+    /** The 'Green' color. */
     GREEN,
+
+    /** The 'Yellow' color. */
     YELLOW;
 
     @Override

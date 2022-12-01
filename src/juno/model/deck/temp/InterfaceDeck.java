@@ -23,10 +23,13 @@
  * SOFTWARE.
  */
 
-package juno.model.card.temp.actions;
+package juno.model.deck.temp;
 
-@FunctionalInterface
-public interface InterfaceJolly {
+import java.util.List;
 
-    boolean isJolly();
+public interface InterfaceDeck<T>
+        extends List<T> {
+
+    T draw();
+
 }

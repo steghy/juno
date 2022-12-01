@@ -25,8 +25,19 @@
 
 package juno.model.card.temp.values;
 
+/**
+ * This interface defines a method that determines
+ * whether a card is 'Five' or not.
+ * @author Simone Gentili
+ */
 @FunctionalInterface
 public interface InterfaceFive {
 
+    /**
+     * Returns true if, and only if, this object
+     * is 'Five'.
+     * @return A boolean
+     */
     boolean isFive();
+
 }

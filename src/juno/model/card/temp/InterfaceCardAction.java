@@ -27,9 +27,19 @@ package juno.model.card.temp;
 
 import juno.model.card.temp.actions.InterfaceAction;
 
+/**
+ * This interface defines a method that returns the
+ * 'Action' attribute of a card.
+ * @author Simone Gentili
+ */
 @FunctionalInterface
 public interface InterfaceCardAction {
 
+    /**
+     * Returns the InterfaceAction object of this
+     * object.
+     * @return An InterfaceAction object
+     */
     InterfaceAction action();
 
 }

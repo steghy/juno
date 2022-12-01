@@ -25,8 +25,19 @@
 
 package juno.model.card.temp.values;
 
+/**
+ * This interface defines a method that determines
+ * whether card is 'Six' or not.
+ * @author Simone Gentili
+ */
 @FunctionalInterface
 public interface InterfaceSix {
 
+    /**
+     * Returns true if, and only if, this object
+     * is 'Six'.
+     * @return A boolean.
+     */
     boolean isSix();
+
 }

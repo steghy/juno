@@ -25,6 +25,15 @@
 
 package juno.model.card.temp.colors;
 
+/**
+ * This Interface groups the following interfaces
+ * for determining the color of cards:
+ * - InterfaceRed
+ * - InterfaceBlue
+ * - InterfaceYellow
+ * - InterfaceGreen
+ * @author Simone Gentili
+ */
 public interface InterfaceColor extends
         InterfaceRed,
         InterfaceBlue,

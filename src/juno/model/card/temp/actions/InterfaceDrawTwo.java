@@ -25,8 +25,19 @@
 
 package juno.model.card.temp.actions;
 
+/**
+ * This interface defines a method that determines
+ * whether a card is a 'Draw two' action card or not.
+ * @author Simone Gentili
+ */
 @FunctionalInterface
 public interface InterfaceDrawTwo {
 
+    /**
+     * Returns true if, and only if, this object
+     * is a 'Draw two' action card.
+     * @return A boolean.
+     */
     boolean isDrawTwo();
+
 }

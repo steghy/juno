@@ -25,7 +25,22 @@
 
 package juno.model.card.temp.values;
 
+/**
+ * This interface groups the following interfaces
+ * for determining the numeric value of cards:
+ * - InterfaceOne
+ * - InterfaceTwo
+ * - InterfaceThree
+ * - InterfaceFour
+ * - InterfaceFive
+ * - InterfaceSix
+ * - InterfaceSeven
+ * - InterfaceEight
+ * - InterfaceNine
+ * @author Simone Gentili
+ */
 public interface InterfaceValue extends
+        InterfaceZero,
         InterfaceOne,
         InterfaceTwo,
         InterfaceThree,

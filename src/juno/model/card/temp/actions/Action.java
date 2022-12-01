@@ -25,12 +25,29 @@
 
 package juno.model.card.temp.actions;
 
+/**
+ * This class defines five objects, one for each
+ * action of the 'Uno' card game. The class implements
+ * the 'InterfaceAction' interface and, with it, the
+ * methods for determining whether an object of this
+ * class is a particular action.
+ * @author Simone Gentili
+ */
 public enum Action implements InterfaceAction {
 
-    WILD,
-    WILD_DRAW_FOUR,
+    /** The 'change color' action. */
+    CHANGE_COLOR,
+
+    /** The 'draw four' action. */
+    DRAW_FOUR,
+
+    /** The 'skip' action. */
     SKIP,
+
+    /** The 'invert' action. */
     INVERT,
+
+    /** The 'draw two' action. */
     DRAW_TWO;
 
     @Override
@@ -50,16 +67,17 @@ public enum Action implements InterfaceAction {
 
     @Override
     public boolean isChangeColor() {
-        return this.name().equals("WILD");
+        return this.name().equals("CHANGE_COLOR");
     }
 
     @Override
     public boolean isDrawFour() {
-        return this.name().equals("WILD_DRAW_FOUR");
+        return this.name().equals("DRAW_FOUR");
     }
 
     @Override
     public boolean isJolly() {
-        return isDrawFour() || isJolly();
+        return isDrawFour() || isChangeColor();
     }
+
 }

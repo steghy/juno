@@ -25,8 +25,19 @@
 
 package juno.model.card.temp.actions;
 
+/**
+ * This interface defines a method that determines
+ * whether a card is a 'Draw four' action card or not.
+ * @author Simone Gentili
+ */
 @FunctionalInterface
 public interface InterfaceDrawFour {
 
+    /**
+     * Returns true if, and only if, this object
+     * is a 'Draw four' action card.
+     * @return A boolean.
+     */
     boolean isDrawFour();
+
 }

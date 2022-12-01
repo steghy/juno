@@ -25,9 +25,19 @@
 
 package juno.model.card.temp.actions;
 
+/**
+ * This interface defines a method that determines
+ * whether a card is a 'Invert' action card or not.
+ * @author Simone Gentili
+ */
 @FunctionalInterface
 public interface InterfaceInvert {
 
+    /**
+     * Return true if, and only if, this object
+     * is a 'Invert' action card.
+     * @return A boolean.
+     */
     boolean isInvert();
 
 }

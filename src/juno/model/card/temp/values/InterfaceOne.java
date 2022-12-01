@@ -25,8 +25,19 @@
 
 package juno.model.card.temp.values;
 
+/**
+ * This interface defines a method that determines
+ * whether a card is 'One' or not.
+ * @author Simone Gentili
+ */
 @FunctionalInterface
 public interface InterfaceOne {
 
+    /**
+     * Returns true if, and only if, this object
+     * is 'One'.
+     * @return A boolean
+     */
     boolean isOne();
+
 }

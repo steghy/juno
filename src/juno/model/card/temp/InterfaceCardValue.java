@@ -27,8 +27,19 @@ package juno.model.card.temp;
 
 import juno.model.card.temp.values.InterfaceValue;
 
+/**
+ * This interface defines a method that returns the
+ * 'Value' attribute of a card.
+ * @author Simone Gentili
+ */
 @FunctionalInterface
 public interface InterfaceCardValue {
 
+    /**
+     * Returns the InterfaceValue object of this
+     * object.
+     * @return An InterfaceValue object.
+     */
     InterfaceValue value();
+
 }
