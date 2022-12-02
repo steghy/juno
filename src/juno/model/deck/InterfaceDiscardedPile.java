@@ -25,16 +25,21 @@
 
 package juno.model.deck;
 
+import java.util.List;
+
 /**
+ * This interface defines a method for discarding an
+ * item to the 'discard pile', also this interface
+ * extends the List interface.
  * @author Simone Gentili
- * @param <T> The type of the items to discard.
+ * @param <T> The type of the items.
  */
-@FunctionalInterface
-public interface InterfaceDiscardedPile<T> {
+public interface InterfaceDiscardedPile<T> extends List<T> {
 
     /**
-     * Discard the specified item to the pile.
-     * @param item An item of type T.
+     * Discard the specified item on top of the
+     * discard pile.
+     * @param item The item to discard.
      */
     void discard(T item);
 

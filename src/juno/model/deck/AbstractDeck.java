@@ -27,71 +27,53 @@ package juno.model.deck;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Stack;
+
 /**
- * This abstract class encapsulates some utility objects
- * for a generic deck. The objects are:
- * - InterfaceDeckRefiller<T> (It might fill the deck when it's nearly empty).
- * - InterfaceDeckFactory<T> (Provides the deck of T cards).
- * - InterfaceDeckMixer<T> (Can shuffles the deck).
+ * This abstract class defines abstract 'Decks'
+ * composed of a 'Filler' for reintroducing
+ * cards and a 'Mixer' for shuffling the deck.
+ * @author Simone Gentili
  * @param <T> The type of the cards.
  */
-public abstract class AbstractDeck<T>
-    implements InterfaceDeck<T>, InterfaceGenerableDeck, InterfaceLastItemSupplier<T> {
+public abstract class AbstractDeck<T> extends Stack<T> implements InterfaceDeck<T> {
 
-    /* The Re-filler */
-    private InterfaceDeckRefiller<T> deckRefiller;
+    /* The Deck filler */
+    private InterfaceDeckFiller<T> filler;
 
-    /* The Factory */
-    private InterfaceDeckFactory<T> deckFactory;
-
-    /* The Mixer */
-    private InterfaceMixer<T> deckMixer;
+    /* The Deck mixer */
+    private InterfaceMixer<T> mixer;
 
     /**
-     * Sets the Factory that providers the deck of T cards.
-     * @param deckFactory An InterfaceDeckFactory object.
+     * Sets the Deck filler of this object.
+     * @param filler An InterfaceDeckFiller object.
      */
-    public void setDeckFactory(@NotNull InterfaceDeckFactory<T> deckFactory) {
-        this.deckFactory = deckFactory;
+    public void setDeckFiller(@NotNull InterfaceDeckFiller<T> filler) {
+        this.filler = filler;
     }
 
     /**
-     * Sets the Refiller that fill the deck.
-     * @param deckRefiller An InterfaceDeckRefiller object.
+     * Sets the Deck mixer of this object.
+     * @param mixer An InterfaceMixer object.
      */
-    public void setDeckRefiller(@NotNull InterfaceDeckRefiller<T> deckRefiller) {
-        this.deckRefiller = deckRefiller;
+    public void setMixer(@NotNull InterfaceMixer<T> mixer) {
+        this.mixer = mixer;
     }
 
     /**
-     * Sets the Mixer that can shuffle the deck.
-     * @param deckMixer An InterfaceMixer object.
+     * Returns the Deck filler of this object.
+     * @return An InterfaceDeckFiller object.
      */
-    public void setMixer(@NotNull InterfaceMixer<T> deckMixer) {
-        this.deckMixer = deckMixer;
+    public InterfaceDeckFiller<T> getFiller() {
+        return filler;
     }
 
     /**
-     * Returns the InterfaceDeckFactory object.
-     * @return An InterfaceDeckFactory object.
-     */
-    public InterfaceDeckFactory<T> getDeckFactory() {
-        return this.deckFactory;
-    }
-
-    /**
-     * Returns the InterfaceDeckRefiller object.
-     * @return An InterfaceDeckRefiller object.
-     */
-    public InterfaceDeckRefiller<T> getDeckRefiller() {
-        return this.deckRefiller;
-    }
-
-    /**
-     * Returns the InterfaceMixer object.
+     * Returns the Deck mixer of this object.
      * @return An InterfaceMixer object.
      */
     public InterfaceMixer<T> getMixer() {
-        return this.deckMixer;
+        return mixer;
     }
+
 }

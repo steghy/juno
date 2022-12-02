@@ -23,25 +23,61 @@
  * SOFTWARE.
  */
 
-package juno.model.deck;
-
-
-import java.util.List;
+package juno.model.card.actions;
 
 /**
- * This interface defines a method for shuffling
- * any data structure that implements the List
- * interface.
+ * This class defines five objects, one for each
+ * action of the 'Uno' card game. The class implements
+ * the 'InterfaceAction' interface and, with it, the
+ * methods for determining whether an object of this
+ * class is a particular action.
  * @author Simone Gentili
  */
-@FunctionalInterface
-public interface InterfaceMixer<T> {
+public enum Action implements InterfaceAction {
 
-    /**
-     * Shuffle the specified List.
-     * @param list A data structure that implements
-     *             the List interface.
-     */
-    void shuffle(List<T> list);
+    /** The 'change color' action. */
+    CHANGE_COLOR,
+
+    /** The 'draw four' action. */
+    DRAW_FOUR,
+
+    /** The 'skip' action. */
+    SKIP,
+
+    /** The 'invert' action. */
+    INVERT,
+
+    /** The 'draw two' action. */
+    DRAW_TWO;
+
+    @Override
+    public boolean isDrawTwo() {
+        return this.name().equals("DRAW_TWO");
+    }
+
+    @Override
+    public boolean isInvert() {
+        return this.name().equals("INVERT");
+    }
+
+    @Override
+    public boolean isSkip() {
+        return this.name().equals("SKIP");
+    }
+
+    @Override
+    public boolean isChangeColor() {
+        return this.name().equals("CHANGE_COLOR");
+    }
+
+    @Override
+    public boolean isDrawFour() {
+        return this.name().equals("DRAW_FOUR");
+    }
+
+    @Override
+    public boolean isJolly() {
+        return isDrawFour() || isChangeColor();
+    }
 
 }

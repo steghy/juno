@@ -25,53 +25,53 @@
 
 package juno.model.deck;
 
+import juno.model.card.InterfaceCard;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.util.Stack;
+
 
 /**
- * This class defines a mixer.
- * A shuffler can mix a data structure
- * that implements the List interface.
+ * This class defines the discard pile in the
+ * 'Uno' game. Using the 'discard(el)' method
+ * it is possible to discard a card to the top
+ * of the discarded cards. All observers are
+ * notified whenever the 'discard(el)' method
+ * is invoked.
  * @author Simone Gentili
  */
-public class Mixer<T>
-        implements InterfaceMixer<T>, Observable {
+public class DiscardedPile
+        extends Stack<InterfaceCard>
+        implements InterfaceDiscardedPile<InterfaceCard>, Observable {
 
-    /* The Observers List. */
+    /* The Observers List */
     private final List<Observer> observerList;
 
-    /* The Mixer instance. */
-    private static Mixer<?> instance;
+    /* The DiscardedPile instance. */
+    private static DiscardedPile instance;
 
-    /* Builds the Mixer instance. */
-    private Mixer() {
+    /* Builds the DiscardedPile instance. */
+    private DiscardedPile() {
         observerList = new ArrayList<>();
     }
 
     /**
-     * Returns the Mixer instance.
-     * @return The Mixer instance.
+     * Returns the DiscardedPile instance.
+     * @return The DiscardedPile instance.
      */
-    public static Mixer<?> getInstance() {
-        if(instance == null) instance = new Mixer<>();
+    public static DiscardedPile getInstance() {
+        if(instance == null) instance = new DiscardedPile();
         return instance;
     }
 
     @Override
-    public void shuffle(@NotNull List<T> items) {
-        int size = items.size();
-        if(size <= 1) return;
-        Random random = new Random();
-        for(int i = 0; i < 250; i++) {
-            T lastItem = items.get(size - 1);
-            items.remove(size - 1);
-            items.add(random.nextInt(size), lastItem);
-        }
+    public void discard(@NotNull InterfaceCard card) {
+        push(card);
+        updateAll();
     }
 
     @Override
@@ -81,7 +81,7 @@ public class Mixer<T>
 
     @Override
     public void removeObserver(@NotNull Observer observer) {
-        observerList.add(observer);
+        observerList.remove(observer);
     }
 
     @Override

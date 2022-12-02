@@ -28,28 +28,30 @@ package juno.model.deck;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * This abstract class defines abstract factories
+ * for supplying decks where cards are supplied
+ * by a card factory.
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
-public abstract class AbstractDeckFactory<T>
-        implements InterfaceDeckFactory<T> {
+public abstract class AbstractDeckFactory<T> {
 
-    /* The InterfaceCardFactory object. */
+    /* The Cards factory. */
     private InterfaceCardFactory<T> factory;
 
     /**
-     * Sets the InterfaceCardFactory object.
-     * @param factory An InterfaceCardFactory.
+     * Sets the Cards factory.
+     * @param factory An InterfaceCardFactory object.
      */
-    public void setCardFactory(@NotNull InterfaceCardFactory<T> factory){
+    public void setFactory(@NotNull InterfaceCardFactory<T> factory){
         this.factory = factory;
     }
 
     /**
-     * Returns the InterfaceCardFactory object.
+     * Returns the Cards factory.
      * @return An InterfaceCardFactory object.
      */
-    public InterfaceCardFactory<T> getCardFactory(){
+    public InterfaceCardFactory<T> getFactory(){
         return factory;
     }
 

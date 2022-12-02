@@ -23,33 +23,23 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.hands;
+package juno.model.card;
 
-import juno.model.subjects.factory.InterfaceSubject;
+import juno.model.card.colors.InterfaceColor;
 
-public class HandsInitializer {
+/**
+ * This interface defines a method that returns the
+ * 'Color' attribute of a card.
+ * @author Simone Gentili
+ */
+@FunctionalInterface
+public interface InterfaceCardColor {
 
-    private HandsInitializer() {}
+    /**
+     * Returns the InterfaceColor object of this
+     * object.
+     * @return An InterfaceColor object
+     */
+    InterfaceColor color();
 
-    @SuppressWarnings("unchecked")
-    public static void initialize() {
-        // OBSERVERS
-        ItemAdder<InterfaceSubject, InterfaceUnoCard> itemAdder =
-                (ItemAdder<InterfaceSubject, InterfaceUnoCard>) ItemAdder.getInstance();
-
-        ItemRemover<InterfaceSubject, InterfaceUnoCard> itemRemover =
-                (ItemRemover<InterfaceSubject, InterfaceUnoCard>) ItemRemover.getInstance();
-
-        HandsManager<InterfaceSubject, InterfaceUnoCard> handsManager =
-                (HandsManager<InterfaceSubject, InterfaceUnoCard>) HandsManager.getInstance();
-
-        // SUBJECT
-        HandsProvider<InterfaceSubject, InterfaceUnoCard> handsProvider =
-                (HandsProvider<InterfaceSubject, InterfaceUnoCard>) HandsProvider.getInstance();
-
-        // ADDING OBSERVERS
-        handsProvider.addObserver(itemAdder);
-        handsProvider.addObserver(itemRemover);
-        handsProvider.addObserver(handsManager);
-    }
 }

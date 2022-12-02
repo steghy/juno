@@ -23,33 +23,21 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.hands;
+package juno.model.card.colors;
 
-import juno.model.subjects.factory.InterfaceSubject;
+/**
+ * This interface defines a method that determines
+ * whether a card is 'Blue' or not.
+ * @author Simone Gentili
+ */
+@FunctionalInterface
+public interface InterfaceBlue {
 
-public class HandsInitializer {
+    /**
+     * Returns true if, and only if, this object
+     * is 'Blue'.
+     * @return A boolean.
+     */
+    boolean isBlue();
 
-    private HandsInitializer() {}
-
-    @SuppressWarnings("unchecked")
-    public static void initialize() {
-        // OBSERVERS
-        ItemAdder<InterfaceSubject, InterfaceUnoCard> itemAdder =
-                (ItemAdder<InterfaceSubject, InterfaceUnoCard>) ItemAdder.getInstance();
-
-        ItemRemover<InterfaceSubject, InterfaceUnoCard> itemRemover =
-                (ItemRemover<InterfaceSubject, InterfaceUnoCard>) ItemRemover.getInstance();
-
-        HandsManager<InterfaceSubject, InterfaceUnoCard> handsManager =
-                (HandsManager<InterfaceSubject, InterfaceUnoCard>) HandsManager.getInstance();
-
-        // SUBJECT
-        HandsProvider<InterfaceSubject, InterfaceUnoCard> handsProvider =
-                (HandsProvider<InterfaceSubject, InterfaceUnoCard>) HandsProvider.getInstance();
-
-        // ADDING OBSERVERS
-        handsProvider.addObserver(itemAdder);
-        handsProvider.addObserver(itemRemover);
-        handsProvider.addObserver(handsManager);
-    }
 }

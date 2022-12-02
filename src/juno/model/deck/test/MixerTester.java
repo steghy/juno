@@ -23,33 +23,24 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.hands;
+package juno.model.deck.test;
 
-import juno.model.subjects.factory.InterfaceSubject;
+import juno.model.card.InterfaceCard;
+import juno.model.deck.DeckFactory;
+import juno.model.deck.Mixer;
+import juno.model.deck.Deck;
+import juno.model.deck.CardFactory;
 
-public class HandsInitializer {
-
-    private HandsInitializer() {}
+public class MixerTester {
 
     @SuppressWarnings("unchecked")
-    public static void initialize() {
-        // OBSERVERS
-        ItemAdder<InterfaceSubject, InterfaceUnoCard> itemAdder =
-                (ItemAdder<InterfaceSubject, InterfaceUnoCard>) ItemAdder.getInstance();
-
-        ItemRemover<InterfaceSubject, InterfaceUnoCard> itemRemover =
-                (ItemRemover<InterfaceSubject, InterfaceUnoCard>) ItemRemover.getInstance();
-
-        HandsManager<InterfaceSubject, InterfaceUnoCard> handsManager =
-                (HandsManager<InterfaceSubject, InterfaceUnoCard>) HandsManager.getInstance();
-
-        // SUBJECT
-        HandsProvider<InterfaceSubject, InterfaceUnoCard> handsProvider =
-                (HandsProvider<InterfaceSubject, InterfaceUnoCard>) HandsProvider.getInstance();
-
-        // ADDING OBSERVERS
-        handsProvider.addObserver(itemAdder);
-        handsProvider.addObserver(itemRemover);
-        handsProvider.addObserver(handsManager);
+    public static void main(String[] args) {
+        Mixer<InterfaceCard> mixer = (Mixer<InterfaceCard>) Mixer.getInstance();
+        DeckFactory deckFactory = DeckFactory.getInstance();
+        deckFactory.setFactory(CardFactory.getInstance());
+        Deck deck = Deck.getInstance();
+        deck.addAll(deckFactory.getDeck());
+        mixer.shuffle(deck);
+        deck.forEach(System.out::println);
     }
 }

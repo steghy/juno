@@ -25,67 +25,57 @@
 
 package juno.model.deck;
 
+
+import juno.model.card.InterfaceCard;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 /**
+ * This class defines the deck for the game.
+ * The deck is a stack, from which it is
+ * possible to draw using the draw() method.
+ * When the deck is almost empty it is
+ * automatically filled with cards and shuffled.
+ * The deck notifies all its observers whenever
+ * a card is drawn.
  * @author Simone Gentili
- * @param <T> The type of the Cards.
  */
-public class Deck<T>
-        extends AbstractDeck<T>
-        implements Observable{
+public class Deck
+        extends AbstractDeck<InterfaceCard>
+        implements InterfaceDeck<InterfaceCard>, Observable {
 
+    /* The Observers List */
     private final List<Observer> observerList;
-    private final Stack<T> deck;
-    private T lastCard;
 
-    /* The Deck instance */
-    private static Deck<?> instance;
+    /* The Deck instance. */
+    private static Deck instance;
 
-    /* Builds the Deck instance */
+    /* Builds the Deck instance. */
     private Deck() {
         observerList = new ArrayList<>();
-        deck = new Stack<>();
     }
 
     /**
      * Returns the Deck instance.
      * @return The Deck instance.
      */
-     public static Deck<?> getInstance() {
-        if(instance == null) instance = new Deck<>();
+    public static Deck getInstance() {
+        if(instance == null) instance = new Deck();
         return instance;
-     }
-
-    @Override
-    public T draw() {
-         // Case not allowed.
-        if(deck.isEmpty()) {
-            throw new IllegalArgumentException("Empty deck");
-            // Automatic Deck fill.
-        } else if(deck.size() <= 4) {
-            this.getDeckRefiller().refill(deck);
-            this.getMixer().shuffle(deck);
-        } lastCard = deck.pop();
-        updateAll(); // Observers update
-        return lastCard;
     }
 
     @Override
-    public T lastItem() {
-        return lastCard;
-    }
-
-    @Override
-    public void generate() {
-        deck.clear();
-        deck.addAll(this.getDeckFactory().getDeck());
+    public InterfaceCard draw() {
+        if(empty()) throw new IllegalArgumentException("Empty deck");
+        if(size() < 5) {
+            getFiller().fill(this);
+            getMixer().shuffle(this);
+        } updateAll();
+        return pop();
     }
 
     @Override
@@ -102,4 +92,5 @@ public class Deck<T>
     public void updateAll() {
         observerList.forEach(observer -> observer.update(this));
     }
+
 }

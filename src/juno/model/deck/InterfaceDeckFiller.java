@@ -23,33 +23,23 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.hands;
+package juno.model.deck;
 
-import juno.model.subjects.factory.InterfaceSubject;
+import java.util.List;
 
-public class HandsInitializer {
+/**
+ * This interface defines a method for
+ * filling a deck with cards.
+ * @author Simone Gentili
+ * @param <T> The type of the cards.
+ */
+@FunctionalInterface
+public interface InterfaceDeckFiller<T> {
 
-    private HandsInitializer() {}
+    /**
+     * Fill the specified deck
+     * @param deck A List object.
+     */
+    void fill(List<T> deck);
 
-    @SuppressWarnings("unchecked")
-    public static void initialize() {
-        // OBSERVERS
-        ItemAdder<InterfaceSubject, InterfaceUnoCard> itemAdder =
-                (ItemAdder<InterfaceSubject, InterfaceUnoCard>) ItemAdder.getInstance();
-
-        ItemRemover<InterfaceSubject, InterfaceUnoCard> itemRemover =
-                (ItemRemover<InterfaceSubject, InterfaceUnoCard>) ItemRemover.getInstance();
-
-        HandsManager<InterfaceSubject, InterfaceUnoCard> handsManager =
-                (HandsManager<InterfaceSubject, InterfaceUnoCard>) HandsManager.getInstance();
-
-        // SUBJECT
-        HandsProvider<InterfaceSubject, InterfaceUnoCard> handsProvider =
-                (HandsProvider<InterfaceSubject, InterfaceUnoCard>) HandsProvider.getInstance();
-
-        // ADDING OBSERVERS
-        handsProvider.addObserver(itemAdder);
-        handsProvider.addObserver(itemRemover);
-        handsProvider.addObserver(handsManager);
-    }
 }

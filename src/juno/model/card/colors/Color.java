@@ -23,33 +23,47 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.hands;
+package juno.model.card.colors;
 
-import juno.model.subjects.factory.InterfaceSubject;
+/**
+ * This class defines four objects, one for each
+ * color of the 'Uno' card game. The class implements
+ * the 'InterfaceColor' interface and, with it, the
+ * methods for determining whether an object of this
+ * class is a particular color.
+ * @author Simone Gentili
+ */
+public enum Color implements InterfaceColor {
 
-public class HandsInitializer {
+    /** The 'Red' color. */
+    RED,
 
-    private HandsInitializer() {}
+    /** The 'Blue' color. */
+    BLUE,
 
-    @SuppressWarnings("unchecked")
-    public static void initialize() {
-        // OBSERVERS
-        ItemAdder<InterfaceSubject, InterfaceUnoCard> itemAdder =
-                (ItemAdder<InterfaceSubject, InterfaceUnoCard>) ItemAdder.getInstance();
+    /** The 'Green' color. */
+    GREEN,
 
-        ItemRemover<InterfaceSubject, InterfaceUnoCard> itemRemover =
-                (ItemRemover<InterfaceSubject, InterfaceUnoCard>) ItemRemover.getInstance();
+    /** The 'Yellow' color. */
+    YELLOW;
 
-        HandsManager<InterfaceSubject, InterfaceUnoCard> handsManager =
-                (HandsManager<InterfaceSubject, InterfaceUnoCard>) HandsManager.getInstance();
+    @Override
+    public boolean isBlue() {
+        return this.name().equals("BLUE");
+    }
 
-        // SUBJECT
-        HandsProvider<InterfaceSubject, InterfaceUnoCard> handsProvider =
-                (HandsProvider<InterfaceSubject, InterfaceUnoCard>) HandsProvider.getInstance();
+    @Override
+    public boolean isGreen() {
+        return this.name().equals("GREEN");
+    }
 
-        // ADDING OBSERVERS
-        handsProvider.addObserver(itemAdder);
-        handsProvider.addObserver(itemRemover);
-        handsProvider.addObserver(handsManager);
+    @Override
+    public boolean isRed() {
+        return this.name().equals("RED");
+    }
+
+    @Override
+    public boolean isYellow() {
+        return this.name().equals("YELLOW");
     }
 }

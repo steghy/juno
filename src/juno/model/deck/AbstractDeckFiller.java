@@ -23,33 +23,37 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.hands;
+package juno.model.deck;
 
-import juno.model.subjects.factory.InterfaceSubject;
+import org.jetbrains.annotations.NotNull;
 
-public class HandsInitializer {
+import java.util.List;
 
-    private HandsInitializer() {}
+/**
+ * This abstract class defines deck fillers
+ * who need a card supplier.
+ * @author Simone Gentili
+ * @param <T> The type of the cards.
+ */
+public abstract class AbstractDeckFiller<T> implements InterfaceDeckFiller<T> {
 
-    @SuppressWarnings("unchecked")
-    public static void initialize() {
-        // OBSERVERS
-        ItemAdder<InterfaceSubject, InterfaceUnoCard> itemAdder =
-                (ItemAdder<InterfaceSubject, InterfaceUnoCard>) ItemAdder.getInstance();
+    /* The Discarded pile */
+    private List<T> supplier;
 
-        ItemRemover<InterfaceSubject, InterfaceUnoCard> itemRemover =
-                (ItemRemover<InterfaceSubject, InterfaceUnoCard>) ItemRemover.getInstance();
-
-        HandsManager<InterfaceSubject, InterfaceUnoCard> handsManager =
-                (HandsManager<InterfaceSubject, InterfaceUnoCard>) HandsManager.getInstance();
-
-        // SUBJECT
-        HandsProvider<InterfaceSubject, InterfaceUnoCard> handsProvider =
-                (HandsProvider<InterfaceSubject, InterfaceUnoCard>) HandsProvider.getInstance();
-
-        // ADDING OBSERVERS
-        handsProvider.addObserver(itemAdder);
-        handsProvider.addObserver(itemRemover);
-        handsProvider.addObserver(handsManager);
+    /**
+     * Sets the List supplier of this object.
+     * @param supplier A List object.
+     */
+    public void setSupplier(@NotNull List<T> supplier) {
+        this.supplier = supplier;
     }
+
+    /**
+     * Returns the List supplier of this object.
+     * @return A List object.
+     */
+    public List<T> getSupplier() {
+        return supplier;
+    }
+
 }

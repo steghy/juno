@@ -25,7 +25,24 @@
 
 package juno.model.deck;
 
+/**
+ * This interface defines the method for checking
+ * compatibility between two cards of the 'Uno'
+ * card game.
+ * @author Simone Gentili
+ * @param <T> The type of the cards.
+ */
+@FunctionalInterface
 public interface InterfaceCompatibilityChecker<T> {
 
+    /**
+     * Checks compatibility between the two specified
+     * cards and returns true if, and only if, they
+     * are compatible.
+     * @param el1 The top card of the 'discarded pile'.
+     * @param el2 The card that should be inserted.
+     * @return A boolean value.
+     */
     boolean areCompatible(T el1, T el2);
+
 }

@@ -27,7 +27,20 @@ package juno.model.deck;
 
 import java.util.Collection;
 
+/**
+ * This interface defines the method that
+ * supplies the deck of cards of the 'Uno'
+ * game.
+ * @author Simone Gentili
+ * @param <T> The type of the cards.
+ */
+@FunctionalInterface
 public interface InterfaceDeckFactory<T> {
 
+    /**
+     * Returns the deck of cards.
+     * @return A Collection object.
+     */
     Collection<T> getDeck();
+
 }

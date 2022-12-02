@@ -25,20 +25,27 @@
 
 package juno.model.deck;
 
-import juno.model.card.*;
+import juno.model.card.InterfaceCard;
+import juno.model.card.actions.InterfaceAction;
+import juno.model.card.colors.InterfaceColor;
+import juno.model.card.values.InterfaceValue;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * This class defines a compatibility checker
+ * between two 'InterfaceCard' type cards.
+ * The 'areCompatible(el1, el2)' method returns
+ * true when the two specified elements are compatible.
  * @author Simone Gentili
  */
 class CompatibilityChecker
-        implements InterfaceCompatibilityChecker<InterfaceUnoCard> {
+        implements InterfaceCompatibilityChecker<InterfaceCard> {
 
     /* The CompatibilityChecker instance */
     private static CompatibilityChecker instance;
 
     /* Builds the CompatibilityChecker instance */
-    private CompatibilityChecker(){}
+    private CompatibilityChecker() {}
 
     /**
      * Returns the CompatibilityChecker instance.
@@ -50,74 +57,67 @@ class CompatibilityChecker
     }
 
     @Override
-    public boolean areCompatible(@NotNull InterfaceUnoCard card,
-                                 @NotNull InterfaceUnoCard otherCard){
+    public boolean areCompatible(@NotNull InterfaceCard card,
+                                 @NotNull InterfaceCard otherCard){
+        // Card specifications.
+        InterfaceColor  cardColor  = card.color();
+        InterfaceAction cardAction = card.action();
+        InterfaceValue  cardValue  = card.value();
 
-        // CARD SPECIFICATIONS
-        InterfaceUnoCardColor<InterfaceUnoColor> cardColor = card.color();
-        InterfaceUnoCardAction cardAction = card.action();
-        InterfaceUnoCardValue cardValue = card.value();
+        // Other card specification.
+        InterfaceColor  otherCardColor  = otherCard.color();
+        InterfaceAction otherCardAction = otherCard.action();
+        InterfaceValue  otherCardValue  = otherCard.value();
 
-        // OTHER CARD SPECIFICATIONS
-        InterfaceUnoCardColor<InterfaceUnoColor> otherCardColor = otherCard.color();
-        InterfaceUnoCardAction otherCardAction = otherCard.action();
-        InterfaceUnoCardValue otherCardValue = otherCard.value();
+        // Jolly case.
+        if (otherCardAction != null && otherCardAction.isJolly()) return true;
 
-        // JOLLY CASE
-        if(otherCardAction != null){
-            if(otherCardAction.isWildAction() || otherCardAction.isWildDrawFourAction()){
+        // Color case.
+        if (cardColor != null && otherCardColor != null) {
+            if (cardColor.isBlue() && otherCardColor.isBlue()) {
+                return true;
+            } if (cardColor.isGreen() && otherCardColor.isGreen()) {
+                return true;
+            } if (cardColor.isYellow() && otherCardColor.isYellow()) {
+                return true;
+            } if (cardColor.isRed() && otherCardColor.isRed()) {
                 return true;
             }
         }
 
-        // COLOR CASE
-        if(cardColor != null && otherCardColor != null){
-            InterfaceUnoColor color = cardColor.getUnoColor();
-            InterfaceUnoColor otherColor = otherCardColor.getUnoColor();
-            if(color.isBlue() && otherColor.isBlue()){
+        // Action case
+        if (cardAction != null && otherCardAction != null) {
+            if (cardAction.isSkip() && otherCardAction.isSkip()) {
                 return true;
-            } else if(color.isGreen() && otherColor.isGreen()){
+            } if (cardAction.isInvert() && otherCardAction.isInvert()) {
                 return true;
-            } else if(color.isYellow() && otherColor.isYellow()){
-                return true;
-            } else if(color.isRed() && otherColor.isRed()) {
+            } if (cardAction.isDrawTwo() && otherCardAction.isDrawTwo()) {
                 return true;
             }
         }
 
-        // ACTION CASE
-        if(cardAction != null && otherCardAction != null){
-            if(cardAction.isSkipAction() && otherCardAction.isSkipAction()){
+        // Number case
+        if (cardValue != null && otherCardValue != null) {
+            if (cardValue.isZero() && otherCardValue.isZero()){
                 return true;
-            } else if(cardAction.isReverseAction() && otherCardAction.isReverseAction()){
+            } if (cardValue.isOne() && otherCardValue.isOne()) {
                 return true;
-            } else if(cardAction.isDrawTwoAction() && otherCardAction.isDrawTwoAction()){
+            } if (cardValue.isTwo() && otherCardValue.isTwo()) {
                 return true;
-            }
-        }
-
-        // NUMBER CASE
-        if(cardValue != null && otherCardValue != null){
-            if(cardValue.isValueZero() && otherCardValue.isValueZero()){
+            } if (cardValue.isThree() && otherCardValue.isThree()) {
                 return true;
-            } if(cardValue.isValueOne() && otherCardValue.isValueOne()){
+            } if (cardValue.isFour() && otherCardValue.isFour()) {
                 return true;
-            } if(cardValue.isValueTwo() && otherCardValue.isValueTwo()){
+            } if (cardValue.isFive() && otherCardValue.isFive()) {
                 return true;
-            } if(cardValue.isValueThree() && otherCardValue.isValueThree()){
+            } if (cardValue.isSix() && otherCardValue.isSix()) {
                 return true;
-            } if(cardValue.isValueFour() && otherCardValue.isValueFour()){
+            } if (cardValue.isSeven() && otherCardValue.isSeven()) {
                 return true;
-            } if(cardValue.isValueFive() && otherCardValue.isValueFive()){
+            } if (cardValue.isEight() && otherCardValue.isEight()) {
                 return true;
-            } if(cardValue.isValueSix() && otherCardValue.isValueSix()){
-                return true;
-            } if(cardValue.isValueSeven() && otherCardValue.isValueSeven()){
-                return true;
-            } if(cardValue.isValueEight() && otherCardValue.isValueEight()){
-                return true;
-            }
-            return cardValue.isValueNine() && otherCardValue.isValueNine();
+            } return cardValue.isNine() && otherCardValue.isNine();
         } return false;
     }
+
 }

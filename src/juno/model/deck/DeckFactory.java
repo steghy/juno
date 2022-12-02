@@ -25,37 +25,78 @@
 
 package juno.model.deck;
 
-import juno.model.card.InterfaceUnoCard;
+import juno.model.card.InterfaceCard;
+import juno.model.util.Observable;
+import juno.model.util.Observer;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
-class DeckFactory
-        extends AbstractDeckFactory<InterfaceUnoCard> {
+/**
+ * This class defines a factory for the 'Uno' deck.
+ * The method 'getDeck()' generates a deck using the
+ * cards supplied by the 'InterfaceCardFactory'
+ * according to the rules of the 'Uno' game.
+ * A 'Uno' deck consists of 108 cards, of which there
+ * are 76 Number cards, 24 Action cards and 8 Wild cards.
+ * @author Simone Gentili
+ */
+public class DeckFactory
+        extends AbstractDeckFactory<InterfaceCard>
+        implements InterfaceDeckFactory<InterfaceCard>, Observable {
 
+    /* The Observers List */
+    private final List<Observer> observerList;
+
+    /* The DeckFactory instance */
     private static DeckFactory instance;
 
-    private DeckFactory() {}
+    /* Builds the DeckFactory */
+    private DeckFactory() {
+        observerList = new ArrayList<>();
+    }
 
-    static DeckFactory getInstance(){
+    /**
+     * Returns the DeckFactory instance.
+     * @return The DeckFactory instance.
+     */
+    public static DeckFactory getInstance(){
         if(instance == null) instance = new DeckFactory();
         return instance;
     }
 
     @Override
-    public Collection<InterfaceUnoCard> getDeck() {
-        Collection<InterfaceUnoCard> cards = this.getCardFactory().getCards();
-        Collection<InterfaceUnoCard> deck = new ArrayList<>();
+    public Collection<InterfaceCard> getDeck() {
+        Collection<InterfaceCard> cards = this.getFactory().getCards();
+        Collection<InterfaceCard> deck = new ArrayList<>();
         cards.forEach(card -> {
             deck.add(card);
-            if(card.action() != null) {
-                if(card.action().isWildAction() ||
-                        card.action().isWildDrawFourAction()) {
+            if (card.action() != null) {
+                if (card.action().isJolly()) {
                     deck.add(card); deck.add(card);
                 }
-            } if(card.action() != null || card.value() != null && !card.value().isValueZero()) {
+            } if(card.action() != null || card.value() != null
+                    && !card.value().isZero()) {
                 deck.add(card);
             }
         }); return deck;
     }
+
+    @Override
+    public void addObserver(@NotNull Observer observer) {
+        observerList.add(observer);
+    }
+
+    @Override
+    public void removeObserver(@NotNull Observer observer) {
+        observerList.remove(observer);
+    }
+
+    @Override
+    public void updateAll() {
+        observerList.forEach(observer -> observer.update(this));
+    }
+
 }

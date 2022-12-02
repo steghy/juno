@@ -25,7 +25,6 @@
 
 package juno.model.subjects.ai;
 
-import juno.model.card.InterfaceUnoCard;
 import juno.model.util.MyRandom;
 import org.jetbrains.annotations.NotNull;
 

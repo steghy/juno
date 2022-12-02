@@ -25,7 +25,6 @@
 
 package juno.model.subjects.shift;
 
-import juno.model.deck.AbstractDeck;
 import juno.model.subjects.hands.InterfaceHandsManager;
 import org.jetbrains.annotations.NotNull;
 

@@ -23,33 +23,23 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.hands;
+package juno.model.card;
 
-import juno.model.subjects.factory.InterfaceSubject;
+import juno.model.card.actions.InterfaceAction;
 
-public class HandsInitializer {
+/**
+ * This interface defines a method that returns the
+ * 'Action' attribute of a card.
+ * @author Simone Gentili
+ */
+@FunctionalInterface
+public interface InterfaceCardAction {
 
-    private HandsInitializer() {}
+    /**
+     * Returns the InterfaceAction object of this
+     * object.
+     * @return An InterfaceAction object
+     */
+    InterfaceAction action();
 
-    @SuppressWarnings("unchecked")
-    public static void initialize() {
-        // OBSERVERS
-        ItemAdder<InterfaceSubject, InterfaceUnoCard> itemAdder =
-                (ItemAdder<InterfaceSubject, InterfaceUnoCard>) ItemAdder.getInstance();
-
-        ItemRemover<InterfaceSubject, InterfaceUnoCard> itemRemover =
-                (ItemRemover<InterfaceSubject, InterfaceUnoCard>) ItemRemover.getInstance();
-
-        HandsManager<InterfaceSubject, InterfaceUnoCard> handsManager =
-                (HandsManager<InterfaceSubject, InterfaceUnoCard>) HandsManager.getInstance();
-
-        // SUBJECT
-        HandsProvider<InterfaceSubject, InterfaceUnoCard> handsProvider =
-                (HandsProvider<InterfaceSubject, InterfaceUnoCard>) HandsProvider.getInstance();
-
-        // ADDING OBSERVERS
-        handsProvider.addObserver(itemAdder);
-        handsProvider.addObserver(itemRemover);
-        handsProvider.addObserver(handsManager);
-    }
 }

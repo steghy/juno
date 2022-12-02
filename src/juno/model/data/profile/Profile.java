@@ -34,13 +34,11 @@ import java.util.List;
 import java.util.Map;
 
 
-public class
-Profile
+public class Profile
         implements AbstractProfile, Configurable, Exportable {
 
     public static final int MAXIMUM_LENGTH = 15;
     public static final int MAXIMUM_AGE = 150;
-
     public static final String PROFILE_NAME = "profile name";
     public static final String NAME = "name";
     public static final String LAST_NAME = "last name";

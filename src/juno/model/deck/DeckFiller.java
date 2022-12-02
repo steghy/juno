@@ -25,53 +25,56 @@
 
 package juno.model.deck;
 
+import juno.model.card.InterfaceCard;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.util.Objects;
 
 /**
- * This class defines a mixer.
- * A shuffler can mix a data structure
- * that implements the List interface.
+ * This class defines a card deck filler of
+ * type 'InterfaceCard'. The fill method fills
+ * the specified deck with cards contained
+ * within the supplier deck according to the
+ * rules of 'Uno'.
  * @author Simone Gentili
  */
-public class Mixer<T>
-        implements InterfaceMixer<T>, Observable {
+public class DeckFiller
+        extends AbstractDeckFiller<InterfaceCard>
+        implements Observable {
 
-    /* The Observers List. */
+    /* The Observers List */
     private final List<Observer> observerList;
 
-    /* The Mixer instance. */
-    private static Mixer<?> instance;
+    /* The DeckFiller instance. */
+    private static DeckFiller instance;
 
-    /* Builds the Mixer instance. */
-    private Mixer() {
+    /* Builds the DeckFiller instance. */
+    private DeckFiller() {
         observerList = new ArrayList<>();
     }
 
     /**
-     * Returns the Mixer instance.
-     * @return The Mixer instance.
+     * Returns the DeckFiller instance.
+     * @return The DeckFiller instance.
      */
-    public static Mixer<?> getInstance() {
-        if(instance == null) instance = new Mixer<>();
+    public static DeckFiller getInstance() {
+        if(instance == null) instance = new DeckFiller();
         return instance;
     }
 
     @Override
-    public void shuffle(@NotNull List<T> items) {
-        int size = items.size();
-        if(size <= 1) return;
-        Random random = new Random();
-        for(int i = 0; i < 250; i++) {
-            T lastItem = items.get(size - 1);
-            items.remove(size - 1);
-            items.add(random.nextInt(size), lastItem);
-        }
+    public void fill(@NotNull List<InterfaceCard> deck) {
+        List<InterfaceCard> supplier = getSupplier();
+        int discardedPileSize = Objects.requireNonNull(supplier).size();
+        InterfaceCard item = supplier.get(discardedPileSize - 1);
+        supplier.remove(discardedPileSize - 1);
+        deck.addAll(supplier);
+        supplier.clear();
+        supplier.add(item);
     }
 
     @Override
@@ -81,7 +84,7 @@ public class Mixer<T>
 
     @Override
     public void removeObserver(@NotNull Observer observer) {
-        observerList.add(observer);
+        observerList.remove(observer);
     }
 
     @Override

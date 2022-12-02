@@ -23,25 +23,56 @@
  * SOFTWARE.
  */
 
-package juno.model.deck;
+package juno.model.card;
 
-
-import java.util.List;
+import juno.model.card.actions.InterfaceAction;
+import juno.model.card.colors.InterfaceColor;
+import juno.model.card.values.InterfaceValue;
+import org.jetbrains.annotations.Nullable;
 
 /**
- * This interface defines a method for shuffling
- * any data structure that implements the List
- * interface.
+ * This class defines the model of the 'Uno' card.
+ * A 'Uno' card has the following attributes:
+ * - Color
+ * - Value
+ * - Action
+ * An attribute of a card can also be null, if the
+ * card type does not allow it.
+ *
+ * @param color  The Color
+ * @param value  The Value
+ * @param action The Action
  * @author Simone Gentili
  */
-@FunctionalInterface
-public interface InterfaceMixer<T> {
+public record Card(InterfaceColor color, InterfaceValue value, InterfaceAction action)
+        implements InterfaceCard {
 
     /**
-     * Shuffle the specified List.
-     * @param list A data structure that implements
-     *             the List interface.
+     * Builds a Card object with the specified
+     * parameters.
+     *
+     * @param color  An InterfaceColor object.
+     * @param value  An InterfaceValue object.
+     * @param action An InterfaceAction object.
      */
-    void shuffle(List<T> list);
+    public Card {
+    }
 
+    @Override
+    @Nullable
+    public InterfaceAction action() {
+        return action;
+    }
+
+    @Override
+    @Nullable
+    public InterfaceColor color() {
+        return color;
+    }
+
+    @Override
+    @Nullable
+    public InterfaceValue value() {
+        return value;
+    }
 }

@@ -25,12 +25,22 @@
 
 package juno.model.deck;
 
+import java.util.List;
+
 /**
- * This class represents a deck containing generic cards.
- * The possible operations are: draw(), lastItem() and generate().
- * @param <T> The type of the Cards.
+ * This interface defines the method for
+ * picking the top card in the deck.
+ * @author Simone Gentili
+ * @param <T> The type of the cards.
  */
-@FunctionalInterface
-public interface InterfaceDeck<T> {
+public interface InterfaceDeck<T>
+        extends List<T> {
+
+    /**
+     * Picks up and returns the top card
+     * from the deck.
+     * @return A 'Uno' card of type T.
+     */
     T draw();
+
 }

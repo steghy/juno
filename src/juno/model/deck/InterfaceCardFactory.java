@@ -28,15 +28,20 @@ package juno.model.deck;
 import java.util.Collection;
 
 /**
- * This interface defines an abstract Factory that
- * provides all the different card types of some card game.
+ * This interface defines a factory that supplies
+ * cards for the game 'Uno'. The cards that are
+ * provided must all be different and in a single copy.
+ * @author Simone Gentili
  * @param <T> The type of the cards.
  */
+@FunctionalInterface
 public interface InterfaceCardFactory<T> {
 
     /**
-     * Returns all the different cards of some card game.
-     * @return A Collection of T cards.
+     * Returns all the different types of cards
+     * of the 'Uno' card game.
+     * @return A Collection object.
      */
     Collection<T> getCards();
+
 }

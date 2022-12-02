@@ -25,7 +25,11 @@
 
 package juno.model.deck;
 
-import juno.model.card.*;
+import juno.model.card.Card;
+import juno.model.card.InterfaceCard;
+import juno.model.card.actions.Action;
+import juno.model.card.colors.Color;
+import juno.model.card.values.Value;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,46 +37,53 @@ import java.util.Collection;
 import java.util.List;
 
 /**
+ * This class provides all different types of
+ * cards in the 'Uno' card game. Using the
+ * simple attributes described in the enum classes
+ * 'Value', 'Color' and 'Action', the method
+ * 'getCards()' returns a List containing all the
+ * different types of cards using the type 'Card'
+ * and his interface 'InterfaceCard'.
  * @author Simone Gentili
  */
- class CardFactory
-        implements InterfaceCardFactory<InterfaceUnoCard> {
+ public class CardFactory
+        implements InterfaceCardFactory<InterfaceCard> {
 
+     /* The CardFactory instance. */
     private static CardFactory instance;
 
-    /* Builds the CardFactory object */
+    /* Builds the CardFactory instance. */
     private CardFactory() {}
 
     /**
      * Returns the CardFactory instance.
      * @return The CardFactory instance.
      */
-    static CardFactory getInstance(){
+    public static CardFactory getInstance(){
         if(instance == null) instance = new CardFactory();
         return instance;
     }
 
     @Override
-    public Collection<InterfaceUnoCard> getCards() {
-        List<InterfaceUnoCard> cards = new ArrayList<>();
-
-        // COLORED CARDS
-        Arrays.asList(UnoColor.values()).forEach(color -> {
-            Arrays.asList(UnoCardValue.values()).forEach(value ->
-                    cards.add(new UnoCard(null, new UnoCardColor<>(color), value)));
-
-            Arrays.asList(UnoCardAction.values()).forEach(action -> {
-                if(action != null) {
-                    if (!action.isWildAction() && !action.isWildDrawFourAction()) {
-                        cards.add(new UnoCard(action, new UnoCardColor<>(color), null));
+    public Collection<InterfaceCard> getCards() {
+        List<InterfaceCard> cards = new ArrayList<>();
+        Arrays.asList(Color.values()).forEach(color -> {
+            // Numeric cards
+            Arrays.asList(Value.values()).forEach(value ->
+                    cards.add(new Card(color, value, null)));
+            // Action cards (Non-jolly)
+            Arrays.asList(Action.values()).forEach(action -> {
+                if (action != null) {
+                    if (!action.isJolly()) {
+                        cards.add(new Card(color, null, action));
                     }
                 }
             });
         });
-
-        // JOLLY CARDS
-        cards.add(new UnoCard(UnoCardAction.WILD, null, null));
-        cards.add(new UnoCard(UnoCardAction.WILD_DRAW_FOUR, null, null));
+        // Jolly cards
+        cards.add(new Card(null, null, Action.DRAW_FOUR));
+        cards.add(new Card(null, null, Action.CHANGE_COLOR));
         return cards;
     }
+
 }
