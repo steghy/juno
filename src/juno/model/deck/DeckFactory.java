@@ -78,7 +78,7 @@ public class DeckFactory
                     deck.add(card); deck.add(card);
                 }
             } if(card.action() != null || card.value() != null
-                    && !card.value().isZero()) {
+                    && card.value() != 0) {
                 deck.add(card);
             }
         }); return deck;

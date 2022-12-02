@@ -62,12 +62,12 @@ class CompatibilityChecker
         // Card specifications.
         InterfaceColor  cardColor  = card.color();
         InterfaceAction cardAction = card.action();
-        InterfaceValue  cardValue  = card.value();
+        Integer         cardValue  = card.value();
 
         // Other card specification.
         InterfaceColor  otherCardColor  = otherCard.color();
         InterfaceAction otherCardAction = otherCard.action();
-        InterfaceValue  otherCardValue  = otherCard.value();
+        Integer         otherCardValue  = otherCard.value();
 
         // Jolly case.
         if (otherCardAction != null && otherCardAction.isJolly()) return true;
@@ -98,25 +98,7 @@ class CompatibilityChecker
 
         // Number case
         if (cardValue != null && otherCardValue != null) {
-            if (cardValue.isZero() && otherCardValue.isZero()){
-                return true;
-            } if (cardValue.isOne() && otherCardValue.isOne()) {
-                return true;
-            } if (cardValue.isTwo() && otherCardValue.isTwo()) {
-                return true;
-            } if (cardValue.isThree() && otherCardValue.isThree()) {
-                return true;
-            } if (cardValue.isFour() && otherCardValue.isFour()) {
-                return true;
-            } if (cardValue.isFive() && otherCardValue.isFive()) {
-                return true;
-            } if (cardValue.isSix() && otherCardValue.isSix()) {
-                return true;
-            } if (cardValue.isSeven() && otherCardValue.isSeven()) {
-                return true;
-            } if (cardValue.isEight() && otherCardValue.isEight()) {
-                return true;
-            } return cardValue.isNine() && otherCardValue.isNine();
+            return cardValue.equals(otherCardValue);
         } return false;
     }
 

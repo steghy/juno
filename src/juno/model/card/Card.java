@@ -27,7 +27,6 @@ package juno.model.card;
 
 import juno.model.card.actions.InterfaceAction;
 import juno.model.card.colors.InterfaceColor;
-import juno.model.card.values.InterfaceValue;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -44,7 +43,7 @@ import org.jetbrains.annotations.Nullable;
  * @param action The Action
  * @author Simone Gentili
  */
-public record Card(InterfaceColor color, InterfaceValue value, InterfaceAction action)
+public record Card(InterfaceColor color, Integer value, InterfaceAction action)
         implements InterfaceCard {
 
     /**
@@ -52,11 +51,10 @@ public record Card(InterfaceColor color, InterfaceValue value, InterfaceAction a
      * parameters.
      *
      * @param color  An InterfaceColor object.
-     * @param value  An InterfaceValue object.
+     * @param value  An Integer object.
      * @param action An InterfaceAction object.
      */
-    public Card {
-    }
+    public Card {}
 
     @Override
     @Nullable
@@ -72,7 +70,8 @@ public record Card(InterfaceColor color, InterfaceValue value, InterfaceAction a
 
     @Override
     @Nullable
-    public InterfaceValue value() {
+    public Integer value() {
         return value;
     }
+
 }

@@ -25,8 +25,6 @@
 
 package juno.model.card;
 
-import juno.model.card.values.InterfaceValue;
-
 /**
  * This interface defines a method that returns the
  * 'Value' attribute of a card.
@@ -36,10 +34,10 @@ import juno.model.card.values.InterfaceValue;
 public interface InterfaceCardValue {
 
     /**
-     * Returns the InterfaceValue object of this
+     * Returns the Integer object of this
      * object.
-     * @return An InterfaceValue object.
+     * @return An Integer object.
      */
-    InterfaceValue value();
+    Integer value();
 
 }

@@ -29,7 +29,6 @@ import juno.model.card.Card;
 import juno.model.card.InterfaceCard;
 import juno.model.card.actions.Action;
 import juno.model.card.colors.Color;
-import juno.model.card.values.Value;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -69,8 +68,7 @@ import java.util.List;
         List<InterfaceCard> cards = new ArrayList<>();
         Arrays.asList(Color.values()).forEach(color -> {
             // Numeric cards
-            Arrays.asList(Value.values()).forEach(value ->
-                    cards.add(new Card(color, value, null)));
+            for(int i = 0; i < 10; i++) cards.add(new Card(color, i, null));
             // Action cards (Non-jolly)
             Arrays.asList(Action.values()).forEach(action -> {
                 if (action != null) {
