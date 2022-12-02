@@ -25,6 +25,7 @@
 
 package juno.model.subjects.shift;
 
+import juno.model.deck.InterfaceDeck;
 import juno.model.subjects.hands.InterfaceHandsManager;
 import org.jetbrains.annotations.NotNull;
 
@@ -32,22 +33,22 @@ public abstract class AbstractFirstSubjectManager<T, E>
         implements InterfaceFirstSubjectManager {
 
     private InterfaceHandsManager<T, E> handsManager;
-    private AbstractDeck<E> deck;
+    private InterfaceDeck<E> deck;
 
     public void setHandsManager(@NotNull InterfaceHandsManager<T, E> handsManager) {
         this.handsManager = handsManager;
     }
 
-    public void setDeck(@NotNull AbstractDeck<E> deck) {
+    public void setDeck(@NotNull InterfaceDeck<E> deck) {
         this.deck = deck;
     }
 
     public InterfaceHandsManager<T, E> getHandsManager() {
-        return this.handsManager;
+        return handsManager;
     }
 
-    public AbstractDeck<E> getDeck() {
-        return this.deck;
+    public InterfaceDeck<E> getDeck() {
+        return deck;
     }
 
 }

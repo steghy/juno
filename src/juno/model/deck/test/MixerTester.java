@@ -35,7 +35,7 @@ public class MixerTester {
 
     @SuppressWarnings("unchecked")
     public static void main(String[] args) {
-        Mixer<InterfaceCard> mixer = (Mixer<InterfaceCard>) Mixer.getInstance();
+        Mixer mixer = Mixer.getInstance();
         DeckFactory deckFactory = DeckFactory.getInstance();
         deckFactory.setFactory(CardFactory.getInstance());
         Deck deck = Deck.getInstance();
