@@ -28,7 +28,6 @@ package juno.model.deck;
 import juno.model.card.InterfaceCard;
 import juno.model.card.actions.InterfaceAction;
 import juno.model.card.colors.InterfaceColor;
-import juno.model.card.values.InterfaceValue;
 import org.jetbrains.annotations.NotNull;
 
 /**

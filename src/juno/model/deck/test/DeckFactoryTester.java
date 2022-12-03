@@ -25,16 +25,19 @@
 
 package juno.model.deck.test;
 
+import juno.model.card.InterfaceCard;
 import juno.model.deck.DeckFactory;
 import juno.model.deck.CardFactory;
 import juno.model.deck.Deck;
 
 public class DeckFactoryTester {
 
+    @SuppressWarnings("unchecked")
     public static void main(String[] args) {
         DeckFactory deckFactory = DeckFactory.getInstance();
         deckFactory.setFactory(CardFactory.getInstance());
-        Deck.getInstance().addAll(deckFactory.getDeck());
+        Deck<InterfaceCard> deck = (Deck<InterfaceCard>) Deck.getInstance();
+        deck.addAll(deckFactory.getDeck());
         Deck.getInstance().forEach(System.out::println);
     }
 

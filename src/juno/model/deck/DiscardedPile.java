@@ -25,7 +25,6 @@
 
 package juno.model.deck;
 
-import juno.model.card.InterfaceCard;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
@@ -43,16 +42,17 @@ import java.util.Stack;
  * notified whenever the 'discard(el)' method
  * is invoked.
  * @author Simone Gentili
+ * @param <T> The type of the cards.
  */
-public class DiscardedPile
-        extends Stack<InterfaceCard>
-        implements InterfaceDiscardedPile<InterfaceCard>, Observable {
+public class DiscardedPile<T>
+        extends Stack<T>
+        implements InterfaceDiscardedPile<T>, Observable {
 
     /* The Observers List */
     private final List<Observer> observerList;
 
     /* The DiscardedPile instance. */
-    private static DiscardedPile instance;
+    private static DiscardedPile<?> instance;
 
     /* Builds the DiscardedPile instance. */
     private DiscardedPile() {
@@ -63,13 +63,13 @@ public class DiscardedPile
      * Returns the DiscardedPile instance.
      * @return The DiscardedPile instance.
      */
-    public static DiscardedPile getInstance() {
-        if(instance == null) instance = new DiscardedPile();
+    public static DiscardedPile<?> getInstance() {
+        if(instance == null) instance = new DiscardedPile<>();
         return instance;
     }
 
     @Override
-    public void discard(@NotNull InterfaceCard card) {
+    public void discard(@NotNull T card) {
         push(card);
         updateAll();
     }

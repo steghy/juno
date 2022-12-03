@@ -31,15 +31,16 @@ import juno.model.deck.*;
 public class DeckInitializerTester {
 
 
+    @SuppressWarnings("unchecked")
     public static void main(String[] args) {
         // Deck factory
         DeckFactory.getInstance().setFactory(CardFactory.getInstance());
 
         // Deck initializer
-        DeckInitializer initializer = DeckInitializer.getInstance();
-        initializer.setDeck(Deck.getInstance());
+        DeckInitializer<InterfaceCard> initializer = (DeckInitializer<InterfaceCard>) DeckInitializer.getInstance();
+        initializer.setDeck((InterfaceDeck<InterfaceCard>) Deck.getInstance());
         initializer.setFactory(DeckFactory.getInstance());
-        initializer.setMixer(Mixer.getInstance());
+        initializer.setMixer((InterfaceMixer<InterfaceCard>) Mixer.getInstance());
 
         // Test initializer
         initializer.initialize();

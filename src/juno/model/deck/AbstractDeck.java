@@ -36,7 +36,9 @@ import java.util.Stack;
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
-public abstract class AbstractDeck<T> extends Stack<T> implements InterfaceDeck<T> {
+public abstract class AbstractDeck<T>
+        extends Stack<T>
+        implements InterfaceDeck<T> {
 
     /* The Deck filler */
     private InterfaceDeckFiller<T> filler;

@@ -25,7 +25,6 @@
 
 package juno.model.deck;
 
-import juno.model.card.InterfaceCard;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
@@ -41,16 +40,17 @@ import java.util.Objects;
  * within the supplier deck according to the
  * rules of 'Uno'.
  * @author Simone Gentili
+ * @param <T> The type of the cards.
  */
-public class DeckFiller
-        extends AbstractDeckFiller<InterfaceCard>
+public class DeckFiller<T>
+        extends AbstractDeckFiller<T>
         implements Observable {
 
     /* The Observers List */
     private final List<Observer> observerList;
 
     /* The DeckFiller instance. */
-    private static DeckFiller instance;
+    private static DeckFiller<?> instance;
 
     /* Builds the DeckFiller instance. */
     private DeckFiller() {
@@ -61,16 +61,16 @@ public class DeckFiller
      * Returns the DeckFiller instance.
      * @return The DeckFiller instance.
      */
-    public static DeckFiller getInstance() {
-        if(instance == null) instance = new DeckFiller();
+    public static DeckFiller<?> getInstance() {
+        if(instance == null) instance = new DeckFiller<>();
         return instance;
     }
 
     @Override
-    public void fill(@NotNull List<InterfaceCard> deck) {
-        List<InterfaceCard> supplier = getSupplier();
+    public void fill(@NotNull List<T> deck) {
+        List<T> supplier = getSupplier();
         int discardedPileSize = Objects.requireNonNull(supplier).size();
-        InterfaceCard item = supplier.get(discardedPileSize - 1);
+        T item = supplier.get(discardedPileSize - 1);
         supplier.remove(discardedPileSize - 1);
         deck.addAll(supplier);
         supplier.clear();

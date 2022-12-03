@@ -25,15 +25,15 @@
 
 package juno.model.deck;
 
-import juno.model.card.InterfaceCard;
-
 /**
  * @author Simone Gentili
+ * @param <T> The type of the cards.
  */
-public class DeckInitializer extends AbstractDeckInitializer<InterfaceCard> {
+public class DeckInitializer<T>
+        extends AbstractDeckInitializer<T> {
 
     /* The DeckInitializer instance. */
-    private static DeckInitializer instance;
+    private static DeckInitializer<?> instance;
 
     /* Builds the DeckInitializer instance. */
     private DeckInitializer() {}
@@ -42,8 +42,8 @@ public class DeckInitializer extends AbstractDeckInitializer<InterfaceCard> {
      * Returns the DeckInitializer instance.
      * @return The DeckInitializer instance.
      */
-    public static DeckInitializer getInstance() {
-        if(instance == null) instance = new DeckInitializer();
+    public static DeckInitializer<?> getInstance() {
+        if(instance == null) instance = new DeckInitializer<>();
         return instance;
     }
 

@@ -43,16 +43,17 @@ import java.util.List;
  * The deck notifies all its observers whenever
  * a card is drawn.
  * @author Simone Gentili
+ * @param <T> The type of the cards.:w
  */
-public class Deck
-        extends AbstractDeck<InterfaceCard>
-        implements InterfaceDeck<InterfaceCard>, Observable {
+public class Deck<T>
+        extends AbstractDeck<T>
+        implements Observable {
 
     /* The Observers List */
     private final List<Observer> observerList;
 
     /* The Deck instance. */
-    private static Deck instance;
+    private static Deck<?> instance;
 
     /* Builds the Deck instance. */
     private Deck() {
@@ -63,13 +64,13 @@ public class Deck
      * Returns the Deck instance.
      * @return The Deck instance.
      */
-    public static Deck getInstance() {
-        if(instance == null) instance = new Deck();
+    public static Deck<?> getInstance() {
+        if(instance == null) instance = new Deck<>();
         return instance;
     }
 
     @Override
-    public InterfaceCard draw() {
+    public T draw() {
         if(empty()) throw new IllegalArgumentException("Empty deck");
         if(size() < 5) {
             getFiller().fill(this);

@@ -25,7 +25,6 @@
 
 package juno.model.deck;
 
-import juno.model.card.InterfaceCard;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
@@ -39,15 +38,16 @@ import java.util.Random;
  * A shuffler can mix a data structure
  * that implements the List interface.
  * @author Simone Gentili
+ * @param <T> The type of the cards.
  */
-public class Mixer
-        implements InterfaceMixer<InterfaceCard>, Observable {
+public class Mixer<T>
+        implements InterfaceMixer<T>, Observable {
 
     /* The Observers List. */
     private final List<Observer> observerList;
 
     /* The Mixer instance. */
-    private static Mixer instance;
+    private static Mixer<?> instance;
 
     /* Builds the Mixer instance. */
     private Mixer() {
@@ -58,18 +58,18 @@ public class Mixer
      * Returns the Mixer instance.
      * @return The Mixer instance.
      */
-    public static Mixer getInstance() {
-        if(instance == null) instance = new Mixer();
+    public static Mixer<?> getInstance() {
+        if(instance == null) instance = new Mixer<>();
         return instance;
     }
 
     @Override
-    public void shuffle(@NotNull List<InterfaceCard> items) {
+    public void shuffle(@NotNull List<T> items) {
         int size = items.size();
         if(size <= 1) return;
         Random random = new Random();
         for(int i = 0; i < 250; i++) {
-            InterfaceCard topCard = items.get(size - 1);
+            T topCard = items.get(size - 1);
             items.remove(size - 1);
             items.add(random.nextInt(size), topCard);
         }

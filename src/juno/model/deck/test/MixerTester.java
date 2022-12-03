@@ -38,7 +38,7 @@ public class MixerTester {
         Mixer mixer = Mixer.getInstance();
         DeckFactory deckFactory = DeckFactory.getInstance();
         deckFactory.setFactory(CardFactory.getInstance());
-        Deck deck = Deck.getInstance();
+        Deck<InterfaceCard> deck = (Deck<InterfaceCard>) Deck.getInstance();
         deck.addAll(deckFactory.getDeck());
         mixer.shuffle(deck);
         deck.forEach(System.out::println);
