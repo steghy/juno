@@ -1,0 +1,75 @@
+/*
+ *
+ * MIT License
+ *
+ * Copyright (c) 2022 Simone Gentili
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+package juno.model.data.io.input.r_configurator.test;
+
+import juno.model.data.io.input.PropertyCopier;
+import juno.model.data.io.input.r_configurator.Configurator;
+
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Map;
+
+public class RConfiguratorTester {
+
+    public static void main(String[] args) throws
+            NoSuchFieldException,
+            InvocationTargetException,
+            IllegalAccessException {
+
+        Class<?> clazz = MyClass.class;
+
+        printStatus(clazz);
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("name", "New name");
+        map.put("value", 101);
+
+        Configurator.getInstance().configure(map, clazz);
+
+        System.out.println("--------------------------------");
+
+        printStatus(clazz);
+    }
+
+    private static void printStatus(Class<?> clazz) {
+        PropertyCopier copier = PropertyCopier.getInstance();
+        Map<String, Object> map = copier.copy(clazz);
+        map.forEach((k, v) -> {
+            System.out.print(k + " = ");
+            System.out.println(v);
+        });
+    }
+
+    private static void printStatus(Object object) {
+        PropertyCopier copier = PropertyCopier.getInstance();
+        Map<String, Object> map = copier.copy(object);
+        map.forEach((k, v) -> {
+            System.out.print(k + " = ");
+            System.out.println(v);
+        });
+    }
+
+}

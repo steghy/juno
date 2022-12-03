@@ -23,21 +23,20 @@
  * SOFTWARE.
  */
 
-package juno.model.data.io.input;
-
-import java.util.Map;
+package juno.model.data.io.input.r_configurator;
 
 /**
  * @author Simone Gentili
  */
 @FunctionalInterface
-public interface InterfacePropertyCopier {
+public interface InterfaceCompatibilityChecker {
 
     /**
      *
      * @param object
+     * @param path
      * @return
      */
-    Map<String, Object> copy(Object object);
+    boolean checkCompatibilityOf(Object object, String path);
 
 }

@@ -44,7 +44,7 @@ public class JSONDataImporter
     /* The JSONDataImporter instance. */
     private static JSONDataImporter instance;
 
-    /* Builds the JSONDataImporter instance.
+    /* Builds the JSONDataImporter instance. */
     private JSONDataImporter() {}
 
     /**
@@ -62,4 +62,5 @@ public class JSONDataImporter
         JSONObject jsonObject = new JSONObject(source);
         return jsonObject.toMap();
     }
+
 }

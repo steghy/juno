@@ -25,15 +25,18 @@
 
 package juno.model.data.profile;
 
-import juno.model.data.io.input.Configurable;
+import juno.model.data.io.input.c_configurator.Configurable;
 import juno.model.data.io.output.Exportable;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
+/**
+ * @author Simone Gentili
+ */
 public class Profile
         implements AbstractProfile, Configurable, Exportable {
 
@@ -44,16 +47,28 @@ public class Profile
     public static final String LAST_NAME = "last name";
     public static final String AGE = "age";
 
+    /* The profile name. */
     private String profileName;
-    private String name;
-    private String lastName;
-    private Integer age;
-    private List<String> errorsList;
 
+    /* The name. */
+    private String name;
+
+    /* The last name. */
+    private String lastName;
+
+    /* The age. */
+    private Integer age;
+
+    /* Builds the Profile instance. */
     private Profile() {}
 
+    /* The Profile instance. */
     private static Profile instance;
 
+    /**
+     * Returns the Profile instance.
+     * @return The Profile instance.
+     */
     public static Profile getInstance() {
         if(instance == null) instance = new Profile();
         return instance;
@@ -61,9 +76,9 @@ public class Profile
 
     @Override
     public void configure(@NotNull Map<String, Object> map) {
-        // PROFILE NAME
-        if(map.containsKey(PROFILE_NAME)) {
-            if(map.get(PROFILE_NAME) instanceof String profileNameFromMap) {
+        // Profile name.
+        if (map.containsKey(PROFILE_NAME)) {
+            if (map.get(PROFILE_NAME) instanceof String profileNameFromMap) {
                 setProfileName(profileNameFromMap);
             } else {
                 throw new IllegalArgumentException("Invalid object type " + map.get(PROFILE_NAME) +
@@ -74,10 +89,11 @@ public class Profile
         }
 
 
-        // NAME
-        if(map.containsKey(NAME)) {
+        // Name.
+        if (map.containsKey(NAME)) {
             if (map.get(NAME) instanceof String nameFromMap) {
-                setName(nameFromMap);
+                if (nameFromMap.length() > 0)
+                    setName(nameFromMap);
             } else {
                 throw new IllegalArgumentException("Invalid object type " + map.get(NAME).getClass() +
                         ". String expected");
@@ -86,10 +102,11 @@ public class Profile
             throw new IllegalArgumentException(NAME + " key not found in " + map);
         }
 
-        // LAST NAME
-        if(map.containsKey(LAST_NAME)) {
-            if(map.get(LAST_NAME) instanceof String lastNameFromMap) {
-                setLastName(lastNameFromMap);
+        // Last name.
+        if (map.containsKey(LAST_NAME)) {
+            if (map.get(LAST_NAME) instanceof String lastNameFromMap) {
+                if (lastNameFromMap.length() > 0)
+                    setLastName(lastNameFromMap);
             } else {
                 throw new IllegalArgumentException("Invalid object type " + map.get(LAST_NAME).getClass() +
                         ". String expected");
@@ -99,10 +116,11 @@ public class Profile
             throw new IllegalArgumentException(LAST_NAME + " key not found in " + map);
         }
 
-        // AGE
-        if(map.containsKey(AGE)) {
-            if(map.get(AGE) instanceof Integer ageFromMap) {
-                setAge(ageFromMap);
+        // Age.
+        if (map.containsKey(AGE)) {
+            if (map.get(AGE) instanceof Integer ageFromMap) {
+                if (ageFromMap > 0)
+                    setAge(ageFromMap);
             } else {
                 throw new IllegalArgumentException("Invalid object type " + map.get(AGE) +
                         ". Integer expected");
@@ -122,6 +140,11 @@ public class Profile
         return map;
     }
 
+    /**
+     * Sets the profile name of this object.
+     * @param profileName A String object.
+     * @throws IllegalArgumentException
+     */
     public void setProfileName(@NotNull String profileName) {
         int length = profileName.length();
         if(length == 0 || length > MAXIMUM_LENGTH) {
@@ -130,6 +153,11 @@ public class Profile
         this.profileName = profileName;
     }
 
+    /**
+     * Sets the name of this object.
+     * @param name A String object.
+     * @throws IllegalArgumentException
+     */
     public void setName(@NotNull String name) {
         int length = name.length();
         if(length == 0 || length > MAXIMUM_LENGTH) {
@@ -138,6 +166,11 @@ public class Profile
         this.name = name;
     }
 
+    /**
+     * Sets the last name of this object.
+     * @param lastName A String object.
+     * @throws IllegalArgumentException
+     */
     public void setLastName(@NotNull String lastName) {
         int length = lastName.length();
         if(length == 0 || length > MAXIMUM_LENGTH) {
@@ -146,6 +179,11 @@ public class Profile
         this.lastName = lastName;
     }
 
+    /**
+     * Sets the age of this object.
+     * @param age An integer value.
+     * @throws IllegalArgumentException
+     */
     public void setAge(int age) {
         if(age > 1 && age < MAXIMUM_AGE) {
             this.age = age;
@@ -154,18 +192,37 @@ public class Profile
         }
     }
 
-    public String getProfileName() {
+    /**
+     * Returns the profile name of this object.
+     * @return A String object.
+     */
+    @Nullable
+    public String profileName() {
         return profileName;
     }
 
+    /**
+     * Returns the name of this object.
+     * @return A String object.
+     */
+    @Nullable
     public String getName() {
         return name;
     }
 
+    /**
+     * Returns the last name of this object.
+     * @return A String object.
+     */
+    @Nullable
     public String getLastName() {
         return lastName;
     }
 
+    /**
+     * Returns the age of this object.
+     * @return An integer value.
+     */
     public Integer getAge() {
         return age;
     }
@@ -181,4 +238,5 @@ public class Profile
                 this.age +
                 "]";
     }
+
 }

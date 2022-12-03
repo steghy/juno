@@ -23,21 +23,25 @@
  * SOFTWARE.
  */
 
-package juno.model.data.io.input;
+package juno.model.data.io.input.c_configurator;
 
-import java.util.Map;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.List;
 
 /**
  * @author Simone Gentili
  */
 @FunctionalInterface
-public interface InterfacePropertyCopier {
+public interface InterfaceConfigurationFilesProvider {
 
     /**
      *
-     * @param object
+     * @param configurable
+     * @param path
      * @return
+     * @throws FileNotFoundException
      */
-    Map<String, Object> copy(Object object);
+    List<File> getConfigurationFiles(Configurable configurable, String path) throws FileNotFoundException;
 
 }

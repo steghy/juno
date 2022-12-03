@@ -23,21 +23,19 @@
  * SOFTWARE.
  */
 
-package juno.model.data.io.input;
+package juno.model.data.io.input.c_configurator;
 
-import java.util.Map;
+import org.jetbrains.annotations.NotNull;
 
-/**
- * @author Simone Gentili
- */
-@FunctionalInterface
-public interface InterfacePropertyCopier {
+public class AbstractConfigurationFilesProvider {
 
-    /**
-     *
-     * @param object
-     * @return
-     */
-    Map<String, Object> copy(Object object);
+    InterfaceStringCCompatibilityChecker cCompatibilityChecker;
 
+    public void setCCompatibilityChecker(@NotNull InterfaceStringCCompatibilityChecker cCompatibilityChecker) {
+        this.cCompatibilityChecker = cCompatibilityChecker;
+    }
+
+    public InterfaceStringCCompatibilityChecker getCCompatibilityChecker() {
+        return cCompatibilityChecker;
+    }
 }

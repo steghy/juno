@@ -35,13 +35,10 @@ import java.io.IOException;
 public class ProfileTester {
 
     public static void main(String[] args) throws IOException {
-
         Profile profile = Profile.getInstance();
-
         String profileConfigurationFilePath = PathGenerator.generate(Directories.PROFILES.absolutePath(), "steghy-profile.json");
-
         profile.configure(JSONDataImporter.getInstance().importData(profileConfigurationFilePath));
-
         System.out.println(profile);
     }
+
 }

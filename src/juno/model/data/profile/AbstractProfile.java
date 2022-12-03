@@ -25,7 +25,16 @@
 
 package juno.model.data.profile;
 
+/**
+ * @author Simone Gentili
+ */
+@FunctionalInterface
 public interface AbstractProfile {
 
-    String getProfileName();
+    /**
+     * Returns the name of this profile.
+     * @return A String object.
+     */
+    String profileName();
+
 }

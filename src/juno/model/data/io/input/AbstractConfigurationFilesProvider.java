@@ -25,27 +25,28 @@
 
 package juno.model.data.io.input;
 
+import juno.model.data.io.input.r_configurator.InterfaceConfigurationFilesProvider;
 import org.jetbrains.annotations.NotNull;
 
 public abstract class AbstractConfigurationFilesProvider {
 
-    private InterfaceRConfigurationFilesProvider rConfigurationFilesProvider;
+    private InterfaceConfigurationFilesProvider rConfigurationFilesProvider;
 
-    private InterfaceCConfigurationFilesProvider cConfigurationFilesProvider;
+    private juno.model.data.io.input.c_configurator.InterfaceConfigurationFilesProvider cConfigurationFilesProvider;
 
-    public void setRConfigurationFilesProvider(@NotNull InterfaceRConfigurationFilesProvider rConfigurationFilesProvider) {
+    public void setRConfigurationFilesProvider(@NotNull InterfaceConfigurationFilesProvider rConfigurationFilesProvider) {
         this.rConfigurationFilesProvider = rConfigurationFilesProvider;
     }
 
-    public void setCConfigurationFilesProvider(@NotNull InterfaceCConfigurationFilesProvider cConfigurationFilesProvider) {
+    public void setCConfigurationFilesProvider(@NotNull juno.model.data.io.input.c_configurator.InterfaceConfigurationFilesProvider cConfigurationFilesProvider) {
         this.cConfigurationFilesProvider = cConfigurationFilesProvider;
     }
 
-    public InterfaceRConfigurationFilesProvider getRConfigurationFilesProvider() {
+    public InterfaceConfigurationFilesProvider getRConfigurationFilesProvider() {
         return rConfigurationFilesProvider;
     }
 
-    public InterfaceCConfigurationFilesProvider getCConfigurationFilesProvider() {
+    public juno.model.data.io.input.c_configurator.InterfaceConfigurationFilesProvider getCConfigurationFilesProvider() {
         return cConfigurationFilesProvider;
     }
 }

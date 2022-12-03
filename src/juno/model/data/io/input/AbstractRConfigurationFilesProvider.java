@@ -25,17 +25,33 @@
 
 package juno.model.data.io.input;
 
+import juno.model.data.io.input.r_configurator.InterfaceConfigurationFilesProvider;
+import juno.model.data.io.input.r_configurator.InterfaceCompatibilityChecker;
 import org.jetbrains.annotations.NotNull;
 
-public class AbstractRConfigurationFilesProvider {
+/**
+ * @author Simone Gentili
+ */
+public abstract class AbstractRConfigurationFilesProvider
+        implements InterfaceConfigurationFilesProvider {
 
-    private InterfaceRCompatibilityChecker rCompatibilityChecker;
+    /* The R-Compatibility checker object. */
+    private InterfaceCompatibilityChecker checker;
 
-    public void setRCompatibilityChecker(@NotNull InterfaceRCompatibilityChecker rCompatibilityChecker) {
-        this.rCompatibilityChecker = rCompatibilityChecker;
+    /**
+     * Sets the InterfaceRCompatibilityChecker of this object.
+     * @param checker An InterfaceRCompatibilityChecker object.
+     */
+    public void setChecker(@NotNull InterfaceCompatibilityChecker checker) {
+        this.checker = checker;
     }
 
-    public InterfaceRCompatibilityChecker getRCompatibilityChecker() {
-        return rCompatibilityChecker;
+    /**
+     * Returns the R-Compatibility checker of this object.
+     * @return An InterfaceRCompatibilityChecker object.
+     */
+    public InterfaceCompatibilityChecker getChecker() {
+        return checker;
     }
+
 }

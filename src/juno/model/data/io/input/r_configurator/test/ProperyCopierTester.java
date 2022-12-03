@@ -23,21 +23,16 @@
  * SOFTWARE.
  */
 
-package juno.model.data.io.input;
+package juno.model.data.io.input.r_configurator.test;
 
-import java.util.Map;
+import juno.model.data.io.input.PropertyCopier;
 
-/**
- * @author Simone Gentili
- */
-@FunctionalInterface
-public interface InterfacePropertyCopier {
+import java.awt.*;
 
-    /**
-     *
-     * @param object
-     * @return
-     */
-    Map<String, Object> copy(Object object);
+public class ProperyCopierTester {
 
+    public static void main(String[] args) {
+        PropertyCopier propertyCopier = PropertyCopier.getInstance();
+        Dimension dimensionAccessible = new Dimension(10, 100);
+    }
 }

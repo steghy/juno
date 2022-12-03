@@ -93,35 +93,4 @@ public class PropertyDeepCopier
         } return map;
     }
 
-    @Override
-    public Map<String, Object> deepCopy(@NotNull Class<?> clazz) {
-        Map<String, Object> map = new HashMap<>();
-        for(Field field : clazz.getDeclaredFields()) {
-            field.setAccessible(true);
-            try {
-                if(Modifier.isStatic(field.getModifiers())) {
-                    if(!Modifier.isFinal(field.getModifiers())) {
-                        field.setAccessible(true);
-                        Class<?> type = field.getType();
-                        if(type == clazz) continue;
-                        switch (type.getSimpleName()) {
-                            case    ("String"), ("BigDecimal"),
-                                    ("Integer"), ("Double"),
-                                    ("Float"), ("Character"),
-                                    ("Boolean"), ("Short"),
-                                    ("Byte"), ("Long"),
-                                    ("int"), ("double"),
-                                    ("float"), ("short"),
-                                    ("long"), ("char"),
-                                    ("byte"), ("boolean")
-                                    -> map.put(field.getName(), field.get(null));
-                            default -> map.put(field.getName(), deepCopy(field.get(null)));
-                        }
-                    }
-                }
-            } catch (IllegalAccessException e) {
-                throw new RuntimeException(e);
-            }
-        } return map;
-    }
 }

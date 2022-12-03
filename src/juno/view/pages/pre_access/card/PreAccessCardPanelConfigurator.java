@@ -26,7 +26,6 @@
 package juno.view.pages.pre_access.card;
 
 import juno.init.Directories;
-import juno.model.data.io.input.ConfigurationFilesProvider;
 import juno.model.data.profile.Profile;
 import juno.view.pages.pre_access.access.AccessPanel;
 import juno.view.pages.pre_access.login.LogInPanel;

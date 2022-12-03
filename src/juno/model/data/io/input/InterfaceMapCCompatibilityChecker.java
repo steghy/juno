@@ -25,10 +25,13 @@
 
 package juno.model.data.io.input;
 
+import juno.model.data.io.input.c_configurator.Configurable;
+
 import java.util.Map;
 
 @FunctionalInterface
 public interface InterfaceMapCCompatibilityChecker {
 
     boolean checkCompatibilityOf(Configurable configurable, Map<String, Object> map);
+
 }

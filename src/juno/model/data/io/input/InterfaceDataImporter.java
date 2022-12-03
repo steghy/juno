@@ -28,10 +28,18 @@ package juno.model.data.io.input;
 import java.io.IOException;
 import java.util.Map;
 
+/**
+ * @author Simone Gentili
+ */
 @FunctionalInterface
 public interface InterfaceDataImporter {
 
+    /**
+     *
+     * @param path
+     * @return
+     * @throws IOException
+     */
     Map<String, Object> importData(String path) throws IOException;
+
 }
-
-

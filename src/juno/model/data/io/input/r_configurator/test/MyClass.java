@@ -23,21 +23,11 @@
  * SOFTWARE.
  */
 
-package juno.model.data.io.input;
+package juno.model.data.io.input.r_configurator.test;
 
-import java.util.Map;
+public class MyClass {
 
-/**
- * @author Simone Gentili
- */
-@FunctionalInterface
-public interface InterfacePropertyCopier {
-
-    /**
-     *
-     * @param object
-     * @return
-     */
-    Map<String, Object> copy(Object object);
+    private static String name = "Simoncino";
+    private static int value = 218390;
 
 }

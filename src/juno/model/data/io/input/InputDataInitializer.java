@@ -25,36 +25,38 @@
 
 package juno.model.data.io.input;
 
+import juno.model.data.io.input.c_configurator.CompatibilityChecker;
+import juno.model.data.io.input.c_configurator.ConfigurationFilesProvider;
+import juno.model.data.io.input.r_configurator.Configurator;
+
 public class InputDataInitializer {
 
+    /* Builds an InputDataInitializer object. */
     private InputDataInitializer() {}
 
+    /** Initialize the juno.model.data.io.input package. */
     public static void initialize() {
-        // CCOMPATIBILITY CHECKER
+        // C-Compatibility checker.
         JSONDataImporter jsonDataImporter = JSONDataImporter.getInstance();
         PropertyCopier propertyCopier = PropertyCopier.getInstance();
-        CCompatibilityChecker cCompatibilityChecker = CCompatibilityChecker.getInstance();
+        CompatibilityChecker cCompatibilityChecker = CompatibilityChecker.getInstance();
         cCompatibilityChecker.setDataImporter(jsonDataImporter);
         cCompatibilityChecker.setPropertyCopier(propertyCopier);
 
-        // RCOMPATIBILITY CHECKER
-        RCompatibilityChecker rCompatibilityChecker = RCompatibilityChecker.getInstance();
-        RConfigurator rConfigurator = RConfigurator.getInstance();
+        // R-Compatibility checker.
+        juno.model.data.io.input.r_configurator.CompatibilityChecker rCompatibilityChecker = juno.model.data.io.input.r_configurator.CompatibilityChecker.getInstance();
+        Configurator rConfigurator = Configurator.getInstance();
         rCompatibilityChecker.setDataImporter(jsonDataImporter);
         rCompatibilityChecker.setPropertyCopier(propertyCopier);
         rCompatibilityChecker.setRConfigure(rConfigurator);
 
-        // CCONFIGURATION FILES PROVIDER
-        CConfigurationFilesProvider cConfigurationFilesProvider = CConfigurationFilesProvider.getInstance();
+        // C-Configuration files provider.
+        ConfigurationFilesProvider cConfigurationFilesProvider = ConfigurationFilesProvider.getInstance();
         cConfigurationFilesProvider.setCCompatibilityChecker(cCompatibilityChecker);
 
-        // RCONFIGURATION FILES PROVIDER
-        RConfigurationFilesProvider rConfigurationFilesProvider = RConfigurationFilesProvider.getInstance();
-        rConfigurationFilesProvider.setRCompatibilityChecker(rCompatibilityChecker);
-
-        // CONFIGURATION FILES PROVIDER
-        ConfigurationFilesProvider configurationFilesProvider = ConfigurationFilesProvider.getInstance();
-        configurationFilesProvider.setCConfigurationFilesProvider(cConfigurationFilesProvider);
-        configurationFilesProvider.setRConfigurationFilesProvider(rConfigurationFilesProvider);
+        // R-Configuration files provider.
+        juno.model.data.io.input.r_configurator.ConfigurationFilesProvider rConfigurationFilesProvider = juno.model.data.io.input.r_configurator.ConfigurationFilesProvider.getInstance();
+        rConfigurationFilesProvider.setChecker(rCompatibilityChecker);
     }
+
 }

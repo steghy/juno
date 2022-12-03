@@ -36,13 +36,12 @@ import java.util.Map;
 /**
  * @author Simone Gentili
  */
-public class PropertyCopier
-        implements InterfacePropertyCopier {
+public class PropertyCopier {
 
-    /* The PropertyCopier instance */
+    /* The PropertyCopier instance. */
     private static PropertyCopier instance;
 
-    /* Builds the PropertyCopier instance */
+    /* Builds the PropertyCopier instance. */
     private PropertyCopier() {}
 
     /**
@@ -54,38 +53,26 @@ public class PropertyCopier
         return instance;
     }
 
-    @Override
     public Map<String, Object> copy(@NotNull Object object) {
         Map<String, Object> map = new HashMap<>();
-        for(Field field : object.getClass().getDeclaredFields()) {
+
+        Field[] fields;
+        if(object instanceof Class<?> klass) fields = klass.getDeclaredFields();
+        else fields = object.getClass().getDeclaredFields();
+
+        for(Field field : fields) {
             try {
                 field.setAccessible(true);
-                if(!Modifier.isFinal(Modifier.fieldModifiers()))
+                if(!Modifier.isFinal(field.getModifiers()))
                     map.put(field.getName(), field.get(object));
             } catch (IllegalAccessException e) {
                 throw new RuntimeException(e);
             } catch (InaccessibleObjectException e) {
-                throw new IllegalArgumentException("object" + object + " contains a field which cannot be" +  " accessible. Field: " + field);
-        }
-        } return map;
-    }
-
-    @Override
-    public Map<String, Object> copy(@NotNull Class<?> clazz) {
-        Map<String, Object> map = new HashMap<>();
-        for(Field field : clazz.getDeclaredFields()) {
-            try {
-                field.setAccessible(true);
-                if(Modifier.isStatic(field.getModifiers()))
-                    if(!Modifier.isFinal(field.getModifiers()))
-                        map.put(field.getName(), field.get(null));
-            } catch (IllegalAccessException e) {
-                throw new RuntimeException(e);
-            } catch (InaccessibleObjectException e) {
-                throw new IllegalArgumentException(clazz +
-                        " contains a field which cannot be" +
-                        " accessible. Field: " + field);
+                throw new IllegalArgumentException("object " + object +
+                         " contains a field which cannot be" +
+                         " accessible. Inaccessible field: " + field);
             }
         } return map;
     }
+
 }

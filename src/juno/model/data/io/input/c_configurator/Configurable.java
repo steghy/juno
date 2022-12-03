@@ -23,7 +23,7 @@
  * SOFTWARE.
  */
 
-package juno.model.data.io.input;
+package juno.model.data.io.input.c_configurator;
 
 import java.util.Map;
 
@@ -31,13 +31,12 @@ import java.util.Map;
  * @author Simone Gentili
  */
 @FunctionalInterface
-public interface InterfacePropertyCopier {
+public interface Configurable {
 
     /**
      *
-     * @param object
-     * @return
+     * @param map
      */
-    Map<String, Object> copy(Object object);
+    void configure(Map<String, Object> map);
 
 }

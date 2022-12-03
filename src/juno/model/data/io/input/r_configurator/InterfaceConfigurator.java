@@ -23,21 +23,16 @@
  * SOFTWARE.
  */
 
-package juno.model.data.io.input;
+package juno.model.data.io.input.r_configurator;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
-/**
- * @author Simone Gentili
- */
-@FunctionalInterface
-public interface InterfacePropertyCopier {
+public interface InterfaceConfigurator {
 
-    /**
-     *
-     * @param object
-     * @return
-     */
-    Map<String, Object> copy(Object object);
+    void configure(Map<String, Object> map, Object object) throws
+            IllegalAccessException,
+            NoSuchFieldException,
+            InvocationTargetException;
 
 }

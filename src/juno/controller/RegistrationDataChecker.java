@@ -25,7 +25,7 @@
 
 package juno.controller;
 
-import juno.model.data.io.input.Configurable;
+import juno.model.data.io.input.c_configurator.Configurable;
 import juno.model.data.io.input.InterfaceMapCCompatibilityChecker;
 import org.jetbrains.annotations.NotNull;
 

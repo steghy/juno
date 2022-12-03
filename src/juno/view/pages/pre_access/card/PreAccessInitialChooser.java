@@ -25,8 +25,8 @@
 
 package juno.view.pages.pre_access.card;
 
-import juno.model.data.io.input.Configurable;
-import juno.model.data.io.input.InterfaceConfigurationFilesProvider;
+import juno.model.data.io.input.c_configurator.Configurable;
+import juno.model.data.io.input.c_configurator.InterfaceConfigurationFilesProvider;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
@@ -36,12 +36,19 @@ import java.util.List;
 
 public class PreAccessInitialChooser {
 
+    /* The configuration files provider. */
     private InterfaceConfigurationFilesProvider configurationFilesProvider;
 
+    /* The PreAccessInitialChooser instance. */
     private static PreAccessInitialChooser instance;
 
+    /* Builds the PreAccessInitialChooser instance. */
     private PreAccessInitialChooser() {}
 
+    /**
+     * Returns the PreAccessInitialChooser instance.
+     * @return The PreAccessInitialChooser instance.
+     */
     public static PreAccessInitialChooser getInstance() {
         if(instance == null) instance = new PreAccessInitialChooser();
         return instance;
@@ -65,7 +72,12 @@ public class PreAccessInitialChooser {
         }
     }
 
+    /**
+     * Sets the configuration files provider of this object.
+     * @param configurationFilesProvider An InterfaceConfigurationFilesProvider object.
+     */
     public void setConfigurationFilesProvider(@NotNull InterfaceConfigurationFilesProvider configurationFilesProvider) {
         this.configurationFilesProvider = configurationFilesProvider;
     }
+
 }

@@ -27,9 +27,18 @@ package juno.model.data.io.input;
 
 import java.util.Map;
 
+/**
+ * @author Simone Gentili
+ */
+@FunctionalInterface
 public interface InterfaceDeepCopier {
 
+    /**
+     *
+     * @param object
+     * @return
+     * @throws IllegalAccessException
+     */
     Map<String, Object> deepCopy(Object object) throws IllegalAccessException;
 
-    Map<String, Object> deepCopy(Class<?> clazz);
 }
