@@ -28,16 +28,28 @@ package juno.model.data.io.input;
 import java.util.Map;
 
 /**
+ * This interface defines (recursive) copiers of
+ * objects. The data copied from a specific object
+ * is placed inside a Map<String, Object> object
+ * in which the keys are the names of the fields
+ * of the object and the values the respective
+ * values of those fields.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface InterfaceDeepCopier {
 
     /**
-     *
-     * @param object
-     * @return
-     * @throws IllegalAccessException
+     * Returns a map containing key-value pairs where
+     * the keys are the object's field names and the
+     * values are the respective values of those fields.
+     * @param object An Object.
+     * @return A Map object.
+     * @throws IllegalAccessException Occurs when
+     *         operations on a field that could result
+     *         in this exception being thrown are
+     *         performed before the setAccessible(true)
+     *         method is invoked on that field.
      */
     Map<String, Object> deepCopy(Object object) throws IllegalAccessException;
 

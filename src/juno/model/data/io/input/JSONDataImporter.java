@@ -34,17 +34,19 @@ import java.nio.file.Paths;
 import java.util.Map;
 
 /**
- * This class allows you to convert JSON file
- * in a Map<String, Object>.
+ * This class defines a JSON file importer.
+ * In particular, this importer allows you
+ * to convert the content of a JSON file into
+ * a Map<String, Object> object.
  * @author Simone Gentili
  */
 public class JSONDataImporter
         implements InterfaceDataImporter {
 
-    /* The JSONDataImporter instance. */
+    // The JSONDataImporter instance.
     private static JSONDataImporter instance;
 
-    /* Builds the JSONDataImporter instance. */
+    // Builds the JSONDataImporter instance.
     private JSONDataImporter() {}
 
     /**

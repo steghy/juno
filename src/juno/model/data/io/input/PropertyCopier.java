@@ -28,20 +28,26 @@ package juno.model.data.io.input;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.InaccessibleObjectException;
 import java.lang.reflect.Modifier;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * This class defines a property copier of
+ * an object. The copy method makes a copy
+ * of the specified object using reflection.
+ * Furthermore, the copy method is not recursive
+ * (For copying the data of an object recursively
+ * see the DeepPropertyCopier class documentation).
  * @author Simone Gentili
  */
-public class PropertyCopier {
+public class PropertyCopier
+        implements InterfacePropertyCopier {
 
-    /* The PropertyCopier instance. */
+    // The PropertyCopier instance.
     private static PropertyCopier instance;
 
-    /* Builds the PropertyCopier instance. */
+    // Builds the PropertyCopier instance.
     private PropertyCopier() {}
 
     /**
@@ -53,24 +59,30 @@ public class PropertyCopier {
         return instance;
     }
 
+    @Override
     public Map<String, Object> copy(@NotNull Object object) {
         Map<String, Object> map = new HashMap<>();
 
-        Field[] fields;
-        if(object instanceof Class<?> klass) fields = klass.getDeclaredFields();
-        else fields = object.getClass().getDeclaredFields();
+        // Prevent the error of considering the fields of class 'Class'
+        // in case the object passed in input was of type Class.
+        Field[] fields = object instanceof Class<?> klass ? klass.getDeclaredFields() :
+                object.getClass().getDeclaredFields();
 
         for(Field field : fields) {
             try {
+                // It may throw an InaccessibleObjectException
+                // for some Java standard library classes.
                 field.setAccessible(true);
+
+                // Singleton class case, unnecessary.
+                if(field.getType() == object.getClass()) continue;
+
+                // Final fields are ignored.
                 if(!Modifier.isFinal(field.getModifiers()))
                     map.put(field.getName(), field.get(object));
+
             } catch (IllegalAccessException e) {
                 throw new RuntimeException(e);
-            } catch (InaccessibleObjectException e) {
-                throw new IllegalArgumentException("object " + object +
-                         " contains a field which cannot be" +
-                         " accessible. Inaccessible field: " + field);
             }
         } return map;
     }

@@ -25,28 +25,27 @@
 
 package juno.model.data.io.input;
 
-import juno.model.data.io.input.r_configurator.InterfaceConfigurationFilesProvider;
 import org.jetbrains.annotations.NotNull;
 
 public abstract class AbstractConfigurationFilesProvider {
 
-    private InterfaceConfigurationFilesProvider rConfigurationFilesProvider;
+    // The property copier.
+    private InterfacePropertyCopier copier;
 
-    private juno.model.data.io.input.c_configurator.InterfaceConfigurationFilesProvider cConfigurationFilesProvider;
-
-    public void setRConfigurationFilesProvider(@NotNull InterfaceConfigurationFilesProvider rConfigurationFilesProvider) {
-        this.rConfigurationFilesProvider = rConfigurationFilesProvider;
+    /**
+     * Sets the property copier of this object.
+     * @param copier An InterfacePropertyCopier object.
+     */
+    public void setCopier(@NotNull InterfacePropertyCopier copier) {
+        this.copier = copier;
     }
 
-    public void setCConfigurationFilesProvider(@NotNull juno.model.data.io.input.c_configurator.InterfaceConfigurationFilesProvider cConfigurationFilesProvider) {
-        this.cConfigurationFilesProvider = cConfigurationFilesProvider;
+    /**
+     * Returns the property copier of this object.
+     * @return An InterfacePropertyCopier object.
+     */
+    public InterfacePropertyCopier getCopier() {
+        return copier;
     }
 
-    public InterfaceConfigurationFilesProvider getRConfigurationFilesProvider() {
-        return rConfigurationFilesProvider;
-    }
-
-    public juno.model.data.io.input.c_configurator.InterfaceConfigurationFilesProvider getCConfigurationFilesProvider() {
-        return cConfigurationFilesProvider;
-    }
 }

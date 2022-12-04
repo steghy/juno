@@ -34,7 +34,14 @@ import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
+
 /**
+ * This class defines a deep property copier of
+ * an object. The copy method makes a copy
+ * of the specified object using reflection.
+ * Furthermore, the copy method is recursive
+ * (For copying the data of an object not recursively
+ * see the PropertyCopier class documentation).
  * @author Simone Gentili
  */
 public class PropertyDeepCopier
@@ -58,17 +65,30 @@ public class PropertyDeepCopier
     @Override
     public Map<String, Object> deepCopy(@NotNull Object object) throws IllegalAccessException {
         Map<String, Object> map = new HashMap<>();
-        for(Field field : object.getClass().getDeclaredFields()) {
+
+        // Prevent the error of considering the fields of class 'Class'
+        // in case the object passed in input was of type Class.
+        Field[] fields = object instanceof Class<?> klass ? klass.getDeclaredFields() :
+                object.getClass().getDeclaredFields();
+
+        for(Field field : fields) {
                 if(!Modifier.isFinal(field.getModifiers())) {
+
+                    // It may throw an InaccessibleObjectException
+                    // for some Java standard library classes.
                     field.setAccessible(true);
+
                     Class<?> fieldType = field.getType();
+
+                    // Singleton class case. StackOverflow error
+                    // without this check.
                     if(fieldType == object.getClass()) continue;
+
                     switch (fieldType.getSimpleName()) {
-                        /*
-                        Inspection for these values is unnecessary and
-                        would result in an exception (InaccessibleObjectException)
-                        anyway.
-                         */
+
+                        // Inspection for these values is unnecessary
+                        // and would result in an exception
+                        // (InaccessibleObjectException) anyway.
                         case    ("String"),
                                 ("Integer"),   ("int"),
                                 ("Double"),    ("double"),
@@ -79,12 +99,15 @@ public class PropertyDeepCopier
                                 ("Byte"),      ("byte"),
                                 ("Boolean"),   ("boolean")
                                 -> map.put(field.getName(), field.get(object));
+
                         // BigDecimal to double.
                         case    ("BigDecimal")
                                 -> map.put(field.getName(), ((BigDecimal)field.get(object)).doubleValue());
+
                         // BigInteger to int.
                         case    ("BigInteger")
                                 -> map.put(field.getName(), ((BigInteger)field.get(object)).intValue());
+
                         // Recursive call to fetch the values from the object.
                         // Possible InaccessibleObjectException
                         default -> map.put(field.getName(), deepCopy(field.get(object)));

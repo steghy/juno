@@ -29,16 +29,21 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
+ * This interface defines data importers.
+ * The imported data is contained within
+ * an object of type Map<String, Object>.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface InterfaceDataImporter {
 
     /**
-     *
-     * @param path
-     * @return
-     * @throws IOException
+     * Extracts a Map object from the file
+     * described by the specified path.
+     * @param path A String object.
+     * @return A Map object.
+     * @throws IOException If the specified
+     *         path does not exist.
      */
     Map<String, Object> importData(String path) throws IOException;
 

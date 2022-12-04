@@ -25,8 +25,8 @@
 
 package juno.view.pages.pre_access.card;
 
-import juno.model.data.io.input.c_configurator.Configurable;
-import juno.model.data.io.input.c_configurator.InterfaceConfigurationFilesProvider;
+import juno.model.data.io.input.configurable.Configurable;
+import juno.model.data.io.input.configurable.InterfaceConfigurationFilesProvider;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;

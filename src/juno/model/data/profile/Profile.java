@@ -25,7 +25,7 @@
 
 package juno.model.data.profile;
 
-import juno.model.data.io.input.c_configurator.Configurable;
+import juno.model.data.io.input.configurable.Configurable;
 import juno.model.data.io.output.Exportable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

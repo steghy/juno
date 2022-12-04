@@ -27,25 +27,50 @@ package juno.model.data.io.input;
 
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This abstract class defines compatibility
+ * checkers between files and objects that
+ * use importer and copier to operate.
+ * @author Simone Gentili
+ */
 public abstract class AbstractCompatibilityChecker {
 
-    private InterfaceDataImporter dataImporter;
+    // The importer.
+    private InterfaceDataImporter importer;
 
-    private InterfacePropertyCopier propertyCopier;
+    // The copier.
+    private InterfacePropertyCopier copier;
 
-    public void setDataImporter(@NotNull InterfaceDataImporter dataImporter) {
-        this.dataImporter = dataImporter;
+    /**
+     * Sets the importer of this object.
+     * @param importer An InterfaceDataImporter object.
+     */
+    public void setImporter(@NotNull InterfaceDataImporter importer) {
+        this.importer = importer;
     }
 
-    public void setPropertyCopier(@NotNull InterfacePropertyCopier propertyCopier) {
-        this.propertyCopier = propertyCopier;
+    /**
+     * Sets the copier of this object.
+     * @param copier An InterfacePropertyCopier object.
+     */
+    public void setCopier(@NotNull InterfacePropertyCopier copier) {
+        this.copier = copier;
     }
 
-    public InterfaceDataImporter getDataImporter() {
-        return dataImporter;
+    /**
+     * Returns the importer of this object.
+     * @return An InterfaceDataImporter.
+     */
+    public InterfaceDataImporter getImporter() {
+        return importer;
     }
 
-    public InterfacePropertyCopier getPropertyCopier() {
-        return propertyCopier;
+    /**
+     * Returns the copier of this object.
+     * @return An InterfacePropertyCopier object.
+     */
+    public InterfacePropertyCopier getCopier() {
+        return copier;
     }
+
 }

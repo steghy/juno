@@ -25,8 +25,7 @@
 
 package juno.controller;
 
-import juno.model.data.io.input.c_configurator.Configurable;
-import juno.model.data.io.input.InterfaceMapCCompatibilityChecker;
+import juno.model.data.io.input.configurable.Configurable;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.event.ActionEvent;
@@ -37,8 +36,6 @@ public class RegistrationDataChecker
         implements ActionListener, InterfaceRegistrationDataChecker {
 
     private InterfaceRegistrationDataProvider provider;
-
-    private InterfaceMapCCompatibilityChecker compatibilityChecker;
 
     private Configurable configurable;
 
@@ -58,9 +55,6 @@ public class RegistrationDataChecker
         }
 
         Map<String, Object> data = provider.provideRegistrationData();
-        if(!data.isEmpty()) {
-
-        }
     }
 
     @Override
@@ -70,10 +64,6 @@ public class RegistrationDataChecker
 
     public void setProvider(@NotNull InterfaceRegistrationDataProvider provider) {
         this.provider = provider;
-    }
-
-    public void setCompatibilityChecker(@NotNull InterfaceMapCCompatibilityChecker compatibilityChecker) {
-        this.compatibilityChecker = compatibilityChecker;
     }
 
     public void setConfigurable(@NotNull Configurable configurable) {

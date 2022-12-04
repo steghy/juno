@@ -34,10 +34,10 @@ import org.jetbrains.annotations.NotNull;
  */
 public abstract class AbstractAI<T> {
 
-    /* The compatible items provider */
+    // The compatible item's provider.
     private InterfaceCompatibleItemsProvider<T> itemsProvider;
 
-    /* The examiner */
+    // The examiner.
     private InterfaceExaminer<T> examiner;
 
     /**
