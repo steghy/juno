@@ -25,36 +25,9 @@
 
 package juno.model.data.io.input.reflection.test;
 
-import juno.model.data.io.input.PropertyCopier;
-import juno.model.data.io.input.configurable.Configurable;
-import juno.model.data.io.input.reflection.Configurator;
+public class ConfigurationFilesProviderTester {
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.HashMap;
-import java.util.Map;
-
-public class RConfiguratorTester {
-
-    /**
-     * Configurator tester method.
-     * @param args The cmd arguments.
-     */
     public static void main(String[] args) {
-        Class<?> clazz = MyClass.class;
-        Map<String, Object> clazzCopy = PropertyCopier.getInstance().copy(clazz);
-        PrintStatus.printStatus(clazz);
-        Map<String, Object> map = new HashMap<>();
-        map.put("name", "New name");
-        map.put("value", 101);
-        try {
-            Configurator.getInstance().configure(clazz, map);
-        } catch (NoSuchFieldException |
-                 InvocationTargetException |
-                 IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        System.out.println("--------------------------------");
-        PrintStatus.printStatus(clazz);
+        
     }
-
 }

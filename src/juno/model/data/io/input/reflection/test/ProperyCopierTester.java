@@ -26,13 +26,50 @@
 package juno.model.data.io.input.reflection.test;
 
 import juno.model.data.io.input.PropertyCopier;
+import juno.model.data.io.input.reflection.Configurator;
 
 import java.awt.*;
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ProperyCopierTester {
 
     public static void main(String[] args) {
+        MyObject target = new MyObject();
         PropertyCopier propertyCopier = PropertyCopier.getInstance();
-        Dimension dimensionAccessible = new Dimension(10, 100);
+        Configurator configurator = Configurator.getInstance();
+
+        // The object property copy
+        Map<String, Object> objectCopy = propertyCopier.copy(target);
+
+        // Input map.
+        Map<String, Object> map = new HashMap<>();
+        map.put("value", 999);
+        map.put("value2", 1);
+
+        // Configuration of the object.
+        try {
+            configurator.configure(target, map);
+        } catch (NoSuchFieldException |
+                 IllegalAccessException |
+                 InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
+
+        PrintStatus.printStatus(target);
+
+        System.out.println("----------------------------");
+
+        // Attempt to restore the initial state of the object.
+        try {
+            configurator.configure(target, objectCopy);
+        } catch (NoSuchFieldException |
+                 IllegalAccessException |
+                 InvocationTargetException e) {
+            e.printStackTrace();
+        }
+
+        PrintStatus.printStatus(target);
     }
 }
