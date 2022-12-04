@@ -49,10 +49,10 @@ import java.util.Map;
 public class Configurator
         implements InterfaceConfigurator {
 
-    /* The Configurator instance */
+    // The Configurator instance.
     private static Configurator instance;
 
-    /* Builds the Configurator instance */
+    // Builds the Configurator instance.
     private Configurator() {}
 
     /**
@@ -167,5 +167,4 @@ public class Configurator
             }
         }
     }
-
 }

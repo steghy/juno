@@ -28,16 +28,16 @@ package juno.model.data.io.input;
 import java.util.Map;
 
 /**
- * This interface defines (recursive) copiers of
- * objects. The data copied from a specific object
- * is placed inside a Map<String, Object> object
- * in which the keys are the names of the fields
- * of the object and the values the respective
- * values of those fields.
+ * This interface defines property (recursive)
+ * copiers of objects. The data copied from a
+ * specific object is placed inside a
+ * Map<String, Object> object in which the keys
+ * are the names of the fields of the object and
+ * the values the respective values of those fields.
  * @author Simone Gentili
  */
 @FunctionalInterface
-public interface InterfaceDeepCopier {
+public interface InterfacePropertyDeepCopier {
 
     /**
      * Returns a map containing key-value pairs where

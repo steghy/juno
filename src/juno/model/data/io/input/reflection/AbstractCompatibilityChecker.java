@@ -28,14 +28,13 @@ package juno.model.data.io.input.reflection;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * This abstract class defines compatibility
- * checkers between files and objects that
- * use a configurator to operate.
+ * This abstract class defines compatibility checkers
+ * between files and objects that use a configurator
+ * (InterfaceConfigurator) to operate.
  * @author Simone Gentili
  */
 public abstract class AbstractCompatibilityChecker
-        extends juno.model.data.io.input.AbstractCompatibilityChecker
-        implements InterfaceCompatibilityChecker {
+        extends juno.model.data.io.input.AbstractCompatibilityChecker {
 
     /* The configurator. */
     private InterfaceConfigurator configurator;

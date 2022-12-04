@@ -25,12 +25,12 @@
 
 package juno.model.data.io.input.configurable;
 
-import juno.model.data.io.input.InterfacePropertyCopier;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * This abstract class defines configuration files provider
- * which use a compatibility checker to operate.
+ * which use a compatibility checker (InterfaceCompatibilityChecker)
+ * to operate.
  * @author Simone Gentili
  */
 public abstract class AbstractConfigurationFilesProvider

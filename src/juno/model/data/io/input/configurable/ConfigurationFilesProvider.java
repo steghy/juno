@@ -64,7 +64,7 @@ public class ConfigurationFilesProvider
     // The ConfigurationFilesProvider instance.
     private static ConfigurationFilesProvider instance;
 
-    /* Builds the ConfigurationFilesProvider instance. */
+    // Builds the ConfigurationFilesProvider instance.
     private ConfigurationFilesProvider() {
         recursive = true;
         extensions = new ArrayList<>();
@@ -92,8 +92,8 @@ public class ConfigurationFilesProvider
         return configurationFiles;
     }
 
-    private List<File> getFiles(Configurable configurable,
-                                String path) throws FileNotFoundException {
+    private List<File> getFiles(@NotNull Configurable configurable,
+                                @NotNull String path) throws FileNotFoundException {
         // Compatible configuration files.
         List<File> configurationFiles = new ArrayList<>();
         File inputFile = new File(path);
@@ -101,17 +101,15 @@ public class ConfigurationFilesProvider
         if(inputFile.isFile()) {
             if(getChecker().areCompatible(configurable, path))
                 if(shouldAdd(inputFile)) configurationFiles.add(inputFile);
-        } else {
-            if(inputFile.listFiles() != null) {
-                // Objects.requireNonNull suppress the Nullable warning.
-                for(File file : Objects.requireNonNull(inputFile.listFiles())) {
-                    if(file.isFile()) {
-                        if(getChecker().areCompatible(configurable, file.getAbsolutePath()))
-                            if(shouldAdd(file)) configurationFiles.add(file);
-                    } else {
-                        if(recursive) {
-                            configurationFiles.addAll(getConfigurationFiles(configurable, file.getAbsolutePath()));
-                        }
+        } else if(inputFile.listFiles() != null) {
+            // Objects.requireNonNull suppress the Nullable warning.
+            for(File file : Objects.requireNonNull(inputFile.listFiles())) {
+                if(file.isFile()) {
+                    if(getChecker().areCompatible(configurable, file.getAbsolutePath()))
+                        if(shouldAdd(file)) configurationFiles.add(file);
+                } else {
+                    if(recursive) {
+                        configurationFiles.addAll(getConfigurationFiles(configurable, file.getAbsolutePath()));
                     }
                 }
             }
@@ -133,6 +131,9 @@ public class ConfigurationFilesProvider
         return a[a.length - 1];
     }
 
+    // Returns true if, and only if the extension list
+    // of this object has length 0 or the extension of
+    // the file is contained by the extension List.
     private boolean shouldAdd(@NotNull File file) {
         return extensions.size() == 0 ||
                 extensions.contains(extension(file.getName()));

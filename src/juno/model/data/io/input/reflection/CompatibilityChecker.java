@@ -51,7 +51,8 @@ import java.util.Map;
  * @author Simone Gentili
  */
 public class CompatibilityChecker
-        extends AbstractCompatibilityChecker {
+        extends AbstractCompatibilityChecker
+        implements InterfaceCompatibilityChecker {
 
     /** The CompatibilityChecker instance. */
     private static CompatibilityChecker instance;

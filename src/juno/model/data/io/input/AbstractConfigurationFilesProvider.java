@@ -27,6 +27,11 @@ package juno.model.data.io.input;
 
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This abstract class defines configurator files provider
+ * which use a copier (InterfacePropertyCopier) to operate.
+ * @author Simone Gentili
+ */
 public abstract class AbstractConfigurationFilesProvider {
 
     // The property copier.

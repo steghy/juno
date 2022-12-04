@@ -98,23 +98,21 @@ public class ConfigurationFilesProvider
         } return configurationFiles;
     }
 
-    private List<File> getFiles(Object object,
-                                String path) throws FileNotFoundException {
+    private List<File> getFiles(@NotNull Object object,
+                                @NotNull String path) throws FileNotFoundException {
         // Compatible configuration files.
         List<File> configurationFiles = new ArrayList<>();
         File inputFile = new File(path);
         if(!inputFile.exists()) throw new FileNotFoundException(path);
         if(inputFile.isFile()) {
-            if(getChecker().areCompatible(object, path)) {
-                configurationFiles.add(inputFile);
-            }
+            if(getChecker().areCompatible(object, path))
+                if(shouldAdd(inputFile)) configurationFiles.add(inputFile);
         } else if(inputFile.listFiles() != null) {
             // Objects.requireNonNull suppress the Nullable warning.
             for(File file : Objects.requireNonNull(inputFile.listFiles())) {
                 if(file.isFile()) {
-                    if(getChecker().areCompatible(object, file.getAbsolutePath())) {
-                        configurationFiles.add(file);
-                    }
+                    if(getChecker().areCompatible(object, file.getAbsolutePath()))
+                        if(shouldAdd(file)) configurationFiles.add(file);
                 } else {
                     if(recursive) {
                         configurationFiles.addAll(getConfigurationFiles(object, file.getAbsolutePath()));
@@ -131,6 +129,20 @@ public class ConfigurationFilesProvider
      */
     public void setRecursive(boolean value) {
         this.recursive = value;
+    }
+
+    // Returns the extension of the file.
+    private String extension(@NotNull String path) {
+        String[] a = path.split("[.]");
+        return a[a.length - 1];
+    }
+
+    // Returns true if, and only if the extension list
+    // of this object has length 0 or the extension of
+    // the file is contained by the extension List.
+    private boolean shouldAdd(@NotNull File file) {
+        return extensions.size() == 0 ||
+                extensions.contains(extension(file.getName()));
     }
 
     /**

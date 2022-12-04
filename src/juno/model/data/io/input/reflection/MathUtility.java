@@ -39,7 +39,7 @@ import java.math.BigInteger;
  */
 public class MathUtility {
 
-    /* Builds a MathUtility object */
+    // Builds a MathUtility object.
     private MathUtility() {}
 
     /**
