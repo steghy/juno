@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/reflection/test/MyObject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/reflection/test/PrintStatus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/AbstractConfigurationFilesProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/AbstractConfigurationFilesProvider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/reflection/AbstractCompatibilityChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/reflection/AbstractCompatibilityChecker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/reflection/CompatibilityChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/reflection/CompatibilityChecker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/reflection/test/ProperyCopierTester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/reflection/test/ProperyCopierTester.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/reflection/test/RConfiguratorTester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/reflection/test/RConfiguratorTester.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/reflection/test/ProperyCopierTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/reflection/test/ProperyCopierTester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/reflection/test/RConfiguratorTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/reflection/test/RConfiguratorTester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/reflection/test/ConfigurationFilesProviderTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/reflection/test/ConfigurationFilesProviderTester.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

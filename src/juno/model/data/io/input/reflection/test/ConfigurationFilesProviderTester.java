@@ -25,9 +25,22 @@
 
 package juno.model.data.io.input.reflection.test;
 
+import juno.init.Directories;
+import juno.model.data.io.input.reflection.ConfigurationFilesProvider;
+import juno.model.util.PathGenerator;
+
+import java.io.FileNotFoundException;
+
 public class ConfigurationFilesProviderTester {
 
     public static void main(String[] args) {
-        
+        ConfigurationFilesProvider filesProvider = ConfigurationFilesProvider.getInstance();
+        // filesProvider.setRecursive(true); // By default is true;
+        String path = PathGenerator.generate(Directories.CONFIG.absolutePath(), "");
+        try {
+            filesProvider.getConfigurationFiles(new MyObject(), path);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
