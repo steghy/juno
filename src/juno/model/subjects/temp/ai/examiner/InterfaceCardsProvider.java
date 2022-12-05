@@ -23,22 +23,13 @@
  * SOFTWARE.
  */
 
-package juno.model.deck;
-
-import java.util.List;
+package juno.model.subjects.temp.ai.examiner;
 
 /**
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
-@FunctionalInterface
-public interface InterfaceCompatibleCardsProvider<T> {
-
-    /**
-     *
-     * @param cards
-     * @return
-     */
-    List<T> getCompatibleCards(List<T> cards);
-
-}
+public interface InterfaceCardsProvider<T>
+        extends InterfaceActionCardsProvider<T>,
+                InterfaceNumberCardsProvider<T>,
+                InterfaceJollyCardProvider<T> {}

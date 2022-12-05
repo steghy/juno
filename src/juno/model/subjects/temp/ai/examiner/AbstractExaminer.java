@@ -32,8 +32,7 @@ import org.jetbrains.annotations.NotNull;
  * @author Simone Gentili
  * @param <T> The type of the items.
  */
-public abstract class AbstractExaminer<T>
-        extends AbstractMultiExaminer<T> {
+public abstract class AbstractExaminer<T> {
 
     // The item's provider.
     private InterfaceCompatibleCardsProvider<T> itemsProvider;

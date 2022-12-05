@@ -60,7 +60,7 @@ public class Examiner
     @Override
     public InterfaceCard responseRelativeTo(@NotNull List<InterfaceCard> items,
                                                @NotNull Difficulty difficulty) {
-        compatibleCards = getItemsProvider().getCompatibleItems(items);
+        compatibleCards = getItemsProvider().getCompatibleCards(items);
         if(compatibleCards.size() == 0) {
             return null;
         } if(compatibleCards.size() == 1) {

@@ -31,7 +31,8 @@ import org.jetbrains.annotations.NotNull;
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
-public abstract class AbstractMultiExaminer<T> {
+public abstract class AbstractMultiExaminer<T>
+        extends AbstractExaminer<T> {
 
     // Easy.
     private InterfaceEasyExaminer<T> easy;

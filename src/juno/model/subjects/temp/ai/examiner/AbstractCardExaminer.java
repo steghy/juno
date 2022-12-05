@@ -25,37 +25,18 @@
 
 package juno.model.subjects.temp.ai.examiner;
 
-import juno.model.card.InterfaceCard;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
+public abstract class AbstractCardExaminer<T> {
 
-/**
- * @author Simone Gentili
- */
-public abstract class AbstractCardSorter {
+    InterfaceCardsProvider<T> provider;
 
-    // Number cards.
-    List<InterfaceCard> numberCards;
+    public void setProvider(@NotNull InterfaceCardsProvider<T> provider) {
+        this.provider = provider;
+    }
 
-    // Action cards.
-    List<InterfaceCard> actionCards;
-
-    // Jolly cards.
-    List<InterfaceCard> jollyCards;
-
-    // Organize the cards to play.
-    public void sort(@NotNull List<InterfaceCard> cards) {
-        cards.forEach(card ->  {
-            if(card.value() != null) numberCards.add(card);
-            else if(card.action() != null) {
-                if (card.action().isJolly()) {
-                    jollyCards.add(card);
-                } else {
-                    actionCards.add(card);
-                }
-            }
-        });
+    public InterfaceCardsProvider<T> getProvider() {
+        return provider;
     }
 
 }

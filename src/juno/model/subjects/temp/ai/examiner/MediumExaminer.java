@@ -25,7 +25,6 @@
 
 package juno.model.subjects.temp.ai.examiner;
 
-import juno.model.card.InterfaceCard;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -33,24 +32,32 @@ import java.util.Random;
 
 /**
  * @author Simone Gentili
+ * @param <T> The type of the cards.
  */
-public class MediumExaminer
-        extends AbstractCardSorter
-        implements InterfaceMediumExaminer<InterfaceCard> {
+public class MediumExaminer<T>
+        extends AbstractCardExaminer<T>
+        implements InterfaceMediumExaminer<T> {
 
     @Override
-    public InterfaceCard response(@NotNull List<InterfaceCard> cards) {
-        sort(cards);
-        Random random = new Random();
-        if(actionCards.size() != 0) {
-            return actionCards.get(random.nextInt(actionCards.size()));
-        } if(numberCards.size() != 0) {
-            return numberCards.get(random.nextInt(numberCards.size()));
-        } if(jollyCards.size() != 0) {
-            return jollyCards.get(random.nextInt(jollyCards.size()));
-        } else {
+    public T response(@NotNull List<T> cards) {
+        Random r = new Random();
+        InterfaceCardsProvider<T> provider = getProvider();
+
+        // Action cards case.
+        List<T> temp = provider.getActionCards(cards);
+        if(temp.size() != 0) return temp.get(r.nextInt(temp.size()));
+
+        // Jolly cards case.
+        temp = provider.getJollyCards(cards);
+        if(temp.size() != 0) return temp.get(r.nextInt(temp.size()));
+
+        // Number cards case.
+        temp = provider.getNumberCards(cards);
+        if(temp.size() != 0) return temp.get(r.nextInt(temp.size()));
+
+            // It can't happen.
+        else
             throw new IllegalArgumentException("Unavailable cards to play");
-        }
     }
 
 }

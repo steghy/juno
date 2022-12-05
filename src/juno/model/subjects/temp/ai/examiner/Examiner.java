@@ -35,7 +35,7 @@ import java.util.List;
  * @author Simone Gentili
  */
 public class Examiner<T>
-        extends AbstractExaminer<T>
+        extends AbstractMultiExaminer<T>
         implements InterfaceExaminer<T> {
 
     // The Examiner instance.
@@ -56,7 +56,7 @@ public class Examiner<T>
     @Override @Nullable
     public T responseRelativeTo(@NotNull List<T> cards,
                                 @NotNull InterfaceDifficulty difficulty) {
-        List<T> compatibleCards = getItemsProvider().getCompatibleItems(cards);
+        List<T> compatibleCards = getItemsProvider().getCompatibleCards(cards);
         if(difficulty.isEasy()) return getEasyExaminer().response(compatibleCards);
         if(difficulty.isMedium()) return getMedium().response(compatibleCards);
         else return getHard().response(compatibleCards);

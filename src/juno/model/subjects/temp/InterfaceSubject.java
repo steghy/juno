@@ -25,9 +25,16 @@
 
 package juno.model.subjects.temp;
 
+/**
+ * @author Simone Gentili
+ */
 @FunctionalInterface
 public interface InterfaceSubject {
 
+    /**
+     *
+     * @return
+     */
     String name();
 
 }
