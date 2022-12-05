@@ -23,22 +23,19 @@
  * SOFTWARE.
  */
 
-package juno.model.util.test;
+package juno.model.subjects.temp;
 
-import juno.init.Directories;
-import juno.model.util.PathGenerator;
+import org.jetbrains.annotations.Nullable;
 
-import java.io.IOException;
+/**
+ * @author Simone Gentili
+ * @param <T> The type of the cards.
+ */
+public interface InterfacePlayer<T>
+        extends InterfaceCardsPlayer<T>,
+                InterfaceSubject {
 
-public class ReflectedConfiguratorTester {
+    @Nullable
+    T move();
 
-    static String configFilePath = PathGenerator.generate(Directories.CONFIG.absolutePath(), "button-factory.json");
-
-    public static void main(String[] args) throws IOException {
-        importData();
-    }
-
-    public static void importData() throws IOException {
-
-    }
 }

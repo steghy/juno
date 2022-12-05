@@ -23,32 +23,7 @@
  * SOFTWARE.
  */
 
-package juno.model.data.io.input.configurable;
+package juno.model.subjects.temp.ai.examiner;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.List;
-
-/**
- * This interface defines a method for obtaining
- * configuration files for a specified object.
- * @author Simone Gentili
- */
-@FunctionalInterface
-public interface InterfaceConfigurationFilesProvider {
-
-    /**
-     * Returns a list containing the configuration
-     * files compatible with the specified Configurable
-     * object present within the specified path.
-     * @param configurable A Configurable object.
-     * @param path A String object.
-     * @return A List object.
-     * @throws FileNotFoundException If the specified
-     *         path does not exist.
-     */
-    List<File> getConfigurationFiles(Configurable configurable,
-                                     String path)
-            throws FileNotFoundException;
-
+public interface InterfaceMedium {
 }

@@ -25,6 +25,7 @@
 
 package juno.model.data.io.input.reflection;
 
+import juno.model.util.ExtensionExtractor;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -105,14 +106,16 @@ public class ConfigurationFilesProvider
         File inputFile = new File(path);
         if(!inputFile.exists()) throw new FileNotFoundException(path);
         if(inputFile.isFile()) {
-            if(getChecker().areCompatible(object, path))
-                if(shouldAdd(inputFile)) configurationFiles.add(inputFile);
+            if(preliminaries(inputFile) &&
+                    getChecker().areCompatible(object, path))
+                configurationFiles.add(inputFile);
         } else if(inputFile.listFiles() != null) {
             // Objects.requireNonNull suppress the Nullable warning.
             for(File file : Objects.requireNonNull(inputFile.listFiles())) {
                 if(file.isFile()) {
-                    if(getChecker().areCompatible(object, file.getAbsolutePath()))
-                        if(shouldAdd(file)) configurationFiles.add(file);
+                    if(preliminaries(file) &&
+                            getChecker().areCompatible(object, file.getAbsolutePath()))
+                        configurationFiles.add(file);
                 } else {
                     if(recursive) {
                         configurationFiles.addAll(getConfigurationFiles(object, file.getAbsolutePath()));
@@ -131,18 +134,14 @@ public class ConfigurationFilesProvider
         this.recursive = value;
     }
 
-    // Returns the extension of the file.
-    private String extension(@NotNull String path) {
-        String[] a = path.split("[.]");
-        return a[a.length - 1];
-    }
-
     // Returns true if, and only if the extension list
     // of this object has length 0 or the extension of
     // the file is contained by the extension List.
-    private boolean shouldAdd(@NotNull File file) {
+    private boolean preliminaries(@NotNull File file) {
         return extensions.size() == 0 ||
-                extensions.contains(extension(file.getName()));
+                extensions.stream()
+                        .anyMatch(s -> s.equals(ExtensionExtractor
+                                                .extract(file.getName())));
     }
 
     /**

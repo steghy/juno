@@ -40,12 +40,21 @@ public class RConfiguratorTester {
      * @param args The cmd arguments.
      */
     public static void main(String[] args) {
+        // Target.
         Class<?> clazz = MyClass.class;
+
+        // Target copy.
         Map<String, Object> clazzCopy = PropertyCopier.getInstance().copy(clazz);
+
+        // Print target status.
         PrintStatus.printStatus(clazz);
+
+        // Input map.
         Map<String, Object> map = new HashMap<>();
         map.put("name", "New name");
         map.put("value", 101);
+
+        // Target configuration.
         try {
             Configurator.getInstance().configure(clazz, map);
         } catch (NoSuchFieldException |
@@ -53,6 +62,8 @@ public class RConfiguratorTester {
                  IllegalAccessException e) {
             e.printStackTrace();
         }
+
+        // Print target status.
         System.out.println("--------------------------------");
         PrintStatus.printStatus(clazz);
     }

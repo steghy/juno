@@ -23,32 +23,33 @@
  * SOFTWARE.
  */
 
-package juno.model.data.io.input.configurable;
+package juno.model.subjects.temp.human;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
 /**
- * This interface defines a method for obtaining
- * configuration files for a specified object.
  * @author Simone Gentili
+ * @param <T> The type of the cards.
  */
-@FunctionalInterface
-public interface InterfaceConfigurationFilesProvider {
+public abstract class AbstractHumanPlayer<T> {
+
+    // The receiver.
+    InterfaceReceiver<T> receiver;
 
     /**
-     * Returns a list containing the configuration
-     * files compatible with the specified Configurable
-     * object present within the specified path.
-     * @param configurable A Configurable object.
-     * @param path A String object.
-     * @return A List object.
-     * @throws FileNotFoundException If the specified
-     *         path does not exist.
+     * Sets the receiver of this object.
+     * @param receiver An InterfaceReceiver object.
      */
-    List<File> getConfigurationFiles(Configurable configurable,
-                                     String path)
-            throws FileNotFoundException;
+    public void setReceiver(@NotNull InterfaceReceiver<T> receiver) {
+        this.receiver = receiver;
+    }
+
+    /**
+     * Returns the receiver of this object.
+     * @return An InterfaceReceiver object.
+     */
+    public InterfaceReceiver<T> getReceiver() {
+        return receiver;
+    }
 
 }

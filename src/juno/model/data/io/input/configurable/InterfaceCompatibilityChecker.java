@@ -42,6 +42,7 @@ public interface InterfaceCompatibilityChecker {
      * @param path A String object.
      * @return A boolean value.
      */
-    boolean areCompatible(Configurable configurable, String path);
+    boolean areCompatible(Configurable configurable,
+                          String path);
 
 }

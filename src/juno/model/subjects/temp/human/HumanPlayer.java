@@ -23,32 +23,54 @@
  * SOFTWARE.
  */
 
-package juno.model.data.io.input.configurable;
+package juno.model.subjects.temp.human;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.List;
+import juno.model.subjects.temp.AbstractPlayer;
+import juno.model.subjects.temp.InterfacePlayer;
+import org.jetbrains.annotations.NotNull;
 
 /**
- * This interface defines a method for obtaining
- * configuration files for a specified object.
  * @author Simone Gentili
+ * @param <T> The type of the card.
  */
-@FunctionalInterface
-public interface InterfaceConfigurationFilesProvider {
+public class HumanPlayer<T>
+        extends AbstractPlayer<T>
+        implements InterfacePlayer<T> {
+
+    // The name.
+    private String name;
+
+    // HumanPlayer instance.
+    private static HumanPlayer<?> instance;
+
+    // Builds the HumanPlayer instance.
+    private HumanPlayer() {}
 
     /**
-     * Returns a list containing the configuration
-     * files compatible with the specified Configurable
-     * object present within the specified path.
-     * @param configurable A Configurable object.
-     * @param path A String object.
-     * @return A List object.
-     * @throws FileNotFoundException If the specified
-     *         path does not exist.
+     * Returns the HumanPlayer instance.
+     * @return The HumanPlayer instance.
      */
-    List<File> getConfigurationFiles(Configurable configurable,
-                                     String path)
-            throws FileNotFoundException;
+    public static HumanPlayer<?> getInstance() {
+        if(instance == null) instance = new HumanPlayer<>();
+        return instance;
+    }
+
+    @Override
+    public T move() {
+        return null;
+    }
+
+    @Override
+    public String name() {
+        return name;
+    }
+
+    /**
+     * Sets the name of this object.
+     * @param name A String object
+     */
+    public void setName(@NotNull String name) {
+        this.name = name;
+    }
 
 }

@@ -23,32 +23,34 @@
  * SOFTWARE.
  */
 
-package juno.model.data.io.input.configurable;
+package juno.model.subjects.temp.ai.examiner;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.List;
+import juno.model.deck.InterfaceCompatibleItemsProvider;
+import org.jetbrains.annotations.NotNull;
 
 /**
- * This interface defines a method for obtaining
- * configuration files for a specified object.
  * @author Simone Gentili
+ * @param <T> The type of the items.
  */
-@FunctionalInterface
-public interface InterfaceConfigurationFilesProvider {
+public abstract class AbstractExaminer<T> {
+
+    // The item's provider.
+    private InterfaceCompatibleItemsProvider<T> itemsProvider;
 
     /**
-     * Returns a list containing the configuration
-     * files compatible with the specified Configurable
-     * object present within the specified path.
-     * @param configurable A Configurable object.
-     * @param path A String object.
-     * @return A List object.
-     * @throws FileNotFoundException If the specified
-     *         path does not exist.
+     * Sets the items provider of this object.
+     * @param itemsProvider An InterfaceCompatibleItemsProvider object.
      */
-    List<File> getConfigurationFiles(Configurable configurable,
-                                     String path)
-            throws FileNotFoundException;
+    public void setItemsProvider(@NotNull InterfaceCompatibleItemsProvider<T> itemsProvider) {
+        this.itemsProvider = itemsProvider;
+    }
+
+    /**
+     * Returns the items provider of this object.
+     * @return An InterfaceCompatibleItemsProvider object.
+     */
+    public InterfaceCompatibleItemsProvider<T> getItemsProvider() {
+        return itemsProvider;
+    }
 
 }

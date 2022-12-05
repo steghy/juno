@@ -23,32 +23,20 @@
  * SOFTWARE.
  */
 
-package juno.model.data.io.input.configurable;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.List;
+package juno.view.card;
 
 /**
- * This interface defines a method for obtaining
- * configuration files for a specified object.
  * @author Simone Gentili
+ * @param <T> The type of the card.
  */
 @FunctionalInterface
-public interface InterfaceConfigurationFilesProvider {
+public interface InterfaceButtonCard<T> {
 
     /**
-     * Returns a list containing the configuration
-     * files compatible with the specified Configurable
-     * object present within the specified path.
-     * @param configurable A Configurable object.
-     * @param path A String object.
-     * @return A List object.
-     * @throws FileNotFoundException If the specified
-     *         path does not exist.
+     * Returns the model card of this
+     * button card.
+     * @return A T card.
      */
-    List<File> getConfigurationFiles(Configurable configurable,
-                                     String path)
-            throws FileNotFoundException;
+    T card();
 
 }

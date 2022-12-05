@@ -23,32 +23,25 @@
  * SOFTWARE.
  */
 
-package juno.model.data.io.input.configurable;
+package juno.model.subjects.temp.test;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.List;
+import juno.model.card.InterfaceCard;
+import juno.model.deck.DiscardedPile;
+import juno.model.subjects.temp.ai.AI;
+import juno.model.subjects.temp.ai.Difficulty;
 
-/**
- * This interface defines a method for obtaining
- * configuration files for a specified object.
- * @author Simone Gentili
- */
-@FunctionalInterface
-public interface InterfaceConfigurationFilesProvider {
+public class AITester {
 
-    /**
-     * Returns a list containing the configuration
-     * files compatible with the specified Configurable
-     * object present within the specified path.
-     * @param configurable A Configurable object.
-     * @param path A String object.
-     * @return A List object.
-     * @throws FileNotFoundException If the specified
-     *         path does not exist.
-     */
-    List<File> getConfigurationFiles(Configurable configurable,
-                                     String path)
-            throws FileNotFoundException;
-
+    @SuppressWarnings("unchecked")
+    public static void main(String[] args) {
+        AI<InterfaceCard> ai = new AI<>("Simone", Difficulty.EASY);
+        DiscardedPile<InterfaceCard> discardedPile = (DiscardedPile<InterfaceCard>) DiscardedPile.getInstance();
+        InterfaceCard card = ai.move();
+        if(card == null) {
+            System.out.println("draw a new card");
+        } else {
+            card.value();
+            discardedPile.discard(card);
+        }
+    }
 }

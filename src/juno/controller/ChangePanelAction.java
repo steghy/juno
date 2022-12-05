@@ -39,6 +39,7 @@ public class ChangePanelAction extends AbstractAction {
         this.panel = panel;
     }
 
+
     @Override
     public void actionPerformed(ActionEvent e) {
         LayoutManager layoutManager = cardPanel.getLayout();

@@ -26,21 +26,50 @@
 package juno.model.data.io.input.reflection.test;
 
 import juno.init.Directories;
+import juno.model.data.io.input.InputPKGInitializer;
 import juno.model.data.io.input.reflection.ConfigurationFilesProvider;
 import juno.model.util.PathGenerator;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.List;
 
 public class ConfigurationFilesProviderTester {
 
     public static void main(String[] args) {
+        // Initialization.
+        InputPKGInitializer.initialize();
+
         ConfigurationFilesProvider filesProvider = ConfigurationFilesProvider.getInstance();
-        // filesProvider.setRecursive(true); // By default is true;
+        filesProvider.extensions().add("json");
+        filesProvider.setRecursive(false);
+
+
         String path = PathGenerator.generate(Directories.CONFIG.absolutePath(), "");
+
+        System.out.println("Pre configuration files provider");
+
+        MyObject object = new MyObject();
+
+        PrintStatus.printStatus(object);
+
+        System.out.println("-------------------------------");
+
+        // Getting configuration files
+        List<File> configurationFiles;
         try {
-            filesProvider.getConfigurationFiles(new MyObject(), path);
+            configurationFiles = filesProvider.getConfigurationFiles(object, path);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+
+        configurationFiles.forEach(System.out::println);
+
+        System.out.println("-------------------------------");
+        System.out.println("Post configuration files provider");
+
+        PrintStatus.printStatus(object);
+
+
     }
 }
