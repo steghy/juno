@@ -5,46 +5,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/juno/controller/Receiver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/InputPKGInitializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/AbstractPlayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/InputReceiver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/InterfaceCardsPlayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/InterfacePlayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/InterfaceSubject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/AI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/AbstractAI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/Difficulty.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/AbstractExaminer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/AbstractMultiExaminer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/Easy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/Examiner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/InterfaceEasy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/InterfaceExaminer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/human/AbstractHumanPlayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/human/HumanPlayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/human/InterfaceReceiver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/test/AITester.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/util/ExtensionExtractor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/util/InterfaceExtensionExtractor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/util/Researcher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/util/test/ExtensionExtractorTester.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/card/InterfaceButtonCard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/deck/AbstractCompatibilityChecker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/deck/CompatibleCardsProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/InterfaceDifficulty.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/InterfaceEasy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/InterfaceHard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/InterfaceMedium.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/AbstractCardSorter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/EasyExaminer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/HardExaminer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/MediumExaminer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/test-json-1.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/config/test-json-1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/test-json-2.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/config/test-json-2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/test-json.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/config/test-json.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/controller/ChangePanelAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/controller/ChangePanelAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/InputPKGInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/InputPKGInitializer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/configurable/ConfigurationFilesProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/configurable/ConfigurationFilesProvider.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/reflection/ConfigurationFilesProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/reflection/ConfigurationFilesProvider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/util/test/ReflectedConfiguratorTester.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/controller/ChangePanelAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/ChangePanelAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/configurable/ConfigurationFilesProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/configurable/ConfigurationFilesProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/configurable/InterfaceCompatibilityChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/configurable/InterfaceCompatibilityChecker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/configurable/InterfaceConfigurationFilesProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/configurable/InterfaceConfigurationFilesProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/reflection/ConfigurationFilesProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/reflection/ConfigurationFilesProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/reflection/test/ConfigurationFilesProviderTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/reflection/test/ConfigurationFilesProviderTester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/reflection/test/RConfiguratorTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/reflection/test/RConfiguratorTester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/util/test/ReflectedConfiguratorTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/card/ButtonCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/reflection/test/RConfiguratorTester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/reflection/test/RConfiguratorTester.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/AbstractCompatibleItemsProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/AbstractCompatibleItemsProvider.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/CompatibilityChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/CompatibilityChecker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/InterfaceCompatibilityChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/InterfaceCompatibilityChecker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/Receiver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/AbstractCompatibleItemsProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/AbstractCompatibleCardsProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/CompatibilityChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/CompatibilityChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/InterfaceCompatibilityChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/InterfaceCompatibilityChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/InterfaceCompatibleItemsProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/InterfaceCompatibleCardsProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/ai/AbstractAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/ai/AbstractAI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/ai/AbstractExaminer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/ai/AbstractExaminer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/AI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/AI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/Difficulty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/Difficulty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/AbstractExaminer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/AbstractExaminer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/AbstractMultiExaminer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/AbstractMultiExaminer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/Easy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/InterfaceHardExaminer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/Examiner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/Examiner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/InterfaceEasy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/InterfaceEasyExaminer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/InterfaceExaminer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/InterfaceExaminer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/InterfaceMedium.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/InterfaceMediumExaminer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/temp/human/AbstractHumanPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/human/AbstractHumanPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/temp/human/HumanPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/human/HumanPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/temp/human/InterfaceReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/human/InterfaceReceiver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/card/ButtonCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/card/ButtonCard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,8 +58,8 @@
         <option value="AnnotationType" />
         <option value="Record" />
         <option value="Enum" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -100,6 +99,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="juno.model.subjects.temp.ai.examiner" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/juno/model/subjects/temp" />
       <recent name="$PROJECT_DIR$/src/juno/view/pages/preaccess/login" />

@@ -23,7 +23,9 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.temp.ai.examiner;
+package juno.model.subjects.temp.ai;
 
-public interface InterfaceMedium {
-}
+public interface InterfaceDifficulty
+        extends InterfaceEasy,
+                InterfaceMedium,
+                InterfaceHard {}

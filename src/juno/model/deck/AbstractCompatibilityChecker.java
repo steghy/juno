@@ -23,22 +23,33 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.temp.ai.examiner;
+package juno.model.deck;
 
-import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
-@FunctionalInterface
-public interface InterfaceEasy<T> {
+public abstract class AbstractCompatibilityChecker<T> {
+
+    // The discarded pile.
+    private InterfaceDiscardedPile<T> discardedPile;
 
     /**
-     *
-     * @param cards
-     * @return
+     * Sets the discarded pile of this object.
+     * @param discardedPile An InterfaceDiscardedPile object.
      */
-    T easy(List<T> cards);
+    public void setDiscardedPile(@NotNull InterfaceDiscardedPile<T> discardedPile) {
+        this.discardedPile = discardedPile;
+    }
+
+    /**
+     * Returns the discarded pile of this object.
+     * @return An InterfaceDiscardedPile object.
+     */
+    public InterfaceDiscardedPile<T> getDiscardedPile() {
+        return discardedPile;
+    }
 
 }

@@ -25,33 +25,20 @@
 
 package juno.model.subjects.temp.ai.examiner;
 
-import juno.model.deck.InterfaceCompatibleCardsProvider;
-import org.jetbrains.annotations.NotNull;
+import java.util.List;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the items.
+ * @param <T> The type of the cards.
  */
-public abstract class AbstractExaminer<T>
-        extends AbstractMultiExaminer<T> {
-
-    // The item's provider.
-    private InterfaceCompatibleCardsProvider<T> itemsProvider;
+@FunctionalInterface
+public interface InterfaceHardExaminer<T> {
 
     /**
-     * Sets the items provider of this object.
-     * @param itemsProvider An InterfaceCompatibleItemsProvider object.
+     *
+     * @param cards
+     * @return
      */
-    public void setItemsProvider(@NotNull InterfaceCompatibleCardsProvider<T> itemsProvider) {
-        this.itemsProvider = itemsProvider;
-    }
-
-    /**
-     * Returns the items provider of this object.
-     * @return An InterfaceCompatibleItemsProvider object.
-     */
-    public InterfaceCompatibleCardsProvider<T> getItemsProvider() {
-        return itemsProvider;
-    }
+    T response(List<T> cards);
 
 }

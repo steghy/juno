@@ -23,29 +23,34 @@
  * SOFTWARE.
  */
 
-package juno.model.deck;
+package juno.model.subjects.temp.ai.examiner;
 
+import juno.model.card.InterfaceCard;
 import org.jetbrains.annotations.NotNull;
 
-public abstract class AbstractCompatibleItemsProvider<T>
-        implements InterfaceCompatibleItemsProvider<T> {
+import java.util.List;
+import java.util.Random;
 
-    private InterfaceCompatibilityChecker<T> compatibilityChecker;
+/**
+ * @author Simone Gentili
+ */
+public class HardExaminer
+        extends AbstractCardSorter
+        implements InterfaceHardExaminer<InterfaceCard> {
 
-    /**
-     * Sets the compatibility checker of this object.
-     * @param compatibilityChecker An InterfaceCompatibilityChecker object.
-     */
-    public void setCompatibilityChecker(@NotNull InterfaceCompatibilityChecker<T> compatibilityChecker) {
-        this.compatibilityChecker = compatibilityChecker;
-    }
-
-    /**
-     * Returns the compatibility checker of this object.
-     * @return An InterfaceCompatibilityChecker object.
-     */
-    public InterfaceCompatibilityChecker<T> getCompatibilityChecker() {
-        return compatibilityChecker;
+    @Override
+    public InterfaceCard response(@NotNull List<InterfaceCard> cards) {
+        sort(cards);
+        Random random = new Random();
+        if(jollyCards.size() != 0) {
+            return jollyCards.get(random.nextInt(jollyCards.size()));
+        } if(actionCards.size() != 0) {
+            return actionCards.get(random.nextInt(actionCards.size()));
+        } if(numberCards.size() != 0) {
+            return numberCards.get(random.nextInt(numberCards.size()));
+        } else {
+            throw new IllegalArgumentException("Unavailable cards to play");
+        }
     }
 
 }

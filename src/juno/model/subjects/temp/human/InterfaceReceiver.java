@@ -28,6 +28,10 @@ package juno.model.subjects.temp.human;
 @FunctionalInterface
 public interface InterfaceReceiver<T> {
 
+    /**
+     *
+     * @return
+     */
     T receive();
 
 }

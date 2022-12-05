@@ -25,13 +25,15 @@
 
 package juno.model.subjects.temp.human;
 
+import juno.model.subjects.temp.AbstractPlayer;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
-public abstract class AbstractHumanPlayer<T> {
+public abstract class AbstractHumanPlayer<T>
+        extends AbstractPlayer<T> {
 
     // The receiver.
     InterfaceReceiver<T> receiver;

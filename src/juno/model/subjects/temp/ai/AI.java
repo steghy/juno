@@ -40,7 +40,7 @@ public class AI<T>
     private String name;
 
     // The difficulty.
-    private Difficulty difficulty;
+    private InterfaceDifficulty difficulty;
 
     /**
      * Builds an AI object with the
@@ -49,7 +49,7 @@ public class AI<T>
      * @param difficulty A Difficulty object.
      */
     public AI(@NotNull String name,
-              @NotNull Difficulty difficulty) {
+              @NotNull InterfaceDifficulty difficulty) {
         this.name = name;
         this.difficulty = difficulty;
     }
@@ -66,9 +66,9 @@ public class AI<T>
 
     /**
      * Sets the difficulty of this object.
-     * @param difficulty A Difficulty object.
+     * @param difficulty An InterfaceDifficulty object.
      */
-    public void setDifficulty(@NotNull Difficulty difficulty) {
+    public void setDifficulty(@NotNull InterfaceDifficulty difficulty) {
         this.difficulty = difficulty;
     }
 
@@ -82,9 +82,9 @@ public class AI<T>
 
     /**
      * Returns the difficulty of this object.
-     * @return A Difficulty object.
+     * @return An InterfaceDifficulty object.
      */
-    public Difficulty getDifficulty() {
+    public InterfaceDifficulty getDifficulty() {
         return difficulty;
     }
 

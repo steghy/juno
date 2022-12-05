@@ -32,18 +32,18 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * This class defines a compatibility checker
- * between two 'InterfaceCard' type cards.
- * The 'areCompatible(el1, el2)' method returns
- * true when the two specified elements are compatible.
+ * between the specified card and the top card
+ * of the discarded pile.
  * @author Simone Gentili
  */
 class CompatibilityChecker
+        extends AbstractCompatibilityChecker<InterfaceCard>
         implements InterfaceCompatibilityChecker<InterfaceCard> {
 
-    /* The CompatibilityChecker instance */
+    // The CompatibilityChecker instance.
     private static CompatibilityChecker instance;
 
-    /* Builds the CompatibilityChecker instance */
+    // Builds the CompatibilityChecker instance.
     private CompatibilityChecker() {}
 
     /**
@@ -56,48 +56,49 @@ class CompatibilityChecker
     }
 
     @Override
-    public boolean areCompatible(@NotNull InterfaceCard card,
-                                 @NotNull InterfaceCard otherCard){
-        // Card specifications.
+    public boolean isCompatible(@NotNull InterfaceCard card){
+        // Top card of the discarded pile.
+        InterfaceDiscardedPile<InterfaceCard> discardedPile = getDiscardedPile();
+        InterfaceCard topCard = discardedPile.get(discardedPile.size() - 1);
+        InterfaceColor  topCardColor  = topCard.color();
+        InterfaceAction topCardAction = topCard.action();
+        Integer         topCardValue  = topCard.value();
+
+        // Input card.
         InterfaceColor  cardColor  = card.color();
         InterfaceAction cardAction = card.action();
         Integer         cardValue  = card.value();
 
-        // Other card specification.
-        InterfaceColor  otherCardColor  = otherCard.color();
-        InterfaceAction otherCardAction = otherCard.action();
-        Integer         otherCardValue  = otherCard.value();
-
         // Jolly case.
-        if (otherCardAction != null && otherCardAction.isJolly()) return true;
+        if (cardAction != null && cardAction.isJolly()) return true;
 
         // Color case.
-        if (cardColor != null && otherCardColor != null) {
-            if (cardColor.isBlue() && otherCardColor.isBlue()) {
+        if (cardColor != null && topCardColor != null) {
+            if (cardColor.isBlue() && topCardColor.isBlue()) {
                 return true;
-            } if (cardColor.isGreen() && otherCardColor.isGreen()) {
+            } if (cardColor.isGreen() && topCardColor.isGreen()) {
                 return true;
-            } if (cardColor.isYellow() && otherCardColor.isYellow()) {
+            } if (cardColor.isYellow() && topCardColor.isYellow()) {
                 return true;
-            } if (cardColor.isRed() && otherCardColor.isRed()) {
+            } if (cardColor.isRed() && topCardColor.isRed()) {
                 return true;
             }
         }
 
         // Action case
-        if (cardAction != null && otherCardAction != null) {
-            if (cardAction.isSkip() && otherCardAction.isSkip()) {
+        if (cardAction != null && topCardAction != null) {
+            if (cardAction.isSkip() && topCardAction.isSkip()) {
                 return true;
-            } if (cardAction.isInvert() && otherCardAction.isInvert()) {
+            } if (cardAction.isInvert() && topCardAction.isInvert()) {
                 return true;
-            } if (cardAction.isDrawTwo() && otherCardAction.isDrawTwo()) {
+            } if (cardAction.isDrawTwo() && topCardAction.isDrawTwo()) {
                 return true;
             }
         }
 
         // Number case
-        if (cardValue != null && otherCardValue != null) {
-            return cardValue.equals(otherCardValue);
+        if (cardValue != null && topCardValue != null) {
+            return cardValue.equals(topCardValue);
         } return false;
     }
 

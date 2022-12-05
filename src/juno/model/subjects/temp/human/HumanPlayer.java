@@ -25,7 +25,6 @@
 
 package juno.model.subjects.temp.human;
 
-import juno.model.subjects.temp.AbstractPlayer;
 import juno.model.subjects.temp.InterfacePlayer;
 import org.jetbrains.annotations.NotNull;
 
@@ -34,7 +33,7 @@ import org.jetbrains.annotations.NotNull;
  * @param <T> The type of the card.
  */
 public class HumanPlayer<T>
-        extends AbstractPlayer<T>
+        extends AbstractHumanPlayer<T>
         implements InterfacePlayer<T> {
 
     // The name.
@@ -57,7 +56,7 @@ public class HumanPlayer<T>
 
     @Override
     public T move() {
-        return null;
+        return getReceiver().receive();
     }
 
     @Override

@@ -23,35 +23,18 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.temp.ai.examiner;
-
-import juno.model.deck.InterfaceCompatibleCardsProvider;
-import org.jetbrains.annotations.NotNull;
+package juno.model.subjects.temp.ai;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the items.
  */
-public abstract class AbstractExaminer<T>
-        extends AbstractMultiExaminer<T> {
-
-    // The item's provider.
-    private InterfaceCompatibleCardsProvider<T> itemsProvider;
+@FunctionalInterface
+public interface InterfaceHard {
 
     /**
-     * Sets the items provider of this object.
-     * @param itemsProvider An InterfaceCompatibleItemsProvider object.
+     *
+     * @return
      */
-    public void setItemsProvider(@NotNull InterfaceCompatibleCardsProvider<T> itemsProvider) {
-        this.itemsProvider = itemsProvider;
-    }
-
-    /**
-     * Returns the items provider of this object.
-     * @return An InterfaceCompatibleItemsProvider object.
-     */
-    public InterfaceCompatibleCardsProvider<T> getItemsProvider() {
-        return itemsProvider;
-    }
+    boolean isHard();
 
 }

@@ -26,6 +26,7 @@
 package juno.model.subjects.temp.ai.examiner;
 
 import juno.model.subjects.temp.ai.Difficulty;
+import juno.model.subjects.temp.ai.InterfaceDifficulty;
 
 import java.util.List;
 
@@ -43,6 +44,6 @@ public interface InterfaceExaminer<T> {
      * @return
      */
     T responseRelativeTo(List<T> items,
-                         Difficulty difficulty);
+                         InterfaceDifficulty difficulty);
 
 }

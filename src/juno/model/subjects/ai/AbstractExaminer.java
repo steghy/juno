@@ -25,7 +25,7 @@
 
 package juno.model.subjects.ai;
 
-import juno.model.deck.InterfaceCompatibleItemsProvider;
+import juno.model.deck.InterfaceCompatibleCardsProvider;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -36,13 +36,13 @@ public abstract class AbstractExaminer<T>
         implements InterfaceExaminer<T> {
 
     /* The item's provider. */
-    private InterfaceCompatibleItemsProvider<T> itemsProvider;
+    private InterfaceCompatibleCardsProvider<T> itemsProvider;
 
     /**
      * Sets the items provider of this object.
      * @param itemsProvider An InterfaceCompatibleItemsProvider object.
      */
-    public void setItemsProvider(@NotNull InterfaceCompatibleItemsProvider<T> itemsProvider) {
+    public void setItemsProvider(@NotNull InterfaceCompatibleCardsProvider<T> itemsProvider) {
         this.itemsProvider = itemsProvider;
     }
 
@@ -50,7 +50,7 @@ public abstract class AbstractExaminer<T>
      * Returns the items provider of this object.
      * @return An InterfaceCompatibleItemsProvider object.
      */
-    public InterfaceCompatibleItemsProvider<T> getItemsProvider() {
+    public InterfaceCompatibleCardsProvider<T> getItemsProvider() {
         return itemsProvider;
     }
 

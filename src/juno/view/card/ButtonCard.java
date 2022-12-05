@@ -25,7 +25,6 @@
 
 package juno.view.card;
 
-import juno.controller.Receiver;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -48,7 +47,6 @@ public class ButtonCard<T>
      */
     public ButtonCard(@NotNull T card) {
         this.card = card;
-        this.addActionListener(Receiver.getInstance());
     }
 
     @Override

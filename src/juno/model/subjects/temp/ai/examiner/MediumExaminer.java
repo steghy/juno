@@ -25,33 +25,32 @@
 
 package juno.model.subjects.temp.ai.examiner;
 
-import juno.model.deck.InterfaceCompatibleCardsProvider;
+import juno.model.card.InterfaceCard;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+import java.util.Random;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the items.
  */
-public abstract class AbstractExaminer<T>
-        extends AbstractMultiExaminer<T> {
+public class MediumExaminer
+        extends AbstractCardSorter
+        implements InterfaceMediumExaminer<InterfaceCard> {
 
-    // The item's provider.
-    private InterfaceCompatibleCardsProvider<T> itemsProvider;
-
-    /**
-     * Sets the items provider of this object.
-     * @param itemsProvider An InterfaceCompatibleItemsProvider object.
-     */
-    public void setItemsProvider(@NotNull InterfaceCompatibleCardsProvider<T> itemsProvider) {
-        this.itemsProvider = itemsProvider;
-    }
-
-    /**
-     * Returns the items provider of this object.
-     * @return An InterfaceCompatibleItemsProvider object.
-     */
-    public InterfaceCompatibleCardsProvider<T> getItemsProvider() {
-        return itemsProvider;
+    @Override
+    public InterfaceCard response(@NotNull List<InterfaceCard> cards) {
+        sort(cards);
+        Random random = new Random();
+        if(actionCards.size() != 0) {
+            return actionCards.get(random.nextInt(actionCards.size()));
+        } if(numberCards.size() != 0) {
+            return numberCards.get(random.nextInt(numberCards.size()));
+        } if(jollyCards.size() != 0) {
+            return jollyCards.get(random.nextInt(jollyCards.size()));
+        } else {
+            throw new IllegalArgumentException("Unavailable cards to play");
+        }
     }
 
 }

@@ -25,6 +25,69 @@
 
 package juno.model.subjects.temp.ai.examiner;
 
-public abstract class AbstractMultiExaminer {
+import org.jetbrains.annotations.NotNull;
+
+/**
+ * @author Simone Gentili
+ * @param <T> The type of the cards.
+ */
+public abstract class AbstractMultiExaminer<T> {
+
+    // Easy.
+    private InterfaceEasyExaminer<T> easy;
+
+    // Medium.
+    private InterfaceMediumExaminer<T> medium;
+
+    // Hard.
+    private InterfaceHardExaminer<T> hard;
+
+    /**
+     * Sets the easy examiner of this object.
+     * @param easy An InterfaceEasy object.
+     */
+    public void setEasy(@NotNull InterfaceEasyExaminer<T> easy) {
+        this.easy = easy;
+    }
+
+    /**
+     * Sets the medium examiner of this object.
+     * @param medium An InterfaceMedium object.
+     */
+    public void setMedium(@NotNull InterfaceMediumExaminer<T> medium) {
+        this.medium = medium;
+    }
+
+    /**
+     * Sets the hard examiner of this object.
+     * @param hard An InterfaceHard object.
+     */
+    public void setHard(@NotNull InterfaceHardExaminer<T> hard) {
+        this.hard = hard;
+    }
+
+    /**
+     * Returns the easy examiner of this object.
+     * @return An InterfaceEasy object.
+     */
+    public InterfaceEasyExaminer<T> getEasyExaminer() {
+        return easy;
+    }
+
+    /**
+     * Returns the medium examiner of this object.
+     * @return An InterfaceMedium object.
+     */
+    public InterfaceMediumExaminer<T> getMedium() {
+        return medium;
+    }
+
+    /**
+     * Returns the hard examiner of this object.
+     * @return An InterfaceHard object.
+     */
+    public InterfaceHardExaminer<T> getHard() {
+        return hard;
+    }
 
 }

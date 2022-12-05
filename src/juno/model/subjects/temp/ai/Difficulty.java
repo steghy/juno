@@ -25,10 +25,34 @@
 
 package juno.model.subjects.temp.ai;
 
-public enum Difficulty {
+/**
+ * @author Simone Gentili
+ */
+public enum Difficulty
+        implements InterfaceDifficulty {
 
+    /** Easy difficulty. */
     EASY,
+
+    /** Medium difficulty. */
     MEDIUM,
-    HARD,
+
+    /** Hard difficulty. */
+    HARD;
+
+    @Override
+    public boolean isEasy() {
+        return this.name().equals("EASY");
+    }
+
+    @Override
+    public boolean isMedium() {
+        return this.name().equals("MEDIUM");
+    }
+
+    @Override
+    public boolean isHard() {
+        return this.name().equals("HARD");
+    }
 
 }

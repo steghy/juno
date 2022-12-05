@@ -25,21 +25,23 @@
 
 package juno.model.deck;
 
+import juno.model.card.InterfaceCard;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the cards.
  */
-@FunctionalInterface
-public interface InterfaceCompatibleItemsProvider<T> {
+public class CompatibleCardsProvider
+        extends AbstractCompatibleCardsProvider<InterfaceCard>
+        implements InterfaceCompatibleCardsProvider<InterfaceCard> {
 
-    /**
-     * Returns the compatible items of the specified
-     * List object.
-     * @param items A List object.
-     * @return A List object.
-     */
-    List<T> getCompatibleItems(List<T> items);
+    @Override
+    public List<InterfaceCard> getCompatibleItems(@NotNull List<InterfaceCard> cards) {
+        return cards.stream()
+                .filter(getCompatibilityChecker()::isCompatible)
+                .toList();
+    }
 
 }

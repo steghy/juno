@@ -25,21 +25,31 @@
 
 package juno.model.subjects.temp.ai.examiner;
 
-import juno.model.subjects.temp.ai.examiner.InterfaceEasy;
+import juno.model.card.InterfaceCard;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the cards.
  */
-public class Easy<T>
-        implements InterfaceEasy<T> {
+public class EasyExaminer
+        extends AbstractCardSorter
+        implements InterfaceEasyExaminer<InterfaceCard> {
 
     @Override
-    public T easy(@NotNull List<T> cards) {
-        return null;
+    public InterfaceCard response(@NotNull List<InterfaceCard> cards) {
+        sort(cards);
+        Random random = new Random();
+        if(numberCards.size() != 0) {
+            return numberCards.get(random.nextInt(numberCards.size()));
+        } if(actionCards.size() != 0) {
+            return actionCards.get(random.nextInt(actionCards.size()));
+        } if(jollyCards.size() != 0) {
+            return jollyCards.get(random.nextInt(jollyCards.size()));
+        } else {
+            throw new IllegalArgumentException("Unavailable cards to play");
+        }
     }
-
 }

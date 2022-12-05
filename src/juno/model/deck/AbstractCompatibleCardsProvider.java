@@ -23,35 +23,33 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.temp.ai.examiner;
+package juno.model.deck;
 
-import juno.model.deck.InterfaceCompatibleCardsProvider;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the items.
+ * @param <T> The type of the cards.
  */
-public abstract class AbstractExaminer<T>
-        extends AbstractMultiExaminer<T> {
+public abstract class AbstractCompatibleCardsProvider<T> {
 
-    // The item's provider.
-    private InterfaceCompatibleCardsProvider<T> itemsProvider;
+    // The compatibility checker.
+    private InterfaceCompatibilityChecker<T> compatibilityChecker;
 
     /**
-     * Sets the items provider of this object.
-     * @param itemsProvider An InterfaceCompatibleItemsProvider object.
+     * Sets the compatibility checker of this object.
+     * @param compatibilityChecker An InterfaceCompatibilityChecker object.
      */
-    public void setItemsProvider(@NotNull InterfaceCompatibleCardsProvider<T> itemsProvider) {
-        this.itemsProvider = itemsProvider;
+    public void setCompatibilityChecker(@NotNull InterfaceCompatibilityChecker<T> compatibilityChecker) {
+        this.compatibilityChecker = compatibilityChecker;
     }
 
     /**
-     * Returns the items provider of this object.
-     * @return An InterfaceCompatibleItemsProvider object.
+     * Returns the compatibility checker of this object.
+     * @return An InterfaceCompatibilityChecker object.
      */
-    public InterfaceCompatibleCardsProvider<T> getItemsProvider() {
-        return itemsProvider;
+    public InterfaceCompatibilityChecker<T> getCompatibilityChecker() {
+        return compatibilityChecker;
     }
 
 }

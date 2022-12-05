@@ -25,36 +25,21 @@
 
 package juno.model.subjects.temp.ai.examiner;
 
-import juno.model.card.InterfaceCard;
-import juno.model.subjects.temp.ai.Difficulty;
-import juno.model.util.MyRandom;
+import juno.model.subjects.temp.ai.InterfaceDifficulty;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author Simone Gentili
  */
-public class Examiner
-        extends AbstractExaminer<InterfaceCard>
-        implements InterfaceExaminer<InterfaceCard> {
-
-    // Compatible cards.
-    private List<InterfaceCard> compatibleCards;
-
-    // Numeric cards.
-    private List<InterfaceCard> numericCards;
-
-    // Action cards.
-    private List<InterfaceCard> actionCards;
-
-    // Jolly cards.
-    private List<InterfaceCard> jollyCards;
+public class Examiner<T>
+        extends AbstractExaminer<T>
+        implements InterfaceExaminer<T> {
 
     // The Examiner instance.
-    private static Examiner instance;
+    private static Examiner<?> instance;
 
     // Builds the Examiner instance.
     private Examiner() {}
@@ -63,105 +48,18 @@ public class Examiner
      * Returns the Examiner instance.
      * @return The Examiner instance.
      */
-    public static Examiner getInstance() {
-        if(instance == null) instance = new Examiner();
+    public static Examiner<?> getInstance() {
+        if(instance == null) instance = new Examiner<>();
         return instance;
     }
 
     @Override @Nullable
-    public InterfaceCard responseRelativeTo(@NotNull List<InterfaceCard> items,
-                                            @NotNull Difficulty difficulty) {
-        compatibleCards = getItemsProvider().getCompatibleItems(items);
-        if(compatibleCards.size() == 0) {
-            return null;
-        } if(compatibleCards.size() == 1) {
-            return compatibleCards.get(0);
-        } else {
-            setCards();
-            if(difficulty == Difficulty.EASY) {
-                return easy();
-            } if(difficulty == Difficulty.MEDIUM) {
-                return medium();
-            } if(difficulty == Difficulty.HARD) {
-                return hard();
-            } else {
-                throw new IllegalArgumentException("Unsupported Difficulty object: " + difficulty);
-            }
-        }
+    public T responseRelativeTo(@NotNull List<T> cards,
+                                @NotNull InterfaceDifficulty difficulty) {
+        List<T> compatibleCards = getItemsProvider().getCompatibleItems(cards);
+        if(difficulty.isEasy()) return getEasyExaminer().response(compatibleCards);
+        if(difficulty.isMedium()) return getMedium().response(compatibleCards);
+        else return getHard().response(compatibleCards);
     }
 
-    private InterfaceCard easy() {
-        if(numericCards.size() != 0) {
-            return randomNumberCard();
-        } if(actionCards.size() != 0) {
-            return randomActionCard();
-        } if(jollyCards.size() != 0) {
-            return randomJollyCard();
-        } else {
-            throw new IllegalArgumentException("Unavailable cards to play");
-        }
-    }
-
-    private InterfaceCard medium() {
-        if(actionCards.size() != 0) {
-            return randomActionCard();
-        } if(numericCards.size() != 0) {
-            return randomNumberCard();
-        } if(jollyCards.size() != 0) {
-            return randomJollyCard();
-        } else {
-            throw new IllegalArgumentException("Unavailable cards to play");
-        }
-    }
-
-    private InterfaceCard hard() {
-        if(jollyCards.size() != 0) {
-            return randomJollyCard();
-        } if(actionCards.size() != 0) {
-            return randomActionCard();
-        } if(numericCards.size() != 0) {
-            return randomNumberCard();
-        } else {
-            throw new IllegalArgumentException("Unavailable cards to play");
-        }
-    }
-
-    // Choose a random card from the number cards.
-    private InterfaceCard randomNumberCard() {
-        return numericCards.get(MyRandom.getInstance().nextInt(numericCards.size()));
-    }
-
-    // Choose a random card from the action cards.
-    private InterfaceCard randomActionCard() {
-        return actionCards.get(MyRandom.getInstance().nextInt(actionCards.size()));
-    }
-
-    // Choose a random card from the jolly cards.
-    private InterfaceCard randomJollyCard() {
-        return jollyCards.get(MyRandom.getInstance().nextInt(jollyCards.size()));
-    }
-
-    // Organize the cards according to their attributes.
-    private void setCards() {
-        numericCards = new ArrayList<>();
-        actionCards = new ArrayList<>();
-        jollyCards = new ArrayList<>();
-        // Checking cards type.
-        compatibleCards.forEach(card -> {
-            if (card != null) {
-                // Numerical case.
-                if (card.value() != null) {
-                    numericCards.add(card);
-                } else if (card.action() != null) {
-                    // Jolly case.
-                    if (card.action().isJolly()) {
-                        jollyCards.add(card);
-                    } else {
-                        // Action case.
-                        actionCards.add(card);
-                    }
-                }
-            }
-        });
-    }
 }
