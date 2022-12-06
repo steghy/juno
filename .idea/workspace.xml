@@ -5,24 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/juno/model/subjects/shift/AbstractPlayersMaintainer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/DeckFiller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/DeckFiller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/Mixer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/Mixer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/ai/AI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/ai/AbstractAI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/ai/AbstractExaminer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/ai/Difficulty.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/ai/Examiner.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/ai/InterfaceAI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/ai/InterfaceExaminer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/factory/AbstractPlayerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/factory/AbstractAiPlayerFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/factory/InterfacePlayerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/factory/InterfaceAiPlayerFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/factory/InterfaceSubjectsGenerator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/factory/PlayerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/factory/AiPlayerFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/hands/HandsProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/hands/HandsProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/players/SubjectsProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/players/SubjectsProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/PropertyDeepCopier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/PropertyDeepCopier.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/shift/Inverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/shift/Inverter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/shift/TurnJumper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/shift/TurnJumper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/shift/TurnMover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/shift/TurnMover.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,8 +25,8 @@
         <option value="AnnotationType" />
         <option value="Record" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>

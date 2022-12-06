@@ -47,10 +47,10 @@ import java.util.Map;
 public class PropertyDeepCopier
         implements InterfacePropertyDeepCopier {
 
-    /* The PropertyDeepCopier instance */
+    // The PropertyDeepCopier instance.
     private static PropertyDeepCopier instance;
 
-    /* Builds the PropertyDeepCopier instance. */
+    // Builds the PropertyDeepCopier instance.
     private PropertyDeepCopier() {}
 
     /**

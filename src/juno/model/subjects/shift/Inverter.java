@@ -33,18 +33,31 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-public class Inverter<T> implements
-        InterfaceInverter, Observable, Observer{
+/**
+ * @author Simone Gentili
+ * @param <T> The type of the cards.
+ */
+public class Inverter<T>
+        extends AbstractPlayersMaintainer<T>
+        implements InterfaceInverter, Observable, Observer{
 
-    private Donut<T> subjects;
+    // The Observer List.
     private final List<Observer> observerList;
+
+    // The Inverter instance.
     private static Inverter<?> instance;
 
+    // Builds the Inverter instance.
     private Inverter() {
         observerList = new ArrayList<>();
     }
 
+    /**
+     * Returns the Inverter instance.
+     * @return The Inverter instance.
+     */
     public static Inverter<?> getInstance() {
        if(instance == null) instance = new Inverter<>();
        return instance;
@@ -52,12 +65,8 @@ public class Inverter<T> implements
 
     @Override
     public void invert() {
-        if(subjects != null) {
-            subjects.invert();
-            updateAll();
-        } else {
-            throw new IllegalArgumentException("Subjects is null");
-        }
+        Objects.requireNonNull(players).invert();
+        updateAll();
     }
 
     @Override
@@ -79,9 +88,9 @@ public class Inverter<T> implements
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
         if(object instanceof InterfaceSubjectsProvider<?> obj)
-            subjects = (Donut<T>) obj.getSubjects();
+            players = (Donut<T>) obj.getSubjects();
         else
-            throw new IllegalArgumentException("Invalid Subject type (" + object.getClass() + ") " +
-                    "InterfaceSubjectsProvider expected");
+            throw new IllegalArgumentException("Invalid object type: " + object.getClass() +
+                    ". InterfacePlayersProvider expected.");
     }
 }

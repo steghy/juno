@@ -33,11 +33,15 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-public class TurnMover<T> implements InterfaceTurnMover, Observable, Observer {
-
-    // The players.
-    private Donut<T> subjects;
+/**
+ * @author Simone Gentili
+ * @param <T> The type of the cards.
+ */
+public class TurnMover<T>
+        extends AbstractPlayersMaintainer<T>
+        implements InterfaceTurnMover, Observable, Observer {
 
     // The Observer List.
     private final List<Observer> observerList;
@@ -55,19 +59,14 @@ public class TurnMover<T> implements InterfaceTurnMover, Observable, Observer {
      * @return The TurnMover instance.
      */
     public static TurnMover<?> getInstance(){
-        if(instance == null) {
-            instance = new TurnMover<>();
-        } return instance;
+        if(instance == null) instance = new TurnMover<>();
+        return instance;
     }
 
     @Override
     public void next() {
-        if(subjects != null) {
-            subjects.next();
-            updateAll();
-        } else {
-            throw new IllegalArgumentException("Subjects is null");
-        }
+        Objects.requireNonNull(players).next();
+        updateAll();
     }
 
     @Override
@@ -88,10 +87,11 @@ public class TurnMover<T> implements InterfaceTurnMover, Observable, Observer {
     @Override
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceSubjectsProvider<?> obj) {
-            this.subjects = (Donut<T>) obj.getSubjects();
-        } else {
-            throw new IllegalArgumentException("Invalid Subject object (" + object + ")");
-        }
+        if(object instanceof InterfaceSubjectsProvider<?> obj)
+            players = (Donut<T>) obj.getSubjects();
+        else
+            throw new IllegalArgumentException("Invalid object type: " + object.getClass() +
+                    ". InterfacePlayersProvider expected.");
     }
+
 }

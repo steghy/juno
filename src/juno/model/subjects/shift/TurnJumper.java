@@ -33,18 +33,17 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
 public class TurnJumper<T>
+        extends AbstractPlayersMaintainer<T>
         implements InterfaceTurnJumper, Observable, Observer {
 
-    // The players.
-    private Donut<T> players;
-
-    // THe Observers List.
+    // The Observers List.
     private final List<Observer> observerList;
 
     // The TurnJumper instance.
@@ -66,13 +65,9 @@ public class TurnJumper<T>
 
     @Override
     public void skip() {
-        if(players != null) {
-            players.next();
-            players.next();
-            updateAll();
-        } else {
-            throw new IllegalArgumentException("Subjects is null");
-        }
+        Objects.requireNonNull(players);
+        players.next(); players.next();
+        updateAll();
     }
 
     @Override
@@ -94,7 +89,7 @@ public class TurnJumper<T>
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
         if(object instanceof InterfaceSubjectsProvider<?> obj)
-            this.players = (Donut<T>) obj.getSubjects();
+            players = (Donut<T>) obj.getSubjects();
         else
             throw new IllegalArgumentException("Invalid Subject object (" + object +")");
     }
