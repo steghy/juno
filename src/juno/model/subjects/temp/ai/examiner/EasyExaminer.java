@@ -41,18 +41,18 @@ public class EasyExaminer<T>
     @Override
     public T response(@NotNull List<T> cards) {
         Random r = new Random();
-        InterfaceCardsProvider<T> provider = getProvider();
+        InterfaceFilter<T> provider = getProvider();
 
         // Number cards case.
-        List<T> temp = provider.getNumberCards(cards);
+        List<T> temp = provider.number(cards);
         if(temp.size() != 0) return temp.get(r.nextInt(temp.size()));
 
         // Action cards case.
-        temp = provider.getActionCards(cards);
+        temp = provider.action(cards);
         if(temp.size() != 0) return temp.get(r.nextInt(temp.size()));
 
         // Jolly cards case.
-        temp = provider.getJollyCards(cards);
+        temp = provider.jolly(cards);
         if(temp.size() != 0) return temp.get(r.nextInt(temp.size()));
 
         // It can't happen.

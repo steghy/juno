@@ -30,9 +30,10 @@ package juno.model.deck;
  * @param <T> The type of the cards.
  */
 public class DeckInitializer<T>
-        extends AbstractDeckInitializer<T> {
+        extends AbstractDeckInitializer<T>
+        implements InterfaceDeckInitializer {
 
-    /* The DeckInitializer instance. */
+    // The DeckInitializer instance.
     private static DeckInitializer<?> instance;
 
     /* Builds the DeckInitializer instance. */

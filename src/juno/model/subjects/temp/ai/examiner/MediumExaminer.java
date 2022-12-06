@@ -41,18 +41,18 @@ public class MediumExaminer<T>
     @Override
     public T response(@NotNull List<T> cards) {
         Random r = new Random();
-        InterfaceCardsProvider<T> provider = getProvider();
+        InterfaceFilter<T> provider = getProvider();
 
         // Action cards case.
-        List<T> temp = provider.getActionCards(cards);
+        List<T> temp = provider.action(cards);
         if(temp.size() != 0) return temp.get(r.nextInt(temp.size()));
 
         // Jolly cards case.
-        temp = provider.getJollyCards(cards);
+        temp = provider.jolly(cards);
         if(temp.size() != 0) return temp.get(r.nextInt(temp.size()));
 
         // Number cards case.
-        temp = provider.getNumberCards(cards);
+        temp = provider.number(cards);
         if(temp.size() != 0) return temp.get(r.nextInt(temp.size()));
 
             // It can't happen.

@@ -30,7 +30,6 @@ import org.jetbrains.annotations.Nullable;
 @FunctionalInterface
 public interface InputReceiver<T> {
 
-    @Nullable
     T receive();
     
 }

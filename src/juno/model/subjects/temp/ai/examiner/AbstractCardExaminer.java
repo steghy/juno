@@ -29,13 +29,13 @@ import org.jetbrains.annotations.NotNull;
 
 public abstract class AbstractCardExaminer<T> {
 
-    InterfaceCardsProvider<T> provider;
+    InterfaceFilter<T> provider;
 
-    public void setProvider(@NotNull InterfaceCardsProvider<T> provider) {
+    public void setProvider(@NotNull InterfaceFilter<T> provider) {
         this.provider = provider;
     }
 
-    public InterfaceCardsProvider<T> getProvider() {
+    public InterfaceFilter<T> getProvider() {
         return provider;
     }
 

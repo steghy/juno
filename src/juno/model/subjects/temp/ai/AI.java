@@ -27,6 +27,7 @@ package juno.model.subjects.temp.ai;
 
 import juno.model.subjects.temp.InterfacePlayer;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Simone Gentili
@@ -54,7 +55,7 @@ public class AI<T>
         this.difficulty = difficulty;
     }
 
-    @Override
+    @Override @Nullable
     public T move() {
         return getExaminer().responseRelativeTo(cards(), difficulty);
     }

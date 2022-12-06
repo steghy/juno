@@ -25,6 +25,9 @@
 
 package juno.model.subjects.temp.ai;
 
+/**
+ * @author Simone Gentili
+ */
 public interface InterfaceDifficulty
         extends InterfaceEasy,
                 InterfaceMedium,

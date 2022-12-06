@@ -25,26 +25,28 @@
 
 package juno.model.deck;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
-public abstract class AbstractDeckInitializer<T> implements InterfaceDeckInitializer {
+public abstract class AbstractDeckInitializer<T> {
 
-    /* The deck factory */
+    // The deck factory.
     private InterfaceDeckFactory<T> factory;
 
-    /* The deck */
+    // The deck.
     private InterfaceDeck<T> deck;
 
-    /* The mixer */
+    // The mixer.
     private InterfaceMixer<T> mixer;
 
     /**
      * Sets the deck factory of this object.
      * @param factory An InterfaceDeckFactory object.
      */
-    public void setFactory(InterfaceDeckFactory<T> factory) {
+    public void setFactory(@NotNull InterfaceDeckFactory<T> factory) {
         this.factory = factory;
     }
 
@@ -52,7 +54,7 @@ public abstract class AbstractDeckInitializer<T> implements InterfaceDeckInitial
      * Sets the deck of this object.
      * @param deck An InterfaceDeck object.
      */
-    public void setDeck(InterfaceDeck<T> deck) {
+    public void setDeck(@NotNull InterfaceDeck<T> deck) {
         this.deck = deck;
     }
 
@@ -60,7 +62,7 @@ public abstract class AbstractDeckInitializer<T> implements InterfaceDeckInitial
      * Sets the mixer of this object.
      * @param mixer An InterfaceMixer object.
      */
-    public void setMixer(InterfaceMixer<T> mixer) {
+    public void setMixer(@NotNull InterfaceMixer<T> mixer) {
         this.mixer = mixer;
     }
 

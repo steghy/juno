@@ -43,8 +43,8 @@ import java.util.Objects;
  * @param <T> The type of the cards.
  */
 public class DeckFiller<T>
-        extends AbstractDeckFiller<T>
-        implements Observable {
+        extends AbstractDiscardedPileUser<T>
+        implements InterfaceDeckFiller<T>, Observable {
 
     /* The Observers List */
     private final List<Observer> observerList;
@@ -68,7 +68,7 @@ public class DeckFiller<T>
 
     @Override
     public void fill(@NotNull List<T> deck) {
-        List<T> supplier = getSupplier();
+        List<T> supplier = getDiscardedPile();
         int discardedPileSize = Objects.requireNonNull(supplier).size();
         T item = supplier.get(discardedPileSize - 1);
         supplier.remove(discardedPileSize - 1);

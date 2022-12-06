@@ -28,8 +28,13 @@ package juno.model.subjects.temp;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Simone Gentili
+ * @param <T> The type of the cards.
+ */
 public abstract class AbstractPlayer<T> {
 
+    // The List of the cards.
     List<T> cards = new ArrayList<>();
 
     public List<T> cards() {

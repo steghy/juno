@@ -23,33 +23,52 @@
  * SOFTWARE.
  */
 
-package juno.model.deck;
+package juno.model.subjects.temp.ai.examiner;
 
+import juno.model.card.InterfaceCard;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the cards.
  */
-public abstract class AbstractCompatibilityChecker<T> {
+public class Filter
+        implements InterfaceFilter<InterfaceCard> {
 
-    // The discarded pile.
-    private InterfaceDiscardedPile<T> discardedPile;
+    // The Filter instance.
+    private static Filter instance;
 
-    /**
-     * Sets the discarded pile of this object.
-     * @param discardedPile An InterfaceDiscardedPile object.
-     */
-    public void setDiscardedPile(@NotNull InterfaceDiscardedPile<T> discardedPile) {
-        this.discardedPile = discardedPile;
-    }
+    // Builds the Filter instance.
+    private Filter() {}
 
     /**
-     * Returns the discarded pile of this object.
-     * @return An InterfaceDiscardedPile object.
+     * Returns the Filter instance.
+     * @return The Filter instance.
      */
-    public InterfaceDiscardedPile<T> getDiscardedPile() {
-        return discardedPile;
+    public static Filter getInstance() {
+        if(instance == null) instance = new Filter();
+        return instance;
     }
 
+    @Override
+    public List<InterfaceCard> action(@NotNull List<InterfaceCard> cards) {
+        return cards.stream()
+                .filter(card -> card.action() != null && !(card.action().isJolly()))
+                .toList();
+    }
+
+    @Override
+    public List<InterfaceCard> jolly(@NotNull List<InterfaceCard> cards) {
+        return cards.stream()
+                .filter(card -> card.action() != null && card.action().isJolly())
+                .toList();
+    }
+
+    @Override
+    public List<InterfaceCard> number(@NotNull List<InterfaceCard> cards) {
+        return cards.stream()
+                .filter(card -> card.value() != null)
+                .toList();
+    }
 }

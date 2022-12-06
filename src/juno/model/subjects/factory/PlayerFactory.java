@@ -26,6 +26,8 @@
 package juno.model.subjects.factory;
 
 import juno.model.subjects.ai.Difficulty;
+import juno.model.subjects.temp.InterfacePlayer;
+import juno.model.subjects.temp.ai.InterfaceDifficulty;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
@@ -33,33 +35,38 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SubjectsFactory
-        extends AbstractSubjectsFactory<InterfaceSubject>
-        implements Observable {
+public class PlayerFactory<T>
+        extends AbstractPlayerFactory
+        implements InterfacePlayerFactory<InterfacePlayer<T>>, Observable {
 
+    // The Observers List.
     private final List<Observer> observerList;
-    private List<InterfaceSubject> subjects;
-    private static SubjectsFactory instance;
 
-    private SubjectsFactory() {
+    // The List of the players
+    private List<InterfacePlayer<T>> players;
+
+    // The PlayerFactory instance.
+    private static PlayerFactory<?> instance;
+
+    // Builds the PlayerFactory instance.
+    private PlayerFactory() {
         observerList = new ArrayList<>();
     }
 
-    public static SubjectsFactory getInstance() {
-        if(instance == null) instance = new SubjectsFactory();
+    /**
+     * Returns the PlayerFactory instance.
+     * @return The PlayerFactory instance.
+     */
+    public static PlayerFactory<?> getInstance() {
+        if(instance == null) instance = new PlayerFactory<>();
         return instance;
     }
 
     @Override
-    public void generate(@NotNull Difficulty difficulty,
-                         int num,
+    public List<InterfacePlayer<T>> generate(int num,
+                         @NotNull InterfaceDifficulty difficulty,
                          @NotNull String name) {
-
-    }
-
-    @Override
-    public List<InterfaceSubject> getSubjects() {
-        return subjects;
+        return null;
     }
 
     @Override
@@ -76,4 +83,5 @@ public class SubjectsFactory
     public void updateAll() {
         observerList.forEach(observer -> observer.update(this));
     }
+
 }

@@ -37,7 +37,7 @@ import org.jetbrains.annotations.NotNull;
  * @author Simone Gentili
  */
 class CompatibilityChecker
-        extends AbstractCompatibilityChecker<InterfaceCard>
+        extends AbstractDiscardedPileUser<InterfaceCard>
         implements InterfaceCompatibilityChecker<InterfaceCard> {
 
     // The CompatibilityChecker instance.

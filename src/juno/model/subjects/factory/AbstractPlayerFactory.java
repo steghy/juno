@@ -23,13 +23,32 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.players;
+package juno.model.subjects.factory;
 
-import juno.model.subjects.factory.InterfaceSubject;
+import org.jetbrains.annotations.NotNull;
 
-public interface InterfaceUnoPlayer<T> extends InterfaceSubject {
+/**
+ * @author Simone Gentili
+ */
+public abstract class AbstractPlayerFactory {
 
-    void addItem(T item);
+    // The name factory.
+    private InterfaceNameFactory nameFactory;
 
-    void removeItem(T item);
+    /**
+     * Sets the name factory of this object.
+     * @param nameFactory An InterfaceNameFactory object.
+     */
+    public void setNameFactory(@NotNull InterfaceNameFactory nameFactory) {
+        this.nameFactory = nameFactory;
+    }
+
+    /**
+     * Returns the name factory of this object.
+     * @return An InterfaceNameFactory object.
+     */
+    public InterfaceNameFactory getNameFactory() {
+        return nameFactory;
+    }
+
 }

@@ -25,10 +25,24 @@
 
 package juno.model.subjects.factory;
 
+import juno.model.subjects.temp.ai.InterfaceDifficulty;
+
 import java.util.List;
 
+/**
+ * @author Simone Gentili
+ * @param <T>
+ */
 @FunctionalInterface
-public interface InterfaceSubjectsFactory<T> {
+public interface InterfacePlayerFactory<T> {
 
-    List<T> getSubjects();
+    /**
+     *
+     * @param num
+     * @param difficulty
+     * @param name
+     * @return
+     */
+    List<T> generate(int num, InterfaceDifficulty difficulty, String name);
+
 }

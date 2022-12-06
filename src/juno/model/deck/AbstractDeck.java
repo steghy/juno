@@ -30,20 +30,16 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Stack;
 
 /**
- * This abstract class defines abstract 'Decks'
- * composed of a 'Filler' for reintroducing
- * cards and a 'Mixer' for shuffling the deck.
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
 public abstract class AbstractDeck<T>
-        extends Stack<T>
-        implements InterfaceDeck<T> {
+        extends Stack<T> {
 
-    /* The Deck filler */
+    // The Deck filler.
     private InterfaceDeckFiller<T> filler;
 
-    /* The Deck mixer */
+    // The Deck mixer.
     private InterfaceMixer<T> mixer;
 
     /**

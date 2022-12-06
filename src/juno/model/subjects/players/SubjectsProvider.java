@@ -25,11 +25,12 @@
 
 package juno.model.subjects.players;
 
-import juno.model.subjects.factory.InterfaceSubjectsFactory;
+import juno.model.subjects.factory.InterfacePlayerFactory;
 import juno.model.util.Donut;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -38,26 +39,32 @@ import java.util.List;
 public class SubjectsProvider<T>
         implements InterfaceSubjectsProvider<T>, Observable, Observer {
 
+    // The subjects.
     private Donut<T> subjects;
+
+    // The Observers List.
     private final List<Observer> observerList;
+
+    // The SubjectsProvider instance.
     private static SubjectsProvider<?> instance;
 
+    // Builds the SubjectsProvider instance.
     private SubjectsProvider() {
         observerList = new ArrayList<>();
     }
 
+    /**
+     * Returns the SubjectsProvider instance.
+     * @return The SubjectsProvider instance.
+     */
     public static SubjectsProvider<?> getInstance() {
         if(instance == null) instance = new SubjectsProvider<>();
         return instance;
     }
 
-    @Override
+    @Override @Nullable
     public Donut<T> getSubjects() {
-        if(subjects != null) {
-            return subjects;
-        } else {
-            throw new IllegalArgumentException("Players is null");
-        }
+        return subjects;
     }
 
     @Override
@@ -78,13 +85,12 @@ public class SubjectsProvider<T>
     @Override
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceSubjectsFactory<?> playersFactory) {
+        if(object instanceof InterfacePlayerFactory<?> playersFactory) {
             subjects = new Donut<>();
             subjects.addAll((Collection<? extends T>) playersFactory.getSubjects());
             updateAll();
-        } else {
-            throw new IllegalArgumentException("Invalid Subject type (" + object.getClass() + ") " +
-                    "InterfaceSubjectsFactory expected.");
-        }
+        } else throw new IllegalArgumentException("Invalid Subject type: " + object.getClass() +
+                    ". InterfaceSubjectsFactory expected.");
     }
+
 }

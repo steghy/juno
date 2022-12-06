@@ -30,16 +30,27 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * @author Simone Gentili
+ */
 public class NameFactory
         implements InterfaceNameFactory {
 
+    // The names.
     private final List<String> names;
+
+    // The NameFactory instance.
     private static NameFactory instance;
 
+    // Builds the NameFactory instance.
     private NameFactory() {
         names = new ArrayList<>();
     }
 
+    /**
+     * Returns the NameFactory instance.
+     * @return The NameFactory instance.
+     */
     public static NameFactory getInstance() {
         if(instance == null) instance = new NameFactory();
         return instance;
@@ -47,9 +58,7 @@ public class NameFactory
 
     @Override
     public List<String> getNames(int num) {
-        if(num > names.size()) {
-            throw new IllegalArgumentException("Only up to twenty");
-        }
+        if(num > names.size()) throw new IllegalArgumentException("Only up to twenty");
         List<String> outputNames = new ArrayList<>();
         List<String> namesClone = new ArrayList<>(names);
         Random random = new Random();
@@ -58,10 +67,10 @@ public class NameFactory
             String name = namesClone.get(index);
             outputNames.add(name);
             namesClone.remove(index);
-        }
-        return outputNames;
+        } return outputNames;
     }
 
+    // Initialize the names.
     private void init() {
         names.addAll(Arrays.asList(
                 "Wade",
@@ -85,4 +94,5 @@ public class NameFactory
                 "Benjamin",
                 "Fred"));
     }
+
 }

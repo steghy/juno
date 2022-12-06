@@ -28,15 +28,12 @@ package juno.model.deck;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * This abstract class defines abstract factories
- * for supplying decks where cards are supplied
- * by a card factory.
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
 public abstract class AbstractDeckFactory<T> {
 
-    /* The Cards factory. */
+    // The Cards factory.
     private InterfaceCardFactory<T> factory;
 
     /**

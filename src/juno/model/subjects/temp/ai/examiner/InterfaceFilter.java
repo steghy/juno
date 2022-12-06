@@ -25,20 +25,11 @@
 
 package juno.model.subjects.temp.ai.examiner;
 
-import java.util.List;
-
 /**
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
-@FunctionalInterface
-public interface InterfaceJollyCardProvider<T> {
-
-    /**
-     *
-     * @param cards
-     * @return
-     */
-    List<T> getJollyCards(List<T> cards);
-
-}
+public interface InterfaceFilter<T>
+        extends InterfaceActionFilter<T>,
+        InterfaceNumberFilter<T>,
+        InterfaceJollyFilter<T> {}

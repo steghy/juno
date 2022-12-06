@@ -27,24 +27,20 @@ package juno.model.deck;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
-
-/**
- * This abstract class defines deck fillers
- * who need a card supplier.
+/*
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
-public abstract class AbstractDeckFiller<T> implements InterfaceDeckFiller<T> {
+public abstract class AbstractDiscardedPileUser<T> {
 
-    /* The Discarded pile */
-    private List<T> supplier;
+    // The Discarded pile.
+    private InterfaceDiscardedPile<T> supplier;
 
     /**
      * Sets the List supplier of this object.
      * @param supplier A List object.
      */
-    public void setSupplier(@NotNull List<T> supplier) {
+    public void setSupplier(@NotNull InterfaceDiscardedPile<T> supplier) {
         this.supplier = supplier;
     }
 
@@ -52,7 +48,7 @@ public abstract class AbstractDeckFiller<T> implements InterfaceDeckFiller<T> {
      * Returns the List supplier of this object.
      * @return A List object.
      */
-    public List<T> getSupplier() {
+    public InterfaceDiscardedPile<T> getDiscardedPile() {
         return supplier;
     }
 

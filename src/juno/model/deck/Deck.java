@@ -26,7 +26,6 @@
 package juno.model.deck;
 
 
-import juno.model.card.InterfaceCard;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
@@ -47,7 +46,7 @@ import java.util.List;
  */
 public class Deck<T>
         extends AbstractDeck<T>
-        implements Observable {
+        implements InterfaceDeck<T>, Observable {
 
     /* The Observers List */
     private final List<Observer> observerList;

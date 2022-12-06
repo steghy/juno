@@ -25,50 +25,20 @@
 
 package juno.model.subjects.temp.ai.examiner;
 
-import juno.model.card.InterfaceCard;
-import org.jetbrains.annotations.NotNull;
-
 import java.util.List;
 
 /**
  * @author Simone Gentili
+ * @param <T> The type of the cards.
  */
-public class CardsProvider
-        implements InterfaceCardsProvider<InterfaceCard> {
-
-    // The CardsProvider instance.
-    private static CardsProvider instance;
-
-    // Builds the CardsProvider instance.
-    private CardsProvider() {}
+@FunctionalInterface
+public interface InterfaceActionFilter<T> {
 
     /**
-     * Returns the CardsProvider instance.
-     * @return The CardsProvider instance.
+     *
+     * @param cards
+     * @return
      */
-    public static CardsProvider getInstance() {
-        if(instance == null) instance = new CardsProvider();
-        return instance;
-    }
+    List<T> action(List<T> cards);
 
-    @Override
-    public List<InterfaceCard> getActionCards(@NotNull List<InterfaceCard> cards) {
-        return cards.stream()
-                .filter(card -> card.action() != null && !(card.action().isJolly()))
-                .toList();
-    }
-
-    @Override
-    public List<InterfaceCard> getJollyCards(@NotNull List<InterfaceCard> cards) {
-        return cards.stream()
-                .filter(card -> card.action() != null && card.action().isJolly())
-                .toList();
-    }
-
-    @Override
-    public List<InterfaceCard> getNumberCards(@NotNull List<InterfaceCard> cards) {
-        return cards.stream()
-                .filter(card -> card.value() != null)
-                .toList();
-    }
 }
