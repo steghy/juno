@@ -6,53 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/AbstractCompatibilityChecker.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/AbstractDeck.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/AbstractDeck.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/AbstractDeckFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/AbstractDeckFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/AbstractDeckFiller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/AbstractDeckInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/AbstractDeckInitializer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/CompatibilityChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/CompatibilityChecker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/CompatibleCardsProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/CompatibleCardsProvider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/Deck.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/Deck.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/DeckFiller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/DeckFiller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/DeckInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/DeckInitializer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/InterfaceCompatibleCardsProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/InterfaceCompatibleCardsProvider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/subjects/ai/Examiner.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/subjects/ai/Examiner.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/subjects/temp/ai/examiner/Examiner.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/subjects/temp/ai/examiner/Examiner.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/AbstractCompatibilityChecker.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/AbstractDeck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/AbstractDeck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/AbstractDeckFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/AbstractDeckFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/AbstractDeckFiller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/AbstractDiscardedPileUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/AbstractDeckInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/AbstractDeckInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/CompatibilityChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/CompatibilityChecker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/Deck.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/model/deck/DeckFiller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/DeckFiller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/DeckInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/DeckInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/ai/InterfaceAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/ai/InterfaceAI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/factory/AbstractSubjectsFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/factory/AbstractPlayerFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/factory/InterfaceNameFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/factory/InterfaceNameFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/factory/InterfaceSubject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/factory/InterfaceSubjectsFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/factory/InterfacePlayerFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/factory/NameFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/factory/NameFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/factory/SubjectsFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/factory/PlayerFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/Mixer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/Mixer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/ai/AI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/ai/AbstractAI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/ai/AbstractExaminer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/ai/Difficulty.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/ai/Examiner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/ai/InterfaceAI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/ai/InterfaceExaminer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/factory/AbstractPlayerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/factory/AbstractAiPlayerFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/factory/InterfacePlayerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/factory/InterfaceAiPlayerFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/factory/InterfaceSubjectsGenerator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/factory/PlayerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/factory/AiPlayerFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/hands/HandsProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/hands/HandsProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/players/InterfaceUnoPlayer.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/players/SubjectsProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/players/SubjectsProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/players/UnoPlayer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/temp/AbstractPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/AbstractPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/temp/InputReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/InputReceiver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/AI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/AI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/InterfaceDifficulty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/InterfaceDifficulty.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/AbstractCardExaminer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/AbstractCardExaminer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/CardsProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/Filter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/EasyExaminer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/EasyExaminer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/HardExaminer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/HardExaminer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/InterfaceActionCardsProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/InterfaceActionFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/InterfaceCardsProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/InterfaceFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/InterfaceJollyCardProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/InterfaceJollyFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/InterfaceNumberCardsProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/InterfaceNumberFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/MediumExaminer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/ai/examiner/MediumExaminer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/temp/human/HumanPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/temp/human/HumanPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/shift/Inverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/shift/Inverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/shift/TurnJumper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/shift/TurnJumper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -25,7 +25,7 @@
 
 package juno.model.subjects.hands;
 
-import juno.model.subjects.factory.InterfacePlayerFactory;
+import juno.model.subjects.factory.InterfaceAiPlayerFactory;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
@@ -78,7 +78,7 @@ public class HandsProvider<T, E>
     @Override
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if (object instanceof InterfacePlayerFactory<?> subjectFactory) {
+        if (object instanceof InterfaceAiPlayerFactory<?> subjectFactory) {
             handsMap = new HashMap<>();
             subjectFactory.getSubjects().forEach(subject -> handsMap.put((T) subject, new ArrayList<>()));
         } else {

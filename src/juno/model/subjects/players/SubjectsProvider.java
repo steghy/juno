@@ -25,7 +25,7 @@
 
 package juno.model.subjects.players;
 
-import juno.model.subjects.factory.InterfacePlayerFactory;
+import juno.model.subjects.factory.InterfaceAiPlayerFactory;
 import juno.model.util.Donut;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
@@ -85,7 +85,7 @@ public class SubjectsProvider<T>
     @Override
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof InterfacePlayerFactory<?> playersFactory) {
+        if(object instanceof InterfaceAiPlayerFactory<?> playersFactory) {
             subjects = new Donut<>();
             subjects.addAll((Collection<? extends T>) playersFactory.getSubjects());
             updateAll();

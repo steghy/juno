@@ -23,10 +23,25 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.ai;
+package juno.model.subjects.factory;
 
-public interface InterfaceAI<T> extends InterfaceUnoPlayer<T> {
+import juno.model.subjects.temp.ai.InterfaceDifficulty;
 
-    T makeAChoice();
+import java.util.List;
+
+/**
+ * @author Simone Gentili
+ * @param <T>
+ */
+@FunctionalInterface
+public interface InterfaceAiPlayerFactory<T> {
+
+    /**
+     *
+     * @param num
+     * @param difficulty
+     * @return
+     */
+    List<T> getAiPlayers(int num, InterfaceDifficulty difficulty);
 
 }

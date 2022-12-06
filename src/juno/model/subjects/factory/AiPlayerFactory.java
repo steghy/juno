@@ -25,8 +25,8 @@
 
 package juno.model.subjects.factory;
 
-import juno.model.subjects.ai.Difficulty;
 import juno.model.subjects.temp.InterfacePlayer;
+import juno.model.subjects.temp.ai.AI;
 import juno.model.subjects.temp.ai.InterfaceDifficulty;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
@@ -35,21 +35,18 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerFactory<T>
-        extends AbstractPlayerFactory
-        implements InterfacePlayerFactory<InterfacePlayer<T>>, Observable {
+public class AiPlayerFactory<T>
+        extends AbstractAiPlayerFactory
+        implements InterfaceAiPlayerFactory<InterfacePlayer<T>>, Observable {
 
     // The Observers List.
     private final List<Observer> observerList;
 
-    // The List of the players
-    private List<InterfacePlayer<T>> players;
-
     // The PlayerFactory instance.
-    private static PlayerFactory<?> instance;
+    private static AiPlayerFactory<?> instance;
 
     // Builds the PlayerFactory instance.
-    private PlayerFactory() {
+    private AiPlayerFactory() {
         observerList = new ArrayList<>();
     }
 
@@ -57,16 +54,19 @@ public class PlayerFactory<T>
      * Returns the PlayerFactory instance.
      * @return The PlayerFactory instance.
      */
-    public static PlayerFactory<?> getInstance() {
-        if(instance == null) instance = new PlayerFactory<>();
+    public static AiPlayerFactory<?> getInstance() {
+        if(instance == null) instance = new AiPlayerFactory<>();
         return instance;
     }
 
     @Override
-    public List<InterfacePlayer<T>> generate(int num,
-                         @NotNull InterfaceDifficulty difficulty,
-                         @NotNull String name) {
-        return null;
+    public List<InterfacePlayer<T>> getAiPlayers(int num,
+                                                 @NotNull InterfaceDifficulty difficulty) {
+        if(num < 1) throw new IllegalArgumentException("Invalid players number");
+        List<InterfacePlayer<T>> players = new ArrayList<>();
+        getNameFactory().getNames(num)
+                .forEach(name -> players.add(new AI<>(name, difficulty)));
+        return players;
     }
 
     @Override

@@ -34,26 +34,41 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TurnJumper<T> implements
-        InterfaceTurnJumper, Observable, Observer {
+/**
+ * @author Simone Gentili
+ * @param <T> The type of the cards.
+ */
+public class TurnJumper<T>
+        implements InterfaceTurnJumper, Observable, Observer {
 
-    private Donut<T> subjects;
+    // The players.
+    private Donut<T> players;
+
+    // THe Observers List.
     private final List<Observer> observerList;
+
+    // The TurnJumper instance.
     private static TurnJumper<?> instance;
 
+    // Builds the TurnJumper instance.
     private TurnJumper() {
         observerList = new ArrayList<>();
     }
 
+    /**
+     * Returns the TurnJumper instance.
+     * @return The TurnJumper instance.
+     */
     public static TurnJumper<?> getInstance(){
         if(instance == null) instance = new TurnJumper<>();
         return instance;
     }
 
+    @Override
     public void skip() {
-        if(subjects != null) {
-            subjects.next();
-            subjects.next();
+        if(players != null) {
+            players.next();
+            players.next();
             updateAll();
         } else {
             throw new IllegalArgumentException("Subjects is null");
@@ -78,10 +93,9 @@ public class TurnJumper<T> implements
     @Override
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceSubjectsProvider<?> obj) {
-            this.subjects = (Donut<T>) obj.getSubjects();
-        } else {
+        if(object instanceof InterfaceSubjectsProvider<?> obj)
+            this.players = (Donut<T>) obj.getSubjects();
+        else
             throw new IllegalArgumentException("Invalid Subject object (" + object +")");
-        }
     }
 }

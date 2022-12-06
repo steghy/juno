@@ -36,14 +36,24 @@ import java.util.List;
 
 public class TurnMover<T> implements InterfaceTurnMover, Observable, Observer {
 
+    // The players.
     private Donut<T> subjects;
+
+    // The Observer List.
     private final List<Observer> observerList;
+
+    // The TurnMover instance.
     private static TurnMover<?> instance;
 
+    // Builds the TurnMover instance.
     private TurnMover() {
         observerList = new ArrayList<>();
     }
 
+    /**
+     * Returns the TurnMover instance.
+     * @return The TurnMover instance.
+     */
     public static TurnMover<?> getInstance(){
         if(instance == null) {
             instance = new TurnMover<>();

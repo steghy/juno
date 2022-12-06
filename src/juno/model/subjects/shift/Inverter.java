@@ -78,11 +78,10 @@ public class Inverter<T> implements
     @Override
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceSubjectsProvider<?> obj) {
+        if(object instanceof InterfaceSubjectsProvider<?> obj)
             subjects = (Donut<T>) obj.getSubjects();
-        } else {
+        else
             throw new IllegalArgumentException("Invalid Subject type (" + object.getClass() + ") " +
                     "InterfaceSubjectsProvider expected");
-        }
     }
 }

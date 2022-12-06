@@ -30,7 +30,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * @author Simone Gentili
  */
-public abstract class AbstractPlayerFactory {
+public abstract class AbstractAiPlayerFactory {
 
     // The name factory.
     private InterfaceNameFactory nameFactory;

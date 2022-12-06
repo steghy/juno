@@ -75,6 +75,7 @@ public class DeckFiller<T>
         deck.addAll(supplier);
         supplier.clear();
         supplier.add(item);
+        updateAll();
     }
 
     @Override

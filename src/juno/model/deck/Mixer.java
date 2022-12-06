@@ -72,7 +72,7 @@ public class Mixer<T>
             T topCard = items.get(size - 1);
             items.remove(size - 1);
             items.add(random.nextInt(size), topCard);
-        }
+        } updateAll();
     }
 
     @Override
