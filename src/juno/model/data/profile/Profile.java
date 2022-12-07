@@ -42,9 +42,9 @@ public class Profile
 
     public static final int MAXIMUM_LENGTH = 15;
     public static final int MAXIMUM_AGE = 150;
-    public static final String PROFILE_NAME = "profile name";
+    public static final String PROFILE_NAME = "profileName";
     public static final String NAME = "name";
-    public static final String LAST_NAME = "last name";
+    public static final String LAST_NAME = "lastName";
     public static final String AGE = "age";
 
     /* The profile name. */
@@ -78,39 +78,44 @@ public class Profile
     public void configure(@NotNull Map<String, Object> map) {
         // Profile name.
         if (map.containsKey(PROFILE_NAME)) {
-            if (map.get(PROFILE_NAME) instanceof String profileNameFromMap) {
-                setProfileName(profileNameFromMap);
-            } else {
-                throw new IllegalArgumentException("Invalid object type " + map.get(PROFILE_NAME) +
-                        ". String expected");
-            }
+            Object profileNameFromMap = map.get(PROFILE_NAME);
+            if (profileNameFromMap instanceof String) {
+                setProfileName((String) profileNameFromMap);
+            } else if (profileNameFromMap == null) {
+                profileName = null;
+            } else throw new IllegalArgumentException(
+                    "Invalid object type " + map.get(PROFILE_NAME) +
+                            ". String expected");
         } else {
-            throw new IllegalArgumentException(PROFILE_NAME + " not found in " + map);
+            throw new IllegalArgumentException(PROFILE_NAME +
+                    " not found in " + map);
         }
-
 
         // Name.
         if (map.containsKey(NAME)) {
-            if (map.get(NAME) instanceof String nameFromMap) {
-                if (nameFromMap.length() > 0)
-                    setName(nameFromMap);
-            } else {
-                throw new IllegalArgumentException("Invalid object type " + map.get(NAME).getClass() +
+            Object nameFromMap = map.get(NAME);
+            if (map.get(NAME) instanceof String) {
+                setName((String) nameFromMap);
+            } else if (nameFromMap == null) {
+                name = null;
+            } else throw new IllegalArgumentException(
+                    "Invalid object type " + map.get(NAME).getClass() +
                         ". String expected");
-            }
         } else {
-            throw new IllegalArgumentException(NAME + " key not found in " + map);
+            throw new IllegalArgumentException(NAME +
+                    " key not found in " + map);
         }
 
         // Last name.
         if (map.containsKey(LAST_NAME)) {
-            if (map.get(LAST_NAME) instanceof String lastNameFromMap) {
-                if (lastNameFromMap.length() > 0)
-                    setLastName(lastNameFromMap);
-            } else {
-                throw new IllegalArgumentException("Invalid object type " + map.get(LAST_NAME).getClass() +
+            Object lastNameFromMap = map.get(LAST_NAME);
+            if (map.get(LAST_NAME) instanceof String) {
+                setLastName((String) lastNameFromMap);
+            } else if (lastNameFromMap == null) {
+                lastName = null;
+            } else throw new IllegalArgumentException(
+                    "Invalid object type " + map.get(LAST_NAME).getClass() +
                         ". String expected");
-            }
         }
         else {
             throw new IllegalArgumentException(LAST_NAME + " key not found in " + map);
@@ -118,13 +123,14 @@ public class Profile
 
         // Age.
         if (map.containsKey(AGE)) {
-            if (map.get(AGE) instanceof Integer ageFromMap) {
-                if (ageFromMap > 0)
-                    setAge(ageFromMap);
-            } else {
-                throw new IllegalArgumentException("Invalid object type " + map.get(AGE) +
+            Object ageFromMap = map.get(AGE);
+            if (map.get(AGE) instanceof Integer) {
+                setAge((Integer) ageFromMap);
+            } else if (ageFromMap == null) {
+                age = null;
+            } else throw new IllegalArgumentException(
+                    "Invalid object type " + map.get(AGE) +
                         ". Integer expected");
-            }
         } else {
             throw new IllegalArgumentException(AGE + " key not found in " + map);
         }
@@ -147,9 +153,8 @@ public class Profile
      */
     public void setProfileName(@NotNull String profileName) {
         int length = profileName.length();
-        if(length == 0 || length > MAXIMUM_LENGTH) {
+        if(length == 0 || length > MAXIMUM_LENGTH)
             throw new IllegalArgumentException("Invalid length " + length);
-        }
         this.profileName = profileName;
     }
 
@@ -160,9 +165,8 @@ public class Profile
      */
     public void setName(@NotNull String name) {
         int length = name.length();
-        if(length == 0 || length > MAXIMUM_LENGTH) {
+        if(length == 0 || length > MAXIMUM_LENGTH)
             throw new IllegalArgumentException("Invalid length " + length);
-        }
         this.name = name;
     }
 
@@ -173,9 +177,8 @@ public class Profile
      */
     public void setLastName(@NotNull String lastName) {
         int length = lastName.length();
-        if(length == 0 || length > MAXIMUM_LENGTH) {
+        if(length == 0 || length > MAXIMUM_LENGTH)
             throw new IllegalArgumentException("Invalid length " + length);
-        }
         this.lastName = lastName;
     }
 

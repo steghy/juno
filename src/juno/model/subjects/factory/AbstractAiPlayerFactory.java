@@ -26,6 +26,7 @@
 package juno.model.subjects.factory;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Simone Gentili
@@ -47,6 +48,7 @@ public abstract class AbstractAiPlayerFactory {
      * Returns the name factory of this object.
      * @return An InterfaceNameFactory object.
      */
+    @Nullable
     public InterfaceNameFactory getNameFactory() {
         return nameFactory;
     }

@@ -85,13 +85,12 @@ public class ConfigurationFilesProvider
     public List<File> getConfigurationFiles(@NotNull Object object,
                                             @NotNull String path) throws FileNotFoundException {
         // Taking a copy of the object's data.
-        Map<String, Object> properties = getCopier().copy(object);
+        Map<String, Object> properties = Objects.requireNonNull(getCopier()).copy(object);
         // Getting configurations files.
         List<File> configurationFiles = getFiles(object, path);
         // Attempt to restore the initial state of the object.
         try {
-            if(!properties.isEmpty())
-                getConfigurator().configure(object, properties);
+            if(!properties.isEmpty()) Objects.requireNonNull(getConfigurator()).configure(object, properties);
         } catch (IllegalAccessException |
                  NoSuchFieldException |
                  InvocationTargetException e) {
@@ -107,14 +106,14 @@ public class ConfigurationFilesProvider
         if(!inputFile.exists()) throw new FileNotFoundException(path);
         if(inputFile.isFile()) {
             if(preliminaries(inputFile) &&
-                    getChecker().areCompatible(object, path))
+                    Objects.requireNonNull(getChecker()).areCompatible(object, path))
                 configurationFiles.add(inputFile);
         } else if(inputFile.listFiles() != null) {
             // Objects.requireNonNull suppress the Nullable warning.
             for(File file : Objects.requireNonNull(inputFile.listFiles())) {
                 if(file.isFile()) {
                     if(preliminaries(file) &&
-                            getChecker().areCompatible(object, file.getAbsolutePath()))
+                            Objects.requireNonNull(getChecker()).areCompatible(object, file.getAbsolutePath()))
                         configurationFiles.add(file);
                 } else {
                     if(recursive) {

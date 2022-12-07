@@ -26,6 +26,7 @@
 package juno.model.data.io.input;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * This abstract class defines compatibility
@@ -61,6 +62,7 @@ public abstract class AbstractCompatibilityChecker {
      * Returns the importer of this object.
      * @return An InterfaceDataImporter.
      */
+    @Nullable
     public InterfaceDataImporter getImporter() {
         return importer;
     }
@@ -69,6 +71,7 @@ public abstract class AbstractCompatibilityChecker {
      * Returns the copier of this object.
      * @return An InterfacePropertyCopier object.
      */
+    @Nullable
     public InterfacePropertyCopier getCopier() {
         return copier;
     }

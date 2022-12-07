@@ -25,7 +25,7 @@
 
 package juno.view.pages.new_game.singleplayer.mode.menu;
 
-import juno.controller.ChangePanelAction;
+import juno.controller.util.ChangePanelAction;
 import juno.view.factories.ButtonFactory;
 import juno.view.factories.ButtonLibrary;
 import juno.view.pages.new_game.singleplayer.card.SinglePlayerCardPanel;

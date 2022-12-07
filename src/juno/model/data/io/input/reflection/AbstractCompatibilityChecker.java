@@ -26,6 +26,7 @@
 package juno.model.data.io.input.reflection;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * This abstract class defines compatibility checkers
@@ -51,6 +52,7 @@ public abstract class AbstractCompatibilityChecker
      * Returns the configurator of this object.
      * @return An InterfaceConfigurator object.
      */
+    @Nullable
     public InterfaceConfigurator getConfigurator() {
         return configurator;
     }

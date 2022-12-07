@@ -25,8 +25,6 @@
 
 package juno.model.subjects.factory;
 
-import juno.model.subjects.temp.ai.InterfaceDifficulty;
-
 import java.util.List;
 
 /**
@@ -42,6 +40,6 @@ public interface InterfaceAiPlayerFactory<T> {
      * @param difficulty
      * @return
      */
-    List<T> getAiPlayers(int num, InterfaceDifficulty difficulty);
+    List<T> getAiPlayers();
 
 }

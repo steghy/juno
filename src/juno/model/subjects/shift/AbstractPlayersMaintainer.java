@@ -28,9 +28,13 @@ package juno.model.subjects.shift;
 import juno.model.util.Donut;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * @author Simone Gentili
+ * @param <T> The type of the players.
+ */
 public abstract class AbstractPlayersMaintainer<T> {
 
     @Nullable
-    Donut<T> players;
+    public Donut<T> players;
 
 }

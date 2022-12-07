@@ -26,6 +26,7 @@
 package juno.model.data.io.input;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * This abstract class defines configurator files provider
@@ -49,6 +50,7 @@ public abstract class AbstractConfigurationFilesProvider {
      * Returns the property copier of this object.
      * @return An InterfacePropertyCopier object.
      */
+    @Nullable
     public InterfacePropertyCopier getCopier() {
         return copier;
     }

@@ -84,12 +84,11 @@ public class ConfigurationFilesProvider
     public List<File> getConfigurationFiles(@NotNull Configurable configurable,
                                             @NotNull String path) throws FileNotFoundException{
         // Taking a copy of the object's data.
-        Map<String, Object> properties = getCopier().copy(configurable);
+        Map<String, Object> properties = Objects.requireNonNull(getCopier()).copy(configurable);
         // Getting configurations files.
         List<File> configurationFiles = getFiles(configurable, path);
-        // Restoring the initial state of the object.
-        if(!properties.isEmpty())
-            configurable.configure(properties);
+        // Attempt to restore the initial state of the object.
+        if(!properties.isEmpty()) configurable.configure(properties);
         return configurationFiles;
     }
 
@@ -101,14 +100,14 @@ public class ConfigurationFilesProvider
         if(!inputFile.exists()) throw new FileNotFoundException(path);
         if(inputFile.isFile()) {
             if(preliminaries(inputFile) &&
-                    getChecker().areCompatible(configurable, path))
+                    Objects.requireNonNull(getChecker()).areCompatible(configurable, path))
                configurationFiles.add(inputFile);
         } else if(inputFile.listFiles() != null) {
             // Objects.requireNonNull suppress the Nullable warning.
             for(File file : Objects.requireNonNull(inputFile.listFiles())) {
                 if(file.isFile()) {
                     if(preliminaries(file) &&
-                            getChecker().areCompatible(configurable, file.getAbsolutePath()))
+                            Objects.requireNonNull(getChecker()).areCompatible(configurable, file.getAbsolutePath()))
                         configurationFiles.add(file);
                 } else {
                     if(recursive) {

@@ -73,6 +73,7 @@ public enum ButtonLibrary {
     THREE_PLAYERS,
     FOUR_PLAYERS,
     PLAYERS,
+    START,
 
     // MODE //
     MODE,

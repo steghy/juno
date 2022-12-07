@@ -25,10 +25,19 @@
 
 package juno.init;
 
+import juno.model.data.io.input.InputPKGInitializer;
+
+/**
+ * @author Simone Gentili
+ */
 public class ModelInitializer {
 
+    // Builds a ModelInitializer object.
     private ModelInitializer() {}
 
-    public static void initialize() {}
+    public static void initialize() {
+        // juno.model.data.io.input package initialization.
+        InputPKGInitializer.initialize();
+    }
 
 }

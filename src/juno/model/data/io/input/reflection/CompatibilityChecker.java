@@ -27,9 +27,8 @@ package juno.model.data.io.input.reflection;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * This class represents a compatibility checker
@@ -76,10 +75,10 @@ public class CompatibilityChecker
         // Checking the compatibility of the data with the object.
         // An Exception causes the incompatibility.
         try {
-            Map<String, Object> map = getImporter().importData(path);
+            Map<String, Object> map = Objects.requireNonNull(getImporter()).importData(path);
             // Empty map equals = incompatible file.
             if(!map.isEmpty()) {
-                getConfigurator().configure(object, map);
+                Objects.requireNonNull(getConfigurator()).configure(object, map);
                 isCompatible = true;
             }
         } catch(Exception e) {

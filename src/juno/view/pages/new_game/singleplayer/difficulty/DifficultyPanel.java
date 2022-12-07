@@ -30,10 +30,16 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * @author Simone Gentili
+ */
 public class DifficultyPanel
         extends JPanel {
 
+    // Title panel.
     private JPanel titlePanel;
+
+    // Menu panel.
     private JPanel menuPanel;
 
     private static DifficultyPanel instance;
@@ -97,4 +103,5 @@ public class DifficultyPanel
     public void setMenuPanel(@NotNull JPanel menuPanel) {
         this.menuPanel = menuPanel;
     }
+
 }

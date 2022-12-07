@@ -25,7 +25,15 @@
 
 package juno.model.subjects.shift;
 
+/**
+ * @author Simone Gentili
+ */
+@FunctionalInterface
 public interface InterfaceInverter {
 
+    /**
+     *
+     */
     void invert();
+
 }

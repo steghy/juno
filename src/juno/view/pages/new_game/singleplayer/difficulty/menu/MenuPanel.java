@@ -37,6 +37,7 @@ public class MenuPanel
     private AbstractButton mediumButton;
     private AbstractButton hardButton;
     private AbstractButton backButton;
+    private AbstractButton startButton;
 
     private static MenuPanel instance;
 
@@ -48,15 +49,10 @@ public class MenuPanel
     }
 
     public void init() {
-        if (easyButton == null) {
-            throw new IllegalArgumentException("Easy button is null");
-        } if (mediumButton == null) {
-            throw new IllegalArgumentException("Medium button is null");
-        } if (hardButton == null) {
-            throw new IllegalArgumentException("Hard button is null");
-        } if (backButton == null) {
-            throw new IllegalArgumentException("Back button is null");
-        }
+        if (easyButton == null) throw new IllegalArgumentException("Easy button is null");
+        if (mediumButton == null) throw new IllegalArgumentException("Medium button is null");
+        if (hardButton == null) throw new IllegalArgumentException("Hard button is null");
+        if (backButton == null) throw new IllegalArgumentException("Back button is null");
 
         setOpaque(false);
         setLayout(new GridBagLayout());
@@ -106,7 +102,7 @@ public class MenuPanel
         this.add(hardButton, gbc);
 
         // BACK BUTTON
-        gbc.gridx = 1;
+        gbc.gridx = 0;
         gbc.gridy = 1;
 
         gbc.weightx = 0.0;
@@ -118,6 +114,20 @@ public class MenuPanel
         gbc.ipady = 0;
 
         this.add(backButton, gbc);
+
+        // Start button.
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+
+        gbc.insets = new Insets(0,0,0,0);
+
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
+
+        this.add(startButton, gbc);
     }
 
     public void setEasyButton(@NotNull AbstractButton easyButton) {
@@ -135,4 +145,9 @@ public class MenuPanel
     public void setBackButton(@NotNull AbstractButton backButton) {
         this.backButton = backButton;
     }
+
+    public void setStartButton(@NotNull AbstractButton startButton) {
+        this.startButton = startButton;
+    }
+
 }

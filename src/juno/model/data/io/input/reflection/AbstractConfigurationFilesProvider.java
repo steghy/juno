@@ -26,6 +26,7 @@
 package juno.model.data.io.input.reflection;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * This abstract class defines configuration file providers
@@ -62,6 +63,7 @@ public abstract class AbstractConfigurationFilesProvider
      * Returns the compatibility checker of this object.
      * @return An InterfaceCompatibilityChecker object.
      */
+    @Nullable
     public InterfaceCompatibilityChecker getChecker() {
         return checker;
     }
@@ -70,6 +72,7 @@ public abstract class AbstractConfigurationFilesProvider
      * Returns the configurator of this object.
      * @return An InterfaceConfigurator object.
      */
+    @Nullable
     public InterfaceConfigurator getConfigurator() {
         return configurator;
     }

@@ -25,8 +25,15 @@
 
 package juno.model.subjects.shift;
 
+/**
+ * @author Simone Gentili
+ */
+@FunctionalInterface
 public interface InterfaceTurnMover {
 
+    /**
+     *
+     */
     void next();
 
 }

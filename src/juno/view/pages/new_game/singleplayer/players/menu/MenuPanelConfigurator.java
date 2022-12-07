@@ -25,8 +25,8 @@
 
 package juno.view.pages.new_game.singleplayer.players.menu;
 
-import juno.controller.ChangePanelAction;
-import juno.controller.SetDifficultyAction;
+import juno.controller.util.ChangePanelAction;
+import juno.controller.new_game.PlayersNumberAction;
 import juno.view.factories.ButtonFactory;
 import juno.view.factories.ButtonLibrary;
 import juno.view.pages.new_game.card.NewGameCardPanel;
@@ -58,16 +58,17 @@ public class MenuPanelConfigurator {
         ImageResizer.resize(fourPlayers, 3.0);
         ImageResizer.resize(backButton, 3.0);
 
-        // ACTION LISTENERS
-        // [ CHANGE-PANEL-ACTION]
+        // Action listeners.
+        // Change panel actions.
         twoPlayers.addActionListener(new ChangePanelAction(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.DIFFICULTY_PANEL));
         threePlayers.addActionListener(new ChangePanelAction(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.DIFFICULTY_PANEL));
         fourPlayers.addActionListener(new ChangePanelAction(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.DIFFICULTY_PANEL));
         backButton.addActionListener(new ChangePanelAction(NewGameCardPanel.getInstance(), NewGameCardPanel.NEW_GAME_PANEL));
-        // [ SET DIFFICULTY-ACTION]
-        twoPlayers.addActionListener(new SetDifficultyAction());
-        threePlayers.addActionListener(new SetDifficultyAction());
-        fourPlayers.addActionListener(new SetDifficultyAction());
+
+        // Difficulty actions.
+        twoPlayers.addActionListener(new PlayersNumberAction(2));
+        threePlayers.addActionListener(new PlayersNumberAction(3));
+        fourPlayers.addActionListener(new PlayersNumberAction(4));
 
         // BORDER SETTING
         RoundedBorder insideBorder = new RoundedBorder(50, 2, null, Color.WHITE);

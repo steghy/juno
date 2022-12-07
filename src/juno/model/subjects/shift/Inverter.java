@@ -25,7 +25,7 @@
 
 package juno.model.subjects.shift;
 
-import juno.model.subjects.players.InterfaceSubjectsProvider;
+import juno.model.subjects.players.InterfacePlayersProvider;
 import juno.model.util.Donut;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
@@ -87,10 +87,11 @@ public class Inverter<T>
     @Override
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceSubjectsProvider<?> obj)
-            players = (Donut<T>) obj.getSubjects();
-        else
-            throw new IllegalArgumentException("Invalid object type: " + object.getClass() +
+        if(object instanceof InterfacePlayersProvider<?> obj)
+            players = (Donut<T>) obj.getPlayers();
+        else throw new IllegalArgumentException(
+                "Invalid object type: " + object.getClass() +
                     ". InterfacePlayersProvider expected.");
     }
+
 }

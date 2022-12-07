@@ -25,8 +25,9 @@
 
 package juno.view.pages.new_game.singleplayer.difficulty.menu;
 
-import juno.controller.ChangePanelAction;
-import juno.controller.SetDifficultyAction;
+import juno.controller.util.ChangePanelAction;
+import juno.controller.new_game.DifficultyAction;
+import juno.model.subjects.ai.Difficulty;
 import juno.view.factories.ButtonFactory;
 import juno.view.factories.ButtonLibrary;
 import juno.view.pages.new_game.singleplayer.card.SinglePlayerCardPanel;
@@ -37,51 +38,69 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 
+/**
+ * @author Simone Gentili
+ */
 public class MenuPanelConfigurator {
 
+    // Builds a MenuPanelConfigurator object.
     private MenuPanelConfigurator() {}
 
+    /** Configure the difficulty panel. */
     public static void configure() {
-        // MAIN-COMPONENTS
-        MenuPanel difficultyPanel = MenuPanel.getInstance();
+        // Main components.
+        MenuPanel menuPanel = MenuPanel.getInstance();
 
-        // SUB-COMPONENTS
-        AbstractButton easyButton = ButtonFactory.createButton(ButtonLibrary.EASY);
+        // components.
+        AbstractButton easyButton   = ButtonFactory.createButton(ButtonLibrary.EASY);
         AbstractButton mediumButton = ButtonFactory.createButton(ButtonLibrary.MEDIUM);
-        AbstractButton hardButton = ButtonFactory.createButton(ButtonLibrary.HARD);
-        AbstractButton backButton = ButtonFactory.createButton(ButtonLibrary.BACK);
+        AbstractButton hardButton   = ButtonFactory.createButton(ButtonLibrary.HARD);
+        AbstractButton backButton   = ButtonFactory.createButton(ButtonLibrary.BACK);
+        AbstractButton startButton  = ButtonFactory.createButton(ButtonLibrary.BACK);
 
-        // RESIZE IMAGES
+        // Images resizing.
         ImageResizer.resize(easyButton, 3.0);
         ImageResizer.resize(mediumButton, 3.0);
         ImageResizer.resize(hardButton, 3.0);
         ImageResizer.resize(backButton, 3.0);
+        ImageResizer.resize(startButton, 3.0);
 
-        // ACTION LISTENERS
-        // [ CHANGE PANEL ]
-        easyButton.addActionListener(new ChangePanelAction(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MODE_PANEL));
-        mediumButton.addActionListener(new ChangePanelAction(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MODE_PANEL));
-        hardButton.addActionListener(new ChangePanelAction(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MODE_PANEL));
+        // Action listeners.
+        // Change panel actions.
+        easyButton.addActionListener(new ChangePanelAction(
+                SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MODE_PANEL));
+        mediumButton.addActionListener(new ChangePanelAction(
+                SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MODE_PANEL));
+        hardButton.addActionListener(new ChangePanelAction(
+                SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MODE_PANEL));
+        backButton.addActionListener(new ChangePanelAction(
+                SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.PLAYERS_NUMBER_PANEL));
 
-        // [ SET DIFFICULTIES ]
-        easyButton.addActionListener(new SetDifficultyAction());
-        mediumButton.addActionListener(new SetDifficultyAction());
-        hardButton.addActionListener(new SetDifficultyAction());
-        backButton.addActionListener(new ChangePanelAction(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.PLAYERS_NUMBER_PANEL));
+        // Difficulty actions.
+        easyButton.addActionListener(new DifficultyAction(Difficulty.EASY));
+        mediumButton.addActionListener(new DifficultyAction(Difficulty.MEDIUM));
+        hardButton.addActionListener(new DifficultyAction(Difficulty.HARD));
 
-        // BORDER
-        RoundedBorder insideBorder = new RoundedBorder(50, 2, null, Color.WHITE);
-        RoundedBorder outsideBorder = new RoundedBorder(50, 2, null, Color.RED);
+
+        // Inside Border.
+        RoundedBorder insideBorder = new RoundedBorder(
+                50, 2, null, Color.WHITE);
+        // Outside Border.
+        RoundedBorder outsideBorder = new RoundedBorder(
+                50, 2, null, Color.RED);
+        // Composed Border.
         Border border = BorderFactory.createCompoundBorder(outsideBorder, insideBorder);
-        difficultyPanel.setBorder(border);
+        menuPanel.setBorder(border);
 
-        // ADDING COMPONENTS
-        difficultyPanel.setEasyButton(easyButton);
-        difficultyPanel.setMedium(mediumButton);
-        difficultyPanel.setHardButton(hardButton);
-        difficultyPanel.setBackButton(backButton);
+        // Setting components.
+        menuPanel.setEasyButton(easyButton);
+        menuPanel.setMedium(mediumButton);
+        menuPanel.setHardButton(hardButton);
+        menuPanel.setBackButton(backButton);
+        menuPanel.setStartButton(startButton);
 
-        // INITIALIZATION
-        difficultyPanel.init();
+        // Main component initialization.
+        menuPanel.init();
     }
+
 }

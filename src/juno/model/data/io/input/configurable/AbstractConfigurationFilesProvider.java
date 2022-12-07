@@ -26,6 +26,7 @@
 package juno.model.data.io.input.configurable;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * This abstract class defines configuration files provider
@@ -51,6 +52,7 @@ public abstract class AbstractConfigurationFilesProvider
      * Returns the compatibility checker of this object.
      * @return An InterfaceCompatibilityChecker
      */
+    @Nullable
     public InterfaceCompatibilityChecker getChecker() {
         return checker;
     }

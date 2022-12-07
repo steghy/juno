@@ -25,22 +25,32 @@
 
 package juno.model.subjects.factory;
 
-import juno.model.subjects.temp.InterfacePlayer;
-import juno.model.subjects.temp.ai.AI;
-import juno.model.subjects.temp.ai.InterfaceDifficulty;
+import juno.model.subjects.InterfacePlayer;
+import juno.model.subjects.ai.AI;
+import juno.model.subjects.ai.InterfaceDifficulty;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
+/**
+ * @author Simone Gentili
+ * @param <T> The type of the cards.
+ */
 public class AiPlayerFactory<T>
         extends AbstractAiPlayerFactory
-        implements InterfaceAiPlayerFactory<InterfacePlayer<T>>, Observable {
+        implements InterfaceAiPlayerFactory<InterfacePlayer<T>>,
+                   InterfaceAiPlayerGenerator<InterfaceDifficulty>,
+                   Observable {
 
     // The Observers List.
     private final List<Observer> observerList;
+
+    private List<InterfacePlayer<T>> aiPlayers;
 
     // The PlayerFactory instance.
     private static AiPlayerFactory<?> instance;
@@ -60,13 +70,18 @@ public class AiPlayerFactory<T>
     }
 
     @Override
-    public List<InterfacePlayer<T>> getAiPlayers(int num,
-                                                 @NotNull InterfaceDifficulty difficulty) {
+    public void generate(int num,
+                         @NotNull InterfaceDifficulty difficulty) {
         if(num < 1) throw new IllegalArgumentException("Invalid players number");
-        List<InterfacePlayer<T>> players = new ArrayList<>();
-        getNameFactory().getNames(num)
-                .forEach(name -> players.add(new AI<>(name, difficulty)));
-        return players;
+        aiPlayers = new ArrayList<>();
+        Objects.requireNonNull(getNameFactory()).getNames(num)
+                .forEach(name -> aiPlayers.add(new AI<>(name, difficulty)));
+        updateAll();
+    }
+
+    @Override @Nullable
+    public List<InterfacePlayer<T>> getAiPlayers() {
+        return aiPlayers;
     }
 
     @Override
