@@ -25,11 +25,14 @@
 
 package juno.view.pages.score;
 
+/**
+ * @author Simone Gentili
+ */
 public class ScorePanelConfigurator {
 
+    // Builds a ScorePanelConfigurator object.
     private ScorePanelConfigurator() {}
 
-    public static void configure() {
+    public static void configure() {}
 
-    }
 }

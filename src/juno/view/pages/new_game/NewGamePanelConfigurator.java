@@ -28,23 +28,27 @@ package juno.view.pages.new_game;
 import juno.view.pages.new_game.menu.MenuPanel;
 import juno.view.pages.new_game.title.TitlePanel;
 
+/**
+ * @author Simone Gentili
+ */
 public class NewGamePanelConfigurator {
 
+    // Builds the NewGamePanelConfigurator.
     private NewGamePanelConfigurator() {}
 
     public static void configure() {
-        // COMPONENT
+        // Main component.
         NewGamePanel newGamePanel = NewGamePanel.getInstance();
 
-        // SUB-COMPONENTS
+        // Components.
         TitlePanel titlePanel = TitlePanel.getInstance();
         MenuPanel menuPanel = MenuPanel.getInstance();
 
-        // ADDING COMPONENTS
-        newGamePanel.setTitlePanel(titlePanel);
-        newGamePanel.setMenuPanel(menuPanel);
+        // Components settings.
+        newGamePanel.setFirstComponent(titlePanel); // Title panel.
+        newGamePanel.setSecondComponent(menuPanel); // Menu panel.
 
-        // INITIALIZATION
+        // Main component initialization.
         newGamePanel.init();
     }
 

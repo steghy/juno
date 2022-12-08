@@ -38,8 +38,12 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 
+/**
+ * @author Simone Gentili
+ */
 public class MenuPanelConfigurator {
 
+    // Builds a MenuPanelConfigurator object.
     private MenuPanelConfigurator() {}
 
     public static void configure() {

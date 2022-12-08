@@ -25,9 +25,15 @@
 
 package juno.view.pages.score;
 
+/**
+ * @author Simone Gentili
+ */
 public class ScorePanelInitializer {
 
+    // Builds a ScorePanelInitializer object.
     private ScorePanelInitializer() {}
 
+    /** Initialize the ScorePanelInitializer. */
     public static void initialize() {}
+
 }

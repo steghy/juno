@@ -40,41 +40,48 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 
+/**
+ * @author Simone Gentili
+ */
 public class MenuPanelConfigurator {
 
+    // Builds the MenuPanelConfigurator object.
     private MenuPanelConfigurator() {}
 
     public static void configure() {
-        // MAIN COMPONENT
+        // Main component.
         MenuPanel menuPanel = MenuPanel.getInstance();
 
-        // SUB COMPONENT
+        // Components.
         AbstractButton audioToggle = ButtonFactory.createButton(ButtonLibrary.AUDIO_TOGGLE);
         AbstractButton fullscreenToggle = ButtonFactory.createButton(ButtonLibrary.FULLSCREEN_TOGGLE);
         AbstractButton backButton = ButtonFactory.createButton(ButtonLibrary.BACK);
 
-        // RESIZE COMPONENT
+        // Images resizing.
         ImageResizer.resize(audioToggle, 3.5);
         ImageResizer.resize(fullscreenToggle, 3.0);
         ImageResizer.resize(backButton, 3.0);
 
-        // ADDING COMPONENTS
-        menuPanel.setToggleButtonMusic(audioToggle);
-        menuPanel.setToggleButtonFullScreen(fullscreenToggle);
-        menuPanel.setBackButton(backButton);
+        // Components settings.
+        menuPanel.setFirstComponent(audioToggle);       // Audio toggle button.
+        menuPanel.setSecondComponent(fullscreenToggle); // Full screen toggle button.
+        menuPanel.setThirdComponent(backButton);        // Back button.
 
-        // ACTION LISTENERS
+        // Action listeners.
         audioToggle.addActionListener(new AudioToggleAction(AudioPlayer.getInstance()));
         fullscreenToggle.addActionListener(new FullscreenToggleAction(Frame.getInstance()));
         backButton.addActionListener(new ChangePanelAction(MainCardPanel.getInstance(), MainCardPanel.MAIN_PANEL));
 
-        // BORDER SETTINGS
-        RoundedBorder insideBorder = new RoundedBorder(50, 1, null, Color.WHITE);
-        RoundedBorder outsideBorder = new RoundedBorder(50, 1, null, Color.RED);
+        // Border settings
+        RoundedBorder insideBorder = new RoundedBorder(
+                50, 1, null, Color.WHITE);
+        RoundedBorder outsideBorder = new RoundedBorder(
+                50, 1, null, Color.RED);
         Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
         menuPanel.setBorder(border);
 
-        // INITIALIZATION
+        // Main component initialization.
         menuPanel.init();
     }
+
 }

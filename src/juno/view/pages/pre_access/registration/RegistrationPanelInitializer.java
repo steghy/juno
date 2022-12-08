@@ -33,11 +33,12 @@ public class RegistrationPanelInitializer {
     private RegistrationPanelInitializer() {}
 
     public static void initialize() {
-        // SUB-COMPONENTS
+        // Components configurations.
         TitlePanelConfigurator.configure();
         MenuPanelConfigurator.configure();
 
-        // MAIN-COMPONENT
+        // Main component configuration.
         RegistrationPanelConfigurator.configure();
     }
+
 }

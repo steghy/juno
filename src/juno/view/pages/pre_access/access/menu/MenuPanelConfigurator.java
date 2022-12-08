@@ -46,38 +46,41 @@ public class MenuPanelConfigurator {
     // Builds a MenuPanelConfigurator object.
     private MenuPanelConfigurator() {}
 
-    /** Configure juno.view.pages.pre_access.access.menu.MenuPanel instance. */
     public static void configure() {
 
         // Main component.
         MenuPanel menuPanel = MenuPanel.getInstance();
 
-        // Sub components.
+        // Components.
         AbstractButton createAnAccountButton = ButtonFactory.createButton(ButtonLibrary.CREATE_AN_ACCOUNT);
         AbstractButton logInButton = ButtonFactory.createButton(ButtonLibrary.LOG_IN);
         AbstractButton continueWithoutAnAccountButton = ButtonFactory.createButton(ButtonLibrary.CONTINUE_WITHOUT_AN_ACCOUNT);
         AbstractButton exitButton = ButtonFactory.createButton(ButtonLibrary.EXIT);
 
-        // Image resizing.
+        // Images resizing.
         ImageResizer.resize(createAnAccountButton, 3.0);
         ImageResizer.resize(logInButton, 3.0);
         ImageResizer.resize(continueWithoutAnAccountButton, 3.0);
         ImageResizer.resize(exitButton, 3.0);
 
         // Main component setting.
-        menuPanel.setCreateAnAccountButton(createAnAccountButton);
-        menuPanel.setLogInButton(logInButton);
-        menuPanel.setContinueWithoutAnAccountButton(continueWithoutAnAccountButton);
-        menuPanel.setExitButton(exitButton);
+        menuPanel.setFirstComponent(createAnAccountButton);          // 'Create an account' button.
+        menuPanel.setSecondComponent(logInButton);                   // 'Log in' button.
+        menuPanel.setThirdComponent(continueWithoutAnAccountButton); // 'Continue without an account' button.
+        menuPanel.setFourthComponent(exitButton);                    // 'Exit' button.
 
         // Action listeners setting.
-        createAnAccountButton.addActionListener(new ChangePanelAction(PreAccessCardPanel.getInstance(), PreAccessCardPanel.REGISTRATION_PANEL));
+        createAnAccountButton.addActionListener(new ChangePanelAction(
+                PreAccessCardPanel.getInstance(), PreAccessCardPanel.REGISTRATION_PANEL));
         continueWithoutAnAccountButton.addActionListener(null);
-        exitButton.addActionListener(new ExitAction(ExitManager.getInstance()));
+        exitButton.addActionListener(new ExitAction(
+                ExitManager.getInstance()));
 
         // Border setting.
-        RoundedBorder insideBorder = new RoundedBorder(50, 1, null, Color.WHITE);
-        RoundedBorder outsideBorder = new RoundedBorder(50, 1, null, Color.RED);
+        RoundedBorder insideBorder = new RoundedBorder(
+                50, 1, null, Color.WHITE);
+        RoundedBorder outsideBorder = new RoundedBorder(
+                50, 1, null, Color.RED);
         Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
         menuPanel.setBorder(border);
 

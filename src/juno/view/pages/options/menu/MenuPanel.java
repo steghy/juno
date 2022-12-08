@@ -25,98 +25,70 @@
 
 package juno.view.pages.options.menu;
 
-import org.jetbrains.annotations.NotNull;
+import juno.view.pages.AbstractThirdComponent;
 
-import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
+/**
+ * @author Simone Gentili
+ */
 public class MenuPanel
-        extends JPanel {
+        extends AbstractThirdComponent {
 
-    private AbstractButton toggleButtonMusic;
-    private AbstractButton toggleButtonFullScreen;
-    private AbstractButton backButton;
+    // The MenuPanel instance.
     private static MenuPanel instance;
 
+    // Builds the MenuPanel instance.
     private MenuPanel() {}
 
+    /**
+     * Returns the MenuPanel instance.
+     * @return The MenuPanel instance.
+     */
     public static MenuPanel getInstance() {
         if(instance == null) instance = new MenuPanel();
         return instance;
     }
 
+    /** Initialize the MenuPanel instance. */
     public void init() {
-        if(toggleButtonMusic == null) {
-            throw new IllegalArgumentException("Toggle button music is null");
-        } if(toggleButtonFullScreen == null) {
-            throw new IllegalArgumentException("Toggle button full screen is null");
-        } if(backButton == null) {
-            throw new IllegalArgumentException("Back button is null");
-        }
-
         this.setOpaque(false);
         this.setLayout(new GridBagLayout());
-
         GridBagConstraints gbc = new GridBagConstraints();
 
-        // TOGGLE BUTTON MUSIC
+        // Toggle music button.
         gbc.gridx = 0;
         gbc.gridy = 0;
-
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-
         gbc.anchor = GridBagConstraints.PAGE_START;
-
         gbc.insets = new Insets(0,0,17,0);
-
         gbc.ipadx = 0;
         gbc.ipady = 0;
+        this.add(Objects.requireNonNull(getFirstComponent()), gbc);
 
-        this.add(toggleButtonMusic, gbc);
-
-        // TOGGLE BUTTON FULL SCREEN
+        // Toggle full screen button.
         gbc.gridx = 0;
         gbc.gridy = 2;
-
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-
         gbc.anchor = GridBagConstraints.PAGE_START;
-
         gbc.insets = new Insets(17,0,17,0);
-
         gbc.ipadx = 0;
         gbc.ipady = 0;
+        this.add(Objects.requireNonNull(getSecondComponent()), gbc);
 
-        this.add(toggleButtonFullScreen, gbc);
-
-        // BACK BUTTON
+        // Back button.
         gbc.gridx = 0;
         gbc.gridy = 3;
-
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-
         gbc.anchor = GridBagConstraints.PAGE_START;
-
         gbc.insets = new Insets(17,0,17,0);
-
         gbc.ipadx = 0;
         gbc.ipady = 0;
-
-        this.add(backButton, gbc);
+        this.add(Objects.requireNonNull(getThirdComponent()), gbc);
     }
 
-    public void setToggleButtonMusic(@NotNull AbstractButton toggleButtonMusic) {
-        this.toggleButtonMusic = toggleButtonMusic;
-    }
-
-    public void setToggleButtonFullScreen(@NotNull AbstractButton toggleButtonFullScreen) {
-        this.toggleButtonFullScreen = toggleButtonFullScreen;
-    }
-
-    public void setBackButton(@NotNull AbstractButton backButton) {
-        this.backButton = backButton;
-    }
 }

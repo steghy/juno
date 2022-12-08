@@ -23,50 +23,36 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.pre_access.login.title;
+package juno.view.pages.pre_access.card;
 
-import juno.view.pages.AbstractFirstComponent;
-
-import java.awt.*;
-import java.util.Objects;
+import juno.model.data.io.input.configurable.InterfaceConfigurationFilesProvider;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Simone Gentili
  */
-public class TitlePanel
-        extends AbstractFirstComponent {
+public abstract class AbstractPreAccessInitialChooser {
 
-    // The TitlePanel instance.
-    private static TitlePanel instance;
-
-    // Builds the TitlePanel instance.
-    private TitlePanel() {}
+    // The configuration files provider.
+    private InterfaceConfigurationFilesProvider provider;
 
     /**
-     * Returns the TitlePanel instance.
-     * @return The TitlePanel instance.
+     * Sets the configuration files provider of this object.
+     * @param provider An InterfaceConfigurationFilesProvider object.
      */
-    public static TitlePanel getInstance() {
-        if(instance == null) instance = new TitlePanel();
-        return instance;
+    public void setConfigurationFilesProvider(@NotNull InterfaceConfigurationFilesProvider provider) {
+        this.provider = provider;
     }
 
-    /** Initialize the TitlePanel instance. */
-    public void init() {
-        this.setOpaque(false);
-        this.setLayout(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-
-        // Title button.
-        gbc.gridwidth = 0;
-        gbc.gridheight = 0;
-        gbc.insets = new Insets(0,0,0,0);
-        gbc.anchor = GridBagConstraints.CENTER;
-        gbc.weightx = 0.0;
-        gbc.weighty = 0.0;
-        gbc.ipadx = 0;
-        gbc.ipady = 0;
-        this.add(Objects.requireNonNull(getFirstComponent()), gbc);
+    /**
+     * Returns the configuration files provider of this object.
+     * @return An InterfaceConfigurationFilesProvider object.
+     */
+    @Nullable
+    public InterfaceConfigurationFilesProvider getProvider() {
+        return provider;
     }
+
 
 }

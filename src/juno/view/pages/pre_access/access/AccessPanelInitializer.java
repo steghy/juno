@@ -29,21 +29,20 @@ import juno.view.pages.pre_access.access.menu.MenuPanelConfigurator;
 import juno.view.pages.pre_access.access.title.TitlePanelConfigurator;
 
 /**
- * @author Simone Gentili.
+ * @author Simone Gentili
  */
 public class AccessPanelInitializer {
 
     /* Builds an AccessPanelInitializer object */
     private AccessPanelInitializer() {}
 
-    /** Initialize the juno.view.pages.pre_access.access package. */
     public static void initialize() {
-
-        // Sub components.
+        // Components.
         TitlePanelConfigurator.configure();
         MenuPanelConfigurator.configure();
 
         // Main components.
         AccessPanelConfigurator.configure();
     }
+
 }

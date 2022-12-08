@@ -28,22 +28,32 @@ package juno.view.pages.pre_access.login.menu;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * @author Simone Gentili
+ */
 public class MenuPanel
         extends JPanel {
 
+    // The MenuPanel instance.
     private static MenuPanel instance;
 
+    // Builds the MenuPanel instance.
     private MenuPanel() {}
 
+    /**
+     * Returns the MenuPanel instance.
+     * @return The MenuPanel instance.
+     */
     public static MenuPanel getInstance() {
         if(instance == null) instance = new MenuPanel();
         return instance;
     }
 
+    /** Initialize the MenuPanel instance. */
     public void init() {
         this.setOpaque(false);
         this.setLayout(new GridBagLayout());
-
         GridBagConstraints gbc = new GridBagConstraints();
     }
+
 }

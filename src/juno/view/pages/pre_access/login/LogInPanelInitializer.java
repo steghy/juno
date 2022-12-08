@@ -36,7 +36,6 @@ public class LogInPanelInitializer {
     // Builds a LogInPanelInitializer object.
     private LogInPanelInitializer() {}
 
-    /** Initialize the 'Log in' panel. */
     public static void initialize() {
         // Components.
         TitlePanelConfigurator.configure();

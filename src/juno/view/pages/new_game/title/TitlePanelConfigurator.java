@@ -34,30 +34,37 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 
+/**
+ * @author Simone Gentili
+ */
 public class TitlePanelConfigurator {
 
+    // Builds a TitlePanelConfiguration object.
     private TitlePanelConfigurator() {}
 
     public static void configure() {
-        // COMPONENT
+        // Main component.
         TitlePanel titlePanel = TitlePanel.getInstance();
 
-        // SUB COMPONENTS
+        // Components.
         AbstractButton titleButton = ButtonFactory.createButton(ButtonLibrary.NEW_GAME);
 
-        // RESIZE IMAGE
+        // Image resizing.
         ImageResizer.resize(titleButton, 3.0);
 
-        // BORDER
-        RoundedBorder insideBorder = new RoundedBorder(50, 1, null, Color.WHITE);
-        RoundedBorder outsideBorder = new RoundedBorder(50, 1, null, Color.RED);
+        // Border settings.
+        RoundedBorder insideBorder = new RoundedBorder(
+                50, 1, null, Color.WHITE);
+        RoundedBorder outsideBorder = new RoundedBorder(
+                50, 1, null, Color.RED);
         Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
         titlePanel.setBorder(border);
 
-        // ADDING COMPONENTS
-        titlePanel.setTitle(titleButton);
+        // Component settings.
+        titlePanel.setFirstComponent(titleButton); // Title button.
 
-        // INITIALIZATION
+        // Main component initialization.
         titlePanel.init();
     }
+
 }

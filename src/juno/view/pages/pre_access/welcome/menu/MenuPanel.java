@@ -25,98 +25,70 @@
 
 package juno.view.pages.pre_access.welcome.menu;
 
-import org.jetbrains.annotations.NotNull;
+import juno.view.pages.AbstractThirdComponent;
 
-import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
+/**
+ * @author Simone Gentili
+ */
 public class MenuPanel
-        extends JPanel {
+        extends AbstractThirdComponent {
 
-    private AbstractButton createAnAccountButton;
-    private AbstractButton continueWithoutAnAccountButton;
-    private AbstractButton exitButton;
+    // The MenuPanel instance.
     private static MenuPanel instance;
 
+    // Builds the MenuPanel instance.
     private MenuPanel() {}
 
+    /**
+     * Returns the MenuPanel instance.
+     * @return The MenuPanel instance.
+     */
     public static MenuPanel getInstance() {
         if(instance == null) instance = new MenuPanel();
         return instance;
     }
 
+    /** Initialize the MenuPanel instance. */
     public void init() {
-        if(createAnAccountButton == null) {
-            throw new IllegalArgumentException("Create an account button is null");
-        } if(continueWithoutAnAccountButton == null) {
-            throw new IllegalArgumentException("Continue without an account button is null");
-        } if(exitButton == null) {
-            throw new IllegalArgumentException("Exit button is null");
-        }
-
         this.setOpaque(false);
         this.setLayout(new GridBagLayout());
-
         GridBagConstraints gbc = new GridBagConstraints();
 
-        // CREATE AN ACCOUNT BUTTON
+        // 'Create an account' button.
         gbc.gridx = 0;
         gbc.gridy = 0;
-
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-
         gbc.anchor = GridBagConstraints.PAGE_START;
-
         gbc.insets = new Insets(0,0,17,0);
-
         gbc.ipadx = 0;
         gbc.ipady = 0;
+        this.add(Objects.requireNonNull(getFirstComponent()), gbc);
 
-        this.add(createAnAccountButton, gbc);
-
-        // CONTINUE WITHOUT AN ACCOUNT BUTTON
+        // 'Continue without an account' button.
         gbc.gridx = 0;
         gbc.gridy = 2;
-
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-
         gbc.anchor = GridBagConstraints.PAGE_START;
-
         gbc.insets = new Insets(17,0,17,0);
-
         gbc.ipadx = 0;
         gbc.ipady = 0;
+        this.add(Objects.requireNonNull(getSecondComponent()), gbc);
 
-        this.add(continueWithoutAnAccountButton, gbc);
-
-        // EXIT BUTTON
+        // 'Exit' button.
         gbc.gridx = 0;
         gbc.gridy = 3;
-
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-
         gbc.anchor = GridBagConstraints.PAGE_START;
-
         gbc.insets = new Insets(17,0,17,0);
-
         gbc.ipadx = 0;
         gbc.ipady = 0;
-
-        this.add(exitButton, gbc);
+        this.add(Objects.requireNonNull(getThirdComponent()), gbc);
     }
 
-    public void setCreateAnAccountButton(@NotNull AbstractButton createAnAccountButton) {
-        this.createAnAccountButton = createAnAccountButton;
-    }
-
-    public void setContinueWithoutAnAccountButton(@NotNull AbstractButton continueWithoutAnAccountButton) {
-        this.continueWithoutAnAccountButton = continueWithoutAnAccountButton;
-    }
-
-    public void setExitButton(@NotNull AbstractButton exitButton) {
-        this.exitButton = exitButton;
-    }
 }

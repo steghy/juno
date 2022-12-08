@@ -25,7 +25,6 @@
 
 package juno.view.pages;
 
-import juno.view.pages.AbstractFourthComponent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

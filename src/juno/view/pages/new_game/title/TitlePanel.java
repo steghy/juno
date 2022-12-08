@@ -25,49 +25,46 @@
 
 package juno.view.pages.new_game.title;
 
-import org.jetbrains.annotations.NotNull;
+import juno.view.pages.AbstractFirstComponent;
 
-import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
+/**
+ * @author Simone Gentili
+ */
 public class TitlePanel
-        extends JPanel {
+        extends AbstractFirstComponent {
 
-    private AbstractButton title;
+    // The TitlePanel instance.
     private static TitlePanel instance;
 
+    // Builds the TitlePanel instance.
     private TitlePanel() {}
 
+    /**
+     * Returns the TitlePanel instance.
+     * @return The TitlePanel instance.
+     */
     public static TitlePanel getInstance() {
         if(instance == null) instance = new TitlePanel();
         return instance;
     }
 
+    /** Initialize the TitlePanel instance. */
     public void init() {
-        if(title == null) {
-            throw new IllegalArgumentException("Title is null");
-        }
-
         setOpaque(false);
         setLayout(new GridBagLayout());
-
         GridBagConstraints gbc = new GridBagConstraints();
 
-        // TITLE
+        // Title button.
         gbc.gridx = 0;
         gbc.gridy = 0;
-
         gbc.weightx = 0.5;
         gbc.weighty = 0.5;
-
         gbc.anchor = GridBagConstraints.CENTER;
-
         gbc.fill = GridBagConstraints.CENTER;
-
-        this.add(title, gbc);
+        this.add(Objects.requireNonNull(getFirstComponent()), gbc);
     }
 
-    public void setTitle(@NotNull AbstractButton title) {
-        this.title = title;
-    }
 }

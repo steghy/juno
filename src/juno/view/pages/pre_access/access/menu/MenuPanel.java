@@ -25,6 +25,8 @@
 
 package juno.view.pages.pre_access.access.menu;
 
+import juno.view.pages.AbstractFourthComponent;
+
 import java.awt.*;
 import java.util.Objects;
 
@@ -32,7 +34,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class MenuPanel
-        extends AbstractMenuPanel {
+        extends AbstractFourthComponent {
 
     // The MenuPanel instance.
     private static MenuPanel instance;
@@ -56,7 +58,6 @@ public class MenuPanel
     public void init() {
         this.setOpaque(false);
         this.setLayout(new GridBagLayout());
-
         GridBagConstraints gbc = new GridBagConstraints();
 
         // CREATE AN ACCOUNT BUTTON
@@ -68,7 +69,7 @@ public class MenuPanel
         gbc.insets = new Insets(0,0,17,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        this.add(Objects.requireNonNull(getCreateAnAccountButton()), gbc);
+        this.add(Objects.requireNonNull(getFirstComponent()), gbc);
 
         // 'Log in' button.
         gbc.gridx = 0;
@@ -79,7 +80,7 @@ public class MenuPanel
         gbc.insets = new Insets(17,0,17,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        this.add(Objects.requireNonNull(getLogInButton()), gbc);
+        this.add(Objects.requireNonNull(getSecondComponent()), gbc);
 
         // 'Continue without an account' button.
         gbc.gridx = 0;
@@ -90,7 +91,7 @@ public class MenuPanel
         gbc.insets = new Insets(17,0,17,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        this.add(Objects.requireNonNull(getContinueWithoutAnAccountButton()), gbc);
+        this.add(Objects.requireNonNull(getThirdComponent()), gbc);
 
         // 'Exit' button.
         gbc.gridx = 0;
@@ -101,7 +102,7 @@ public class MenuPanel
         gbc.insets = new Insets(17,0,17,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        this.add(Objects.requireNonNull(getExitButton()), gbc);
+        this.add(Objects.requireNonNull(getFourthComponent()), gbc);
     }
 
 }

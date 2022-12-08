@@ -35,6 +35,9 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author Simone Gentili
+ */
 public class MenuPanel
         extends JPanel
         implements InterfaceRegistrationDataProvider {
@@ -54,16 +57,21 @@ public class MenuPanel
 
     private boolean init;
 
+    // The MenuPanel instance.
     private static MenuPanel instance;
 
+    // Builds the MenuPanel instance.
     private MenuPanel() {
         init = false;
     }
 
+    /**
+     * Returns the MenuPanel instance.
+     * @return The MenuPanel instance.
+     */
     public static MenuPanel getInstance() {
-        if(instance == null) {
-            instance = new MenuPanel();
-        } return instance;
+        if(instance == null) instance = new MenuPanel();
+        return instance;
     }
 
     @Override

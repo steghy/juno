@@ -27,19 +27,28 @@ package juno.view.pages.score;
 
 import javax.swing.*;
 
-public class ScorePanel extends JPanel {
+/**
+ * @author Simone Gentili
+ */
+public class ScorePanel
+        extends JPanel {
 
+    // The ScorePanel instance.
     private static ScorePanel instance;
 
+    // Builds the ScorePanel instance.
     private ScorePanel() {}
 
+    /**
+     * Returns the ScorePanel instance.
+     * @return The ScorePanel instance.
+     */
     public static ScorePanel getInstance() {
-        if(instance == null) {
-            instance = new ScorePanel();
-        } return instance;
+        if(instance == null) instance = new ScorePanel();
+        return instance;
     }
 
-    public void init() {
+    /** Initialize the ScorePanel instance. */
+    public void init() {}
 
-    }
 }

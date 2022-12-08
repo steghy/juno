@@ -30,23 +30,28 @@ import juno.view.pages.options.title.TitlePanel;
 
 import javax.swing.*;
 
+/**
+ * @author Simone Gentili
+ */
 public class OptionsPanelConfigurator {
 
+    // Builds the OptionsPanelConfigurator object.
     private OptionsPanelConfigurator() {}
 
     public static void configure() {
-        // MAIN COMPONENT
+        // Main component.
         OptionsPanel optionsPanel = OptionsPanel.getInstance();
 
-        // SUB COMPONENTS
+        // Components
         JPanel titlePanel = TitlePanel.getInstance();
         JPanel menuPanel = MenuPanel.getInstance();
 
-        // ADDING COMPONENTS
-        optionsPanel.setTitlePanel(titlePanel);
-        optionsPanel.setMenuPanel(menuPanel);
+        // Components settings.
+        optionsPanel.setFirstComponent(titlePanel); // Title panel.
+        optionsPanel.setSecondComponent(menuPanel); // Menu panel.
 
-        // INITIALIZATION
+        // Main component initialization.
         optionsPanel.init();
     }
+
 }

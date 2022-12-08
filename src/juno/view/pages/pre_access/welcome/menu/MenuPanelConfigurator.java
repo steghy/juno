@@ -38,49 +38,58 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 
+/**
+ * @author Simone Gentili
+ */
 public class MenuPanelConfigurator {
 
+    // Builds a MenuPanelConfigurator object.
     private MenuPanelConfigurator() {}
 
     public static void configure() {
-        // MAIN COMPONENT
+        // Main components.
         MenuPanel menuPanel = MenuPanel.getInstance();
 
-        // SUB-COMPONENTS
+        // Components.
         AbstractButton createAnAccountButton = ButtonFactory.createButton(ButtonLibrary.CREATE_AN_ACCOUNT);
         AbstractButton continueWithoutAnAccountButton = ButtonFactory.createButton(ButtonLibrary.CONTINUE_WITHOUT_AN_ACCOUNT);
         AbstractButton exitButton = ButtonFactory.createButton(ButtonLibrary.EXIT);
 
-        // RESIZE IMAGES
+        // Images resizing.
         ImageResizer.resize(createAnAccountButton, 3.0);
         ImageResizer.resize(continueWithoutAnAccountButton, 3.0);
         ImageResizer.resize(exitButton, 3.0);
 
-        // ADDING COMPONENTS
-        menuPanel.setCreateAnAccountButton(createAnAccountButton);
-        menuPanel.setContinueWithoutAnAccountButton(continueWithoutAnAccountButton);
-        menuPanel.setExitButton(exitButton);
+        // Components settings.
+        menuPanel.setFirstComponent(createAnAccountButton);           // 'Create an account' button.
+        menuPanel.setSecondComponent(continueWithoutAnAccountButton); // 'Continue without an account' button.
+        menuPanel.setThirdComponent(exitButton);                      // 'Exit' button.
 
-        // ACTION LISTENERS
+        // Action listeners.
         createAnAccountButton.addActionListener(listener -> {
             RegistrationPanel.getInstance().setFromWelcomePanel(true);
             LayoutManager layoutManager = PreAccessCardPanel.getInstance().getLayout();
             if(layoutManager instanceof CardLayout cardLayout) {
                 cardLayout.show(PreAccessCardPanel.getInstance(), PreAccessCardPanel.REGISTRATION_PANEL);
             } else {
-                throw new IllegalArgumentException("Invalid layout type (" + layoutManager.getClass() +")");
+                throw new IllegalArgumentException(
+                        "Invalid layout type: " + layoutManager.getClass() +
+                                ". CardLayout expected.");
             }
         });
         continueWithoutAnAccountButton.addActionListener(null);
         exitButton.addActionListener(new ExitAction(ExitManager.getInstance()));
 
-        // BORDER SETTINGS
-        RoundedBorder insideBorder = new RoundedBorder(50, 1, null, Color.WHITE);
-        RoundedBorder outsideBorder = new RoundedBorder(50, 1, null, Color.RED);
+        // Border settings.
+        RoundedBorder insideBorder = new RoundedBorder(
+                50, 1, null, Color.WHITE);
+        RoundedBorder outsideBorder = new RoundedBorder(
+                50, 1, null, Color.RED);
         Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
         menuPanel.setBorder(border);
 
-        // INITIALIZATION
+        // Main component initialization.
         menuPanel.init();
     }
+
 }

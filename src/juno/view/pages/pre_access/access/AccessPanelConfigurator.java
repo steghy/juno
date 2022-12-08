@@ -36,13 +36,11 @@ public class AccessPanelConfigurator {
     // Builds a AccessPanelConfigurator object.
     private AccessPanelConfigurator() {}
 
-    /** Configure juno.view.pages.pre_access.access.AccessPanel instance. */
     public static void configure() {
-
         // Main component.
         AccessPanel welcomePanel = AccessPanel.getInstance();
 
-        // Sub components.
+        // Components.
         TitlePanel titlePanel = TitlePanel.getInstance();
         MenuPanel menuPanel = MenuPanel.getInstance();
 

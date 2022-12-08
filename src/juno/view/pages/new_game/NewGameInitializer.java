@@ -25,30 +25,32 @@
 
 package juno.view.pages.new_game;
 
-// MAIN COMPONENT
-
 import juno.view.pages.new_game.card.NewGameCardPanelConfigurator;
 import juno.view.pages.new_game.menu.MenuPanelConfigurator;
 import juno.view.pages.new_game.multiplayer.card.MultiplayerInitializer;
 import juno.view.pages.new_game.single_player.SinglePlayerInitializer;
 import juno.view.pages.new_game.title.TitlePanelConfigurator;
 
-
+/**
+ * @author Simone Gentili
+ */
 public class NewGameInitializer {
 
+    // Builds a NewGameInitialization object.
     private NewGameInitializer() {}
 
     public static void initialize() {
-        // SUB COMPONENT INITIALIZATION
+        // Components initialization.
         SinglePlayerInitializer.initialize();
         MultiplayerInitializer.initialize();
 
-        // MAIN COMPONENT CONFIGURATION
+        // Components configurations.
         MenuPanelConfigurator.configure();
         TitlePanelConfigurator.configure();
         NewGamePanelConfigurator.configure();
 
-        // CARD PANEL CONFIGURATION
+        // Main component configuration.
         NewGameCardPanelConfigurator.configure();
     }
+
 }

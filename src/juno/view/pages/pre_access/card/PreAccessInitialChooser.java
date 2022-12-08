@@ -26,23 +26,21 @@
 package juno.view.pages.pre_access.card;
 
 import juno.model.data.io.input.configurable.Configurable;
-import juno.model.data.io.input.configurable.InterfaceConfigurationFilesProvider;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.Objects;
 
-public class PreAccessInitialChooser {
+public class PreAccessInitialChooser
+        extends AbstractPreAccessInitialChooser {
 
-    /* The configuration files provider. */
-    private InterfaceConfigurationFilesProvider configurationFilesProvider;
-
-    /* The PreAccessInitialChooser instance. */
+    // The PreAccessInitialChooser instance.
     private static PreAccessInitialChooser instance;
 
-    /* Builds the PreAccessInitialChooser instance. */
+    // Builds the PreAccessInitialChooser instance.
     private PreAccessInitialChooser() {}
 
     /**
@@ -54,11 +52,17 @@ public class PreAccessInitialChooser {
         return instance;
     }
 
+    /**
+     * Sets the first panel to show.
+     * @param path A String object.
+     * @param configurable A Configurable object.
+     */
     public void setFirstPanelToShow(@NotNull String path,
                                     @NotNull Configurable configurable) {
         List<File> files = null;
         try {
-            files = configurationFilesProvider.getConfigurationFiles(configurable, path);
+            files = Objects.requireNonNull(getProvider())
+                    .getConfigurationFiles(configurable, path);
         } catch (FileNotFoundException e) {
             // Directory not found !!! solve.
             e.printStackTrace();
@@ -71,13 +75,4 @@ public class PreAccessInitialChooser {
             }
         }
     }
-
-    /**
-     * Sets the configuration files provider of this object.
-     * @param configurationFilesProvider An InterfaceConfigurationFilesProvider object.
-     */
-    public void setConfigurationFilesProvider(@NotNull InterfaceConfigurationFilesProvider configurationFilesProvider) {
-        this.configurationFilesProvider = configurationFilesProvider;
-    }
-
 }
