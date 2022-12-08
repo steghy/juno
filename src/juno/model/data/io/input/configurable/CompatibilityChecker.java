@@ -27,6 +27,7 @@ package juno.model.data.io.input.configurable;
 
 import juno.model.data.io.input.AbstractCompatibilityChecker;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
 import java.util.Objects;
@@ -53,7 +54,8 @@ import java.util.Objects;
  */
 public class CompatibilityChecker
         extends AbstractCompatibilityChecker
-        implements InterfaceCompatibilityChecker {
+        implements InterfaceCompatibilityChecker,
+                   InterfaceCompatibilityMapChecker {
 
     /* The CompatibilityChecker instance. */
     private static CompatibilityChecker instance;
@@ -78,6 +80,23 @@ public class CompatibilityChecker
         // An Exception causes the incompatibility.
         try {
             Map<String, Object> map = Objects.requireNonNull(getImporter()).importData(path);
+            // Empty map = incompatible file.
+            if(!map.isEmpty()) {
+                configurable.configure(map);
+                isCompatible = true;
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+        } return isCompatible;
+    }
+
+    @Override
+    public boolean areCompatible(@NotNull Configurable configurable,
+                                 @NotNull Map<String, Object> map) {
+        boolean isCompatible = false;
+        // Checking the compatibility of the data with the object.
+        // An Exception causes the incompatibility.
+        try {
             // Empty map = incompatible file.
             if(!map.isEmpty()) {
                 configurable.configure(map);

@@ -37,9 +37,8 @@ import java.util.List;
 /**
  * @author Simone Gentili
  * @param <T> The type of the players.
- * @param <E> The type of the cards.
  */
-public class FirstPlayerManager<T, E>
+public class FirstPlayerManager<T>
         extends AbstractPlayersMaintainer<T>
         implements InterfaceFirstPlayerManager, Observable, Observer {
 
@@ -47,7 +46,7 @@ public class FirstPlayerManager<T, E>
     private final List<Observer> observerList;
 
     // The FirstPlayerManager instance.
-    private static FirstPlayerManager<?, ?> instance;
+    private static FirstPlayerManager<?> instance;
 
     // Builds the FirstPlayerManager instance.
     private FirstPlayerManager() {
@@ -58,7 +57,7 @@ public class FirstPlayerManager<T, E>
      * Returns the FirstPlayerManager instance.
      * @return The FirstPlayerManager instance.
      */
-    public static FirstPlayerManager<?, ?> getInstance() {
+    public static FirstPlayerManager<?> getInstance() {
         if(instance == null) instance = new FirstPlayerManager<>();
         return instance;
     }

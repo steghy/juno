@@ -25,122 +25,83 @@
 
 package juno.view.pages.main.menu;
 
+import juno.view.pages.AbstractFourthComponent;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
+/**
+ * @author Simone Gentili
+ */
 public class MenuPanel
-        extends JPanel {
+        extends AbstractFourthComponent {
 
-    private AbstractButton newGameButton;
-    private AbstractButton optionsButton;
-    private AbstractButton scoreButton;
-    private AbstractButton exitButton;
+    // The MenuPanel instance.
     private static MenuPanel instance;
 
+    // Builds the MenuPanel instance.
     private MenuPanel() {}
 
+    /**
+     * Returns the MenuPanel instance.
+     * @return The MenuPanel instance.
+     */
     public static MenuPanel getInstance() {
         if(instance == null) instance = new MenuPanel();
         return instance;
     }
 
+    /** Initialize the MenuPanel instance. */
     public void init() {
-        if(newGameButton == null) {
-            throw new IllegalArgumentException("New game button is null");
-        } if(optionsButton == null) {
-            throw new IllegalArgumentException("Options button is null");
-        } if(scoreButton == null) {
-            throw new IllegalArgumentException("Score button is null");
-        } if(exitButton == null)  {
-            throw new IllegalArgumentException("Exit button is null");
-        }
-
         setOpaque(false);
         setLayout(new GridBagLayout());
-
-        // GRID BAG LAYOUT SETTINGS
         GridBagConstraints gbc = new GridBagConstraints();
 
-        // NEW GAME BUTTON
+        // 'New game' button
         gbc.gridx = 0;
         gbc.gridy = 0;
-
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-
         gbc.anchor = GridBagConstraints.PAGE_START;
-
         gbc.insets = new Insets(0,0,17,0);
-
         gbc.ipadx = 0;
         gbc.ipady = 0;
+        this.add(Objects.requireNonNull(getFirstComponent()), gbc);
 
-        this.add(newGameButton, gbc);
-
-        // SCORE BUTTON
+        // 'Score' button.
         gbc.gridx = 0;
         gbc.gridy = 1;
-
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-
         gbc.anchor = GridBagConstraints.PAGE_START;
-
         gbc.insets = new Insets(17,0,17,0);
-
         gbc.ipadx = 0;
         gbc.ipady = 0;
+        this.add(Objects.requireNonNull(getSecondComponent()), gbc);
 
-        this.add(scoreButton, gbc);
-
-        // OPTIONS BUTTON
+        // 'Options' button.
         gbc.gridx = 0;
         gbc.gridy = 2;
-
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-
         gbc.anchor = GridBagConstraints.PAGE_START;
-
         gbc.insets = new Insets(17,0,17,0);
-
         gbc.ipadx = 0;
         gbc.ipady = 0;
+        this.add(Objects.requireNonNull(getThirdComponent()), gbc);
 
-        this.add(optionsButton, gbc);
-
-        // EXIT BUTTON
+        // 'Exit' button.
         gbc.gridx = 0;
         gbc.gridy = 3;
-
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-
         gbc.anchor = GridBagConstraints.PAGE_START;
-
         gbc.insets = new Insets(17,0,0,0);
-
         gbc.ipadx = 0;
         gbc.ipady = 0;
-
-        this.add(exitButton, gbc);
+        this.add(Objects.requireNonNull(getFourthComponent()), gbc);
     }
 
-    public void setNewGameButton(@NotNull AbstractButton newGameButton) {
-        this.newGameButton = newGameButton;
-    }
-
-    public void setOptionsButton(@NotNull AbstractButton optionsButton) {
-        this.optionsButton = optionsButton;
-    }
-
-    public void setScoreButton(@NotNull AbstractButton scoreButton) {
-        this.scoreButton = scoreButton;
-    }
-
-    public void setExitButton(@NotNull AbstractButton exitButton) {
-        this.exitButton = exitButton;
-    }
 }

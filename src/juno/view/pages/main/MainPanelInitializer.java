@@ -29,19 +29,24 @@ import juno.view.pages.main.card.MainCardPanelConfigurator;
 import juno.view.pages.main.menu.MenuPanelConfigurator;
 import juno.view.pages.main.title.TitlePanelConfigurator;
 
+/**
+ * @author Simone Gentili
+ */
 public class MainPanelInitializer {
 
+    // Builds a MainPanelInitializer object.
     private MainPanelInitializer() {}
 
     public static void initialize() {
-        // MAIN COMPONENT CONFIGURATION
+        // Main component configuration.
         MainPanelConfigurator.configure();
 
-        // SUB COMPONENT CONFIGURATION
+        // components configuration.
         TitlePanelConfigurator.configure();
         MenuPanelConfigurator.configure();
 
-        // CARD PANEL CONFIGURATION
+        // Card panel configuration
         MainCardPanelConfigurator.configure();
     }
+
 }

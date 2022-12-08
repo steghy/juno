@@ -30,7 +30,7 @@ package juno.view.pages.new_game;
 import juno.view.pages.new_game.card.NewGameCardPanelConfigurator;
 import juno.view.pages.new_game.menu.MenuPanelConfigurator;
 import juno.view.pages.new_game.multiplayer.card.MultiplayerInitializer;
-import juno.view.pages.new_game.singleplayer.SinglePlayerInitializer;
+import juno.view.pages.new_game.single_player.SinglePlayerInitializer;
 import juno.view.pages.new_game.title.TitlePanelConfigurator;
 
 

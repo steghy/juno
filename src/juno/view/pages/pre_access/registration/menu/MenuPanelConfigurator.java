@@ -25,6 +25,8 @@
 
 package juno.view.pages.pre_access.registration.menu;
 
+import juno.controller.pre_access.RegistrationDataSender;
+import juno.model.data.profile.Profile;
 import juno.view.factories.ButtonFactory;
 import juno.view.factories.ButtonLibrary;
 import juno.view.pages.pre_access.card.PreAccessCardPanel;
@@ -41,79 +43,83 @@ public class MenuPanelConfigurator {
     private MenuPanelConfigurator() {}
 
     public static void configure() {
-        // MAIN COMPONENT
+        // Main component.
         MenuPanel menuPanel = MenuPanel.getInstance();
 
-        // SUB-COMPONENTS
-        // [ LABELS ]
+        // components.
         JLabel userNameLabel = new JLabel("username:");
         JLabel nameLabel = new JLabel("name:");
         JLabel lastNameLabel= new JLabel("last name:");
         JLabel ageLabel = new JLabel("age:");
-        // [ LABELS SETTINGS ]
-        // COLORS
+
+        // Setting components
+        // Colors.
         userNameLabel.setForeground(Color.WHITE);
         nameLabel.setForeground(Color.WHITE);
         lastNameLabel.setForeground(Color.WHITE);
         ageLabel.setForeground(Color.WHITE);
-        // TEXT DIMENSION
+        // Texts.
         Font font = new Font(Font.MONOSPACED, Font.BOLD, 18);
         userNameLabel.setFont(font);
         nameLabel.setFont(font);
         lastNameLabel.setFont(font);
         ageLabel.setFont(font);
 
-        // [ TEXT FIELDS ]
+        // Text fields.
         JTextField userNameTextField = new JTextField(15);
         JTextField nameTextField = new JTextField(15);
         JTextField lastNameTextField = new JTextField(15);
         JTextField ageTextField = new JTextField(15);
-        // [ BUTTONS ]
+        // Buttons.
         AbstractButton confirmButton = ButtonFactory.createButton(ButtonLibrary.CONFIRM);
         AbstractButton backButton = ButtonFactory.createButton(ButtonLibrary.BACK);
 
-        // ADDING COMPONENTS
-        // [ LABELS ]
-        menuPanel.setUserNameLabel(userNameLabel);
+        // Adding components.
+        // Labels.
+        menuPanel.setProfileNameLabel(userNameLabel);
         menuPanel.setNameLabel(nameLabel);
         menuPanel.setLastNameLabel(lastNameLabel);
         menuPanel.setAgeLabel(ageLabel);
-        // [ TEXT FIELDS ]
-        menuPanel.setUserNameTextField(userNameTextField);
+        // Label fields.
+        menuPanel.setProfileNameTextField(userNameTextField);
         menuPanel.setNameTextField(nameTextField);
         menuPanel.setLastNameTextField(lastNameTextField);
         menuPanel.setAgeTextField(ageTextField);
-        // [ BUTTONS ]
+        // Buttons.
         menuPanel.setConfirmButton(confirmButton);
         menuPanel.setBackButton(backButton);
 
-        // RESIZE IMAGES
+        // Images resizing.
         ImageResizer.resize(confirmButton, 3.0);
         ImageResizer.resize(backButton, 3.0);
 
-        // ACTION LISTENERS
-        confirmButton.addActionListener(null);
+        // Action listeners.
+        confirmButton.addActionListener(new RegistrationDataSender(Profile.getInstance(), menuPanel));
 
         backButton.addActionListener(listener -> {
             LayoutManager layoutManager = PreAccessCardPanel.getInstance().getLayout();
             if(layoutManager instanceof CardLayout cardLayout) {
-                if(RegistrationPanel.getInstance().isFromWelcomePanel()) {
+                if(RegistrationPanel.getInstance().isFromWelcomePanel())
                     cardLayout.show(PreAccessCardPanel.getInstance(), PreAccessCardPanel.WELCOME_PANEL);
-                } else {
+                else
                     cardLayout.show(PreAccessCardPanel.getInstance(), PreAccessCardPanel.ACCESS_PANEL);
-                }
             } else {
-                throw new IllegalArgumentException("Invalid layout type (" + layoutManager.getClass() +")");
+                throw new IllegalArgumentException(
+                        "Invalid object type: " + layoutManager.getClass() +
+                        ". CardLayout expected.");
             }
         });
 
-        // BORDER SETTINGS
+        // Inside border.
         RoundedBorder insideBorder = new RoundedBorder(50, 1, null, Color.WHITE);
+        // Outside border.
         RoundedBorder outsideBorder = new RoundedBorder(50, 1, null, Color.RED);
+        // Composed border.
         Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
         menuPanel.setBorder(border);
 
-        // INITIALIZATION
+        // Main component initialization.
         menuPanel.init();
     }
+
 }

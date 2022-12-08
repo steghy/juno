@@ -88,9 +88,10 @@ public class TurnJumper<T>
     @Override
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof InterfacePlayersProvider<?> obj)
-            players = (Donut<T>) obj.getPlayers();
+        if(object instanceof InterfacePlayersProvider<?> provider)
+            players = (Donut<T>) provider.getPlayers();
         else throw new IllegalArgumentException(
-                "Invalid Subject object (" + object +")");
+                "Invalid object type: " + object.getClass() +
+                        ". InterfacePlayersProvider expected.");
     }
 }

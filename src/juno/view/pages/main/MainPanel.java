@@ -25,76 +25,59 @@
 
 package juno.view.pages.main;
 
-import org.jetbrains.annotations.NotNull;
+import juno.view.pages.AbstractSecondComponent;
 
-import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
+/**
+ * @author Simone Gentili
+ */
 public class MainPanel
-        extends JPanel {
+        extends AbstractSecondComponent {
 
-    private JPanel menuPanel;
-    private JPanel titlePanel;
+    // The MainPanel instance.
     private static MainPanel instance;
 
+    // Builds the MainPanel instance.
     private MainPanel() {}
 
+    /**
+     * Returns the MainPanel instance.
+     * @return The MainPanel instance.
+     */
     public static MainPanel getInstance() {
         if(instance == null) instance = new MainPanel();
         return instance;
     }
 
+    /** Initialize the MainPanel instance. */
     public void init() {
-        if(menuPanel == null) {
-            throw new IllegalArgumentException("Menu panel is null");
-        } if(titlePanel == null) {
-            throw new IllegalArgumentException("Title panel is null");
-        }
-
         this.setOpaque(false);
         this.setLayout(new GridBagLayout());
-
         GridBagConstraints gbc = new GridBagConstraints();
 
-        // TITLE PANEL
+        // Title panel.
         gbc.gridx = 0;
         gbc.gridy = 0;
-
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-
         gbc.ipadx = 0;
         gbc.ipady = 0;
-
         gbc.anchor = GridBagConstraints.CENTER;
-
         gbc.insets = new Insets(0,0,30,0);
+        this.add(Objects.requireNonNull(getFirstComponent()), gbc);
 
-        this.add(titlePanel, gbc);
-
-        // MENU PANEL
+        // Menu panel.
         gbc.gridx = 0;
         gbc.gridy = 1;
-
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-
         gbc.ipadx = 0;
         gbc.ipady = 0;
-
         gbc.anchor = GridBagConstraints.CENTER;
-
         gbc.insets = new Insets(0,0,0,0);
-
-        this.add(menuPanel, gbc);
-
+        this.add(Objects.requireNonNull(getSecondComponent()), gbc);
     }
 
-    public void setMenuPanel(@NotNull JPanel menuPanel) {
-        this.menuPanel = menuPanel;
-    }
-
-    public void setTitlePanel(@NotNull JPanel titlePanel) {
-        this.titlePanel = titlePanel;
-    }
 }

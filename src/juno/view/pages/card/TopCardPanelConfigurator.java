@@ -33,24 +33,24 @@ import juno.view.pages.pre_access.card.PreAccessCardPanel;
  */
 public class TopCardPanelConfigurator {
 
-    /* Builds a TopCardPanelConfigurator object */
+    // Builds a TopCardPanelConfigurator object.
     private TopCardPanelConfigurator() {}
 
     /** Configure juno.view.pages.card.TopCardPanel instance. */
     public static void configure() {
-
         // Main component.
         TopCardPanel topCardPanel = TopCardPanel.getInstance();
 
-        // Sub components.
+        // Components.
         PreAccessCardPanel preAccessCardPanel = PreAccessCardPanel.getInstance();
         MainCardPanel mainCardPanel = MainCardPanel.getInstance();
 
         // Main component setting.
-        topCardPanel.setPreAccessPanel(preAccessCardPanel);
-        topCardPanel.setMainPanel(mainCardPanel);
+        topCardPanel.setFirstComponent(preAccessCardPanel); // Pre access card panel.
+        topCardPanel.setSecondComponent(mainCardPanel);     // Main card panel
 
         // Main component initialization.
         topCardPanel.init();
     }
+
 }

@@ -26,7 +26,9 @@
 package juno.view.pages.pre_access.registration.menu;
 
 import juno.controller.InterfaceRegistrationDataProvider;
+import juno.model.data.profile.Profile;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,12 +39,12 @@ public class MenuPanel
         extends JPanel
         implements InterfaceRegistrationDataProvider {
 
-    private JLabel userNameLabel;
+    private JLabel profileNameLabel;
     private JLabel nameLabel;
     private JLabel lastNameLabel;
     private JLabel ageLabel;
 
-    private JTextField userNameTextField;
+    private JTextField profileNameTextField;
     private JTextField nameTextField;
     private JTextField lastNameTextField;
     private JTextField ageTextField;
@@ -64,35 +66,52 @@ public class MenuPanel
         } return instance;
     }
 
+    @Override
+    public Map<String, Object> provideRegistrationData() {
+        if(init) {
+            Map<String, Object> map = new HashMap<>();
+
+            // Profile name case.
+            map.put(Profile.PROFILE_NAME, profileNameTextField.getText());
+
+            // Name case.
+            if(nameTextField.getText().length() > 0)
+                map.put(Profile.NAME, nameTextField.getText());
+
+            // Last name case.
+            if(lastNameTextField.getText().length() > 0)
+                map.put(Profile.LAST_NAME, lastNameTextField.getText());
+
+            // Age case.
+            String temp = ageTextField.getText();
+            if(temp.length() > 0) {
+                int age;
+                try {
+                    age = Integer.parseInt(temp);
+                    map.put(Profile.AGE, age);
+                } catch (ClassCastException e) {
+                    map.put(Profile.AGE, temp);
+                }
+            } return map;
+        } else throw new IllegalArgumentException("Not initialized");
+    }
+
     public void init() {
-        // LABELS
-        if(userNameLabel == null) {
-            throw new IllegalArgumentException("User name label is null");
-        } if(nameLabel == null) {
-            throw new IllegalArgumentException("Name label is null");
-        } if(lastNameLabel == null) {
-            throw new IllegalArgumentException("Last name label is null");
-        } if(ageLabel == null) {
-            throw new IllegalArgumentException("Age label is null");
-        }
+        // Labels.
+        if(profileNameLabel == null) throw new IllegalArgumentException("User name label is null");
+        if(nameLabel == null) throw new IllegalArgumentException("Name label is null");
+        if(lastNameLabel == null) throw new IllegalArgumentException("Last name label is null");
+        if(ageLabel == null) throw new IllegalArgumentException("Age label is null");
 
-        // TEXT FIELDS
-        if(userNameTextField == null) {
-            throw new IllegalArgumentException("User name text field is null");
-        } if(nameTextField == null) {
-            throw new IllegalArgumentException("Name text field is null");
-        } if(lastNameTextField == null) {
-            throw new IllegalArgumentException("Last name text field is null");
-        } if(ageTextField == null) {
-            throw new IllegalArgumentException("Age text field is null");
-        }
+        // Text fields.
+        if(profileNameTextField == null) throw new IllegalArgumentException("User name text field is null");
+        if(nameTextField == null) throw new IllegalArgumentException("Name text field is null");
+        if(lastNameTextField == null) throw new IllegalArgumentException("Last name text field is null");
+        if(ageTextField == null) throw new IllegalArgumentException("Age text field is null");
 
-        // BUTTONS
-        if(confirmButton == null) {
-            throw new IllegalArgumentException("Confirm button is null");
-        } if(backButton == null) {
-            throw new IllegalArgumentException("Back button is null");
-        }
+        // Buttons.
+        if(confirmButton == null) throw new IllegalArgumentException("Confirm button is null");
+        if(backButton == null)throw new IllegalArgumentException("Back button is null");
 
         init = true;
 
@@ -101,7 +120,7 @@ public class MenuPanel
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        // USER NAME LABEL
+        // Profile name label.
         gbc.gridx = 0;
         gbc.gridy = 0;
 
@@ -115,9 +134,9 @@ public class MenuPanel
 
         gbc.insets = new Insets(0,0,5,0);
 
-        this.add(userNameLabel, gbc);
+        this.add(profileNameLabel, gbc);
 
-        // NAME LABEL
+        // Name label.
         gbc.gridx = 0;
         gbc.gridy = 1;
 
@@ -133,7 +152,7 @@ public class MenuPanel
 
         this.add(nameLabel, gbc);
 
-        // LAST NAME LABEL
+        // Last name label.
         gbc.gridx = 0;
         gbc.gridy = 2;
 
@@ -149,7 +168,7 @@ public class MenuPanel
 
         this.add(lastNameLabel, gbc);
 
-        // AGE LABEL
+        // Age label.
         gbc.gridx = 0;
         gbc.gridy = 3;
 
@@ -165,7 +184,7 @@ public class MenuPanel
 
         this.add(ageLabel, gbc);
 
-        // USER NAME TEXT FIELD
+        // Profile name text field.
         gbc.gridx = 1;
         gbc.gridy = 0;
 
@@ -179,9 +198,9 @@ public class MenuPanel
 
         gbc.insets = new Insets(0,0,5,0);
 
-        this.add(userNameTextField, gbc);
+        this.add(profileNameTextField, gbc);
 
-        // NAME TEXT FIELD
+        // Name text field.
         gbc.gridx = 1;
         gbc.gridy = 1;
 
@@ -197,7 +216,7 @@ public class MenuPanel
 
         this.add(nameTextField, gbc);
 
-        // LAST NAME TEXT FIELD
+        // Last name text field.
         gbc.gridx = 1;
         gbc.gridy = 2;
 
@@ -213,7 +232,7 @@ public class MenuPanel
 
         this.add(lastNameTextField, gbc);
 
-        // AGE TEXT FIELD
+        // Age text field.
         gbc.gridx = 1;
         gbc.gridy = 3;
 
@@ -229,7 +248,7 @@ public class MenuPanel
 
         this.add(ageTextField, gbc);
 
-        // BACK BUTTON
+        // Back button.
         gbc.gridx = 0;
         gbc.gridy = 4;
 
@@ -245,7 +264,7 @@ public class MenuPanel
 
         this.add(backButton, gbc);
 
-        // CONFIRM BUTTON
+        // Confirm button.
         gbc.gridx = 1;
         gbc.gridy = 4;
 
@@ -262,57 +281,198 @@ public class MenuPanel
         this.add(confirmButton, gbc);
     }
 
-    public void setUserNameLabel(@NotNull JLabel userNameLabel) {
-        this.userNameLabel = userNameLabel;
+    /**
+     * Sets the profile name label of this object.
+     * @param userNameLabel A JLabel object
+     */
+    public void setProfileNameLabel(@NotNull JLabel userNameLabel) {
+        this.profileNameLabel = userNameLabel;
     }
 
+    /**
+     * Sets the name label of this object.
+     * @param nameLabel A JLabel object.
+     */
     public void setNameLabel(@NotNull JLabel nameLabel) {
         this.nameLabel = nameLabel;
     }
 
+    /**
+     * Sets the last name label of this object.
+     * @param lastNameLabel A JLabel object.
+     */
     public void setLastNameLabel(@NotNull JLabel lastNameLabel) {
         this.lastNameLabel = lastNameLabel;
     }
 
+    /**
+     * Sets the last name label of this object.
+     * @param ageLabel A JLabel text field.
+     */
     public void setAgeLabel(@NotNull JLabel ageLabel) {
         this.ageLabel = ageLabel;
     }
 
-    public void setUserNameTextField(@NotNull JTextField userNameTextField) {
-        this.userNameTextField = userNameTextField;
+    /**
+     * Sets the profile name text field of this object.
+     * @param profileNameTextField A JTextField object.
+     */
+    public void setProfileNameTextField(@NotNull JTextField profileNameTextField) {
+        this.profileNameTextField = profileNameTextField;
     }
 
+    /**
+     * Sets the name text field of this object.
+     * @param nameTextField A JTextField object.
+     */
     public void setNameTextField(@NotNull JTextField nameTextField) {
         this.nameTextField = nameTextField;
     }
 
+    /**
+     * Sets the last name text field of this object.
+     * @param lastNameTextField A JTextField object.
+     */
     public void setLastNameTextField(@NotNull JTextField lastNameTextField) {
         this.lastNameTextField = lastNameTextField;
     }
 
+    /**
+     * Sets the age text field of this object.
+     * @param ageTextField A JTextField object.
+     */
     public void setAgeTextField(@NotNull JTextField ageTextField) {
         this.ageTextField = ageTextField;
     }
 
+    /**
+     * Sets the confirm button of this object.
+     * @param confirmButton An AbstractButton object.
+     */
     public void setConfirmButton(@NotNull AbstractButton confirmButton) {
         this.confirmButton = confirmButton;
     }
 
+    /**
+     * Sets the back button of this object.
+     * @param backButton An AbstractButton object.
+     */
     public void setBackButton(@NotNull AbstractButton backButton) {
         this.backButton = backButton;
     }
 
-    @Override
-    public Map<String, Object> provideRegistrationData() {
-        if(init) {
-            Map<String, Object> map = new HashMap<>();
-            map.put("username", userNameTextField.getText());
-            map.put("name", nameTextField.getText());
-            map.put("last name", lastNameTextField.getText());
-            map.put("age", ageTextField.getText());
-            return map;
-        } else {
-            throw new IllegalArgumentException("Not initialized");
-        }
+    /**
+     * Returns the profile name label of this object.
+     * @return A JLabel object.
+     */
+    @Nullable
+    public JLabel getProfileNameLabel() {
+        return profileNameLabel;
     }
+
+    /**
+     * Returns the name label of this object.
+     * @return A JLabel object.
+     */
+    @Nullable
+    public JLabel getNameLabel() {
+        return nameLabel;
+    }
+
+    /**
+     * Returns the last name label of this object.
+     * @return A JLabel object.
+     */
+    @Nullable
+    public JLabel getLastNameLabel() {
+        return lastNameLabel;
+    }
+
+    /**
+     * Returns the age label of this object.
+     * @return A JLabel object
+     */
+    @Nullable
+    public JLabel getAgeLabel() {
+        return ageLabel;
+    }
+
+    /**
+     * Returns the profile name text field of this object.
+     * @return A JTextField object.
+     */
+    @Nullable
+    public JTextField getProfileNameTextField() {
+        return profileNameTextField;
+    }
+
+    /**
+     * Returns the name text field of this object.
+     * @return A JTextField object.
+     */
+    @Nullable
+    public JTextField getNameTextField() {
+        return nameTextField;
+    }
+
+    /**
+     * Returns the last name text field of this object.
+     * @return A JTextField object.
+     */
+    @Nullable
+    public JTextField getLastNameTextField() {
+        return lastNameTextField;
+    }
+
+    /**
+     * Returns the age text field of this object.
+     * @return A JTextField object
+     */
+    @Nullable
+    public JTextField getAgeTextField() {
+        return ageTextField;
+    }
+
+    /**
+     * Returns the confirm button of this object.
+     * @return An AbstractButton object.
+     */
+    @Nullable
+    public AbstractButton getConfirmButton() {
+        return confirmButton;
+    }
+
+    /**
+     * Returns the back button of this object.
+     * @return An AbstractButton object.
+     */
+    @Nullable
+    public AbstractButton getBackButton() {
+        return backButton;
+    }
+
+    /**
+     * Returns the text fields of this object.
+     * @return A List object.
+     */
+    public java.util.List<JTextField> getTextFields() {
+        return java.util.List.of(
+                profileNameTextField,
+                nameTextField,
+                lastNameTextField,
+                ageTextField);
+    }
+
+    /**
+     * Returns the labels of this object.
+     * @return A List object.
+     */
+    public java.util.List<JLabel> getLabels() {
+        return java.util.List.of(
+                profileNameLabel,
+                nameLabel,
+                lastNameLabel,
+                ageLabel);
+    }
+
 }

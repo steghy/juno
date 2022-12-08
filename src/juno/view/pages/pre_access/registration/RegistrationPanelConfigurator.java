@@ -28,23 +28,28 @@ package juno.view.pages.pre_access.registration;
 import juno.view.pages.pre_access.registration.menu.MenuPanel;
 import juno.view.pages.pre_access.registration.title.TitlePanel;
 
+/**
+ * @author Simone Gentili
+ */
 public class RegistrationPanelConfigurator {
 
+    // Builds a RegistrationPanelConfigurator object.
     private RegistrationPanelConfigurator() {}
 
     public static void configure() {
-        // MAIN COMPONENT
+        // Main component.
         RegistrationPanel registrationPanel = RegistrationPanel.getInstance();
 
-        // SUB-COMPONENTS
+        // Components.
         TitlePanel titlePanel = TitlePanel.getInstance();
         MenuPanel menuPanel = MenuPanel.getInstance();
 
-        // ADDING COMPONENTS
-        registrationPanel.setTitlePanel(titlePanel);
-        registrationPanel.setMenuPanel(menuPanel);
+        // Components settings.
+        registrationPanel.setFirstComponent(titlePanel);
+        registrationPanel.setSecondComponent(menuPanel);
 
-        // INITIALIZATION
+        // Main component initialization.
         registrationPanel.init();
     }
+
 }

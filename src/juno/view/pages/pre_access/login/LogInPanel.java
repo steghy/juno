@@ -25,43 +25,36 @@
 
 package juno.view.pages.pre_access.login;
 
-import org.jetbrains.annotations.NotNull;
+import juno.view.pages.AbstractSecondComponent;
 
-import javax.swing.*;
 import java.awt.*;
 
+/**
+ * @author Simone Gentili
+ */
 public class LogInPanel
-        extends JPanel {
+        extends AbstractSecondComponent {
 
-    private JPanel titlePanel;
-    private JPanel menuPanel;
+    // The LogInPanel instance.
     private static LogInPanel instance;
 
+    // Builds the LogInPanel instance.
     private LogInPanel() {}
 
+    /**
+     * Returns the LogInPanel instance.
+     * @return The LogInPanel instance.
+     */
     public static LogInPanel getInstance() {
         if(instance == null) instance = new LogInPanel();
         return instance;
     }
 
+    /** Initialize the LogInPanel instance. */
     public void init() {
-        if(titlePanel == null) {
-            throw new IllegalArgumentException("Title panel is null");
-        } if(menuPanel == null) {
-            throw new IllegalArgumentException("Menu panel is null");
-        }
-
         setOpaque(true);
         setLayout(new GridBagLayout());
-
         GridBagConstraints gbc = new GridBagConstraints();
     }
 
-    public void setTitlePanel(@NotNull JPanel titlePanel) {
-        this.titlePanel = titlePanel;
-    }
-
-    public void setMenuPanel(@NotNull JPanel menuPanel) {
-        this.menuPanel = menuPanel;
-    }
 }

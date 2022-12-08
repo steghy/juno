@@ -25,22 +25,25 @@
 
 package juno.view.pages.new_game.menu;
 
+import juno.view.pages.AbstractThirdComponent;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class MenuPanel
-        extends JPanel{
+        extends AbstractThirdComponent {
 
-    private AbstractButton singlePlayer;
-    private AbstractButton multiPlayer;
-    private AbstractButton backButton;
-
+    // The MenuPanel instance.
     private static MenuPanel instance;
-    
+
+    // Builds the MenuPanel instance.
     private MenuPanel() {}
-    
+
+    /**
+     * Returns
+     * @return
+     */
     public static MenuPanel getInstance() {
         if(instance == null) instance = new MenuPanel();
         return instance;

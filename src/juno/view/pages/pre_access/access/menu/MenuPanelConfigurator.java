@@ -43,7 +43,7 @@ import java.awt.*;
  */
 public class MenuPanelConfigurator {
 
-    /* Builds a MenuPanelConfigurator object */
+    // Builds a MenuPanelConfigurator object.
     private MenuPanelConfigurator() {}
 
     /** Configure juno.view.pages.pre_access.access.menu.MenuPanel instance. */
@@ -84,4 +84,5 @@ public class MenuPanelConfigurator {
         // Main component initialization.
         menuPanel.init();
     }
+
 }

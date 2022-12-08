@@ -25,29 +25,28 @@
 
 package juno.view.pages.card;
 
+import juno.view.pages.AbstractSecondComponent;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
 /**
  * @author Simone Gentili
  */
 public class TopCardPanel
-        extends JPanel {
+        extends AbstractSecondComponent {
 
-    /* Card layout keys. */
+    /** The 'Pre access panel' key. */
     public static final String PRE_ACCESS_PANEL = "Pre access panel";
+    /** The 'Main panel' key. */
     public static final String MAIN_PANEL = "Main panel";
 
-    /* Sub components */
-    private JPanel preAccessPanel;
-    private JPanel mainPanel;
-
-    /* The TopCardPanel instance */
+    // The TopCardPanel instance.
     private static TopCardPanel instance;
 
-    /* Builds the TopCardPanel instance */
+    // Builds the TopCardPanel instance.
     private TopCardPanel() {}
 
     /**
@@ -65,31 +64,10 @@ public class TopCardPanel
      *         of this instance has not been set.
      */
     public void init() {
-        if(preAccessPanel == null) {
-            throw new IllegalArgumentException("Pre access panel is null");
-        } if(mainPanel == null) {
-            throw new IllegalArgumentException("Main panel is null");
-        }
-
         setOpaque(false);
         setLayout(new CardLayout());
-        add(preAccessPanel, PRE_ACCESS_PANEL);
-        add(mainPanel, MAIN_PANEL);
+        add(Objects.requireNonNull(getFirstComponent()), PRE_ACCESS_PANEL);
+        add(Objects.requireNonNull(getSecondComponent()), MAIN_PANEL);
     }
 
-    /**
-     * Sets the 'Pre-access panel' component.
-     * @param preAccessPanel A JPanel object.
-     */
-    public void setPreAccessPanel(@NotNull JPanel preAccessPanel) {
-        this.preAccessPanel = preAccessPanel;
-    }
-
-    /**
-     * Sets the 'Main panel' component.
-     * @param mainPanel A JPanel instance.
-     */
-    public void setMainPanel(@NotNull JPanel mainPanel) {
-        this.mainPanel = mainPanel;
-    }
 }

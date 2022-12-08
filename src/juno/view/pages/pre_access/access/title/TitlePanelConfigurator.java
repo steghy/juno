@@ -39,7 +39,7 @@ import java.awt.*;
  */
 public class TitlePanelConfigurator {
 
-    /* Builds the TitlePanelConfiguration instance */
+    // Builds the TitlePanelConfiguration instance.
     private TitlePanelConfigurator() {}
 
     /** Configure juno.view.pages.pre_access.access.title.TitlePanel instance. */
@@ -55,7 +55,7 @@ public class TitlePanelConfigurator {
         ImageResizer.resize(title, 3.0);
 
         // Main component setting.
-        titlePanel.setTitle(title);
+        titlePanel.setFirstComponent(title);
 
         // Border setting.
         RoundedBorder insideBorder = new RoundedBorder(50, 1, null, Color.WHITE);
@@ -66,4 +66,5 @@ public class TitlePanelConfigurator {
         // Main component initialization.
         titlePanel.init();
     }
+
 }

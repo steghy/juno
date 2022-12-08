@@ -33,7 +33,7 @@ import juno.view.pages.pre_access.access.title.TitlePanel;
  */
 public class AccessPanelConfigurator {
 
-    /* Builds the AccessPanelConfigurator */
+    // Builds a AccessPanelConfigurator object.
     private AccessPanelConfigurator() {}
 
     /** Configure juno.view.pages.pre_access.access.AccessPanel instance. */
@@ -47,10 +47,11 @@ public class AccessPanelConfigurator {
         MenuPanel menuPanel = MenuPanel.getInstance();
 
         // Main component setting.
-        welcomePanel.setTitlePanel(titlePanel);
-        welcomePanel.setMenuPanel(menuPanel);
+        welcomePanel.setFirstComponent(titlePanel); // Title panel.
+        welcomePanel.setSecondComponent(menuPanel); // Menu panel.
 
         // Main component initialization.
         welcomePanel.init();
     }
+
 }

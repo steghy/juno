@@ -28,16 +28,22 @@ package juno.view.pages.pre_access.login;
 import juno.view.pages.pre_access.login.menu.MenuPanelConfigurator;
 import juno.view.pages.pre_access.login.title.TitlePanelConfigurator;
 
+/**
+ * @author Simone Gentili
+ */
 public class LogInPanelInitializer {
 
+    // Builds a LogInPanelInitializer object.
     private LogInPanelInitializer() {}
 
+    /** Initialize the 'Log in' panel. */
     public static void initialize() {
-        // SUB-COMPONENTS
+        // Components.
         TitlePanelConfigurator.configure();
         MenuPanelConfigurator.configure();
 
-        // MAIN COMPONENT
-        LogInPanelConfiguration.configure();
+        // Main components.
+        LogInPanelConfigurator.configure();
     }
+
 }

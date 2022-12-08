@@ -33,34 +33,39 @@ import juno.view.pages.pre_access.login.LogInPanel;
 import juno.view.pages.pre_access.registration.RegistrationPanel;
 import juno.view.pages.pre_access.welcome.WelcomePanel;
 
+/**
+ * @author Simone Gentili
+ */
 public class PreAccessCardPanelConfigurator {
 
+    // Builds a PreAccessCardPanelConfigurator object.
     private PreAccessCardPanelConfigurator() {}
 
+    /* */
     public static void configure() {
-        // MAIN COMPONENT
+        // Main components.
         PreAccessCardPanel preAccessCardPanel = PreAccessCardPanel.getInstance();
 
-        // SUB COMPONENTS
+        // Components.
         PreAccessInitialChooser preAccessInitialChooser = PreAccessInitialChooser.getInstance();
         WelcomePanel welcomePanel = WelcomePanel.getInstance();
         AccessPanel accessPanel = AccessPanel.getInstance();
         RegistrationPanel registrationPanel = RegistrationPanel.getInstance();
         LogInPanel logInPanel = LogInPanel.getInstance();
 
-        // ADDING COMPONENTS
-        preAccessCardPanel.setWelcomePanel(welcomePanel);
-        preAccessCardPanel.setAccessPanel(accessPanel);
-        preAccessCardPanel.setRegistrationPanel(registrationPanel);
-        preAccessCardPanel.setLogInPanel(logInPanel);
+        // Components settings
+        preAccessCardPanel.setFirstComponent(welcomePanel);      // Welcome panel.
+        preAccessCardPanel.setSecondComponent(accessPanel);      // Access panel.
+        preAccessCardPanel.setThirdComponent(registrationPanel); // Registration panel.
+        preAccessCardPanel.setFourthComponent(logInPanel);       // Log in panel.
 
-        // MAIN COMPONENT INITIALIZATION
+        // Main components initialization.
         preAccessCardPanel.init();
 
-        // SELECTOR
+        // Pre access initial chooser setting.
         preAccessInitialChooser.setConfigurationFilesProvider(ConfigurationFilesProvider.getInstance());
 
-        // CALL
+        // Call.
         PreAccessInitialChooser.getInstance()
                 .setFirstPanelToShow(Directories.PROFILES.absolutePath(),
                                      Profile.getInstance());

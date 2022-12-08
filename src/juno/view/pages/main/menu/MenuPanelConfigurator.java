@@ -38,45 +38,50 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 
+/**
+ * @author Simone Gentili
+ */
 public class MenuPanelConfigurator {
 
+    // Builds a MenuPanelConfigurator object.
     private MenuPanelConfigurator() {}
 
     public static void configure() {
-        // MAIN COMPONENT
+        // Main component.
         MenuPanel menuPanel = MenuPanel.getInstance();
 
-        // SUB COMPONENTS
+        // Components
         AbstractButton newGameButton = ButtonFactory.createButton(ButtonLibrary.NEW_GAME);
         AbstractButton optionsButton = ButtonFactory.createButton(ButtonLibrary.OPTIONS);
         AbstractButton scoreButton = ButtonFactory.createButton(ButtonLibrary.SCORE);
         AbstractButton exitButton = ButtonFactory.createButton(ButtonLibrary.EXIT);
 
-        // RESIZE IMAGES
+        // Images resizing.
         ImageResizer.resize(newGameButton, 1.0);
         ImageResizer.resize(optionsButton, 3.0);
         ImageResizer.resize(scoreButton, 3.0);
         ImageResizer.resize(exitButton, 3.0);
 
-        // ACTION LISTENERS
+        // Action listeners.
         newGameButton.addActionListener(new ChangePanelAction(MainCardPanel.getInstance(), MainCardPanel.NEW_GAME_PANEL));
         scoreButton.addActionListener(new ChangePanelAction(MainCardPanel.getInstance(), MainCardPanel.SCORE_PANEL));
         optionsButton.addActionListener(new ChangePanelAction(MainCardPanel.getInstance(), MainCardPanel.OPTIONS_PANEL));
         exitButton.addActionListener(new ExitAction(ExitManager.getInstance()));
 
-        // BORDER
+        // Border setting.
         RoundedBorder insideBorder = new RoundedBorder(50, 1, null, Color.WHITE);
         RoundedBorder outsideBorder = new RoundedBorder(50, 1, null, Color.RED);
         Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
         menuPanel.setBorder(border);
 
-        // ADDING COMPONENTS
-        menuPanel.setNewGameButton(newGameButton);
-        menuPanel.setOptionsButton(optionsButton);
-        menuPanel.setScoreButton(scoreButton);
-        menuPanel.setExitButton(exitButton);
+        // Components settings.
+        menuPanel.setFirstComponent(newGameButton);  // New game button.
+        menuPanel.setSecondComponent(optionsButton); // Options button.
+        menuPanel.setThirdComponent(scoreButton);    // Score button
+        menuPanel.setFourthComponent(exitButton);    // Exit button.
 
-        // INITIALIZATION
+        // Main component initialization.
         menuPanel.init();
     }
+
 }

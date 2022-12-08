@@ -30,27 +30,32 @@ import juno.view.pages.new_game.card.NewGameCardPanel;
 import juno.view.pages.options.OptionsPanel;
 import juno.view.pages.score.ScorePanel;
 
+/**
+ * @author Simone Gentili
+ */
 public class MainCardPanelConfigurator {
 
+    // Builds a MainCardPanelConfigurator object.
     private MainCardPanelConfigurator() {}
 
     public static void configure() {
-        // MAIN COMPONENT
+        // Main component.
         MainCardPanel cardPanel = MainCardPanel.getInstance();
 
-        // SUB COMPONENTS
+        // Components.
         MainPanel mainPanel = MainPanel.getInstance();
         NewGameCardPanel newGameCardPanel = NewGameCardPanel.getInstance();
         ScorePanel scorePanel = ScorePanel.getInstance();
         OptionsPanel optionsPanel = OptionsPanel.getInstance();
 
-        // ADDING COMPONENTS
-        cardPanel.setMainPanel(mainPanel);
-        cardPanel.setNewGamePanel(newGameCardPanel);
-        cardPanel.setScorePanel(scorePanel);
-        cardPanel.setOptionsPanel(optionsPanel);
+        // Components settings.
+        cardPanel.setFirstComponent(mainPanel);         // Main panel.
+        cardPanel.setSecondComponent(newGameCardPanel); // New game panel.
+        cardPanel.setThirdComponent(scorePanel);        // Score panel.
+        cardPanel.setFourthComponent(optionsPanel);     // Options panel.
 
-        // INITIALIZATION
+        // Main component initialization.
         cardPanel.init();
     }
+
 }

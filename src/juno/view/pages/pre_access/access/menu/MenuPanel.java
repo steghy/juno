@@ -25,27 +25,19 @@
 
 package juno.view.pages.pre_access.access.menu;
 
-import org.jetbrains.annotations.NotNull;
-
-import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
 /**
  * @author Simone Gentili
  */
 public class MenuPanel
-        extends JPanel {
+        extends AbstractMenuPanel {
 
-    /* Sub components. */
-    private AbstractButton createAnAccountButton;
-    private AbstractButton logInButton;
-    private AbstractButton continueWithoutAnAccountButton;
-    private AbstractButton exitButton;
-
-    /* The MenuPanel instance */
+    // The MenuPanel instance.
     private static MenuPanel instance;
 
-    /* Builds the MenuPanel instance */
+    // Builds the MenuPanel instance.
     private MenuPanel() {}
 
     /**
@@ -62,16 +54,6 @@ public class MenuPanel
      *         of this instance has not been set.
      */
     public void init() {
-        if(createAnAccountButton == null) {
-            throw new IllegalArgumentException("Create an account button is null");
-        } if(logInButton == null) {
-            throw new IllegalArgumentException("Log in button is null");
-        } if(continueWithoutAnAccountButton == null) {
-            throw new IllegalArgumentException("Continue without an account button is null");
-        } if(exitButton == null) {
-            throw new IllegalArgumentException("Exit button is null");
-        }
-
         this.setOpaque(false);
         this.setLayout(new GridBagLayout());
 
@@ -80,97 +62,46 @@ public class MenuPanel
         // CREATE AN ACCOUNT BUTTON
         gbc.gridx = 0;
         gbc.gridy = 0;
-
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-
         gbc.anchor = GridBagConstraints.PAGE_START;
-
         gbc.insets = new Insets(0,0,17,0);
-
         gbc.ipadx = 0;
         gbc.ipady = 0;
+        this.add(Objects.requireNonNull(getCreateAnAccountButton()), gbc);
 
-        this.add(createAnAccountButton, gbc);
-
-        // LOG IN BUTTON
+        // 'Log in' button.
         gbc.gridx = 0;
         gbc.gridy = 1;
-
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-
         gbc.anchor = GridBagConstraints.PAGE_START;
-
         gbc.insets = new Insets(17,0,17,0);
-
         gbc.ipadx = 0;
         gbc.ipady = 0;
+        this.add(Objects.requireNonNull(getLogInButton()), gbc);
 
-        this.add(logInButton, gbc);
-
-        // CONTINUE WITHOUT AN ACCOUNT BUTTON
+        // 'Continue without an account' button.
         gbc.gridx = 0;
         gbc.gridy = 2;
-
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-
         gbc.anchor = GridBagConstraints.PAGE_START;
-
         gbc.insets = new Insets(17,0,17,0);
-
         gbc.ipadx = 0;
         gbc.ipady = 0;
+        this.add(Objects.requireNonNull(getContinueWithoutAnAccountButton()), gbc);
 
-        this.add(continueWithoutAnAccountButton, gbc);
-
-        // EXIT BUTTON
+        // 'Exit' button.
         gbc.gridx = 0;
         gbc.gridy = 3;
-
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-
         gbc.anchor = GridBagConstraints.PAGE_START;
-
         gbc.insets = new Insets(17,0,17,0);
-
         gbc.ipadx = 0;
         gbc.ipady = 0;
-
-        this.add(exitButton, gbc);
+        this.add(Objects.requireNonNull(getExitButton()), gbc);
     }
 
-    /**
-     * Sets the 'Create an account' button.
-     * @param createAnAccountButton An AbstractButton.
-     */
-    public void setCreateAnAccountButton(@NotNull AbstractButton createAnAccountButton) {
-        this.createAnAccountButton = createAnAccountButton;
-    }
-
-    /**
-     * Sets the 'Log in' button.
-     * @param logInButton An AbstractButton.
-     */
-    public void setLogInButton(@NotNull AbstractButton logInButton) {
-        this.logInButton = logInButton;
-    }
-
-    /**
-     * Sets the 'Continue without an account' button.
-     * @param continueWithoutAnAccountButton An AbstractButton.
-     */
-    public void setContinueWithoutAnAccountButton(@NotNull AbstractButton continueWithoutAnAccountButton) {
-        this.continueWithoutAnAccountButton = continueWithoutAnAccountButton;
-    }
-
-    /**
-     * Sets the 'Exit' button.
-     * @param exitButton An AbstractButton.
-     */
-    public void setExitButton(@NotNull AbstractButton exitButton) {
-        this.exitButton = exitButton;
-    }
 }

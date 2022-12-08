@@ -28,23 +28,28 @@ package juno.view.pages.main;
 import juno.view.pages.main.menu.MenuPanel;
 import juno.view.pages.main.title.TitlePanel;
 
+/**
+ * @author Simone Gentili
+ */
 public class MainPanelConfigurator {
 
+    // Builds a MainPanelConfigurator instance.
     private MainPanelConfigurator() {}
 
     public static void configure() {
-        // MAIN COMPONENT
+        // Main component.
         MainPanel mainPanel = MainPanel.getInstance();
 
-        // SUB COMPONENTS
-        TitlePanel logoPanel = TitlePanel.getInstance();
+        // Components.
+        TitlePanel titlePanel = TitlePanel.getInstance();
         MenuPanel menuPanel = MenuPanel.getInstance();
 
-        // ADDING COMPONENTS
-        mainPanel.setTitlePanel(logoPanel);
-        mainPanel.setMenuPanel(menuPanel);
+        // Components settings.
+        mainPanel.setFirstComponent(titlePanel);  // title panel
+        mainPanel.setSecondComponent(menuPanel);  // Menu panel.
 
-        // INITIALIZATION
+        // Main component initialization.
         mainPanel.init();
     }
+
 }

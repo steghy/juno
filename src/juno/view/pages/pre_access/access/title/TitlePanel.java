@@ -25,24 +25,21 @@
 
 package juno.view.pages.pre_access.access.title;
 
-import org.jetbrains.annotations.NotNull;
+import juno.view.pages.AbstractFirstComponent;
 
-import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
 /**
  * @author Simone Gentili
  */
 public class TitlePanel
-        extends JPanel {
+        extends AbstractFirstComponent {
 
-    /* Sub component. */
-    private AbstractButton title;
-
-    /* The TitlePanel instance */
+    // The TitlePanel instance.
     private static TitlePanel instance;
 
-    /* Builds the TitlePanel instance */
+    // Builds the TitlePanel instance.
     private TitlePanel() {}
 
     /**
@@ -60,36 +57,20 @@ public class TitlePanel
      *         of this instance has not been set.
      */
     public void init() {
-        if(title == null) {
-            throw new IllegalArgumentException("Title is null");
-        }
-
         this.setOpaque(false);
         this.setLayout(new GridBagLayout());
-
         GridBagConstraints gbc = new GridBagConstraints();
 
+        // Title panel.
         gbc.gridwidth = 0;
         gbc.gridheight = 0;
-
         gbc.insets = new Insets(0,0,0,0);
-
         gbc.anchor = GridBagConstraints.CENTER;
-
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-
         gbc.ipadx = 0;
         gbc.ipady = 0;
-
-        this.add(title, gbc);
+        this.add(Objects.requireNonNull(getFirstComponent()), gbc);
     }
 
-    /**
-     * Sets the 'Title' button.
-     * @param title An AbstractButton.
-     */
-    public void setTitle(@NotNull AbstractButton title) {
-        this.title = title;
-    }
 }

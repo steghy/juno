@@ -35,16 +35,15 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
 public class PlayersProvider<T>
+        extends AbstractPlayersProvider<T>
         implements InterfacePlayersProvider<T>, Observable, Observer {
-
-    // The players.
-    private Donut<T> players;
 
     // The Observers List.
     private final List<Observer> observerList;
@@ -92,9 +91,11 @@ public class PlayersProvider<T>
         if(object instanceof InterfaceAiPlayerFactory<?> aiPlayersFactory) {
             players = new Donut<>();
             players.addAll((Collection<? extends T>) aiPlayersFactory.getAiPlayers());
+            players.add(Objects.requireNonNull(getPlayer()));
             updateAll();
-        } else throw new IllegalArgumentException("Invalid Subject type: " + object.getClass() +
-                    ". InterfaceSubjectsFactory expected.");
+        } else throw new IllegalArgumentException(
+                "Invalid Subject type: " + object.getClass() +
+                    ". InterfaceAiPlayerFactory expected.");
     }
 
 }

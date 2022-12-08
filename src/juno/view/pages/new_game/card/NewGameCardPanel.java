@@ -25,56 +25,50 @@
 
 package juno.view.pages.new_game.card;
 
+import juno.view.pages.AbstractThirdComponent;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
+/**
+ * @author Simone Gentili
+ */
 public class NewGameCardPanel
-        extends JPanel {
+        extends AbstractThirdComponent {
 
+    /** The 'New game panel' key */
     public static final String NEW_GAME_PANEL = "New game panel";
+
+    /** The 'Single player panel' key */
     public static final String SINGLE_PLAYER_PANEL = "Single player panel";
+
+    /** The 'Multiplayer panel' key */
     public static final String MULTIPLAYER_PANEL = "Multiplayer panel";
 
-    private JPanel newGamePanel;
-    private JPanel singlePlayerPanel;
-    private JPanel multiplayerPanel;
-
+    // The NewGameCardPanel instance.
     private static NewGameCardPanel instance;
 
+    // Builds the NewGameCardPanel instance.
     private NewGameCardPanel() {}
 
+    /**
+     * Returns the NewGameCardPanel instance.
+     * @return The NewGameCardPanel instance.
+     */
     public static NewGameCardPanel getInstance() {
         if(instance == null) instance = new NewGameCardPanel();
         return instance;
     }
 
+    /** Initialize the NewGameCardPanel instance. */
     public void init() {
-        if (newGamePanel == null) {
-            throw new IllegalArgumentException("New game panel is null");
-        } if (singlePlayerPanel == null) {
-            throw new IllegalArgumentException("Single player panel is null");
-        } if (multiplayerPanel == null) {
-            throw new IllegalArgumentException("Multiplayer panel is null");
-        }
-
         setOpaque(false);
         setLayout(new CardLayout());
-        add(newGamePanel, NEW_GAME_PANEL);
-        add(singlePlayerPanel, SINGLE_PLAYER_PANEL);
-        add(multiplayerPanel, MULTIPLAYER_PANEL);
+        add(Objects.requireNonNull(getFirstComponent()), NEW_GAME_PANEL);
+        add(Objects.requireNonNull(getSecondComponent()), SINGLE_PLAYER_PANEL);
+        add(Objects.requireNonNull(getThirdComponent()), MULTIPLAYER_PANEL);
     }
 
-    public void setNewGamePanel(@NotNull JPanel newGamePanel) {
-        this.newGamePanel = newGamePanel;
-    }
-
-    public void setSinglePlayerPanel(@NotNull JPanel singlePlayerPanel) {
-        this.singlePlayerPanel = singlePlayerPanel;
-    }
-
-    public void setMultiplayerPanel(@NotNull JPanel multiplayerPanel) {
-        this.multiplayerPanel = multiplayerPanel;
-    }
 }

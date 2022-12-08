@@ -25,49 +25,48 @@
 
 package juno.view.pages.main.title;
 
+import juno.view.pages.AbstractFirstComponent;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
+/**
+ * @author Simone Gentili
+ */
 public class TitlePanel
-        extends JPanel {
+        extends AbstractFirstComponent {
 
-    private AbstractButton logo;
-
+    // The TitlePanel instance.
     private static TitlePanel instance;
 
+    // Builds the TitlePanel instance.
     private TitlePanel() {}
 
+    /**
+     * Returns the TitlePanel instance.
+     * @return The TitlePanel instance.
+     */
     public static TitlePanel getInstance() {
         if(instance == null) instance = new TitlePanel();
         return instance;
     }
 
+    /** Initialize the TitlePanel instance. */
     public void init() {
-        if(logo == null) {
-            throw new IllegalArgumentException("Logo is null");
-        }
-
         this.setOpaque(false);
         this.setLayout(new GridBagLayout());
-
         GridBagConstraints gbc = new GridBagConstraints();
 
+        // Title button.
         gbc.gridx = 0;
         gbc.gridy = 0;
-
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-
         gbc.insets = new Insets(0,0,0,0);
-
         gbc.anchor = GridBagConstraints.CENTER;
-
-        this.add(logo, gbc);
+        this.add(Objects.requireNonNull(getFirstComponent()), gbc);
     }
 
-    public void setLogo(@NotNull AbstractButton logo) {
-        this.logo = logo;
-    }
 }

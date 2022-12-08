@@ -62,7 +62,7 @@ public class PreAccessInitialChooser {
         } catch (FileNotFoundException e) {
             // Directory not found !!! solve.
             e.printStackTrace();
-        } if(files != null) {
+        } if(files != null && files.size() > 0) {
             LayoutManager layoutManager = PreAccessCardPanel.getInstance().getLayout();
             if(layoutManager instanceof CardLayout cardLayout) {
                 cardLayout.show(PreAccessCardPanel.getInstance(), PreAccessCardPanel.ACCESS_PANEL);

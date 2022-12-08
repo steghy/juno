@@ -27,27 +27,32 @@ package juno.view.pages.new_game.card;
 
 import juno.view.pages.new_game.NewGamePanel;
 import juno.view.pages.new_game.multiplayer.card.MultiplayerCardPanel;
-import juno.view.pages.new_game.singleplayer.card.SinglePlayerCardPanel;
+import juno.view.pages.new_game.single_player.card.SinglePlayerCardPanel;
 
+/**
+ * @author Simone Gentili
+ */
 public class NewGameCardPanelConfigurator {
 
+    // Builds a NewGameCardPanelConfigurator object.
     private NewGameCardPanelConfigurator() {}
 
     public static void configure() {
-        // MAIN COMPONENT
+        // Main component.
         NewGameCardPanel newGameCardPanel = NewGameCardPanel.getInstance();
 
-        // SUB-COMPONENTS
+        // Components.
         NewGamePanel newGamePanel = NewGamePanel.getInstance();
         MultiplayerCardPanel multiplayerCardPanel = MultiplayerCardPanel.getInstance();
         SinglePlayerCardPanel singlePlayerCardPanel = SinglePlayerCardPanel.getInstance();
 
-        // ADDING COMPONENTS
-        newGameCardPanel.setNewGamePanel(newGamePanel);
-        newGameCardPanel.setSinglePlayerPanel(singlePlayerCardPanel);
-        newGameCardPanel.setMultiplayerPanel(multiplayerCardPanel);
+        // Components settings.
+        newGameCardPanel.setFirstComponent(newGamePanel);           // New game panel.
+        newGameCardPanel.setSecondComponent(singlePlayerCardPanel); // Single-player card panel.
+        newGameCardPanel.setThirdComponent(multiplayerCardPanel);   // Multiplayer card panel.
 
-        // INITIALIZATION
+        // Main component initialization.
         newGameCardPanel.init();
     }
+
 }

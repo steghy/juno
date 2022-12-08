@@ -30,7 +30,9 @@ import juno.model.data.io.output.Exportable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -59,11 +61,16 @@ public class Profile
     /* The age. */
     private Integer age;
 
-    /* Builds the Profile instance. */
-    private Profile() {}
+    /* The errors of the configuration process. */
+    private final Map<String, String> errors;
 
     /* The Profile instance. */
     private static Profile instance;
+
+    /* Builds the Profile instance. */
+    private Profile() {
+        errors = new HashMap<>();
+    }
 
     /**
      * Returns the Profile instance.
@@ -74,75 +81,81 @@ public class Profile
         return instance;
     }
 
+    public Map<String, String> getErrors() {
+        return errors;
+    }
+
     @Override
     public void configure(@NotNull Map<String, Object> map) {
-        // Profile name.
+        errors.clear(); // Cleaning up old errors.
+
+        // Profile name case.
         if (map.containsKey(PROFILE_NAME)) {
             Object profileNameFromMap = map.get(PROFILE_NAME);
-            if (profileNameFromMap instanceof String) {
-                setProfileName((String) profileNameFromMap);
-            } else if (profileNameFromMap == null) {
-                profileName = null;
-            } else throw new IllegalArgumentException(
-                    "Invalid object type " + map.get(PROFILE_NAME) +
-                            ". String expected");
-        } else {
-            throw new IllegalArgumentException(PROFILE_NAME +
-                    " not found in " + map);
-        }
+            if (profileNameFromMap instanceof String temp) {
+                try {
+                    setProfileName(temp);
+                } catch (IllegalArgumentException e) {
+                    e.printStackTrace();
+                    errors.put(PROFILE_NAME, "Invalid profile name");
+                }
+            } else if (profileNameFromMap == null) profileName = null;
+            else errors.put(PROFILE_NAME, "Invalid profile name");
+        } else errors.put(PROFILE_NAME, "The profile name is required");
 
-        // Name.
+        // Name case.
         if (map.containsKey(NAME)) {
             Object nameFromMap = map.get(NAME);
-            if (map.get(NAME) instanceof String) {
-                setName((String) nameFromMap);
-            } else if (nameFromMap == null) {
-                name = null;
-            } else throw new IllegalArgumentException(
-                    "Invalid object type " + map.get(NAME).getClass() +
-                        ". String expected");
-        } else {
-            throw new IllegalArgumentException(NAME +
-                    " key not found in " + map);
+            if (map.get(NAME) instanceof String temp) {
+                try {
+                    setName(temp);
+                } catch (IllegalArgumentException e) {
+                    e.printStackTrace();
+                    errors.put(NAME, "Invalid name");
+                }
+            } else if (nameFromMap == null) name = null;
+            else errors.put(NAME, "Invalid name");
         }
 
         // Last name.
         if (map.containsKey(LAST_NAME)) {
             Object lastNameFromMap = map.get(LAST_NAME);
-            if (map.get(LAST_NAME) instanceof String) {
-                setLastName((String) lastNameFromMap);
-            } else if (lastNameFromMap == null) {
-                lastName = null;
-            } else throw new IllegalArgumentException(
-                    "Invalid object type " + map.get(LAST_NAME).getClass() +
-                        ". String expected");
-        }
-        else {
-            throw new IllegalArgumentException(LAST_NAME + " key not found in " + map);
+            if (map.get(LAST_NAME) instanceof String temp) {
+                try {
+                    setLastName(temp);
+                } catch (IllegalArgumentException e) {
+                    e.printStackTrace();
+                    errors.put(LAST_NAME, "Invalid last name");
+                }
+            } else if (lastNameFromMap == null) lastName = null;
+            else errors.put(LAST_NAME, "Invalid last name");
         }
 
-        // Age.
+        // Age case.
         if (map.containsKey(AGE)) {
             Object ageFromMap = map.get(AGE);
-            if (map.get(AGE) instanceof Integer) {
-                setAge((Integer) ageFromMap);
-            } else if (ageFromMap == null) {
-                age = null;
-            } else throw new IllegalArgumentException(
-                    "Invalid object type " + map.get(AGE) +
-                        ". Integer expected");
-        } else {
-            throw new IllegalArgumentException(AGE + " key not found in " + map);
+            if (map.get(AGE) instanceof Integer temp) {
+                try {
+                    setAge(temp);
+                } catch (IllegalArgumentException e) {
+                    e.printStackTrace();
+                    errors.put(AGE, "Invalid age");
+                }
+            } else if (ageFromMap == null) age = null;
+            else errors.put(AGE, "Invalid age");
         }
+
+        // Checking for errors.
+        if(!errors.isEmpty()) throw new IllegalArgumentException();
     }
 
     @Override
     public Map<String, Object> exportData() {
         Map<String, Object> map = new HashMap<>();
-        map.put(PROFILE_NAME, profileName);
-        map.put(NAME, name);
-        map.put(LAST_NAME, lastName);
-        map.put(AGE, age);
+        if(profileName.length() > 0) map.put(PROFILE_NAME, profileName);
+        if(name.length() > 0) map.put(NAME, name);
+        if(lastName.length() > 0) map.put(LAST_NAME, lastName);
+        if(age > 0) map.put(AGE, age);
         return map;
     }
 
@@ -154,7 +167,8 @@ public class Profile
     public void setProfileName(@NotNull String profileName) {
         int length = profileName.length();
         if(length == 0 || length > MAXIMUM_LENGTH)
-            throw new IllegalArgumentException("Invalid length " + length);
+            throw new IllegalArgumentException(
+                    "Invalid profile name length " + length);
         this.profileName = profileName;
     }
 
@@ -166,7 +180,8 @@ public class Profile
     public void setName(@NotNull String name) {
         int length = name.length();
         if(length == 0 || length > MAXIMUM_LENGTH)
-            throw new IllegalArgumentException("Invalid length " + length);
+            throw new IllegalArgumentException(
+                    "Invalid name length " + length);
         this.name = name;
     }
 
@@ -178,7 +193,8 @@ public class Profile
     public void setLastName(@NotNull String lastName) {
         int length = lastName.length();
         if(length == 0 || length > MAXIMUM_LENGTH)
-            throw new IllegalArgumentException("Invalid length " + length);
+            throw new IllegalArgumentException(
+                    "Invalid last name length " + length);
         this.lastName = lastName;
     }
 
@@ -188,11 +204,9 @@ public class Profile
      * @throws IllegalArgumentException
      */
     public void setAge(int age) {
-        if(age > 1 && age < MAXIMUM_AGE) {
-            this.age = age;
-        } else {
-            throw new IllegalArgumentException("Invalid age: " + age);
-        }
+        if(age > 1 && age < MAXIMUM_AGE) this.age = age;
+        else throw new IllegalArgumentException(
+                "Invalid age: " + age);
     }
 
     /**
