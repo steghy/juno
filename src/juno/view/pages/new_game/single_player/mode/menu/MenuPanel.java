@@ -22,54 +22,49 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
 package juno.view.pages.new_game.single_player.mode.menu;
 
-import org.jetbrains.annotations.NotNull;
+import juno.view.pages.AbstractFirstComponent;
 
-import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
+/**
+ * @author Simone Gentili
+ */
 public class MenuPanel
-        extends JPanel {
+        extends AbstractFirstComponent {
 
-    private AbstractButton stackingModeButton;
-
+    // The MenuPanel instance.
     private static MenuPanel instance;
 
+    // Builds the MenuPanel instance.
     private MenuPanel() {}
 
+    /**
+     * Returns the MenuPanel instance.
+     * @return The MenuPanel instance.
+     */
     public static MenuPanel getInstance() {
         if(instance == null) instance = new MenuPanel();
         return instance;
     }
 
+    /** Initialize the MenuPanel instance. */
     public void init() {
-        if(stackingModeButton == null) {
-            throw new IllegalArgumentException("Stacking button is null");
-        }
-
         setOpaque(false);
         setLayout(new GridBagLayout());
-
         GridBagConstraints gbc = new GridBagConstraints();
 
-        // EASY BUTTON
+        // Easy button.
         gbc.gridx = 0;
         gbc.gridy = 0;
-
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-
         gbc.insets = new Insets(25,0,0,25);
-
         gbc.ipadx = 0;
         gbc.ipady = 0;
-
-        this.add(stackingModeButton, gbc);
+        this.add(Objects.requireNonNull(getFirstComponent()), gbc);
     }
 
-    public void setStackingModeButton(@NotNull AbstractButton stackingModeButton) {
-        this.stackingModeButton = stackingModeButton;
-    }
 }

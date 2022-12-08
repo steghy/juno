@@ -36,33 +36,38 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 
+/**
+ * @author Simone Gentili
+ */
 public class MenuPanelConfigurator {
 
+    // Builds a MenuPanelConfigurator object.
     private MenuPanelConfigurator() {}
 
     public static void configure() {
-        // MAIN-COMPONENTS
+        // Main component.
         MenuPanel difficultyPanel = MenuPanel.getInstance();
 
-        // SUB-COMPONENTS
+        // Components.
         AbstractButton stackingModeButton = ButtonFactory.createButton(ButtonLibrary.STACKING);
 
-        // RESIZE IMAGES
+        // Images resizing.
         ImageResizer.resize(stackingModeButton, 3.0);
 
-        // ACTION LISTENERS
+        // Action listeners.
         stackingModeButton.addActionListener(new ChangePanelAction(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MATCH_PANEL));
 
-        // BORDER
+        // Border settings.
         RoundedBorder insideBorder = new RoundedBorder(50, 2, null, Color.WHITE);
         RoundedBorder outsideBorder = new RoundedBorder(50, 2, null, Color.RED);
         Border border = BorderFactory.createCompoundBorder(outsideBorder, insideBorder);
         difficultyPanel.setBorder(border);
 
-        // ADDING COMPONENTS
-        difficultyPanel.setStackingModeButton(stackingModeButton);
+        // Components settings.
+        difficultyPanel.setFirstComponent(stackingModeButton); // Stacking mode button.
 
-        // INITIALIZATION
+        // Main component initialization.
         difficultyPanel.init();
     }
+
 }

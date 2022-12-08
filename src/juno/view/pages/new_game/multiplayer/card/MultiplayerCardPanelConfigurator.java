@@ -28,23 +28,28 @@ package juno.view.pages.new_game.multiplayer.card;
 import juno.view.pages.new_game.multiplayer.available.AvailableServicePanel;
 import juno.view.pages.new_game.multiplayer.unavailable.UnavailableServicePanel;
 
+/**
+ * @author Simone Gentili
+ */
 public class MultiplayerCardPanelConfigurator {
 
+    // Builds a MultiplayerCardPanelConfigurator object. */
     private MultiplayerCardPanelConfigurator() {}
 
     public static void configure() {
-        // MAIN COMPONENT
+        // Main component.
         MultiplayerCardPanel multiplayerCardPanel = MultiplayerCardPanel.getInstance();
 
-        // SUB COMPONENTS
+        // Component
         AvailableServicePanel availableServicePanel = AvailableServicePanel.getInstance();
         UnavailableServicePanel unavailableServicePanel = UnavailableServicePanel.getInstance();
 
-        // ADDING COMPONENTS
-        multiplayerCardPanel.setAvailableServicePanel(availableServicePanel);
-        multiplayerCardPanel.setUnavailableServicePanel(unavailableServicePanel);
+        // Component settings
+        multiplayerCardPanel.setFirstComponent(availableServicePanel);
+        multiplayerCardPanel.setSecondComponent(unavailableServicePanel);
 
-        // INITIALIZATION
+        // Main component initialization.
         multiplayerCardPanel.init();
     }
+
 }

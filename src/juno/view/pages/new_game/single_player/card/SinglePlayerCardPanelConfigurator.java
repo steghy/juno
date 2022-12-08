@@ -31,26 +31,31 @@ import juno.view.pages.new_game.single_player.players.PlayersNumberPanel;
 
 import javax.swing.*;
 
+/**
+ * @author Simone Gentili
+ */
 public class SinglePlayerCardPanelConfigurator {
 
+    // Builds a SinglePlayerCardPanelConfigurator object.
     private SinglePlayerCardPanelConfigurator() {}
 
     public static void configure() {
-        // MAIN COMPONENT
+        // Main component.
         SinglePlayerCardPanel singlePlayerCardPanel = SinglePlayerCardPanel.getInstance();
 
-        // SUB COMPONENTS
+        // Components.
         PlayersNumberPanel playersNumberPanel = PlayersNumberPanel.getInstance();
         DifficultyPanel difficultyPanel = DifficultyPanel.getInstance();
         ModePanel modePanel = ModePanel.getInstance();
 
-        // ADDING COMPONENTS
-        singlePlayerCardPanel.setPlayersNumberPanel(playersNumberPanel);
-        singlePlayerCardPanel.setDifficultyPanel(difficultyPanel);
-        singlePlayerCardPanel.setModePanel(modePanel);
-        singlePlayerCardPanel.setMatchPanel(new JPanel());
+        // Components settings.
+        singlePlayerCardPanel.setFirstComponent(playersNumberPanel); // Players number panel.
+        singlePlayerCardPanel.setSecondComponent(difficultyPanel);   // Difficulty panel.
+        singlePlayerCardPanel.setThirdComponent(modePanel);          // Mode panel.
+        singlePlayerCardPanel.setFourthComponent(new JPanel());      // Match panel.
 
-        // MAIN COMPONENT INITIALIZATION
+        // Main component initialization.
         singlePlayerCardPanel.init();
     }
+
 }

@@ -37,22 +37,25 @@ import juno.view.util.RoundedBorder;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-
+/**
+ * @author Simone Gentili
+ */
 public class MenuPanelConfigurator {
 
+    // Builds a MenuPanelConfigurator object.
     private MenuPanelConfigurator() {}
 
     public static void configure() {
-        // MAIN COMPONENT
+        // Main component.
         MenuPanel menuPanel = MenuPanel.getInstance();
 
-        // SUB COMPONENTS
+        // Components.
         AbstractButton twoPlayers = ButtonFactory.createButton(ButtonLibrary.TWO_PLAYERS);
         AbstractButton threePlayers = ButtonFactory.createButton(ButtonLibrary.THREE_PLAYERS);
         AbstractButton fourPlayers = ButtonFactory.createButton(ButtonLibrary.FOUR_PLAYERS);
         AbstractButton backButton = ButtonFactory.createButton(ButtonLibrary.BACK);
 
-        // RESIZE IMAGES
+        // Images resizing.
         ImageResizer.resize(twoPlayers, 3.0);
         ImageResizer.resize(threePlayers, 3.0);
         ImageResizer.resize(fourPlayers, 3.0);
@@ -60,29 +63,36 @@ public class MenuPanelConfigurator {
 
         // Action listeners.
         // Change panel actions.
-        twoPlayers.addActionListener(new ChangePanelAction(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.DIFFICULTY_PANEL));
-        threePlayers.addActionListener(new ChangePanelAction(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.DIFFICULTY_PANEL));
-        fourPlayers.addActionListener(new ChangePanelAction(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.DIFFICULTY_PANEL));
-        backButton.addActionListener(new ChangePanelAction(NewGameCardPanel.getInstance(), NewGameCardPanel.NEW_GAME_PANEL));
+        twoPlayers.addActionListener(new ChangePanelAction(
+                SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.DIFFICULTY_PANEL));
+        threePlayers.addActionListener(new ChangePanelAction(
+                SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.DIFFICULTY_PANEL));
+        fourPlayers.addActionListener(new ChangePanelAction(
+                SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.DIFFICULTY_PANEL));
+        backButton.addActionListener(new ChangePanelAction(
+                NewGameCardPanel.getInstance(), NewGameCardPanel.NEW_GAME_PANEL));
 
         // Difficulty actions.
         twoPlayers.addActionListener(new PlayersNumberAction(2));
         threePlayers.addActionListener(new PlayersNumberAction(3));
         fourPlayers.addActionListener(new PlayersNumberAction(4));
 
-        // BORDER SETTING
-        RoundedBorder insideBorder = new RoundedBorder(50, 2, null, Color.WHITE);
-        RoundedBorder outsideBorder = new RoundedBorder(50, 2, null, Color.RED);
+        // Border settings.
+        RoundedBorder insideBorder = new RoundedBorder(
+                50, 2, null, Color.WHITE);
+        RoundedBorder outsideBorder = new RoundedBorder(
+                50, 2, null, Color.RED);
         Border border = BorderFactory.createCompoundBorder(outsideBorder, insideBorder);
         menuPanel.setBorder(border);
 
-        // ADDING COMPONENTS
-        menuPanel.setTwoPlayers(twoPlayers);
-        menuPanel.setThreePlayers(threePlayers);
-        menuPanel.setFourPlayers(fourPlayers);
-        menuPanel.setBackButton(backButton);
+        // Components settings.
+        menuPanel.setFirstComponent(twoPlayers);    // Two players button.
+        menuPanel.setSecondComponent(threePlayers); // Three players button.
+        menuPanel.setThirdComponent(fourPlayers);   // Four players button.
+        menuPanel.setFourthComponent(backButton);   // Back button.
 
-        // INITIALIZATION
+        // Main components initialization.
         menuPanel.init();
     }
+
 }

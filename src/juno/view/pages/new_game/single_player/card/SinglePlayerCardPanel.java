@@ -25,63 +25,52 @@
 
 package juno.view.pages.new_game.single_player.card;
 
-import org.jetbrains.annotations.NotNull;
+import juno.view.pages.AbstractFourthComponent;
 
-import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
+/**
+ * @author Simone Gentili
+ */
 public class SinglePlayerCardPanel
-        extends JPanel {
+        extends AbstractFourthComponent {
 
+    /** The 'Players number panel' key. */
     public static final String PLAYERS_NUMBER_PANEL = "Players number panel";
+
+    /** The 'Difficulty panel' key. */
     public static final String DIFFICULTY_PANEL = "Difficulty panel";
+
+    /** The 'Mode panel' key. */
     public static final String MODE_PANEL = "Mode panel";
+
+    /** The 'Match panel' key. */
     public static final String MATCH_PANEL = "Match panel";
 
-    private JPanel playersNumberPanel;
-    private JPanel difficultyPanel;
-    private JPanel modePanel;
-    private JPanel matchPanel;
-
+    // The SinglePlayerCardPanel instance.
     private static SinglePlayerCardPanel instance;
 
+    // Builds SinglePlayerCardPanel instance.
+    private SinglePlayerCardPanel() {}
+
+    /**
+     * Returns the SinglePlayerCardPanel instance.
+     * @return The SinglePlayerCardPanel instance.
+     */
     public static SinglePlayerCardPanel getInstance() {
         if(instance == null) instance = new SinglePlayerCardPanel();
         return instance;
     }
 
+    /** Initialize the SinglePlayerCardPanel instance. */
     public void init() {
-        if(playersNumberPanel == null) {
-            throw new IllegalArgumentException("Players number panel is null");
-        } if (difficultyPanel == null) {
-            throw new IllegalArgumentException("Difficulty panel is null");
-        } if (modePanel == null) {
-            throw new IllegalArgumentException("Mode panel is null");
-        } if (matchPanel == null) {
-            throw new IllegalArgumentException("Match panel is null");
-        }
-
         setOpaque(false);
         setLayout(new CardLayout());
-        add(playersNumberPanel, PLAYERS_NUMBER_PANEL);
-        add(difficultyPanel, DIFFICULTY_PANEL);
-        add(modePanel, MODE_PANEL);
-        add(matchPanel, MATCH_PANEL);
+        add(Objects.requireNonNull(getFirstComponent()), PLAYERS_NUMBER_PANEL);
+        add(Objects.requireNonNull(getSecondComponent()), DIFFICULTY_PANEL);
+        add(Objects.requireNonNull(getThirdComponent()), MODE_PANEL);
+        add(Objects.requireNonNull(getFourthComponent()), MATCH_PANEL);
     }
 
-    public void setPlayersNumberPanel(@NotNull JPanel playersNumberPanel) {
-        this.playersNumberPanel = playersNumberPanel;
-    }
-
-    public void setModePanel(@NotNull JPanel modePanel) {
-        this.modePanel = modePanel;
-    }
-
-    public void setMatchPanel(@NotNull JPanel matchPanel) {
-        this.matchPanel = matchPanel;
-    }
-
-    public void setDifficultyPanel(@NotNull JPanel difficultyPanel) {
-        this.difficultyPanel = difficultyPanel;
-    }
 }

@@ -27,17 +27,28 @@ package juno.view.pages.new_game.multiplayer.available;
 
 import javax.swing.*;
 
+/**
+ * @author Simone Gentili
+ */
 public class AvailableServicePanel
         extends JPanel {
 
+    // The AvailableServicePanel instance.
     private static AvailableServicePanel instance;
 
+    // Builds the AvailableServicePanel instance.
     private AvailableServicePanel() {}
 
+    /**
+     * Returns the AvailableServicePanel instance.
+     * @return The AvailableServicePanel instance.
+     */
     public static AvailableServicePanel getInstance() {
         if(instance == null) instance = new AvailableServicePanel();
         return instance;
     }
 
+    /** Initialize the AvailableServicePanel instance. */
     public void init() {}
+
 }

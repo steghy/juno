@@ -25,70 +25,55 @@
 
 package juno.view.pages.new_game.multiplayer.unavailable.menu;
 
-import org.jetbrains.annotations.NotNull;
+import juno.view.pages.AbstractSecondComponent;
 
-import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
+/**
+ * @author Simone Gentili
+ */
 public class MenuPanel
-        extends JPanel{
+        extends AbstractSecondComponent {
 
-    private JLabel unavailableServiceLabel;
-    private AbstractButton backButton;
-
+    // The MenuPanel instance.
     private static MenuPanel instance;
 
+    // Builds the MenuPanel instance. */
     private MenuPanel() {}
 
+    /**
+     * Returns the MenuPanel instance.
+     * @return The MenuPanel instance.
+     */
     public static MenuPanel getInstance() {
         if(instance == null) instance = new MenuPanel();
         return instance;
     }
 
+    /** Initialize the MenuPanel instance. */
     public void init() {
-        if (unavailableServiceLabel == null) {
-            throw new IllegalArgumentException("Unavailable service label is null");
-        } if (backButton == null) {
-            throw new IllegalArgumentException("Back button is null");
-        }
-
         setOpaque(false);
         setLayout(new GridBagLayout());
-
         GridBagConstraints gbc = new GridBagConstraints();
 
-        // UNAVAILABLE SERVICE LABEL
+        // Unavailable service panel
         gbc.gridx = 0;
         gbc.gridy = 0;
-
         gbc.weightx = 0.5;
         gbc.weighty = 0.5;
-
         gbc.anchor = GridBagConstraints.CENTER;
-
         gbc.fill = GridBagConstraints.CENTER;
+        add(Objects.requireNonNull(getFirstComponent()), gbc);
 
-        add(unavailableServiceLabel, gbc);
-
-        // BACK BUTTON
+        // Back button.
         gbc.gridx = 0;
         gbc.gridy = 1;
-
         gbc.weightx = 0.5;
         gbc.weighty = 0.5;
-
         gbc.anchor = GridBagConstraints.CENTER;
-
         gbc.fill = GridBagConstraints.CENTER;
-
-        add(backButton, gbc);
+        add(Objects.requireNonNull(getSecondComponent()), gbc);
     }
 
-    public void setUnavailableServiceLabel(@NotNull JLabel unavailableServiceLabel) {
-        this.unavailableServiceLabel = unavailableServiceLabel;
-    }
-
-    public void setBackButton(@NotNull AbstractButton backButton) {
-        this.backButton = backButton;
-    }
 }

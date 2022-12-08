@@ -27,11 +27,16 @@ package juno.view.pages.new_game.multiplayer.available;
 
 import juno.view.pages.new_game.multiplayer.card.MultiplayerCardPanelConfigurator;
 
+/**
+ * @author Simone Gentili
+ */
 public class AvailableServiceInitializer {
 
+    // Builds a availableServiceInitializer object.
     private AvailableServiceInitializer() {}
 
     public static void initialize() {
         MultiplayerCardPanelConfigurator.configure();
     }
+
 }

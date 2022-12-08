@@ -31,18 +31,23 @@ import juno.view.pages.new_game.single_player.match.MatchInitializer;
 import juno.view.pages.new_game.single_player.mode.ModeInitializer;
 import juno.view.pages.new_game.single_player.players.PlayersNumberInitializer;
 
+/**
+ * @author Simone Gentili
+ */
 public class SinglePlayerInitializer {
 
+    // Builds a SinglePlayerInitializer object.
     private SinglePlayerInitializer() {}
 
     public static void initialize() {
-        // SUB COMPONENTS INITIALIZATION
+        // Components initialization.
         DifficultyInitializer.initialize();
         MatchInitializer.initialize();
         ModeInitializer.initialize();
         PlayersNumberInitializer.initialize();
 
-        // CARD PANEL CONFIGURATION
+        // Main component configuration.
         SinglePlayerCardPanelConfigurator.configure();
     }
+
 }

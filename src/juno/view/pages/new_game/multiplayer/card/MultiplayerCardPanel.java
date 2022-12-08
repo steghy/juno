@@ -25,47 +25,44 @@
 
 package juno.view.pages.new_game.multiplayer.card;
 
-import org.jetbrains.annotations.NotNull;
+import juno.view.pages.AbstractSecondComponent;
 
-import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
+/**
+ * @author Simone Gentili
+ */
 public class MultiplayerCardPanel
-        extends JPanel {
+        extends AbstractSecondComponent {
 
+    /** The 'Unavailable service panel' key. */
     public static final String UNAVAILABLE_SERVICE_PANEL = "Unavailable service panel";
+
+    /** The 'Available service panel' key. */
     public static final String AVAILABLE_SERVICE_PANEL = "Available service panel";
 
-    private JPanel availableServicePanel;
-    private JPanel unavailableServicePanel;
-
+    // The MultiplayerCardPanel instance.
     private static MultiplayerCardPanel instance;
 
+    // Builds the MultiPlayerCardPanel instance.
     private MultiplayerCardPanel() {}
 
+    /**
+     * Returns the MultiplayerCardPanel instance.
+     * @return The MultiplayerCardPanel instance.
+     */
     public static MultiplayerCardPanel getInstance() {
         if(instance == null) instance = new MultiplayerCardPanel();
         return instance;
     }
 
+    /** Initialize the MultiplayerCardPanel instance. */
     public void init() {
-        if (availableServicePanel == null) {
-            throw new IllegalArgumentException("Available service panel is null");
-        } if (unavailableServicePanel == null) {
-            throw new IllegalArgumentException("Unavailable service panel is null");
-        }
-
         setOpaque(false);
         setLayout(new CardLayout());
-        add(unavailableServicePanel, UNAVAILABLE_SERVICE_PANEL);
-        add(availableServicePanel, AVAILABLE_SERVICE_PANEL);
+        add(Objects.requireNonNull(getFirstComponent()), UNAVAILABLE_SERVICE_PANEL);
+        add(Objects.requireNonNull(getSecondComponent()), AVAILABLE_SERVICE_PANEL);
     }
 
-    public void setAvailableServicePanel(@NotNull JPanel availableServicePanel) {
-        this.availableServicePanel = availableServicePanel;
-    }
-
-    public void setUnavailableServicePanel(@NotNull JPanel unavailableServicePanel) {
-        this.unavailableServicePanel = unavailableServicePanel;
-    }
 }

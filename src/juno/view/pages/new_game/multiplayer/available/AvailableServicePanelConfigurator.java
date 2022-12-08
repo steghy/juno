@@ -25,9 +25,14 @@
 
 package juno.view.pages.new_game.multiplayer.available;
 
+/**
+ * @author Simone Gentili
+ */
 public class AvailableServicePanelConfigurator {
 
+    // Builds a AvailableServicePanelConfigurator object.
     private AvailableServicePanelConfigurator() {}
 
     public static void configure() {}
+
 }

@@ -28,23 +28,28 @@ package juno.view.pages.new_game.single_player.difficulty;
 import juno.view.pages.new_game.single_player.difficulty.menu.MenuPanel;
 import juno.view.pages.new_game.single_player.difficulty.title.TitlePanel;
 
+/**
+ * @author Simone Gentili
+ */
 public class DifficultyPanelConfigurator {
 
+    // Builds the DifficultyPanelConfigurator object.
     private DifficultyPanelConfigurator() {}
 
     public static void configure() {
-        // MAIN COMPONENT
+        // Main component.
         DifficultyPanel difficultyPanel = DifficultyPanel.getInstance();
 
-        // SUB-COMPONENTS
+        // Components.
         TitlePanel titlePanel = TitlePanel.getInstance();
         MenuPanel menuPanel = MenuPanel.getInstance();
 
-        // ADDING COMPONENT
-        difficultyPanel.setTitlePanel(titlePanel);
-        difficultyPanel.setMenuPanel(menuPanel);
+        // Components settings.
+        difficultyPanel.setFirstComponent(titlePanel); // Title panel.
+        difficultyPanel.setSecondComponent(menuPanel); // Menu panel.
 
-        // INITIALIZATION
+        // Main component initialization.
         difficultyPanel.init();
     }
+
 }

@@ -25,15 +25,20 @@
 
 package juno.view.pages.new_game.single_player.match;
 
+/**
+ * @author Simone Gentili
+ */
 public class MatchPanelConfigurator {
 
+    // Builds the MatchPanelConfiguration.
     private MatchPanelConfigurator() {}
 
     public static void configure() {
-        // MAIN-COMPONENT
+        // Main component.
         MatchPanel matchPanel = MatchPanel.getInstance();
 
-        // INITIALIZATION
+        // Main component initialization.
         matchPanel.init();
     }
+
 }

@@ -25,49 +25,47 @@
 
 package juno.view.pages.new_game.multiplayer.unavailable.title;
 
-import org.jetbrains.annotations.NotNull;
+import juno.view.pages.AbstractFirstComponent;
 
-import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
-public class TitlePanel extends JPanel {
+/**
+ * @author Simone Gentili
+ */
+public class TitlePanel
+        extends AbstractFirstComponent {
 
-    AbstractButton titleButton;
+    // The TitlePanel instance.
     private static TitlePanel instance;
 
+    // Builds the TitlePanel instance.
     private TitlePanel() {}
 
+    /**
+     * Returns the TitlePanel instance.
+     * @return The TitlePanel instance.
+     */
     public static TitlePanel getInstance() {
         if(instance == null) {
             instance = new TitlePanel();
         } return instance;
     }
 
+    /** Initialize the TitlePanel instance. */
     public void init() {
-        if (titleButton == null) {
-            throw new IllegalArgumentException("Title button is null");
-        }
-
         setOpaque(false);
         setLayout(new GridBagLayout());
-
         GridBagConstraints gbc = new GridBagConstraints();
 
-        // TITLE BUTTON
+        // Title button.
         gbc.gridx = 0;
         gbc.gridy = 0;
-
         gbc.weightx = 0.5;
         gbc.weighty = 0.5;
-
         gbc.anchor = GridBagConstraints.CENTER;
-
         gbc.fill = GridBagConstraints.CENTER;
-
-        add(titleButton, gbc);
+        add(Objects.requireNonNull(getFirstComponent()), gbc);
     }
 
-    public void setTitleButton(@NotNull AbstractButton titleButton) {
-        this.titleButton = titleButton;
-    }
 }

@@ -25,76 +25,59 @@
 
 package juno.view.pages.new_game.single_player.players;
 
-import org.jetbrains.annotations.NotNull;
+import juno.view.pages.AbstractSecondComponent;
 
-import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
+/**
+ * @author Simone Gentili
+ */
 public class PlayersNumberPanel
-        extends JPanel {
+        extends AbstractSecondComponent {
 
-    private JPanel titlePanel;
-    private JPanel menuPanel;
-
+    // The PlayersNumberPanel instance.
     private static PlayersNumberPanel instance;
 
-    private PlayersNumberPanel() {}
+    // Builds the PlayersNumberPanel instance.
+    private PlayersNumberPanel() {
+    }
 
+    /**
+     * Returns the PlayersNumberPanel instance.
+     *
+     * @return The PlayersNumberPanel instance.
+     */
     public static PlayersNumberPanel getInstance() {
-        if(instance == null) instance = new PlayersNumberPanel();
+        if (instance == null) instance = new PlayersNumberPanel();
         return instance;
     }
 
+    /**
+     * Initialize the PlayersNumberPanel instance.
+     */
     public void init() {
-        if(titlePanel == null) {
-            throw new IllegalArgumentException("Title panel is null");
-        } if(menuPanel == null) {
-            throw new IllegalArgumentException("Menu panel is null");
-        }
-
         setOpaque(false);
         setLayout(new GridBagLayout());
-
         GridBagConstraints gbc = new GridBagConstraints();
 
+        // Title panel.
         gbc.gridx = 0;
         gbc.gridy = 0;
-
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-
         gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(0, 0, 30, 0);
+        add(Objects.requireNonNull(getFirstComponent()), gbc);
 
-        gbc.insets = new Insets(0,0,30,0);
-
-        add(titlePanel, gbc);
-
+        // Menu panel.
         gbc.gridx = 0;
         gbc.gridy = 1;
-
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-
         gbc.anchor = GridBagConstraints.CENTER;
-
-        gbc.insets = new Insets(0,0,0,0);
-
-        add(menuPanel, gbc);
+        gbc.insets = new Insets(0, 0, 0, 0);
+        add(Objects.requireNonNull(getSecondComponent()), gbc);
     }
 
-    public void setTitlePanel(@NotNull JPanel titlePanel) {
-        this.titlePanel = titlePanel;
-    }
-
-    public void setMenuPanel(@NotNull JPanel menuPanel) {
-        this.menuPanel = menuPanel;
-    }
-
-    public JPanel getTitlePanel() {
-        return titlePanel;
-    }
-
-    public JPanel getMenuPanel() {
-        return menuPanel;
-    }
 }

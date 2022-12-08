@@ -27,17 +27,28 @@ package juno.view.pages.new_game.single_player.match;
 
 import javax.swing.*;
 
+/**
+ * @author Simone Gentili
+ */
 public class MatchPanel
         extends JPanel {
 
+    // The MatchPanel instance.
     private static MatchPanel instance;
 
+    // Builds the MatchPanel instance.
     private MatchPanel() {}
 
+    /**
+     * Returns the MatchPanel instance.
+     * @return The MatchPanel instance.
+     */
     public static MatchPanel getInstance() {
         if(instance == null) instance = new MatchPanel();
         return instance;
     }
 
+    /** Initialize the MatchPanel instance. */
     public void init() {}
+
 }

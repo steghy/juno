@@ -34,22 +34,26 @@ import juno.view.util.ImageResizer;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * @author Simone Gentili
+ */
 public class MenuPanelConfigurator {
 
+    // Builds a MenuPanelConfigurator object.
     private MenuPanelConfigurator() {}
 
     public static void configure() {
-        // MAIN COMPONENT
+        // Main component.
         MenuPanel menuPanel = MenuPanel.getInstance();
 
-        // SUB COMPONENT
+        // Components.
         AbstractButton backButton = ButtonFactory.createButton(ButtonLibrary.BACK);
         JLabel unavailableServiceLabel = new JLabel();
 
-        // RESIZE IMAGE
+        // Image resizing.
         ImageResizer.resize(backButton, 2.0);
 
-        // UNAVAILABLE SERVICE LABEL SETTING
+        // Unavailable service text.
         String unavailableServiceText =
                 """
                         We are sorry to inform you that unfortunately\s
@@ -60,14 +64,16 @@ public class MenuPanelConfigurator {
         unavailableServiceLabel.setFont(new Font(Font.DIALOG, Font.BOLD, 30));
         unavailableServiceLabel.setForeground(Color.WHITE);
 
-        // ADDING COMPONENTS
-        menuPanel.setUnavailableServiceLabel(unavailableServiceLabel);
-        menuPanel.setBackButton(backButton);
+        // Components settings.
+        menuPanel.setFirstComponent(unavailableServiceLabel); // Unavailable service label.
+        menuPanel.setSecondComponent(backButton);             // Back button.
 
-        // ACTION LISTENERS
-        backButton.addActionListener(new ChangePanelAction(NewGameCardPanel.getInstance(), NewGameCardPanel.NEW_GAME_PANEL));
+        // Action listeners.
+        backButton.addActionListener(new ChangePanelAction(
+                NewGameCardPanel.getInstance(), NewGameCardPanel.NEW_GAME_PANEL));
 
-        // MAIN COMPONENT INITIALIZATION
+        // Main component initialization.
         menuPanel.init();
     }
+
 }

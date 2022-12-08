@@ -28,23 +28,28 @@ package juno.view.pages.new_game.single_player.players;
 import juno.view.pages.new_game.single_player.players.menu.MenuPanel;
 import juno.view.pages.new_game.single_player.players.title.TitlePanel;
 
+/**
+ * @author Simone Gentili
+ */
 public class PlayersNumberPanelConfigurator {
 
+    // Builds a PlayersNumberPanelConfigurator object.
     private PlayersNumberPanelConfigurator() {}
 
     public static void configure() {
-        // MAIN-COMPONENTS
+        // Main component.
         PlayersNumberPanel playerNumbersPanel = PlayersNumberPanel.getInstance();
 
-        // SUB-COMPONENTS
+        // Components.
         MenuPanel menuPanel = MenuPanel.getInstance();
         TitlePanel titlePanel = TitlePanel.getInstance();
 
-        // ADDING COMPONENTS
-        playerNumbersPanel.setTitlePanel(titlePanel);
-        playerNumbersPanel.setMenuPanel(menuPanel);
+        // Components settings.
+        playerNumbersPanel.setFirstComponent(titlePanel); // Title panel.
+        playerNumbersPanel.setSecondComponent(menuPanel); // Menu panel.
 
-        // INITIALIZATION
+        // Main component initialization.
         playerNumbersPanel.init();
     }
+
 }

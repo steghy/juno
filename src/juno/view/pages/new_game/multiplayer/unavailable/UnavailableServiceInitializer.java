@@ -28,16 +28,21 @@ package juno.view.pages.new_game.multiplayer.unavailable;
 import juno.view.pages.new_game.multiplayer.unavailable.menu.MenuPanelConfigurator;
 import juno.view.pages.new_game.multiplayer.unavailable.title.TitlePanelConfigurator;
 
+/**
+ * @author Simone Gentili
+ */
 public class UnavailableServiceInitializer {
 
+    // Builds a UnavailableServiceInitializer object.
     private UnavailableServiceInitializer() {}
 
     public static void initialize() {
-        // SUB COMPONENTS CONFIGURATION
+        // Components configuration.
         MenuPanelConfigurator.configure();
         TitlePanelConfigurator.configure();
 
-        // MAIN COMPONENT CONFIGURATION
+        // Main component configuration.
         UnavailableServicePanelConfigurator.configure();
     }
+
 }

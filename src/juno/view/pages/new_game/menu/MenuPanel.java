@@ -26,11 +26,13 @@
 package juno.view.pages.new_game.menu;
 
 import juno.view.pages.AbstractThirdComponent;
-import org.jetbrains.annotations.NotNull;
 
-import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
+/**
+ * @author Simone Gentili
+ */
 public class MenuPanel
         extends AbstractThirdComponent {
 
@@ -41,86 +43,52 @@ public class MenuPanel
     private MenuPanel() {}
 
     /**
-     * Returns
-     * @return
+     * Returns the MenuPanel instance.
+     * @return The MenuPanel instance.
      */
     public static MenuPanel getInstance() {
         if(instance == null) instance = new MenuPanel();
         return instance;
     }
-    
-    public void init() {
-        if (singlePlayer == null) {
-            throw new IllegalArgumentException("Single player button is null");
-        } if (multiPlayer == null) {
-            throw new IllegalArgumentException("Multiplayer button is null");
-        } if (backButton == null) {
-            throw new IllegalArgumentException("Back button is null");
-        }
 
+    /** Initialize the MenuPanel instance. */
+    public void init() {
         setOpaque(false);
         setLayout(new GridBagLayout());
-
         GridBagConstraints gbc = new GridBagConstraints();
 
-        // SINGLE PLAYER BUTTON
+        // Single player button.
         gbc.gridx = 0;
         gbc.gridy = 1;
-
         gbc.weightx = 0.01;
         gbc.weighty = 0.01;
-
         gbc.anchor = GridBagConstraints.CENTER;
-
         gbc.insets = new Insets(5,0,5,0);
-
         gbc.ipadx = 0;
         gbc.ipady = 0;
+        this.add(Objects.requireNonNull(getFirstComponent()), gbc);
 
-        this.add(singlePlayer, gbc);
-
-        // MULTIPLAYER BUTTON
+        // Multiplayer button.
         gbc.gridx = 0;
         gbc.gridy = 2;
-
         gbc.weightx = 0.01;
         gbc.weighty = 0.01;
-
         gbc.anchor = GridBagConstraints.CENTER;
-
         gbc.insets = new Insets(5,0,5,0);
-
         gbc.ipadx = 0;
         gbc.ipady = 0;
+        this.add(Objects.requireNonNull(getSecondComponent()), gbc);
 
-        this.add(multiPlayer, gbc);
-
-        // BACK BUTTON
+        // Back button.
         gbc.gridx = 0;
         gbc.gridy = 3;
-
         gbc.weightx = 0.01;
         gbc.weighty = 0.01;
-
         gbc.anchor = GridBagConstraints.CENTER;
-
         gbc.insets = new Insets(5,0,5,0);
-
         gbc.ipadx = 0;
         gbc.ipady = 0;
-
-        this.add(backButton, gbc);
-    }
-    
-    public void setSinglePlayer(@NotNull AbstractButton singlePlayer) {
-        this.singlePlayer = singlePlayer;
+        this.add(Objects.requireNonNull(getThirdComponent()), gbc);
     }
 
-    public void setMultiPlayer(@NotNull AbstractButton multiPlayer) {
-        this.multiPlayer = multiPlayer;
-    }
-
-    public void setBackButton(@NotNull AbstractButton backButton) {
-        this.backButton = backButton;
-    }
 }

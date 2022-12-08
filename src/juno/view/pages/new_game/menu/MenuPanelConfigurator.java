@@ -37,42 +37,49 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 
+/**
+ * @author Simone Gentili
+ */
 public class MenuPanelConfigurator {
 
+    // Builds a MenuPanelConfigurator object.
     private MenuPanelConfigurator() {}
 
     public static void configure() {
-        // MAIN COMPONENT
+        // Main component.
         MenuPanel newGameMenuPanel = MenuPanel.getInstance();
 
-        // SUB-COMPONENTS
+        // Components.
         AbstractButton singlePlayer = ButtonFactory.createButton(ButtonLibrary.SINGLE_PLAYER);
         AbstractButton multiPlayer = ButtonFactory.createButton(ButtonLibrary.MULTIPLAYER);
         AbstractButton backButton = ButtonFactory.createButton(ButtonLibrary.BACK);
 
-        // RESIZE IMAGES
+        // Images resizing.
         ImageResizer.resize(singlePlayer, 3.0);
         ImageResizer.resize(multiPlayer, 3.0);
         ImageResizer.resize(backButton, 3.0);
 
-
-        // BORDER
+        // Border settings.
         RoundedBorder insideBorder = new RoundedBorder(50, 1, null, Color.WHITE);
         RoundedBorder outsideBorder = new RoundedBorder(50, 1, null, Color.RED);
         Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
         newGameMenuPanel.setBorder(border);
 
-        // ACTION LISTENERS
-        singlePlayer.addActionListener(new ChangePanelAction(NewGameCardPanel.getInstance(), NewGameCardPanel.SINGLE_PLAYER_PANEL));
-        multiPlayer.addActionListener(new ChangePanelAction(NewGameCardPanel.getInstance(), NewGameCardPanel.MULTIPLAYER_PANEL));
-        backButton.addActionListener(new ChangePanelAction(MainCardPanel.getInstance(), MainCardPanel.MAIN_PANEL));
+        // Action listeners.
+        singlePlayer.addActionListener(new ChangePanelAction(
+                NewGameCardPanel.getInstance(), NewGameCardPanel.SINGLE_PLAYER_PANEL));
+        multiPlayer.addActionListener(new ChangePanelAction(
+                NewGameCardPanel.getInstance(), NewGameCardPanel.MULTIPLAYER_PANEL));
+        backButton.addActionListener(new ChangePanelAction(
+                MainCardPanel.getInstance(), MainCardPanel.MAIN_PANEL));
 
-        // ADDING COMPONENTS
-        newGameMenuPanel.setSinglePlayer(singlePlayer);
-        newGameMenuPanel.setMultiPlayer(multiPlayer);
-        newGameMenuPanel.setBackButton(backButton);
+        // Components settings.
+        newGameMenuPanel.setFirstComponent(singlePlayer); // Single-player button.
+        newGameMenuPanel.setSecondComponent(multiPlayer); // Multiplayer button.
+        newGameMenuPanel.setThirdComponent(backButton);   // Back button.
 
-        // INITIALIZATION
+        // Main component initialization.
         newGameMenuPanel.init();
     }
+
 }

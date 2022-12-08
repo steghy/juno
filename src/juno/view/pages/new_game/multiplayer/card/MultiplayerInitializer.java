@@ -28,16 +28,21 @@ package juno.view.pages.new_game.multiplayer.card;
 import juno.view.pages.new_game.multiplayer.available.AvailableServiceInitializer;
 import juno.view.pages.new_game.multiplayer.unavailable.UnavailableServiceInitializer;
 
+/**
+ * @author Simone Gentili
+ */
 public class MultiplayerInitializer {
 
+    // Builds a MultiplayerInitializer object.
     private MultiplayerInitializer() {}
 
     public static void initialize() {
-        // SUB COMPONENTS CONFIGURATION
+        // Components configuration.
         AvailableServiceInitializer.initialize();
         UnavailableServiceInitializer.initialize();
 
-        // MAIN COMPONENT CONFIGURATION
+        // Main component configuration.
         MultiplayerCardPanelConfigurator.configure();
     }
+
 }

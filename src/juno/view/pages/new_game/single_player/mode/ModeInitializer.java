@@ -28,16 +28,21 @@ package juno.view.pages.new_game.single_player.mode;
 import juno.view.pages.new_game.single_player.mode.menu.MenuPanelConfigurator;
 import juno.view.pages.new_game.single_player.mode.title.TitlePanelConfigurator;
 
+/**
+ * @author Simone Gentili
+ */
 public class ModeInitializer {
 
+    // Builds a ModeInitializer object.
     private ModeInitializer() {}
 
     public static void initialize() {
-        // SUB COMPONENTS CONFIGURATION
+        // Components configurations.
         TitlePanelConfigurator.configure();
         MenuPanelConfigurator.configure();
 
-        // MAIN COMPONENT CONFIGURATION
+        // Main component configuration.
         ModePanelConfigurator.configure();
     }
+
 }

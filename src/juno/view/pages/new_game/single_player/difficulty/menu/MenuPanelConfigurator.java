@@ -46,40 +46,39 @@ public class MenuPanelConfigurator {
     // Builds a MenuPanelConfigurator object.
     private MenuPanelConfigurator() {}
 
-    /** Configure the difficulty panel. */
     public static void configure() {
         // Main components.
         MenuPanel menuPanel = MenuPanel.getInstance();
 
-        // components.
-        AbstractButton easyButton   = ButtonFactory.createButton(ButtonLibrary.EASY);
-        AbstractButton mediumButton = ButtonFactory.createButton(ButtonLibrary.MEDIUM);
-        AbstractButton hardButton   = ButtonFactory.createButton(ButtonLibrary.HARD);
+        // Components.
+        AbstractButton easyDifficultyButton   = ButtonFactory.createButton(ButtonLibrary.EASY);
+        AbstractButton mediumDifficultyButton = ButtonFactory.createButton(ButtonLibrary.MEDIUM);
+        AbstractButton hardDifficultyButton   = ButtonFactory.createButton(ButtonLibrary.HARD);
         AbstractButton backButton   = ButtonFactory.createButton(ButtonLibrary.BACK);
         AbstractButton startButton  = ButtonFactory.createButton(ButtonLibrary.BACK);
 
         // Images resizing.
-        ImageResizer.resize(easyButton, 3.0);
-        ImageResizer.resize(mediumButton, 3.0);
-        ImageResizer.resize(hardButton, 3.0);
+        ImageResizer.resize(easyDifficultyButton, 3.0);
+        ImageResizer.resize(mediumDifficultyButton, 3.0);
+        ImageResizer.resize(hardDifficultyButton, 3.0);
         ImageResizer.resize(backButton, 3.0);
         ImageResizer.resize(startButton, 3.0);
 
         // Action listeners.
         // Change panel actions.
-        easyButton.addActionListener(new ChangePanelAction(
+        easyDifficultyButton.addActionListener(new ChangePanelAction(
                 SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MODE_PANEL));
-        mediumButton.addActionListener(new ChangePanelAction(
+        mediumDifficultyButton.addActionListener(new ChangePanelAction(
                 SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MODE_PANEL));
-        hardButton.addActionListener(new ChangePanelAction(
+        hardDifficultyButton.addActionListener(new ChangePanelAction(
                 SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MODE_PANEL));
         backButton.addActionListener(new ChangePanelAction(
                 SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.PLAYERS_NUMBER_PANEL));
 
         // Difficulty actions.
-        easyButton.addActionListener(new DifficultyAction(Difficulty.EASY));
-        mediumButton.addActionListener(new DifficultyAction(Difficulty.MEDIUM));
-        hardButton.addActionListener(new DifficultyAction(Difficulty.HARD));
+        easyDifficultyButton.addActionListener(new DifficultyAction(Difficulty.EASY));
+        mediumDifficultyButton.addActionListener(new DifficultyAction(Difficulty.MEDIUM));
+        hardDifficultyButton.addActionListener(new DifficultyAction(Difficulty.HARD));
 
 
         // Inside Border.
@@ -93,11 +92,11 @@ public class MenuPanelConfigurator {
         menuPanel.setBorder(border);
 
         // Setting components.
-        menuPanel.setEasyButton(easyButton);
-        menuPanel.setMedium(mediumButton);
-        menuPanel.setHardButton(hardButton);
-        menuPanel.setBackButton(backButton);
-        menuPanel.setStartButton(startButton);
+        menuPanel.setFirstComponent(easyDifficultyButton);    // Easy difficulty button.
+        menuPanel.setSecondComponent(mediumDifficultyButton); // Medium difficulty button.
+        menuPanel.setThirdComponent(hardDifficultyButton);    // Hard difficulty button.
+        menuPanel.setFourthComponent(backButton);   // Back button.
+        menuPanel.setFifthComponent(startButton);   // Start button.
 
         // Main component initialization.
         menuPanel.init();

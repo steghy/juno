@@ -25,129 +25,87 @@
 
 package juno.view.pages.new_game.single_player.difficulty.menu;
 
-import org.jetbrains.annotations.NotNull;
+import juno.view.pages.AbstractFifthComponent;
 
-import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
+/**
+ * @author Simone Gentili
+ */
 public class MenuPanel
-        extends JPanel {
+        extends AbstractFifthComponent {
 
-    private AbstractButton easyButton;
-    private AbstractButton mediumButton;
-    private AbstractButton hardButton;
-    private AbstractButton backButton;
-    private AbstractButton startButton;
-
+    // The MenuPanel instance.
     private static MenuPanel instance;
 
+    // Builds the MenuPanel instance.
     private MenuPanel() {}
 
+    /**
+     * Returns the MenuPanel instance.
+     * @return The MenuPanel instance.
+     */
     public static MenuPanel getInstance() {
         if(instance == null) instance = new MenuPanel();
         return instance;
     }
 
+    /** Initialize the MenuPanel instance. */
     public void init() {
-        if (easyButton == null) throw new IllegalArgumentException("Easy button is null");
-        if (mediumButton == null) throw new IllegalArgumentException("Medium button is null");
-        if (hardButton == null) throw new IllegalArgumentException("Hard button is null");
-        if (backButton == null) throw new IllegalArgumentException("Back button is null");
-
         setOpaque(false);
         setLayout(new GridBagLayout());
-
         GridBagConstraints gbc = new GridBagConstraints();
 
-        // EASY BUTTON
+        // Easy difficulty button.
         gbc.gridx = 0;
         gbc.gridy = 0;
-
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-
         gbc.insets = new Insets(25,0,0,25);
-
         gbc.ipadx = 0;
         gbc.ipady = 0;
+        this.add(Objects.requireNonNull(getFirstComponent()), gbc);
 
-        this.add(easyButton, gbc);
-
-        // MEDIUM BUTTON
+        // Medium difficulty button.
         gbc.gridx = 1;
         gbc.gridy = 0;
-
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-
         gbc.insets = new Insets(0,0,0,25);
-
         gbc.ipadx = 0;
         gbc.ipady = 0;
+        this.add(Objects.requireNonNull(getSecondComponent()), gbc);
 
-        this.add(mediumButton, gbc);
-
-        // HARD BUTTON
+        // Hard difficulty button.
         gbc.gridx = 2;
         gbc.gridy = 0;
-
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-
         gbc.insets = new Insets(0,0,0,0);
-
         gbc.ipadx = 0;
         gbc.ipady = 0;
+        this.add(Objects.requireNonNull(getThirdComponent()), gbc);
 
-        this.add(hardButton, gbc);
-
-        // BACK BUTTON
+        // Back button.
         gbc.gridx = 0;
         gbc.gridy = 1;
-
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-
         gbc.insets = new Insets(0,0,0,0);
-
         gbc.ipadx = 0;
         gbc.ipady = 0;
-
-        this.add(backButton, gbc);
+        this.add(Objects.requireNonNull(getFourthComponent()), gbc);
 
         // Start button.
         gbc.gridx = 1;
         gbc.gridy = 1;
-
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-
         gbc.insets = new Insets(0,0,0,0);
-
         gbc.ipadx = 0;
         gbc.ipady = 0;
-
-        this.add(startButton, gbc);
-    }
-
-    public void setEasyButton(@NotNull AbstractButton easyButton) {
-        this.easyButton = easyButton;
-    }
-
-    public void setMedium(@NotNull AbstractButton mediumButton) {
-        this.mediumButton = mediumButton;
-    }
-
-    public void setHardButton(@NotNull AbstractButton hardButton) {
-        this.hardButton = hardButton;
-    }
-
-    public void setBackButton(@NotNull AbstractButton backButton) {
-        this.backButton = backButton;
-    }
-
-    public void setStartButton(@NotNull AbstractButton startButton) {
-        this.startButton = startButton;
+        this.add(Objects.requireNonNull(getFifthComponent()), gbc);
     }
 
 }

@@ -23,37 +23,38 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.new_game.multiplayer.unavailable.title;
+package juno.view.pages;
 
-import juno.view.factories.ButtonFactory;
-import juno.view.factories.ButtonLibrary;
-import juno.view.util.ImageResizer;
+import juno.view.pages.AbstractFourthComponent;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import javax.swing.*;
+import java.awt.*;
 
 /**
  * @author Simone Gentili
  */
-public class TitlePanelConfigurator {
+public abstract class AbstractFifthComponent
+        extends AbstractFourthComponent {
 
-    // Builds a TitlePanelConfigurator object.
-    private TitlePanelConfigurator() {}
+    // The fifth component.
+    private Component fifthComponent;
 
-    public static void configure() {
-        // Main component.
-        TitlePanel titlePanel = TitlePanel.getInstance();
+    /**
+     * Sets the fifth component of this object.
+     * @param fifthComponent A Component object.
+     */
+    public void setFifthComponent(@NotNull Component fifthComponent) {
+        this.fifthComponent = fifthComponent;
+    }
 
-        // Component.
-        AbstractButton titleButton = ButtonFactory.createButton(ButtonLibrary.UNAVAILABLE_SERVICE);
-
-        // Image resizing.
-        ImageResizer.resize(titleButton, 2.0);
-
-        // Component setting.
-        titlePanel.setFirstComponent(titleButton); // Title button.
-
-        // Main component initialization.
-        titlePanel.init();
+    /**
+     * Returns the fifth component of this object.
+     * @return A Component object.
+     */
+    @Nullable
+    public Component getFifthComponent() {
+        return fifthComponent;
     }
 
 }

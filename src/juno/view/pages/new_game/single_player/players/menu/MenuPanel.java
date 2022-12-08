@@ -25,123 +25,81 @@
 
 package juno.view.pages.new_game.single_player.players.menu;
 
-import org.jetbrains.annotations.NotNull;
+import juno.view.pages.AbstractFourthComponent;
 
-import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
+/**
+ * @author Simone Gentili
+ */
 public class MenuPanel
-        extends JPanel {
+        extends AbstractFourthComponent {
 
-    private AbstractButton twoPlayers;
-    private AbstractButton threePlayers;
-    private AbstractButton fourPlayers;
-    private AbstractButton backButton;
-
+    // The MenuPanel instance.
     private static MenuPanel instance;
 
-    private MenuPanel() {
-    }
+    // Builds the MenuPanel instance.
+    private MenuPanel() {}
 
+    /**
+     * Returns the MenuPanel instance.
+     * @return The MenuPanel instance.
+     */
     public static MenuPanel getInstance() {
         if (instance == null) instance = new MenuPanel();
         return instance;
     }
 
+    /** Initialize the MenuPanel instance. */
     public void init() {
-        if(twoPlayers == null) {
-            throw new IllegalArgumentException("Two players button is null");
-        } if(threePlayers == null) {
-            throw new IllegalArgumentException("Three players button is null");
-        } if(fourPlayers == null) {
-            throw new IllegalArgumentException("Four players button is null");
-        } if(backButton == null) {
-            throw new IllegalArgumentException("Back button is null");
-        }
-
         setOpaque(false);
         setLayout(new GridBagLayout());
-
         GridBagConstraints gbc = new GridBagConstraints();
 
-        // TWO PLAYERS BUTTON
+        // Two players button.
         gbc.gridx = 0;
         gbc.gridy = 0;
-
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-
         gbc.anchor = GridBagConstraints.CENTER;
-
         gbc.insets = new Insets(0, 0, 0, 25);
-
         gbc.ipadx = 0;
         gbc.ipady = 0;
+        this.add(Objects.requireNonNull(getFirstComponent()), gbc);
 
-        this.add(twoPlayers, gbc);
-
-        // THREE PLAYERS
+        // Three players button.
         gbc.gridx = 1;
         gbc.gridy = 0;
-
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-
         gbc.anchor = GridBagConstraints.CENTER;
-
         gbc.insets = new Insets(0, 0, 0, 25);
-
         gbc.ipadx = 0;
         gbc.ipady = 0;
+        this.add(Objects.requireNonNull(getSecondComponent()), gbc);
 
-        this.add(threePlayers, gbc);
-
-        // FOUR PLAYERS BUTTON
+        // Four players button.
         gbc.gridx = 2;
         gbc.gridy = 0;
-
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-
         gbc.anchor = GridBagConstraints.CENTER;
-
         gbc.insets = new Insets(0, 0, 0, 0);
-
         gbc.ipadx = 0;
         gbc.ipady = 0;
+        this.add(Objects.requireNonNull(getThirdComponent()), gbc);
 
-        this.add(fourPlayers, gbc);
-
-        // BACK BUTTOn
+        // Back button.
         gbc.gridx = 1;
         gbc.gridy = 1;
-
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-
         gbc.anchor = GridBagConstraints.CENTER;
-
         gbc.insets = new Insets(0, 0, 0, 0);
-
         gbc.ipadx = 0;
         gbc.ipady = 0;
-
-        this.add(backButton, gbc);
+        this.add(Objects.requireNonNull(getFourthComponent()), gbc);
     }
 
-    public void setTwoPlayers(@NotNull AbstractButton twoPlayers) {
-        this.twoPlayers = twoPlayers;
-    }
-
-    public void setThreePlayers(@NotNull AbstractButton threePlayers) {
-        this.threePlayers = threePlayers;
-    }
-
-    public void setFourPlayers(@NotNull AbstractButton fourPlayers) {
-        this.fourPlayers = fourPlayers;
-    }
-
-    public void setBackButton(@NotNull AbstractButton backButton) {
-        this.backButton = backButton;
-    }
 }
