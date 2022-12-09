@@ -25,33 +25,13 @@
 
 package juno.model.deck;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-/*
+/**
  * @author Simone Gentili
- * @param <T> The type of the cards.
  */
-public abstract class AbstractDiscardedPileUser<T> {
+@FunctionalInterface
+public interface InterfaceDeckGenerator {
 
-    // The Discarded pile.
-    private InterfaceDiscardedPile<T> supplier;
-
-    /**
-     * Sets the List supplier of this object.
-     * @param supplier A List object.
-     */
-    public void setSupplier(@NotNull InterfaceDiscardedPile<T> supplier) {
-        this.supplier = supplier;
-    }
-
-    /**
-     * Returns the List supplier of this object.
-     * @return A List object.
-     */
-    @Nullable
-    public InterfaceDiscardedPile<T> getDiscardedPile() {
-        return supplier;
-    }
+    /** Generates the deck */
+    void generate();
 
 }

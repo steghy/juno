@@ -128,34 +128,22 @@ public class ImageComponentInitializer {
     }
 
     public static void initialize(@NotNull AbstractButton button,
-
                                   @NotNull InterfaceDirectories path,
-
                                   boolean download,
-
                                   String name,
-
                                   String file,
                                   String rolloverFile,
                                   String selectedFile,
                                   String rolloverSelectedFile,
-
                                   Dimension dimension,
-
                                   Constant BOTH_MISSING,
                                   Constant BOTH_SELECTED_MISSING,
-
                                   Constant ALL_MISSING,
-
                                   Constant IMAGE_MISSING,
                                   Constant ROLLOVER_IMAGE_MISSING,
-
                                   Constant SELECTED_IMAGE_MISSING,
                                   Constant ROLLOVER_SELECTED_IMAGE_MISSING) {
-
         button.setName(name);
-
-
         // IMAGE
         String imageAbsolutePath = PathGenerator.generate(path.absolutePath(), file);
         String imagePath = PathGenerator.generate(path.path(), file);

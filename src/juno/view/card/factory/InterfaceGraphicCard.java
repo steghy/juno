@@ -23,35 +23,23 @@
  * SOFTWARE.
  */
 
-package juno.model.deck;
+package juno.view.card.factory;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import juno.view.card.InterfaceButtonCard;
 
-/*
+import java.util.Map;
+
+/**
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
-public abstract class AbstractDiscardedPileUser<T> {
-
-    // The Discarded pile.
-    private InterfaceDiscardedPile<T> supplier;
+@FunctionalInterface
+public interface InterfaceGraphicCard<T> {
 
     /**
-     * Sets the List supplier of this object.
-     * @param supplier A List object.
+     * Returns the graphics cards.
+     * @return A Map object.
      */
-    public void setSupplier(@NotNull InterfaceDiscardedPile<T> supplier) {
-        this.supplier = supplier;
-    }
-
-    /**
-     * Returns the List supplier of this object.
-     * @return A List object.
-     */
-    @Nullable
-    public InterfaceDiscardedPile<T> getDiscardedPile() {
-        return supplier;
-    }
+    Map<T, InterfaceButtonCard<T>> getGraphicCards();
 
 }

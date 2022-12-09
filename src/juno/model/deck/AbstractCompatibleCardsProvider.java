@@ -26,6 +26,7 @@
 package juno.model.deck;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Simone Gentili
@@ -48,6 +49,7 @@ public abstract class AbstractCompatibleCardsProvider<T> {
      * Returns the compatibility checker of this object.
      * @return An InterfaceCompatibilityChecker object.
      */
+    @Nullable
     public InterfaceCompatibilityChecker<T> getCompatibilityChecker() {
         return compatibilityChecker;
     }

@@ -26,6 +26,7 @@
 package juno.model.deck;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Simone Gentili
@@ -48,6 +49,7 @@ public abstract class AbstractDeckFactory<T> {
      * Returns the Cards factory.
      * @return An InterfaceCardFactory object.
      */
+    @Nullable
     public InterfaceCardFactory<T> getFactory(){
         return factory;
     }

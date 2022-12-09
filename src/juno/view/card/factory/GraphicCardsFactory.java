@@ -23,50 +23,59 @@
  * SOFTWARE.
  */
 
-package juno.model.deck;
+package juno.view.card.factory;
 
+import juno.init.Directories;
+import juno.model.card.InterfaceCard;
+import juno.model.deck.InterfaceDeckFactory;
+import juno.model.deck.InterfaceDeckInitializer;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
+import juno.view.card.InterfaceButtonCard;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the cards.
  */
-public class DeckInitializer<T>
-        extends AbstractDeckInitializer<T>
-        implements InterfaceDeckInitializer, Observable {
+public class GraphicCardsFactory
+        extends AbstractGraphicCardsFactory<InterfaceCard>
+        implements InterfaceGraphicCard<InterfaceCard>,
+                    InterfaceGraphicCardsGenerator<InterfaceCard>,
+                    Observer, Observable {
 
     // The Observers List.
     private final List<Observer> observerList;
 
-    // The DeckInitializer instance.
-    private static DeckInitializer<?> instance;
+    // The GraphicCardsFactory instance.
+    private static GraphicCardsFactory instance;
 
-    /* Builds the DeckInitializer instance. */
-    private DeckInitializer() {
+    // Builds the GraphicCardsFactory.
+    private GraphicCardsFactory() {
         observerList = new ArrayList<>();
     }
 
     /**
-     * Returns the DeckInitializer instance.
-     * @return The DeckInitializer instance.
+     * Returns the GraphicCardsFactory instance.
+     * @return The GraphicCardsFactory instance.
      */
-    public static DeckInitializer<?> getInstance() {
-        if(instance == null) instance = new DeckInitializer<>();
+    public static GraphicCardsFactory getInstance() {
+        if(instance == null) instance = new GraphicCardsFactory();
         return instance;
     }
 
     @Override
-    public void initialize() {
-        Objects.requireNonNull(getDeck())
-                .addAll(Objects.requireNonNull(getFactory()).getDeck());
-        Objects.requireNonNull(getMixer()).shuffle(getDeck());
-        updateAll();
+    public Map<InterfaceCard, InterfaceButtonCard<InterfaceCard>> getGraphicCards() {
+        return null;
+    }
+
+    @Override
+    public void generate(@NotNull List<InterfaceCard> cards) {
+
     }
 
     @Override
@@ -76,12 +85,21 @@ public class DeckInitializer<T>
 
     @Override
     public void removeObserver(@NotNull Observer observer) {
-        observerList.add(observer);
+        observerList.remove(observer);
     }
 
     @Override
     public void updateAll() {
         observerList.forEach(observer -> observer.update(this));
+    }
+
+    @Override @SuppressWarnings("unchecked")
+    public void update(@NotNull Object object) {
+        if(object instanceof InterfaceDeckFactory<?> factory)
+            generate((List<InterfaceCard>) Objects.requireNonNull(factory.getDeck()));
+        else throw new IllegalArgumentException(
+                "Invalid object type: " + object.getClass() +
+                        ". InterfaceDeckInitialized expected.");
     }
 
 }

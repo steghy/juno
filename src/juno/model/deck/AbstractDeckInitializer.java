@@ -26,6 +26,7 @@
 package juno.model.deck;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Simone Gentili
@@ -70,6 +71,7 @@ public abstract class AbstractDeckInitializer<T> {
      * Returns the deck factory of this object.
      * @return An InterfaceDeckFactory object.
      */
+    @Nullable
     public InterfaceDeckFactory<T> getFactory() {
         return factory;
     }
@@ -78,6 +80,7 @@ public abstract class AbstractDeckInitializer<T> {
      * Returns the deck of this object.
      * @return An InterfaceDeck object.
      */
+    @Nullable
     public InterfaceDeck<T> getDeck() {
         return deck;
     }
@@ -86,6 +89,7 @@ public abstract class AbstractDeckInitializer<T> {
      * Returns the mixer of this object.
      * @return An InterfaceMixer object.
      */
+    @Nullable
     public InterfaceMixer<T> getMixer() {
         return mixer;
     }

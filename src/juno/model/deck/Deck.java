@@ -31,7 +31,9 @@ import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * This class defines the deck for the game.
@@ -46,7 +48,8 @@ import java.util.List;
  */
 public class Deck<T>
         extends AbstractDeck<T>
-        implements InterfaceDeck<T>, Observable {
+        implements InterfaceDeck<T>,
+                    Observable, Observer {
 
     /* The Observers List */
     private final List<Observer> observerList;
@@ -72,8 +75,8 @@ public class Deck<T>
     public T draw() {
         if(empty()) throw new IllegalArgumentException("Empty deck");
         if(size() < 5) {
-            getFiller().fill(this);
-            getMixer().shuffle(this);
+            Objects.requireNonNull(getFiller()).fill(this);
+            Objects.requireNonNull(getMixer()).shuffle(this);
         } updateAll();
         return pop();
     }
@@ -91,6 +94,16 @@ public class Deck<T>
     @Override
     public void updateAll() {
         observerList.forEach(observer -> observer.update(this));
+    }
+
+    @Override @SuppressWarnings("unchecked")
+    public void update(@NotNull Object object) {
+        if(object instanceof InterfaceDeckFactory<?> factory) {
+            addAll((Collection<? extends T>) factory.getDeck());
+            Objects.requireNonNull(getMixer()).shuffle(this);
+        } else throw new IllegalArgumentException(
+                "Invalid object type: " + object.getClass() +
+                        ". InterfaceDeckFactory expected.");
     }
 
 }

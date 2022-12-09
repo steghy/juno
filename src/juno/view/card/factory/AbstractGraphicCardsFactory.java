@@ -23,35 +23,35 @@
  * SOFTWARE.
  */
 
-package juno.model.deck;
+package juno.view.card.factory;
 
+import juno.model.deck.InterfaceDeck;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-/*
+/**
  * @author Simone Gentili
- * @param <T> The type of the cards.
  */
-public abstract class AbstractDiscardedPileUser<T> {
+public abstract class AbstractGraphicCardsFactory<T> {
 
-    // The Discarded pile.
-    private InterfaceDiscardedPile<T> supplier;
+    // The deck.
+    private InterfaceDeck<T> deck;
 
     /**
-     * Sets the List supplier of this object.
-     * @param supplier A List object.
+     * Sets the deck of this object.
+     * @param deck An InterfaceDeck object.
      */
-    public void setSupplier(@NotNull InterfaceDiscardedPile<T> supplier) {
-        this.supplier = supplier;
+    public void setDeck(@NotNull InterfaceDeck<T> deck) {
+        this.deck = deck;
     }
 
     /**
-     * Returns the List supplier of this object.
-     * @return A List object.
+     * Returns the deck of this object.
+     * @return An InterfaceDeck object.
      */
     @Nullable
-    public InterfaceDiscardedPile<T> getDiscardedPile() {
-        return supplier;
+    public InterfaceDeck<T> getDeck() {
+        return deck;
     }
 
 }

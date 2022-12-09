@@ -29,10 +29,12 @@ import juno.model.card.InterfaceCard;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * This class defines a factory for the 'Uno' deck.
@@ -45,15 +47,19 @@ import java.util.List;
  */
 public class DeckFactory
         extends AbstractDeckFactory<InterfaceCard>
-        implements InterfaceDeckFactory<InterfaceCard>, Observable {
+        implements InterfaceDeckFactory<InterfaceCard>,
+                    InterfaceDeckGenerator, Observable {
 
-    /* The Observers List */
+    // The Observers List.
     private final List<Observer> observerList;
 
-    /* The DeckFactory instance */
+    // The deck.
+    private Collection<InterfaceCard> deck;
+
+    // The DeckFactory instance.
     private static DeckFactory instance;
 
-    /* Builds the DeckFactory */
+    // Builds the DeckFactory.
     private DeckFactory() {
         observerList = new ArrayList<>();
     }
@@ -67,21 +73,28 @@ public class DeckFactory
         return instance;
     }
 
-    @Override
+    @Override @Nullable
     public Collection<InterfaceCard> getDeck() {
-        Collection<InterfaceCard> cards = this.getFactory().getCards();
-        Collection<InterfaceCard> deck = new ArrayList<>();
+        return deck;
+    }
+
+    @Override
+    public void generate() {
+        Collection<InterfaceCard> cards = Objects.requireNonNull(this.getFactory())
+                .getCards();
+        deck = new ArrayList<>();
         cards.forEach(card -> {
             deck.add(card);
             if (card.action() != null) {
                 if (card.action().isJolly()) {
-                    deck.add(card); deck.add(card);
+                    deck.add(card);
+                    deck.add(card);
                 }
             } if(card.action() != null || card.value() != null
                     && card.value() != 0) {
                 deck.add(card);
             }
-        }); return deck;
+        }); updateAll();
     }
 
     @Override

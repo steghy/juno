@@ -26,6 +26,7 @@
 package juno.model.deck;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Stack;
 
@@ -62,6 +63,7 @@ public abstract class AbstractDeck<T>
      * Returns the Deck filler of this object.
      * @return An InterfaceDeckFiller object.
      */
+    @Nullable
     public InterfaceDeckFiller<T> getFiller() {
         return filler;
     }
@@ -70,6 +72,7 @@ public abstract class AbstractDeck<T>
      * Returns the Deck mixer of this object.
      * @return An InterfaceMixer object.
      */
+    @Nullable
     public InterfaceMixer<T> getMixer() {
         return mixer;
     }
