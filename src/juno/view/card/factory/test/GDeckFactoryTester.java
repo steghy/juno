@@ -23,23 +23,32 @@
  * SOFTWARE.
  */
 
-package juno.model.deck.test;
+package juno.view.card.factory.test;
 
+import juno.init.Repository;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.DeckFactory;
-import juno.model.deck.Mixer;
-import juno.model.deck.Deck;
-import juno.model.deck.CardFactory;
+import juno.view.card.factory.GDeckFactory;
+import juno.view.card.factory.Initializer;
+import juno.view.card.factory.InterfaceGDeckFactory;
 
-public class MixerTester {
+import java.util.Objects;
 
-    @SuppressWarnings("unchecked")
+/**
+ * @author Simone Gentili
+ */
+public class GDeckFactoryTester {
+
     public static void main(String[] args) {
-        Mixer mixer = Mixer.getInstance();
-        DeckFactory deckFactory = DeckFactory.getInstance();
-        Deck<InterfaceCard> deck = (Deck<InterfaceCard>) Deck.getInstance();
-        deck.addAll(deckFactory.getDeck());
-        mixer.shuffle(deck);
-        deck.forEach(System.out::println);
+        Repository.setRepository();
+        Initializer.initialize();
+        juno.model.deck.Initializer.initialize();
+        DeckFactory.getInstance().generate();
+        InterfaceGDeckFactory<InterfaceCard> gDeckFactory = GDeckFactory.getInstance();
+        Objects.requireNonNull(gDeckFactory.getGDeck()).forEach((k, v) -> {
+            System.out.println(k + " = " +v);
+        });
+
+        System.out.println(gDeckFactory.getGDeck().size());
     }
 }

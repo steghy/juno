@@ -35,7 +35,6 @@ public class DeckFactoryTester {
     @SuppressWarnings("unchecked")
     public static void main(String[] args) {
         DeckFactory deckFactory = DeckFactory.getInstance();
-        deckFactory.setFactory(CardFactory.getInstance());
         Deck<InterfaceCard> deck = (Deck<InterfaceCard>) Deck.getInstance();
         deck.addAll(deckFactory.getDeck());
         Deck.getInstance().forEach(System.out::println);

@@ -75,7 +75,7 @@ public class GCardFactory
         ImageComponentInitializer.initialize(
                 graphicCard,
                 Objects.requireNonNull(getProvider()).getPath(card),
-                true,
+                false,
                 card.toString(),
                 file + extension,
                 rolloverFile + extension,

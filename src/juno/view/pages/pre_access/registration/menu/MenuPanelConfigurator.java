@@ -51,26 +51,26 @@ public class MenuPanelConfigurator {
         MenuPanel menuPanel = MenuPanel.getInstance();
 
         // components.
-        JLabel userNameLabel = new JLabel("username:");
+        JLabel profileNameLabel = new JLabel("username:");
         JLabel nameLabel = new JLabel("name:");
         JLabel lastNameLabel= new JLabel("last name:");
         JLabel ageLabel = new JLabel("age:");
 
         // Setting components
         // Colors.
-        userNameLabel.setForeground(Color.WHITE);
+        profileNameLabel.setForeground(Color.WHITE);
         nameLabel.setForeground(Color.WHITE);
         lastNameLabel.setForeground(Color.WHITE);
         ageLabel.setForeground(Color.WHITE);
         // Texts.
         Font font = new Font(Font.MONOSPACED, Font.BOLD, 18);
-        userNameLabel.setFont(font);
+        profileNameLabel.setFont(font);
         nameLabel.setFont(font);
         lastNameLabel.setFont(font);
         ageLabel.setFont(font);
 
         // Text fields.
-        JTextField userNameTextField = new JTextField(15);
+        JTextField profileNameTextField = new JTextField(15);
         JTextField nameTextField = new JTextField(15);
         JTextField lastNameTextField = new JTextField(15);
         JTextField ageTextField = new JTextField(15);
@@ -79,19 +79,21 @@ public class MenuPanelConfigurator {
         AbstractButton backButton = ButtonFactory.createButton(ButtonLibrary.BACK);
 
         // Adding components.
+
         // Labels.
-        menuPanel.setProfileNameLabel(userNameLabel);
-        menuPanel.setNameLabel(nameLabel);
-        menuPanel.setLastNameLabel(lastNameLabel);
-        menuPanel.setAgeLabel(ageLabel);
-        // Label fields.
-        menuPanel.setProfileNameTextField(userNameTextField);
-        menuPanel.setNameTextField(nameTextField);
-        menuPanel.setLastNameTextField(lastNameTextField);
-        menuPanel.setAgeTextField(ageTextField);
+        menuPanel.setFirstComponent(profileNameLabel);  // Profile name label.
+        menuPanel.setSecondComponent(nameLabel);        // Name label.
+        menuPanel.setThirdComponent(lastNameLabel);     // Last name label.
+        menuPanel.setFourthComponent(ageLabel);         // Age label.
+
+        // Text fields.
+        menuPanel.setFifthComponent(profileNameTextField); // Profile name text field.
+        menuPanel.setSixComponent(nameTextField);          // Name text field.
+        menuPanel.setSevenComponent(lastNameTextField);    // Last name text field.
+        menuPanel.setEightComponent(ageTextField);         // Age text field.
         // Buttons.
-        menuPanel.setConfirmButton(confirmButton);
-        menuPanel.setBackButton(backButton);
+        menuPanel.setNineComponent(confirmButton);         // Confirm button.
+        menuPanel.setTenComponent(backButton);             // Back button.
 
         // Images resizing.
         ImageResizer.resize(confirmButton, 3.0);

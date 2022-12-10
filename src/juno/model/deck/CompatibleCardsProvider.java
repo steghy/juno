@@ -29,6 +29,7 @@ import juno.model.card.InterfaceCard;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author Simone Gentili
@@ -37,10 +38,25 @@ public class CompatibleCardsProvider
         extends AbstractCompatibleCardsProvider<InterfaceCard>
         implements InterfaceCompatibleCardsProvider<InterfaceCard> {
 
+    // The CompatibleCardsProvider instance.
+    private static CompatibleCardsProvider instance;
+
+    // Builds the CompatibleCardsProvider instance.
+    private CompatibleCardsProvider() {}
+
+    /**
+     * Returns the CompatibleCardsProvider instance.
+     * @return The CompatibleCardsProvider instance.
+     */
+    public static CompatibleCardsProvider getInstance() {
+        if(instance == null) instance = new CompatibleCardsProvider();
+        return instance;
+    }
+
     @Override
     public List<InterfaceCard> getCompatibleCards(@NotNull List<InterfaceCard> cards) {
         return cards.stream()
-                .filter(getCompatibilityChecker()::isCompatible)
+                .filter(Objects.requireNonNull(getCompatibilityChecker())::isCompatible)
                 .toList();
     }
 

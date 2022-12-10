@@ -32,6 +32,7 @@ import org.jetbrains.annotations.Nullable;
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
+@Deprecated
 public abstract class AbstractDeckFactory<T> {
 
     // The Cards factory.

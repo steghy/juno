@@ -35,6 +35,7 @@ import org.jetbrains.annotations.NotNull;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author Simone Gentili
@@ -72,7 +73,7 @@ public class RegistrationDataSender
                     .areCompatible(configurable, provider.provideRegistrationData());
 
         if(!result) {
-            getChanger().change();
+            Objects.requireNonNull(getChanger()).change();
             configurable.configure(properties);
         }
     }

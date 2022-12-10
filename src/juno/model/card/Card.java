@@ -74,4 +74,9 @@ public record Card(InterfaceColor color, Integer value, InterfaceAction action)
         return value;
     }
 
+    @Override
+    public boolean equals(Object object){
+        return this == object;
+    }
+
 }

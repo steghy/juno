@@ -23,23 +23,26 @@
  * SOFTWARE.
  */
 
-package juno.model.deck.test;
+package juno.view.pages;
 
-import juno.model.card.InterfaceCard;
-import juno.model.deck.DeckFactory;
-import juno.model.deck.Mixer;
-import juno.model.deck.Deck;
-import juno.model.deck.CardFactory;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class MixerTester {
+import java.awt.*;
 
-    @SuppressWarnings("unchecked")
-    public static void main(String[] args) {
-        Mixer mixer = Mixer.getInstance();
-        DeckFactory deckFactory = DeckFactory.getInstance();
-        Deck<InterfaceCard> deck = (Deck<InterfaceCard>) Deck.getInstance();
-        deck.addAll(deckFactory.getDeck());
-        mixer.shuffle(deck);
-        deck.forEach(System.out::println);
+public abstract class AbstractSixComponent
+        extends AbstractFifthComponent {
+
+    // The - component.
+    private Component sixComponent;
+
+    public void setSixComponent(@NotNull Component sixComponent) {
+        this.sixComponent = sixComponent;
     }
+
+    @Nullable
+    public Component getSixComponent() {
+        return sixComponent;
+    }
+
 }

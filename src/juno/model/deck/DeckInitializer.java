@@ -37,6 +37,7 @@ import java.util.Objects;
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
+@Deprecated
 public class DeckInitializer<T>
         extends AbstractDeckInitializer<T>
         implements InterfaceDeckInitializer, Observable {

@@ -59,7 +59,7 @@ public class CPathProvider
             if(color.isBlue())  return Directories.BLUE_CARDS;
             if(color.isRed())   return Directories.RED_CARDS;
             if(color.isGreen()) return Directories.GREEN_CARDS;
-            if(color.isBlue())  return Directories.BLUE_CARDS;
+            if(color.isYellow())  return Directories.YELLOW_CARDS;
         } return Directories.JOLLY_CARDS;
     }
 

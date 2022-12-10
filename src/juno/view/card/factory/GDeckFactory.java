@@ -31,11 +31,9 @@ import juno.model.util.Observable;
 import juno.model.util.Observer;
 import juno.view.card.InterfaceGCard;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * @author Simone Gentili
@@ -48,6 +46,9 @@ public class GDeckFactory
 
     // The Observers List.
     private final List<Observer> observerList;
+
+    // The graphic deck
+    private Map<InterfaceCard, InterfaceGCard<InterfaceCard>> gDeck;
 
     // The GraphicCardsFactory instance.
     private static GDeckFactory instance;
@@ -66,13 +67,20 @@ public class GDeckFactory
         return instance;
     }
 
-    @Override
+    @Override @Nullable
     public Map<InterfaceCard, InterfaceGCard<InterfaceCard>> getGDeck() {
-        return null;
+        return gDeck;
     }
 
     @Override
-    public void generate(@NotNull List<InterfaceCard> cards) {}
+    public void generate(@NotNull List<InterfaceCard> cards) {
+        gDeck = new HashMap<>();
+        InterfaceGCardFactory<InterfaceCard> gCardFactory = getFactory();
+        Objects.requireNonNull(gCardFactory);
+        cards.forEach(card ->
+                gDeck.put(card, gCardFactory.create(card)));
+        updateAll();
+    }
 
     @Override
     public void addObserver(@NotNull Observer observer) {

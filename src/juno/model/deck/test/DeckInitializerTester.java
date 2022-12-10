@@ -33,9 +33,6 @@ public class DeckInitializerTester {
 
     @SuppressWarnings("unchecked")
     public static void main(String[] args) {
-        // Deck factory
-        DeckFactory.getInstance().setFactory(CardFactory.getInstance());
-
         // Deck initializer
         DeckInitializer<InterfaceCard> initializer = (DeckInitializer<InterfaceCard>) DeckInitializer.getInstance();
         initializer.setDeck((InterfaceDeck<InterfaceCard>) Deck.getInstance());

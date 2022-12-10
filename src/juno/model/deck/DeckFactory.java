@@ -25,16 +25,16 @@
 
 package juno.model.deck;
 
+import juno.model.card.Card;
 import juno.model.card.InterfaceCard;
+import juno.model.card.actions.Action;
+import juno.model.card.colors.Color;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * This class defines a factory for the 'Uno' deck.
@@ -46,7 +46,6 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class DeckFactory
-        extends AbstractDeckFactory<InterfaceCard>
         implements InterfaceDeckFactory<InterfaceCard>,
                     InterfaceDeckGenerator, Observable {
 
@@ -80,20 +79,21 @@ public class DeckFactory
 
     @Override
     public void generate() {
-        Collection<InterfaceCard> cards = Objects.requireNonNull(this.getFactory())
-                .getCards();
         deck = new ArrayList<>();
-        cards.forEach(card -> {
-            deck.add(card);
-            if (card.action() != null) {
-                if (card.action().isJolly()) {
-                    deck.add(card);
-                    deck.add(card);
-                }
-            } if(card.action() != null || card.value() != null
-                    && card.value() != 0) {
-                deck.add(card);
-            }
+        Arrays.asList(Color.values()).forEach(color -> {
+            // Numerical cards.
+            for(int i = 0; i < 2; i++)
+                for(int j = 1; j < 10; j++)
+                    deck.add(new Card(color, j, null));
+
+            // Zeros cards.
+            deck.add(new Card(color, 0, null));
+
+            // Actions cards.
+            Arrays.asList(Action.values()).forEach(action -> {
+                if(action.isJolly()) deck.add(new Card(null, null, action));
+                else for(int i = 0; i < 2; i++) deck.add(new Card(color, null, action));
+            });
         }); updateAll();
     }
 

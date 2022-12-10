@@ -45,6 +45,7 @@ import java.util.List;
  * and his interface 'InterfaceCard'.
  * @author Simone Gentili
  */
+@Deprecated
  public class CardFactory
         implements InterfaceCardFactory<InterfaceCard> {
 
