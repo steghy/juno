@@ -62,7 +62,7 @@ public class ChangeRegistrationPanelState {
 
         // Cleaning the borders.
         menuPanel.getTextFields().forEach(textField -> {
-            textField.setBorder(null);
+            ((JTextField) textField).setBorder(null);
         });
 
         Border border = BorderFactory.createLineBorder(Color.RED);
@@ -70,22 +70,22 @@ public class ChangeRegistrationPanelState {
             JTextField textField;
             switch (k) {
                 case (Profile.PROFILE_NAME) -> {
-                    textField = menuPanel.getProfileNameTextField();
+                    textField = (JTextField) menuPanel.getFifthComponent();
                     Objects.requireNonNull(textField).setText("");
                     textField.setBorder(BorderFactory.createTitledBorder(border, v));
                 }
                 case (Profile.NAME) -> {
-                    textField = menuPanel.getNameTextField();
+                    textField = (JTextField) menuPanel.getSixComponent();
                     Objects.requireNonNull(textField).setText("");
                     textField.setBorder(BorderFactory.createTitledBorder(border, v));
                 }
                 case (Profile.LAST_NAME) -> {
-                    textField = menuPanel.getLastNameTextField();
+                    textField = (JTextField) menuPanel.getSevenComponent();
                     Objects.requireNonNull(textField).setText("");
                     textField.setBorder(BorderFactory.createTitledBorder(border, v));
                 }
                 case (Profile.AGE) -> {
-                    textField = menuPanel.getAgeTextField();
+                    textField = (JTextField) menuPanel.getEightComponent();
                     Objects.requireNonNull(textField).setText("");
                     textField.setBorder(BorderFactory.createTitledBorder(border, v));
                 }
