@@ -23,9 +23,34 @@
  * SOFTWARE.
  */
 
-package juno.view.util;
+package juno.view.card.factory;
 
-public class ImageToggleButton extends AbstractImageToggleButton {
+import org.jetbrains.annotations.Nullable;
 
-    public ImageToggleButton() {}
+/**
+ * @author Simone Gentili
+ * @param <T> The type of the cards.
+ */
+public abstract class AbstractGDeckFactory<T> {
+
+    // The graphic card factory.
+    private InterfaceGCardFactory<T> factory;
+
+    /**
+     * Sets the graphic card factory of this object.
+     * @param factory An InterfaceGCardFactory object.
+     */
+    public void setFactory(InterfaceGCardFactory<T> factory) {
+        this.factory = factory;
+    }
+
+    /**
+     * Returns the graphic card factory of this object.
+     * @return An InterfaceGCardFactory object.
+     */
+    @Nullable
+    public InterfaceGCardFactory<T> getFactory() {
+        return factory;
+    }
+
 }

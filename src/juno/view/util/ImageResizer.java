@@ -67,7 +67,7 @@ public class ImageResizer {
     public static void resize(@NotNull AbstractButton button, double divisor) {
         Icon icon = button.getIcon();
         button.setPreferredSize(new Dimension(
-                (int) (icon.getIconWidth() / divisor),
-                (int) (icon.getIconHeight()/ divisor)));
+                (int) (icon.getIconWidth()  / divisor),
+                (int) (icon.getIconHeight() / divisor)));
     }
 }

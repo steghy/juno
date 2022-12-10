@@ -25,13 +25,11 @@
 
 package juno.view.card.factory;
 
-import juno.init.Directories;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.InterfaceDeckFactory;
-import juno.model.deck.InterfaceDeckInitializer;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
-import juno.view.card.InterfaceButtonCard;
+import juno.view.card.InterfaceGCard;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -42,20 +40,20 @@ import java.util.Objects;
 /**
  * @author Simone Gentili
  */
-public class GraphicCardsFactory
-        extends AbstractGraphicCardsFactory<InterfaceCard>
-        implements InterfaceGraphicCard<InterfaceCard>,
-                    InterfaceGraphicCardsGenerator<InterfaceCard>,
+public class GDeckFactory
+        extends AbstractGDeckFactory<InterfaceCard>
+        implements InterfaceGDeckFactory<InterfaceCard>,
+        InterfaceGDeckGenerator<InterfaceCard>,
                     Observer, Observable {
 
     // The Observers List.
     private final List<Observer> observerList;
 
     // The GraphicCardsFactory instance.
-    private static GraphicCardsFactory instance;
+    private static GDeckFactory instance;
 
     // Builds the GraphicCardsFactory.
-    private GraphicCardsFactory() {
+    private GDeckFactory() {
         observerList = new ArrayList<>();
     }
 
@@ -63,20 +61,18 @@ public class GraphicCardsFactory
      * Returns the GraphicCardsFactory instance.
      * @return The GraphicCardsFactory instance.
      */
-    public static GraphicCardsFactory getInstance() {
-        if(instance == null) instance = new GraphicCardsFactory();
+    public static GDeckFactory getInstance() {
+        if(instance == null) instance = new GDeckFactory();
         return instance;
     }
 
     @Override
-    public Map<InterfaceCard, InterfaceButtonCard<InterfaceCard>> getGraphicCards() {
+    public Map<InterfaceCard, InterfaceGCard<InterfaceCard>> getGDeck() {
         return null;
     }
 
     @Override
-    public void generate(@NotNull List<InterfaceCard> cards) {
-
-    }
+    public void generate(@NotNull List<InterfaceCard> cards) {}
 
     @Override
     public void addObserver(@NotNull Observer observer) {

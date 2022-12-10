@@ -33,7 +33,8 @@ package juno.model.card.colors;
  * class is a particular color.
  * @author Simone Gentili
  */
-public enum Color implements InterfaceColor {
+public enum Color
+        implements InterfaceColor {
 
     /** The 'Red' color. */
     RED,

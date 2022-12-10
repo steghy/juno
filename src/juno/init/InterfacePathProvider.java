@@ -23,35 +23,18 @@
  * SOFTWARE.
  */
 
-package juno.view.card.factory;
-
-import juno.model.deck.InterfaceDeck;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+package juno.init;
 
 /**
  * @author Simone Gentili
  */
-public abstract class AbstractGraphicCardsFactory<T> {
-
-    // The deck.
-    private InterfaceDeck<T> deck;
+@FunctionalInterface
+public interface InterfacePathProvider {
 
     /**
-     * Sets the deck of this object.
-     * @param deck An InterfaceDeck object.
+     *
+     * @return
      */
-    public void setDeck(@NotNull InterfaceDeck<T> deck) {
-        this.deck = deck;
-    }
-
-    /**
-     * Returns the deck of this object.
-     * @return An InterfaceDeck object.
-     */
-    @Nullable
-    public InterfaceDeck<T> getDeck() {
-        return deck;
-    }
+    String path();
 
 }

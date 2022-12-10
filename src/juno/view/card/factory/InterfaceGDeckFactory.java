@@ -23,9 +23,23 @@
  * SOFTWARE.
  */
 
-package juno.view.util;
+package juno.view.card.factory;
 
-public class ImageToggleButton extends AbstractImageToggleButton {
+import juno.view.card.InterfaceGCard;
 
-    public ImageToggleButton() {}
+import java.util.Map;
+
+/**
+ * @author Simone Gentili
+ * @param <T> The type of the cards.
+ */
+@FunctionalInterface
+public interface InterfaceGDeckFactory<T> {
+
+    /**
+     * Returns the graphics cards.
+     * @return A Map object.
+     */
+    Map<T, InterfaceGCard<T>> getGDeck();
+
 }

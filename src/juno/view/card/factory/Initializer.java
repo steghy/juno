@@ -23,20 +23,25 @@
  * SOFTWARE.
  */
 
-package juno.view.card;
+package juno.view.card.factory;
+
+import juno.model.card.InterfaceCard;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the card.
  */
-@FunctionalInterface
-public interface InterfaceButtonCard<T> {
+public class Initializer {
 
-    /**
-     * Returns the model card of this
-     * button card.
-     * @return A T card.
-     */
-    T card();
+    // Builds an Initializer object.
+    private Initializer() {}
+
+    @SuppressWarnings("unchecked")
+    public static void initialize() {
+        AbstractGCardFactory<InterfaceCard> gCardFactory = GCardFactory.getInstance();
+        AbstractGDeckFactory<InterfaceCard> gDeckFactory = GDeckFactory.getInstance();
+
+        gCardFactory.setProvider(CPathProvider.getInstance());
+        gDeckFactory.setFactory((InterfaceGCardFactory<InterfaceCard>) gCardFactory);
+    }
 
 }

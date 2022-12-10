@@ -25,9 +25,14 @@
 
 package juno.view.frame;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * @author Simone Gentili
+ */
 public class Frame
         extends JFrame
         implements AbstractResizableFrame {
@@ -42,27 +47,27 @@ public class Frame
     private JLabel background;
     private JPanel panel;
 
+    // The Frame instance.
     private static Frame instance;
 
+    // Builds the Frame.
     private Frame() {}
 
+    /**
+     * Returns the Frame instance.
+     * @return The Frame instance.
+     */
     public static Frame getInstance() {
         if(instance == null) instance = new Frame();
         return instance;
     }
 
+    /** Initialize the Frame instance. */
     public void init() {
-        if(background == null) {
-            throw new IllegalArgumentException("Background is null");
-        } if(panel == null) {
-            throw new IllegalArgumentException("Panel is null");
-        }
-
         setLayout(new BorderLayout());
         setDefaultDimension();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-
         background.setLayout(new BorderLayout());
         background.setOpaque(false);
         background.add(panel, BorderLayout.CENTER);
@@ -76,11 +81,10 @@ public class Frame
         this.setMaximumSize(dimension);
     }
 
-    public void setBackground(JLabel background) {
+    public void setBackground(@NotNull JLabel background) {
         this.background = background;
     }
-
-    public void setPanel(JPanel panel) {
+    public void setPanel(@NotNull JPanel panel) {
         this.panel = panel;
     }
 }

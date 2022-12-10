@@ -25,36 +25,39 @@
 
 package juno.init;
 
+/**
+ * @author Simone Gentili
+ */
 public enum Directories
 		implements InterfaceDirectories {
 
-	// DATA
+	// Data.
 	DATA("data"),
 
-	// DATA -> CONFIG
+	// Data -> Config.
 	CONFIG(DATA,"config"),
 	PROFILES(CONFIG, "profiles"),
 	AWARDS(CONFIG, "awards"),
 	SCORES(CONFIG, "scores"),
 
-	// DATA -> AUDIO
+	// Data -> Audio.
 	AUDIO(DATA, "audio"),
 	MUSIC(AUDIO, "music-1"),
 	MUSIC_2(AUDIO, "music-2"),
 	MUSIC_3(AUDIO, "music-3"),
 	EFFECTS(AUDIO, "effects"),
 
-	// DATA -> VIDEO
+	// Data -> Video.
 	VIDEOS(DATA, "videos"),
 
-	// DATA -> IMAGES
+	// Data -> Images.
 	IMAGES(DATA, "images"),
 	GIFS(IMAGES, "gifs"),
 	LOGOS(IMAGES, "logos"),
 	BACKGROUNDS(IMAGES, "backgrounds"),
 	BUTTONS(IMAGES, "buttons"),
 
-	// IMAGE -> CARDS
+	// Images -> Cards.
 	CARDS(IMAGES, "cards"),
 	COVER(CARDS, "cover"),
 	RED_CARDS(CARDS, "red"),
@@ -63,25 +66,34 @@ public enum Directories
 	YELLOW_CARDS(CARDS, "yellow"),
 	JOLLY_CARDS(CARDS, "jolly");
 
+	// The path.
 	private String path;
+
+	// The absolute path.
 	private String absolutePath;
-	
+
+	// Builds a Directories object with the
+	// specified Directories and String objects.
 	Directories(Directories dir, String name) {
 		generatePath(dir, name);
 	}
 
+	// Builds a Directories object with the specified String object.
 	Directories(String name) {
 		generatePath(null, name);
 	}
 
+	@Override
 	public String path() {
 		return this.path;
 	}
 
+	@Override
 	public String absolutePath() {
 		return absolutePath;
 	}
 
+	// Generates the absolute path and the path of this object.
 	private void generatePath(Directories dir, String name) {
 		String div = System.getProperty("file.separator");
 		StringBuilder builder = new StringBuilder(dir == null ? "" : dir.path);
@@ -90,4 +102,5 @@ public enum Directories
 		builder.insert(0, System.getProperty("user.dir"));
 		this.absolutePath = builder.toString();
 	}
+
 }

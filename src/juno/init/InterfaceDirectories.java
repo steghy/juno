@@ -25,9 +25,9 @@
 
 package juno.init;
 
-public interface InterfaceDirectories {
-
-    String path();
-
-    String absolutePath();
-}
+/**
+ * @author Simone Gentili
+ */
+public interface InterfaceDirectories
+        extends InterfaceAbsolutePathProvider,
+                InterfacePathProvider {}

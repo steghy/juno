@@ -5,21 +5,61 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/juno/model/deck/InterfaceDeckGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/card/factory/AbstractGraphicCardsFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/card/factory/GraphicCardsFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/card/factory/InterfaceGraphicCard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/card/factory/InterfaceGraphicCardsGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/cards/DRAW_FOUR.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/init/InterfaceAbsolutePathProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/init/InterfacePathProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/card/factory/AbstractGCardFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/card/factory/CPathProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/card/factory/GCardFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/card/factory/Initializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/card/factory/InterfaceCPathProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/card/factory/InterfaceGCardFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/card/factory/test/GCardFactoryTester.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/AbstractCompatibleCardsProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/AbstractCompatibleCardsProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/AbstractDeck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/AbstractDeck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/AbstractDeckFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/AbstractDeckFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/AbstractDeckInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/AbstractDeckInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/AbstractDiscardedPileUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/AbstractDiscardedPileUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/Deck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/DeckFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/DeckFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/DeckInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/DeckInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/cards/jolly/DRAW_FOUR.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/init/Directories.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/init/Directories.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/init/GithubURLBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/init/InterfaceDirectories.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/init/InterfaceDirectories.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/init/InterfaceGithubURLBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/init/InterfaceGithubURLBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/init/Repository.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/init/Repository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/card/actions/Action.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/card/actions/Action.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/card/colors/Color.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/card/colors/Color.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/AbstractCompatibleCardsProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/AbstractCompatibleCardsProvider.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/AbstractDeck.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/AbstractDeck.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/AbstractDeckFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/AbstractDeckFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/AbstractDeckInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/AbstractDeckInitializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/AbstractDiscardedPileUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/AbstractDiscardedPileUser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/Deck.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/Deck.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/DeckFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/DeckFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/DeckInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/DeckInitializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/card/ButtonCard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/card/InterfaceButtonCard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/frame/Frame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/frame/Frame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/util/AbstractImageButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/util/AbstractImageButton.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/util/ImageButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/util/ImageButton.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/util/ImageComponentInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/util/ImageComponentInitializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/init/Directories.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/init/Directories.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/init/GithubURLBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/init/GitHubURLBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/init/InterfaceDirectories.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/init/InterfaceDirectories.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/init/InterfaceGithubURLBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/init/InterfaceGithubURLBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/init/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/init/Repository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/card/actions/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/card/actions/Action.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/card/colors/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/card/colors/Color.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/card/ButtonCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/card/GCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/card/InterfaceButtonCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/card/InterfaceGCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/card/factory/AbstractGraphicCardsFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/card/factory/AbstractGDeckFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/card/factory/GraphicCardsFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/card/factory/GDeckFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/card/factory/InterfaceGraphicCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/card/factory/InterfaceGDeckFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/card/factory/InterfaceGraphicCardsGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/card/factory/InterfaceGDeckGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/frame/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/frame/Frame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/util/AbstractImageButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/util/AbstractImageButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/util/AbstractImageToggleButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/util/AbstractImageToggleButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/util/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/util/Constant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/util/ImageButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/util/ImageButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/view/util/ImageComponentInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/util/ImageComponentInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/util/ImageResizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/util/ImageResizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/util/ImageToggleButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/util/ImageToggleButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/util/RoundedBorder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/util/RoundedBorder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +74,8 @@
         <option value="AnnotationType" />
         <option value="Record" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -96,7 +136,7 @@
       <recent name="juno.view.pages.newgame.menu.singleplayer.mode.title" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.GCardFactoryTester">
     <configuration name="ConfigurationFilesProviderTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="juno.model.data.io.input.reflection.test.ConfigurationFilesProviderTester" />
       <module name="juno-project" />
@@ -116,6 +156,19 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="juno.model.util.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GCardFactoryTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="juno.view.card.factory.test.GCardFactoryTester" />
+      <module name="juno-project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="juno.view.card.factory.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -149,26 +202,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProperyCopierTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="juno.model.data.io.input.reflection.test.ProperyCopierTester" />
-      <module name="juno-project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="juno.model.util.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.GCardFactoryTester" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.NameFactoryTester" />
         <item itemvalue="Application.ConfigurationFilesProviderTester" />
         <item itemvalue="Application.ExtensionExtractorTester" />
-        <item itemvalue="Application.ProperyCopierTester" />
       </list>
     </recent_temporary>
   </component>
@@ -196,6 +236,52 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/juno/view/util/ImageComponentInitializer.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/juno/init/GitHubURLBuilder.java</url>
+          <line>69</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/juno/init/GitHubURLBuilder.java</url>
+          <line>70</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/juno/init/GitHubURLBuilder.java</url>
+          <line>71</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/juno/init/GitHubURLBuilder.java</url>
+          <line>72</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/juno/init/GitHubURLBuilder.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/juno/init/GitHubURLBuilder.java</url>
+          <line>74</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/juno/init/GitHubURLBuilder.java</url>
+          <line>75</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -23,9 +23,11 @@
  * SOFTWARE.
  */
 
-package juno.view.util;
+package juno.init;
 
-public class ImageToggleButton extends AbstractImageToggleButton {
+@FunctionalInterface
+public interface InterfaceAbsolutePathProvider {
 
-    public ImageToggleButton() {}
+    String absolutePath();
+
 }

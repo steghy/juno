@@ -23,35 +23,20 @@
  * SOFTWARE.
  */
 
-package juno.view.card;
+package juno.view.card.factory;
 
-import org.jetbrains.annotations.NotNull;
-
-import javax.swing.*;
+import java.util.List;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the card.
  */
-public class ButtonCard<T>
-        extends AbstractButton
-        implements InterfaceButtonCard<T> {
-
-    /* The card */
-    T card;
+@FunctionalInterface
+public interface InterfaceGDeckGenerator<T> {
 
     /**
-     * Builds a ButtonCard object with
-     * the specified card.
-     * @param card A card of type T.
+     * Generates the graphic cards.
+     * @param cards A List object.
      */
-    public ButtonCard(@NotNull T card) {
-        this.card = card;
-    }
-
-    @Override
-    public T card() {
-        return card;
-    }
+    void generate(List<T> cards);
 
 }

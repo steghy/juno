@@ -23,23 +23,21 @@
  * SOFTWARE.
  */
 
-package juno.view.card.factory;
+package juno.view.card;
 
-import juno.view.card.InterfaceButtonCard;
-
-import java.util.Map;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the cards.
+ * @param <T> The type of the card.
  */
 @FunctionalInterface
-public interface InterfaceGraphicCard<T> {
+public interface InterfaceGCard<T> {
 
     /**
-     * Returns the graphics cards.
-     * @return A Map object.
+     * Returns the model card of this
+     * button card.
+     * @return A T card.
      */
-    Map<T, InterfaceButtonCard<T>> getGraphicCards();
+    T card();
 
 }

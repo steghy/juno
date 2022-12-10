@@ -23,43 +23,44 @@
  * SOFTWARE.
  */
 
-package juno.init;
+package juno.view.card.factory;
 
+import juno.init.Directories;
+import juno.init.InterfaceDirectories;
+import juno.model.card.InterfaceCard;
+import juno.model.card.colors.InterfaceColor;
 import org.jetbrains.annotations.NotNull;
 
-import java.net.MalformedURLException;
-import java.net.URL;
+/**
+ * @author Simone Gentili
+ */
+public class CPathProvider
+        implements InterfaceCPathProvider<InterfaceCard> {
 
-public class GithubURLBuilder implements InterfaceGithubURLBuilder {
+    // The CPathProvider instance.
+    private static CPathProvider instance;
 
-    public static final String PREFIX = "https://raw.githubusercontent.com";
-    public static final String TOKEN = "?token=";
+    // Builds the CPathProvider.
+    private CPathProvider() {}
 
-    public String prefix;
-    public String repositoryName;
-    public String adminName;
-    public String branchName;
-    public String token;
-
-    private static GithubURLBuilder instance;
-
-    private GithubURLBuilder() {}
-
-    public static GithubURLBuilder getInstance() {
-        if(instance == null) instance = new GithubURLBuilder();
+    /**
+     * Returns the CPathProvider instance.
+     * @return The CPathProvider instance.
+     */
+    public static CPathProvider getInstance() {
+        if(instance == null) instance = new CPathProvider();
         return instance;
     }
 
     @Override
-    public URL getGithubURL(@NotNull String path) throws MalformedURLException {
-        String div = "/";
-        path = path.replace('\\', '/');
-        String urlString = (prefix == null ? PREFIX : prefix) +
-                (adminName == null ? "" : div.concat(adminName)) +
-                (repositoryName == null ? "" : div.concat(repositoryName)) +
-                (branchName == null ? "" : div.concat(branchName)) +
-                (path.startsWith("/") ? path : div.concat(path)) +
-                (token == null || token.length() == 0 ? "" : token.concat(token));
-        return new URL(urlString);
+    public InterfaceDirectories getPath(@NotNull InterfaceCard card) {
+        if(card.color() != null) {
+            InterfaceColor color = card.color();
+            if(color.isBlue())  return Directories.BLUE_CARDS;
+            if(color.isRed())   return Directories.RED_CARDS;
+            if(color.isGreen()) return Directories.GREEN_CARDS;
+            if(color.isBlue())  return Directories.BLUE_CARDS;
+        } return Directories.JOLLY_CARDS;
     }
+
 }

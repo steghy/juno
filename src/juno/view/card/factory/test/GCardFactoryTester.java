@@ -23,9 +23,35 @@
  * SOFTWARE.
  */
 
-package juno.view.util;
+package juno.view.card.factory.test;
 
-public class ImageToggleButton extends AbstractImageToggleButton {
+import juno.init.Repository;
+import juno.model.card.Card;
+import juno.model.card.InterfaceCard;
+import juno.model.card.actions.Action;
+import juno.view.card.GCard;
+import juno.view.card.factory.*;
+import juno.view.util.ImageResizer;
 
-    public ImageToggleButton() {}
+import javax.swing.*;
+
+/**
+ * @author Simone Gentili
+ */
+public class GCardFactoryTester {
+
+    public static void main(String[] args) {
+        Repository.setRepository();
+        Initializer.initialize();
+        InterfaceGCardFactory<InterfaceCard> gCardFactory = GCardFactory.getInstance();
+        GCard<InterfaceCard> gCard = (GCard<InterfaceCard>) gCardFactory.create(new Card(null, null, Action.DRAW_FOUR));
+        ImageResizer.resize(gCard, 1.0);
+        JFrame frame = new JFrame();
+        frame.setBackground(java.awt.Color.BLUE);
+        frame.add(gCard);
+        frame.pack();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+    }
+
 }

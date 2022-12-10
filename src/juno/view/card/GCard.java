@@ -23,9 +23,36 @@
  * SOFTWARE.
  */
 
-package juno.view.util;
+package juno.view.card;
 
-public class ImageToggleButton extends AbstractImageToggleButton {
+import juno.view.util.ImageButton;
+import org.jetbrains.annotations.NotNull;
 
-    public ImageToggleButton() {}
+import javax.swing.*;
+
+/**
+ * @author Simone Gentili
+ * @param <T> The type of the card.
+ */
+public class GCard<T>
+        extends ImageButton
+        implements InterfaceGCard<T> {
+
+    /* The card */
+    T card;
+
+    /**
+     * Builds a ButtonCard object with
+     * the specified card.
+     * @param card A card of type T.
+     */
+    public GCard(@NotNull T card) {
+        this.card = card;
+    }
+
+    @Override
+    public T card() {
+        return card;
+    }
+
 }

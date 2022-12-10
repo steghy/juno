@@ -33,7 +33,8 @@ package juno.model.card.actions;
  * class is a particular action.
  * @author Simone Gentili
  */
-public enum Action implements InterfaceAction {
+public enum Action
+        implements InterfaceAction {
 
     /** The 'change color' action. */
     CHANGE_COLOR,

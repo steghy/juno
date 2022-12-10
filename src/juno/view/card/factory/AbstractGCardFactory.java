@@ -25,18 +25,33 @@
 
 package juno.view.card.factory;
 
-import java.util.List;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Simone Gentili
+ * @param <T> The type of the cards.
  */
-@FunctionalInterface
-public interface InterfaceGraphicCardsGenerator<T> {
+public abstract class AbstractGCardFactory<T> {
+
+    // The card path provider.
+    private InterfaceCPathProvider<T> provider;
 
     /**
-     * Generates the graphic cards.
-     * @param cards A List object.
+     * Sets the card path provider of this object.
+     * @param provider An InterfaceCPathProvider object.
      */
-    void generate(List<T> cards);
+    public void setProvider(@NotNull InterfaceCPathProvider<T> provider) {
+        this.provider = provider;
+    }
+
+    /**
+     * Returns the card path provider of this object.
+     * @return An InterfaceCPathProvider object.
+     */
+    @Nullable
+    public InterfaceCPathProvider<T> getProvider() {
+        return provider;
+    }
 
 }

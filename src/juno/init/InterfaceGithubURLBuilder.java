@@ -31,5 +31,5 @@ import java.net.URL;
 @FunctionalInterface
 public interface InterfaceGithubURLBuilder {
 
-    URL getGithubURL(String path) throws MalformedURLException;
+    URL getURL(String path) throws MalformedURLException;
 }

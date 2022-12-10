@@ -23,9 +23,17 @@
  * SOFTWARE.
  */
 
-package juno.view.util;
+package juno.view.card.factory;
 
-public class ImageToggleButton extends AbstractImageToggleButton {
+import juno.init.InterfaceDirectories;
 
-    public ImageToggleButton() {}
+/**
+ * @author Simone Gentili
+ * @param <T> The type of the cards.
+ */
+@FunctionalInterface
+public interface InterfaceCPathProvider<T> {
+
+    InterfaceDirectories getPath(T card);
+
 }
