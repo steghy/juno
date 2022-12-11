@@ -57,27 +57,25 @@ public class InputPKGInitializer {
                                                          JSONDataImporter.getInstance();
 
         // juno.model.data.io.input.configurable package.
-        CCompatibilityChecker configurableCompatibilityChecker = CCompatibilityChecker.getInstance();
+        CCompatibilityChecker cCompatibilityChecker = CCompatibilityChecker.getInstance();
         CConfigurationFilesProvider configurableConfigurationFilesProvider = CConfigurationFilesProvider.getInstance();
-        configurableCompatibilityChecker.setCopier(propertyCopier);
-        configurableCompatibilityChecker.setImporter(jsonDataImporter);
+        cCompatibilityChecker.setImporter(jsonDataImporter);
 
         configurableConfigurationFilesProvider.setCopier(propertyCopier);
-        configurableConfigurationFilesProvider.setChecker(configurableCompatibilityChecker);
+        configurableConfigurationFilesProvider.setChecker(cCompatibilityChecker);
 
         // juno.model.data.io.input.reflect package.
-        RCompatibilityChecker reflectCompatibilityChecker = RCompatibilityChecker.getInstance();
+        RCompatibilityChecker rCompatibilityChecker = RCompatibilityChecker.getInstance();
         RConfigurationFilesProvider reflectConfigurableFilesProvider = RConfigurationFilesProvider.getInstance();
         juno.model.data.io.input.reflection.
                 Configurator configurator = juno.model.data.io.input.reflection.
                                             Configurator.getInstance();
 
-        reflectCompatibilityChecker.setCopier(propertyCopier);
-        reflectCompatibilityChecker.setImporter(jsonDataImporter);
-        reflectCompatibilityChecker.setConfigurator(configurator);
+        rCompatibilityChecker.setImporter(jsonDataImporter);
+        rCompatibilityChecker.setConfigurator(configurator);
 
         reflectConfigurableFilesProvider.setCopier(propertyCopier);
-        reflectConfigurableFilesProvider.setChecker(reflectCompatibilityChecker);
+        reflectConfigurableFilesProvider.setChecker(rCompatibilityChecker);
         reflectConfigurableFilesProvider.setConfigurator(configurator);
     }
 

@@ -29,6 +29,8 @@ import juno.model.data.io.input.AbstractPropertyCopierUser;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
+
 /**
  * This abstract class defines configuration file providers
  * which use compatibility checker (InterfaceCompatibilityChecker)
@@ -36,21 +38,17 @@ import org.jetbrains.annotations.Nullable;
  * @author Simone Gentili
  */
 public abstract class AbstractRConfigurationFilesProvider
-        extends AbstractPropertyCopierUser {
+        extends AbstractRCompatibilityCheckerAndCopierUser {
 
-    // The compatibility checker.
-    private InterfaceRCompatibilityChecker checker;
+    // The recursive value.
+    private boolean recursive;
+
+    // The extensions.
+    private List<String> extensions;
+
 
     // The configurator.
     private InterfaceConfigurator configurator;
-
-    /**
-     * Sets the compatibility checker of this object.
-     * @param checker An InterfaceCompatibilityChecker object.
-     */
-    public void setChecker(@NotNull InterfaceRCompatibilityChecker checker) {
-        this.checker = checker;
-    }
 
     /**
      * Sets the configurator of this object.
@@ -61,12 +59,19 @@ public abstract class AbstractRConfigurationFilesProvider
     }
 
     /**
-     * Returns the compatibility checker of this object.
-     * @return An InterfaceCompatibilityChecker object.
+     * Sets the recursive value of this object.
+     * @param recursive A boolean value.
      */
-    @Nullable
-    public InterfaceRCompatibilityChecker getChecker() {
-        return checker;
+    public void setRecursive(boolean recursive) {
+        this.recursive = recursive;
+    }
+
+    /**
+     * Sets the extensions list of this object.
+     * @param extensions A List object.
+     */
+    public void setExtensions(@NotNull List<String> extensions) {
+        this.extensions = extensions;
     }
 
     /**
@@ -77,5 +82,24 @@ public abstract class AbstractRConfigurationFilesProvider
     public InterfaceConfigurator getConfigurator() {
         return configurator;
     }
+
+    /**
+     * Returns true if, and only if, the recursive value
+     * of this object is true.
+     * @return A boolean value.
+     */
+    public boolean isRecursive() {
+        return recursive;
+    }
+
+    /**
+     * Returns the extensions list of this object.
+     * @return A List object.
+     */
+    @Nullable
+    public List<String> getExtensions() {
+        return extensions;
+    }
+
 
 }

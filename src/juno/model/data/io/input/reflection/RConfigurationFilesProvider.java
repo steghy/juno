@@ -57,20 +57,11 @@ public class RConfigurationFilesProvider
         extends AbstractRConfigurationFilesProvider
         implements InterfaceRConfigurationFilesProvider {
 
-    // Recursive boolean value.
-    private boolean recursive;
-
-    // List of extensions.
-    private final List<String> extensions;
-
     // The ConfigurationFilesProvider instance.
     private static RConfigurationFilesProvider instance;
 
     // Builds the ConfigurationFilesProvider.
-    private RConfigurationFilesProvider() {
-        recursive = true;
-        extensions = new ArrayList<>();
-    }
+    private RConfigurationFilesProvider() {}
 
     /**
      * Returns the ConfigurationFilesProvider instance.
@@ -116,7 +107,7 @@ public class RConfigurationFilesProvider
                             Objects.requireNonNull(getChecker()).areCompatible(object, file.getAbsolutePath()))
                         configurationFiles.add(file);
                 } else {
-                    if(recursive) {
+                    if(isRecursive()) {
                         configurationFiles.addAll(getConfigurationFiles(object, file.getAbsolutePath()));
                     }
                 }
@@ -124,31 +115,16 @@ public class RConfigurationFilesProvider
         } return configurationFiles;
     }
 
-    /**
-     * Sets the recursion of the getConfigurationFiles()
-     * methods.
-     * @param value A boolean value.
-     */
-    public void setRecursive(boolean value) {
-        this.recursive = value;
-    }
-
     // Returns true if, and only if the extension list
     // of this object has length 0 or the extension of
     // the file is contained by the extension List.
     private boolean preliminaries(@NotNull File file) {
-        return extensions.size() == 0 ||
-                extensions.stream()
+        return getExtensions() == null ||
+                getExtensions() != null &&
+                        getExtensions().size() == 0 ||
+                getExtensions().stream()
                         .anyMatch(s -> s.equals(ExtensionExtractor
                                                 .extract(file.getName())));
-    }
-
-    /**
-     * Returns the extensions List object.
-     * @return A List<String> object.
-     */
-    public List<String> extensions() {
-        return extensions;
     }
 
 }
