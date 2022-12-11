@@ -41,7 +41,7 @@ public class ConfigurationFilesProviderTester {
         InputPKGInitializer.initialize();
 
         RConfigurationFilesProvider filesProvider = RConfigurationFilesProvider.getInstance();
-        filesProvider.extensions().add("json");
+        filesProvider.setExtensions(List.of("json"));
         filesProvider.setRecursive(false);
 
 

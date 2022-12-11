@@ -26,6 +26,7 @@
 package juno.view.pages.pre_access.registration.menu;
 
 import juno.controller.pre_access.RegistrationDataSender;
+import juno.controller.pre_access.RegistrationPanelRestorer;
 import juno.model.data.profile.Profile;
 import juno.view.factories.ButtonFactory;
 import juno.view.factories.ButtonLibrary;
@@ -63,7 +64,7 @@ public class MenuPanelConfigurator {
         ageLabel.setForeground(Color.WHITE);
 
         // Texts.
-        Font font = new Font(Font.MONOSPACED, Font.BOLD, 18);
+        Font font = new Font(Font.MONOSPACED, Font.PLAIN, 18);
         profileNameLabel.setFont(font);
         nameLabel.setFont(font);
         lastNameLabel.setFont(font);
@@ -75,25 +76,25 @@ public class MenuPanelConfigurator {
         JTextField lastNameTextField = new JTextField(15);
         JTextField ageTextField = new JTextField(15);
 
+        // RegistrationDataLine objects.
+        RegistrationDataLine profileName = new RegistrationDataLine(profileNameLabel, profileNameTextField);
+        RegistrationDataLine name = new RegistrationDataLine(nameLabel, nameTextField);
+        RegistrationDataLine lastName = new RegistrationDataLine(lastNameLabel, lastNameTextField);
+        RegistrationDataLine age = new RegistrationDataLine(ageLabel, ageTextField);
+
         // Buttons.
         AbstractButton confirmButton = ButtonFactory.createButton(ButtonLibrary.CONFIRM);
         AbstractButton backButton = ButtonFactory.createButton(ButtonLibrary.BACK);
 
         // Labels.
-        menuPanel.setFirstComponent(profileNameLabel);  // Profile name label.
-        menuPanel.setSecondComponent(nameLabel);        // Name label.
-        menuPanel.setThirdComponent(lastNameLabel);     // Last name label.
-        menuPanel.setFourthComponent(ageLabel);         // Age label.
-
-        // Text fields.
-        menuPanel.setFifthComponent(profileNameTextField);   // Profile name text field.
-        menuPanel.setSixthComponent(nameTextField);          // Name text field.
-        menuPanel.setSeventhComponent(lastNameTextField);    // Last name text field.
-        menuPanel.setEighthComponent(ageTextField);          // Age text field.
+        menuPanel.setFirstComponent(profileName);   // Profile name.
+        menuPanel.setSecondComponent(name);         // Name.
+        menuPanel.setThirdComponent(lastName);      // Last name.
+        menuPanel.setFourthComponent(age);          // Age.
 
         // Buttons.
-        menuPanel.setNinthComponent(confirmButton);          // Confirm button.
-        menuPanel.setTenthComponent(backButton);             // Back button.
+        menuPanel.setFifthComponent(confirmButton); // Confirm button.
+        menuPanel.setSixthComponent(backButton);    // Back button.
 
         // Images resizing.
         ImageResizer.resize(confirmButton, 3.0);
@@ -115,6 +116,8 @@ public class MenuPanelConfigurator {
                         ". CardLayout expected.");
             }
         });
+
+        backButton.addActionListener(RegistrationPanelRestorer.getInstance());
 
         // Inside border.
         RoundedBorder insideBorder = new RoundedBorder(50, 1, null, Color.WHITE);

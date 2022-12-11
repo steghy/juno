@@ -25,10 +25,8 @@
 
 package juno.view.pages.main.menu;
 
-import juno.view.pages.AbstractFourthComponent;
-import org.jetbrains.annotations.NotNull;
+import juno.view.panels.AbstractFourthComponent;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.Objects;
 

@@ -28,8 +28,6 @@ package juno.view.card;
 import juno.view.util.ImageButton;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.*;
-
 /**
  * @author Simone Gentili
  * @param <T> The type of the card.

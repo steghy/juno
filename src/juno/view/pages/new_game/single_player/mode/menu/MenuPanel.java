@@ -24,7 +24,7 @@
  */
 package juno.view.pages.new_game.single_player.mode.menu;
 
-import juno.view.pages.AbstractFirstComponent;
+import juno.view.panels.AbstractFirstComponent;
 
 import java.awt.*;
 import java.util.Objects;

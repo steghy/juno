@@ -29,7 +29,6 @@ import juno.model.card.InterfaceCard;
 import juno.model.deck.DeckFactory;
 import juno.model.deck.Mixer;
 import juno.model.deck.Deck;
-import juno.model.deck.CardFactory;
 
 public class MixerTester {
 

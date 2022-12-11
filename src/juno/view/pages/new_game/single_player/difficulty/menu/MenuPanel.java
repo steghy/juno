@@ -25,7 +25,7 @@
 
 package juno.view.pages.new_game.single_player.difficulty.menu;
 
-import juno.view.pages.AbstractFifthComponent;
+import juno.view.panels.AbstractFifthComponent;
 
 import java.awt.*;
 import java.util.Objects;

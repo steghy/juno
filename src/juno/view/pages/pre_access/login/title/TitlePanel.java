@@ -25,7 +25,7 @@
 
 package juno.view.pages.pre_access.login.title;
 
-import juno.view.pages.AbstractFirstComponent;
+import juno.view.panels.AbstractFirstComponent;
 
 import java.awt.*;
 import java.util.Objects;

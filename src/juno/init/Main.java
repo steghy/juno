@@ -25,6 +25,9 @@
 
 package juno.init;
 
+import juno.init.initializer.ControllerInitializer;
+import juno.init.initializer.ModelInitializer;
+import juno.init.initializer.ViewInitializer;
 import juno.model.sound.AudioPlayer;
 import juno.view.frame.Frame;
 
@@ -37,15 +40,20 @@ public class Main {
     public static void main(String[] args) {
         Repository.setRepository();
         try {
+
+            // Initialization.
             ModelInitializer.initialize();
+            ControllerInitializer.initialize();
             ViewInitializer.initialize();
 
+            // Audio player.
             AudioPlayer audioPlayer = AudioPlayer.getInstance();
             audioPlayer.setTracks(Objects
                     .requireNonNull(new File(Directories.MUSIC.absolutePath()).listFiles()));
-            // audioPlayer.play();
+            audioPlayer.play();
             audioPlayer.setLoop(true);
 
+            // Frame.
             Frame frame = Frame.getInstance();
             frame.setVisible(true);
         } catch (Exception e) {

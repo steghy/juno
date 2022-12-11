@@ -25,7 +25,7 @@
 
 package juno.model.data.io.input;
 
-import juno.model.data.io.input.configurable.InterfaceCCompatibilityChecker;
+import juno.model.data.io.input.configurable.InterfaceCCompatibilityFileChecker;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -35,14 +35,14 @@ import org.jetbrains.annotations.Nullable;
 public class AbstractCCompatibilityCheckerUser {
 
     // The compatibility checker for Configurable object.
-    private InterfaceCCompatibilityChecker checker;
+    private InterfaceCCompatibilityFileChecker checker;
 
     /**
      * Sets the compatibility checker for Configurable
      * object of this object.
      * @param checker An InterfaceCCompatibilityChecker object.
      */
-    public void setChecker(@NotNull InterfaceCCompatibilityChecker checker) {
+    public void setChecker(@NotNull InterfaceCCompatibilityFileChecker checker) {
         this.checker = checker;
     }
 
@@ -52,7 +52,7 @@ public class AbstractCCompatibilityCheckerUser {
      * @return An InterfaceCCompatibilityChecker object.
      */
     @Nullable
-    public InterfaceCCompatibilityChecker getChecker() {
+    public InterfaceCCompatibilityFileChecker getChecker() {
         return checker;
     }
 }

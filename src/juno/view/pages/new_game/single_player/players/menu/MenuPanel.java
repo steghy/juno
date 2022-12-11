@@ -25,7 +25,7 @@
 
 package juno.view.pages.new_game.single_player.players.menu;
 
-import juno.view.pages.AbstractFourthComponent;
+import juno.view.panels.AbstractFourthComponent;
 
 import java.awt.*;
 import java.util.Objects;

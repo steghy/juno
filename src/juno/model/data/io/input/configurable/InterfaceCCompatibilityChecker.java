@@ -26,23 +26,8 @@
 package juno.model.data.io.input.configurable;
 
 /**
- * This interface define a method for checking
- * compatibility between an object and a
- * configuration file.
  * @author Simone Gentili
  */
-@FunctionalInterface
-public interface InterfaceCCompatibilityChecker {
-
-    /**
-     * Returns true if, and only if, the file
-     * specified by path is compatible with the
-     * Configurable object passed as input.
-     * @param configurable A Configurable object.
-     * @param path A String object.
-     * @return A boolean value.
-     */
-    boolean areCompatible(Configurable configurable,
-                          String path);
-
-}
+public interface InterfaceCCompatibilityChecker
+        extends InterfaceCCompatibilityFileChecker,
+                InterfaceCCompatibilityMapChecker {}

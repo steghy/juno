@@ -25,7 +25,7 @@
 
 package juno.view.pages.main.card;
 
-import juno.view.pages.AbstractFourthComponent;
+import juno.view.panels.AbstractFourthComponent;
 import java.awt.*;
 import java.util.Objects;
 

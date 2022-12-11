@@ -25,7 +25,7 @@
 
 package juno.view.pages.new_game.menu;
 
-import juno.view.pages.AbstractThirdComponent;
+import juno.view.panels.AbstractThirdComponent;
 
 import java.awt.*;
 import java.util.Objects;

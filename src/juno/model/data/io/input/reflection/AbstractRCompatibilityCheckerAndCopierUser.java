@@ -26,7 +26,6 @@
 package juno.model.data.io.input.reflection;
 
 import juno.model.data.io.input.AbstractPropertyCopierUser;
-import juno.model.data.io.input.configurable.InterfaceCCompatibilityChecker;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

@@ -25,10 +25,8 @@
 
 package juno.view.pages.new_game.single_player.mode;
 
-import juno.view.pages.AbstractSecondComponent;
-import org.jetbrains.annotations.NotNull;
+import juno.view.panels.AbstractSecondComponent;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.Objects;
 

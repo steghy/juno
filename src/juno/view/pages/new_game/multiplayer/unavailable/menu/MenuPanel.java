@@ -25,7 +25,7 @@
 
 package juno.view.pages.new_game.multiplayer.unavailable.menu;
 
-import juno.view.pages.AbstractSecondComponent;
+import juno.view.panels.AbstractSecondComponent;
 
 import java.awt.*;
 import java.util.Objects;

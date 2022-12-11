@@ -25,7 +25,7 @@
 
 package juno.view.pages.pre_access.welcome.menu;
 
-import juno.view.pages.AbstractThirdComponent;
+import juno.view.panels.AbstractThirdComponent;
 
 import java.awt.*;
 import java.util.Objects;

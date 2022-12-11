@@ -53,8 +53,7 @@ import java.util.Objects;
  */
 public class CCompatibilityChecker
         extends AbstractDataImporterUser
-        implements InterfaceCCompatibilityChecker,
-                    InterfaceCCompatibilityMapChecker {
+        implements InterfaceCCompatibilityChecker {
 
     /* The CompatibilityChecker instance. */
     private static CCompatibilityChecker instance;
@@ -80,10 +79,8 @@ public class CCompatibilityChecker
         try {
             Map<String, Object> map = Objects.requireNonNull(getImporter()).importData(path);
             // Empty map = incompatible file.
-            if(!map.isEmpty()) {
-                configurable.configure(map);
-                isCompatible = true;
-            }
+            configurable.configure(map);
+            if(!map.isEmpty()) isCompatible = true;
         } catch(Exception e) {
             e.printStackTrace();
         } return isCompatible;
@@ -97,10 +94,8 @@ public class CCompatibilityChecker
         // An Exception causes the incompatibility.
         try {
             // Empty map = incompatible file.
-            if(!map.isEmpty()) {
-                configurable.configure(map);
-                isCompatible = true;
-            }
+            configurable.configure(map);
+            if(!map.isEmpty()) isCompatible = true;
         } catch(Exception e) {
             e.printStackTrace();
         } return isCompatible;

@@ -25,7 +25,7 @@
 
 package juno.view.pages.pre_access.access;
 
-import juno.view.pages.AbstractSecondComponent;
+import juno.view.panels.AbstractSecondComponent;
 
 import java.awt.*;
 import java.util.Objects;

@@ -25,10 +25,8 @@
 
 package juno.view.pages.new_game.card;
 
-import juno.view.pages.AbstractThirdComponent;
-import org.jetbrains.annotations.NotNull;
+import juno.view.panels.AbstractThirdComponent;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.Objects;
 

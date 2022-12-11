@@ -26,8 +26,11 @@
 package juno.view.pages.pre_access.registration.menu;
 
 import juno.controller.InterfaceRegistrationDataProvider;
+import juno.controller.pre_access.InterfaceDataLineProvider;
+import juno.model.data.profile.InterfaceErrorProvider;
 import juno.model.data.profile.Profile;
-import juno.view.pages.AbstractTenthComponent;
+import juno.model.util.Observer;
+import juno.view.panels.AbstractSixthComponent;
 
 import javax.swing.*;
 import java.awt.*;
@@ -39,8 +42,10 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class MenuPanel
-        extends AbstractTenthComponent
-        implements InterfaceRegistrationDataProvider {
+        extends AbstractSixthComponent
+        implements InterfaceRegistrationDataProvider,
+                    InterfaceDataLineProvider,
+                    Observer {
 
     // The MenuPanel instance.
     private static MenuPanel instance;
@@ -57,43 +62,13 @@ public class MenuPanel
         return instance;
     }
 
-    @Override
-    public Map<String, Object> provideRegistrationData() {
-        Map<String, Object> map = new HashMap<>();
-
-        // Profile name case.
-        map.put(Profile.PROFILE_NAME, ((JTextField) Objects.requireNonNull(getFifthComponent())).getText());
-
-        // Name case.
-        JTextField nameTextField = (JTextField) getSixthComponent();
-        if(Objects.requireNonNull(nameTextField).getText().length() > 0)
-            map.put(Profile.NAME, nameTextField.getText());
-
-        // Last name case.
-        JTextField lastNameTextField = (JTextField) getSeventhComponent();
-        if(Objects.requireNonNull(lastNameTextField).getText().length() > 0)
-            map.put(Profile.LAST_NAME, lastNameTextField.getText());
-
-        // Age case.
-        String temp = ((JTextField) Objects.requireNonNull(getEighthComponent())).getText();
-        if(temp.length() > 0) {
-            int age;
-            try {
-                age = Integer.parseInt(temp);
-                map.put(Profile.AGE, age);
-            } catch (ClassCastException e) {
-                map.put(Profile.AGE, temp);
-            }
-        } return map;
-    }
-
     /** Initialize the MenuPanel instance. */
     public void init() {
         this.setOpaque(false);
         this.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
 
-        // Profile name label.
+        // Profile name.
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.weightx = 0.0;
@@ -101,10 +76,21 @@ public class MenuPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.LINE_END;
-        gbc.insets = new Insets(0,0,5,0);
+        gbc.insets = new Insets(0,0,10,0);
         this.add(Objects.requireNonNull(getFirstComponent()), gbc);
 
-        // Name label.
+        // Name.
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
+        gbc.anchor = GridBagConstraints.LINE_END;
+        gbc.insets = new Insets(0,0,10,0);
+        this.add(Objects.requireNonNull(getSecondComponent()), gbc);
+
+        // Last name.
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.weightx = 0.0;
@@ -112,11 +98,22 @@ public class MenuPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.LINE_END;
-        gbc.insets = new Insets(0,0,5,0);
-        this.add(Objects.requireNonNull(getSecondComponent()), gbc);
+        gbc.insets = new Insets(0,0,10,0);
+        this.add(Objects.requireNonNull(getThirdComponent()), gbc);
 
-        // Last name label.
-        gbc.gridx = 0;
+        // Age.
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
+        gbc.anchor = GridBagConstraints.LINE_END;
+        gbc.insets = new Insets(0,0,10,0);
+        this.add(Objects.requireNonNull(getFourthComponent()), gbc);
+
+        // Confirm button.
+        gbc.gridx = 1;
         gbc.gridy = 2;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
@@ -124,33 +121,11 @@ public class MenuPanel
         gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.LINE_END;
         gbc.insets = new Insets(0,0,5,0);
-        this.add(Objects.requireNonNull(getThirdComponent()), gbc);
-
-        // Age label.
-        gbc.gridx = 0;
-        gbc.gridy = 3;
-        gbc.weightx = 0.0;
-        gbc.weighty = 0.0;
-        gbc.ipadx = 0;
-        gbc.ipady = 0;
-        gbc.anchor = GridBagConstraints.LINE_END;
-        gbc.insets = new Insets(0,0,5,0);
-        this.add(Objects.requireNonNull(getFourthComponent()), gbc);
-
-        // Profile name text field.
-        gbc.gridx = 1;
-        gbc.gridy = 0;
-        gbc.weightx = 0.0;
-        gbc.weighty = 0.0;
-        gbc.ipadx = 0;
-        gbc.ipady = 0;
-        gbc.anchor = GridBagConstraints.LINE_START;
-        gbc.insets = new Insets(0,0,5,0);
         this.add(Objects.requireNonNull(getFifthComponent()), gbc);
 
-        // Name text field.
-        gbc.gridx = 1;
-        gbc.gridy = 1;
+        // Back button.
+        gbc.gridx = 0;
+        gbc.gridy = 2;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
         gbc.ipadx = 0;
@@ -158,63 +133,50 @@ public class MenuPanel
         gbc.anchor = GridBagConstraints.LINE_START;
         gbc.insets = new Insets(0,0,5,0);
         this.add(Objects.requireNonNull(getSixthComponent()), gbc);
-
-        // Last name text field.
-        gbc.gridx = 1;
-        gbc.gridy = 2;
-        gbc.weightx = 0.0;
-        gbc.weighty = 0.0;
-        gbc.ipadx = 0;
-        gbc.ipady = 0;
-        gbc.anchor = GridBagConstraints.LINE_START;
-        gbc.insets = new Insets(0,0,5,0);
-        this.add(Objects.requireNonNull(getSeventhComponent()), gbc);
-
-        // Age text field.
-        gbc.gridx = 1;
-        gbc.gridy = 3;
-        gbc.weightx = 0.0;
-        gbc.weighty = 0.0;
-        gbc.ipadx = 0;
-        gbc.ipady = 0;
-        gbc.anchor = GridBagConstraints.LINE_START;
-        gbc.insets = new Insets(0,0,5,0);
-        this.add(Objects.requireNonNull(getEighthComponent()), gbc);
-
-        // Confirm button.
-        gbc.gridx = 1;
-        gbc.gridy = 4;
-        gbc.weightx = 0.0;
-        gbc.weighty = 0.0;
-        gbc.ipadx = 0;
-        gbc.ipady = 0;
-        gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,5,0);
-        this.add(Objects.requireNonNull(getNinthComponent()), gbc);
-
-        // Back button.
-        gbc.gridx = 0;
-        gbc.gridy = 4;
-        gbc.weightx = 0.0;
-        gbc.weighty = 0.0;
-        gbc.ipadx = 0;
-        gbc.ipady = 0;
-        gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,5,0);
-        this.add(Objects.requireNonNull(getTenthComponent()), gbc);
-
     }
 
-    /**
-     * Returns the text fields of this object.
-     * @return A List object.
-     */
-    public java.util.List<Component> getTextFields() {
-        return java.util.List.of(
-                Objects.requireNonNull(getFifthComponent()),
-                Objects.requireNonNull(getSixthComponent()),
-                Objects.requireNonNull(getSeventhComponent()),
-                Objects.requireNonNull(getEighthComponent()));
+    @Override
+    public Map<String, Object> provideRegistrationData() {
+        Map<String, Object> map = new HashMap<>();
+        java.util.List<JTextField> textFieldList = getTextFields();
+        // Profile name case.
+        String text = textFieldList.get(0).getText();
+        if(text.length() != 0)
+            map.put(Profile.PROFILE_NAME, text);
+        // Name case.
+        text = textFieldList.get(1).getText();
+        if(text.length() != 0)
+            map.put(Profile.NAME, text);
+        // Last name case.
+        text = textFieldList.get(2).getText();
+        if(text.length() != 0)
+            map.put(Profile.LAST_NAME, text);
+        // Age case.
+        text = textFieldList.get(3).getText();
+        if(text.length() > 0) {
+            int age;
+            try {
+                age = Integer.parseInt(text);
+                map.put(Profile.AGE, age);
+            } catch (Exception e) {
+                map.put(Profile.AGE, text);
+            }
+        } return map;
+    }
+
+    @Override
+    public Map<String, JPanel> getDataLines() {
+        return null;
+    }
+
+    @Override
+    public void update(Object object) {
+        if(object instanceof InterfaceErrorProvider provider) {
+            Map<String, String> errors = provider.getErrors();
+
+        } else throw new IllegalArgumentException(
+                "Invalid object type: " + object +
+                        ". InterfaceErrorProvider expected.");
     }
 
 }
