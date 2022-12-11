@@ -31,18 +31,23 @@ import juno.view.pages.pre_access.login.LogInPanelInitializer;
 import juno.view.pages.pre_access.registration.RegistrationPanelInitializer;
 import juno.view.pages.pre_access.welcome.WelcomePanelInitialize;
 
+/**
+ * @author Simone Gentili
+ */
 public class PreAccessInitializer {
 
+    // Builds a PreAccessInitializer object.
     private PreAccessInitializer() {}
 
     public static void initialize() {
-        // SUB COMPONENTS CONFIGURATION
+        // Components configurations.
         WelcomePanelInitialize.initialize();
         AccessPanelInitializer.initialize();
         RegistrationPanelInitializer.initialize();
         LogInPanelInitializer.initialize();
 
-        // CARD PANEL COMPONENT CONFIGURATION
+        // Main component configuration.
         PreAccessCardPanelConfigurator.configure();
     }
+
 }

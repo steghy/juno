@@ -23,36 +23,40 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.pre_access.card;
+package juno.model.data.io.input.reflection;
 
-import juno.model.data.io.input.configurable.InterfaceCConfigurationFilesProvider;
+import juno.model.data.io.input.AbstractDataImporterUser;
+import juno.model.data.io.input.AbstractImporterAndCopierUser;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * This abstract class defines compatibility checkers
+ * between files and objects that use a configurator
+ * (InterfaceConfigurator) to operate.
  * @author Simone Gentili
  */
-public abstract class AbstractPreAccessInitialChooser {
+public abstract class AbstractConfiguratorAndDataImporterUser
+        extends AbstractDataImporterUser {
 
-    // The configuration files provider.
-    private InterfaceCConfigurationFilesProvider provider;
+    /* The configurator. */
+    private InterfaceConfigurator configurator;
 
     /**
-     * Sets the configuration files provider of this object.
-     * @param provider An InterfaceConfigurationFilesProvider object.
+     * Sets the configurator of this object.
+     * @param configurator An InterfaceConfigurator object.
      */
-    public void setConfigurationFilesProvider(@NotNull InterfaceCConfigurationFilesProvider provider) {
-        this.provider = provider;
+    public void setConfigurator(@NotNull InterfaceConfigurator configurator) {
+        this.configurator = configurator;
     }
 
     /**
-     * Returns the configuration files provider of this object.
-     * @return An InterfaceConfigurationFilesProvider object.
+     * Returns the configurator of this object.
+     * @return An InterfaceConfigurator object.
      */
     @Nullable
-    public InterfaceCConfigurationFilesProvider getProvider() {
-        return provider;
+    public InterfaceConfigurator getConfigurator() {
+        return configurator;
     }
-
 
 }

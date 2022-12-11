@@ -27,7 +27,6 @@ package juno.controller.pre_access;
 
 import juno.model.data.profile.Profile;
 import juno.view.pages.pre_access.registration.menu.MenuPanel;
-import juno.view.util.RoundedBorder;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -75,17 +74,17 @@ public class ChangeRegistrationPanelState {
                     textField.setBorder(BorderFactory.createTitledBorder(border, v));
                 }
                 case (Profile.NAME) -> {
-                    textField = (JTextField) menuPanel.getSixComponent();
+                    textField = (JTextField) menuPanel.getSixthComponent();
                     Objects.requireNonNull(textField).setText("");
                     textField.setBorder(BorderFactory.createTitledBorder(border, v));
                 }
                 case (Profile.LAST_NAME) -> {
-                    textField = (JTextField) menuPanel.getSevenComponent();
+                    textField = (JTextField) menuPanel.getSeventhComponent();
                     Objects.requireNonNull(textField).setText("");
                     textField.setBorder(BorderFactory.createTitledBorder(border, v));
                 }
                 case (Profile.AGE) -> {
-                    textField = (JTextField) menuPanel.getEightComponent();
+                    textField = (JTextField) menuPanel.getEighthComponent();
                     Objects.requireNonNull(textField).setText("");
                     textField.setBorder(BorderFactory.createTitledBorder(border, v));
                 }

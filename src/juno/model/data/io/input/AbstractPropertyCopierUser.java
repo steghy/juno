@@ -23,36 +23,36 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.pre_access.card;
+package juno.model.data.io.input;
 
-import juno.model.data.io.input.configurable.InterfaceCConfigurationFilesProvider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * This abstract class defines configurator files provider
+ * which use a copier (InterfacePropertyCopier) to operate.
  * @author Simone Gentili
  */
-public abstract class AbstractPreAccessInitialChooser {
+public abstract class AbstractPropertyCopierUser {
 
-    // The configuration files provider.
-    private InterfaceCConfigurationFilesProvider provider;
+    // The property copier.
+    private InterfacePropertyCopier copier;
 
     /**
-     * Sets the configuration files provider of this object.
-     * @param provider An InterfaceConfigurationFilesProvider object.
+     * Sets the property copier of this object.
+     * @param copier An InterfacePropertyCopier object.
      */
-    public void setConfigurationFilesProvider(@NotNull InterfaceCConfigurationFilesProvider provider) {
-        this.provider = provider;
+    public void setCopier(@NotNull InterfacePropertyCopier copier) {
+        this.copier = copier;
     }
 
     /**
-     * Returns the configuration files provider of this object.
-     * @return An InterfaceConfigurationFilesProvider object.
+     * Returns the property copier of this object.
+     * @return An InterfacePropertyCopier object.
      */
     @Nullable
-    public InterfaceCConfigurationFilesProvider getProvider() {
-        return provider;
+    public InterfacePropertyCopier getCopier() {
+        return copier;
     }
-
 
 }

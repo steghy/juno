@@ -23,36 +23,26 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.pre_access.card;
-
-import juno.model.data.io.input.configurable.InterfaceCConfigurationFilesProvider;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+package juno.model.data.io.input.configurable;
 
 /**
+ * This interface define a method for checking
+ * compatibility between an object and a
+ * configuration file.
  * @author Simone Gentili
  */
-public abstract class AbstractPreAccessInitialChooser {
-
-    // The configuration files provider.
-    private InterfaceCConfigurationFilesProvider provider;
+@FunctionalInterface
+public interface InterfaceCCompatibilityChecker {
 
     /**
-     * Sets the configuration files provider of this object.
-     * @param provider An InterfaceConfigurationFilesProvider object.
+     * Returns true if, and only if, the file
+     * specified by path is compatible with the
+     * Configurable object passed as input.
+     * @param configurable A Configurable object.
+     * @param path A String object.
+     * @return A boolean value.
      */
-    public void setConfigurationFilesProvider(@NotNull InterfaceCConfigurationFilesProvider provider) {
-        this.provider = provider;
-    }
-
-    /**
-     * Returns the configuration files provider of this object.
-     * @return An InterfaceConfigurationFilesProvider object.
-     */
-    @Nullable
-    public InterfaceCConfigurationFilesProvider getProvider() {
-        return provider;
-    }
-
+    boolean areCompatible(Configurable configurable,
+                          String path);
 
 }

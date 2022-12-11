@@ -23,36 +23,37 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.pre_access.card;
+package juno.model.data.io.input.reflection;
 
-import juno.model.data.io.input.configurable.InterfaceCConfigurationFilesProvider;
+import juno.model.data.io.input.AbstractPropertyCopierUser;
+import juno.model.data.io.input.configurable.InterfaceCCompatibilityChecker;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Simone Gentili
  */
-public abstract class AbstractPreAccessInitialChooser {
+public abstract class AbstractRCompatibilityCheckerAndCopierUser
+        extends AbstractPropertyCopierUser {
 
-    // The configuration files provider.
-    private InterfaceCConfigurationFilesProvider provider;
+    // The reflected compatibility checker.
+    private InterfaceRCompatibilityChecker checker;
 
     /**
-     * Sets the configuration files provider of this object.
-     * @param provider An InterfaceConfigurationFilesProvider object.
+     * Sets the reflected compatibility checker of this object.
+     * @param checker An InterfaceRCCompatibilityChecker object.
      */
-    public void setConfigurationFilesProvider(@NotNull InterfaceCConfigurationFilesProvider provider) {
-        this.provider = provider;
+    public void setChecker(@NotNull InterfaceRCompatibilityChecker checker) {
+        this.checker = checker;
     }
 
     /**
-     * Returns the configuration files provider of this object.
-     * @return An InterfaceConfigurationFilesProvider object.
+     * Returns the reflected compatibility checker of this object.
+     * @return An InterfaceRCCompatibilityChecker object.
      */
     @Nullable
-    public InterfaceCConfigurationFilesProvider getProvider() {
-        return provider;
+    public InterfaceRCompatibilityChecker getChecker() {
+        return this.checker;
     }
-
 
 }

@@ -23,36 +23,34 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.pre_access.card;
+package juno.model.data.io.input;
 
-import juno.model.data.io.input.configurable.InterfaceCConfigurationFilesProvider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Simone Gentili
  */
-public abstract class AbstractPreAccessInitialChooser {
+public abstract class AbstractDataImporterUser {
 
-    // The configuration files provider.
-    private InterfaceCConfigurationFilesProvider provider;
+    // The data importer.
+    private InterfaceDataImporter importer;
 
     /**
-     * Sets the configuration files provider of this object.
-     * @param provider An InterfaceConfigurationFilesProvider object.
+     * Sets the data importer of this object.
+     * @param importer An InterfaceDataImporter object.
      */
-    public void setConfigurationFilesProvider(@NotNull InterfaceCConfigurationFilesProvider provider) {
-        this.provider = provider;
+    public void setImporter(@NotNull InterfaceDataImporter importer) {
+        this.importer = importer;
     }
 
     /**
-     * Returns the configuration files provider of this object.
-     * @return An InterfaceConfigurationFilesProvider object.
+     * Returns the data importer of this object.
+     * @return An InterfaceDataImporter object.
      */
     @Nullable
-    public InterfaceCConfigurationFilesProvider getProvider() {
-        return provider;
+    public InterfaceDataImporter getImporter() {
+        return importer;
     }
-
 
 }

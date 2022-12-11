@@ -56,12 +56,12 @@ public class MenuPanelConfigurator {
         JLabel lastNameLabel= new JLabel("last name:");
         JLabel ageLabel = new JLabel("age:");
 
-        // Setting components
         // Colors.
         profileNameLabel.setForeground(Color.WHITE);
         nameLabel.setForeground(Color.WHITE);
         lastNameLabel.setForeground(Color.WHITE);
         ageLabel.setForeground(Color.WHITE);
+
         // Texts.
         Font font = new Font(Font.MONOSPACED, Font.BOLD, 18);
         profileNameLabel.setFont(font);
@@ -74,11 +74,10 @@ public class MenuPanelConfigurator {
         JTextField nameTextField = new JTextField(15);
         JTextField lastNameTextField = new JTextField(15);
         JTextField ageTextField = new JTextField(15);
+
         // Buttons.
         AbstractButton confirmButton = ButtonFactory.createButton(ButtonLibrary.CONFIRM);
         AbstractButton backButton = ButtonFactory.createButton(ButtonLibrary.BACK);
-
-        // Adding components.
 
         // Labels.
         menuPanel.setFirstComponent(profileNameLabel);  // Profile name label.
@@ -87,13 +86,14 @@ public class MenuPanelConfigurator {
         menuPanel.setFourthComponent(ageLabel);         // Age label.
 
         // Text fields.
-        menuPanel.setFifthComponent(profileNameTextField); // Profile name text field.
-        menuPanel.setSixComponent(nameTextField);          // Name text field.
-        menuPanel.setSevenComponent(lastNameTextField);    // Last name text field.
-        menuPanel.setEightComponent(ageTextField);         // Age text field.
+        menuPanel.setFifthComponent(profileNameTextField);   // Profile name text field.
+        menuPanel.setSixthComponent(nameTextField);          // Name text field.
+        menuPanel.setSeventhComponent(lastNameTextField);    // Last name text field.
+        menuPanel.setEighthComponent(ageTextField);          // Age text field.
+
         // Buttons.
-        menuPanel.setNineComponent(confirmButton);         // Confirm button.
-        menuPanel.setTenComponent(backButton);             // Back button.
+        menuPanel.setNinthComponent(confirmButton);          // Confirm button.
+        menuPanel.setTenthComponent(backButton);             // Back button.
 
         // Images resizing.
         ImageResizer.resize(confirmButton, 3.0);

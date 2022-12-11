@@ -23,36 +23,57 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.pre_access.card;
+package juno.model.data.io.input;
 
-import juno.model.data.io.input.configurable.InterfaceCConfigurationFilesProvider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * This abstract class defines compatibility
+ * checkers between files and objects that
+ * use importer and copier to operate.
  * @author Simone Gentili
  */
-public abstract class AbstractPreAccessInitialChooser {
+public abstract class AbstractImporterAndCopierUser {
 
-    // The configuration files provider.
-    private InterfaceCConfigurationFilesProvider provider;
+    // The importer.
+    private InterfaceDataImporter importer;
+
+    // The copier.
+    private InterfacePropertyCopier copier;
 
     /**
-     * Sets the configuration files provider of this object.
-     * @param provider An InterfaceConfigurationFilesProvider object.
+     * Sets the importer of this object.
+     * @param importer An InterfaceDataImporter object.
      */
-    public void setConfigurationFilesProvider(@NotNull InterfaceCConfigurationFilesProvider provider) {
-        this.provider = provider;
+    public void setImporter(@NotNull InterfaceDataImporter importer) {
+        this.importer = importer;
     }
 
     /**
-     * Returns the configuration files provider of this object.
-     * @return An InterfaceConfigurationFilesProvider object.
+     * Sets the copier of this object.
+     * @param copier An InterfacePropertyCopier object.
+     */
+    public void setCopier(@NotNull InterfacePropertyCopier copier) {
+        this.copier = copier;
+    }
+
+    /**
+     * Returns the importer of this object.
+     * @return An InterfaceDataImporter.
      */
     @Nullable
-    public InterfaceCConfigurationFilesProvider getProvider() {
-        return provider;
+    public InterfaceDataImporter getImporter() {
+        return importer;
     }
 
+    /**
+     * Returns the copier of this object.
+     * @return An InterfacePropertyCopier object.
+     */
+    @Nullable
+    public InterfacePropertyCopier getCopier() {
+        return copier;
+    }
 
 }

@@ -26,7 +26,7 @@
 package juno.view.pages.pre_access.card;
 
 import juno.init.Directories;
-import juno.model.data.io.input.configurable.ConfigurationFilesProvider;
+import juno.model.data.io.input.configurable.CConfigurationFilesProvider;
 import juno.model.data.profile.Profile;
 import juno.view.pages.pre_access.access.AccessPanel;
 import juno.view.pages.pre_access.login.LogInPanel;
@@ -63,7 +63,7 @@ public class PreAccessCardPanelConfigurator {
         preAccessCardPanel.init();
 
         // Pre access initial chooser setting.
-        preAccessInitialChooser.setConfigurationFilesProvider(ConfigurationFilesProvider.getInstance());
+        preAccessInitialChooser.setConfigurationFilesProvider(CConfigurationFilesProvider.getInstance());
 
         // Call.
         PreAccessInitialChooser.getInstance()

@@ -25,6 +25,11 @@
 
 package juno.model.data.io.input;
 
+import juno.model.data.io.input.configurable.CCompatibilityChecker;
+import juno.model.data.io.input.configurable.CConfigurationFilesProvider;
+import juno.model.data.io.input.reflection.RCompatibilityChecker;
+import juno.model.data.io.input.reflection.RConfigurationFilesProvider;
+
 /**
  * This class defines the initializer of the package
  * it belongs to, i.e. the juno.model.data.io.input package.
@@ -52,12 +57,8 @@ public class InputPKGInitializer {
                                                          JSONDataImporter.getInstance();
 
         // juno.model.data.io.input.configurable package.
-        juno.model.data.io.input.configurable.
-                CompatibilityChecker configurableCompatibilityChecker = juno.model.data.io.input.configurable.
-                                                                        CompatibilityChecker.getInstance();
-        juno.model.data.io.input.configurable.
-                ConfigurationFilesProvider configurableConfigurationFilesProvider = juno.model.data.io.input.configurable.
-                                                                                    ConfigurationFilesProvider.getInstance();
+        CCompatibilityChecker configurableCompatibilityChecker = CCompatibilityChecker.getInstance();
+        CConfigurationFilesProvider configurableConfigurationFilesProvider = CConfigurationFilesProvider.getInstance();
         configurableCompatibilityChecker.setCopier(propertyCopier);
         configurableCompatibilityChecker.setImporter(jsonDataImporter);
 
@@ -65,12 +66,8 @@ public class InputPKGInitializer {
         configurableConfigurationFilesProvider.setChecker(configurableCompatibilityChecker);
 
         // juno.model.data.io.input.reflect package.
-        juno.model.data.io.input.reflection.
-                CompatibilityChecker reflectCompatibilityChecker = juno.model.data.io.input.reflection.
-                                                                   CompatibilityChecker.getInstance();
-        juno.model.data.io.input.reflection.
-                ConfigurationFilesProvider reflectConfigurableFilesProvider = juno.model.data.io.input.reflection.
-                                                                              ConfigurationFilesProvider.getInstance();
+        RCompatibilityChecker reflectCompatibilityChecker = RCompatibilityChecker.getInstance();
+        RConfigurationFilesProvider reflectConfigurableFilesProvider = RConfigurationFilesProvider.getInstance();
         juno.model.data.io.input.reflection.
                 Configurator configurator = juno.model.data.io.input.reflection.
                                             Configurator.getInstance();

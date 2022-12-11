@@ -27,7 +27,7 @@ package juno.view.pages.pre_access.registration.menu;
 
 import juno.controller.InterfaceRegistrationDataProvider;
 import juno.model.data.profile.Profile;
-import juno.view.pages.AbstractTenComponent;
+import juno.view.pages.AbstractTenthComponent;
 
 import javax.swing.*;
 import java.awt.*;
@@ -39,7 +39,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class MenuPanel
-        extends AbstractTenComponent
+        extends AbstractTenthComponent
         implements InterfaceRegistrationDataProvider {
 
     // The MenuPanel instance.
@@ -65,17 +65,17 @@ public class MenuPanel
         map.put(Profile.PROFILE_NAME, ((JTextField) Objects.requireNonNull(getFifthComponent())).getText());
 
         // Name case.
-        JTextField nameTextField = (JTextField) getSixComponent();
+        JTextField nameTextField = (JTextField) getSixthComponent();
         if(Objects.requireNonNull(nameTextField).getText().length() > 0)
             map.put(Profile.NAME, nameTextField.getText());
 
         // Last name case.
-        JTextField lastNameTextField = (JTextField) getSevenComponent();
+        JTextField lastNameTextField = (JTextField) getSeventhComponent();
         if(Objects.requireNonNull(lastNameTextField).getText().length() > 0)
             map.put(Profile.LAST_NAME, lastNameTextField.getText());
 
         // Age case.
-        String temp = ((JTextField) Objects.requireNonNull(getEightComponent())).getText();
+        String temp = ((JTextField) Objects.requireNonNull(getEighthComponent())).getText();
         if(temp.length() > 0) {
             int age;
             try {
@@ -157,7 +157,7 @@ public class MenuPanel
         gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.LINE_START;
         gbc.insets = new Insets(0,0,5,0);
-        this.add(Objects.requireNonNull(getSixComponent()), gbc);
+        this.add(Objects.requireNonNull(getSixthComponent()), gbc);
 
         // Last name text field.
         gbc.gridx = 1;
@@ -168,7 +168,7 @@ public class MenuPanel
         gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.LINE_START;
         gbc.insets = new Insets(0,0,5,0);
-        this.add(Objects.requireNonNull(getSevenComponent()), gbc);
+        this.add(Objects.requireNonNull(getSeventhComponent()), gbc);
 
         // Age text field.
         gbc.gridx = 1;
@@ -179,7 +179,7 @@ public class MenuPanel
         gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.LINE_START;
         gbc.insets = new Insets(0,0,5,0);
-        this.add(Objects.requireNonNull(getEightComponent()), gbc);
+        this.add(Objects.requireNonNull(getEighthComponent()), gbc);
 
         // Confirm button.
         gbc.gridx = 1;
@@ -190,7 +190,7 @@ public class MenuPanel
         gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.insets = new Insets(0,0,5,0);
-        this.add(Objects.requireNonNull(getNineComponent()), gbc);
+        this.add(Objects.requireNonNull(getNinthComponent()), gbc);
 
         // Back button.
         gbc.gridx = 0;
@@ -201,7 +201,7 @@ public class MenuPanel
         gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.insets = new Insets(0,0,5,0);
-        this.add(Objects.requireNonNull(getTenComponent()), gbc);
+        this.add(Objects.requireNonNull(getTenthComponent()), gbc);
 
     }
 
@@ -212,21 +212,9 @@ public class MenuPanel
     public java.util.List<Component> getTextFields() {
         return java.util.List.of(
                 Objects.requireNonNull(getFifthComponent()),
-                Objects.requireNonNull(getSixComponent()),
-                Objects.requireNonNull(getSevenComponent()),
-                Objects.requireNonNull(getEightComponent()));
-    }
-
-    /**
-     * Returns the labels of this object.
-     * @return A List object.
-     */
-    public java.util.List<Component> getLabels() {
-        return java.util.List.of(
-                Objects.requireNonNull(getFirstComponent()),
-                Objects.requireNonNull(getSecondComponent()),
-                Objects.requireNonNull(getThirdComponent()),
-                Objects.requireNonNull(getFourthComponent()));
+                Objects.requireNonNull(getSixthComponent()),
+                Objects.requireNonNull(getSeventhComponent()),
+                Objects.requireNonNull(getEighthComponent()));
     }
 
 }

@@ -23,36 +23,60 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.pre_access.card;
+package juno.model.data.io.input.configurable;
 
-import juno.model.data.io.input.configurable.InterfaceCConfigurationFilesProvider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
+
 /**
+ * This abstract class defines configuration files provider
+ * which use a compatibility checker (InterfaceCompatibilityChecker)
+ * to operate.
  * @author Simone Gentili
  */
-public abstract class AbstractPreAccessInitialChooser {
+public abstract class AbstractCConfigurationFilesProvider
+        extends AbstractCCompatibilityCheckerAndCopierUser {
 
-    // The configuration files provider.
-    private InterfaceCConfigurationFilesProvider provider;
+    // The recursive value.
+    private boolean recursive;
+
+    // The extensions.
+    private List<String> extensions;
 
     /**
-     * Sets the configuration files provider of this object.
-     * @param provider An InterfaceConfigurationFilesProvider object.
+     * Sets the recursive value of this object.
+     * @param recursive A boolean value.
      */
-    public void setConfigurationFilesProvider(@NotNull InterfaceCConfigurationFilesProvider provider) {
-        this.provider = provider;
+    public void setRecursive(boolean recursive) {
+        this.recursive = recursive;
     }
 
     /**
-     * Returns the configuration files provider of this object.
-     * @return An InterfaceConfigurationFilesProvider object.
+     * Sets the extensions list of this object.
+     * @param extensions A List object.
+     */
+    public void setExtensions(@NotNull List<String> extensions) {
+        this.extensions = extensions;
+    }
+
+    /**
+     * Returns true if, and only if, the recursive value
+     * of this object is true.
+     * @return A boolean value.
+     */
+    public boolean isRecursive() {
+        return recursive;
+    }
+
+    /**
+     * Returns the extensions list of this object.
+     * @return A List object.
      */
     @Nullable
-    public InterfaceCConfigurationFilesProvider getProvider() {
-        return provider;
+    public List<String> getExtensions() {
+        return extensions;
     }
-
 
 }

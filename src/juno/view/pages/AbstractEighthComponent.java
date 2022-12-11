@@ -23,36 +23,36 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.pre_access.card;
+package juno.view.pages;
 
-import juno.model.data.io.input.configurable.InterfaceCConfigurationFilesProvider;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.awt.*;
 
 /**
  * @author Simone Gentili
  */
-public abstract class AbstractPreAccessInitialChooser {
+public abstract class AbstractEighthComponent
+        extends AbstractSeventhComponent {
 
-    // The configuration files provider.
-    private InterfaceCConfigurationFilesProvider provider;
+    // The eighth component.
+    private Component eighthComponent;
 
     /**
-     * Sets the configuration files provider of this object.
-     * @param provider An InterfaceConfigurationFilesProvider object.
+     * Sets the eighth component of this object.
+     * @param eighthComponent A Component object.
      */
-    public void setConfigurationFilesProvider(@NotNull InterfaceCConfigurationFilesProvider provider) {
-        this.provider = provider;
+    public void setEighthComponent(@Nullable Component eighthComponent) {
+        this.eighthComponent = eighthComponent;
     }
 
     /**
-     * Returns the configuration files provider of this object.
-     * @return An InterfaceConfigurationFilesProvider object.
+     * Returns the eighth component of this object.
+     * @return A Component object.
      */
     @Nullable
-    public InterfaceCConfigurationFilesProvider getProvider() {
-        return provider;
+    public Component getEighthComponent() {
+        return eighthComponent;
     }
-
 
 }

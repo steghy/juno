@@ -23,36 +23,32 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.pre_access.card;
+package juno.model.data.io.input.reflection;
 
-import juno.model.data.io.input.configurable.InterfaceCConfigurationFilesProvider;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.List;
 
 /**
+ * This interface defines a method for obtaining
+ * configuration files for a specified object.
  * @author Simone Gentili
  */
-public abstract class AbstractPreAccessInitialChooser {
-
-    // The configuration files provider.
-    private InterfaceCConfigurationFilesProvider provider;
+@FunctionalInterface
+public interface InterfaceRConfigurationFilesProvider {
 
     /**
-     * Sets the configuration files provider of this object.
-     * @param provider An InterfaceConfigurationFilesProvider object.
+     * Returns a list containing the configuration
+     * files compatible with the specified object
+     * present within the specified path.
+     * @param object An object.
+     * @param path A String object.
+     * @return A List object.
+     * @throws FileNotFoundException If the specified
+     *         path does not exist.
      */
-    public void setConfigurationFilesProvider(@NotNull InterfaceCConfigurationFilesProvider provider) {
-        this.provider = provider;
-    }
-
-    /**
-     * Returns the configuration files provider of this object.
-     * @return An InterfaceConfigurationFilesProvider object.
-     */
-    @Nullable
-    public InterfaceCConfigurationFilesProvider getProvider() {
-        return provider;
-    }
-
+    List<File> getConfigurationFiles(Object object,
+                                     String path)
+            throws FileNotFoundException;
 
 }

@@ -27,9 +27,8 @@ package juno.controller.pre_access;
 
 import juno.controller.InterfaceRegistrationDataProvider;
 import juno.model.data.io.input.PropertyCopier;
-import juno.model.data.io.input.configurable.CompatibilityChecker;
+import juno.model.data.io.input.configurable.CCompatibilityChecker;
 import juno.model.data.io.input.configurable.Configurable;
-import juno.view.pages.pre_access.card.PreAccessCardPanel;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.event.ActionEvent;
@@ -64,12 +63,12 @@ public class RegistrationDataSender
     }
 
     @Override
-    public void actionPerformed(ActionEvent event) {
+    public void actionPerformed(@NotNull ActionEvent event) {
         // Current status of the object.
         Map<String, Object> properties = PropertyCopier.getInstance().copy(configurable);
 
         // Checking compatibility.
-        boolean result = CompatibilityChecker.getInstance()
+        boolean result = CCompatibilityChecker.getInstance()
                     .areCompatible(configurable, provider.provideRegistrationData());
 
         if(!result) {

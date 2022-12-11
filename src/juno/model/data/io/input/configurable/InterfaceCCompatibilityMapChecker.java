@@ -23,36 +23,27 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.pre_access.card;
+package juno.model.data.io.input.configurable;
 
-import juno.model.data.io.input.configurable.InterfaceCConfigurationFilesProvider;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import java.util.Map;
 
 /**
+ * This interface defines a method for checking
+ * compatibility between an object and a Map object.
  * @author Simone Gentili
  */
-public abstract class AbstractPreAccessInitialChooser {
-
-    // The configuration files provider.
-    private InterfaceCConfigurationFilesProvider provider;
+@FunctionalInterface
+public interface InterfaceCCompatibilityMapChecker {
 
     /**
-     * Sets the configuration files provider of this object.
-     * @param provider An InterfaceConfigurationFilesProvider object.
+     * Returns true if, and only if, the specified
+     * Map object is compatible with the specified
+     * Configurable object.
+     * @param configurable A Configurable object.
+     * @param map A Map object.
+     * @return A boolean value.
      */
-    public void setConfigurationFilesProvider(@NotNull InterfaceCConfigurationFilesProvider provider) {
-        this.provider = provider;
-    }
-
-    /**
-     * Returns the configuration files provider of this object.
-     * @return An InterfaceConfigurationFilesProvider object.
-     */
-    @Nullable
-    public InterfaceCConfigurationFilesProvider getProvider() {
-        return provider;
-    }
-
+    boolean areCompatible(Configurable configurable,
+                          Map<String, Object> map);
 
 }

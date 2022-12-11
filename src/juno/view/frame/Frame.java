@@ -34,8 +34,7 @@ import java.awt.*;
  * @author Simone Gentili
  */
 public class Frame
-        extends JFrame
-        implements AbstractResizableFrame {
+        extends JFrame {
 
     public static GraphicsDevice device = GraphicsEnvironment
                                           .getLocalGraphicsEnvironment()

@@ -25,12 +25,12 @@
 
 package juno.controller.pre_access;
 
-import juno.model.data.io.input.configurable.AbstractConfigurationFilesProvider;
+import juno.model.data.io.input.configurable.AbstractCConfigurationFilesProvider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public abstract class AbstractRegistrationDataSender
-        extends AbstractConfigurationFilesProvider {
+        extends AbstractCConfigurationFilesProvider {
 
     // The registration panel changer.
     private InterfaceRegistrationPanelChanger changer;

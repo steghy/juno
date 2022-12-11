@@ -37,9 +37,11 @@ public class Initializer {
 
     @SuppressWarnings("unchecked")
     public static void initialize() {
+        // Factories.
         AbstractGCardFactory<InterfaceCard> gCardFactory = GCardFactory.getInstance();
         AbstractGDeckFactory<InterfaceCard> gDeckFactory = GDeckFactory.getInstance();
 
+        // Factories settings.
         gCardFactory.setProvider(CPathProvider.getInstance());
         gDeckFactory.setFactory((InterfaceGCardFactory<InterfaceCard>) gCardFactory);
     }
