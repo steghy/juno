@@ -23,11 +23,10 @@
  * SOFTWARE.
  */
 
-package juno.controller;
+package juno.model.data.profile;
 
-import java.util.Map;
-
-public interface InterfaceRegistrationDataChecker {
-
-    Map<String, String> getResponse();
-}
+/**
+ * @author Simone Gentili
+ */
+public interface InterfaceErrorDecorator
+        extends InterfaceErrorProvider {}

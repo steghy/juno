@@ -32,18 +32,15 @@ import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 /**
  * @author Simone Gentili
  */
 public class Profile
+        extends AbstractProfile
         implements InterfaceProfiler,
-                    InterfaceErrorProvider,
                     Configurable,
                      Exportable,
                     Observable {
@@ -70,15 +67,11 @@ public class Profile
     // The age.
     private Integer age;
 
-    // The errors of the configuration process.
-    private final Map<String, String> errors;
-
     // The Profile instance.
     private static Profile instance;
 
     // Builds the Profile instance.
     private Profile() {
-        errors = new HashMap<>();
         observerList = new ArrayList<>();
     }
 
@@ -93,6 +86,7 @@ public class Profile
 
     @Override
     public void configure(@NotNull Map<String, Object> map) {
+        Map<String, String> errors = Objects.requireNonNull(getProvider()).getErrors();
         errors.clear(); // Cleaning up old errors.
         // Profile name case.
         if (map.containsKey(PROFILE_NAME)) {
@@ -160,11 +154,6 @@ public class Profile
         return map;
     }
 
-    @Override
-    public Map<String, String> getErrors() {
-        return errors;
-    }
-
     /**
      * Sets the profile name of this object.
      * @param profileName A String object.
@@ -175,7 +164,7 @@ public class Profile
                 "the length must be greater than zero");
         if(length > MAXIMUM_LENGTH) throw new IllegalArgumentException(
                 "the length must be less than fifteen");
-        if(!Characters.isAlpha(profileName)) throw new IllegalArgumentException(
+        if(!Characters.isAlphaNumeric(profileName)) throw new IllegalArgumentException(
                 "alphanumeric characters only");
         this.profileName = profileName;
     }
@@ -190,7 +179,7 @@ public class Profile
                 "the length must be greater than zero");
         if(length > MAXIMUM_LENGTH) throw new IllegalArgumentException(
                     "the length must be less than fifteen" + length);
-        if(!Characters.isAlpha(name)) throw new IllegalArgumentException(
+        if(Characters.IsNotAlpha(name)) throw new IllegalArgumentException(
                 "alphabetic characters only");
         this.name = name;
     }
@@ -205,7 +194,7 @@ public class Profile
                 "the length must be greater than zero");
         if(length > MAXIMUM_LENGTH) throw new IllegalArgumentException(
                     "the length must be less than fifteen");
-        if(!Characters.isAlpha(lastName)) throw new IllegalArgumentException(
+        if(Characters.IsNotAlpha(lastName)) throw new IllegalArgumentException(
                 "alphabetic characters only");
         this.lastName = lastName;
     }
@@ -238,24 +227,6 @@ public class Profile
     @Nullable
     public String getName() {
         return name;
-    }
-
-    /**
-     * Returns the last name of this object.
-     * @return A String object.
-     */
-    @Nullable
-    public String getLastName() {
-        return lastName;
-    }
-
-    /**
-     * Returns the age of this object.
-     * @return An integer value.
-     */
-    @Nullable
-    public Integer getAge() {
-        return age;
     }
 
     @Override

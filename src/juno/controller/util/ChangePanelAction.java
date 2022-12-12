@@ -25,28 +25,46 @@
 
 package juno.controller.util;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-public class ChangePanelAction extends AbstractAction {
+/**
+ * @author Simone Gentili
+ */
+public class ChangePanelAction
+        extends AbstractAction {
 
-    private JPanel cardPanel;
-    private String panel;
+    // The card panel.
+    private final JPanel cardPanel;
 
-    public ChangePanelAction(JPanel cardPanel, String panel) {
+    // The key of the panel.
+    private final String panel;
+
+    /**
+     * Builds a ChangePanelAction object with
+     * the specified objects.
+     * @param cardPanel A JPanel object.
+     * @param panel A String object.
+     */
+    public ChangePanelAction(@NotNull JPanel cardPanel,
+                             @NotNull String panel) {
         this.cardPanel = cardPanel;
         this.panel = panel;
     }
 
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(@NotNull ActionEvent e) {
         LayoutManager layoutManager = cardPanel.getLayout();
         if(layoutManager instanceof CardLayout cardLayout) {
             cardLayout.show(cardPanel, panel);
         } else {
-            throw new IllegalArgumentException("Invalid JPanel");
+            throw new IllegalArgumentException(
+                    "Invalid layout manager type: " + layoutManager.getClass() +
+                    ". CardLayout expected.");
         }
     }
 }

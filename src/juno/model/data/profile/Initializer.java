@@ -23,70 +23,28 @@
  * SOFTWARE.
  */
 
-package juno.view.factories;
+package juno.model.data.profile;
 
 /**
  * @author Simone Gentili
  */
-public enum ButtonLibrary {
+public class Initializer {
 
-    // LOGO //
-    JUNO,
+    // Builds an Initializer object.
+    private Initializer() {}
 
-    // PRE ACCESS PANEL //
-    WELCOME,
-    WELCOME_BACK,
-    REGISTRATION,
-    CREATE_AN_ACCOUNT,
-    CONTINUE_WITHOUT_AN_ACCOUNT,
-    LOG_IN,
-    CONFIRM,
+    public static void initialize() {
+        // Components.
+        // Profile.
+        Profile profile = Profile.getInstance();
 
-    // MAIN MENU SECTION //
-    NEW_GAME,
-    SCORE,
-    OPTIONS,
-    EXIT,
+        // Profile error provider.
+        ErrorProvider errorProvider = new ErrorProvider();
 
-    // AVATARS PANEL //
-    AVATAR_1,
-    AVATAR_2,
-    AVATAR_3,
-    AVATAR_4,
-    AVATAR_5,
-    AVATAR_6,
-    AVATAR_7,
-    AVATAR_8,
-    AVATAR_9,
-    AVATAR_10,
+        //////////////////////////////////////////////////////////////////////////
 
-    // OPTIONS //
-    SETTINGS,
-    AUDIO_TOGGLE,
-    FULLSCREEN_TOGGLE,
-    BACK,
+        // Connections.
+        profile.setProvider(errorProvider);
+    }
 
-    // NEW GAME MENU //
-    DIFFICULTY,
-    SINGLE_PLAYER,
-    MULTIPLAYER,
-
-    // SINGLE_PLAYER //
-    TWO_PLAYERS,
-    THREE_PLAYERS,
-    FOUR_PLAYERS,
-    PLAYERS,
-    START,
-
-    // MODE //
-    MODE,
-    STACKING,
-
-    // MULTIPLAYER //
-    UNAVAILABLE_SERVICE,
-
-    // DIFFICULTY //
-    EASY,
-    MEDIUM,
-    HARD,
 }

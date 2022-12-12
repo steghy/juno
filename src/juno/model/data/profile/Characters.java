@@ -38,12 +38,24 @@ public class Characters {
     // Builds a Characters object.
     private Characters() {}
 
-    public static boolean isAlpha(@NotNull String sequence) {
+    /**
+     * Returns true if, and only if, the specified
+     * String object contains special characters.
+     * @param sequence A String object.
+     * @return A boolean value.
+     */
+    public static boolean IsNotAlpha(@NotNull String sequence) {
         Pattern pattern = Pattern.compile("[^A-Za-z]");
         Matcher matcher = pattern.matcher(sequence);
-        return !matcher.find();
+        return matcher.find();
     }
 
+    /**
+     * Returns true if, and only if, the specified
+     * String object contains only alphanumeric characters.
+     * @param sequence A String object.
+     * @return A boolean value.
+     */
     public static boolean isAlphaNumeric(@NotNull String sequence) {
         Pattern pattern = Pattern.compile("[^A-Za-z0-9]");
         Matcher matcher = pattern.matcher(sequence);

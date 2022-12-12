@@ -23,70 +23,29 @@
  * SOFTWARE.
  */
 
-package juno.view.factories;
+package juno.model.data.profile;
+
+import java.util.HashMap;
+import java.util.Map;
+
 
 /**
  * @author Simone Gentili
  */
-public enum ButtonLibrary {
+public class ErrorProvider
+        implements InterfaceErrorProvider{
 
-    // LOGO //
-    JUNO,
+    // The errors to provide.
+    private final Map<String, String> errors;
 
-    // PRE ACCESS PANEL //
-    WELCOME,
-    WELCOME_BACK,
-    REGISTRATION,
-    CREATE_AN_ACCOUNT,
-    CONTINUE_WITHOUT_AN_ACCOUNT,
-    LOG_IN,
-    CONFIRM,
+    /** Builds an ErrorProvider object. */
+    public ErrorProvider() {
+        errors = new HashMap<>();
+    }
 
-    // MAIN MENU SECTION //
-    NEW_GAME,
-    SCORE,
-    OPTIONS,
-    EXIT,
+    @Override
+    public Map<String, String> getErrors() {
+        return errors;
+    }
 
-    // AVATARS PANEL //
-    AVATAR_1,
-    AVATAR_2,
-    AVATAR_3,
-    AVATAR_4,
-    AVATAR_5,
-    AVATAR_6,
-    AVATAR_7,
-    AVATAR_8,
-    AVATAR_9,
-    AVATAR_10,
-
-    // OPTIONS //
-    SETTINGS,
-    AUDIO_TOGGLE,
-    FULLSCREEN_TOGGLE,
-    BACK,
-
-    // NEW GAME MENU //
-    DIFFICULTY,
-    SINGLE_PLAYER,
-    MULTIPLAYER,
-
-    // SINGLE_PLAYER //
-    TWO_PLAYERS,
-    THREE_PLAYERS,
-    FOUR_PLAYERS,
-    PLAYERS,
-    START,
-
-    // MODE //
-    MODE,
-    STACKING,
-
-    // MULTIPLAYER //
-    UNAVAILABLE_SERVICE,
-
-    // DIFFICULTY //
-    EASY,
-    MEDIUM,
-    HARD,
 }

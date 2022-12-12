@@ -26,7 +26,8 @@
 package juno.view.pages.pre_access.registration.menu;
 
 import juno.controller.pre_access.RegistrationDataSender;
-import juno.controller.pre_access.RegistrationPanelRestorer;
+import juno.controller.util.RegistrationPanelRestorer;
+import juno.model.data.profile.ErrorProviderDecorator;
 import juno.model.data.profile.Profile;
 import juno.view.factories.ButtonFactory;
 import juno.view.factories.ButtonLibrary;
@@ -38,6 +39,7 @@ import juno.view.util.RoundedBorder;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.util.Objects;
 
 /**
  * @author Simone Gentili
@@ -51,7 +53,7 @@ public class MenuPanelConfigurator {
         // Main component.
         MenuPanel menuPanel = MenuPanel.getInstance();
 
-        // components.
+        // Components.
         JLabel profileNameLabel = new JLabel("username:");
         JLabel nameLabel = new JLabel("name:");
         JLabel lastNameLabel= new JLabel("last name:");
@@ -77,20 +79,20 @@ public class MenuPanelConfigurator {
         JTextField ageTextField = new JTextField(15);
 
         // RegistrationDataLine objects.
-        RegistrationDataLine profileName = new RegistrationDataLine(profileNameLabel, profileNameTextField);
-        RegistrationDataLine name = new RegistrationDataLine(nameLabel, nameTextField);
-        RegistrationDataLine lastName = new RegistrationDataLine(lastNameLabel, lastNameTextField);
-        RegistrationDataLine age = new RegistrationDataLine(ageLabel, ageTextField);
+        DataLine profileName = new DataLine(profileNameLabel, profileNameTextField);
+        DataLine name = new DataLine(nameLabel, nameTextField);
+        DataLine lastName = new DataLine(lastNameLabel, lastNameTextField);
+        DataLine age = new DataLine(ageLabel, ageTextField);
 
         // Buttons.
         AbstractButton confirmButton = ButtonFactory.createButton(ButtonLibrary.CONFIRM);
         AbstractButton backButton = ButtonFactory.createButton(ButtonLibrary.BACK);
 
         // Labels.
-        menuPanel.setFirstComponent(profileName);   // Profile name.
-        menuPanel.setSecondComponent(name);         // Name.
-        menuPanel.setThirdComponent(lastName);      // Last name.
-        menuPanel.setFourthComponent(age);          // Age.
+        menuPanel.setFirstComponent(profileName); // Profile name.
+        menuPanel.setSecondComponent(name);       // Name.
+        menuPanel.setThirdComponent(lastName);    // Last name.
+        menuPanel.setFourthComponent(age);        // Age.
 
         // Buttons.
         menuPanel.setFifthComponent(confirmButton); // Confirm button.
@@ -101,7 +103,13 @@ public class MenuPanelConfigurator {
         ImageResizer.resize(backButton, 3.0);
 
         // Action listeners.
-        confirmButton.addActionListener(new RegistrationDataSender(Profile.getInstance(), menuPanel));
+        confirmButton.addActionListener(
+                new RegistrationDataSender(
+                        Profile.getInstance(),
+                        menuPanel,
+                        new ErrorProviderDecorator(
+                                Objects.requireNonNull(Profile.getInstance().getProvider()),
+                                menuPanel)));
 
         backButton.addActionListener(listener -> {
             LayoutManager layoutManager = PreAccessCardPanel.getInstance().getLayout();
@@ -117,7 +125,7 @@ public class MenuPanelConfigurator {
             }
         });
 
-        backButton.addActionListener(RegistrationPanelRestorer.getInstance());
+        backButton.addActionListener(new RegistrationPanelRestorer(menuPanel));
 
         // Inside border.
         RoundedBorder insideBorder = new RoundedBorder(50, 1, null, Color.WHITE);

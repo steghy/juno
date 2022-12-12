@@ -25,33 +25,34 @@
 
 package juno.controller.util;
 
+import juno.controller.pre_access.InterfaceDataLineProvider;
 import org.jetbrains.annotations.NotNull;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 /**
  * @author Simone Gentili
  */
-public class ChangeComponentStateAction
+public class RegistrationPanelRestorer
         implements ActionListener {
 
-    // The component.
-    private final Component component;
+    // The data line provider.
+    private final InterfaceDataLineProvider provider;
 
     /**
-     * Builds a ChangeComponentStateAction object with
-     * the specified Component object.
-     * @param component A Component object.
+     * Builds a RegistrationPanelRestorer with
+     * the specified data line provider.
+     * @param provider An InterfaceDataLineProvider object.
      */
-    public ChangeComponentStateAction(@NotNull Component component) {
-        this.component = component;
+    public RegistrationPanelRestorer(@NotNull InterfaceDataLineProvider provider) {
+        this.provider = provider;
     }
 
     @Override
     public void actionPerformed(@NotNull ActionEvent e) {
-        component.setEnabled(!component.isEnabled());
+        provider.getDataLines().forEach((k, v) -> {
+            v.setBorder(null); v.getTextField().setText("");
+        });
     }
 
 }

@@ -27,12 +27,9 @@ package juno.view.pages.pre_access.registration.menu;
 
 import juno.controller.InterfaceRegistrationDataProvider;
 import juno.controller.pre_access.InterfaceDataLineProvider;
-import juno.model.data.profile.InterfaceErrorProvider;
 import juno.model.data.profile.Profile;
-import juno.model.util.Observer;
 import juno.view.panels.AbstractSixthComponent;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -44,14 +41,18 @@ import java.util.Objects;
 public class MenuPanel
         extends AbstractSixthComponent
         implements InterfaceRegistrationDataProvider,
-                    InterfaceDataLineProvider,
-                    Observer {
+                    InterfaceDataLineProvider {
+
+    // The data lines map.
+    private final Map<String, DataLine> dataLines;
 
     // The MenuPanel instance.
     private static MenuPanel instance;
 
     // Builds the MenuPanel instance.
-    private MenuPanel() {}
+    private MenuPanel() {
+        dataLines = new HashMap<>();
+    }
 
     /**
      * Returns the MenuPanel instance.
@@ -78,6 +79,7 @@ public class MenuPanel
         gbc.anchor = GridBagConstraints.LINE_END;
         gbc.insets = new Insets(0,0,10,0);
         this.add(Objects.requireNonNull(getFirstComponent()), gbc);
+        dataLines.put(Profile.PROFILE_NAME, (DataLine) getFirstComponent());
 
         // Name.
         gbc.gridx = 1;
@@ -89,6 +91,7 @@ public class MenuPanel
         gbc.anchor = GridBagConstraints.LINE_END;
         gbc.insets = new Insets(0,0,10,0);
         this.add(Objects.requireNonNull(getSecondComponent()), gbc);
+        dataLines.put(Profile.NAME, (DataLine) getSecondComponent());
 
         // Last name.
         gbc.gridx = 0;
@@ -100,6 +103,7 @@ public class MenuPanel
         gbc.anchor = GridBagConstraints.LINE_END;
         gbc.insets = new Insets(0,0,10,0);
         this.add(Objects.requireNonNull(getThirdComponent()), gbc);
+        dataLines.put(Profile.LAST_NAME, (DataLine) getThirdComponent());
 
         // Age.
         gbc.gridx = 1;
@@ -111,6 +115,7 @@ public class MenuPanel
         gbc.anchor = GridBagConstraints.LINE_END;
         gbc.insets = new Insets(0,0,10,0);
         this.add(Objects.requireNonNull(getFourthComponent()), gbc);
+        dataLines.put(Profile.AGE, (DataLine) getFourthComponent());
 
         // Confirm button.
         gbc.gridx = 1;
@@ -138,45 +143,33 @@ public class MenuPanel
     @Override
     public Map<String, Object> provideRegistrationData() {
         Map<String, Object> map = new HashMap<>();
-        java.util.List<JTextField> textFieldList = getTextFields();
-        // Profile name case.
-        String text = textFieldList.get(0).getText();
-        if(text.length() != 0)
-            map.put(Profile.PROFILE_NAME, text);
-        // Name case.
-        text = textFieldList.get(1).getText();
-        if(text.length() != 0)
-            map.put(Profile.NAME, text);
-        // Last name case.
-        text = textFieldList.get(2).getText();
-        if(text.length() != 0)
-            map.put(Profile.LAST_NAME, text);
-        // Age case.
-        text = textFieldList.get(3).getText();
-        if(text.length() > 0) {
-            int age;
-            try {
-                age = Integer.parseInt(text);
-                map.put(Profile.AGE, age);
-            } catch (Exception e) {
-                map.put(Profile.AGE, text);
+        getDataLines().forEach((k,v) -> {
+            switch (k) {
+                case (Profile.PROFILE_NAME),
+                        (Profile.LAST_NAME),
+                        (Profile.NAME) -> {
+                    String text = v.getTextField().getText();
+                    if(text.length() != 0)
+                        map.put(k, text);
+                } case (Profile.AGE) -> {
+                    String text = v.getTextField().getText();
+                    if(text.length() != 0) {
+                        int age;
+                        try {
+                            age = Integer.parseInt(text);
+                            map.put(k, age);
+                        } catch (Exception e) {
+                            map.put(k, text);
+                        }
+                    }
+                }
             }
-        } return map;
+        }); return map;
     }
 
     @Override
-    public Map<String, JPanel> getDataLines() {
-        return null;
-    }
-
-    @Override
-    public void update(Object object) {
-        if(object instanceof InterfaceErrorProvider provider) {
-            Map<String, String> errors = provider.getErrors();
-
-        } else throw new IllegalArgumentException(
-                "Invalid object type: " + object +
-                        ". InterfaceErrorProvider expected.");
+    public Map<String, DataLine> getDataLines() {
+        return dataLines;
     }
 
 }

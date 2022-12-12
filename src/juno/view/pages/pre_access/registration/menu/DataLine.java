@@ -25,7 +25,6 @@
 
 package juno.view.pages.pre_access.registration.menu;
 
-import juno.view.panels.AbstractSecondComponent;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -35,14 +34,14 @@ import java.util.Objects;
 /**
  * @author Simone Gentili
  */
-public class RegistrationDataLine
+public class DataLine
         extends JPanel {
 
     // The label.
-    private JLabel label;
+    private final JLabel label;
 
     // The text field.
-    private JTextField textField;
+    private final JTextField textField;
 
     /**
      * Builds a RegistrationDataLine object with
@@ -50,8 +49,8 @@ public class RegistrationDataLine
      * @param label A Component object.
      * @param textField A Component object.
      */
-    public RegistrationDataLine(@NotNull JLabel label,
-                                @NotNull JTextField textField) {
+    public DataLine(@NotNull JLabel label,
+                    @NotNull JTextField textField) {
         this.label = label;
         this.textField = textField;
         init();
@@ -85,7 +84,9 @@ public class RegistrationDataLine
         gbc.insets = new Insets(0,0,5,0);
         this.add(Objects.requireNonNull(textField), gbc);
     }
-    
-    
+
+    public JTextField getTextField() {
+        return textField;
+    }
 
 }

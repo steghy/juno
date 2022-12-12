@@ -23,13 +23,34 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.pre_access.registration.menu;
+package juno.model.data.profile;
 
-import java.util.List;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-@FunctionalInterface
-public interface InterfaceRegistrationDataLineProvider {
+/**
+ * @author Simone Gentili
+ */
+public abstract class AbstractProfile {
 
-    List<InterfaceRegistrationDataLine> provide();
+    // The error provider.
+    private InterfaceErrorProvider provider;
+
+    /**
+     * Sets the error provider of this object.
+     * @param provider An interfaceErrorProvider object.
+     */
+    public void setProvider(@NotNull InterfaceErrorProvider provider) {
+        this.provider = provider;
+    }
+
+    /**
+     * Returns the error provider of this object.
+     * @return An InterfaceErrorProvider object.
+     */
+    @Nullable
+    public InterfaceErrorProvider getProvider() {
+        return provider;
+    }
 
 }

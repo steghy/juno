@@ -27,6 +27,8 @@ package juno.controller.pre_access;
 
 import juno.model.data.io.input.PropertyCopier;
 import juno.model.data.io.input.configurable.CCompatibilityChecker;
+import juno.model.data.profile.ErrorProvider;
+import juno.view.pages.pre_access.registration.menu.MenuPanel;
 
 /**
  * @author Simone Gentili
@@ -54,6 +56,8 @@ public class Initializer {
         // Property copier.
         PropertyCopier copier = PropertyCopier.getInstance();
 
+        // Data line provider
+        MenuPanel menuPanel = MenuPanel.getInstance();
 
 
         /////////////////////////////////////////////////////////////////////////
@@ -64,6 +68,9 @@ public class Initializer {
         selector.setResolver(resolver);
         selector.setChecker(checker);
         selector.setCopier(copier);
+
+        // Notifier
+        notifier.setDataLineProvider(menuPanel);
     }
 
 }

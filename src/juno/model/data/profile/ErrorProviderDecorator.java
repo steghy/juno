@@ -23,53 +23,50 @@
  * SOFTWARE.
  */
 
-package juno.controller.pre_access;
+package juno.model.data.profile;
 
 import juno.controller.InterfaceRegistrationDataProvider;
-import juno.model.data.io.input.configurable.Configurable;
-import juno.model.data.profile.InterfaceErrorProvider;
+import juno.init.Directories;
+import juno.model.util.Os;
+import juno.model.util.PathGenerator;
 import org.jetbrains.annotations.NotNull;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.Map;
 
 /**
  * @author Simone Gentili
  */
-public class RegistrationDataSender
-        implements ActionListener {
+public class ErrorProviderDecorator
+        implements InterfaceErrorDecorator {
 
-    // The configurable.
-    private final Configurable configurable;
-
-    // The registration data provider.
+    // The data provider.
     private final InterfaceRegistrationDataProvider dataProvider;
 
-    // The error provider.
+    // The error provider;
     private final InterfaceErrorProvider errorProvider;
 
     /**
-     * Builds a RegistrationDataSender with the specified
-     * Configurable and InterfaceRegistrationDataSender
-     * objects.
-     * @param configurable A Configurable object.
-     * @param provider An InterfaceRegistrationDataProvider.
+     * Builds an ErrorDecorator with the specified
+     * error provider object.
+     * @param errorProvider An InterfaceErrorProvider object.
      */
-    public RegistrationDataSender(@NotNull Configurable configurable,
-                                  @NotNull InterfaceRegistrationDataProvider provider,
-                                  @NotNull InterfaceErrorProvider errorProvider) {
-        this.configurable = configurable;
-        this.dataProvider = provider;
+    public ErrorProviderDecorator(@NotNull InterfaceErrorProvider errorProvider,
+                                  @NotNull InterfaceRegistrationDataProvider dataProvider) {
         this.errorProvider = errorProvider;
+        this.dataProvider = dataProvider;
     }
 
     @Override
-    public void actionPerformed(@NotNull ActionEvent event) {
-        RegistrationDataSelector.getInstance()
-                .elaborate(
-                        configurable,
-                        dataProvider.provideRegistrationData(),
-                        errorProvider);
+    public Map<String, String> getErrors() {
+        Map<String, String> errors = errorProvider.getErrors();
+        Map<String, Object> data = dataProvider.provideRegistrationData();
+        if(data.containsKey(Profile.PROFILE_NAME))
+            if(Os.exists(
+                    PathGenerator.generate(
+                            Directories.PROFILES.absolutePath(),
+                            FileNameBuilder.getInstance().build((String) data.get(Profile.PROFILE_NAME)))))
+                errors.put(Profile.PROFILE_NAME, "profile name already used");
+        return errors;
     }
 
 }

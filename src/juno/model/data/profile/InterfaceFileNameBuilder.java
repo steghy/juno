@@ -23,40 +23,14 @@
  * SOFTWARE.
  */
 
-package juno.controller.pre_access;
+package juno.model.data.profile;
 
-import juno.view.pages.pre_access.registration.menu.MenuPanel;
-import org.jetbrains.annotations.NotNull;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 /**
  * @author Simone Gentili
  */
-public class RegistrationPanelRestorer
-        implements ActionListener {
+@FunctionalInterface
+public interface InterfaceFileNameBuilder {
 
-    // The RegistrationPanelRestorer instance.
-    private static RegistrationPanelRestorer instance;
-
-    // Builds the RegistrationPanelRestorer.
-    private RegistrationPanelRestorer() {}
-
-    /**
-     * Returns the RegistrationPanelRestorer instance.
-     * @return The RegistrationPanelRestorer instance.
-     */
-    public static RegistrationPanelRestorer getInstance() {
-        if(instance == null) instance = new RegistrationPanelRestorer();
-        return instance;
-    }
-
-    @Override
-    public void actionPerformed(@NotNull ActionEvent e) {
-        MenuPanel menuPanel = MenuPanel.getInstance();
-        menuPanel.getRegistrationDataLines()
-                .forEach(registrationDataLine -> registrationDataLine.setBorder(null));
-        menuPanel.getTextFields().forEach(jTextField -> jTextField.setText(""));
-    }
+    String build(String fileName);
 
 }

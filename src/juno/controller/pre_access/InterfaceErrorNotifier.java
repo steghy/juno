@@ -25,12 +25,14 @@
 
 package juno.controller.pre_access;
 
+import java.util.Map;
+
 /**
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface InterfaceErrorNotifier {
 
-    void notifyErrors();
+    void notifyErrors(Map<String, String> errors);
 
 }

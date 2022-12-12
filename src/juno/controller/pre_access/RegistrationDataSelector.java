@@ -27,6 +27,7 @@ package juno.controller.pre_access;
 
 import juno.model.data.io.input.PropertyCopier;
 import juno.model.data.io.input.configurable.Configurable;
+import juno.model.data.profile.InterfaceErrorProvider;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
@@ -54,15 +55,20 @@ public class RegistrationDataSelector
     }
 
     public void elaborate(@NotNull Configurable configurable,
-                          @NotNull Map<String, Object> data) {
+                          @NotNull Map<String, Object> data,
+                          @NotNull InterfaceErrorProvider errorProvider) {
         // Current status of the object.
         Map<String, Object> properties = PropertyCopier.getInstance().copy(configurable);
+
         // Checking compatibility.
-        boolean result = Objects.requireNonNull(getChecker())
-                .areCompatible(configurable, data);
-        if(!result) {
+        Objects.requireNonNull(getChecker()).areCompatible(configurable, data);
+
+        // The errors.
+        Map<String, String> errors = errorProvider.getErrors();
+
+        if(!errors.isEmpty()) {
             // Notify the error to the registration panel.
-            Objects.requireNonNull(getNotifier()).notifyErrors();
+            Objects.requireNonNull(getNotifier()).notifyErrors(errors);
             // Attempt to restore the initial state of the Configurable object.
             configurable.configure(properties);
         } else {

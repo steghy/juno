@@ -23,70 +23,34 @@
  * SOFTWARE.
  */
 
-package juno.view.factories;
+package juno.model.data.profile;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Simone Gentili
  */
-public enum ButtonLibrary {
+public class FileNameBuilder
+        implements InterfaceFileNameBuilder {
 
-    // LOGO //
-    JUNO,
+    // The FileNameBuilder instance.
+    private static FileNameBuilder instance;
 
-    // PRE ACCESS PANEL //
-    WELCOME,
-    WELCOME_BACK,
-    REGISTRATION,
-    CREATE_AN_ACCOUNT,
-    CONTINUE_WITHOUT_AN_ACCOUNT,
-    LOG_IN,
-    CONFIRM,
+    // Builds a FileNameBuilder instance.
+    private FileNameBuilder() {}
 
-    // MAIN MENU SECTION //
-    NEW_GAME,
-    SCORE,
-    OPTIONS,
-    EXIT,
+    /**
+     * Returns the FileNameBuilder instance.
+     * @return The FileNameBuilder instance.
+     */
+    public static FileNameBuilder getInstance() {
+        if(instance == null) instance = new FileNameBuilder();
+        return instance;
+    }
 
-    // AVATARS PANEL //
-    AVATAR_1,
-    AVATAR_2,
-    AVATAR_3,
-    AVATAR_4,
-    AVATAR_5,
-    AVATAR_6,
-    AVATAR_7,
-    AVATAR_8,
-    AVATAR_9,
-    AVATAR_10,
+    @Override
+    public String build(@NotNull String profileName) {
+        return profileName.toLowerCase() + "-profile.json";
+    }
 
-    // OPTIONS //
-    SETTINGS,
-    AUDIO_TOGGLE,
-    FULLSCREEN_TOGGLE,
-    BACK,
-
-    // NEW GAME MENU //
-    DIFFICULTY,
-    SINGLE_PLAYER,
-    MULTIPLAYER,
-
-    // SINGLE_PLAYER //
-    TWO_PLAYERS,
-    THREE_PLAYERS,
-    FOUR_PLAYERS,
-    PLAYERS,
-    START,
-
-    // MODE //
-    MODE,
-    STACKING,
-
-    // MULTIPLAYER //
-    UNAVAILABLE_SERVICE,
-
-    // DIFFICULTY //
-    EASY,
-    MEDIUM,
-    HARD,
 }

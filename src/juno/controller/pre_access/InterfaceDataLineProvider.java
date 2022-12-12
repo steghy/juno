@@ -25,12 +25,13 @@
 
 package juno.controller.pre_access;
 
-import javax.swing.*;
+import juno.view.pages.pre_access.registration.menu.DataLine;
+
 import java.util.Map;
 
 @FunctionalInterface
 public interface InterfaceDataLineProvider {
 
-    Map<String, JPanel> getDataLines();
+    Map<String, DataLine> getDataLines();
 
 }

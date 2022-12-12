@@ -25,6 +25,9 @@
 
 package juno.controller.pre_access;
 
+import juno.view.pages.pre_access.registration.menu.DataLine;
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -54,29 +57,31 @@ public class ErrorNotifier
     }
 
     @Override
-    public void notifyErrors() {
-        Map<String, String> errors = Objects.requireNonNull(getProvider()).getErrors();
-        Map<String, JPanel> dataLine = Objects.requireNonNull(getDataLineProvider()).getDataLines();
+    public void notifyErrors(@NotNull Map<String, String> errors) {
+        Map<String, DataLine> dataLines = Objects.requireNonNull(getDataLineProvider()).getDataLines();
+        // Cleaning up old errors.
+        dataLines.forEach((k, v) -> v.setBorder(null));
+        // Checking for invalid usage.
         if(errors.isEmpty()) throw new IllegalArgumentException("nothing to report");
-        if(dataLine.isEmpty()) throw new IllegalArgumentException("Empty map");
-
+        if(dataLines.isEmpty()) throw new IllegalArgumentException("Empty data lines map");
         Border border = BorderFactory.createLineBorder(Color.RED);
-
+        dataLines.forEach((k,v) -> v.setBorder(null));
         for(Map.Entry<String, String> entry : errors.entrySet()) {
             String errorKey = entry.getKey();
             String errorValue = entry.getValue();
-
-            for(String inputKey : dataLine.keySet()) {
-                if(errorKey.equals(inputKey)) dataLine.get(inputKey).setBorder(
-                        BorderFactory.createTitledBorder(
-                                border,
-                                errorValue,
-                                0,
-                                0,
-                                new Font(Font.MONOSPACED, Font.ITALIC, 13),
-                                Color.RED
-                        )
-                );
+            for(String inputKey : dataLines.keySet()) {
+                if(errorKey.equals(inputKey)) {
+                    dataLines.get(inputKey).setBorder(
+                            BorderFactory.createTitledBorder(
+                                    border,
+                                    errorValue,
+                                    0,
+                                    0,
+                                    new Font(Font.MONOSPACED, Font.ITALIC, 13),
+                                    Color.RED
+                            )
+                    ); dataLines.get(inputKey).getTextField().setText("");
+                }
             }
         }
     }

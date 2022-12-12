@@ -25,7 +25,6 @@
 
 package juno.controller.pre_access;
 
-import juno.model.data.profile.InterfaceErrorProvider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -34,19 +33,8 @@ import org.jetbrains.annotations.Nullable;
  */
 public abstract class AbstractErrorNotifier {
 
-    // The error provider.
-    private InterfaceErrorProvider errorProvider;
-
     // The data line provider.
     private InterfaceDataLineProvider dataLineProvider;
-
-    /**
-     * Sets the error provider of this object.
-     * @param errorProvider An InterfaceErrorProvider object.
-     */
-    public void setErrorProvider(@NotNull InterfaceErrorProvider errorProvider) {
-        this.errorProvider = errorProvider;
-    }
 
     /**
      * Sets the data line provider of this object.
@@ -54,15 +42,6 @@ public abstract class AbstractErrorNotifier {
      */
     public void setDataLineProvider(@NotNull InterfaceDataLineProvider dataLineProvider) {
         this.dataLineProvider = dataLineProvider;
-    }
-
-    /**
-     * Returns the error provider of this object.
-     * @return An InterfaceErrorProvider object.
-     */
-    @Nullable
-    public InterfaceErrorProvider getProvider() {
-        return errorProvider;
     }
 
     /**
