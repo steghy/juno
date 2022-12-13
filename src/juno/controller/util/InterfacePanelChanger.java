@@ -23,13 +23,14 @@
  * SOFTWARE.
  */
 
-package juno.model.data.io.output;
+package juno.controller.util;
 
-import java.io.IOException;
-import java.util.Map;
+import javax.swing.*;
 
 @FunctionalInterface
-public interface AbstractDataExporter {
+public interface InterfacePanelChanger {
 
-    void exportData(String path, Map<String, Object> dataMap) throws IOException;
+    void changePanel(JPanel cardPanel,
+                     String panelKey);
+
 }

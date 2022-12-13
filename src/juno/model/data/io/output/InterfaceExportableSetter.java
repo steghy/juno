@@ -26,7 +26,8 @@
 package juno.model.data.io.output;
 
 @FunctionalInterface
-public interface AbstractExitManager {
+public interface InterfaceExportableSetter {
 
-    void exit();
+    void setExportable();
+
 }

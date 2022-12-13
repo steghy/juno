@@ -45,10 +45,7 @@ public class GDeckFactoryTester {
         juno.model.deck.Initializer.initialize();
         DeckFactory.getInstance().generate();
         InterfaceGDeckFactory<InterfaceCard> gDeckFactory = GDeckFactory.getInstance();
-        Objects.requireNonNull(gDeckFactory.getGDeck()).forEach((k, v) -> {
-            System.out.println(k + " = " +v);
-        });
-
+        Objects.requireNonNull(gDeckFactory.getGDeck()).forEach((k, v) -> System.out.println(k + " = " +v));
         System.out.println(gDeckFactory.getGDeck().size());
     }
 }

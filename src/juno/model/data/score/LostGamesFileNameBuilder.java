@@ -23,13 +23,21 @@
  * SOFTWARE.
  */
 
-package juno.model.data.io.output;
+package juno.model.data.score;
 
-public class OutputDataInitializer {
+import org.jetbrains.annotations.NotNull;
 
-    private OutputDataInitializer() {}
+public class LostGamesFileNameBuilder {
 
-    public static void initialize() {
+    public static final String ending = "-lost-games.json";
 
+    // Builds a LostGamesFileNameBuilder object.
+    private LostGamesFileNameBuilder() {}
+
+    public static String build(@NotNull String profileName) {
+        if(profileName.length() == 0) throw new IllegalArgumentException(
+                "Invalid profile name length.");
+        return profileName + ending;
     }
+
 }

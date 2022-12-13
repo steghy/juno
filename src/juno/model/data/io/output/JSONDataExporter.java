@@ -33,7 +33,7 @@ import java.io.IOException;
 import java.util.Map;
 
 public class JSONDataExporter 
-        implements AbstractDataExporter {
+        implements InterfaceDataExporter {
 
     private static JSONDataExporter instance;
 

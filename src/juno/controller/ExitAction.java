@@ -25,16 +25,16 @@
 
 package juno.controller;
 
-import juno.model.data.io.output.AbstractExitManager;
+import juno.model.data.io.output.InterfaceExitManager;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class ExitAction extends AbstractAction {
 
-    private AbstractExitManager exitManager;
+    private InterfaceExitManager exitManager;
 
-    public ExitAction(AbstractExitManager exitManager) {
+    public ExitAction(InterfaceExitManager exitManager) {
         this.exitManager = exitManager;
     }
 

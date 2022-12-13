@@ -30,27 +30,16 @@ import org.jetbrains.annotations.NotNull;
 /**
  * @author Simone Gentili
  */
-public class ProfileFileNameBuilder
-        implements InterfaceFileNameBuilder {
+public class ProfileFileNameBuilder {
 
-    // The FileNameBuilder instance.
-    private static ProfileFileNameBuilder instance;
+    /** The ending String object. */
+    public static final String ending = "-profile.json";
 
-    // Builds a FileNameBuilder instance.
+    // Builds a ProfileFileNameBuilder object.
     private ProfileFileNameBuilder() {}
 
-    /**
-     * Returns the FileNameBuilder instance.
-     * @return The FileNameBuilder instance.
-     */
-    public static ProfileFileNameBuilder getInstance() {
-        if(instance == null) instance = new ProfileFileNameBuilder();
-        return instance;
-    }
-
-    @Override
-    public String build(@NotNull String profileName) {
-        return profileName.toLowerCase() + "-profile.json";
+    public static String build(@NotNull String profileName) {
+        return profileName.toLowerCase() + ending;
     }
 
 }

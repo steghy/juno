@@ -25,9 +25,8 @@
 
 package juno.controller.pre_access;
 
-import juno.model.data.io.input.PropertyCopier;
 import juno.model.data.io.input.configurable.CCompatibilityChecker;
-import juno.model.data.profile.ErrorProvider;
+import juno.model.data.io.output.ExporterManager;
 import juno.view.pages.pre_access.registration.menu.MenuPanel;
 
 /**
@@ -44,17 +43,20 @@ public class Initializer {
         // Registration data selector.
         RegistrationDataSelector selector = RegistrationDataSelector.getInstance();
 
-        // Error notifier
+        // Error notifier.
         ErrorNotifier notifier = ErrorNotifier.getInstance();
 
-        // Request resolver
+        // Request resolver.
         RequestResolver resolver = RequestResolver.getInstance();
 
         // CCompatibility checker.
         CCompatibilityChecker checker = CCompatibilityChecker.getInstance();
 
-        // Data line provider
+        // Data line provider.
         MenuPanel menuPanel = MenuPanel.getInstance();
+
+        // Exporter manager.
+        ExporterManager exporterManager = ExporterManager.getInstance();
 
         /////////////////////////////////////////////////////////////////////////
 
@@ -64,8 +66,11 @@ public class Initializer {
         selector.setResolver(resolver);
         selector.setChecker(checker);
 
-        // Notifier
+        // Notifier.
         notifier.setDataLineProvider(menuPanel);
+
+        // Resolver.
+        resolver.setExporterManager(exporterManager);
     }
 
 }

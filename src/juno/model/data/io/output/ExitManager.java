@@ -25,18 +25,29 @@
 
 package juno.model.data.io.output;
 
-
+/**
+ * @author Simone Gentili
+ */
 public class ExitManager
-        implements AbstractExitManager {
+        implements InterfaceExitManager {
 
+    // The ExitManager instance.
     private static ExitManager instance;
 
+    // Builds the ExitManager instance.
     private ExitManager() {}
 
+    /**
+     * Returns the ExitManager instance.
+     * @return The ExitManager instance.
+     */
     public static ExitManager getInstance() {
         if(instance == null) instance = new ExitManager();
         return instance;
     }
 
-    public void exit() {System.exit(0);}
+    public void exit() {
+        System.exit(0);
+    }
+
 }

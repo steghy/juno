@@ -28,20 +28,20 @@ package juno.controller.util;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.Objects;
 
 /**
  * @author Simone Gentili
  */
 public class ChangePanelAction
-        extends AbstractAction {
+        extends AbstractPanelChangerUser {
 
     // The card panel.
     private final JPanel cardPanel;
 
     // The key of the panel.
-    private final String panel;
+    private final String panelKey;
 
     /**
      * Builds a ChangePanelAction object with
@@ -52,19 +52,12 @@ public class ChangePanelAction
     public ChangePanelAction(@NotNull JPanel cardPanel,
                              @NotNull String panel) {
         this.cardPanel = cardPanel;
-        this.panel = panel;
+        this.panelKey = panel;
     }
-
 
     @Override
-    public void actionPerformed(@NotNull ActionEvent e) {
-        LayoutManager layoutManager = cardPanel.getLayout();
-        if(layoutManager instanceof CardLayout cardLayout) {
-            cardLayout.show(cardPanel, panel);
-        } else {
-            throw new IllegalArgumentException(
-                    "Invalid layout manager type: " + layoutManager.getClass() +
-                    ". CardLayout expected.");
-        }
+    public void actionPerformed(ActionEvent e) {
+        Objects.requireNonNull(getPanelChanger()).changePanel(cardPanel, panelKey);
     }
+
 }

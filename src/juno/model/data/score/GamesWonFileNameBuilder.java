@@ -23,14 +23,23 @@
  * SOFTWARE.
  */
 
-package juno.model.data.profile;
+package juno.model.data.score;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Simone Gentili
  */
-@FunctionalInterface
-public interface InterfaceFileNameBuilder {
+public class GamesWonFileNameBuilder {
 
-    String build(String fileName);
+    /** The ending String object. */
+    public static final String ending = "-games-won.json";
+
+    // Builds a GamesWonFileNameBuilder object.
+    private GamesWonFileNameBuilder() {}
+
+    public static String build(@NotNull String profileName) {
+        return profileName + ending;
+    }
 
 }

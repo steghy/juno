@@ -25,12 +25,16 @@
 
 package juno.controller.pre_access;
 
+import juno.controller.util.ChangePanelAction;
+import juno.view.pages.card.TopCardPanel;
+
+import java.util.Objects;
 
 /**
  * @author Simone Gentili
  */
 public class RequestResolver
-        implements InterfaceRequestResolver{
+        extends AbstractRequestResolver {
 
     // The RequestResolver instance.
     private static RequestResolver instance;
@@ -48,6 +52,10 @@ public class RequestResolver
     }
 
     @Override
-    public void resolve() {}
+    public void resolve() {
+        Objects.requireNonNull(getExporterManager()).export();
+        ChangePanelAction changePanelAction = new ChangePanelAction(TopCardPanel.getInstance(), TopCardPanel.MAIN_PANEL);
+        changePanelAction.actionPerformed(null);
+    }
 
 }

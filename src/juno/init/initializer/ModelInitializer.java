@@ -33,6 +33,7 @@ public class ModelInitializer {
     // Builds a ModelInitializer object.
     private ModelInitializer() {}
 
+    /** Initialize the juno.model package. */
     public static void initialize() {
         // juno.model.data.io.input package.
         juno.model.data.io.input.Initializer.initialize();
@@ -42,6 +43,9 @@ public class ModelInitializer {
 
         // juno.model.data.awards package.
         juno.model.data.awards.Initializer.initialize();
+
+        // juno.model.data.io.output package.
+        juno.model.data.io.output.Initializer.initialize();
     }
 
 }

@@ -64,7 +64,7 @@ public class ErrorProviderDecorator
             if(Os.exists(
                     PathGenerator.generate(
                             Directories.PROFILES.absolutePath(),
-                            ProfileFileNameBuilder.getInstance().build((String) data.get(Profile.PROFILE_NAME_KEY)))))
+                            ProfileFileNameBuilder.build((String) data.get(Profile.PROFILE_NAME_KEY)))))
                 errors.put(Profile.PROFILE_NAME_KEY, "profile name already used");
         return errors;
     }
