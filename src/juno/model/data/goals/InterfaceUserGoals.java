@@ -23,16 +23,15 @@
  * SOFTWARE.
  */
 
-package juno.view.avatar;
+package juno.model.data.goals;
 
-/**
- * @author Simone Gentili
- */
-public class AvatarPanelConfigurator {
+import juno.model.data.goals.InterfaceGoal;
 
-    // Builds an AvatarPanelConfigurator object.
-    private AvatarPanelConfigurator() {}
+import java.util.List;
 
-    public static void configure() {
-    }
+@FunctionalInterface
+public interface InterfaceUserGoals {
+
+    List<InterfaceGoal> goals();
+
 }

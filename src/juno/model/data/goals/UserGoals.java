@@ -23,7 +23,7 @@
  * SOFTWARE.
  */
 
-package juno.model.data.awards;
+package juno.model.data.goals;
 
 import juno.model.data.io.input.configurable.Configurable;
 import juno.model.data.io.output.Exportable;
@@ -37,38 +37,42 @@ import java.util.Map;
 /**
  * @author Simone Gentili
  */
-public class UserAwards
-        implements InterfaceUserAwards, Configurable, Exportable {
+public class UserGoals
+        implements
+        InterfaceUserGoals,
+        Configurable,
+        Exportable {
 
-    private final List<InterfaceAward> awards;
+    // The user goals.
+    private final List<InterfaceGoal> goals;
 
-    // The UserAwards instance.
-    private static UserAwards instance;
+    // The UserGoals instance.
+    private static UserGoals instance;
 
-    // Builds the UserAwards instance.
-    private UserAwards() {
-        awards = new ArrayList<>();
+    // Builds the UserGoals instance.
+    private UserGoals() {
+        goals = new ArrayList<>();
     }
 
     /**
-     * Returns the UserAwards instance.
-     * @return The UserAwards instance.
+     * Returns the UserGoals instance.
+     * @return The UserGoals instance.
      */
-    public static UserAwards getInstance() {
-        if(instance == null) instance = new UserAwards();
+    public static UserGoals getInstance() {
+        if(instance == null) instance = new UserGoals();
         return instance;
     }
 
     @Override
-    public List<InterfaceAward> awards() {
-        return awards;
+    public List<InterfaceGoal> goals() {
+        return goals;
     }
 
     @Override
     public void configure(@NotNull Map<String, Object> map) {
         map.forEach((k, v) -> {
-            List<InterfaceAward> result = awards.stream()
-                    .filter(award -> award.name().equals(k)).toList();
+            List<InterfaceGoal> result = goals.stream()
+                    .filter(goal -> goal.name().equals(k)).toList();
             int size = result.size();
             if(size == 0) throw new IllegalArgumentException(
                     "Invalid award name found: " + k);
@@ -80,14 +84,14 @@ public class UserAwards
                         "Invalid object type: " + klass +
                                 ". Boolean type expected.");
             } else throw new IllegalArgumentException(
-                    "Awards with the same name: " + result);
+                    "Goal object with the same name: " + result);
         });
     }
 
     @Override
     public Map<String, Object> exportData() {
         Map<String, Object> map = new HashMap<>();
-        awards.forEach(award -> map.put(award.name(), award.isUnlock()));
+        goals.forEach(goal -> map.put(goal.name(), goal.isReached()));
         return map;
     }
 

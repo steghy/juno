@@ -23,16 +23,15 @@
  * SOFTWARE.
  */
 
-package juno.view.avatar;
+package juno.model.data.goals;
 
-/**
- * @author Simone Gentili
- */
-public class AvatarPanelConfigurator {
+import juno.model.data.awards.Unlockable;
 
-    // Builds an AvatarPanelConfigurator object.
-    private AvatarPanelConfigurator() {}
+public interface InterfaceGoal
+        extends Unlockable {
 
-    public static void configure() {
-    }
+    String name();
+
+    boolean isReached();
+
 }

@@ -23,22 +23,67 @@
  * SOFTWARE.
  */
 
-package juno.model.data.awards;
+package juno.model.data.goals;
 
+import juno.model.util.Observable;
+import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Simone Gentili
  */
-public class UserAwardsFileNameBuilder {
+public enum Goals
+        implements
+        InterfaceGoal,
+        Observable {
 
-    /** The ending String object. */
-    public static final String ending = "-awards.json";
+    FIRST_MATCH_WON,
+    FIRST_MATCH_LOSE,
+    TEN_MATCH_WON,
+    TEN_MATCH_LOSE,
+    FIFTY_MATCH_WON,
+    FIFTY_MATCH_LOSE,
+    ONE_HUNDRED_MATCH_WON,
+    ONE_HUNDRED_MATCH_LOSE;
 
-    // Builds an UserAwardsFileNameBuilder object.
-    private UserAwardsFileNameBuilder() {}
+    // The Observers List.
+    private final List<Observer> observerList;
 
-    public static String build(@NotNull String profileName) {
-        return profileName + ending;
+    private boolean unlock = false;
+
+    @Override
+    public void unlock() {
+        if(unlock) throw new IllegalArgumentException(
+                "This goal is already unlocked.");
+        unlock = true;
+        updateAll();
     }
+
+    @Override
+    public boolean isReached() {
+        return unlock;
+    }
+
+    Goals() {
+        observerList = new ArrayList<>();
+    }
+
+    @Override
+    public void addObserver(@NotNull Observer observer) {
+        observerList.add(observer);
+    }
+
+    @Override
+    public void removeObserver(@NotNull Observer observer) {
+        observerList.remove(observer);
+    }
+
+    @Override
+    public void updateAll() {
+        observerList.forEach(observer -> observer.update(this));
+    }
+
 }

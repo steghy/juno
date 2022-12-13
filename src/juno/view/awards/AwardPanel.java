@@ -23,13 +23,7 @@
  * SOFTWARE.
  */
 
-package juno.model.data.awards;
+package juno.view.awards;
 
-import java.util.List;
-
-@FunctionalInterface
-public interface InterfaceUserAwards {
-
-    List<InterfaceAward> awards();
-
+public class AwardPanel {
 }

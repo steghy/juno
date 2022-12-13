@@ -23,16 +23,23 @@
  * SOFTWARE.
  */
 
-package juno.view.avatar;
+package juno.model.data.goals;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Simone Gentili
  */
-public class AvatarPanelConfigurator {
+public class UserGoalsFileNameBuilder {
 
-    // Builds an AvatarPanelConfigurator object.
-    private AvatarPanelConfigurator() {}
+    /** The ending String object. */
+    public static final String ending = "-goals.json";
 
-    public static void configure() {
+    // Builds an UserGoalsFileNameBuilder object.
+    private UserGoalsFileNameBuilder() {}
+
+    public static String build(@NotNull String profileName) {
+        return profileName + ending;
     }
+
 }

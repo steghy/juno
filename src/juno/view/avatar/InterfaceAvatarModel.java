@@ -28,11 +28,7 @@ package juno.view.avatar;
 /**
  * @author Simone Gentili
  */
-public class AvatarPanelConfigurator {
-
-    // Builds an AvatarPanelConfigurator object.
-    private AvatarPanelConfigurator() {}
-
-    public static void configure() {
-    }
-}
+public interface InterfaceAvatarModel
+        extends InterfaceAvatarProfileNameLabelProvider,
+                InterfaceAvatarFrameLabelProvider,
+                InterfaceAvatarImageProvider {}

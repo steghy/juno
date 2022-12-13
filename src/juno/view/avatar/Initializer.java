@@ -28,11 +28,13 @@ package juno.view.avatar;
 /**
  * @author Simone Gentili
  */
-public class AvatarPanelConfigurator {
+public class Initializer {
 
-    // Builds an AvatarPanelConfigurator object.
-    private AvatarPanelConfigurator() {}
+    // Builds an Initializer object.
+    private Initializer() {}
 
-    public static void configure() {
+    public static void initialize() {
+
     }
+
 }

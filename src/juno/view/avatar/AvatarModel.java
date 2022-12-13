@@ -28,11 +28,23 @@ package juno.view.avatar;
 /**
  * @author Simone Gentili
  */
-public class AvatarPanelConfigurator {
+public class AvatarModel
+        extends AbstractAvatarModel
+        implements InterfaceAvatarModel {
 
-    // Builds an AvatarPanelConfigurator object.
-    private AvatarPanelConfigurator() {}
+    // The AvatarPanelModel instance.
+    private static AvatarModel instance;
 
-    public static void configure() {
+    // Builds the AvatarPanelModel instance.
+    private AvatarModel() {}
+
+    /**
+     * Returns the AvatarPanelModel instance.
+     * @return The AvatarPanelModel instance.
+     */
+    public static AvatarModel getInstance() {
+        if(instance == null) instance = new AvatarModel();
+        return instance;
     }
+
 }

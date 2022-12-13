@@ -25,6 +25,9 @@
 
 package juno.model.data.awards;
 
+import juno.model.data.goals.Goals;
+import juno.model.data.goals.UserGoals;
+
 import java.util.List;
 
 /**
@@ -39,10 +42,10 @@ public class Initializer {
     public static void initialize() {
         // Component.
         // User awards.
-        UserAwards userAwards = UserAwards.getInstance();
+        UserGoals userGoals = UserGoals.getInstance();
 
-        // Adding the awards to the UserAwards instance.
-        List.of(Awards.values()).forEach(award -> userAwards.awards().add(award));
+        // Adding the goals objects to the UserGoals instance.
+        List.of(Goals.values()).forEach(goal -> userGoals.goals().add(goal));
     }
 
 }

@@ -28,11 +28,17 @@ package juno.view.avatar;
 /**
  * @author Simone Gentili
  */
-public class AvatarPanelConfigurator {
+public class AvatarModelConfigurator {
 
-    // Builds an AvatarPanelConfigurator object.
-    private AvatarPanelConfigurator() {}
+    // Builds an AvatarModelConfigurator object.
+    private AvatarModelConfigurator() {}
 
     public static void configure() {
+        // Main component.
+        AvatarModel avatarModel = AvatarModel.getInstance();
+
+        // Components.
+
     }
+
 }

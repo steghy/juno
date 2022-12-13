@@ -25,14 +25,11 @@
 
 package juno.view.avatar;
 
-/**
- * @author Simone Gentili
- */
-public class AvatarPanelConfigurator {
+import javax.swing.*;
 
-    // Builds an AvatarPanelConfigurator object.
-    private AvatarPanelConfigurator() {}
+@FunctionalInterface
+public interface InterfaceAvatarFrameLabelProvider {
 
-    public static void configure() {
-    }
+    JLabel getAvatarFrameImageLabel();
+
 }

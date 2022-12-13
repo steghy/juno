@@ -29,32 +29,59 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
+/**
+ * @author Simone Gentili
+ */
 public class AvatarPanel
         extends JPanel {
 
-    private JLabel avatar;
+    // The avatar model object.
+    private final InterfaceAvatarModel avatarModel;
 
-    private static AvatarPanel instance;
-
-    private AvatarPanel() {}
-
-    public static AvatarPanel getInstance() {
-        if(instance == null) instance = new AvatarPanel();
-        return instance;
+    /**
+     * Builds an AvatarPanel object with the specified
+     * avatar model object.
+     * @param avatarModel An InterfaceAvatarModel object.
+     */
+    public AvatarPanel(@NotNull InterfaceAvatarModel avatarModel) {
+        this.avatarModel = avatarModel;
+        init();
     }
 
-    public void init() {
-        if(avatar == null) {
-            throw new IllegalArgumentException("Avatar is null");
-        }
+    /** Initialize this AvatarPanel object. */
+    private void init() {
+        this.setOpaque(false);
+        this.setLayout(new BorderLayout());
+        JLabel avatarFrame = avatarModel.getAvatarFrameImageLabel();
 
-        setOpaque(false);
-        setLayout(new BorderLayout());
-        add(avatar, BorderLayout.CENTER);
+        avatarFrame.setLayout(new GridBagLayout()); GridBagConstraints gbc = new GridBagConstraints();
+
+        // Avatar image label.
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
+        gbc.anchor = GridBagConstraints.LINE_END;
+        gbc.insets = new Insets(0,0,10,0);
+        avatarFrame.add(Objects.requireNonNull(avatarModel.getAvatarImageLabel()), gbc);
+
+        // Avatar profile name label.
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
+        gbc.anchor = GridBagConstraints.LINE_END;
+        gbc.insets = new Insets(0,0,10,0);
+        avatarFrame.add(Objects.requireNonNull(avatarModel.getAvatarProfileNameLabel()), gbc);
+
+        // Avatar frame label.
+        add(avatarFrame, BorderLayout.CENTER);
     }
 
-    public void setAvatar(@NotNull JLabel avatar) {
-        this.avatar = avatar;
-    }
 }

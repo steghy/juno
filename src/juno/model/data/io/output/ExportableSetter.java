@@ -26,8 +26,8 @@
 package juno.model.data.io.output;
 
 import juno.init.Directories;
-import juno.model.data.awards.UserAwards;
-import juno.model.data.awards.UserAwardsFileNameBuilder;
+import juno.model.data.goals.UserGoals;
+import juno.model.data.goals.UserGoalsFileNameBuilder;
 import juno.model.data.profile.Profile;
 import juno.model.data.profile.ProfileFileNameBuilder;
 import juno.model.data.score.GamesWonCounter;
@@ -69,8 +69,8 @@ public class ExportableSetter
         map.put(Profile.getInstance(), PathGenerator.generate(Directories.PROFILES.absolutePath(),
                 ProfileFileNameBuilder.build(Objects.requireNonNull(Profile.getInstance().profileName()))));
         // User awards case.
-        map.put(UserAwards.getInstance(), PathGenerator.generate(Directories.AWARDS.absolutePath(),
-                UserAwardsFileNameBuilder.build(Objects.requireNonNull(Profile.getInstance().profileName()))));
+        map.put(UserGoals.getInstance(), PathGenerator.generate(Directories.AWARDS.absolutePath(),
+                UserGoalsFileNameBuilder.build(Objects.requireNonNull(Profile.getInstance().profileName()))));
         // Games won case.
         map.put(GamesWonCounter.getInstance(), PathGenerator.generate(Directories.SCORE.absolutePath(),
                 GamesWonFileNameBuilder.build(Objects.requireNonNull(Profile.getInstance().profileName()))));

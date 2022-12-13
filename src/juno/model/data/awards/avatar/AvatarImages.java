@@ -23,8 +23,10 @@
  * SOFTWARE.
  */
 
-package juno.model.data.awards;
+package juno.model.data.awards.avatar;
 
+import juno.model.data.awards.InterfaceAward;
+import juno.model.data.goals.InterfaceGoal;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
@@ -35,17 +37,21 @@ import java.util.List;
 /**
  * @author Simone Gentili
  */
-public enum Awards
-        implements InterfaceAward, Observable {
+public enum AvatarImages
+        implements
+        InterfaceAward,
+        Observable,
+        Observer {
 
-    FIRST_MATCH_WON,
-    FIRST_MATCH_LOSE,
-    TEN_MATCH_WON,
-    TEN_MATCH_LOSE,
-    FIFTY_MATCH_WON,
-    FIFTY_MATCH_LOSE,
-    ONE_HUNDRED_MATCH_WON,
-    ONE_HUNDRED_MATCH_LOSE;
+    AVATAR_IMAGE_1,
+    AVATAR_IMAGE_2,
+    AVATAR_IMAGE_3,
+    AVATAR_IMAGE_4,
+    AVATAR_IMAGE_5,
+    AVATAR_IMAGE_6,
+    AVATAR_IMAGE_7,
+    AVATAR_IMAGE_8,
+    AVATAR_IMAGE_9;
 
     // The Observers List.
     private final List<Observer> observerList;
@@ -54,8 +60,13 @@ public enum Awards
     private boolean unlock = false;
 
 
-    Awards() {
+    AvatarImages() {
         this.observerList = new ArrayList<>();
+    }
+
+    @Override
+    public boolean isUnlock() {
+        return unlock;
     }
 
     @Override
@@ -64,11 +75,6 @@ public enum Awards
                 "This award is already unlocked.");
         unlock = true;
         updateAll();
-    }
-
-    @Override
-    public boolean isUnlock() {
-        return unlock;
     }
 
     @Override
@@ -84,6 +90,15 @@ public enum Awards
     @Override
     public void updateAll() {
         observerList.forEach(observer -> observer.update(this));
+    }
+
+    @Override
+    public void update(Object object) {
+        if(object instanceof InterfaceGoal goal) {
+
+        } else throw new IllegalArgumentException(
+                "Invalid object type: " + object.getClass() +
+                        ". InterfaceGoal type expected.");
     }
 
 }

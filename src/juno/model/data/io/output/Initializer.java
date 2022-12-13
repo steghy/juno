@@ -25,18 +25,10 @@
 
 package juno.model.data.io.output;
 
-import juno.init.Directories;
-import juno.model.data.awards.UserAwards;
-import juno.model.data.awards.UserAwardsFileNameBuilder;
+import juno.model.data.goals.UserGoals;
 import juno.model.data.profile.Profile;
-import juno.model.data.profile.ProfileFileNameBuilder;
 import juno.model.data.score.GamesWonCounter;
-import juno.model.data.score.GamesWonFileNameBuilder;
 import juno.model.data.score.LostGamesCounter;
-import juno.model.data.score.LostGamesFileNameBuilder;
-import juno.model.util.PathGenerator;
-
-import java.util.Map;
 
 /**
  * @author Simone Gentili
@@ -57,7 +49,7 @@ public class Initializer {
         Profile profile = Profile.getInstance();
 
         // UserAwards.
-        UserAwards userAwards = UserAwards.getInstance();
+        UserGoals userAwards = UserGoals.getInstance();
 
         // GamesWonCounter.
         GamesWonCounter gamesWonCounter = GamesWonCounter.getInstance();

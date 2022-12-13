@@ -29,6 +29,9 @@ import juno.view.panels.AbstractFourthComponent;
 import java.awt.*;
 import java.util.Objects;
 
+/**
+ * @author Simone Gentili
+ */
 public class MainCardPanel
         extends AbstractFourthComponent {
 
