@@ -25,9 +25,13 @@
 
 package juno.controller.pre_access;
 
+import juno.controller.util.PanelChanger;
 import juno.model.data.io.input.configurable.CCompatibilityChecker;
 import juno.model.data.io.output.ExporterManager;
+import juno.view.pages.card.TopCardPanel;
 import juno.view.pages.pre_access.registration.menu.MenuPanel;
+
+import java.awt.*;
 
 /**
  * @author Simone Gentili
@@ -58,6 +62,15 @@ public class Initializer {
         // Exporter manager.
         ExporterManager exporterManager = ExporterManager.getInstance();
 
+        // Card panel.
+        TopCardPanel topCardPanel = TopCardPanel.getInstance();
+
+        // Panel key
+        String panelKey = TopCardPanel.MAIN_PANEL;
+
+        // Panel changer
+        PanelChanger panelChanger = PanelChanger.getInstance();
+
         /////////////////////////////////////////////////////////////////////////
 
         // Connections.
@@ -71,6 +84,9 @@ public class Initializer {
 
         // Resolver.
         resolver.setExporterManager(exporterManager);
+        resolver.setPanelChanger(panelChanger);
+        resolver.setCardPanel(topCardPanel);
+        resolver.setPanelKey(panelKey);
     }
 
 }

@@ -23,39 +23,19 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.main.card;
-
-import juno.view.pages.main.MainPanel;
-import juno.view.pages.new_game.card.NewGameCardPanel;
-import juno.view.pages.options.OptionsPanel;
-import juno.view.pages.score.ScorePanel;
+package juno.controller.util;
 
 /**
  * @author Simone Gentili
  */
-public class MainCardPanelConfigurator {
+public class Initializer {
 
-    // Builds a MainCardPanelConfigurator object.
-    private MainCardPanelConfigurator() {}
+    // Builds an Initializer object.
+    private Initializer() {}
 
-    public static void configure() {
-        // Main component.
-        MainCardPanel cardPanel = MainCardPanel.getInstance();
-
+    /** Initialize the juno.controller.util package. */
+    public static void initialize() {
         // Components.
-        MainPanel mainPanel = MainPanel.getInstance();
-        NewGameCardPanel newGameCardPanel = NewGameCardPanel.getInstance();
-        ScorePanel scorePanel = ScorePanel.getInstance();
-        OptionsPanel optionsPanel = OptionsPanel.getInstance();
-
-        // Components settings.
-        cardPanel.setFirstComponent(mainPanel);         // Main panel.
-        cardPanel.setSecondComponent(optionsPanel);     // Options panel.
-        cardPanel.setThirdComponent(scorePanel);        // Score panel.
-        cardPanel.setFourthComponent(newGameCardPanel); // New game panel.
-
-        // Main component initialization.
-        cardPanel.init();
     }
 
 }

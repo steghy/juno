@@ -26,6 +26,10 @@
 package juno.controller.pre_access;
 
 import juno.model.data.io.output.AbstractExporterManagerAndPanelChangerUser;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import javax.swing.*;
 
 /**
  * @author Simone Gentili
@@ -33,5 +37,45 @@ import juno.model.data.io.output.AbstractExporterManagerAndPanelChangerUser;
 public abstract class AbstractRequestResolver
         extends AbstractExporterManagerAndPanelChangerUser
         implements InterfaceRequestResolver {
+
+    // The card panel.
+    private JPanel cardPanel;
+
+    // The panel key.
+    private String panelKey;
+
+    /**
+     * Sets the card panel of this object.
+     * @param cardPanel A JPanel object.
+     */
+    public void setCardPanel(@NotNull JPanel cardPanel) {
+        this.cardPanel = cardPanel;
+    }
+
+    /**
+     * Sets the panel key of this object.
+     * @param panelKey A String object.
+     */
+    public void setPanelKey(@NotNull String panelKey) {
+        this.panelKey = panelKey;
+    }
+
+    /**
+     * Returns the card panel of this object.
+     * @return A JPanel object.
+     */
+    @Nullable
+    public JPanel getCardPanel() {
+        return cardPanel;
+    }
+
+    /**
+     * Returns the panel key of this object.
+     * @return A String object.
+     */
+    @Nullable
+    public String getPanelKey() {
+        return panelKey;
+    }
 
 }

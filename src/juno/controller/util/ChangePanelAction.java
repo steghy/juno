@@ -57,7 +57,7 @@ public class ChangePanelAction
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Objects.requireNonNull(getPanelChanger()).changePanel(cardPanel, panelKey);
+        PanelChanger.getInstance().changePanel(cardPanel, panelKey);
     }
 
 }
