@@ -79,7 +79,7 @@ public class MenuPanel
         gbc.anchor = GridBagConstraints.LINE_END;
         gbc.insets = new Insets(0,0,10,0);
         this.add(Objects.requireNonNull(getFirstComponent()), gbc);
-        dataLines.put(Profile.PROFILE_NAME, (DataLine) getFirstComponent());
+        dataLines.put(Profile.PROFILE_NAME_KEY, (DataLine) getFirstComponent());
 
         // Name.
         gbc.gridx = 1;
@@ -91,7 +91,7 @@ public class MenuPanel
         gbc.anchor = GridBagConstraints.LINE_END;
         gbc.insets = new Insets(0,0,10,0);
         this.add(Objects.requireNonNull(getSecondComponent()), gbc);
-        dataLines.put(Profile.NAME, (DataLine) getSecondComponent());
+        dataLines.put(Profile.NAME_KEY, (DataLine) getSecondComponent());
 
         // Last name.
         gbc.gridx = 0;
@@ -103,7 +103,7 @@ public class MenuPanel
         gbc.anchor = GridBagConstraints.LINE_END;
         gbc.insets = new Insets(0,0,10,0);
         this.add(Objects.requireNonNull(getThirdComponent()), gbc);
-        dataLines.put(Profile.LAST_NAME, (DataLine) getThirdComponent());
+        dataLines.put(Profile.LAST_NAME_KEY, (DataLine) getThirdComponent());
 
         // Age.
         gbc.gridx = 1;
@@ -115,7 +115,7 @@ public class MenuPanel
         gbc.anchor = GridBagConstraints.LINE_END;
         gbc.insets = new Insets(0,0,10,0);
         this.add(Objects.requireNonNull(getFourthComponent()), gbc);
-        dataLines.put(Profile.AGE, (DataLine) getFourthComponent());
+        dataLines.put(Profile.AGE_KEY, (DataLine) getFourthComponent());
 
         // Confirm button.
         gbc.gridx = 1;
@@ -145,13 +145,13 @@ public class MenuPanel
         Map<String, Object> map = new HashMap<>();
         getDataLines().forEach((k,v) -> {
             switch (k) {
-                case (Profile.PROFILE_NAME),
-                        (Profile.LAST_NAME),
-                        (Profile.NAME) -> {
+                case (Profile.PROFILE_NAME_KEY),
+                        (Profile.LAST_NAME_KEY),
+                        (Profile.NAME_KEY) -> {
                     String text = v.getTextField().getText();
                     if(text.length() != 0)
                         map.put(k, text);
-                } case (Profile.AGE) -> {
+                } case (Profile.AGE_KEY) -> {
                     String text = v.getTextField().getText();
                     if(text.length() != 0) {
                         int age;

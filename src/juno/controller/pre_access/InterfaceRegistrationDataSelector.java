@@ -23,37 +23,17 @@
  * SOFTWARE.
  */
 
-package juno.model.data.io.input;
+package juno.controller.pre_access;
 
-import juno.model.data.io.input.configurable.InterfaceCCompatibilityChecker;
-import juno.model.data.io.input.configurable.InterfaceCCompatibilityFileChecker;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import juno.controller.InterfaceRegistrationDataProvider;
+import juno.model.data.io.input.configurable.Configurable;
+import juno.model.data.profile.InterfaceErrorProvider;
 
-/**
- * @author Simone Gentili
- */
-public class AbstractCCompatibilityCheckerUser {
+@FunctionalInterface
+public interface InterfaceRegistrationDataSelector {
 
-    // The compatibility checker for Configurable object.
-    private InterfaceCCompatibilityChecker checker;
+    void elaborate(Configurable configurable,
+                   InterfaceRegistrationDataProvider dataProvider,
+                   InterfaceErrorProvider errorProvider);
 
-    /**
-     * Sets the compatibility checker for Configurable
-     * object of this object.
-     * @param checker An InterfaceCCompatibilityChecker object.
-     */
-    public void setChecker(@NotNull InterfaceCCompatibilityChecker checker) {
-        this.checker = checker;
-    }
-
-    /**
-     * Returns the compatibility checker for Configurable
-     * object of this object.
-     * @return An InterfaceCCompatibilityChecker object.
-     */
-    @Nullable
-    public InterfaceCCompatibilityChecker getChecker() {
-        return checker;
-    }
 }

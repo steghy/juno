@@ -23,37 +23,11 @@
  * SOFTWARE.
  */
 
-package juno.model.data.io.input;
+package juno.model.data.score;
 
-import juno.model.data.io.input.configurable.InterfaceCCompatibilityChecker;
-import juno.model.data.io.input.configurable.InterfaceCCompatibilityFileChecker;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+@FunctionalInterface
+public interface InterfaceCountProvider {
 
-/**
- * @author Simone Gentili
- */
-public class AbstractCCompatibilityCheckerUser {
+    int getCount();
 
-    // The compatibility checker for Configurable object.
-    private InterfaceCCompatibilityChecker checker;
-
-    /**
-     * Sets the compatibility checker for Configurable
-     * object of this object.
-     * @param checker An InterfaceCCompatibilityChecker object.
-     */
-    public void setChecker(@NotNull InterfaceCCompatibilityChecker checker) {
-        this.checker = checker;
-    }
-
-    /**
-     * Returns the compatibility checker for Configurable
-     * object of this object.
-     * @return An InterfaceCCompatibilityChecker object.
-     */
-    @Nullable
-    public InterfaceCCompatibilityChecker getChecker() {
-        return checker;
-    }
 }

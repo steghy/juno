@@ -23,34 +23,28 @@
  * SOFTWARE.
  */
 
-package juno.model.data.profile;
+package juno.model.data.score;
 
-import org.jetbrains.annotations.NotNull;
+import juno.model.data.io.input.configurable.Configurable;
+import juno.model.data.io.output.Exportable;
 
-/**
- * @author Simone Gentili
- */
-public class FileNameBuilder
-        implements InterfaceFileNameBuilder {
+public class GamesWonCounter
+        extends AbstractCounter
+                implements Configurable, Exportable {
 
-    // The FileNameBuilder instance.
-    private static FileNameBuilder instance;
+    // The GamesWonCounter instance.
+    private static GamesWonCounter instance;
 
-    // Builds a FileNameBuilder instance.
-    private FileNameBuilder() {}
+    // Builds the GamesWonCounter instance.
+    private GamesWonCounter() {}
 
     /**
-     * Returns the FileNameBuilder instance.
-     * @return The FileNameBuilder instance.
+     * Returns the GamesWonCounter instance.
+     * @return The GamesWonCounter instance.
      */
-    public static FileNameBuilder getInstance() {
-        if(instance == null) instance = new FileNameBuilder();
+    public static GamesWonCounter getInstance() {
+        if(instance == null) instance = new GamesWonCounter();
         return instance;
-    }
-
-    @Override
-    public String build(@NotNull String profileName) {
-        return profileName.toLowerCase() + "-profile.json";
     }
 
 }

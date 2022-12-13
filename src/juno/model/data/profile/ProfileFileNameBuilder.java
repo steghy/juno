@@ -23,37 +23,34 @@
  * SOFTWARE.
  */
 
-package juno.model.data.io.input;
+package juno.model.data.profile;
 
-import juno.model.data.io.input.configurable.InterfaceCCompatibilityChecker;
-import juno.model.data.io.input.configurable.InterfaceCCompatibilityFileChecker;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Simone Gentili
  */
-public class AbstractCCompatibilityCheckerUser {
+public class ProfileFileNameBuilder
+        implements InterfaceFileNameBuilder {
 
-    // The compatibility checker for Configurable object.
-    private InterfaceCCompatibilityChecker checker;
+    // The FileNameBuilder instance.
+    private static ProfileFileNameBuilder instance;
 
-    /**
-     * Sets the compatibility checker for Configurable
-     * object of this object.
-     * @param checker An InterfaceCCompatibilityChecker object.
-     */
-    public void setChecker(@NotNull InterfaceCCompatibilityChecker checker) {
-        this.checker = checker;
-    }
+    // Builds a FileNameBuilder instance.
+    private ProfileFileNameBuilder() {}
 
     /**
-     * Returns the compatibility checker for Configurable
-     * object of this object.
-     * @return An InterfaceCCompatibilityChecker object.
+     * Returns the FileNameBuilder instance.
+     * @return The FileNameBuilder instance.
      */
-    @Nullable
-    public InterfaceCCompatibilityChecker getChecker() {
-        return checker;
+    public static ProfileFileNameBuilder getInstance() {
+        if(instance == null) instance = new ProfileFileNameBuilder();
+        return instance;
     }
+
+    @Override
+    public String build(@NotNull String profileName) {
+        return profileName.toLowerCase() + "-profile.json";
+    }
+
 }

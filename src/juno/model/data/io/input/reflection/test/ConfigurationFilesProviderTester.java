@@ -26,7 +26,7 @@
 package juno.model.data.io.input.reflection.test;
 
 import juno.init.Directories;
-import juno.model.data.io.input.InputPKGInitializer;
+import juno.model.data.io.input.Initializer;
 import juno.model.data.io.input.reflection.RConfigurationFilesProvider;
 import juno.model.util.PathGenerator;
 
@@ -38,7 +38,7 @@ public class ConfigurationFilesProviderTester {
 
     public static void main(String[] args) {
         // Initialization.
-        InputPKGInitializer.initialize();
+        Initializer.initialize();
 
         RConfigurationFilesProvider filesProvider = RConfigurationFilesProvider.getInstance();
         filesProvider.setExtensions(List.of("json"));

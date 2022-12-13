@@ -23,37 +23,27 @@
  * SOFTWARE.
  */
 
-package juno.model.data.io.input;
-
-import juno.model.data.io.input.configurable.InterfaceCCompatibilityChecker;
-import juno.model.data.io.input.configurable.InterfaceCCompatibilityFileChecker;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+package juno.model.data.score;
 
 /**
  * @author Simone Gentili
  */
-public class AbstractCCompatibilityCheckerUser {
+public class LostGamesCounter
+    extends AbstractCounter {
 
-    // The compatibility checker for Configurable object.
-    private InterfaceCCompatibilityChecker checker;
+    // The LostGamesCounter instance.
+    private static LostGamesCounter instance;
 
-    /**
-     * Sets the compatibility checker for Configurable
-     * object of this object.
-     * @param checker An InterfaceCCompatibilityChecker object.
-     */
-    public void setChecker(@NotNull InterfaceCCompatibilityChecker checker) {
-        this.checker = checker;
-    }
+    // Builds the LostGamesCounter instance.
+    private LostGamesCounter() {}
 
     /**
-     * Returns the compatibility checker for Configurable
-     * object of this object.
-     * @return An InterfaceCCompatibilityChecker object.
+     * Returns the LostGamesCounter instance.
+     * @return The LostGamesCounter instance.
      */
-    @Nullable
-    public InterfaceCCompatibilityChecker getChecker() {
-        return checker;
+    public static LostGamesCounter getInstance() {
+        if(instance == null) instance = new LostGamesCounter();
+        return instance;
     }
+
 }

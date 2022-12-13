@@ -23,37 +23,26 @@
  * SOFTWARE.
  */
 
-package juno.model.data.io.input;
+package juno.model.data.awards;
 
-import juno.model.data.io.input.configurable.InterfaceCCompatibilityChecker;
-import juno.model.data.io.input.configurable.InterfaceCCompatibilityFileChecker;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import java.util.List;
 
 /**
  * @author Simone Gentili
  */
-public class AbstractCCompatibilityCheckerUser {
+public class Initializer {
 
-    // The compatibility checker for Configurable object.
-    private InterfaceCCompatibilityChecker checker;
+    // Builds an Initializer object.
+    private Initializer() {}
 
-    /**
-     * Sets the compatibility checker for Configurable
-     * object of this object.
-     * @param checker An InterfaceCCompatibilityChecker object.
-     */
-    public void setChecker(@NotNull InterfaceCCompatibilityChecker checker) {
-        this.checker = checker;
+    /** Initialize the juno.model.data.awards package. */
+    public static void initialize() {
+        // Component.
+        // User awards.
+        UserAwards userAwards = UserAwards.getInstance();
+
+        // Adding the awards to the UserAwards instance.
+        List.of(Awards.values()).forEach(award -> userAwards.awards().add(award));
     }
 
-    /**
-     * Returns the compatibility checker for Configurable
-     * object of this object.
-     * @return An InterfaceCCompatibilityChecker object.
-     */
-    @Nullable
-    public InterfaceCCompatibilityChecker getChecker() {
-        return checker;
-    }
 }

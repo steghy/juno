@@ -37,10 +37,10 @@ import juno.model.data.io.input.reflection.RConfigurationFilesProvider;
  * interconnection between the concrete classes of the package.
  * @author Simone Gentili
  */
-public class InputPKGInitializer {
+public class Initializer {
 
     // Builds the InputPKGInitializer.
-    private InputPKGInitializer() {}
+    private Initializer() {}
 
     /**
      * Initialize the entire juno.model.data.io.input

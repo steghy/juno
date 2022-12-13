@@ -48,6 +48,9 @@ public class RegistrationDataSender
     // The error provider.
     private final InterfaceErrorProvider errorProvider;
 
+    // The data selector.
+    private final InterfaceRegistrationDataSelector dataSelector;
+
     /**
      * Builds a RegistrationDataSender with the specified
      * Configurable and InterfaceRegistrationDataSender
@@ -57,19 +60,17 @@ public class RegistrationDataSender
      */
     public RegistrationDataSender(@NotNull Configurable configurable,
                                   @NotNull InterfaceRegistrationDataProvider provider,
-                                  @NotNull InterfaceErrorProvider errorProvider) {
+                                  @NotNull InterfaceErrorProvider errorProvider,
+                                  @NotNull InterfaceRegistrationDataSelector dataSelector) {
         this.configurable = configurable;
         this.dataProvider = provider;
         this.errorProvider = errorProvider;
+        this.dataSelector = dataSelector;
     }
 
     @Override
     public void actionPerformed(@NotNull ActionEvent event) {
-        RegistrationDataSelector.getInstance()
-                .elaborate(
-                        configurable,
-                        dataProvider.provideRegistrationData(),
-                        errorProvider);
+        dataSelector.elaborate(configurable, dataProvider, errorProvider);
     }
 
 }

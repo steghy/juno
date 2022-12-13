@@ -29,6 +29,7 @@ import juno.model.data.io.input.configurable.Configurable;
 import juno.model.data.io.output.Exportable;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
+import juno.model.util.Restorable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -40,17 +41,14 @@ import java.util.*;
  */
 public class Profile
         extends AbstractProfile
-        implements InterfaceProfiler,
-                    Configurable,
-                     Exportable,
-                    Observable {
+        implements InterfaceProfiler, Configurable, Exportable, Observable, Restorable {
 
     public static final int MAXIMUM_LENGTH = 15;
     public static final int MAXIMUM_AGE = 150;
-    public static final String PROFILE_NAME = "profileName";
-    public static final String NAME = "name";
-    public static final String LAST_NAME = "lastName";
-    public static final String AGE = "age";
+    public static final String PROFILE_NAME_KEY = "profileName";
+    public static final String NAME_KEY = "name";
+    public static final String LAST_NAME_KEY = "lastName";
+    public static final String AGE_KEY = "age";
 
     // The Observers List.
     private final List<Observer> observerList;
@@ -89,68 +87,71 @@ public class Profile
         Map<String, String> errors = Objects.requireNonNull(getProvider()).getErrors();
         errors.clear(); // Cleaning up old errors.
         // Profile name case.
-        if (map.containsKey(PROFILE_NAME)) {
-            Object profileNameFromMap = map.get(PROFILE_NAME);
+        if (map.containsKey(PROFILE_NAME_KEY)) {
+            Object profileNameFromMap = map.get(PROFILE_NAME_KEY);
             if (profileNameFromMap instanceof String temp) {
                 try {
                     setProfileName(temp);
                 } catch (IllegalArgumentException e) {
                     e.printStackTrace();
-                    errors.put(PROFILE_NAME, e.getMessage());
+                    errors.put(PROFILE_NAME_KEY, e.getMessage());
                 }
             } else if (profileNameFromMap == null) profileName = null;
-            else errors.put(PROFILE_NAME, "Profile name must be a String");
-        } else errors.put(PROFILE_NAME, "The profile name is required");
+            else errors.put(PROFILE_NAME_KEY, "Profile name must be a String");
+        } else errors.put(PROFILE_NAME_KEY, "The profile name is required");
         // Name case.
-        if (map.containsKey(NAME)) {
-            Object nameFromMap = map.get(NAME);
-            if (map.get(NAME) instanceof String temp) {
+        if (map.containsKey(NAME_KEY)) {
+            Object nameFromMap = map.get(NAME_KEY);
+            if (map.get(NAME_KEY) instanceof String temp) {
                 try {
                     setName(temp);
                 } catch (IllegalArgumentException e) {
                     e.printStackTrace();
-                    errors.put(NAME, e.getMessage());
+                    errors.put(NAME_KEY, e.getMessage());
                 }
             } else if (nameFromMap == null) name = null;
-            else errors.put(NAME, "Name must be a String");
+            else errors.put(NAME_KEY, "Name must be a String");
         }
         // Last name.
-        if (map.containsKey(LAST_NAME)) {
-            Object lastNameFromMap = map.get(LAST_NAME);
-            if (map.get(LAST_NAME) instanceof String temp) {
+        if (map.containsKey(LAST_NAME_KEY)) {
+            Object lastNameFromMap = map.get(LAST_NAME_KEY);
+            if (map.get(LAST_NAME_KEY) instanceof String temp) {
                 try {
                     setLastName(temp);
                 } catch (IllegalArgumentException e) {
                     e.printStackTrace();
-                    errors.put(LAST_NAME, e.getMessage());
+                    errors.put(LAST_NAME_KEY, e.getMessage());
                 }
             } else if (lastNameFromMap == null) lastName = null;
-            else errors.put(LAST_NAME, "Last name must be a String.");
+            else errors.put(LAST_NAME_KEY, "Last name must be a String.");
         }
         // Age case.
-        if (map.containsKey(AGE)) {
-            Object ageFromMap = map.get(AGE);
-            if (map.get(AGE) instanceof Integer temp) {
+        if (map.containsKey(AGE_KEY)) {
+            Object ageFromMap = map.get(AGE_KEY);
+            if (map.get(AGE_KEY) instanceof Integer temp) {
                 try {
                     setAge(temp);
                 } catch (IllegalArgumentException e) {
                     e.printStackTrace();
-                    errors.put(AGE, e.getMessage());
+                    errors.put(AGE_KEY, e.getMessage());
                 }
             } else if (ageFromMap == null) age = null;
-            else errors.put(AGE, "Age must be a number");
+            else errors.put(AGE_KEY, "Age must be a number");
         }
         // Checking for errors.
-        if(!errors.isEmpty()) throw new IllegalArgumentException();
+        if(!errors.isEmpty()) {
+            restore();
+            throw new IllegalArgumentException();
+        }
     }
 
     @Override
     public Map<String, Object> exportData() {
         Map<String, Object> map = new HashMap<>();
-        map.put(PROFILE_NAME, profileName);
-        map.put(NAME, name);
-        map.put(LAST_NAME, lastName);
-        map.put(AGE, age);
+        map.put(PROFILE_NAME_KEY, profileName);
+        map.put(NAME_KEY, name);
+        map.put(LAST_NAME_KEY, lastName);
+        map.put(AGE_KEY, age);
         return map;
     }
 
@@ -255,6 +256,14 @@ public class Profile
     @Override
     public void updateAll() {
         observerList.forEach(observer -> observer.update(this));
+    }
+
+    @Override
+    public void restore() {
+        profileName = null;
+        name = null;
+        lastName = null;
+        age = null;
     }
 
 }

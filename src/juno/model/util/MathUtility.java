@@ -24,7 +24,7 @@
  */
 
 
-package juno.model.data.io.input.reflection;
+package juno.model.util;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;

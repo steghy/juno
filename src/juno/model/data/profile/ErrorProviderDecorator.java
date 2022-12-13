@@ -60,12 +60,12 @@ public class ErrorProviderDecorator
     public Map<String, String> getErrors() {
         Map<String, String> errors = errorProvider.getErrors();
         Map<String, Object> data = dataProvider.provideRegistrationData();
-        if(data.containsKey(Profile.PROFILE_NAME))
+        if(data.containsKey(Profile.PROFILE_NAME_KEY))
             if(Os.exists(
                     PathGenerator.generate(
                             Directories.PROFILES.absolutePath(),
-                            FileNameBuilder.getInstance().build((String) data.get(Profile.PROFILE_NAME)))))
-                errors.put(Profile.PROFILE_NAME, "profile name already used");
+                            ProfileFileNameBuilder.getInstance().build((String) data.get(Profile.PROFILE_NAME_KEY)))))
+                errors.put(Profile.PROFILE_NAME_KEY, "profile name already used");
         return errors;
     }
 

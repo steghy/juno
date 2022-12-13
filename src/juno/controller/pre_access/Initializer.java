@@ -53,12 +53,8 @@ public class Initializer {
         // CCompatibility checker.
         CCompatibilityChecker checker = CCompatibilityChecker.getInstance();
 
-        // Property copier.
-        PropertyCopier copier = PropertyCopier.getInstance();
-
         // Data line provider
         MenuPanel menuPanel = MenuPanel.getInstance();
-
 
         /////////////////////////////////////////////////////////////////////////
 
@@ -67,7 +63,6 @@ public class Initializer {
         selector.setNotifier(notifier);
         selector.setResolver(resolver);
         selector.setChecker(checker);
-        selector.setCopier(copier);
 
         // Notifier
         notifier.setDataLineProvider(menuPanel);

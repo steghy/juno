@@ -25,9 +25,6 @@
 
 package juno.init.initializer;
 
-import juno.model.data.io.input.InputPKGInitializer;
-import juno.model.data.profile.Initializer;
-
 /**
  * @author Simone Gentili
  */
@@ -38,10 +35,13 @@ public class ModelInitializer {
 
     public static void initialize() {
         // juno.model.data.io.input package.
-        InputPKGInitializer.initialize();
+        juno.model.data.io.input.Initializer.initialize();
 
         // juno.model.data.profile package.
-        Initializer.initialize();
+        juno.model.data.profile.Initializer.initialize();
+
+        // juno.model.data.awards package.
+        juno.model.data.awards.Initializer.initialize();
     }
 
 }

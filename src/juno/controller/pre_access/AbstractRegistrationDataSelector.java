@@ -25,6 +25,7 @@
 
 package juno.controller.pre_access;
 
+import juno.model.data.io.input.AbstractCCompatibilityCheckerUser;
 import juno.model.data.io.input.configurable.AbstractCCompatibilityCheckerAndCopierUser;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -33,7 +34,7 @@ import org.jetbrains.annotations.Nullable;
  * @author Simone Gentili
  */
 public abstract class AbstractRegistrationDataSelector
-        extends AbstractCCompatibilityCheckerAndCopierUser {
+        extends AbstractCCompatibilityCheckerUser {
 
     // The error notifier.
     private InterfaceErrorNotifier notifier;

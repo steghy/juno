@@ -23,37 +23,67 @@
  * SOFTWARE.
  */
 
-package juno.model.data.io.input;
+package juno.model.data.awards;
 
-import juno.model.data.io.input.configurable.InterfaceCCompatibilityChecker;
-import juno.model.data.io.input.configurable.InterfaceCCompatibilityFileChecker;
+import juno.model.util.Observable;
+import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Simone Gentili
  */
-public class AbstractCCompatibilityCheckerUser {
+public enum Awards
+        implements InterfaceAward, Observable {
 
-    // The compatibility checker for Configurable object.
-    private InterfaceCCompatibilityChecker checker;
+    FIRST_MATCH_WON,
+    FIRST_MATCH_LOSE,
+    TEN_MATCH_WON,
+    TEN_MATCH_LOSE,
+    FIFTY_MATCH_WON,
+    FIFTY_MATCH_LOSE,
+    ONE_HUNDRED_MATCH_WON,
+    ONE_HUNDRED_MATCH_LOSE;
 
-    /**
-     * Sets the compatibility checker for Configurable
-     * object of this object.
-     * @param checker An InterfaceCCompatibilityChecker object.
-     */
-    public void setChecker(@NotNull InterfaceCCompatibilityChecker checker) {
-        this.checker = checker;
+    // The Observers List.
+    private final List<Observer> observerList;
+
+    // Unlock boolean value.
+    private boolean unlock = false;
+
+
+    Awards() {
+        this.observerList = new ArrayList<>();
     }
 
-    /**
-     * Returns the compatibility checker for Configurable
-     * object of this object.
-     * @return An InterfaceCCompatibilityChecker object.
-     */
-    @Nullable
-    public InterfaceCCompatibilityChecker getChecker() {
-        return checker;
+    @Override
+    public void unlock() {
+        if(unlock) throw new IllegalArgumentException(
+                "This award is already unlocked.");
+        unlock = true;
+        updateAll();
     }
+
+    @Override
+    public boolean isUnlock() {
+        return unlock;
+    }
+
+    @Override
+    public void addObserver(@NotNull Observer observer) {
+        observerList.add(observer);
+    }
+
+    @Override
+    public void removeObserver(@NotNull Observer observer) {
+        observerList.remove(observer);
+    }
+
+    @Override
+    public void updateAll() {
+        observerList.forEach(observer -> observer.update(this));
+    }
+
 }

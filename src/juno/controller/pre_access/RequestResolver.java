@@ -25,6 +25,7 @@
 
 package juno.controller.pre_access;
 
+
 /**
  * @author Simone Gentili
  */
@@ -47,8 +48,6 @@ public class RequestResolver
     }
 
     @Override
-    public void resolve() {
-
-    }
+    public void resolve() {}
 
 }
