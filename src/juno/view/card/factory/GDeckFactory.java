@@ -40,8 +40,7 @@ import java.util.*;
  */
 public class GDeckFactory
         extends AbstractGDeckFactory<InterfaceCard>
-        implements InterfaceGDeckFactory<InterfaceCard>,
-        InterfaceGDeckGenerator<InterfaceCard>,
+        implements InterfaceGDeckGenerator<InterfaceCard>,
                     Observer, Observable {
 
     // The Observers List.
@@ -75,7 +74,7 @@ public class GDeckFactory
     @Override
     public void generate(@NotNull List<InterfaceCard> cards) {
         gDeck = new HashMap<>();
-        InterfaceGCardFactory<InterfaceCard> gCardFactory = getFactory();
+        InterfaceGCardCreator<InterfaceCard> gCardFactory = getCreator();
         Objects.requireNonNull(gCardFactory);
         cards.forEach(card ->
                 gDeck.put(card, gCardFactory.create(card)));

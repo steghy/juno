@@ -57,7 +57,7 @@ public class GAvatarsFactory
     @Override
     public List<InterfaceGAvatar<InterfaceAvatar>> getGAvatars(@NotNull List<InterfaceAvatar> avatarList) {
         return avatarList.stream()
-                .map(Objects.requireNonNull(getFactory())::create).toList();
+                .map(Objects.requireNonNull(getCreator())::create).toList();
     }
 
 }

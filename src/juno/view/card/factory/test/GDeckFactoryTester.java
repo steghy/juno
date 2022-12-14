@@ -29,7 +29,7 @@ import juno.init.Repository;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.DeckFactory;
 import juno.view.card.factory.GDeckFactory;
-import juno.view.card.factory.Initializer;
+import juno.view.card.Initializer;
 import juno.view.card.factory.InterfaceGDeckFactory;
 
 import java.util.Objects;

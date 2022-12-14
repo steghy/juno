@@ -25,10 +25,13 @@
 
 package juno.model.data.awards.avatar;
 
+import juno.model.data.awards.InterfaceAward;
+
 /**
  * @author Simone Gentili
  */
-public interface InterfaceAvatar {
+public interface InterfaceAvatar
+        extends InterfaceAward {
 
     /**
      * Returns the name of this

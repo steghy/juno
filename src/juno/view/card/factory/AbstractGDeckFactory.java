@@ -31,26 +31,27 @@ import org.jetbrains.annotations.Nullable;
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
-public abstract class AbstractGDeckFactory<T> {
+public abstract class AbstractGDeckFactory<T>
+        implements InterfaceGDeckFactory<T> {
 
-    // The graphic card factory.
-    private InterfaceGCardFactory<T> factory;
+    // The graphic card creator.
+    private InterfaceGCardCreator<T> creator;
 
     /**
-     * Sets the graphic card factory of this object.
-     * @param factory An InterfaceGCardFactory object.
+     * Sets the graphic card creator of this object.
+     * @param creator An InterfaceGCardCreator object.
      */
-    public void setFactory(InterfaceGCardFactory<T> factory) {
-        this.factory = factory;
+    public void setCreator(InterfaceGCardCreator<T> creator) {
+        this.creator = creator;
     }
 
     /**
-     * Returns the graphic card factory of this object.
-     * @return An InterfaceGCardFactory object.
+     * Returns the graphic card creator of this object.
+     * @return An InterfaceGCardCreator object.
      */
     @Nullable
-    public InterfaceGCardFactory<T> getFactory() {
-        return factory;
+    public InterfaceGCardCreator<T> getCreator() {
+        return creator;
     }
 
 }

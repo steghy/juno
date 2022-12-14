@@ -36,8 +36,8 @@ public class GCard<T>
         extends ImageButton
         implements InterfaceGCard<T> {
 
-    /* The card */
-    T card;
+    // The card.
+    private final T card;
 
     /**
      * Builds a ButtonCard object with

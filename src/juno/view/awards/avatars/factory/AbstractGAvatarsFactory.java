@@ -34,23 +34,23 @@ import org.jetbrains.annotations.Nullable;
  */
 public abstract class AbstractGAvatarsFactory<T> {
 
-    // The graphic avatar factory.
-    private InterfaceGAvatarFactory<T> factory;
+    // The graphic avatar creator.
+    private InterfaceGAvatarCreator<T> factory;
 
     /**
-     * Sets the graphic avatar factory of this object.
-     * @param factory An InterfaceGAvatarFactory object.
+     * Sets the graphic avatar creator of this object.
+     * @param factory An InterfaceGAvatarCreator object.
      */
-    public void setFactory(@NotNull InterfaceGAvatarFactory<T> factory) {
+    public void setCreator(@NotNull InterfaceGAvatarCreator<T> factory) {
         this.factory = factory;
     }
 
     /**
-     * Returns the graphic avatar factory of this object.
-     * @return An InterfaceGAvatarFactory object.
+     * Returns the graphic avatar creator of this object.
+     * @return An InterfaceGAvatarCreator object.
      */
     @Nullable
-    public InterfaceGAvatarFactory<T> getFactory() {
+    public InterfaceGAvatarCreator<T> getCreator() {
         return factory;
     }
 

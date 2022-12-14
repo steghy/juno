@@ -26,48 +26,59 @@
 package juno.view.util;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * @author Simone Gentili
+ */
 public class ImageResizer {
 
+    // Builds an ImageResizer object.
     private ImageResizer() {}
 
-    public static Image resize(Component component, String path) {
+    public static Image resize(@NotNull Component component,
+                               @NotNull String path) {
         ImageIcon image = new ImageIcon(path);
         return image.getImage().getScaledInstance(
                 component.getWidth(),
                 component.getHeight(), 0);
     }
 
-    public static Image resize(@NotNull Component component, @NotNull ImageIcon icon) {
+    public static Image resize(@NotNull Component component,
+                               @NotNull ImageIcon icon) {
         return  icon.getImage().getScaledInstance(
                 component.getWidth(),
                 component.getHeight(), 0);
 
     }
 
-    public static Image resize(@NotNull Component component, @NotNull Icon icon) {
-        if (icon instanceof ImageIcon image) {
+    public static Image resize(@NotNull Component component,
+                               @NotNull Icon icon) {
+        if(icon instanceof ImageIcon image)
             return image.getImage().getScaledInstance(
                     component.getWidth(),
                     component.getHeight(), 0);
-        } else {
-            return null;
-        }
+        else throw new IllegalArgumentException(
+                "Invalid object type: " + icon.getClass() +
+                        ". ImageIcon type expected.");
     }
 
-    public static Image resize(@NotNull Component component, @NotNull Image image) {
+    public static Image resize(@NotNull Component component,
+                               @NotNull Image image) {
         return  image.getScaledInstance(
                 component.getWidth(),
                 component.getHeight(), 0);
     }
 
-    public static void resize(@NotNull AbstractButton button, double divisor) {
+    public static void resize(@NotNull AbstractButton button,
+                              double divisor) {
         Icon icon = button.getIcon();
         button.setPreferredSize(new Dimension(
                 (int) (icon.getIconWidth()  / divisor),
                 (int) (icon.getIconHeight() / divisor)));
     }
+
 }

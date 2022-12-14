@@ -33,7 +33,6 @@ import java.awt.*;
 /**
  * @author Simone Gentili
  */
-@SuppressWarnings("ALL")
 public class ImageButton
         extends JButton {
 

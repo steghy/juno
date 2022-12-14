@@ -25,14 +25,17 @@
 
 package juno.view.util;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class ImageToggleButton extends JToggleButton {
+public class ImageToggleButton
+        extends JToggleButton {
 
-    public void setSize(Dimension dimension) {
-        if(dimension != null &&
-                dimension.getWidth() != 0 && dimension.getHeight() != 0) {
+    public void setSize(@NotNull Dimension dimension) {
+        if(dimension.getWidth() != 0 &&
+                dimension.getHeight() != 0) {
             super.setSize(dimension);
             Icon icon = getIcon();
             Icon rolloverIcon = getRolloverIcon();
@@ -51,7 +54,8 @@ public class ImageToggleButton extends JToggleButton {
         }
     }
 
-    public void setSize(int width, int height) {
+    public void setSize(int width,
+                        int height) {
         if(width != 0 && height != 0) {
             super.setSize(width, height);
             Icon icon = getIcon();
@@ -71,9 +75,9 @@ public class ImageToggleButton extends JToggleButton {
         }
     }
 
-    public void setPreferredSize(Dimension dimension) {
-        if(dimension != null &&
-                dimension.getWidth() != 0 && dimension.getHeight() != 0) {
+    public void setPreferredSize(@NotNull Dimension dimension) {
+        if(dimension.getWidth() != 0 &&
+                dimension.getHeight() != 0) {
             super.setPreferredSize(dimension);
             super.setSize(dimension);
             Icon icon = getIcon();
@@ -92,4 +96,5 @@ public class ImageToggleButton extends JToggleButton {
             }
         }
     }
+
 }
