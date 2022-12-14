@@ -25,23 +25,44 @@
 
 package juno.model.data.avatar;
 
+import juno.model.data.awards.avatar.InterfaceAvatarImage;
+import juno.model.data.awards.frame.InterfaceAvatarFrame;
+import juno.model.data.io.input.configurable.Configurable;
+import juno.model.data.io.output.Exportable;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author Simone Gentili
  */
-public class Avatar<T, E>
-        implements InterfaceAvatarProvider<T, E> {
+public class Avatar
+        implements
+        InterfaceAvatarProvider<InterfaceAvatarImage, InterfaceAvatarFrame>,
+        Configurable,
+        Exportable {
+
+    /** The avatar name key */
+    public static final String NAME_KEY = "name";
+
+    /** The avatar image key. */
+    public static final String AVATAR_IMAGE = "avatarImage";
+
+    /** The avatar frame key. */
+    public static final String AVATAR_FRAME = "avatarFrame";
 
     // The avatar name.
     String name;
 
     // The avatar image.
-    T avatarImage;
+    InterfaceAvatarImage avatarImage;
 
     // The avatar frame.
-    E avatarFrame;
+    InterfaceAvatarFrame avatarFrame;
 
     // The AvatarPanelModel instance.
-    private static Avatar<?, ?> instance;
+    private static Avatar instance;
 
     // Builds the AvatarPanelModel instance.
     private Avatar() {}
@@ -50,25 +71,44 @@ public class Avatar<T, E>
      * Returns the AvatarPanelModel instance.
      * @return The AvatarPanelModel instance.
      */
-    public static Avatar<?, ?> getInstance() {
-        if(instance == null) instance = new Avatar<>();
+    public static Avatar getInstance() {
+        if(instance == null) instance = new Avatar();
         return instance;
     }
 
     @Override
-    public T avatarImage() {
+    public InterfaceAvatarImage avatarImage() {
         return avatarImage;
     }
 
 
     @Override
-    public E frame() {
+    public InterfaceAvatarFrame frame() {
         return avatarFrame;
     }
 
     @Override
     public String name() {
         return name;
+    }
+
+    @Override
+    public void configure(@NotNull Map<String, Object> map) {
+        if(map.containsKey(NAME_KEY)) {
+            Object object = map.get(NAME_KEY);
+            if(object instanceof String temp)
+                AvatarNameSetter.getInstance().setAvatarName(temp);
+            else throw new IllegalArgumentException();
+        } else throw new IllegalArgumentException();
+    }
+
+    @Override
+    public Map<String, Object> exportData() {
+        Map<String, Object> map = new HashMap<>();
+        map.put(NAME_KEY, name);
+        map.put(AVATAR_FRAME, avatarFrame);
+        map.put(AVATAR_IMAGE, avatarImage);
+        return map;
     }
 
 }

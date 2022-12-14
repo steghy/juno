@@ -23,16 +23,38 @@
  * SOFTWARE.
  */
 
-package juno.view.avatar;
+package juno.model.util;
 
-import juno.view.awards.avatars.GAvatarImage;
+import juno.model.util.Observable;
+import juno.model.util.Observer;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Simone Gentili
  */
-@FunctionalInterface
-public interface InterfaceDefaultAvatarImageProvider<T> {
+public abstract class AbstractObserver
+        implements
+        Observable {
 
-    GAvatarImage<T> defaultAvatarImage();
+    // The Observers List.
+    private final List<Observer> observerList = new ArrayList<>();
+
+    @Override
+    public void addObserver(@NotNull Observer observer) {
+        observerList.add(observer);
+    }
+
+    @Override
+    public void removeObserver(@NotNull Observer observer) {
+        observerList.remove(observer);
+    }
+
+    @Override
+    public void updateAll() {
+        observerList.forEach(observer -> observer.update(this));
+    }
 
 }

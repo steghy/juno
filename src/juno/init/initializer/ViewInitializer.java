@@ -52,20 +52,23 @@ public class ViewInitializer {
         // juno.view.pages.new_game package.
         OptionsInitializer.initialize();
 
-        // juno.view.main package.
-        MainPanelInitializer.initialize();
-
         // juno.view.pages.pre_access package.
         PreAccessInitializer.initialize();
 
         // juno.view.card.TopCardPanel configuration.
         TopCardPanelConfigurator.configure();
 
-        // juno.view.awards.avatars.
+        // juno.view.awards.avatars package.
         juno.view.awards.avatars.Initializer.initialize();
 
-        // juno.view.awards.frames.
+        // juno.view.awards.frames package.
         juno.view.awards.frames.Initializer.initialize();
+
+        // juno.view.avatar package.
+        juno.view.avatar.Initializer.initialize();
+        
+        // juno.view.main package.
+        MainPanelInitializer.initialize();
 
         // juno.view.frame package.
         FrameInitializer.initializer();

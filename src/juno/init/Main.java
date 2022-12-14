@@ -28,12 +28,15 @@ package juno.init;
 import juno.init.initializer.ControllerInitializer;
 import juno.init.initializer.ModelInitializer;
 import juno.init.initializer.ViewInitializer;
+import juno.model.data.avatar.AvatarImageSetter;
+import juno.model.data.awards.avatar.AvatarImage;
 import juno.model.sound.AudioPlayer;
 import juno.view.frame.Frame;
 
 import javax.swing.*;
 import java.io.File;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
 

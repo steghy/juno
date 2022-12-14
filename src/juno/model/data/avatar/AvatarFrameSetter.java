@@ -25,18 +25,20 @@
 
 package juno.model.data.avatar;
 
+import juno.model.data.awards.frame.InterfaceAvatarFrame;
+import juno.model.util.AbstractObserver;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Simone Gentili
  * @param <T> The type of the avatar frame.
  */
-public class AvatarFrameSetter<T>
+public class AvatarFrameSetter
         extends AbstractObserver
-        implements InterfaceAvatarFrameSetter<T> {
+        implements InterfaceAvatarFrameSetter<InterfaceAvatarFrame> {
 
     // The AvatarFrameSetter instance.
-    private static AvatarFrameSetter<?> instance;
+    private static AvatarFrameSetter instance;
 
     // Builds the AvatarFrameSetter instance.
     private AvatarFrameSetter() {}
@@ -45,15 +47,15 @@ public class AvatarFrameSetter<T>
      * Returns the AvatarFrameSetter instance.
      * @return The AvatarFrameSetter instance.
      */
-    public static AvatarFrameSetter<?> getInstance() {
-        if(instance == null) instance = new AvatarFrameSetter<>();
+    public static AvatarFrameSetter getInstance() {
+        if(instance == null) instance = new AvatarFrameSetter();
         return instance;
     }
 
-    @Override @SuppressWarnings("unchecked")
-    public void setAvatarFrame(@NotNull T avatarFrame) {
-        Avatar<?, T> avatar = (Avatar<?, T>) Avatar.getInstance();
-        avatar.avatarFrame = avatarFrame;
+    @Override
+    public void setAvatarFrame(@NotNull InterfaceAvatarFrame avatarFrame) {
+        Avatar.getInstance().avatarFrame = avatarFrame;
+        updateAll();
     }
 
 }

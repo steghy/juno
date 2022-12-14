@@ -25,15 +25,16 @@
 
 package juno.model.data.avatar;
 
+import juno.model.data.awards.avatar.InterfaceAvatarImage;
+
 /**
  * @author Simone Gentili
- * @param <T> The type of the avatar image.
  */
-public class AvatarImageProvider<T>
-        implements InterfaceAvatarImageProvider<T> {
+public class AvatarImageProvider
+        implements InterfaceAvatarImageProvider<InterfaceAvatarImage> {
 
     // The AvatarImageProvider instance.
-    private static AvatarImageProvider<?> instance;
+    private static AvatarImageProvider instance;
 
     // Builds the AvatarImageProvider instance.
     private AvatarImageProvider() {}
@@ -42,14 +43,14 @@ public class AvatarImageProvider<T>
      * Returns the AvatarImageProvider instance.
      * @return The AvatarImageProvider instance.
      */
-    public static AvatarImageProvider<?> getInstance() {
-        if(instance == null) instance = new AvatarImageProvider<>();
+    public static AvatarImageProvider getInstance() {
+        if(instance == null) instance = new AvatarImageProvider();
         return instance;
     }
 
-    @Override @SuppressWarnings("unchecked")
-    public T avatarImage() {
-        return (T) Avatar.getInstance().avatarImage;
+    @Override
+    public InterfaceAvatarImage avatarImage() {
+        return Avatar.getInstance().avatarImage;
     }
 
 }

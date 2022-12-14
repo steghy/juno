@@ -23,27 +23,41 @@
  * SOFTWARE.
  */
 
-package juno.model.data.avatar;
+package juno.view.avatar.avatar_image;
 
-import juno.model.data.awards.avatar.InterfaceAvatarImage;
-import juno.model.data.awards.frame.InterfaceAvatarFrame;
+import juno.view.awards.avatars.GAvatarImage;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import javax.swing.*;
 
 /**
  * @author Simone Gentili
+ * @param <T> The type of the avatar image.
  */
-public class Initializer {
+public abstract class AbstractAvatarImagePanel<T>
+        extends JPanel {
 
-    // Builds an Initializer object.
-    private Initializer() {}
+    // The Avatar image.
+    private GAvatarImage<T> avatarImage;
 
-    /** Initialize the juno.model.data.avatar package. */
-    @SuppressWarnings("unchecked")
-    public static void initialize() {
-        // Components.
-        // Avatar.
-        Avatar<InterfaceAvatarImage, InterfaceAvatarFrame> avatar =
-                (Avatar<InterfaceAvatarImage, InterfaceAvatarFrame>) Avatar.getInstance();
-        
+    /**
+     * Sets the graphic avatar image of
+     * this object.
+     * @param avatarImage A GAvatarImage object.
+     */
+    public void setAvatarImage(@NotNull GAvatarImage<T> avatarImage) {
+        this.avatarImage = avatarImage;
+    }
+
+    /**
+     * Returns the graphic avatar image of
+     * this object.
+     * @return A GAvatarImage object.
+     */
+    @Nullable
+    public GAvatarImage<T> getAvatarImage() {
+        return avatarImage;
     }
 
 }

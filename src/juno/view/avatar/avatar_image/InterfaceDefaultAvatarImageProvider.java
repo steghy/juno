@@ -23,37 +23,16 @@
  * SOFTWARE.
  */
 
-package juno.view.avatar;
+package juno.view.avatar.avatar_image;
 
-import juno.model.data.awards.avatar.AvatarImage;
-import juno.model.data.awards.avatar.InterfaceAvatarImage;
 import juno.view.awards.avatars.GAvatarImage;
-import juno.view.awards.avatars.factory.AbstractGAvatarImageCreatorUser;
-
-import java.util.Objects;
 
 /**
  * @author Simone Gentili
  */
-public class DefaultAvatarImageProvider
-        extends AbstractGAvatarImageCreatorUser<InterfaceAvatarImage>
-        implements InterfaceDefaultAvatarImageProvider<InterfaceAvatarImage> {
+@FunctionalInterface
+public interface InterfaceDefaultAvatarImageProvider<T> {
 
-    // The DefaultAvatarImageProvider instance.
-    private static DefaultAvatarImageProvider instance;
-
-    // Builds the DefaultAvatarImageProvider instance.
-    private DefaultAvatarImageProvider() {}
-
-    public static DefaultAvatarImageProvider getInstance() {
-        if(instance == null) instance = new DefaultAvatarImageProvider();
-        return instance;
-    }
-
-    @Override
-    public GAvatarImage<InterfaceAvatarImage> defaultAvatarImage() {
-        return (GAvatarImage<InterfaceAvatarImage>)
-                Objects.requireNonNull(getCreator()).create(AvatarImage.AVATAR_IMAGE_1);
-    }
+    GAvatarImage<T> defaultAvatarImage();
 
 }

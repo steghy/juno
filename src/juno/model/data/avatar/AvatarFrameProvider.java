@@ -25,15 +25,16 @@
 
 package juno.model.data.avatar;
 
+import juno.model.data.awards.frame.InterfaceAvatarFrame;
+
 /**
  * @author Simone Gentili
- * @param <T> The type of the avatar frame.
  */
-public class AvatarFrameProvider<T>
-        implements InterfaceAvatarFrameProvider<T> {
+public class AvatarFrameProvider
+        implements InterfaceAvatarFrameProvider<InterfaceAvatarFrame> {
 
     // The AvatarFrameProvider instance.
-    private static AvatarFrameProvider<?> instance;
+    private static AvatarFrameProvider instance;
 
     // Builds the AvatarFrameProvider instance.
     private AvatarFrameProvider() {}
@@ -42,14 +43,14 @@ public class AvatarFrameProvider<T>
      * Returns the AvatarFrameProvider instance.
      * @return The AvatarFrameProvider instance.
      */
-    public static AvatarFrameProvider<?> getInstance() {
-        if(instance == null) instance = new AvatarFrameProvider<>();
+    public static AvatarFrameProvider getInstance() {
+        if(instance == null) instance = new AvatarFrameProvider();
         return instance;
     }
 
-    @Override @SuppressWarnings("unchecked")
-    public T frame() {
-        return (T) Avatar.getInstance().avatarFrame;
+    @Override
+    public InterfaceAvatarFrame frame() {
+        return Avatar.getInstance().avatarFrame;
     }
 
 }

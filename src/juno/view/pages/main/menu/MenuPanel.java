@@ -25,7 +25,6 @@
 
 package juno.view.pages.main.menu;
 
-import juno.view.panels.AbstractFifthComponent;
 import juno.view.panels.AbstractFourthComponent;
 
 import java.awt.*;
@@ -35,7 +34,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class MenuPanel
-        extends AbstractFifthComponent {
+        extends AbstractFourthComponent {
 
     // The MenuPanel instance.
     private static MenuPanel instance;
@@ -101,17 +100,6 @@ public class MenuPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
         this.add(Objects.requireNonNull(getFourthComponent()), gbc);
-
-        // Avatar panel
-        gbc.gridx = 0;
-        gbc.gridy = 4;
-        gbc.weightx = 0.0;
-        gbc.weighty = 0.0;
-        gbc.anchor = GridBagConstraints.PAGE_START;
-        gbc.insets = new Insets(17,0,0,0);
-        gbc.ipadx = 0;
-        gbc.ipady = 0;
-        this.add(Objects.requireNonNull(getFifthComponent()), gbc);
     }
 
 }

@@ -25,6 +25,11 @@
 
 package juno.view.avatar;
 
+import juno.view.avatar.avatar_image.DefaultAvatarImageProvider;
+import juno.view.avatar.frame_image.DefaultAvatarFrameProvider;
+import juno.view.awards.avatars.factory.GAvatarImageCreator;
+import juno.view.awards.frames.factory.GFrameCreator;
+
 /**
  * @author Simone Gentili
  */
@@ -34,6 +39,28 @@ public class Initializer {
     private Initializer() {}
 
     /** Initialize the juno.view.avatar package. */
-    public static void initialize() {}
+    public static void initialize() {
+        // Components.
+        // DefaultAvatarFrameProvider.
+        DefaultAvatarFrameProvider defaultAvatarFrameProvider = DefaultAvatarFrameProvider.getInstance();
+
+        // DefaultAvatarImageProvider.
+        DefaultAvatarImageProvider defaultAvatarImageProvider = DefaultAvatarImageProvider.getInstance();
+
+        // GFrameCreator.
+        GFrameCreator gFrameCreator = GFrameCreator.getInstance();
+
+        // GAvatarImageCreator.
+        GAvatarImageCreator gAvatarImageCreator = GAvatarImageCreator.getInstance();
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////
+
+        // Connections.
+        // DefaultAvatarFrameProvider.
+        defaultAvatarFrameProvider.setCreator(gFrameCreator);
+
+        // DefaultAvatarImageProvider.
+        defaultAvatarImageProvider.setCreator(gAvatarImageCreator);
+    }
 
 }

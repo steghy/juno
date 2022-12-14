@@ -25,6 +25,7 @@
 
 package juno.model.data.avatar;
 
+import juno.model.util.AbstractObserver;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -51,8 +52,8 @@ public class AvatarNameSetter
 
     @Override
     public void setAvatarName(@NotNull String name) {
-        Avatar<?, ?> avatar = Avatar.getInstance();
-        avatar.name = name;
+        Avatar.getInstance().name = name;
+        updateAll();
     }
 
 }

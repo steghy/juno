@@ -27,13 +27,7 @@ package juno.view.pages.main.menu;
 
 import juno.controller.util.ChangePanelAction;
 import juno.controller.ExitAction;
-import juno.model.data.avatar.AvatarImageProvider;
-import juno.model.data.avatar.InterfaceAvatarImageProvider;
-import juno.model.data.awards.avatar.InterfaceAvatarImage;
 import juno.model.data.io.output.ExitManager;
-import juno.view.avatar.AvatarImagePanel;
-import juno.view.avatar.DefaultAvatarImageProvider;
-import juno.view.awards.avatars.factory.GAvatarImageCreator;
 import juno.view.factories.ButtonFactory;
 import juno.view.factories.ButtonLibrary;
 import juno.view.pages.main.card.MainCardPanel;
@@ -52,7 +46,6 @@ public class MenuPanelConfigurator {
     // Builds a MenuPanelConfigurator object.
     private MenuPanelConfigurator() {}
 
-    @SuppressWarnings("unchecked")
     public static void configure() {
         // Main component.
         MenuPanel menuPanel = MenuPanel.getInstance();
@@ -62,10 +55,6 @@ public class MenuPanelConfigurator {
         AbstractButton optionsButton = ButtonFactory.createButton(ButtonLibrary.OPTIONS);
         AbstractButton scoreButton = ButtonFactory.createButton(ButtonLibrary.SCORE);
         AbstractButton exitButton = ButtonFactory.createButton(ButtonLibrary.EXIT);
-        AvatarImagePanel<InterfaceAvatarImage> avatarPanel = new AvatarImagePanel<>(
-                GAvatarImageCreator.getInstance(),
-                (InterfaceAvatarImageProvider<InterfaceAvatarImage>) AvatarImageProvider.getInstance(),
-                DefaultAvatarImageProvider.getInstance());
 
         // Images resizing.
         ImageResizer.resize(newGameButton, 1.0);
@@ -90,7 +79,6 @@ public class MenuPanelConfigurator {
         menuPanel.setSecondComponent(optionsButton); // Options button.
         menuPanel.setThirdComponent(scoreButton);    // Score button
         menuPanel.setFourthComponent(exitButton);    // Exit button.
-        menuPanel.setFifthComponent(avatarPanel);    // Avatar panel.
 
         // Main component initialization.
         menuPanel.init();

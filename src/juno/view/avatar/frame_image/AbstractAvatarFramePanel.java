@@ -23,38 +23,41 @@
  * SOFTWARE.
  */
 
-package juno.model.data.avatar;
+package juno.view.avatar.frame_image;
 
-import juno.model.data.awards.avatar.InterfaceAvatarImage;
-import juno.model.util.AbstractObserver;
+import juno.view.awards.frames.GFrame;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import javax.swing.*;
 
 /**
  * @author Simone Gentili
+ * @param <T> The type of the avatar image.
  */
-public class AvatarImageSetter
-        extends AbstractObserver
-        implements InterfaceAvatarImageSetter<InterfaceAvatarImage> {
+public abstract class AbstractAvatarFramePanel<T>
+        extends JPanel {
 
-    // The AvatarImageSetter instance.
-    private static AvatarImageSetter instance;
-
-    // Builds the AvatarImageSetter instance.
-    private AvatarImageSetter() {}
+    // The graphic avatar frame.
+    private GFrame<T> avatarFrame;
 
     /**
-     * Returns the AvatarImageSetter instance.
-     * @return The AvatarImageSetter instance.
+     * Sets the graphic avatar frame of
+     * this object.
+     * @param avatarFrame A GFrame object.
      */
-    public static AvatarImageSetter getInstance() {
-        if(instance == null) instance = new AvatarImageSetter();
-        return instance;
+    public void setAvatarFrame(@NotNull GFrame<T> avatarFrame) {
+        this.avatarFrame = avatarFrame;
     }
 
-    @Override
-    public void setAvatarImage(@NotNull InterfaceAvatarImage avatarImage) {
-        Avatar.getInstance().avatarImage = avatarImage;
-        updateAll();
+    /**
+     * Returns the graphic avatar frame of
+     * this object.
+     * @return A GAvatarImage object.
+     */
+    @Nullable
+    public GFrame<T> getAvatarFrame() {
+        return avatarFrame;
     }
 
 }

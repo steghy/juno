@@ -23,41 +23,15 @@
  * SOFTWARE.
  */
 
-package juno.view.avatar;
+package juno.view.avatar.avatar_image;
 
-import juno.view.awards.avatars.GAvatarImage;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import juno.view.panels.AbstractThirdComponent;
 
-import javax.swing.*;
+public class AvatarPanel
+        extends AbstractThirdComponent {
 
-/**
- * @author Simone Gentili
- * @param <T> The type of the avatar image.
- */
-public abstract class AbstractAvatarImagePanel<T>
-        extends JPanel {
+    public AvatarPanel() {
 
-    // The Avatar image.
-    private GAvatarImage<T> avatarImage;
-
-    /**
-     * Sets the graphic avatar image of
-     * this object.
-     * @param avatarImage A GAvatarImage object.
-     */
-    public void setAvatarImage(@NotNull GAvatarImage<T> avatarImage) {
-        this.avatarImage = avatarImage;
-    }
-
-    /**
-     * Returns the graphic avatar image of
-     * this object.
-     * @return A GAvatarImage object.
-     */
-    @Nullable
-    public GAvatarImage<T> getAvatarImage() {
-        return avatarImage;
     }
 
 }

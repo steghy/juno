@@ -23,13 +23,14 @@
  * SOFTWARE.
  */
 
-package juno.view.avatar;
+package juno.view.avatar.avatar_image;
 
 import juno.model.data.avatar.InterfaceAvatarImageProvider;
 import juno.model.data.avatar.InterfaceAvatarImageSetter;
 import juno.model.util.Observer;
 import juno.view.awards.avatars.GAvatarImage;
 import juno.view.awards.avatars.factory.InterfaceGAvatarImageCreator;
+import juno.view.util.ImageResizer;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
@@ -48,8 +49,8 @@ public class AvatarImagePanel<T>
     // The avatar image provider.
     private final InterfaceAvatarImageProvider<T> avatarImageProvider;
 
-    // The Default avatar image provider.
-    private final InterfaceDefaultAvatarImageProvider<T> defaultAvatarImageProvider;
+    // The dimension parameter.
+    private final double dimensionParameter;
 
     /**
      * Builds an AvatarImagePanel with the specified
@@ -58,27 +59,32 @@ public class AvatarImagePanel<T>
      * @param creator An InterfaceGAvatarImageCreator object.
      * @param avatarImageProvider An InterfaceAvatarImageProvider object.
      * @param defaultAvatarImageProvider An InterfaceDefaultAvatarImageProvider object.
+     * @param dimensionParameter An integer value.
      */
     public AvatarImagePanel(@NotNull InterfaceGAvatarImageCreator<T> creator,
                             @NotNull InterfaceAvatarImageProvider<T> avatarImageProvider,
-                            @NotNull InterfaceDefaultAvatarImageProvider<T> defaultAvatarImageProvider) {
+                            @NotNull InterfaceDefaultAvatarImageProvider<T> defaultAvatarImageProvider,
+                            double dimensionParameter) {
         this.creator = creator;
         this.avatarImageProvider = avatarImageProvider;
-        this.defaultAvatarImageProvider = defaultAvatarImageProvider;
-        init();
+        this.dimensionParameter = dimensionParameter;
+        setAvatarImage(defaultAvatarImageProvider.defaultAvatarImage());
     }
 
+    /** Initialize this AvatarImagePanel object. */
     public void init() {
         setOpaque(false);
         setLayout(new BorderLayout());
-        add(defaultAvatarImageProvider.defaultAvatarImage(), BorderLayout.CENTER);
+        ImageResizer.resize(Objects.requireNonNull(getAvatarImage()), dimensionParameter);
+        add(getAvatarImage(), BorderLayout.CENTER);
     }
 
     @Override
     public void update(@NotNull Object object) {
         if(object instanceof InterfaceAvatarImageSetter<?>) {
-            GAvatarImage<T> providerAvatarImage = (GAvatarImage<T>) creator.create(avatarImageProvider.avatarImage());
-            Objects.requireNonNull(getAvatarImage()).setIcon(providerAvatarImage.getIcon());
+            GAvatarImage<T> avatarImage = (GAvatarImage<T>) creator.create(avatarImageProvider.avatarImage());
+            ImageResizer.resize(avatarImage, dimensionParameter);
+            Objects.requireNonNull(getAvatarImage()).setIcon(avatarImage.getIcon());
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceAvatarImageSetter type expected.");

@@ -23,38 +23,41 @@
  * SOFTWARE.
  */
 
-package juno.model.data.avatar;
+package juno.view.avatar.frame_image;
 
-import juno.model.util.Observable;
-import juno.model.util.Observer;
-import org.jetbrains.annotations.NotNull;
+import juno.model.data.awards.frame.AvatarFrame;
+import juno.model.data.awards.frame.InterfaceAvatarFrame;
+import juno.view.awards.frames.GFrame;
+import juno.view.awards.frames.factory.AbstractGFrameCreatorUser;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
 
 /**
  * @author Simone Gentili
  */
-public abstract class AbstractObserver
-        implements
-        Observable {
+public class DefaultAvatarFrameProvider
+        extends AbstractGFrameCreatorUser<InterfaceAvatarFrame>
+        implements InterfaceDefaultAvatarFrameProvider<InterfaceAvatarFrame> {
 
-    // The Observers List.
-    private final List<Observer> observerList = new ArrayList<>();
+    // The DefaultAvatarFrameProvider instance.
+    private static DefaultAvatarFrameProvider instance;
 
-    @Override
-    public void addObserver(@NotNull Observer observer) {
-        observerList.add(observer);
+    // Builds the DefaultAvatarFrameProvider instance.
+    private DefaultAvatarFrameProvider() {}
+
+    /**
+     * Returns the DefaultAvatarFrameProvider instance.
+     * @return The DefaultAvatarFrameProvider instance.
+     */
+    public static DefaultAvatarFrameProvider getInstance() {
+        if(instance == null) instance = new DefaultAvatarFrameProvider();
+        return instance;
     }
 
     @Override
-    public void removeObserver(@NotNull Observer observer) {
-        observerList.remove(observer);
-    }
-
-    @Override
-    public void updateAll() {
-        observerList.forEach(observer -> observer.update(this));
+    public GFrame<InterfaceAvatarFrame> defaultAvatarFrame() {
+        return (GFrame<InterfaceAvatarFrame>)
+                Objects.requireNonNull(getCreator()).create(AvatarFrame.GOLD_FRAME);
     }
 
 }

@@ -23,41 +23,37 @@
  * SOFTWARE.
  */
 
-package juno.view.avatar;
+package juno.view.avatar.avatar_image;
 
-import juno.model.data.awards.frame.AvatarFrame;
-import juno.model.data.awards.frame.InterfaceAvatarFrame;
-import juno.view.awards.frames.GFrame;
-import juno.view.awards.frames.factory.AbstractGFrameCreatorUser;
+import juno.model.data.awards.avatar.AvatarImage;
+import juno.model.data.awards.avatar.InterfaceAvatarImage;
+import juno.view.awards.avatars.GAvatarImage;
+import juno.view.awards.avatars.factory.AbstractGAvatarImageCreatorUser;
 
 import java.util.Objects;
 
 /**
  * @author Simone Gentili
  */
-public class DefaultAvatarFrameProvider
-        extends AbstractGFrameCreatorUser<InterfaceAvatarFrame>
-        implements InterfaceDefaultAvatarFrameProvider<InterfaceAvatarFrame> {
+public class DefaultAvatarImageProvider
+        extends AbstractGAvatarImageCreatorUser<InterfaceAvatarImage>
+        implements InterfaceDefaultAvatarImageProvider<InterfaceAvatarImage> {
 
-    // The DefaultAvatarFrameProvider instance.
-    private static DefaultAvatarFrameProvider instance;
+    // The DefaultAvatarImageProvider instance.
+    private static DefaultAvatarImageProvider instance;
 
-    // Builds the DefaultAvatarFrameProvider instance.
-    private DefaultAvatarFrameProvider() {}
+    // Builds the DefaultAvatarImageProvider instance.
+    private DefaultAvatarImageProvider() {}
 
-    /**
-     * Returns the DefaultAvatarFrameProvider instance.
-     * @return The DefaultAvatarFrameProvider instance.
-     */
-    public static DefaultAvatarFrameProvider getInstance() {
-        if(instance == null) instance = new DefaultAvatarFrameProvider();
+    public static DefaultAvatarImageProvider getInstance() {
+        if(instance == null) instance = new DefaultAvatarImageProvider();
         return instance;
     }
 
     @Override
-    public GFrame<InterfaceAvatarFrame> defaultAvatarFrame() {
-        return (GFrame<InterfaceAvatarFrame>)
-                Objects.requireNonNull(getCreator()).create(AvatarFrame.GOLD_FRAME);
+    public GAvatarImage<InterfaceAvatarImage> defaultAvatarImage() {
+        return (GAvatarImage<InterfaceAvatarImage>)
+                Objects.requireNonNull(getCreator()).create(AvatarImage.AVATAR_IMAGE_1);
     }
 
 }

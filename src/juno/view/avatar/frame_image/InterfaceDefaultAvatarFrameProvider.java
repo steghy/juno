@@ -23,38 +23,16 @@
  * SOFTWARE.
  */
 
-package juno.model.data.avatar;
+package juno.view.avatar.frame_image;
 
-import juno.model.data.awards.avatar.InterfaceAvatarImage;
-import juno.model.util.AbstractObserver;
-import org.jetbrains.annotations.NotNull;
+import juno.view.awards.frames.GFrame;
 
 /**
  * @author Simone Gentili
  */
-public class AvatarImageSetter
-        extends AbstractObserver
-        implements InterfaceAvatarImageSetter<InterfaceAvatarImage> {
+@FunctionalInterface
+public interface InterfaceDefaultAvatarFrameProvider<T> {
 
-    // The AvatarImageSetter instance.
-    private static AvatarImageSetter instance;
-
-    // Builds the AvatarImageSetter instance.
-    private AvatarImageSetter() {}
-
-    /**
-     * Returns the AvatarImageSetter instance.
-     * @return The AvatarImageSetter instance.
-     */
-    public static AvatarImageSetter getInstance() {
-        if(instance == null) instance = new AvatarImageSetter();
-        return instance;
-    }
-
-    @Override
-    public void setAvatarImage(@NotNull InterfaceAvatarImage avatarImage) {
-        Avatar.getInstance().avatarImage = avatarImage;
-        updateAll();
-    }
+    GFrame<T> defaultAvatarFrame();
 
 }

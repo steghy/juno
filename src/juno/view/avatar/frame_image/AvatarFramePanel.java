@@ -23,16 +23,7 @@
  * SOFTWARE.
  */
 
-package juno.view.avatar;
+package juno.view.avatar.frame_image;
 
-import juno.view.awards.frames.GFrame;
-
-/**
- * @author Simone Gentili
- */
-@FunctionalInterface
-public interface InterfaceDefaultAvatarFrameProvider<T> {
-
-    GFrame<T> defaultAvatarFrame();
-
+public class AvatarFramePanel {
 }

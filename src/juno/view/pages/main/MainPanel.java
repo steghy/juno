@@ -25,7 +25,7 @@
 
 package juno.view.pages.main;
 
-import juno.view.panels.AbstractSecondComponent;
+import juno.view.panels.AbstractThirdComponent;
 
 import java.awt.*;
 import java.util.Objects;
@@ -34,7 +34,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class MainPanel
-        extends AbstractSecondComponent {
+        extends AbstractThirdComponent {
 
     // The MainPanel instance.
     private static MainPanel instance;
@@ -76,8 +76,19 @@ public class MainPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,0,0);
+        gbc.insets = new Insets(0,0,20,0);
         this.add(Objects.requireNonNull(getSecondComponent()), gbc);
+
+        // Avatar panel.
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
+        gbc.anchor = GridBagConstraints.PAGE_END;
+        gbc.insets = new Insets(0,0,0,0);
+        this.add(Objects.requireNonNull(getThirdComponent()), gbc);
     }
 
 }
