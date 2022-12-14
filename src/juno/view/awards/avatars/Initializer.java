@@ -26,8 +26,8 @@
 package juno.view.awards.avatars;
 
 import juno.view.awards.avatars.factory.APathProvider;
-import juno.view.awards.avatars.factory.GAvatarCreator;
-import juno.view.awards.avatars.factory.GAvatarsFactory;
+import juno.view.awards.avatars.factory.GAvatarImageCreator;
+import juno.view.awards.avatars.factory.GAvatarImageFactory;
 
 /**
  * @author Simone Gentili
@@ -41,10 +41,10 @@ public class Initializer {
     public static void initialize() {
         // Components.
         // GAvatarCreator.
-        GAvatarCreator gAvatarCreator = GAvatarCreator.getInstance();
+        GAvatarImageCreator gAvatarCreator = GAvatarImageCreator.getInstance();
 
         // GAvatarsFactory.
-        GAvatarsFactory gAvatarsFactory = GAvatarsFactory.getInstance();
+        GAvatarImageFactory gAvatarsFactory = GAvatarImageFactory.getInstance();
 
         // APathProvider.
         APathProvider aPathProvider = APathProvider.getInstance();

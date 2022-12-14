@@ -25,14 +25,12 @@
 
 package juno.model.data.avatar;
 
-import juno.model.data.awards.avatar.InterfaceAvatarImage;
-
 /**
  * @author Simone Gentili
  */
 @FunctionalInterface
-public interface InterfaceAvatarImageSetter {
+public interface InterfaceAvatarImageSetter<T> {
 
-    void setAvatarImage(InterfaceAvatarImage avatarImage);
+    void setAvatarImage(T avatarImage);
 
 }

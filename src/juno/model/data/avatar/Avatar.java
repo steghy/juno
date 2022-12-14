@@ -25,16 +25,23 @@
 
 package juno.model.data.avatar;
 
-import juno.model.data.awards.avatar.InterfaceAvatarImage;
-import juno.model.data.awards.frame.InterfaceAvatarFrame;
-
 /**
  * @author Simone Gentili
  */
-public class Avatar {
+public class Avatar<T, E>
+        implements InterfaceAvatarProvider<T, E> {
+
+    // The avatar name.
+    String name;
+
+    // The avatar image.
+    T avatarImage;
+
+    // The avatar frame.
+    E avatarFrame;
 
     // The AvatarPanelModel instance.
-    private static Avatar instance;
+    private static Avatar<?, ?> instance;
 
     // Builds the AvatarPanelModel instance.
     private Avatar() {}
@@ -43,18 +50,25 @@ public class Avatar {
      * Returns the AvatarPanelModel instance.
      * @return The AvatarPanelModel instance.
      */
-    public static Avatar getInstance() {
-        if(instance == null) instance = new Avatar();
+    public static Avatar<?, ?> getInstance() {
+        if(instance == null) instance = new Avatar<>();
         return instance;
     }
 
     @Override
-    public InterfaceAvatarFrame frame() {
-        return null;
+    public T avatarImage() {
+        return avatarImage;
+    }
+
+
+    @Override
+    public E frame() {
+        return avatarFrame;
     }
 
     @Override
-    public InterfaceAvatarImage avatarImage() {
-        return null;
+    public String name() {
+        return name;
     }
+
 }

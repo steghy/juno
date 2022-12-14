@@ -28,8 +28,8 @@ package juno.view.awards.avatars.factory.test;
 import juno.init.Repository;
 import juno.model.data.awards.avatar.AvatarImage;
 import juno.model.data.awards.avatar.InterfaceAvatarImage;
-import juno.view.awards.avatars.GAvatar;
-import juno.view.awards.avatars.factory.GAvatarCreator;
+import juno.view.awards.avatars.GAvatarImage;
+import juno.view.awards.avatars.factory.GAvatarImageCreator;
 import juno.view.awards.avatars.Initializer;
 import juno.view.util.ImageResizer;
 
@@ -44,8 +44,8 @@ public class GAvatarCreatorTester {
     public static void main(String[] args) {
         Initializer.initialize();
         Repository.setRepository();
-        GAvatarCreator gAvatarCreator = GAvatarCreator.getInstance();
-        GAvatar<InterfaceAvatarImage> gAvatar = (GAvatar<InterfaceAvatarImage>) gAvatarCreator.create(AvatarImage.AVATAR_IMAGE_9);
+        GAvatarImageCreator gAvatarCreator = GAvatarImageCreator.getInstance();
+        GAvatarImage<InterfaceAvatarImage> gAvatar = (GAvatarImage<InterfaceAvatarImage>) gAvatarCreator.create(AvatarImage.AVATAR_IMAGE_9);
         gAvatar.setEnabled(false);
         ImageResizer.resize(gAvatar, 3.7);
         JFrame frame = new JFrame();

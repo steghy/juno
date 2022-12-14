@@ -25,11 +25,12 @@
 
 package juno.model.data.avatar;
 
-import juno.model.data.awards.frame.InterfaceAvatarFrame;
-
+/**
+ * @author Simone Gentili
+ */
 @FunctionalInterface
-public interface InterfaceAvatarFrameProvider {
+public interface InterfaceAvatarFrameProvider<T> {
 
-    InterfaceAvatarFrame frame();
+    T frame();
 
 }

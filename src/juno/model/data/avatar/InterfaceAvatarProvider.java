@@ -28,7 +28,8 @@ package juno.model.data.avatar;
 /**
  * @author Simone Gentili
  */
-public interface InterfaceAvatarProvider
-        extends InterfaceAvatarImageProvider,
-                InterfaceAvatarFrameProvider,
-                InterfaceAvatarNameProvider {}
+public interface InterfaceAvatarProvider<T, E>
+        extends
+        InterfaceAvatarFrameProvider<E>,
+        InterfaceAvatarImageProvider<T>,
+        InterfaceAvatarNameProvider {}

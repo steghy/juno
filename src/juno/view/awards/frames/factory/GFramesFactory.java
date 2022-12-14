@@ -36,7 +36,8 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class GFramesFactory
-        extends AbstractGFramesFactory<InterfaceAvatarFrame> {
+        extends AbstractGFrameCreatorUser<InterfaceAvatarFrame>
+        implements InterfaceGFramesFactory<InterfaceAvatarFrame> {
 
     // The GFramesFactory instance.
     private static GFramesFactory instance;
