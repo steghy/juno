@@ -23,12 +23,21 @@
  * SOFTWARE.
  */
 
-package juno.view.avatar;
+package juno.model.data.awards.avatar;
+
+import juno.model.data.awards.InterfaceAward;
 
 /**
  * @author Simone Gentili
  */
-public interface InterfaceAvatarModel
-        extends InterfaceAvatarProfileNameLabelProvider,
-                InterfaceAvatarFrameLabelProvider,
-                InterfaceAvatarImageProvider {}
+public interface InterfaceAvatarImage
+        extends InterfaceAward {
+
+    /**
+     * Returns the name of this
+     * avatar object.
+     * @return A String object.
+     */
+    String name();
+
+}

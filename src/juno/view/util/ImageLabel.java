@@ -23,37 +23,51 @@
  * SOFTWARE.
  */
 
-package juno.view.awards.avatars.factory;
+package juno.view.util;
 
-import juno.init.Directories;
-import juno.init.InterfaceDirectories;
-import juno.model.data.awards.avatar.InterfaceAvatarImage;
+import org.jetbrains.annotations.NotNull;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * @author Simone Gentili
  */
-public class APathProvider
-        implements
-        InterfaceAPathProvider<InterfaceAvatarImage> {
+public class ImageLabel
+        extends JLabel {
 
-    // The AvatarPathProvider instance.
-    private static APathProvider instance;
-
-    // Builds the AvatarPathProvider instance.
-    private APathProvider() {}
-
-    /**
-     * Returns the APathProvider instance.
-     * @return The APathProvider instance.
-     */
-    public static APathProvider getInstance() {
-        if(instance == null) instance = new APathProvider();
-        return instance;
+    @Override
+    public void setSize(@NotNull Dimension dimension) {
+        if(dimension.getWidth() != 0 &&
+                dimension.getHeight() != 0) {
+            super.setSize(dimension);
+            Icon icon = getIcon();
+            if(icon != null)
+                setIcon(new ImageIcon(ImageResizer.resize(this, icon)));
+        }
     }
 
     @Override
-    public InterfaceDirectories getPath(InterfaceAvatarImage avatar) {
-        return Directories.AVATARS;
+    public void setSize(int width,
+                        int height) {
+        if(width != 0 && height != 0) {
+            super.setSize(width, height);
+            Icon icon = getIcon();
+            if(icon != null)
+                setIcon(new ImageIcon(ImageResizer.resize(this, icon)));
+        }
+    }
+
+    @Override
+    public void setPreferredSize(@NotNull Dimension dimension) {
+        if(dimension.getWidth() != 0 &&
+                dimension.getHeight() != 0) {
+            super.setPreferredSize(dimension);
+            super.setSize(dimension);
+            Icon icon = getIcon();
+            if(icon != null)
+                setIcon(new ImageIcon(ImageResizer.resize(this, icon)));
+        }
     }
 
 }

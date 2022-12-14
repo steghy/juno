@@ -23,26 +23,46 @@
  * SOFTWARE.
  */
 
-package juno.view.avatar;
+package juno.view.avatar.test;
+
+
+import juno.init.Repository;
+import juno.model.data.awards.avatar.AvatarImage;
+import juno.model.data.avatar.Avatar;
+import juno.view.avatar.AvatarPanel;
+import juno.view.awards.avatars.factory.GAvatarCreator;
 
 import javax.swing.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Simone Gentili
  */
-public class AvatarModelConfigurator {
+public class AvatarPanelTester {
 
-    // Builds an AvatarModelConfigurator object.
-    private AvatarModelConfigurator() {}
+    public static void main(String[] args) {
+        Repository.setRepository();
+        juno.view.awards.avatars.Initializer.initialize();
+        juno.view.awards.frames.Initializer.initialize();
+        juno.view.avatar.Initializer.initialize();
 
-    public static void configure() {
-        // Main component.
-        AvatarModel avatarModel = AvatarModel.getInstance();
+        AvatarPanel avatarPanel = new AvatarPanel(Avatar.getInstance());
 
-        // Components.
-        JLabel defaultAvatarFrameLabel;
-        JLabel defaultAvatarImageLabel;
-        JLabel defaultAvatarProfileNameLabel;
+        JFrame frame = new JFrame();
+        frame.setBackground(java.awt.Color.BLUE);
+        frame.add(avatarPanel);
+        frame.pack();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+
+
+        try {
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        Avatar.getInstance().setAvatarImage((JLabel) GAvatarCreator.getInstance().create(AvatarImage.AVATAR_IMAGE_9));
     }
 
 }

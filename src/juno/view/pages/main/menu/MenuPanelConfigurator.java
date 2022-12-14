@@ -28,7 +28,7 @@ package juno.view.pages.main.menu;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.ExitAction;
 import juno.model.data.io.output.ExitManager;
-import juno.view.avatar.AvatarModel;
+import juno.model.data.avatar.Avatar;
 import juno.view.avatar.AvatarPanel;
 import juno.view.factories.ButtonFactory;
 import juno.view.factories.ButtonLibrary;
@@ -57,7 +57,7 @@ public class MenuPanelConfigurator {
         AbstractButton optionsButton = ButtonFactory.createButton(ButtonLibrary.OPTIONS);
         AbstractButton scoreButton = ButtonFactory.createButton(ButtonLibrary.SCORE);
         AbstractButton exitButton = ButtonFactory.createButton(ButtonLibrary.EXIT);
-        AvatarPanel avatarPanel = new AvatarPanel(AvatarModel.getInstance());
+        AvatarPanel avatarPanel = new AvatarPanel(Avatar.getInstance());
 
         // Images resizing.
         ImageResizer.resize(newGameButton, 1.0);

@@ -26,7 +26,6 @@
 package juno.view.util;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -77,6 +76,14 @@ public class ImageResizer {
                               double divisor) {
         Icon icon = button.getIcon();
         button.setPreferredSize(new Dimension(
+                (int) (icon.getIconWidth()  / divisor),
+                (int) (icon.getIconHeight() / divisor)));
+    }
+
+    public static void resize(@NotNull JLabel label,
+                              double divisor) {
+        Icon icon = label.getIcon();
+        label.setPreferredSize(new Dimension(
                 (int) (icon.getIconWidth()  / divisor),
                 (int) (icon.getIconHeight() / divisor)));
     }

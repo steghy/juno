@@ -23,57 +23,56 @@
  * SOFTWARE.
  */
 
-package juno.model.data.awards.avatar;
+package juno.model.data.avatar;
 
-import juno.model.data.goals.InterfaceGoal;
+import juno.model.data.awards.avatar.InterfaceAvatarImage;
+import juno.model.data.awards.frame.InterfaceAvatarFrame;
+import juno.model.data.io.input.configurable.Configurable;
+import juno.model.data.io.output.Exportable;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-/**
- * @author Simone Gentili
- */
-public enum Avatars
+public abstract class AbstractAvatar
         implements
         InterfaceAvatar,
-        Observable,
-        Observer {
+        Configurable,
+        Exportable,
+        Observable {
 
-    AVATAR_IMAGE_1,
-    AVATAR_IMAGE_2,
-    AVATAR_IMAGE_3,
-    AVATAR_IMAGE_4,
-    AVATAR_IMAGE_5,
-    AVATAR_IMAGE_6,
-    AVATAR_IMAGE_7,
-    AVATAR_IMAGE_8,
-    AVATAR_IMAGE_9;
+    /** The avatar image label key. */
+    public static final String AVATAR_LABEL_KEY = "avatarImageLabel";
+
+    /** The avatar frame image label key. */
+    public static final String FRAME_LABEL_KEY = "avatarFrameImageLabel";
+
+    /** The avatar profile name label key. */
+    public static final String PROFILE_NAME_LABEL_KEY = "avatarProfileNameLabel";
 
     // The Observers List.
-    private final List<Observer> observerList;
+    private final List<Observer> observerList = new ArrayList<>();
 
-    // Unlock boolean value.
-    private boolean unlock = false;
+    // The Avatar image.
+    private InterfaceAvatarImage avatarImage;
 
+    // The Avatar frame.
+    private InterfaceAvatarFrame avatarFrame;
 
-    Avatars() {
-        this.observerList = new ArrayList<>();
-    }
-
-    @Override
-    public boolean isUnlock() {
-        return unlock;
-    }
+    // The Avatar name.
+    private String name;
 
     @Override
-    public void unlock() {
-        if(unlock) throw new IllegalArgumentException(
-                "This award is already unlocked.");
-        unlock = true;
-        updateAll();
+    public void configure(@NotNull Map<String, Object> map) {}
+
+    @Override
+    public Map<String, Object> exportData() {
+        return null;
     }
 
     @Override
@@ -89,15 +88,6 @@ public enum Avatars
     @Override
     public void updateAll() {
         observerList.forEach(observer -> observer.update(this));
-    }
-
-    @Override
-    public void update(Object object) {
-        if(object instanceof InterfaceGoal goal) {
-
-        } else throw new IllegalArgumentException(
-                "Invalid object type: " + object.getClass() +
-                        ". InterfaceGoal type expected.");
     }
 
 }

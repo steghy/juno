@@ -25,7 +25,7 @@
 
 package juno.view.awards.avatars.factory;
 
-import juno.model.data.awards.avatar.InterfaceAvatar;
+import juno.model.data.awards.avatar.InterfaceAvatarImage;
 import juno.view.awards.avatars.GAvatar;
 import juno.view.awards.avatars.InterfaceGAvatar;
 import juno.view.util.Constant;
@@ -39,8 +39,8 @@ import java.util.Objects;
  */
 @SuppressWarnings("ALL")
 public class GAvatarCreator
-        extends AbstractGAvatarCreator<InterfaceAvatar>
-        implements InterfaceGAvatarCreator<InterfaceAvatar> {
+        extends AbstractGAvatarCreator<InterfaceAvatarImage>
+        implements InterfaceGAvatarCreator<InterfaceAvatarImage> {
 
     // The extension of the avatar image.
     private String extension = ".png";
@@ -61,12 +61,12 @@ public class GAvatarCreator
     }
 
     @Override
-    public InterfaceGAvatar<InterfaceAvatar> create(@NotNull InterfaceAvatar avatar) {
-        GAvatar<InterfaceAvatar> graphicAvatar = new GAvatar<>(avatar);
+    public InterfaceGAvatar<InterfaceAvatarImage> create(@NotNull InterfaceAvatarImage avatar) {
+        GAvatar<InterfaceAvatarImage> graphicAvatar = new GAvatar<>(avatar);
         ImageComponentInitializer.initialize(
                 graphicAvatar,
                 Objects.requireNonNull(getProvider()).getPath(avatar),
-                false,
+                true,
                 avatar.toString(),
                 avatar.name() + extension,
                 null,

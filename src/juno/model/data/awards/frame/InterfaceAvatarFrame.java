@@ -23,13 +23,21 @@
  * SOFTWARE.
  */
 
-package juno.view.avatar;
+package juno.model.data.awards.frame;
 
-import javax.swing.*;
+import juno.model.data.awards.InterfaceAward;
 
-@FunctionalInterface
-public interface InterfaceAvatarFrameLabelProvider {
+/**
+ * @author Simone Gentili
+ */
+public interface InterfaceAvatarFrame
+        extends InterfaceAward {
 
-    JLabel getAvatarFrameImageLabel();
+    /**
+     * Returns the name of this avatar
+     * frame object.
+     * @return A String object.
+     */
+    String name();
 
 }

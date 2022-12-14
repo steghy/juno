@@ -26,9 +26,9 @@
 package juno.view.awards.frames.factory.test;
 
 import juno.init.Repository;
-import juno.model.data.awards.frame.Frames;
-import juno.model.data.awards.frame.InterfaceFrame;
-import juno.view.awards.avatars.Initializer;
+import juno.model.data.awards.frame.AvatarFrame;
+import juno.model.data.awards.frame.InterfaceAvatarFrame;
+import juno.view.awards.frames.Initializer;
 import juno.view.awards.frames.GFrame;
 import juno.view.awards.frames.factory.GFrameCreator;
 import juno.view.util.ImageResizer;
@@ -44,8 +44,8 @@ public class GFrameCreatorTester {
         Initializer.initialize();
         Repository.setRepository();
         GFrameCreator gFrameCreator = GFrameCreator.getInstance();
-        GFrame<InterfaceFrame> gFrame = (GFrame<InterfaceFrame>) gFrameCreator.create(Frames.AVATAR_FRAME_1);
-        ImageResizer.resize(gFrame, 3.7);
+        GFrame<InterfaceAvatarFrame> gFrame = (GFrame<InterfaceAvatarFrame>) gFrameCreator.create(AvatarFrame.GOLD_FRAME);
+        ImageResizer.resize(gFrame, 2.0);
         JFrame frame = new JFrame();
         frame.setBackground(java.awt.Color.BLUE);
         frame.add(gFrame);

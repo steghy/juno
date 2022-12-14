@@ -23,28 +23,14 @@
  * SOFTWARE.
  */
 
-package juno.view.avatar;
+package juno.model.data.avatar;
 
 /**
  * @author Simone Gentili
  */
-public class AvatarModel
-        extends AbstractAvatarModel
-        implements InterfaceAvatarModel {
+@FunctionalInterface
+public interface InterfaceAvatarNameSetter {
 
-    // The AvatarPanelModel instance.
-    private static AvatarModel instance;
-
-    // Builds the AvatarPanelModel instance.
-    private AvatarModel() {}
-
-    /**
-     * Returns the AvatarPanelModel instance.
-     * @return The AvatarPanelModel instance.
-     */
-    public static AvatarModel getInstance() {
-        if(instance == null) instance = new AvatarModel();
-        return instance;
-    }
+    void setAvatarName(String name);
 
 }

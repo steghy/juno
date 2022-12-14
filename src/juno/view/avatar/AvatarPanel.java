@@ -25,6 +25,8 @@
 
 package juno.view.avatar;
 
+import juno.model.data.avatar.InterfaceAvatar;
+import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -35,17 +37,18 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class AvatarPanel
-        extends JPanel {
+        extends JPanel
+        implements Observer {
 
     // The avatar model object.
-    private final InterfaceAvatarModel avatarModel;
+    private final InterfaceAvatar avatarModel;
 
     /**
      * Builds an AvatarPanel object with the specified
      * avatar model object.
      * @param avatarModel An InterfaceAvatarModel object.
      */
-    public AvatarPanel(@NotNull InterfaceAvatarModel avatarModel) {
+    public AvatarPanel(@NotNull InterfaceAvatar avatarModel) {
         this.avatarModel = avatarModel;
         init();
     }
@@ -53,9 +56,10 @@ public class AvatarPanel
     /** Initialize this AvatarPanel object. */
     private void init() {
         this.setOpaque(false);
-        this.setLayout(new BorderLayout());
+        this.setLayout(new GridBagLayout());
         JLabel avatarFrame = avatarModel.getAvatarFrameImageLabel();
-        avatarFrame.setLayout(new GridBagLayout()); GridBagConstraints gbc = new GridBagConstraints();
+        avatarFrame.setOpaque(true);
+        GridBagConstraints gbc = new GridBagConstraints();
 
         // Avatar image label.
         gbc.gridx = 0;
@@ -64,23 +68,28 @@ public class AvatarPanel
         gbc.weighty = 0.0;
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        gbc.anchor = GridBagConstraints.LINE_END;
+        gbc.anchor = GridBagConstraints.CENTER;
         gbc.insets = new Insets(0,0,10,0);
-        avatarFrame.add(Objects.requireNonNull(avatarModel.getAvatarImageLabel()), gbc);
+        this.add(Objects.requireNonNull(avatarModel.getAvatarImageLabel()), gbc);
 
         // Avatar profile name label.
-        gbc.gridx = 1;
-        gbc.gridy = 0;
+        gbc.gridx = 0;
+        gbc.gridy = 1;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        gbc.anchor = GridBagConstraints.LINE_END;
+        gbc.anchor = GridBagConstraints.CENTER;
         gbc.insets = new Insets(0,0,10,0);
-        avatarFrame.add(Objects.requireNonNull(avatarModel.getAvatarProfileNameLabel()), gbc);
+        this.add(Objects.requireNonNull(avatarModel.name()), gbc);
 
         // Avatar frame label.
-        add(avatarFrame, BorderLayout.CENTER);
+        // add(avatarFrame, gbc);
+    }
+
+    @Override
+    public void update(Object object) {
+
     }
 
 }

@@ -33,6 +33,7 @@ import java.awt.*;
 public class ImageToggleButton
         extends JToggleButton {
 
+    @Override
     public void setSize(@NotNull Dimension dimension) {
         if(dimension.getWidth() != 0 &&
                 dimension.getHeight() != 0) {
@@ -41,19 +42,18 @@ public class ImageToggleButton
             Icon rolloverIcon = getRolloverIcon();
             Icon selectedIcon = getSelectedIcon();
             Icon rolloverSelectedIcon = getRolloverSelectedIcon();
-            if(icon != null) {
+            if(icon != null)
                 setIcon(new ImageIcon(ImageResizer.resize(this, icon)));
-            } if(rolloverIcon != null) {
+            if(rolloverIcon != null)
                 setRolloverIcon(new ImageIcon(ImageResizer.resize(this, rolloverIcon)));
-            }
-            if(selectedIcon != null) {
+            if(selectedIcon != null)
                 setSelectedIcon(new ImageIcon(ImageResizer.resize(this, selectedIcon)));
-            } if(rolloverSelectedIcon != null) {
+            if(rolloverSelectedIcon != null)
                 setRolloverSelectedIcon(new ImageIcon(ImageResizer.resize(this, rolloverSelectedIcon)));
-            }
         }
     }
 
+    @Override
     public void setSize(int width,
                         int height) {
         if(width != 0 && height != 0) {
@@ -62,19 +62,18 @@ public class ImageToggleButton
             Icon rolloverIcon = getRolloverIcon();
             Icon selectedIcon = getSelectedIcon();
             Icon rolloverSelectedIcon = getRolloverSelectedIcon();
-            if(icon != null) {
+            if(icon != null)
                 setIcon(new ImageIcon(ImageResizer.resize(this, icon)));
-            } if(rolloverIcon != null) {
+            if(rolloverIcon != null)
                 setRolloverIcon(new ImageIcon(ImageResizer.resize(this, rolloverIcon)));
-            }
-            if(selectedIcon != null) {
+            if(selectedIcon != null)
                 setSelectedIcon(new ImageIcon(ImageResizer.resize(this, selectedIcon)));
-            } if(rolloverSelectedIcon != null) {
+            if(rolloverSelectedIcon != null)
                 setRolloverSelectedIcon(new ImageIcon(ImageResizer.resize(this, rolloverSelectedIcon)));
-            }
         }
     }
 
+    @Override
     public void setPreferredSize(@NotNull Dimension dimension) {
         if(dimension.getWidth() != 0 &&
                 dimension.getHeight() != 0) {
@@ -84,16 +83,14 @@ public class ImageToggleButton
             Icon rolloverIcon = getRolloverIcon();
             Icon selectedIcon = getSelectedIcon();
             Icon rolloverSelectedIcon = getRolloverSelectedIcon();
-            if(icon != null) {
+            if(icon != null)
                 setIcon(new ImageIcon(ImageResizer.resize(this, icon)));
-            } if(rolloverIcon != null) {
+            if(rolloverIcon != null)
                 setRolloverIcon(new ImageIcon(ImageResizer.resize(this, rolloverIcon)));
-            }
-            if(selectedIcon != null) {
+            if(selectedIcon != null)
                 setSelectedIcon(new ImageIcon(ImageResizer.resize(this, selectedIcon)));
-            } if(rolloverSelectedIcon != null) {
+            if(rolloverSelectedIcon != null)
                 setRolloverSelectedIcon(new ImageIcon(ImageResizer.resize(this, rolloverSelectedIcon)));
-            }
         }
     }
 

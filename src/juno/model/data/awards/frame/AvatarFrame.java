@@ -36,21 +36,13 @@ import java.util.List;
 /**
  * @author Simone Gentili
  */
-public enum Frames
+public enum AvatarFrame
         implements
-        InterfaceFrame,
+        InterfaceAvatarFrame,
         Observer,
         Observable {
 
-    AVATAR_FRAME_1,
-    AVATAR_FRAME_2,
-    AVATAR_FRAME_3,
-    AVATAR_FRAME_4,
-    AVATAR_FRAME_5,
-    AVATAR_FRAME_6,
-    AVATAR_FRAME_7,
-    AVATAR_FRAME_8,
-    AVATAR_FRAME_9;
+    GOLD_FRAME;
 
     // The Observers List.
     private final List<Observer> observerList;
@@ -59,7 +51,7 @@ public enum Frames
     private boolean unlock = false;
 
 
-    Frames() {
+    AvatarFrame() {
         this.observerList = new ArrayList<>();
     }
 

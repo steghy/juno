@@ -25,7 +25,7 @@
 
 package juno.view.awards.frames.factory;
 
-import juno.model.data.awards.frame.InterfaceFrame;
+import juno.model.data.awards.frame.InterfaceAvatarFrame;
 import juno.view.awards.frames.GFrame;
 import juno.view.awards.frames.InterfaceGFrame;
 import juno.view.util.Constant;
@@ -39,7 +39,7 @@ import java.util.Objects;
  */
 @SuppressWarnings("ALL")
 public class GFrameCreator
-        extends AbstractGFrameCreator<InterfaceFrame> {
+        extends AbstractGFrameCreator<InterfaceAvatarFrame> {
 
     // The extension of the avatar image.
     private String extension = ".png";
@@ -60,8 +60,8 @@ public class GFrameCreator
     }
 
     @Override
-    public InterfaceGFrame<InterfaceFrame> create(@NotNull InterfaceFrame frame) {
-        GFrame<InterfaceFrame> graphicFrame = new GFrame<>(frame);
+    public InterfaceGFrame<InterfaceAvatarFrame> create(@NotNull InterfaceAvatarFrame frame) {
+        GFrame<InterfaceAvatarFrame> graphicFrame = new GFrame<>(frame);
         ImageComponentInitializer.initialize(
                 graphicFrame,
                 Objects.requireNonNull(getProvider()).getPath(frame),

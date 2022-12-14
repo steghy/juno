@@ -23,13 +23,11 @@
  * SOFTWARE.
  */
 
-package juno.view.avatar;
-
-import javax.swing.*;
+package juno.model.data.avatar;
 
 @FunctionalInterface
-public interface InterfaceAvatarProfileNameLabelProvider {
+public interface InterfaceAvatarNameProvider {
 
-    JLabel getAvatarProfileNameLabel();
+    String name();
 
 }

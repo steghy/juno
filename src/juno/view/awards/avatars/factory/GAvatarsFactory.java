@@ -25,7 +25,7 @@
 
 package juno.view.awards.avatars.factory;
 
-import juno.model.data.awards.avatar.InterfaceAvatar;
+import juno.model.data.awards.avatar.InterfaceAvatarImage;
 import juno.view.awards.avatars.InterfaceGAvatar;
 import org.jetbrains.annotations.NotNull;
 
@@ -36,8 +36,8 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class GAvatarsFactory
-        extends AbstractGAvatarsFactory<InterfaceAvatar>
-        implements InterfaceGAvatarsFactory<InterfaceAvatar> {
+        extends AbstractGAvatarsFactory<InterfaceAvatarImage>
+        implements InterfaceGAvatarsFactory<InterfaceAvatarImage> {
 
     // The GAvatarsFactory instance.
     private static GAvatarsFactory instance;
@@ -55,7 +55,7 @@ public class GAvatarsFactory
     }
 
     @Override
-    public List<InterfaceGAvatar<InterfaceAvatar>> getGAvatars(@NotNull List<InterfaceAvatar> avatarList) {
+    public List<InterfaceGAvatar<InterfaceAvatarImage>> getGAvatars(@NotNull List<InterfaceAvatarImage> avatarList) {
         return avatarList.stream()
                 .map(Objects.requireNonNull(getCreator())::create).toList();
     }

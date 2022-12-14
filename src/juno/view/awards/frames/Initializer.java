@@ -25,6 +25,10 @@
 
 package juno.view.awards.frames;
 
+import juno.view.awards.frames.factory.FPathProvider;
+import juno.view.awards.frames.factory.GFrameCreator;
+import juno.view.awards.frames.factory.GFramesFactory;
+
 /**
  * @author Simone Gentili
  */
@@ -36,11 +40,23 @@ public class Initializer {
     /** Initialize the juno.model.awards.frames package. */
     public static void initialize() {
         // Components.
+        // GFrameCreator.
+        GFrameCreator gFrameCreator = GFrameCreator.getInstance();
 
+        // GFramesFactory.
+        GFramesFactory gFramesFactory = GFramesFactory.getInstance();
+
+        // FPathProvider.
+        FPathProvider fPathProvider = FPathProvider.getInstance();
 
         //////////////////////////////////////////////////////////////////
 
         // Connections.
+        // GFrameCreator.
+        gFrameCreator.setProvider(fPathProvider);
+
+        // GFramesFactory.
+        gFramesFactory.setCreator(gFrameCreator);
     }
 
 }

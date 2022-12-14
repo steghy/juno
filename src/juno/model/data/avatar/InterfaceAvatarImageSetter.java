@@ -23,37 +23,16 @@
  * SOFTWARE.
  */
 
-package juno.view.awards.avatars.factory;
+package juno.model.data.avatar;
 
-import juno.init.Directories;
-import juno.init.InterfaceDirectories;
 import juno.model.data.awards.avatar.InterfaceAvatarImage;
 
 /**
  * @author Simone Gentili
  */
-public class APathProvider
-        implements
-        InterfaceAPathProvider<InterfaceAvatarImage> {
+@FunctionalInterface
+public interface InterfaceAvatarImageSetter {
 
-    // The AvatarPathProvider instance.
-    private static APathProvider instance;
-
-    // Builds the AvatarPathProvider instance.
-    private APathProvider() {}
-
-    /**
-     * Returns the APathProvider instance.
-     * @return The APathProvider instance.
-     */
-    public static APathProvider getInstance() {
-        if(instance == null) instance = new APathProvider();
-        return instance;
-    }
-
-    @Override
-    public InterfaceDirectories getPath(InterfaceAvatarImage avatar) {
-        return Directories.AVATARS;
-    }
+    void setAvatarImage(InterfaceAvatarImage avatarImage);
 
 }

@@ -26,8 +26,8 @@
 package juno.view.awards.avatars.factory.test;
 
 import juno.init.Repository;
-import juno.model.data.awards.avatar.Avatars;
-import juno.model.data.awards.avatar.InterfaceAvatar;
+import juno.model.data.awards.avatar.AvatarImage;
+import juno.model.data.awards.avatar.InterfaceAvatarImage;
 import juno.view.awards.avatars.InterfaceGAvatar;
 import juno.view.awards.avatars.factory.GAvatarsFactory;
 import juno.view.awards.avatars.Initializer;
@@ -42,7 +42,7 @@ public class GAvatarsFactoryTester {
 
         GAvatarsFactory avatarsFactory = GAvatarsFactory.getInstance();
 
-        List<InterfaceGAvatar<InterfaceAvatar>> gAvatars = avatarsFactory.getGAvatars(List.of(Avatars.values()));
+        List<InterfaceGAvatar<InterfaceAvatarImage>> gAvatars = avatarsFactory.getGAvatars(List.of(AvatarImage.values()));
 
 
     }

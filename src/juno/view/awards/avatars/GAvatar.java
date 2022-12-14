@@ -25,7 +25,7 @@
 
 package juno.view.awards.avatars;
 
-import juno.view.util.ImageButton;
+import juno.view.util.ImageLabel;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -33,7 +33,7 @@ import org.jetbrains.annotations.NotNull;
  * @param <T> The type of the avatars.
  */
 public class GAvatar<T>
-        extends ImageButton
+        extends ImageLabel
         implements InterfaceGAvatar<T> {
 
     // The avatar.

@@ -27,13 +27,13 @@ package juno.view.awards.frames.factory;
 
 import juno.init.Directories;
 import juno.init.InterfaceDirectories;
-import juno.model.data.awards.frame.InterfaceFrame;
+import juno.model.data.awards.frame.InterfaceAvatarFrame;
 
 /**
  * @author Simone Gentili
  */
 public class FPathProvider
-        implements InterfaceFPathProvider<InterfaceFrame> {
+        implements InterfaceFPathProvider<InterfaceAvatarFrame> {
 
     // The FPathProvider instance.
     private static FPathProvider instance;
@@ -51,7 +51,7 @@ public class FPathProvider
     }
 
     @Override
-    public InterfaceDirectories getPath(InterfaceFrame frame) {
+    public InterfaceDirectories getPath(InterfaceAvatarFrame frame) {
         return Directories.FRAMES;
     }
 

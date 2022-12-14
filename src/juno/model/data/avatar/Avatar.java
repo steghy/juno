@@ -23,21 +23,38 @@
  * SOFTWARE.
  */
 
-package juno.model.data.awards.avatar;
+package juno.model.data.avatar;
 
-import juno.model.data.awards.InterfaceAward;
+import juno.model.data.awards.avatar.InterfaceAvatarImage;
+import juno.model.data.awards.frame.InterfaceAvatarFrame;
 
 /**
  * @author Simone Gentili
  */
-public interface InterfaceAvatar
-        extends InterfaceAward {
+public class Avatar {
+
+    // The AvatarPanelModel instance.
+    private static Avatar instance;
+
+    // Builds the AvatarPanelModel instance.
+    private Avatar() {}
 
     /**
-     * Returns the name of this
-     * avatar object.
-     * @return A String object.
+     * Returns the AvatarPanelModel instance.
+     * @return The AvatarPanelModel instance.
      */
-    String name();
+    public static Avatar getInstance() {
+        if(instance == null) instance = new Avatar();
+        return instance;
+    }
 
+    @Override
+    public InterfaceAvatarFrame frame() {
+        return null;
+    }
+
+    @Override
+    public InterfaceAvatarImage avatarImage() {
+        return null;
+    }
 }

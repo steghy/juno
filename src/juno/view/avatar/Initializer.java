@@ -33,8 +33,7 @@ public class Initializer {
     // Builds an Initializer object.
     private Initializer() {}
 
-    public static void initialize() {
-
-    }
+    /** Initialize the juno.view.avatar package. */
+    public static void initialize() {}
 
 }

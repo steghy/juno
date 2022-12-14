@@ -34,8 +34,9 @@ import java.awt.*;
  * @author Simone Gentili
  */
 public class ImageButton
-        extends JButton {
+        extends AbstractButton {
 
+    @Override
     public void setSize(@NotNull Dimension dimension) {
         if(dimension.getWidth() != 0 &&
                 dimension.getHeight() != 0) {
@@ -50,6 +51,7 @@ public class ImageButton
         }
     }
 
+    @Override
     public void setSize(int width,
                         int height) {
         if(width != 0 && height != 0) {
@@ -64,6 +66,7 @@ public class ImageButton
         }
     }
 
+    @Override
     public void setPreferredSize(@NotNull Dimension dimension) {
         if(dimension.getWidth() != 0 &&
                 dimension.getHeight() != 0) {

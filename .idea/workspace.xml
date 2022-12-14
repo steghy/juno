@@ -5,80 +5,58 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/data/images/awards/avatars/AVATAR_IMAGE_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/images/awards/avatars/AVATAR_IMAGE_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/images/awards/avatars/AVATAR_IMAGE_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/images/awards/avatars/AVATAR_IMAGE_4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/images/awards/avatars/AVATAR_IMAGE_5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/images/awards/avatars/AVATAR_IMAGE_6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/images/awards/avatars/AVATAR_IMAGE_7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/images/awards/avatars/AVATAR_IMAGE_8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/images/awards/avatars/AVATAR_IMAGE_9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/data/awards/frame/InterfaceFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/awards/avatars/factory/test/GAvatarCreatorTester.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/awards/frames/GFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/awards/frames/Initializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/awards/frames/InterfaceGFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/awards/frames/factory/AbstractGFrameCreator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/awards/frames/factory/AbstractGFramesFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/awards/frames/factory/FPathProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/awards/frames/factory/GFrameCreator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/awards/frames/factory/GFramesFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/awards/frames/factory/InterfaceFPathProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/awards/frames/factory/InterfaceGFrameCreator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/awards/frames/factory/InterfaceGFramesFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/awards/frames/factory/test/GFrameCreatorTester.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/awards/frames/GOLD_FRAME.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/data/avatar/InterfaceAvatarFrameSetter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/data/avatar/InterfaceAvatarImageSetter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/data/avatar/InterfaceAvatarNameSetter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/data/avatar/InterfaceAvatarProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/data/avatar/InterfaceAvatarSetter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/avatar/test/AvatarPanelTester.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/util/ImageLabel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/images/avatars/AVATAR_IMAGE-4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/images/avatars/AVATAR_IMAGE_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/images/avatars/AVATAR_IMAGE_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/images/avatars/AVATAR_IMAGE_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/images/avatars/AVATAR_IMAGE_5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/images/avatars/AVATAR_IMAGE_6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/images/avatars/AVATAR_IMAGE_7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/images/avatars/AVATAR_IMAGE_8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/images/avatars/AVATAR_IMAGE_9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/awards/avatar/Avatar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/awards/avatar/InterfaceAvatar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/awards/avatar/InterfaceAvatar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/awards/frame/AvatarFrames.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/awards/avatars/factory/AbstractGAvatarFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/awards/avatars/factory/AbstractGAvatarsFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/awards/avatars/factory/AbstractGAvatarsFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/awards/avatars/factory/GAvatarFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/awards/avatars/factory/GAvatarsFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/awards/avatars/factory/GAvatarsFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/awards/avatars/factory/Initializer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/awards/avatars/factory/InterfaceGAvatarFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/awards/avatars/factory/test/GAvatarsFactoryTester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/awards/avatars/factory/test/GAvatarsFactoryTester.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/card/GCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/card/GCard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/card/factory/AbstractGCardFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/card/factory/AbstractGDeckFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/card/factory/AbstractGDeckFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/card/factory/GCardFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/card/factory/GDeckFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/card/factory/GDeckFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/card/factory/Initializer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/card/factory/InterfaceGCardFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/card/factory/test/GCardFactoryTester.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/card/factory/test/GDeckFactoryTester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/card/factory/test/GDeckFactoryTester.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/awards/avatars/AVATAR_IMAGE_9.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/images/awards/avatars/AVATAR_IMAGE_9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/awards/frame/Frames.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/awards/frame/Frames.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/AvatarModelConfigurator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/AvatarModelConfigurator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/AvatarPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/AvatarPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/AvatarPanelConfigurator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/Initializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/Initializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/awards/avatars/GAvatar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/awards/avatars/GAvatar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/awards/avatars/factory/GAvatarCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/awards/avatars/factory/GAvatarCreator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/awards/avatars/factory/test/GAvatarCreatorTester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/awards/avatars/factory/test/GAvatarCreatorTester.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/awards/frames/GFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/awards/frames/GFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/awards/frames/Initializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/awards/frames/Initializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/awards/frames/factory/GFrameCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/awards/frames/factory/GFrameCreator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/util/ImageButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/util/ImageButton.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/util/ImageResizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/util/ImageResizer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/util/ImageToggleButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/util/ImageToggleButton.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/awards/avatar/Avatar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/awards/avatar/Avatars.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/awards/avatar/InterfaceAvatar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/awards/avatar/InterfaceAvatar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/awards/frame/AvatarFrames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/awards/frame/Frames.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/awards/avatars/factory/AbstractGAvatarFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/awards/avatars/factory/AbstractGAvatarCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/awards/avatars/factory/AbstractGAvatarsFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/awards/avatars/factory/AbstractGAvatarsFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/awards/avatars/factory/GAvatarFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/awards/avatars/factory/GAvatarCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/awards/avatar/Avatars.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/awards/avatar/AvatarImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/awards/avatar/InterfaceAvatar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/awards/avatar/InterfaceAvatarImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/awards/frame/Frames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/awards/frame/AvatarFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/awards/frame/InterfaceFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/awards/frame/InterfaceAvatarFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/avatar/AbstractAvatarModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/avatar/AbstractAvatar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/avatar/AvatarModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/avatar/Avatar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/avatar/AvatarModelConfigurator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/avatar/AvatarPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/avatar/AvatarPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/avatar/AvatarPanelConfigurator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/avatar/AvatarsPanelConfigurator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/avatar/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/avatar/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/avatar/InterfaceAvatarFrameLabelProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/avatar/InterfaceAvatarFrameProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/avatar/InterfaceAvatarImageProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/avatar/InterfaceAvatarImageProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/avatar/InterfaceAvatarModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/avatar/InterfaceAvatar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/avatar/InterfaceAvatarProfileNameLabelProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/avatar/InterfaceAvatarNameProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/awards/avatars/GAvatar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/awards/avatars/GAvatar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/awards/avatars/factory/APathProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/awards/avatars/factory/APathProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/awards/avatars/factory/GAvatarCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/awards/avatars/factory/GAvatarCreator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/view/awards/avatars/factory/GAvatarsFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/awards/avatars/factory/GAvatarsFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/awards/avatars/factory/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/awards/avatars/Initializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/awards/avatars/factory/InterfaceGAvatarFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/awards/avatars/factory/InterfaceGAvatarCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/awards/avatars/factory/test/GAvatarCreatorTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/awards/avatars/factory/test/GAvatarCreatorTester.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/view/awards/avatars/factory/test/GAvatarsFactoryTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/awards/avatars/factory/test/GAvatarsFactoryTester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/card/GCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/card/GCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/card/factory/AbstractGCardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/card/factory/AbstractGCardCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/card/factory/AbstractGDeckFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/card/factory/AbstractGDeckFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/card/factory/GCardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/card/factory/GCardCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/card/factory/GDeckFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/card/factory/GDeckFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/card/factory/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/card/Initializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/card/factory/InterfaceGCardFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/card/factory/InterfaceGCardCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/card/factory/test/GCardFactoryTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/card/factory/test/GCardCreatorTester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/card/factory/test/GDeckFactoryTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/card/factory/test/GDeckFactoryTester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/awards/frames/GFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/awards/frames/GFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/awards/frames/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/awards/frames/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/awards/frames/factory/FPathProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/awards/frames/factory/FPathProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/awards/frames/factory/GFrameCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/awards/frames/factory/GFrameCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/awards/frames/factory/GFramesFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/awards/frames/factory/GFramesFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/awards/frames/factory/test/GFrameCreatorTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/awards/frames/factory/test/GFrameCreatorTester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/main/menu/MenuPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/main/menu/MenuPanelConfigurator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/view/util/ImageButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/util/ImageButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/view/util/ImageResizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/util/ImageResizer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/view/util/ImageToggleButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/util/ImageToggleButton.java" afterDir="false" />
@@ -96,8 +74,8 @@
         <option value="AnnotationType" />
         <option value="Record" />
         <option value="Enum" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -158,7 +136,20 @@
       <recent name="juno.model.data.io.input.reflection" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.GAvatarCreatorTester">
+  <component name="RunManager" selected="Application.AvatarPanelTester">
+    <configuration name="AvatarPanelTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="juno.view.avatar.test.AvatarPanelTester" />
+      <module name="juno-project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="juno.view.avatar.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="GAvatarCreatorTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="juno.view.awards.avatars.factory.test.GAvatarCreatorTester" />
       <module name="juno-project" />
@@ -185,25 +176,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GCardCreatorTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="juno.view.card.factory.test.GCardCreatorTester" />
+    <configuration name="GFrameCreatorTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="juno.view.awards.frames.factory.test.GFrameCreatorTester" />
       <module name="juno-project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="juno.view.card.factory.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GDeckFactoryTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="juno.view.card.factory.test.GDeckFactoryTester" />
-      <module name="juno-project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="juno.view.card.factory.test.*" />
+          <option name="PATTERN" value="juno.view.awards.frames.factory.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -226,11 +204,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.AvatarPanelTester" />
         <item itemvalue="Application.GAvatarCreatorTester" />
+        <item itemvalue="Application.GFrameCreatorTester" />
         <item itemvalue="Application.GAvatarsFactoryTester" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.GDeckFactoryTester" />
-        <item itemvalue="Application.GCardCreatorTester" />
       </list>
     </recent_temporary>
   </component>

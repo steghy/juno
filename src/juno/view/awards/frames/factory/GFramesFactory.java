@@ -25,7 +25,7 @@
 
 package juno.view.awards.frames.factory;
 
-import juno.model.data.awards.frame.InterfaceFrame;
+import juno.model.data.awards.frame.InterfaceAvatarFrame;
 import juno.view.awards.frames.InterfaceGFrame;
 import org.jetbrains.annotations.NotNull;
 
@@ -36,7 +36,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class GFramesFactory
-        extends AbstractGFramesFactory<InterfaceFrame> {
+        extends AbstractGFramesFactory<InterfaceAvatarFrame> {
 
     // The GFramesFactory instance.
     private static GFramesFactory instance;
@@ -54,8 +54,8 @@ public class GFramesFactory
     }
 
     @Override
-    public List<InterfaceGFrame<InterfaceFrame>> getGFrames(
-            @NotNull List<InterfaceFrame> framesList) {
+    public List<InterfaceGFrame<InterfaceAvatarFrame>> getGFrames(
+            @NotNull List<InterfaceAvatarFrame> framesList) {
         return framesList.stream()
                 .map(Objects.requireNonNull(getCreator())::create).toList();
     }

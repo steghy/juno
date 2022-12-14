@@ -23,16 +23,13 @@
  * SOFTWARE.
  */
 
-package juno.model.data.awards.frame;
+package juno.model.data.avatar;
 
-import juno.model.data.awards.InterfaceAward;
+import juno.model.data.awards.frame.InterfaceAvatarFrame;
 
-/**
- * @author Simone Gentili
- */
-public interface InterfaceFrame
-        extends InterfaceAward {
+@FunctionalInterface
+public interface InterfaceAvatarFrameProvider {
 
-    String name();
+    InterfaceAvatarFrame frame();
 
 }

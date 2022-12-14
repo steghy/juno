@@ -23,16 +23,13 @@
  * SOFTWARE.
  */
 
-package juno.view.avatar;
+package juno.model.data.avatar;
 
 /**
  * @author Simone Gentili
  */
-public class AvatarPanelConfigurator {
-
-    // Builds an AvatarPanelConfigurator object.
-    private AvatarPanelConfigurator() {}
-
-    public static void configure() {
-    }
-}
+public interface InterfaceAvatar
+        extends
+        InterfaceAvatarNameProvider,
+        InterfaceAvatarFrameProvider,
+        InterfaceAvatarImageProvider {}

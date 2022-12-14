@@ -26,22 +26,27 @@
 package juno.view.awards.avatars.factory.test;
 
 import juno.init.Repository;
-import juno.model.data.awards.avatar.Avatars;
-import juno.model.data.awards.avatar.InterfaceAvatar;
+import juno.model.data.awards.avatar.AvatarImage;
+import juno.model.data.awards.avatar.InterfaceAvatarImage;
 import juno.view.awards.avatars.GAvatar;
 import juno.view.awards.avatars.factory.GAvatarCreator;
 import juno.view.awards.avatars.Initializer;
 import juno.view.util.ImageResizer;
 
 import javax.swing.*;
+import java.util.concurrent.TimeUnit;
 
+/**
+ * @author Simone Gentili
+ */
 public class GAvatarCreatorTester {
 
     public static void main(String[] args) {
         Initializer.initialize();
         Repository.setRepository();
         GAvatarCreator gAvatarCreator = GAvatarCreator.getInstance();
-        GAvatar<InterfaceAvatar> gAvatar = (GAvatar<InterfaceAvatar>) gAvatarCreator.create(Avatars.AVATAR_IMAGE_9);
+        GAvatar<InterfaceAvatarImage> gAvatar = (GAvatar<InterfaceAvatarImage>) gAvatarCreator.create(AvatarImage.AVATAR_IMAGE_9);
+        gAvatar.setEnabled(false);
         ImageResizer.resize(gAvatar, 3.7);
         JFrame frame = new JFrame();
         frame.setBackground(java.awt.Color.BLUE);
@@ -49,6 +54,14 @@ public class GAvatarCreatorTester {
         frame.pack();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+
+        try {
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        gAvatar.setEnabled(true);
     }
 
 }
