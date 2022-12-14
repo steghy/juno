@@ -25,6 +25,8 @@
 
 package juno.view.avatar;
 
+import javax.swing.*;
+
 /**
  * @author Simone Gentili
  */
@@ -38,7 +40,9 @@ public class AvatarModelConfigurator {
         AvatarModel avatarModel = AvatarModel.getInstance();
 
         // Components.
-
+        JLabel defaultAvatarFrameLabel;
+        JLabel defaultAvatarImageLabel;
+        JLabel defaultAvatarProfileNameLabel;
     }
 
 }

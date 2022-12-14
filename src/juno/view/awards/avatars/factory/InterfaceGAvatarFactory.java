@@ -23,38 +23,17 @@
  * SOFTWARE.
  */
 
-package juno.view.card.factory;
+package juno.view.awards.avatars.factory;
 
-import juno.model.card.InterfaceCard;
+import juno.view.awards.avatars.InterfaceGAvatar;
 
 /**
  * @author Simone Gentili
+ * @param <T> The type of the avatars.
  */
-public class Initializer {
+@FunctionalInterface
+public interface InterfaceGAvatarFactory<T> {
 
-    // Builds an Initializer object.
-    private Initializer() {}
-
-    @SuppressWarnings("unchecked")
-    public static void initialize() {
-        // Components.
-        // GCardFactory.
-        AbstractGCardFactory<InterfaceCard> gCardFactory = GCardFactory.getInstance();
-
-        // GDeckFactory.
-        AbstractGDeckFactory<InterfaceCard> gDeckFactory = GDeckFactory.getInstance();
-
-        // CPathProvider
-        CPathProvider cPathProvider = CPathProvider.getInstance();
-
-        ///////////////////////////////////////////////////////////////////////////////
-
-        // Connections.
-        // GCardFactory.
-        gCardFactory.setProvider(cPathProvider);
-
-        // GDeckFactory.
-        gDeckFactory.setFactory((InterfaceGCardFactory<InterfaceCard>) gCardFactory);
-    }
+    InterfaceGAvatar<T> create(T avatar);
 
 }

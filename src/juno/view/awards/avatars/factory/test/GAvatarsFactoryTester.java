@@ -23,38 +23,26 @@
  * SOFTWARE.
  */
 
-package juno.view.card.factory;
+package juno.view.awards.avatars.factory.test;
 
-import juno.model.card.InterfaceCard;
+import juno.init.Repository;
+import juno.model.data.awards.avatar.Avatar;
+import juno.model.data.awards.avatar.InterfaceAvatar;
+import juno.view.awards.avatars.InterfaceGAvatar;
+import juno.view.awards.avatars.factory.GAvatarsFactory;
+import juno.view.awards.avatars.factory.Initializer;
 
-/**
- * @author Simone Gentili
- */
-public class Initializer {
+import java.util.List;
 
-    // Builds an Initializer object.
-    private Initializer() {}
+public class GAvatarsFactoryTester {
 
-    @SuppressWarnings("unchecked")
-    public static void initialize() {
-        // Components.
-        // GCardFactory.
-        AbstractGCardFactory<InterfaceCard> gCardFactory = GCardFactory.getInstance();
+    public static void main(String[] args) {
+        Initializer.initialize();
+        Repository.setRepository();
 
-        // GDeckFactory.
-        AbstractGDeckFactory<InterfaceCard> gDeckFactory = GDeckFactory.getInstance();
+        GAvatarsFactory avatarsFactory = GAvatarsFactory.getInstance();
 
-        // CPathProvider
-        CPathProvider cPathProvider = CPathProvider.getInstance();
-
-        ///////////////////////////////////////////////////////////////////////////////
-
-        // Connections.
-        // GCardFactory.
-        gCardFactory.setProvider(cPathProvider);
-
-        // GDeckFactory.
-        gDeckFactory.setFactory((InterfaceGCardFactory<InterfaceCard>) gCardFactory);
+        List<InterfaceGAvatar<InterfaceAvatar>> gAvatars = avatarsFactory.getGAvatars(List.of(Avatar.values()));
     }
 
 }

@@ -37,9 +37,10 @@ import java.util.List;
 /**
  * @author Simone Gentili
  */
-public enum AvatarImages
+public enum Avatar
         implements
         InterfaceAward,
+        InterfaceAvatar,
         Observable,
         Observer {
 
@@ -60,7 +61,7 @@ public enum AvatarImages
     private boolean unlock = false;
 
 
-    AvatarImages() {
+    Avatar() {
         this.observerList = new ArrayList<>();
     }
 

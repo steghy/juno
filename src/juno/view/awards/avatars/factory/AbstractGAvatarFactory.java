@@ -23,38 +23,35 @@
  * SOFTWARE.
  */
 
-package juno.view.card.factory;
+package juno.view.awards.avatars.factory;
 
-import juno.model.card.InterfaceCard;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Simone Gentili
+ * @param <T> The type of the cards.
  */
-public class Initializer {
+public abstract class AbstractGAvatarFactory<T> {
 
-    // Builds an Initializer object.
-    private Initializer() {}
+    // The avatar path provider.
+    private InterfaceAPathProvider<T> provider;
 
-    @SuppressWarnings("unchecked")
-    public static void initialize() {
-        // Components.
-        // GCardFactory.
-        AbstractGCardFactory<InterfaceCard> gCardFactory = GCardFactory.getInstance();
+    /**
+     * Sets the avatar path provider of this object.
+     * @param provider An InterfaceAPathProvider object.
+     */
+    public void setProvider(@NotNull InterfaceAPathProvider<T> provider) {
+        this.provider = provider;
+    }
 
-        // GDeckFactory.
-        AbstractGDeckFactory<InterfaceCard> gDeckFactory = GDeckFactory.getInstance();
-
-        // CPathProvider
-        CPathProvider cPathProvider = CPathProvider.getInstance();
-
-        ///////////////////////////////////////////////////////////////////////////////
-
-        // Connections.
-        // GCardFactory.
-        gCardFactory.setProvider(cPathProvider);
-
-        // GDeckFactory.
-        gDeckFactory.setFactory((InterfaceGCardFactory<InterfaceCard>) gCardFactory);
+    /**
+     * Returns the avatar path provider of this object.
+     * @return An InterfaceAPathProvider object.
+     */
+    @Nullable
+    public InterfaceAPathProvider<T> getProvider() {
+        return provider;
     }
 
 }

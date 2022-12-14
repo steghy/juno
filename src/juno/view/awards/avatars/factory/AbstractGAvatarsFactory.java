@@ -23,38 +23,35 @@
  * SOFTWARE.
  */
 
-package juno.view.card.factory;
+package juno.view.awards.avatars.factory;
 
-import juno.model.card.InterfaceCard;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Simone Gentili
+ * @param <T> The type of the avatars.
  */
-public class Initializer {
+public abstract class AbstractGAvatarsFactory<T> {
 
-    // Builds an Initializer object.
-    private Initializer() {}
+    // The graphic avatar factory.
+    private InterfaceGAvatarFactory<T> factory;
 
-    @SuppressWarnings("unchecked")
-    public static void initialize() {
-        // Components.
-        // GCardFactory.
-        AbstractGCardFactory<InterfaceCard> gCardFactory = GCardFactory.getInstance();
+    /**
+     * Sets the graphic avatar factory of this object.
+     * @param factory An InterfaceGAvatarFactory object.
+     */
+    public void setFactory(@NotNull InterfaceGAvatarFactory<T> factory) {
+        this.factory = factory;
+    }
 
-        // GDeckFactory.
-        AbstractGDeckFactory<InterfaceCard> gDeckFactory = GDeckFactory.getInstance();
-
-        // CPathProvider
-        CPathProvider cPathProvider = CPathProvider.getInstance();
-
-        ///////////////////////////////////////////////////////////////////////////////
-
-        // Connections.
-        // GCardFactory.
-        gCardFactory.setProvider(cPathProvider);
-
-        // GDeckFactory.
-        gDeckFactory.setFactory((InterfaceGCardFactory<InterfaceCard>) gCardFactory);
+    /**
+     * Returns the graphic avatar factory of this object.
+     * @return An InterfaceGAvatarFactory object.
+     */
+    @Nullable
+    public InterfaceGAvatarFactory<T> getFactory() {
+        return factory;
     }
 
 }

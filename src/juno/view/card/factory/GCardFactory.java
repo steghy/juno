@@ -37,15 +37,16 @@ import java.util.Objects;
 /**
  * @author Simone Gentili
  */
+@SuppressWarnings("ALL")
 public class GCardFactory
         extends AbstractGCardFactory<InterfaceCard>
         implements InterfaceGCardFactory<InterfaceCard> {
 
-    /** The rollover image card name. */
-    public String rollover  = "_rollover";
+    // The rollover name part of the card image.
+    private String rollover = "_rollover";
 
-    /** The extension of the card. */
-    public String extension = ".png";
+    // The extension of the card image.
+    private String extension = ".png";
 
     // The GCardFactory instance.
     private static GCardFactory instance;

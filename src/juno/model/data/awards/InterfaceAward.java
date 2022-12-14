@@ -28,8 +28,6 @@ package juno.model.data.awards;
 public interface InterfaceAward
         extends Unlockable {
 
-    String name();
-
     boolean isUnlock();
 
 }

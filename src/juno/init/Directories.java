@@ -37,7 +37,7 @@ public enum Directories
 	// Data -> Config.
 	CONFIG(DATA,"config"),
 	PROFILES(CONFIG, "profiles"),
-	AWARDS(CONFIG, "awards"),
+	GOALS(CONFIG, "goals"),
 	SCORE(CONFIG, "scores"),
 
 	// Data -> Audio.
@@ -64,7 +64,16 @@ public enum Directories
 	BLUE_CARDS(CARDS, "blue"),
 	GREEN_CARDS(CARDS, "green"),
 	YELLOW_CARDS(CARDS, "yellow"),
-	JOLLY_CARDS(CARDS, "jolly");
+	JOLLY_CARDS(CARDS, "jolly"),
+
+	// Images -> Awards.
+	AWARDS(IMAGES, "awards"),
+
+	// Images/Awards -> Avatars.
+	AVATARS(AWARDS, "avatars"),
+
+	// Images/Awards -> Frames.
+	FRAMES(AWARDS, "frames");
 
 	// The path.
 	private String path;

@@ -23,7 +23,41 @@
  * SOFTWARE.
  */
 
-package juno.view.awards;
+package juno.view.awards.avatars.factory;
 
-public class AwardPanel {
+import juno.model.data.awards.avatar.InterfaceAvatar;
+import juno.view.awards.avatars.InterfaceGAvatar;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+import java.util.Objects;
+
+/**
+ * @author Simone Gentili
+ */
+public class GAvatarsFactory
+        extends AbstractGAvatarsFactory<InterfaceAvatar>
+        implements InterfaceGAvatarsFactory<InterfaceAvatar> {
+
+    // The GAvatarsFactory instance.
+    private static GAvatarsFactory instance;
+
+    // Builds the GAvatarsFactory instance.
+    private GAvatarsFactory() {}
+
+    /**
+     * Returns the GAvatarsFactory instance.
+     * @return The GAvatarsFactory instance.
+     */
+    public static GAvatarsFactory getInstance() {
+        if(instance == null) instance = new GAvatarsFactory();
+        return instance;
+    }
+
+    @Override
+    public List<InterfaceGAvatar<InterfaceAvatar>> getGAvatars(@NotNull List<InterfaceAvatar> avatarList) {
+        return avatarList.stream()
+                .map(Objects.requireNonNull(getFactory())::create).toList();
+    }
+
 }

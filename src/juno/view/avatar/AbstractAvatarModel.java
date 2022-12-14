@@ -109,7 +109,9 @@ public abstract class AbstractAvatarModel
     }
 
     @Override
-    public void configure(@NotNull Map<String, Object> map) {}
+    public void configure(@NotNull Map<String, Object> map) {
+
+    }
 
     @Override
     public Map<String, Object> exportData() {

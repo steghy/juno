@@ -23,9 +23,7 @@
  * SOFTWARE.
  */
 
-package juno.view.card.factory;
-
-import juno.model.card.InterfaceCard;
+package juno.view.awards.avatars.factory;
 
 /**
  * @author Simone Gentili
@@ -35,26 +33,26 @@ public class Initializer {
     // Builds an Initializer object.
     private Initializer() {}
 
-    @SuppressWarnings("unchecked")
+    /** Initialize the juno.view.awards.avatars package. */
     public static void initialize() {
         // Components.
-        // GCardFactory.
-        AbstractGCardFactory<InterfaceCard> gCardFactory = GCardFactory.getInstance();
+        // GAvatarFactory.
+        GAvatarFactory gAvatarFactory = GAvatarFactory.getInstance();
 
-        // GDeckFactory.
-        AbstractGDeckFactory<InterfaceCard> gDeckFactory = GDeckFactory.getInstance();
+        // GAvatarsFactory.
+        GAvatarsFactory gAvatarsFactory = GAvatarsFactory.getInstance();
 
-        // CPathProvider
-        CPathProvider cPathProvider = CPathProvider.getInstance();
+        // APathProvider.
+        APathProvider aPathProvider = APathProvider.getInstance();
 
-        ///////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////
 
         // Connections.
-        // GCardFactory.
-        gCardFactory.setProvider(cPathProvider);
+        // GAvatarFactory.
+        gAvatarFactory.setProvider(aPathProvider);
 
-        // GDeckFactory.
-        gDeckFactory.setFactory((InterfaceGCardFactory<InterfaceCard>) gCardFactory);
+        // GAvatarsFactory.
+        gAvatarsFactory.setFactory(gAvatarFactory);
     }
 
 }

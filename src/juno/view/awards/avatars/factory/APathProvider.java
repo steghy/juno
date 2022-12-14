@@ -23,38 +23,37 @@
  * SOFTWARE.
  */
 
-package juno.view.card.factory;
+package juno.view.awards.avatars.factory;
 
-import juno.model.card.InterfaceCard;
+import juno.init.Directories;
+import juno.init.InterfaceDirectories;
+import juno.model.data.awards.avatar.InterfaceAvatar;
 
 /**
  * @author Simone Gentili
  */
-public class Initializer {
+public class APathProvider
+        implements
+        InterfaceAPathProvider<InterfaceAvatar> {
 
-    // Builds an Initializer object.
-    private Initializer() {}
+    // The AvatarPathProvider instance.
+    private static APathProvider instance;
 
-    @SuppressWarnings("unchecked")
-    public static void initialize() {
-        // Components.
-        // GCardFactory.
-        AbstractGCardFactory<InterfaceCard> gCardFactory = GCardFactory.getInstance();
+    // Builds the AvatarPathProvider instance.
+    private APathProvider() {}
 
-        // GDeckFactory.
-        AbstractGDeckFactory<InterfaceCard> gDeckFactory = GDeckFactory.getInstance();
+    /**
+     * Returns the APathProvider instance.
+     * @return The APathProvider instance.
+     */
+    public static APathProvider getInstance() {
+        if(instance == null) instance = new APathProvider();
+        return instance;
+    }
 
-        // CPathProvider
-        CPathProvider cPathProvider = CPathProvider.getInstance();
-
-        ///////////////////////////////////////////////////////////////////////////////
-
-        // Connections.
-        // GCardFactory.
-        gCardFactory.setProvider(cPathProvider);
-
-        // GDeckFactory.
-        gDeckFactory.setFactory((InterfaceGCardFactory<InterfaceCard>) gCardFactory);
+    @Override
+    public InterfaceDirectories getPath(InterfaceAvatar avatar) {
+        return Directories.AVATARS;
     }
 
 }

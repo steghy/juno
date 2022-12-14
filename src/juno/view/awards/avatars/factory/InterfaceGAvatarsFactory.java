@@ -23,38 +23,18 @@
  * SOFTWARE.
  */
 
-package juno.view.card.factory;
+package juno.view.awards.avatars.factory;
 
-import juno.model.card.InterfaceCard;
+import juno.view.awards.avatars.InterfaceGAvatar;
+
+import java.util.List;
 
 /**
  * @author Simone Gentili
  */
-public class Initializer {
+@FunctionalInterface
+public interface InterfaceGAvatarsFactory<T> {
 
-    // Builds an Initializer object.
-    private Initializer() {}
-
-    @SuppressWarnings("unchecked")
-    public static void initialize() {
-        // Components.
-        // GCardFactory.
-        AbstractGCardFactory<InterfaceCard> gCardFactory = GCardFactory.getInstance();
-
-        // GDeckFactory.
-        AbstractGDeckFactory<InterfaceCard> gDeckFactory = GDeckFactory.getInstance();
-
-        // CPathProvider
-        CPathProvider cPathProvider = CPathProvider.getInstance();
-
-        ///////////////////////////////////////////////////////////////////////////////
-
-        // Connections.
-        // GCardFactory.
-        gCardFactory.setProvider(cPathProvider);
-
-        // GDeckFactory.
-        gDeckFactory.setFactory((InterfaceGCardFactory<InterfaceCard>) gCardFactory);
-    }
+    List<InterfaceGAvatar<T>> getGAvatars(List<T> avatarsList);
 
 }

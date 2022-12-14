@@ -55,7 +55,6 @@ public class AvatarPanel
         this.setOpaque(false);
         this.setLayout(new BorderLayout());
         JLabel avatarFrame = avatarModel.getAvatarFrameImageLabel();
-
         avatarFrame.setLayout(new GridBagLayout()); GridBagConstraints gbc = new GridBagConstraints();
 
         // Avatar image label.

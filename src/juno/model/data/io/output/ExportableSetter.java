@@ -69,7 +69,7 @@ public class ExportableSetter
         map.put(Profile.getInstance(), PathGenerator.generate(Directories.PROFILES.absolutePath(),
                 ProfileFileNameBuilder.build(Objects.requireNonNull(Profile.getInstance().profileName()))));
         // User awards case.
-        map.put(UserGoals.getInstance(), PathGenerator.generate(Directories.AWARDS.absolutePath(),
+        map.put(UserGoals.getInstance(), PathGenerator.generate(Directories.GOALS.absolutePath(),
                 UserGoalsFileNameBuilder.build(Objects.requireNonNull(Profile.getInstance().profileName()))));
         // Games won case.
         map.put(GamesWonCounter.getInstance(), PathGenerator.generate(Directories.SCORE.absolutePath(),
