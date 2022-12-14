@@ -34,7 +34,7 @@ import java.awt.*;
  * @author Simone Gentili
  */
 public class ImageButton
-        extends AbstractButton {
+        extends JButton {
 
     @Override
     public void setSize(@NotNull Dimension dimension) {

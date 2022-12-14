@@ -46,31 +46,38 @@ public class AvatarImagePanel<T>
     private final InterfaceGAvatarImageCreator<T> creator;
 
     // The avatar image provider.
-    private final InterfaceAvatarImageProvider<T> provider;
+    private final InterfaceAvatarImageProvider<T> avatarImageProvider;
+
+    // The Default avatar image provider.
+    private final InterfaceDefaultAvatarImageProvider<T> defaultAvatarImageProvider;
 
     /**
      * Builds an AvatarImagePanel with the specified
      * graphic avatar image creator and avatar image
      * provider objects.
      * @param creator An InterfaceGAvatarImageCreator object.
-     * @param provider An InterfaceAvatarImageProvider object.
+     * @param avatarImageProvider An InterfaceAvatarImageProvider object.
+     * @param defaultAvatarImageProvider An InterfaceDefaultAvatarImageProvider object.
      */
     public AvatarImagePanel(@NotNull InterfaceGAvatarImageCreator<T> creator,
-                            @NotNull InterfaceAvatarImageProvider<T> provider) {
+                            @NotNull InterfaceAvatarImageProvider<T> avatarImageProvider,
+                            @NotNull InterfaceDefaultAvatarImageProvider<T> defaultAvatarImageProvider) {
         this.creator = creator;
-        this.provider = provider;
+        this.avatarImageProvider = avatarImageProvider;
+        this.defaultAvatarImageProvider = defaultAvatarImageProvider;
+        init();
     }
 
     public void init() {
         setOpaque(false);
         setLayout(new BorderLayout());
-        add(Objects.requireNonNull(getAvatarImage()), BorderLayout.CENTER);
+        add(defaultAvatarImageProvider.defaultAvatarImage(), BorderLayout.CENTER);
     }
 
     @Override
     public void update(@NotNull Object object) {
         if(object instanceof InterfaceAvatarImageSetter<?>) {
-            GAvatarImage<T> providerAvatarImage = (GAvatarImage<T>) creator.create(provider.avatarImage());
+            GAvatarImage<T> providerAvatarImage = (GAvatarImage<T>) creator.create(avatarImageProvider.avatarImage());
             Objects.requireNonNull(getAvatarImage()).setIcon(providerAvatarImage.getIcon());
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +

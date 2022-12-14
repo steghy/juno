@@ -61,6 +61,12 @@ public class ViewInitializer {
         // juno.view.card.TopCardPanel configuration.
         TopCardPanelConfigurator.configure();
 
+        // juno.view.awards.avatars.
+        juno.view.awards.avatars.Initializer.initialize();
+
+        // juno.view.awards.frames.
+        juno.view.awards.frames.Initializer.initialize();
+
         // juno.view.frame package.
         FrameInitializer.initializer();
     }
