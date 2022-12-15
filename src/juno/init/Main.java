@@ -28,8 +28,11 @@ package juno.init;
 import juno.init.initializer.ControllerInitializer;
 import juno.init.initializer.ModelInitializer;
 import juno.init.initializer.ViewInitializer;
+import juno.model.data.avatar.AvatarFrameSetter;
 import juno.model.data.avatar.AvatarImageSetter;
+import juno.model.data.avatar.AvatarNameSetter;
 import juno.model.data.awards.avatar.AvatarImage;
+import juno.model.data.awards.frame.AvatarFrame;
 import juno.model.sound.AudioPlayer;
 import juno.view.frame.Frame;
 
@@ -59,6 +62,12 @@ public class Main {
             // Frame.
             Frame frame = Frame.getInstance();
             frame.setVisible(true);
+
+            TimeUnit.SECONDS.sleep(15);
+
+            AvatarNameSetter.getInstance().setAvatarName("New name");
+            AvatarImageSetter.getInstance().setAvatarImage(AvatarImage.AVATAR_IMAGE_4);
+            AvatarFrameSetter.getInstance().setAvatarFrame(AvatarFrame.BLUE_FRAME);
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "An unknown error has occurred. " +

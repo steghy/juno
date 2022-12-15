@@ -42,6 +42,8 @@ public enum AvatarFrame
         Observer,
         Observable {
 
+    GREY_FRAME,
+    BLUE_FRAME,
     GOLD_FRAME;
 
     // The Observers List.

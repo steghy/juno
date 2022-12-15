@@ -25,12 +25,7 @@
 
 package juno.view.pages.main;
 
-import juno.model.data.avatar.AvatarImageProvider;
-import juno.model.data.avatar.AvatarImageSetter;
-import juno.model.data.awards.avatar.InterfaceAvatarImage;
-import juno.view.avatar.avatar_image.AvatarImagePanel;
-import juno.view.avatar.avatar_image.DefaultAvatarImageProvider;
-import juno.view.awards.avatars.factory.GAvatarImageCreator;
+import juno.view.avatar.AvatarPanel;
 import juno.view.pages.main.menu.MenuPanel;
 import juno.view.pages.main.title.TitlePanel;
 
@@ -49,20 +44,12 @@ public class MainPanelConfigurator {
         // Components.
         TitlePanel titlePanel = TitlePanel.getInstance();
         MenuPanel menuPanel = MenuPanel.getInstance();
-        AvatarImagePanel<InterfaceAvatarImage> avatarPanel = new AvatarImagePanel<>(
-                GAvatarImageCreator.getInstance(),
-                AvatarImageProvider.getInstance(),
-                DefaultAvatarImageProvider.getInstance(),
-                4.5);
+        AvatarPanel avatarPanel = new AvatarPanel(3.0);
 
         // Components settings.
         mainPanel.setFirstComponent(titlePanel);  // title panel
         mainPanel.setSecondComponent(menuPanel);  // Menu panel.
         mainPanel.setThirdComponent(avatarPanel); // Avatar panel.
-
-        // Avatar panel initialization.
-        AvatarImageSetter.getInstance().addObserver(avatarPanel);
-        avatarPanel.init();
 
         // Main component initialization.
         mainPanel.init();
