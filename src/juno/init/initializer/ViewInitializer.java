@@ -64,9 +64,6 @@ public class ViewInitializer {
         // juno.view.awards.frames package.
         juno.view.awards.frames.Initializer.initialize();
 
-        // juno.view.avatar package.
-        juno.view.avatar.Initializer.initialize();
-        
         // juno.view.main package.
         MainPanelInitializer.initialize();
 

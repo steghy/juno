@@ -23,40 +23,35 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.main;
+package juno.model.data.goals;
 
-import juno.view.avatar.AvatarPanel;
-import juno.view.avatar.AvatarPanelConfigurator;
-import juno.view.pages.main.menu.MenuPanel;
-import juno.view.pages.main.title.TitlePanel;
+import juno.model.data.awards.avatar.AvatarImage;
+import juno.model.data.awards.frame.AvatarFrame;
 
 /**
  * @author Simone Gentili
  */
-public class MainPanelConfigurator {
+public class Initializer {
 
-    // Builds a MainPanelConfigurator instance.
-    private MainPanelConfigurator() {}
+    // Builds an Initializer object.
+    private Initializer() {}
 
-    public static void configure() {
-        // Main component.
-        MainPanel mainPanel = MainPanel.getInstance();
+    /** Initialize the goals and they relative awards. */
+    public static void initialize() {
 
-        // Components.
-        TitlePanel titlePanel = TitlePanel.getInstance();
-        MenuPanel menuPanel = MenuPanel.getInstance();
-        AvatarPanel avatarPanel = new AvatarPanel(3.0);
+        // First match won.
+        Goals.FIRST_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_2);
+        Goals.FIRST_MATCH_WON.addObserver(AvatarFrame.GREY_FRAME);
 
-        // Avatar panel configuration.
-        AvatarPanelConfigurator.configure(avatarPanel);
+        // Ten match won.
+        Goals.TEN_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_3);
+        Goals.TEN_MATCH_WON.addObserver(AvatarFrame.GREY_FRAME);
 
-        // Components settings.
-        mainPanel.setFirstComponent(titlePanel);  // title panel
-        mainPanel.setSecondComponent(menuPanel);  // Menu panel.
-        mainPanel.setThirdComponent(avatarPanel); // Avatar panel.
+        // First match lose.
+        Goals.FIRST_MATCH_LOSE.addObserver(AvatarFrame.BLUE_FRAME);
 
-        // Main component initialization.
-        mainPanel.init();
+        // One hundred match won.
+        Goals.ONE_HUNDRED_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_9);
     }
 
 }

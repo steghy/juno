@@ -28,6 +28,7 @@ package juno.view.avatar;
 import juno.model.data.avatar.AvatarFrameSetter;
 import juno.model.data.avatar.AvatarImageSetter;
 import juno.model.data.avatar.AvatarNameSetter;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
@@ -40,10 +41,14 @@ public class AvatarPanelConfigurator {
     // Builds an AvatarPanelConfigurator object.
     private AvatarPanelConfigurator() {}
 
-    public static void configure(AvatarPanel avatarPanel) {
+    /**
+     * Configures the specified avatar panel object.
+     * @param avatarPanel An AvatarPanel object.
+     */
+    public static void configure(@NotNull AvatarPanel avatarPanel) {
         // Avatar name component.
         JLabel avatarName = new JLabel();
-        avatarPanel.setFont(new Font(Font.ITALIC, Font.ITALIC, 12));
+        avatarPanel.setFont(new Font(Font.DIALOG, Font.ITALIC, 12));
         avatarPanel.setForeground(Color.WHITE);
 
         // Main component connections.

@@ -5,7 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/goals/Goals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/goals/Goals.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/config/goals/sadfhjkasd-goals.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/config/profiles/sadfhjkasd-profile.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/config/scores/sadfhjkasd-games-won.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/config/scores/sadfhjkasd-lost-games.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/data/goals/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/init/initializer/ViewInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/init/initializer/ViewInitializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/AvatarPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/AvatarPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/Initializer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/avatar_frame/AbstractAvatarFramePanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/avatar_frame/AvatarFramePanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/avatar_frame/DefaultAvatarFrameProvider.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/avatar_frame/InterfaceDefaultAvatarFrameProvider.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/avatar_image/AbstractAvatarImagePanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/avatar_image/AvatarImagePanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/avatar_image/DefaultAvatarImageProvider.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/avatar_image/InterfaceDefaultAvatarImageProvider.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/main/MainPanelConfigurator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/main/MainPanelConfigurator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/init/initializer/ViewInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/init/initializer/ViewInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/avatar/AvatarPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/avatar/AvatarPanelConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/main/MainPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/main/MainPanelConfigurator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
