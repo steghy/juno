@@ -25,9 +25,13 @@
 
 package juno.model.util;
 
+/**
+ * @author Simone Gentili
+ */
 @FunctionalInterface
 public interface Restorable {
 
+    /** Restore to the initial state this object. */
     void restore();
 
 }

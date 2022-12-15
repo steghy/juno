@@ -25,7 +25,17 @@
 
 package juno.model.util;
 
+/**
+ * @author Simone Gentili
+ */
+@FunctionalInterface
 public interface Observer {
 
+    /**
+     * Update this Observer with
+     * the specified object.
+     * @param object An Object.
+     */
     void update(Object object);
+
 }

@@ -31,13 +31,18 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * @author Simone Gentili
+ */
 public class ArgumentsSorter {
 	
 	public static final String EXTENDED_OPT = "--";
 	public static final String CONTRACTED_OPT = "-";
 
+	// Builds an ArgumentsSorter object.
 	private ArgumentsSorter() {}
 
+	@NotNull
 	public static Map<String, Optional<Object>> getArguments(@NotNull String[] args) {
 		Map<String, Optional<Object>> optionArguments = new HashMap<>();
 		for(int i = 0; i < args.length; i++) {

@@ -33,6 +33,11 @@ import java.util.Map;
 @FunctionalInterface
 public interface InterfaceErrorProvider {
 
+    /**
+     * Returns the Map object witch contains
+     * the errors of the configuration process.
+     * @return A Map object.
+     */
     Map<String, String> getErrors();
 
 }

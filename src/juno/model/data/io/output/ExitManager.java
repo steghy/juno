@@ -25,10 +25,13 @@
 
 package juno.model.data.io.output;
 
+import java.util.Objects;
+
 /**
  * @author Simone Gentili
  */
 public class ExitManager
+        extends AbstractExporterManagerUser
         implements InterfaceExitManager {
 
     // The ExitManager instance.
@@ -46,7 +49,9 @@ public class ExitManager
         return instance;
     }
 
+    @Override
     public void exit() {
+        Objects.requireNonNull(getExporter()).export();
         System.exit(0);
     }
 

@@ -25,12 +25,12 @@
 
 package juno.model.data.score;
 
-import juno.model.data.io.input.configurable.Configurable;
-import juno.model.data.io.output.Exportable;
-
+/**
+ * @author Simone Gentili
+ */
 public class GamesWonCounter
         extends AbstractCounter
-                implements Configurable, Exportable {
+        implements InterfaceGamesWonCounter {
 
     // The GamesWonCounter instance.
     private static GamesWonCounter instance;

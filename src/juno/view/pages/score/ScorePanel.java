@@ -25,13 +25,13 @@
 
 package juno.view.pages.score;
 
-import javax.swing.*;
+import juno.view.panels.AbstractFourthComponent;
 
 /**
  * @author Simone Gentili
  */
 public class ScorePanel
-        extends JPanel {
+        extends AbstractFourthComponent {
 
     // The ScorePanel instance.
     private static ScorePanel instance;

@@ -40,18 +40,18 @@ public class Initializer {
     public static void initialize() {
 
         // First match won.
-        Goals.FIRST_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_2);
-        Goals.FIRST_MATCH_WON.addObserver(AvatarFrame.GREY_FRAME);
+        Goal.FIRST_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_2);
+        Goal.FIRST_MATCH_WON.addObserver(AvatarFrame.GREY_FRAME);
 
         // Ten match won.
-        Goals.TEN_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_3);
-        Goals.TEN_MATCH_WON.addObserver(AvatarFrame.GREY_FRAME);
+        Goal.TEN_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_3);
+        Goal.TEN_MATCH_WON.addObserver(AvatarFrame.GREY_FRAME);
 
         // First match lose.
-        Goals.FIRST_MATCH_LOSE.addObserver(AvatarFrame.BLUE_FRAME);
+        Goal.FIRST_MATCH_LOSE.addObserver(AvatarFrame.BLUE_FRAME);
 
         // One hundred match won.
-        Goals.ONE_HUNDRED_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_9);
+        Goal.ONE_HUNDRED_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_9);
     }
 
 }

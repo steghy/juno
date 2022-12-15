@@ -23,28 +23,15 @@
  * SOFTWARE.
  */
 
-package juno.model.util;
+package juno.model.data.score;
 
 /**
  * @author Simone Gentili
  */
-public interface Observable {
+public interface InterfaceGamesWonCounter
+        extends InterfaceCountProvider {
 
-    /**
-     * Adds the specified Observer object
-     * into the observers List object.
-     * @param observer An Observer object.
-     */
-    void addObserver(Observer observer);
-
-    /**
-     * Remove the specified Observer object
-     * from the observers List object.
-     * @param observer An Observer object.
-     */
-    void removeObserver(Observer observer);
-
-    /** Update the observers. */
-    void updateAll();
+    /** Increase the count of the counter. */
+    void increase();
 
 }

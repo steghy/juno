@@ -25,8 +25,31 @@
 
 package juno.model.data.score;
 
-public interface InterfaceCounterEnhancer {
+import juno.model.data.goals.Goal;
 
-    void increase();
+/**
+ * @author Simone Gentili
+ */
+public class Initializer {
+
+    // Builds an Initializer object.
+    private Initializer() {}
+
+    public static void initialize() {
+        // Components.
+        // GamesWonCounter.
+        GamesWonCounter gamesWonCounter = GamesWonCounter.getInstance();
+
+        // LostGamesCounter.
+        LostGamesCounter lostGamesCounter = LostGamesCounter.getInstance();
+
+        ////////////////////////////////////////////////////////////////////
+
+        // Observer / Observable connections.
+        // Games won goals case.
+        Goal.getGamesWonGoals().forEach(gamesWonCounter::addObserver);
+        // Lost games goals case.
+        Goal.getLostGamesGoals().forEach(lostGamesCounter::addObserver);
+    }
 
 }

@@ -41,8 +41,6 @@ import java.util.Map;
  */
 public abstract class AbstractCounter
         implements
-        InterfaceCounterEnhancer,
-        InterfaceCountProvider,
         Observable,
         Configurable,
         Exportable {
@@ -51,18 +49,20 @@ public abstract class AbstractCounter
     public static final String COUNT_KEY = "count";
 
     // The count.
-    private int count;
+    int count;
 
     // The Observers List.
     private final List<Observer> observerList = new ArrayList<>();
 
-    @Override
+    /** Increase the counter. */
     public void increase() {
-        count ++;
-        updateAll();
+        count++;
     }
 
-    @Override
+    /**
+     * Returns the value of the counter.
+     * @return An integer value.
+     */
     public int getCount() {
         return count;
     }
@@ -87,7 +87,7 @@ public abstract class AbstractCounter
         if(map.containsKey(COUNT_KEY)) {
             Object object = map.get(COUNT_KEY);
             if(object instanceof Integer value) {
-                this.setCount(value);
+                setCount(value);
                 updateAll();
             } else throw new IllegalArgumentException(
                     "Invalid object type: " + object.getClass() +
@@ -99,7 +99,7 @@ public abstract class AbstractCounter
     @Override
     public Map<String, Object> exportData() {
         Map<String, Object> map = new HashMap<>();
-        map.put(COUNT_KEY, getCount());
+        map.put(COUNT_KEY, count);
         return map;
     }
 

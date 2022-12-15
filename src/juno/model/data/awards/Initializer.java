@@ -25,7 +25,7 @@
 
 package juno.model.data.awards;
 
-import juno.model.data.goals.Goals;
+import juno.model.data.goals.Goal;
 import juno.model.data.goals.UserGoals;
 
 import java.util.List;
@@ -45,7 +45,7 @@ public class Initializer {
         UserGoals userGoals = UserGoals.getInstance();
 
         // Adding the goals objects to the UserGoals instance.
-        List.of(Goals.values()).forEach(goal -> userGoals.goals().add(goal));
+        List.of(Goal.values()).forEach(goal -> userGoals.goals().add(goal));
     }
 
 }

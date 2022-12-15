@@ -29,7 +29,8 @@ package juno.model.data.score;
  * @author Simone Gentili
  */
 public class LostGamesCounter
-    extends AbstractCounter {
+    extends AbstractCounter
+    implements InterfaceLostGamesCounter {
 
     // The LostGamesCounter instance.
     private static LostGamesCounter instance;

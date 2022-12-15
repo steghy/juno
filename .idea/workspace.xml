@@ -5,27 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/data/config/goals/sadfhjkasd-goals.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/config/profiles/sadfhjkasd-profile.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/config/scores/sadfhjkasd-games-won.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/config/scores/sadfhjkasd-lost-games.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/data/goals/Initializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/data/io/output/AbstractExporterManagerUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/data/score/Initializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/data/score/InterfaceGamesWonCounter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/init/initializer/ViewInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/init/initializer/ViewInitializer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/AvatarPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/AvatarPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/Initializer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/avatar_frame/AbstractAvatarFramePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/avatar_frame/AvatarFramePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/avatar_frame/DefaultAvatarFrameProvider.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/avatar_frame/InterfaceDefaultAvatarFrameProvider.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/avatar_image/AbstractAvatarImagePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/avatar_image/AvatarImagePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/avatar_image/DefaultAvatarImageProvider.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/avatar_image/InterfaceDefaultAvatarImageProvider.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/main/MainPanelConfigurator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/main/MainPanelConfigurator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/init/initializer/ViewInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/init/initializer/ViewInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/avatar/AvatarPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/avatar/AvatarPanelConfigurator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/main/MainPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/main/MainPanelConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/awards/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/awards/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/goals/Goals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/goals/Goal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/goals/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/goals/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/output/ExitManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/output/ExitManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/output/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/output/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/profile/InterfaceErrorProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/profile/InterfaceErrorProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/profile/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/profile/Profile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/score/AbstractCounter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/score/AbstractCounter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/score/GamesWonCounter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/score/GamesWonCounter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/score/InterfaceCounterEnhancer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/score/InterfaceLostGamesCounter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/score/LostGamesCounter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/score/LostGamesCounter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/util/AbstractObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/util/AbstractObserver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/util/ArgumentsSorter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/util/ArgumentsSorter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/util/Donut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/util/Donut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/util/Observable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/util/Observable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/util/Observer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/util/Observer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/util/PathGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/util/PathGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/util/Researcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/util/Researcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/util/Restorable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/util/Restorable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/score/ScorePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/score/ScorePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,8 +45,8 @@
         <option value="AnnotationType" />
         <option value="Record" />
         <option value="Enum" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>

@@ -231,6 +231,14 @@ public class Profile
     }
 
     @Override
+    public void restore() {
+        profileName = null;
+        name = null;
+        lastName = null;
+        age = null;
+    }
+
+    @Override
     public String toString() {
         return "[" +
                 this.profileName +
@@ -256,14 +264,6 @@ public class Profile
     @Override
     public void updateAll() {
         observerList.forEach(observer -> observer.update(this));
-    }
-
-    @Override
-    public void restore() {
-        profileName = null;
-        name = null;
-        lastName = null;
-        age = null;
     }
 
 }

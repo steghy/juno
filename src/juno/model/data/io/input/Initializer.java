@@ -27,6 +27,7 @@ package juno.model.data.io.input;
 
 import juno.model.data.io.input.configurable.CCompatibilityChecker;
 import juno.model.data.io.input.configurable.CConfigurationFilesProvider;
+import juno.model.data.io.input.reflection.Configurator;
 import juno.model.data.io.input.reflection.RCompatibilityChecker;
 import juno.model.data.io.input.reflection.RConfigurationFilesProvider;
 
@@ -39,44 +40,52 @@ import juno.model.data.io.input.reflection.RConfigurationFilesProvider;
  */
 public class Initializer {
 
-    // Builds the InputPKGInitializer.
+    // Builds an Initializer object.
     private Initializer() {}
 
-    /**
-     * Initialize the entire juno.model.data.io.input
-     * package by connecting the concrete classes to
-     * each other according to their respective dependencies.
-     */
+    /** Initialize the juno.model.data.io.input package. */
     public static void initialize() {
-        // juno.model.data.io.input package.
-        juno.model.data.io.input.
-                InterfacePropertyCopier propertyCopier = juno.model.data.io.input.
-                                                         PropertyCopier.getInstance();
-        juno.model.data.io.input.
-                InterfaceDataImporter jsonDataImporter = juno.model.data.io.input.
-                                                         JSONDataImporter.getInstance();
+        // Components.
+        // PropertyCopier.
+        InterfacePropertyCopier propertyCopier = PropertyCopier.getInstance();
 
-        // juno.model.data.io.input.configurable package.
+        // JsonDataImporter.
+        InterfaceDataImporter jsonDataImporter = JSONDataImporter.getInstance();
+
+        // CCompatibilityChecker.
         CCompatibilityChecker cCompatibilityChecker = CCompatibilityChecker.getInstance();
-        CConfigurationFilesProvider configurableConfigurationFilesProvider = CConfigurationFilesProvider.getInstance();
+
+        // CConfigurationFilesProvider.
+        CConfigurationFilesProvider cConfigurationFilesProvider = CConfigurationFilesProvider.getInstance();
+
+        // RCompatibilityChecker.
+        RCompatibilityChecker rCompatibilityChecker = RCompatibilityChecker.getInstance();
+
+        // RConfigurationFilesProvider.
+        RConfigurationFilesProvider rConfigurationFilesProvider = RConfigurationFilesProvider.getInstance();
+
+        // Configurator.
+        Configurator configurator = Configurator.getInstance();
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        // Connections.
+
+        // CCompatibilityChecker
         cCompatibilityChecker.setImporter(jsonDataImporter);
 
-        configurableConfigurationFilesProvider.setCopier(propertyCopier);
-        configurableConfigurationFilesProvider.setChecker(cCompatibilityChecker);
+        // CConfigurationFilesProvider.
+        cConfigurationFilesProvider.setCopier(propertyCopier);
+        cConfigurationFilesProvider.setChecker(cCompatibilityChecker);
 
-        // juno.model.data.io.input.reflect package.
-        RCompatibilityChecker rCompatibilityChecker = RCompatibilityChecker.getInstance();
-        RConfigurationFilesProvider reflectConfigurableFilesProvider = RConfigurationFilesProvider.getInstance();
-        juno.model.data.io.input.reflection.
-                Configurator configurator = juno.model.data.io.input.reflection.
-                                            Configurator.getInstance();
-
+        // RCompatibilityChecker.
         rCompatibilityChecker.setImporter(jsonDataImporter);
         rCompatibilityChecker.setConfigurator(configurator);
 
-        reflectConfigurableFilesProvider.setCopier(propertyCopier);
-        reflectConfigurableFilesProvider.setChecker(rCompatibilityChecker);
-        reflectConfigurableFilesProvider.setConfigurator(configurator);
+        // RConfigurationFilesProvider.
+        rConfigurationFilesProvider.setCopier(propertyCopier);
+        rConfigurationFilesProvider.setChecker(rCompatibilityChecker);
+        rConfigurationFilesProvider.setConfigurator(configurator);
     }
 
 }

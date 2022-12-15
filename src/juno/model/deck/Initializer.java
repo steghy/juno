@@ -58,9 +58,6 @@ public class Initializer {
         // Deck filler.
         DeckFiller<InterfaceCard>  filler = (DeckFiller<InterfaceCard>) DeckFiller.getInstance();
 
-        // Deck initializer.
-        // DeckInitializer deckInitializer = DeckInitializer.getInstance();
-
         // Mixer.
         Mixer<InterfaceCard> mixer = (Mixer<InterfaceCard>) Mixer.getInstance();
 
@@ -79,11 +76,6 @@ public class Initializer {
         // Deck.
         deck.setDeckFiller(filler);
         deck.setMixer(mixer);
-
-        // Deck initializer
-        // deckInitializer.setDeck(deck);
-        // deckInitializer.setFactory(deckFactory);
-        // deckInitializer.setMixer(mixer);
 
         // Observer / Observable connections.
         deckFactory.addObserver(deck);

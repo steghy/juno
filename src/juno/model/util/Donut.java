@@ -28,12 +28,17 @@ package juno.model.util;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * @author Simone Gentili
+ * @param <T> The type of the Donut elements.
+ */
 public class Donut<T>
         extends ArrayList<T> {
 
-    /* The index of the current selected item */
+    // The index of the current selected item.
     private int index;
-    /* Inverter boolean value */
+
+    // Inverter boolean value.
     private boolean inverted;
 
     /** Builds a Donut object. */
@@ -113,7 +118,13 @@ public class Donut<T>
         } return get(index);
     }
 
+    /**
+     * Returns true if, and only if, this
+     * Donut object is inverted.
+     * @return A boolean value.
+     */
     public boolean isInverted() {
         return inverted;
     }
+
 }

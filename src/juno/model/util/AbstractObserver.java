@@ -25,8 +25,6 @@
 
 package juno.model.util;
 
-import juno.model.util.Observable;
-import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;

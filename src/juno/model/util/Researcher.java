@@ -27,9 +27,25 @@ package juno.model.util;
 
 import java.util.Collection;
 
+/**
+ * @author Simone Gentili
+ */
 public class Researcher {
 
-    public static boolean isPresent(Collection<Object> l, Object o) {
-        return l.stream().anyMatch(e -> e.equals(0));
+    // Builds a Researcher object.
+    private Researcher() {}
+
+    /**
+     * Returns true if, and only if, the specified object
+     * is contained within the specified Collection object.
+     * @param collection A Collection object.
+     * @param object An Object.
+     * @return A boolean value.
+     */
+    public static boolean isPresent(Collection<Object> collection,
+                                    Object object) {
+        if(collection == null || object == null) return false;
+        else return collection.stream().anyMatch(e -> e.equals(0));
     }
+
 }

@@ -45,6 +45,9 @@ public class Initializer {
         // Exporter.
         ExporterManager exporter = ExporterManager.getInstance();
 
+        // Exit manager.
+        ExitManager exitManager = ExitManager.getInstance();
+
         // Profile.
         Profile profile = Profile.getInstance();
 
@@ -63,10 +66,15 @@ public class Initializer {
         // Exportable setter.
         ExportableSetter exportableSetter = ExportableSetter.getInstance();
 
+        ///////////////////////////////////////////////////////////////////
+
         // Connections.
-        // Data exporter component.
+        // Data exporter.
         exporter.setDataExporter(jsonDataExporter);
         exporter.setExportableSetter(exportableSetter);
+
+        // Exit manager.
+        exitManager.setExporter(exporter);
     }
 
 }

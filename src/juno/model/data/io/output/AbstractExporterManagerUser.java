@@ -23,70 +23,34 @@
  * SOFTWARE.
  */
 
-package juno.model.data.goals;
+package juno.model.data.io.output;
 
-import juno.model.util.Observable;
-import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Simone Gentili
  */
-public enum Goals
-        implements
-        InterfaceGoal,
-        Observable {
+public abstract class AbstractExporterManagerUser {
 
-    FIRST_MATCH_WON,
-    FIRST_MATCH_LOSE,
+    // The exporter manager.
+    private InterfaceExporterManager exporter;
 
-    TEN_MATCH_WON,
-    TEN_MATCH_LOSE,
-
-    FIFTY_MATCH_WON,
-    FIFTY_MATCH_LOSE,
-
-    ONE_HUNDRED_MATCH_WON,
-    ONE_HUNDRED_MATCH_LOSE;
-
-    // The Observers List.
-    private final List<Observer> observerList;
-
-    private boolean unlock = false;
-
-    @Override
-    public void unlock() {
-        if(unlock) throw new IllegalArgumentException(
-                "This goal is already unlocked.");
-        unlock = true;
-        updateAll();
+    /**
+     * Sets the exporter manager of this object.
+     * @param exporter An InterfaceExporterManager object.
+     */
+    public void setExporter(@NotNull InterfaceExporterManager exporter) {
+        this.exporter = exporter;
     }
 
-    @Override
-    public boolean isReached() {
-        return unlock;
-    }
-
-    Goals() {
-        observerList = new ArrayList<>();
-    }
-
-    @Override
-    public void addObserver(@NotNull Observer observer) {
-        observerList.add(observer);
-    }
-
-    @Override
-    public void removeObserver(@NotNull Observer observer) {
-        observerList.remove(observer);
-    }
-
-    @Override
-    public void updateAll() {
-        observerList.forEach(observer -> observer.update(this));
+    /**
+     * Returns the exporter manager of this object.
+     * @return An InterfaceExporterManager object.
+     */
+    @Nullable
+    public InterfaceExporterManager getExporter() {
+        return exporter;
     }
 
 }
