@@ -25,6 +25,9 @@
 
 package juno.model.data.profile.profile;
 
+/**
+ * @author Simone Gentili
+ */
 public class AgeProvider
         implements InterfaceAgeProvider {
 

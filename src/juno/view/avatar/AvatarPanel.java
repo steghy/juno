@@ -80,6 +80,7 @@ public class AvatarPanel
         panel.setOpaque(false);
         panel.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
+        Dimension dimension = new Dimension(50,50);
 
         // Avatar image.
         gbc.gridx = 0;
@@ -91,6 +92,7 @@ public class AvatarPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
         avatarImage.setOpaque(false);
+        avatarName.setPreferredSize(dimension);
         panel.add(avatarImage, gbc);
 
         // Avatar name.
@@ -105,10 +107,12 @@ public class AvatarPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
         avatarName.setOpaque(false);
+        avatarName.setPreferredSize(dimension);
         panel.add(avatarName, gbc);
 
         // Avatar frame.
         avatarFrame.setOpaque(false);
+        avatarFrame.setPreferredSize(dimension);
         avatarFrame.setLayout(new BorderLayout());
         avatarFrame.add(panel, BorderLayout.CENTER);
         add(avatarFrame);

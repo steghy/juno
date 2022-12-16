@@ -27,6 +27,8 @@ package juno.model.data.score;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Locale;
+
 /**
  * @author Simone Gentili
  */
@@ -41,7 +43,7 @@ public class GamesWonFileNameBuilder {
     public static String build(@NotNull String profileName) {
         if(profileName.length() == 0) throw new IllegalArgumentException(
                 "Invalid profile name length.");
-        return profileName + ending;
+        return profileName.toLowerCase() + ending;
     }
 
 }

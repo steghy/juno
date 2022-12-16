@@ -25,7 +25,12 @@
 
 package juno.controller.pre_access;
 
-import juno.model.data.profile.profile.Profile;
+import juno.model.data.avatar.AvatarFrameSetter;
+import juno.model.data.avatar.AvatarImageSetter;
+import juno.model.data.awards.avatar.AvatarImage;
+import juno.model.data.awards.frame.AvatarFrame;
+import juno.model.data.profile.profile.InterfaceProfileNameSetter;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,6 +42,9 @@ import java.util.Objects;
 public class GuestProfileCreator
         extends AbstractRequestResolver
         implements ActionListener {
+
+    // The profile name setter.
+    private InterfaceProfileNameSetter profileNameSetter;
 
     // The GuestProfileCreator instance.
     private static GuestProfileCreator instance;
@@ -53,6 +61,14 @@ public class GuestProfileCreator
         return instance;
     }
 
+    /**
+     * Sets the profile name provider of this object.
+     * @param profileNameSetter An InterfaceProfileNameProvider object.
+     */
+    public void setProfileNameSetter(@NotNull InterfaceProfileNameSetter profileNameSetter) {
+        this.profileNameSetter = profileNameSetter;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         resolve();
@@ -60,7 +76,9 @@ public class GuestProfileCreator
 
     @Override
     public void resolve() {
-        Profile.getInstance().setProfileName(Profile.GUEST_NAME);
+        AvatarFrameSetter.getInstance().setAvatarFrame(AvatarFrame.GREY_FRAME);
+        AvatarImageSetter.getInstance().setAvatarImage(AvatarImage.AVATAR_IMAGE_1);
+        profileNameSetter.setProfileName("Guest");
         Objects.requireNonNull(getExporterManager()).export();
         Objects.requireNonNull(getPanelChanger()).changePanel(getCardPanel(), getPanelKey());
     }

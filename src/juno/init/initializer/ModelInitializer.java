@@ -43,6 +43,9 @@ public class ModelInitializer {
 
         // juno.model.data.io.output package.
         juno.model.data.io.output.Initializer.initialize();
+
+        // juno.model.data.avatar package.
+        juno.model.data.avatar.Initializer.initialize();
     }
 
 }

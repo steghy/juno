@@ -47,7 +47,7 @@ public class NameProvider
     }
 
     @Override
-    public String name() {
+    public String getName() {
         return Profile.getInstance().name;
     }
 

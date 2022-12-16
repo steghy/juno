@@ -28,10 +28,9 @@ package juno.controller.pre_access;
 import juno.controller.util.PanelChanger;
 import juno.model.data.io.input.configurable.CCompatibilityChecker;
 import juno.model.data.io.output.ExporterManager;
+import juno.model.data.profile.profile.ProfileNameSetter;
 import juno.view.pages.card.TopCardPanel;
 import juno.view.pages.pre_access.registration.menu.MenuPanel;
-
-import java.awt.*;
 
 /**
  * @author Simone Gentili
@@ -74,6 +73,9 @@ public class Initializer {
         // GuestProfileCreator.
         GuestProfileCreator guestProfileCreator = GuestProfileCreator.getInstance();
 
+        // Profile name setter.
+        ProfileNameSetter profileNameSetter = ProfileNameSetter.getInstance();
+
         /////////////////////////////////////////////////////////////////////////
 
         // Connections.
@@ -96,6 +98,7 @@ public class Initializer {
         guestProfileCreator.setPanelChanger(panelChanger);
         guestProfileCreator.setCardPanel(topCardPanel);
         guestProfileCreator.setPanelKey(panelKey);
+        guestProfileCreator.setProfileNameSetter(profileNameSetter);
     }
 
 }

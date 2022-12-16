@@ -31,6 +31,6 @@ package juno.model.data.profile.profile;
 @FunctionalInterface
 public interface InterfaceNameProvider {
 
-    String name();
+    String getName();
 
 }

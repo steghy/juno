@@ -27,6 +27,9 @@ package juno.model.data.profile.profile;
 
 import juno.model.util.AbstractObservable;
 
+/**
+ * @author Simone Gentili
+ */
 public class AgeSetter
         extends AbstractObservable
         implements InterfaceAgeSetter {
