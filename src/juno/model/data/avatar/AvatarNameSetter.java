@@ -25,15 +25,17 @@
 
 package juno.model.data.avatar;
 
-import juno.model.util.AbstractObserver;
+import juno.model.data.profile.InterfaceProfile;
+import juno.model.util.AbstractObservable;
+import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Simone Gentili
  */
 public class AvatarNameSetter
-        extends AbstractObserver
-        implements InterfaceAvatarNameSetter {
+        extends AbstractObservable
+        implements InterfaceAvatarNameSetter, Observer {
 
     // The AvatarNameSetter instance.
     private static AvatarNameSetter instance;
@@ -54,6 +56,15 @@ public class AvatarNameSetter
     public void setAvatarName(@NotNull String name) {
         Avatar.getInstance().name = name;
         updateAll();
+    }
+
+    @Override
+    public void update(@NotNull Object object) {
+        if(object instanceof InterfaceProfile profile) {
+            setAvatarName(profile.profileName());
+        } else throw new IllegalArgumentException(
+                "Invalid object type: " + object.getClass() +
+                        ". InterfaceProfile expected.");
     }
 
 }

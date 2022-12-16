@@ -5,19 +5,205 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/juno/model/data/settings/UserSettings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/config/profiles/simoncino-profile.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/config/scores/Simoncino-games-won.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/config/scores/Simoncino-lost-games.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/avatar/DefaultAvatarNameProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/avatar/InterfaceDefaultAvatarNameProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/pages/score/avatar_frame/AvatarFramesPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/pages/score/avatar_frame/AvatarFramesPanelConfigurator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/pages/score/avatar_image/AvatarImagesPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/pages/score/avatar_image/AvatarImagesPanelConfigurator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/pages/score/menu/MenuPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/pages/score/menu/MenuPanelConfigurator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/pages/score/title/TitlePanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/pages/score/title/TitlePanelConfigurator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/awards/Initializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/awards/avatar/AvatarImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/awards/avatar/AvatarImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/awards/frame/AvatarFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/awards/frame/AvatarFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/goals/Goal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/goals/Goal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/goals/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/goals/Initializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/goals/InterfaceUserGoals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/goals/InterfaceUserGoals.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/goals/UserGoals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/goals/UserGoals.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/goals/UserGoalsFileNameBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/goals/UserGoalsFileNameBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/55-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/Steghy-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/adfasdf-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/adfasdg-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/asdfas-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/asdfasd-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/asdfasdf-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/asdfasfd-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/asdffas-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/bc-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/dfgsdfg-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/dfsafasdd-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/dfsgsdfg-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/dskjfsadlk-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/eheh-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/fasdf-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/fasdfas-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/fgsdf-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/giggi-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/gsdgfd-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/hbb-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/hhdfh-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/jjhklh-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/nn-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/sadfasdf-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/sadfhjkasd-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/safasdf-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/sdafas-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/sdafasd-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/sdfa-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/goals/sfdgsdfg-goals.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/55-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/adfasdf-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/adfasdg-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/asdfas-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/asdfasd-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/asdfasdf-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/asdfasfd-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/asdffas-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/bc-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/dfgsdfg-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/dfsafasdd-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/dfsgsdfg-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/dskjfsadlk-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/eheh-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/fasdf-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/fasdfas-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/fgsdf-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/giggi-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/gsdgfd-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/hbb-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/hhdfh-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/jjhklh-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/nn-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/sadfasdf-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/sadfhjkasd-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/safasdf-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/sdafas-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/sdafasd-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/sdfa-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/sfdgsdfg-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/steghy-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/55-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/55-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/Steghy-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/Steghy-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/adfasdf-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/adfasdf-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/adfasdg-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/adfasdg-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/asdfas-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/asdfas-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/asdfasd-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/asdfasd-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/asdfasdf-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/asdfasdf-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/asdfasfd-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/asdfasfd-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/asdffas-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/asdffas-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/bc-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/bc-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/dfgsdfg-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/dfgsdfg-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/dfsafasdd-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/dfsafasdd-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/dfsgsdfg-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/dfsgsdfg-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/dskjfsadlk-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/dskjfsadlk-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/eheh-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/eheh-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/fasdf-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/fasdf-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/fasdfas-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/fasdfas-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/fgsdf-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/fgsdf-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/giggi-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/giggi-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/gsdgfd-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/gsdgfd-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/hbb-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/hbb-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/hhdfh-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/hhdfh-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/jjhklh-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/jjhklh-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/nn-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/nn-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/sadfasdf-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/sadfasdf-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/sadfhjkasd-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/sadfhjkasd-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/safasdf-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/safasdf-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/sdafas-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/sdafas-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/sdafasd-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/sdafasd-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/sdfa-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/sdfa-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/sfdgsdfg-games-won.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/scores/sfdgsdfg-lost-games.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/controller/ExitAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/controller/ExitAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/init/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/init/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/init/initializer/ModelInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/init/initializer/ModelInitializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/init/initializer/ViewInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/init/initializer/ViewInitializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/avatar/Avatar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/avatar/Avatar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/avatar/AvatarFrameSetter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/avatar/AvatarFrameSetter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/avatar/AvatarImageSetter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/avatar/AvatarImageSetter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/avatar/AvatarNameSetter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/avatar/AvatarNameSetter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/awards/Initializer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/awards/avatar/AvatarImage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/awards/avatar/AvatarImage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/awards/frame/AvatarFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/awards/frame/AvatarFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/goals/Goals.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/goals/Initializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/goals/Initializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/goals/InterfaceUserGoals.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/goals/InterfaceUserGoals.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/goals/UserGoals.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/goals/UserGoals.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/goals/UserGoalsFileNameBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/goals/UserGoalsFileNameBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/Initializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/Initializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/output/ExitManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/output/ExitManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/output/ExportableSetter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/output/ExportableSetter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/output/Initializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/output/Initializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/profile/Initializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/profile/Initializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/profile/InterfaceProfiler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/profile/Profile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/profile/Profile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/score/AbstractCounter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/score/AbstractCounter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/score/GamesWonCounter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/score/GamesWonCounter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/score/InterfaceCounterEnhancer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/score/LostGamesCounter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/score/LostGamesCounter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/Initializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/Initializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/util/AbstractObserver.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/util/ArgumentsSorter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/util/ArgumentsSorter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/util/Donut.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/util/Donut.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/util/Observer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/util/Observer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/util/PathGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/util/PathGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/util/Researcher.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/util/Researcher.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/AvatarPanelConfigurator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/AvatarPanelConfigurator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/pre_access/access/menu/MenuPanelConfigurator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/pre_access/access/menu/MenuPanelConfigurator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/score/ScorePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/score/ScorePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/score/ScorePanelConfigurator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/score/ScorePanelConfigurator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/score/ScorePanelInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/score/ScorePanelInitializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/ExitAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/ExitAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/init/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/init/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/init/initializer/ModelInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/init/initializer/ModelInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/init/initializer/ViewInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/init/initializer/ViewInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/avatar/Avatar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/avatar/Avatar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/avatar/AvatarFrameSetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/avatar/AvatarFrameSetter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/avatar/AvatarImageSetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/avatar/AvatarImageSetter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/avatar/AvatarNameSetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/avatar/AvatarNameSetter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/output/ExportableSetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/output/ExportableSetter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/score/AbstractCounter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/score/AbstractCounter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/score/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/score/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/profile/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/profile/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/profile/InterfaceProfiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/profile/InterfaceProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/profile/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/profile/Profile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/profile/ProfileFileNameBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/profile/ProfileFileNameBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/score/LostGamesFileNameBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/score/LostGamesFileNameBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/settings/UserSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/settings/UserSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/util/AbstractObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/util/AbstractObservable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/util/PathGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/util/PathGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/avatar/AvatarPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/avatar/AvatarPanelConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/pre_access/access/menu/MenuPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/pre_access/access/menu/MenuPanelConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/score/ScorePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/score/ScorePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/score/ScorePanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/score/ScorePanelConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/score/ScorePanelInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/score/ScorePanelInitializer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,11 +273,11 @@
       <recent name="$PROJECT_DIR$/src/juno/view/pages/ngame/splayer" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="juno.view.pages.score.title" />
+      <recent name="juno.view.pages.score.menu" />
+      <recent name="juno.view.pages.score.avatar_image" />
       <recent name="juno.view.avatar" />
       <recent name="juno.view.avatar.frame_image" />
-      <recent name="juno.view.awards.frames.factory" />
-      <recent name="juno.view.awards.avatars.factory" />
-      <recent name="juno.model.data.score" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">

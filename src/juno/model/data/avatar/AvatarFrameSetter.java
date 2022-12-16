@@ -26,7 +26,7 @@
 package juno.model.data.avatar;
 
 import juno.model.data.awards.frame.InterfaceAvatarFrame;
-import juno.model.util.AbstractObserver;
+import juno.model.util.AbstractObservable;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -34,7 +34,7 @@ import org.jetbrains.annotations.NotNull;
  * @param <T> The type of the avatar frame.
  */
 public class AvatarFrameSetter
-        extends AbstractObserver
+        extends AbstractObservable
         implements InterfaceAvatarFrameSetter<InterfaceAvatarFrame> {
 
     // The AvatarFrameSetter instance.

@@ -38,10 +38,7 @@ import java.util.Map;
  * @author Simone Gentili
  */
 public class Avatar
-        implements
-        InterfaceAvatarProvider<InterfaceAvatarImage, InterfaceAvatarFrame>,
-        Configurable,
-        Exportable {
+        implements InterfaceAvatarProvider<InterfaceAvatarImage, InterfaceAvatarFrame>, Configurable, Exportable {
 
     /** The avatar name key */
     public static final String NAME_KEY = "name";

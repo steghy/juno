@@ -63,13 +63,16 @@ public class ExportableSetter
     public void setExportable() {
         // Exportable components.
         Map<Exportable, String> map = ExporterManager.getInstance().exportableMap();
+
         // Profile case.
         String profileName = Objects.requireNonNull(Profile.getInstance().profileName());
         map.put(Profile.getInstance(), PathGenerator.generate(Directories.PROFILES.absolutePath(),
                 ProfileFileNameBuilder.build(profileName)));
+
         // Games won case.
         map.put(GamesWonCounter.getInstance(), PathGenerator.generate(Directories.SCORE.absolutePath(),
                 GamesWonFileNameBuilder.build(profileName)));
+
         // Lost games case.
         map.put(LostGamesCounter.getInstance(), PathGenerator.generate(Directories.SCORE.absolutePath(),
                 LostGamesFileNameBuilder.build(profileName)));

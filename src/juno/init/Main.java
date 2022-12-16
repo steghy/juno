@@ -46,8 +46,7 @@ public class Main {
     public static void main(String[] args) {
         Repository.setRepository();
         try {
-
-            // Initialization.
+            // Pre initialization.
             ModelInitializer.initialize();
             ControllerInitializer.initialize();
             ViewInitializer.initialize();
@@ -62,12 +61,6 @@ public class Main {
             // Frame.
             Frame frame = Frame.getInstance();
             frame.setVisible(true);
-
-            TimeUnit.SECONDS.sleep(15);
-
-            AvatarNameSetter.getInstance().setAvatarName("New name");
-            AvatarImageSetter.getInstance().setAvatarImage(AvatarImage.AVATAR_IMAGE_4);
-            AvatarFrameSetter.getInstance().setAvatarFrame(AvatarFrame.BLUE_FRAME);
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "An unknown error has occurred. " +

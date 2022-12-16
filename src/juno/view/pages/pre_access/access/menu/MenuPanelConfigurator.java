@@ -73,8 +73,7 @@ public class MenuPanelConfigurator {
         createAnAccountButton.addActionListener(new ChangePanelAction(
                 PreAccessCardPanel.getInstance(), PreAccessCardPanel.REGISTRATION_PANEL));
         continueWithoutAnAccountButton.addActionListener(null);
-        exitButton.addActionListener(new ExitAction(
-                ExitManager.getInstance()));
+        exitButton.addActionListener(new ExitAction(null));
 
         // Border setting.
         RoundedBorder insideBorder = new RoundedBorder(

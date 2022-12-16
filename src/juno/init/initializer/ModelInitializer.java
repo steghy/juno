@@ -41,9 +41,6 @@ public class ModelInitializer {
         // juno.model.data.profile package.
         juno.model.data.profile.Initializer.initialize();
 
-        // juno.model.data.awards package.
-        juno.model.data.awards.Initializer.initialize();
-
         // juno.model.data.io.output package.
         juno.model.data.io.output.Initializer.initialize();
     }

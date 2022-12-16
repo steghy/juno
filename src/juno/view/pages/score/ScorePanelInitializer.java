@@ -25,6 +25,9 @@
 
 package juno.view.pages.score;
 
+import juno.view.pages.score.menu.MenuPanelConfigurator;
+import juno.view.pages.score.title.TitlePanelConfigurator;
+
 /**
  * @author Simone Gentili
  */
@@ -34,6 +37,13 @@ public class ScorePanelInitializer {
     private ScorePanelInitializer() {}
 
     /** Initialize the ScorePanelInitializer. */
-    public static void initialize() {}
+    public static void initialize() {
+        // Components configurations.
+        MenuPanelConfigurator.configure();
+        TitlePanelConfigurator.configure();
+
+        // Main component configuration.
+        ScorePanelConfigurator.configure();
+    }
 
 }

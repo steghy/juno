@@ -39,6 +39,8 @@ public class ProfileFileNameBuilder {
     private ProfileFileNameBuilder() {}
 
     public static String build(@NotNull String profileName) {
+        if(profileName.length() == 0) throw new IllegalArgumentException(
+                "Invalid profile name length");
         return profileName.toLowerCase() + ending;
     }
 

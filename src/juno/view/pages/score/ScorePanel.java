@@ -25,13 +25,16 @@
 
 package juno.view.pages.score;
 
-import juno.view.panels.AbstractFourthComponent;
+import juno.view.panels.AbstractThirdComponent;
+
+import java.awt.*;
+import java.util.Objects;
 
 /**
  * @author Simone Gentili
  */
 public class ScorePanel
-        extends AbstractFourthComponent {
+        extends AbstractThirdComponent {
 
     // The ScorePanel instance.
     private static ScorePanel instance;
@@ -49,6 +52,43 @@ public class ScorePanel
     }
 
     /** Initialize the ScorePanel instance. */
-    public void init() {}
+    public void init() {
+        setOpaque(false);
+        setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        // Title panel.
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(0,0,17,0);
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
+        this.add(Objects.requireNonNull(getFirstComponent()), gbc);
+
+        // Menu panel.
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(17,0,17,0);
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
+        this.add(Objects.requireNonNull(getSecondComponent()), gbc);
+
+        // Avatar panel.
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(17,0,17,0);
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
+        this.add(Objects.requireNonNull(getThirdComponent()), gbc);
+    }
 
 }

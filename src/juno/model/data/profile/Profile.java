@@ -41,7 +41,7 @@ import java.util.*;
  */
 public class Profile
         extends AbstractProfile
-        implements InterfaceProfiler, Configurable, Exportable, Observable, Restorable {
+        implements InterfaceProfile, Configurable, Exportable, Observable, Restorable {
 
     public static final int MAXIMUM_LENGTH = 15;
     public static final int MAXIMUM_AGE = 150;
@@ -168,6 +168,7 @@ public class Profile
         if(!Characters.isAlphaNumeric(profileName)) throw new IllegalArgumentException(
                 "alphanumeric characters only");
         this.profileName = profileName;
+        updateAll();
     }
 
     /**
@@ -183,6 +184,7 @@ public class Profile
         if(Characters.IsNotAlpha(name)) throw new IllegalArgumentException(
                 "alphabetic characters only");
         this.name = name;
+        updateAll();
     }
 
     /**
@@ -198,6 +200,7 @@ public class Profile
         if(Characters.IsNotAlpha(lastName)) throw new IllegalArgumentException(
                 "alphabetic characters only");
         this.lastName = lastName;
+        updateAll();
     }
 
     /**
@@ -210,6 +213,7 @@ public class Profile
         if(age > MAXIMUM_AGE) throw new IllegalArgumentException(
                 "must be less than 150");
         this.age = age;
+        updateAll();
     }
 
     /**

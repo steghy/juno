@@ -30,16 +30,28 @@ import juno.model.data.io.output.InterfaceExitManager;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
-public class ExitAction extends AbstractAction {
+/**
+ * @author Simone Gentili
+ */
+public class ExitAction
+        extends AbstractAction {
 
-    private InterfaceExitManager exitManager;
+    // The exit manager.
+    private final InterfaceExitManager exitManager;
 
+    /**
+     * Builds an ExitAction with the specified
+     * exit manager.
+     * @param exitManager An InterfaceExitManager object.
+     */
     public ExitAction(InterfaceExitManager exitManager) {
         this.exitManager = exitManager;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        exitManager.exit();
+        if(exitManager == null) System.exit(0);
+        else exitManager.exit();
     }
+
 }

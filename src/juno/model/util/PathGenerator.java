@@ -35,14 +35,12 @@ public class PathGenerator {
 	// Builds a PathGenerator object.
 	private PathGenerator() {}
 
-	@NotNull
 	public static String generate(@NotNull String parent,
 								  @NotNull String fileName) {
 		return parent.concat(System.getProperty("file.separator")).concat(fileName);
 	}
 
-	@NotNull
-	public static String generate(NotNull String fileName) {
+	public static String generate(@NotNull String fileName) {
 		return System.getProperty("user.dir")
 				.concat(System.getProperty("file.separator")
 						.concat(fileName));

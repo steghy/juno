@@ -48,8 +48,9 @@ public class AvatarPanelConfigurator {
     public static void configure(@NotNull AvatarPanel avatarPanel) {
         // Avatar name component.
         JLabel avatarName = new JLabel();
-        avatarPanel.setFont(new Font(Font.DIALOG, Font.ITALIC, 12));
-        avatarPanel.setForeground(Color.WHITE);
+        avatarName.setFont(new Font(Font.DIALOG, Font.ITALIC, 12));
+        avatarName.setForeground(Color.WHITE);
+        avatarName.setText(DefaultAvatarNameProvider.getInstance().avatarName());
 
         // Main component connections.
         avatarPanel.setAvatarFrame(DefaultAvatarFrameProvider.getInstance().getDefaultAvatarFrame());
