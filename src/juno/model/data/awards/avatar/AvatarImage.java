@@ -37,19 +37,33 @@ import java.util.List;
  * @author Simone Gentili
  */
 public enum AvatarImage
-        implements
-        InterfaceAvatarImage,
-        Observable,
-        Observer {
+        implements InterfaceAvatarImage, Observable, Observer {
 
+    /** The default avatar image. */
     AVATAR_IMAGE_1,
+
+    /** The avatar image 2. */
     AVATAR_IMAGE_2,
+
+    /** The avatar image 3. */
     AVATAR_IMAGE_3,
+
+    /** The avatar image 4. */
     AVATAR_IMAGE_4,
+
+    /** The avatar image 5. */
     AVATAR_IMAGE_5,
+
+    /** The avatar image 6. */
     AVATAR_IMAGE_6,
+
+    /** The avatar image 7. */
     AVATAR_IMAGE_7,
+
+    /** The avatar image 8. */
     AVATAR_IMAGE_8,
+
+    /** The avatar image 9. */
     AVATAR_IMAGE_9;
 
     // The Observers List.
@@ -58,7 +72,7 @@ public enum AvatarImage
     // Unlock boolean value.
     private boolean unlock = false;
 
-
+    // Builds an AvatarImage object.
     AvatarImage() {
         this.observerList = new ArrayList<>();
     }
@@ -92,10 +106,9 @@ public enum AvatarImage
     }
 
     @Override
-    public void update(Object object) {
-        if(object instanceof InterfaceGoal goal) {
-
-        } else throw new IllegalArgumentException(
+    public void update(@NotNull Object object) {
+        if(object instanceof InterfaceGoal) unlock();
+        else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceGoal type expected.");
     }

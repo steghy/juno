@@ -5,32 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/juno/model/data/io/output/AbstractExporterManagerUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/data/score/Initializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/data/score/InterfaceGamesWonCounter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/model/data/settings/UserSettings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/awards/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/awards/Initializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/goals/Goals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/goals/Goal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/awards/Initializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/awards/avatar/AvatarImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/awards/avatar/AvatarImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/awards/frame/AvatarFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/awards/frame/AvatarFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/goals/Goal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/goals/Goal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/model/data/goals/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/goals/Initializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/Initializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/output/ExitManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/output/ExitManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/output/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/output/Initializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/profile/InterfaceErrorProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/profile/InterfaceErrorProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/profile/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/profile/Profile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/goals/InterfaceUserGoals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/goals/InterfaceUserGoals.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/goals/UserGoals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/goals/UserGoals.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/goals/UserGoalsFileNameBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/goals/UserGoalsFileNameBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/output/ExportableSetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/output/ExportableSetter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/model/data/score/AbstractCounter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/score/AbstractCounter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/score/GamesWonCounter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/score/GamesWonCounter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/score/InterfaceCounterEnhancer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/score/InterfaceLostGamesCounter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/score/LostGamesCounter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/score/LostGamesCounter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/Initializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/util/AbstractObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/util/AbstractObserver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/util/ArgumentsSorter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/util/ArgumentsSorter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/util/Donut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/util/Donut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/util/Observable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/util/Observable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/util/Observer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/util/Observer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/util/PathGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/util/PathGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/util/Researcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/util/Researcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/util/Restorable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/util/Restorable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/score/ScorePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/score/ScorePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/score/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/score/Initializer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,8 +32,8 @@
         <option value="AnnotationType" />
         <option value="Record" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -71,20 +58,20 @@
     <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/simone/Documents/codes/juno-project/src/juno/model/subjects/temp&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.2919922&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.29955947&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "/home/simone/Documents/codes/juno-project/src/juno/model/subjects/temp",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.2919922",
+    "project.structure.side.proportion": "0.29955947",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="juno.model.subjects.temp.ai.examiner" />

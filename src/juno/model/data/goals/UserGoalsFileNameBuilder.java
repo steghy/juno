@@ -30,6 +30,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * @author Simone Gentili
  */
+@Deprecated
 public class UserGoalsFileNameBuilder {
 
     /** The ending String object. */
@@ -38,6 +39,12 @@ public class UserGoalsFileNameBuilder {
     // Builds an UserGoalsFileNameBuilder object.
     private UserGoalsFileNameBuilder() {}
 
+    /**
+     * Returns the complete file name for the
+     * user goals file.
+     * @param profileName A String object.
+     * @return A String object.
+     */
     public static String build(@NotNull String profileName) {
         return profileName + ending;
     }

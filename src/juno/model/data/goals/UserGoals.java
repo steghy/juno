@@ -37,6 +37,7 @@ import java.util.Map;
 /**
  * @author Simone Gentili
  */
+@Deprecated
 public class UserGoals
         implements
         InterfaceUserGoals,

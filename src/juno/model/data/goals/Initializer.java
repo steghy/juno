@@ -38,20 +38,32 @@ public class Initializer {
 
     /** Initialize the goals and they relative awards. */
     public static void initialize() {
-
         // First match won.
         Goal.FIRST_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_2);
         Goal.FIRST_MATCH_WON.addObserver(AvatarFrame.GREY_FRAME);
 
-        // Ten match won.
-        Goal.TEN_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_3);
-        Goal.TEN_MATCH_WON.addObserver(AvatarFrame.GREY_FRAME);
-
         // First match lose.
-        Goal.FIRST_MATCH_LOSE.addObserver(AvatarFrame.BLUE_FRAME);
+        Goal.FIRST_MATCH_LOSE.addObserver(AvatarImage.AVATAR_IMAGE_3);
+
+        // Ten match won.
+        Goal.TEN_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_4);
+        Goal.TEN_MATCH_WON.addObserver(AvatarFrame.BLUE_FRAME);
+
+        // Ten match lose.
+        Goal.TEN_MATCH_LOSE.addObserver(AvatarImage.AVATAR_IMAGE_5);
+
+        // Fifty match won.
+        Goal.FIFTY_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_6);
+        Goal.FIFTY_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_7);
+
+        // Fifty match lose.
+        Goal.FIFTY_MATCH_LOSE.addObserver(AvatarImage.AVATAR_IMAGE_8);
 
         // One hundred match won.
-        Goal.ONE_HUNDRED_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_9);
+        Goal.ONE_HUNDRED_MATCH_WON.addObserver(AvatarFrame.GOLD_FRAME);
+
+        // One hundred match lose.
+        Goal.ONE_HUNDRED_MATCH_LOSE.addObserver(AvatarImage.AVATAR_IMAGE_9);
     }
 
 }

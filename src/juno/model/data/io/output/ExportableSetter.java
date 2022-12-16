@@ -26,8 +26,6 @@
 package juno.model.data.io.output;
 
 import juno.init.Directories;
-import juno.model.data.goals.UserGoals;
-import juno.model.data.goals.UserGoalsFileNameBuilder;
 import juno.model.data.profile.Profile;
 import juno.model.data.profile.ProfileFileNameBuilder;
 import juno.model.data.score.GamesWonCounter;
@@ -66,17 +64,15 @@ public class ExportableSetter
         // Exportable components.
         Map<Exportable, String> map = ExporterManager.getInstance().exportableMap();
         // Profile case.
+        String profileName = Objects.requireNonNull(Profile.getInstance().profileName());
         map.put(Profile.getInstance(), PathGenerator.generate(Directories.PROFILES.absolutePath(),
-                ProfileFileNameBuilder.build(Objects.requireNonNull(Profile.getInstance().profileName()))));
-        // User awards case.
-        map.put(UserGoals.getInstance(), PathGenerator.generate(Directories.GOALS.absolutePath(),
-                UserGoalsFileNameBuilder.build(Objects.requireNonNull(Profile.getInstance().profileName()))));
+                ProfileFileNameBuilder.build(profileName)));
         // Games won case.
         map.put(GamesWonCounter.getInstance(), PathGenerator.generate(Directories.SCORE.absolutePath(),
-                GamesWonFileNameBuilder.build(Objects.requireNonNull(Profile.getInstance().profileName()))));
+                GamesWonFileNameBuilder.build(profileName)));
         // Lost games case.
         map.put(LostGamesCounter.getInstance(), PathGenerator.generate(Directories.SCORE.absolutePath(),
-                LostGamesFileNameBuilder.build(Objects.requireNonNull(Profile.getInstance().profileName()))));
+                LostGamesFileNameBuilder.build(profileName)));
     }
 
 }

@@ -37,13 +37,15 @@ import java.util.List;
  * @author Simone Gentili
  */
 public enum AvatarFrame
-        implements
-        InterfaceAvatarFrame,
-        Observer,
-        Observable {
+        implements InterfaceAvatarFrame, Observer, Observable {
 
+    /** The grey frame. */
     GREY_FRAME,
+
+    /** The blue frame. */
     BLUE_FRAME,
+
+    /** The goal frame. */
     GOLD_FRAME;
 
     // The Observers List.
@@ -52,7 +54,7 @@ public enum AvatarFrame
     // Unlock boolean value.
     private boolean unlock = false;
 
-
+    // Builds an AvatarFrame object.
     AvatarFrame() {
         this.observerList = new ArrayList<>();
     }
@@ -87,10 +89,10 @@ public enum AvatarFrame
 
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceGoal goal) {
-
-        } else throw new IllegalArgumentException(
+        if(object instanceof InterfaceGoal) unlock();
+        else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceGoal type expected.");
     }
+
 }

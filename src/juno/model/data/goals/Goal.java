@@ -39,21 +39,36 @@ import java.util.stream.Stream;
  * @author Simone Gentili
  */
 public enum Goal
-        implements
-        InterfaceGoal,
-        Observable,
-        Observer {
+        implements InterfaceGoal, Observable, Observer {
 
+    /** First match won. */
     FIRST_MATCH_WON(1),
+
+    /** First match lose. */
     FIRST_MATCH_LOSE(1),
 
+    /** Five match won. */
+    FIVE_MATCH_WON(5),
+
+    /** Five match lose. */
+    FIVE_MATCH_LOSE(5),
+
+    /** Ten match won. */
     TEN_MATCH_WON(10),
+
+    /** Ten match lose. */
     TEN_MATCH_LOSE(10),
 
+    /** Fifty match won. */
     FIFTY_MATCH_WON(50),
+
+    /** Fifty match lose. */
     FIFTY_MATCH_LOSE(50),
 
+    /** One hundred match won. */
     ONE_HUNDRED_MATCH_WON(100),
+
+    /** One hundred match lose. */
     ONE_HUNDRED_MATCH_LOSE(100);
 
     // The Observers List.
@@ -105,35 +120,62 @@ public enum Goal
 
     @Override
     public void update(@NotNull Object object) {
+        // Games won counter.
         if(object instanceof InterfaceGamesWonCounter gamesWonCounter) {
             int gamesWon = gamesWonCounter.getCount();
-            getUnreachedGoals(getGamesWonGoals()).forEach(goal -> {
-                goal.unlockIf(gamesWon); });
-        } else if(object instanceof InterfaceLostGamesCounter lostGamesCounter) {
+            getUnreachedGoals(getGamesWonGoals()).forEach(goal -> goal.unlockIf(gamesWon));
+        }
+
+        // Lost games counter.
+        else if(object instanceof InterfaceLostGamesCounter lostGamesCounter) {
             int lostGames = lostGamesCounter.getCount();
-            getUnreachedGoals(getLostGamesGoals()).forEach(goal -> {
-                goal.unlockIf(lostGames); });
-        } else throw new IllegalArgumentException(
+            getUnreachedGoals(getLostGamesGoals()).forEach(goal -> goal.unlockIf(lostGames));
+        }
+
+        // Invalid case.
+        else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                 ". InterfaceGamesWonCounter or InterfaceLostGamesCounter types expected.");
     }
 
+    /**
+     * Return the unreached Goal objects.
+     * @return A List object.
+     */
     public static List<Goal> getUnreachedGoals() {
         return Stream.of(Goal.values()).filter(goal -> !goal.isReached()).toList();
     }
 
-    public static List<Goal> getUnreachedGoals(List<Goal> goals) {
+    /**
+     * Returns the unreached Goal objects within the specified
+     * List of Goal objects.
+     * @param goals A List object.
+     * @return A List object.
+     */
+    public static List<Goal> getUnreachedGoals(@NotNull List<Goal> goals) {
         return goals.stream().filter(goal -> !goal.isReached()).toList();
     }
 
+    /**
+     * Returns Goal objects that refer to games won.
+     * @return A List object.
+     */
     public static List<Goal> getGamesWonGoals() {
         return Stream.of(Goal.values()).filter(goal -> goal.name().endsWith("WON")).toList();
     }
 
+    /**
+     * Returns Goal objects that refer to lost games.
+     * @return A List object.
+     */
     public static List<Goal> getLostGamesGoals() {
         return Stream.of(Goal.values()).filter(goal -> goal.name().endsWith("LOSE")).toList();
     }
 
+     // Unlock this Goal object if the specified
+     // integer is greater than or equals to the
+     // points of this Goal object.
+     // @param points An integer value.
     private void unlockIf(int points) {
         if(this.points >= points) unlock();
     }

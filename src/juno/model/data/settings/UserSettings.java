@@ -23,29 +23,26 @@
  * SOFTWARE.
  */
 
-package juno.model.data.awards;
-
-import juno.model.data.goals.Goal;
-import juno.model.data.goals.UserGoals;
-
-import java.util.List;
+package juno.model.data.settings;
 
 /**
  * @author Simone Gentili
  */
-public class Initializer {
+public class UserSettings {
 
-    // Builds an Initializer object.
-    private Initializer() {}
+    // The UserSettings instance.
+    private static UserSettings instance;
 
-    /** Initialize the juno.model.data.awards package. */
-    public static void initialize() {
-        // Component.
-        // User awards.
-        UserGoals userGoals = UserGoals.getInstance();
+    // Builds the UserSettings instance.
+    private UserSettings() {}
 
-        // Adding the goals objects to the UserGoals instance.
-        List.of(Goal.values()).forEach(goal -> userGoals.goals().add(goal));
+    /**
+     * Returns the UserSettings instance.
+     * @return The UserSettings instance.
+     */
+    public static UserSettings getInstance() {
+        if(instance == null) instance = new UserSettings();
+        return instance;
     }
 
 }

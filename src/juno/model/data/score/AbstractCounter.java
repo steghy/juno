@@ -40,10 +40,7 @@ import java.util.Map;
  * @author Simone Gentili
  */
 public abstract class AbstractCounter
-        implements
-        Observable,
-        Configurable,
-        Exportable {
+        implements Observable, Configurable, Exportable {
 
     /** The count key. */
     public static final String COUNT_KEY = "count";
@@ -57,6 +54,7 @@ public abstract class AbstractCounter
     /** Increase the counter. */
     public void increase() {
         count++;
+        updateAll();
     }
 
     /**
@@ -110,7 +108,8 @@ public abstract class AbstractCounter
     void setCount(int count) {
         if(count < 0) throw new IllegalArgumentException(
                 "Invalid count: " + count);
-        this.count = count;
+        this.count = 0;
+        for(int i = 0; i < count; i++) increase();
     }
 
 }

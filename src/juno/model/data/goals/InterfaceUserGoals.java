@@ -25,10 +25,9 @@
 
 package juno.model.data.goals;
 
-import juno.model.data.goals.InterfaceGoal;
-
 import java.util.List;
 
+@Deprecated
 @FunctionalInterface
 public interface InterfaceUserGoals {
 
