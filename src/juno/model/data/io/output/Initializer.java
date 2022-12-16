@@ -25,15 +25,9 @@
 
 package juno.model.data.io.output;
 
-import juno.model.data.goals.UserGoals;
-import juno.model.data.profile.Profile;
-import juno.model.data.score.GamesWonCounter;
-import juno.model.data.score.LostGamesCounter;
-
 /**
  * @author Simone Gentili
  */
-@SuppressWarnings("ALL")
 public class Initializer {
 
     // Builds an Initializer object.
@@ -47,18 +41,6 @@ public class Initializer {
 
         // Exit manager.
         ExitManager exitManager = ExitManager.getInstance();
-
-        // Profile.
-        Profile profile = Profile.getInstance();
-
-        // UserAwards.
-        UserGoals userAwards = UserGoals.getInstance();
-
-        // GamesWonCounter.
-        GamesWonCounter gamesWonCounter = GamesWonCounter.getInstance();
-
-        // LostGamesCounter.
-        LostGamesCounter lostGamesCounter = LostGamesCounter.getInstance();
 
         // JSONDataExporter.
         JSONDataExporter jsonDataExporter = JSONDataExporter.getInstance();

@@ -26,7 +26,9 @@
 package juno.model.data.io.output;
 
 import juno.init.Directories;
-import juno.model.data.profile.Profile;
+import juno.model.data.avatar.Avatar;
+import juno.model.data.avatar.AvatarFileNameBuilder;
+import juno.model.data.profile.profile.Profile;
 import juno.model.data.profile.ProfileFileNameBuilder;
 import juno.model.data.score.GamesWonCounter;
 import juno.model.data.score.GamesWonFileNameBuilder;
@@ -76,6 +78,10 @@ public class ExportableSetter
         // Lost games case.
         map.put(LostGamesCounter.getInstance(), PathGenerator.generate(Directories.SCORE.absolutePath(),
                 LostGamesFileNameBuilder.build(profileName)));
+
+        // Avatar data case.
+        map.put(Avatar.getInstance(), PathGenerator.generate(Directories.AVATAR.absolutePath(),
+                AvatarFileNameBuilder.build(profileName)));
     }
 
 }

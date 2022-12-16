@@ -30,7 +30,9 @@ import juno.view.factories.ButtonFactory;
 import juno.view.factories.ButtonLibrary;
 import juno.view.pages.main.card.MainCardPanel;
 import juno.view.pages.score.avatar_frame.AvatarFramesPanel;
+import juno.view.pages.score.avatar_frame.AvatarFramesPanelConfigurator;
 import juno.view.pages.score.avatar_image.AvatarImagesPanel;
+import juno.view.pages.score.avatar_image.AvatarImagesPanelConfigurator;
 import juno.view.util.ImageResizer;
 import juno.view.util.RoundedBorder;
 
@@ -58,6 +60,10 @@ public class MenuPanelConfigurator {
         // Images resizing.
         ImageResizer.resize(backButton, 3.0);
 
+        // Border settings.
+        avatarFramesPanel.setBorder(new RoundedBorder(50, 2, null, Color.RED));
+        avatarImagesPanel.setBorder(new RoundedBorder(50, 2, null, Color.RED));
+
         // Components settings.
         menuPanel.setFirstComponent(avatarFramesPanel);       // Avatar frames panel.
         menuPanel.setSecondComponent(avatarImagesPanel);      // Avatar images panel.
@@ -73,6 +79,12 @@ public class MenuPanelConfigurator {
                 50, 1, null, Color.RED);
         Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
         menuPanel.setBorder(border);
+
+        // AvatarFramesPanel configuration.
+        AvatarFramesPanelConfigurator.configure();
+
+        // AvatarImagesPanel configuration.
+        AvatarImagesPanelConfigurator.configure();
 
         // Main component initialization.
         menuPanel.init();

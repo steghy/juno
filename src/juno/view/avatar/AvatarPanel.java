@@ -37,14 +37,22 @@ import juno.view.util.ImageResizer;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Objects;
 
 /**
  * @author Simone Gentili
  */
 public class AvatarPanel
-        extends AbstractAvatarPanel<InterfaceAvatarImage, InterfaceAvatarFrame>
+        extends JPanel
         implements Observer {
+
+    // The avatar image label.
+    private final JLabel avatarImage;
+
+    // The avatar frame label.
+    private final JLabel avatarFrame;
+
+    // The avatar name label.
+    private final JLabel avatarName;
 
     // The dimension parameter.
     private final double dimensionParameter;
@@ -56,6 +64,14 @@ public class AvatarPanel
      */
     public AvatarPanel(double dimensionParameter) {
         this.dimensionParameter = dimensionParameter;
+        avatarImage = new JLabel();
+        avatarFrame = new JLabel();
+        avatarName = new JLabel();
+        // Observer / Observable connections.
+        AvatarFrameSetter.getInstance().addObserver(this);
+        AvatarImageSetter.getInstance().addObserver(this);
+        AvatarNameSetter.getInstance().addObserver(this);
+        init();
     }
 
     public void init() {
@@ -74,10 +90,12 @@ public class AvatarPanel
         gbc.insets = new Insets(0,0,0,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        panel.add(Objects.requireNonNull(getAvatarImage()), gbc);
-        ImageResizer.resize(getAvatarImage(), dimensionParameter * 2);
+        avatarImage.setOpaque(false);
+        panel.add(avatarImage, gbc);
 
         // Avatar name.
+        avatarName.setFont(new Font(Font.DIALOG, Font.ITALIC, 12));
+        avatarName.setForeground(Color.WHITE);
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.weightx = 0.0;
@@ -86,14 +104,14 @@ public class AvatarPanel
         gbc.insets = new Insets(0,0,0,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        panel.add(Objects.requireNonNull(getAvatarName()), gbc);
-
-        Objects.requireNonNull(getAvatarFrame()).setLayout(new BorderLayout());
-        getAvatarFrame().add(panel, BorderLayout.CENTER);
+        avatarName.setOpaque(false);
+        panel.add(avatarName, gbc);
 
         // Avatar frame.
-        add(getAvatarFrame());
-        ImageResizer.resize(getAvatarFrame(), dimensionParameter);
+        avatarFrame.setOpaque(false);
+        avatarFrame.setLayout(new BorderLayout());
+        avatarFrame.add(panel, BorderLayout.CENTER);
+        add(avatarFrame);
     }
 
 
@@ -103,19 +121,19 @@ public class AvatarPanel
         if(object instanceof InterfaceAvatarImageSetter<?>) {
             GAvatarImage<InterfaceAvatarImage> avatarImage = (GAvatarImage<InterfaceAvatarImage>) GAvatarImageCreator.getInstance().create(AvatarImageProvider.getInstance().avatarImage());
             ImageResizer.resize(avatarImage, dimensionParameter * 2);
-            Objects.requireNonNull(getAvatarImage()).setIcon(avatarImage.getIcon());
+            avatarImage.setIcon(avatarImage.getIcon());
         }
 
         // Avatar frame case.
         else if(object instanceof InterfaceAvatarFrameSetter<?>) {
             GFrame<InterfaceAvatarFrame> avatarFrame = (GFrame<InterfaceAvatarFrame>) GFrameCreator.getInstance().create(AvatarFrameProvider.getInstance().frame());
             ImageResizer.resize(avatarFrame, dimensionParameter);
-            Objects.requireNonNull(getAvatarFrame()).setIcon(avatarFrame.getIcon());
+            avatarFrame.setIcon(avatarFrame.getIcon());
         }
 
         // Avatar name case.
         else if(object instanceof InterfaceAvatarNameSetter) {
-            Objects.requireNonNull(getAvatarName()).setText(AvatarNameProvider.getInstance().name());
+            avatarName.setText(AvatarNameProvider.getInstance().name());
         } else throw new IllegalArgumentException();
     }
 

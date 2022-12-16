@@ -27,7 +27,7 @@ package juno.view.pages.pre_access.registration.menu;
 
 import juno.controller.InterfaceRegistrationDataProvider;
 import juno.controller.pre_access.InterfaceDataLineProvider;
-import juno.model.data.profile.Profile;
+import juno.model.data.profile.profile.Profile;
 import juno.view.panels.AbstractSixthComponent;
 
 import java.awt.*;

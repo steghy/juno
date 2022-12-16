@@ -27,6 +27,7 @@ package juno.view.pages.score.avatar_frame;
 
 import juno.model.data.awards.frame.InterfaceAvatarFrame;
 import juno.view.awards.frames.GFrame;
+import juno.view.util.ImageResizer;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -62,7 +63,7 @@ public class AvatarFramesPanel
     /** Initialize the AvatarFramesPanel instance. */
     public void init() {
         setOpaque(false);
-        setLayout(new GridLayout(5, 5));
+        setLayout(new GridLayout(1, 5));
         avatarFrames.forEach(this::add);
     }
 
@@ -72,6 +73,7 @@ public class AvatarFramesPanel
      * @param avatarFrame A GFrame object.
      */
     public void addAvatarFrame(@NotNull GFrame<InterfaceAvatarFrame> avatarFrame) {
+        ImageResizer.resize(avatarFrame, 4.5);
         avatarFrames.add(avatarFrame);
     }
 

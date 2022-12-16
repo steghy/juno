@@ -44,10 +44,10 @@ public class Avatar
     public static final String NAME_KEY = "name";
 
     /** The avatar image key. */
-    public static final String AVATAR_IMAGE = "avatarImage";
+    public static final String AVATAR_IMAGE_KEY = "avatarImage";
 
     /** The avatar frame key. */
-    public static final String AVATAR_FRAME = "avatarFrame";
+    public static final String AVATAR_FRAME_KEY = "avatarFrame";
 
     // The avatar name.
     String name;
@@ -78,7 +78,6 @@ public class Avatar
         return avatarImage;
     }
 
-
     @Override
     public InterfaceAvatarFrame frame() {
         return avatarFrame;
@@ -97,14 +96,18 @@ public class Avatar
                 AvatarNameSetter.getInstance().setAvatarName(temp);
             else throw new IllegalArgumentException();
         } else throw new IllegalArgumentException();
+
+        if(map.containsKey(AVATAR_IMAGE_KEY)) {
+            Object object = map.get(AVATAR_IMAGE_KEY);
+        }
     }
 
     @Override
     public Map<String, Object> exportData() {
         Map<String, Object> map = new HashMap<>();
         map.put(NAME_KEY, name);
-        map.put(AVATAR_FRAME, avatarFrame);
-        map.put(AVATAR_IMAGE, avatarImage);
+        map.put(AVATAR_FRAME_KEY, avatarFrame);
+        map.put(AVATAR_IMAGE_KEY, avatarImage);
         return map;
     }
 

@@ -25,7 +25,9 @@
 
 package juno.view.pages.pre_access.card;
 
+import juno.model.data.avatar.AvatarNameSetter;
 import juno.model.data.io.input.configurable.Configurable;
+import juno.model.data.profile.profile.Profile;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
@@ -73,6 +75,6 @@ public class PreAccessInitialChooser
             } else {
                 throw new IllegalArgumentException("CardLayout expected");
             }
-        }
+        } Profile.getInstance().addObserver(AvatarNameSetter.getInstance());
     }
 }

@@ -29,7 +29,7 @@ import juno.controller.pre_access.RegistrationDataSelector;
 import juno.controller.pre_access.RegistrationDataSender;
 import juno.controller.util.RegistrationPanelRestorer;
 import juno.model.data.profile.ErrorProviderDecorator;
-import juno.model.data.profile.Profile;
+import juno.model.data.profile.profile.Profile;
 import juno.view.factories.ButtonFactory;
 import juno.view.factories.ButtonLibrary;
 import juno.view.pages.pre_access.card.PreAccessCardPanel;

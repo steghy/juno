@@ -26,7 +26,6 @@
 package juno.view.pages.score;
 
 import juno.view.avatar.AvatarPanel;
-import juno.view.avatar.AvatarPanelConfigurator;
 import juno.view.pages.score.menu.MenuPanel;
 import juno.view.pages.score.title.TitlePanel;
 
@@ -46,9 +45,6 @@ public class ScorePanelConfigurator {
         MenuPanel menuPanel = MenuPanel.getInstance();
         TitlePanel titlePanel = TitlePanel.getInstance();
         AvatarPanel avatarPanel = new AvatarPanel(3.5);
-
-        // Avatar panel configuration.
-        AvatarPanelConfigurator.configure(avatarPanel);
 
         // Adding components.
         scorePanel.setFirstComponent(titlePanel);   // Title panel.

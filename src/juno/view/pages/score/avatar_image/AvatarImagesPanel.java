@@ -27,6 +27,7 @@ package juno.view.pages.score.avatar_image;
 
 import juno.model.data.awards.avatar.InterfaceAvatarImage;
 import juno.view.awards.avatars.GAvatarImage;
+import juno.view.util.ImageResizer;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -62,12 +63,8 @@ public class AvatarImagesPanel
     /** Initialize the AvatarImagesPanel instance. */
     public void init() {
         setOpaque(false);
-        setLayout(new BorderLayout());
-        JPanel panel = new JPanel();
-        panel.setOpaque(false);
-        panel.setLayout(new GridLayout(5, 5));
-        avatarImages.forEach(panel::add);
-        add(new JScrollPane(panel), BorderLayout.CENTER);
+        setLayout(new GridLayout(1, 5));
+        avatarImages.forEach(this::add);
     }
 
     /**
@@ -76,6 +73,7 @@ public class AvatarImagesPanel
      * @param avatarImage A GAvatarImage object.
      */
     public void addAvatarImage(@NotNull GAvatarImage<InterfaceAvatarImage> avatarImage) {
+        ImageResizer.resize(avatarImage, 4.5);
         avatarImages.add(avatarImage);
     }
 

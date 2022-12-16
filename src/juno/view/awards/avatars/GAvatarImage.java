@@ -33,10 +33,8 @@ import org.jetbrains.annotations.NotNull;
  * @param <T> The type of the avatars.
  */
 public class GAvatarImage<T>
-        extends
-        ImageButton
-        implements
-        InterfaceGAvatarImage<T> {
+        extends ImageButton
+        implements InterfaceGAvatarImage<T> {
 
     // The avatar.
     private final T avatar;

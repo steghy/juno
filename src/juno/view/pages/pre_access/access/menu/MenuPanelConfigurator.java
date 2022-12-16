@@ -25,6 +25,7 @@
 
 package juno.view.pages.pre_access.access.menu;
 
+import juno.controller.pre_access.GuestProfileCreator;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.ExitAction;
 import juno.model.data.io.output.ExitManager;
@@ -72,7 +73,7 @@ public class MenuPanelConfigurator {
         // Action listeners setting.
         createAnAccountButton.addActionListener(new ChangePanelAction(
                 PreAccessCardPanel.getInstance(), PreAccessCardPanel.REGISTRATION_PANEL));
-        continueWithoutAnAccountButton.addActionListener(null);
+        continueWithoutAnAccountButton.addActionListener(GuestProfileCreator.getInstance());
         exitButton.addActionListener(new ExitAction(null));
 
         // Border setting.

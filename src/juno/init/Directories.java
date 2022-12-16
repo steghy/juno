@@ -39,6 +39,7 @@ public enum Directories
 	PROFILES(CONFIG, "profiles"),
 	GOALS(CONFIG, "goals"),
 	SCORE(CONFIG, "scores"),
+	AVATAR(CONFIG, "avatar"),
 
 	// Data -> Audio.
 	AUDIO(DATA, "audio"),

@@ -44,49 +44,58 @@ public class Initializer {
     /** Initialize the juno.controller.pre_access.controller package. */
     public static void initialize() {
         // Components.
-        // Registration data selector.
-        RegistrationDataSelector selector = RegistrationDataSelector.getInstance();
+        // RegistrationDataSelector.
+        RegistrationDataSelector registrationDataSelector = RegistrationDataSelector.getInstance();
 
-        // Error notifier.
-        ErrorNotifier notifier = ErrorNotifier.getInstance();
+        // ErrorNotifier.
+        ErrorNotifier errorNotifier = ErrorNotifier.getInstance();
 
-        // Request resolver.
-        RequestResolver resolver = RequestResolver.getInstance();
+        // RequestResolver.
+        RequestResolver requestResolver = RequestResolver.getInstance();
 
-        // CCompatibility checker.
+        // CCompatibilityChecker.
         CCompatibilityChecker checker = CCompatibilityChecker.getInstance();
 
-        // Data line provider.
+        // MenuPanel (Data line provider).
         MenuPanel menuPanel = MenuPanel.getInstance();
 
-        // Exporter manager.
+        // ExporterManager.
         ExporterManager exporterManager = ExporterManager.getInstance();
 
-        // Card panel.
+        // TopCardPanel.
         TopCardPanel topCardPanel = TopCardPanel.getInstance();
 
-        // Panel key
+        // PanelKey.
         String panelKey = TopCardPanel.MAIN_PANEL;
 
-        // Panel changer
+        // PanelChanger.
         PanelChanger panelChanger = PanelChanger.getInstance();
+
+        // GuestProfileCreator.
+        GuestProfileCreator guestProfileCreator = GuestProfileCreator.getInstance();
 
         /////////////////////////////////////////////////////////////////////////
 
         // Connections.
-        // Registration data selector.
-        selector.setNotifier(notifier);
-        selector.setResolver(resolver);
-        selector.setChecker(checker);
+        // RegistrationDataSelector.
+        registrationDataSelector.setNotifier(errorNotifier);
+        registrationDataSelector.setResolver(requestResolver);
+        registrationDataSelector.setChecker(checker);
 
-        // Notifier.
-        notifier.setDataLineProvider(menuPanel);
+        // ErrorNotifier.
+        errorNotifier.setDataLineProvider(menuPanel);
 
-        // Resolver.
-        resolver.setExporterManager(exporterManager);
-        resolver.setPanelChanger(panelChanger);
-        resolver.setCardPanel(topCardPanel);
-        resolver.setPanelKey(panelKey);
+        // RequestResolver.
+        requestResolver.setExporterManager(exporterManager);
+        requestResolver.setPanelChanger(panelChanger);
+        requestResolver.setCardPanel(topCardPanel);
+        requestResolver.setPanelKey(panelKey);
+
+        // GuestProfileCreator.
+        guestProfileCreator.setExporterManager(exporterManager);
+        guestProfileCreator.setPanelChanger(panelChanger);
+        guestProfileCreator.setCardPanel(topCardPanel);
+        guestProfileCreator.setPanelKey(panelKey);
     }
 
 }

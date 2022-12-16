@@ -25,15 +25,11 @@
 
 package juno.view.pages.score.avatar_image;
 
+import juno.controller.awards.AvatarImageSetterAction;
 import juno.model.data.awards.avatar.AvatarImage;
 import juno.model.data.awards.avatar.InterfaceAvatarImage;
-import juno.model.data.awards.frame.AvatarFrame;
-import juno.model.data.awards.frame.InterfaceAvatarFrame;
 import juno.view.awards.avatars.GAvatarImage;
 import juno.view.awards.avatars.factory.GAvatarImageFactory;
-import juno.view.awards.frames.GFrame;
-import juno.view.awards.frames.factory.GFramesFactory;
-import juno.view.pages.score.avatar_frame.AvatarFramesPanel;
 
 import java.util.List;
 
@@ -51,7 +47,11 @@ public class AvatarImagesPanelConfigurator {
 
         // Adding graphic avatar frames.
         GAvatarImageFactory.getInstance().getGAvatars(List.of(AvatarImage.values()))
-                .forEach(avatarFrame -> avatarImagesPanel.addAvatarImage((GAvatarImage<InterfaceAvatarImage>) avatarFrame));
+                .forEach(avatarImage -> {
+                    GAvatarImage<InterfaceAvatarImage> gAvatarImage = (GAvatarImage<InterfaceAvatarImage>) avatarImage;
+                    gAvatarImage.addActionListener(new AvatarImageSetterAction(gAvatarImage));
+                    avatarImagesPanel.addAvatarImage(gAvatarImage);
+                });
 
         // Main component initialization.
         avatarImagesPanel.init();

@@ -26,7 +26,6 @@
 package juno.view.pages.main;
 
 import juno.view.avatar.AvatarPanel;
-import juno.view.avatar.AvatarPanelConfigurator;
 import juno.view.pages.main.menu.MenuPanel;
 import juno.view.pages.main.title.TitlePanel;
 
@@ -45,10 +44,7 @@ public class MainPanelConfigurator {
         // Components.
         TitlePanel titlePanel = TitlePanel.getInstance();
         MenuPanel menuPanel = MenuPanel.getInstance();
-        AvatarPanel avatarPanel = new AvatarPanel(3.0);
-
-        // Avatar panel configuration.
-        AvatarPanelConfigurator.configure(avatarPanel);
+        AvatarPanel avatarPanel = new AvatarPanel(3.5);
 
         // Components settings.
         mainPanel.setFirstComponent(titlePanel);  // title panel

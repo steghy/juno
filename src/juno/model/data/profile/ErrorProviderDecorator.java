@@ -27,6 +27,7 @@ package juno.model.data.profile;
 
 import juno.controller.InterfaceRegistrationDataProvider;
 import juno.init.Directories;
+import juno.model.data.profile.profile.Profile;
 import juno.model.util.Os;
 import juno.model.util.PathGenerator;
 import org.jetbrains.annotations.NotNull;
@@ -60,13 +61,20 @@ public class ErrorProviderDecorator
     public Map<String, String> getErrors() {
         Map<String, String> errors = errorProvider.getErrors();
         Map<String, Object> data = dataProvider.provideRegistrationData();
-        if(data.containsKey(Profile.PROFILE_NAME_KEY))
-            if(Os.exists(
-                    PathGenerator.generate(
-                            Directories.PROFILES.absolutePath(),
-                            ProfileFileNameBuilder.build((String) data.get(Profile.PROFILE_NAME_KEY)))))
-                errors.put(Profile.PROFILE_NAME_KEY, "profile name already used");
-        return errors;
+        if(data.containsKey(Profile.PROFILE_NAME_KEY)) {
+            Object object = data.get(Profile.PROFILE_NAME_KEY);
+            if(object instanceof String profileName) {
+                if(Os.exists(PathGenerator.generate(
+                        Directories.PROFILES.absolutePath(),
+                        ProfileFileNameBuilder.build((profileName))))) {
+                    errors.put(Profile.PROFILE_NAME_KEY, "profile name already used");
+                } else if(profileName.equalsIgnoreCase(Profile.GUEST_NAME)) {
+                    errors.put(Profile.PROFILE_NAME_KEY, "guest name cannot be used");
+                }
+            } else throw new IllegalArgumentException(
+                    "Invalid object type: " + object.getClass() +
+                            ". String type expected.");
+        } return errors;
     }
 
 }

@@ -25,6 +25,13 @@
 
 package juno.controller.pre_access;
 
+import juno.controller.awards.AvatarFrameSetterAction;
+import juno.controller.awards.AvatarImageSetterAction;
+import juno.model.data.avatar.AvatarFrameSetter;
+import juno.model.data.avatar.AvatarImageSetter;
+import juno.model.data.awards.avatar.AvatarImage;
+import juno.model.data.awards.frame.AvatarFrame;
+
 import java.util.Objects;
 
 /**
@@ -50,6 +57,8 @@ public class RequestResolver
 
     @Override
     public void resolve() {
+        AvatarImageSetter.getInstance().setAvatarImage(AvatarImage.AVATAR_IMAGE_1);
+        AvatarFrameSetter.getInstance().setAvatarFrame(AvatarFrame.GREY_FRAME);
         Objects.requireNonNull(getExporterManager()).export();
         Objects.requireNonNull(getPanelChanger()).changePanel(getCardPanel(), getPanelKey());
     }

@@ -25,7 +25,7 @@
 
 package juno.model.data.avatar;
 
-import juno.model.data.profile.InterfaceProfile;
+import juno.model.data.profile.profile.InterfaceProfileNameSetter;
 import juno.model.util.AbstractObservable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
@@ -60,8 +60,8 @@ public class AvatarNameSetter
 
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceProfile profile) {
-            setAvatarName(profile.profileName());
+        if(object instanceof InterfaceProfileNameSetter) {
+            setAvatarName(profileNameSetter.profileName());
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceProfile expected.");

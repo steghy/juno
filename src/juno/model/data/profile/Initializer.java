@@ -25,7 +25,7 @@
 
 package juno.model.data.profile;
 
-import juno.model.data.avatar.AvatarNameSetter;
+import juno.model.data.profile.profile.Profile;
 
 /**
  * @author Simone Gentili
@@ -47,9 +47,6 @@ public class Initializer {
 
         // Connections.
         profile.setProvider(errorProvider);
-
-        // Observer / Observable.
-        profile.addObserver(AvatarNameSetter.getInstance());
     }
 
 }
