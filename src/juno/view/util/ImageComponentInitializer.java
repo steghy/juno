@@ -143,8 +143,8 @@ public class ImageComponentInitializer {
                                   Constant ROLLOVER_IMAGE_MISSING,
                                   Constant SELECTED_IMAGE_MISSING,
                                   Constant ROLLOVER_SELECTED_IMAGE_MISSING) {
+        // Image case.
         button.setName(name);
-        // IMAGE
         String imageAbsolutePath = PathGenerator.generate(path.absolutePath(), file);
         String imagePath = PathGenerator.generate(path.path(), file);
 
@@ -166,7 +166,7 @@ public class ImageComponentInitializer {
             }
         }
 
-        // ROLLOVER IMAGE
+        // Rollover image case.
         String rolloverImageAbsolutePath = PathGenerator.generate(path.absolutePath(), rolloverFile);
         String rolloverImagePath = PathGenerator.generate(path.path(), rolloverFile);
 
@@ -187,7 +187,7 @@ public class ImageComponentInitializer {
             }
         }
 
-        // SELECTED IMAGE
+        // Selected image case.
         String selectedImageAbsolutePath = PathGenerator.generate(path.absolutePath(), selectedFile);
         String selectedImagePath = PathGenerator.generate(path.path(), selectedFile);
 
@@ -299,17 +299,17 @@ public class ImageComponentInitializer {
         }
     }
 
-    public static void initialize(AbstractButton button,
+    public static void initialize(@NotNull AbstractButton button,
                                   @NotNull InterfaceDirectories path,
                                   boolean download,
                                   String name,
-                                  String file,
+                                  @NotNull String file,
                                   Dimension dimension,
-                                  Constant ICON_MISSING) {
-        // IMAGE
+                                  @NotNull Constant ICON_MISSING) {
+        // Image case.
+        button.setName(name);
         String imageAbsolutePath = PathGenerator.generate(path.absolutePath(), file);
         String imagePath = PathGenerator.generate(path.path(), file);
-
         GitHubURLBuilder githubURLBuilder = GitHubURLBuilder.getInstance();
         boolean imageExists = true;
         if(!Os.exists(imageAbsolutePath)) {
@@ -326,11 +326,7 @@ public class ImageComponentInitializer {
             } else {
                 imageExists = false;
             }
-        }
-
-        button.setName(name);
-
-        if(imageExists) {
+        } if(imageExists) {
             Icon icon = new ImageIcon(imageAbsolutePath);
             button.setIcon(icon);
             button.setSize(icon.getIconWidth(), icon.getIconHeight());
@@ -340,14 +336,14 @@ public class ImageComponentInitializer {
         }
     }
 
-    public static void initialize(JLabel label,
-                                  InterfaceDirectories path,
+    public static void initialize(@NotNull JLabel label,
+                                  @NotNull InterfaceDirectories path,
                                   boolean download,
                                   String name,
-                                  String file,
+                                  @NotNull String file,
                                   Dimension dimension,
-                                  Constant ICON_MISSING) {
-        // IMAGE
+                                  @NotNull Constant ICON_MISSING) {
+        // Image case.
         String imageAbsolutePath = PathGenerator.generate(path.absolutePath(), file);
         String imagePath = PathGenerator.generate(path.path(), file);
 
@@ -387,7 +383,9 @@ public class ImageComponentInitializer {
         button.setContentAreaFilled(false);
     }
 
-    private static void solve(JLabel label, Constant constant, Dimension dimension) {
+    private static void solve(@NotNull JLabel label,
+                              @NotNull Constant constant,
+                              Dimension dimension) {
         if(constant == Constant.THROW_EXCEPTION) {
             throw new RuntimeException(label.getName() + " not found");
         } else if(constant == Constant.BLUE_LABEL) {
@@ -407,7 +405,9 @@ public class ImageComponentInitializer {
         label.setSize(dimension);
     }
 
-    private static void solve(AbstractButton button, Constant constant, Dimension dimension) {
+    private static void solve(@NotNull AbstractButton button,
+                              @NotNull Constant constant,
+                              Dimension dimension) {
         if(constant == Constant.THROW_EXCEPTION) {
             throw new RuntimeException(button.getName() + " not found");
         } else if(constant == Constant.CYAN_BUTTON) {
