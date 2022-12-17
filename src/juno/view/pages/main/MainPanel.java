@@ -25,6 +25,7 @@
 
 package juno.view.pages.main;
 
+import juno.view.panels.AbstractFourthComponent;
 import juno.view.panels.AbstractThirdComponent;
 
 import java.awt.*;
@@ -34,7 +35,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class MainPanel
-        extends AbstractThirdComponent {
+        extends AbstractFourthComponent {
 
     // The MainPanel instance.
     private static MainPanel instance;
@@ -60,35 +61,46 @@ public class MainPanel
         // Title panel.
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.weightx = 0.0;
-        gbc.weighty = 0.0;
+        gbc.weightx = 0.1;
+        gbc.weighty = 0.1;
         gbc.ipadx = 0;
         gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,30,0);
+        gbc.insets = new Insets(0,0,10,0);
         this.add(Objects.requireNonNull(getFirstComponent()), gbc);
 
         // Menu panel.
         gbc.gridx = 0;
         gbc.gridy = 1;
-        gbc.weightx = 0.0;
-        gbc.weighty = 0.0;
+        gbc.weightx = 0.3;
+        gbc.weighty = 0.3;
         gbc.ipadx = 0;
         gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.insets = new Insets(0,0,20,0);
         this.add(Objects.requireNonNull(getSecondComponent()), gbc);
 
-        // Avatar panel.
+        // Label avatar panel.
         gbc.gridx = 0;
-        gbc.gridy = 2;
-        gbc.weightx = 0.0;
-        gbc.weighty = 0.0;
+        gbc.gridy = 0;
+        gbc.weightx = 0.3;
+        gbc.weighty = 0.3;
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        gbc.anchor = GridBagConstraints.PAGE_END;
-        gbc.insets = new Insets(0,0,0,0);
+        gbc.anchor = GridBagConstraints.FIRST_LINE_START;
+        gbc.insets = new Insets(30,35,0,0);
         this.add(Objects.requireNonNull(getThirdComponent()), gbc);
+
+        // Avatar panel.
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 0.5;
+        gbc.weighty = 0.5;
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
+        gbc.anchor = GridBagConstraints.FIRST_LINE_START;
+        gbc.insets = new Insets(45,30,0, 0);
+        this.add(Objects.requireNonNull(getFourthComponent()), gbc);
     }
 
 }

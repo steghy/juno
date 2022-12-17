@@ -33,6 +33,8 @@ import juno.view.awards.avatars.GAvatarImage;
 import juno.view.awards.avatars.factory.GAvatarImageCreator;
 import juno.view.awards.frames.GFrame;
 import juno.view.awards.frames.factory.GFrameCreator;
+import juno.view.util.ImageButton;
+import juno.view.util.ImageLabel;
 import juno.view.util.ImageResizer;
 
 import javax.swing.*;
@@ -46,10 +48,10 @@ public class AvatarPanel
         implements Observer {
 
     // The avatar image label.
-    private final JLabel avatarImage;
+    private final ImageLabel avatarImage;
 
     // The avatar frame label.
-    private final JLabel avatarFrame;
+    private final ImageLabel avatarFrame;
 
     // The avatar name label.
     private final JLabel avatarName;
@@ -64,8 +66,8 @@ public class AvatarPanel
      */
     public AvatarPanel(double dimensionParameter) {
         this.dimensionParameter = dimensionParameter;
-        avatarImage = new JLabel();
-        avatarFrame = new JLabel();
+        avatarImage = new ImageLabel();
+        avatarFrame = new ImageLabel();
         avatarName = new JLabel();
         // Observer / Observable connections.
         AvatarFrameSetter.getInstance().addObserver(this);
@@ -75,12 +77,18 @@ public class AvatarPanel
     }
 
     public void init() {
-        this.setOpaque(false);
+        setOpaque(false);
         JPanel panel = new JPanel();
         panel.setOpaque(false);
         panel.setLayout(new GridBagLayout());
+        setLayout(new BorderLayout());
         GridBagConstraints gbc = new GridBagConstraints();
-        Dimension dimension = new Dimension(50,50);
+
+        avatarImage.setOpaque(false);
+        avatarFrame.setOpaque(false);
+        avatarName.setOpaque(false);
+
+        avatarFrame.setLayout(new BorderLayout());
 
         // Avatar image.
         gbc.gridx = 0;
@@ -91,8 +99,6 @@ public class AvatarPanel
         gbc.insets = new Insets(0,0,0,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        avatarImage.setOpaque(false);
-        avatarName.setPreferredSize(dimension);
         panel.add(avatarImage, gbc);
 
         // Avatar name.
@@ -106,18 +112,11 @@ public class AvatarPanel
         gbc.insets = new Insets(0,0,0,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        avatarName.setOpaque(false);
-        avatarName.setPreferredSize(dimension);
         panel.add(avatarName, gbc);
 
-        // Avatar frame.
-        avatarFrame.setOpaque(false);
-        avatarFrame.setPreferredSize(dimension);
-        avatarFrame.setLayout(new BorderLayout());
         avatarFrame.add(panel, BorderLayout.CENTER);
-        add(avatarFrame);
+        add(avatarFrame, BorderLayout.CENTER);
     }
-
 
     @Override
     public void update(Object object) {
@@ -125,19 +124,19 @@ public class AvatarPanel
         if(object instanceof InterfaceAvatarImageSetter<?>) {
             GAvatarImage<InterfaceAvatarImage> avatarImage = (GAvatarImage<InterfaceAvatarImage>) GAvatarImageCreator.getInstance().create(AvatarImageProvider.getInstance().avatarImage());
             ImageResizer.resize(avatarImage, dimensionParameter * 2);
-            avatarImage.setIcon(avatarImage.getIcon());
+            this.avatarImage.setIcon(avatarImage.getIcon());
         }
 
         // Avatar frame case.
         else if(object instanceof InterfaceAvatarFrameSetter<?>) {
             GFrame<InterfaceAvatarFrame> avatarFrame = (GFrame<InterfaceAvatarFrame>) GFrameCreator.getInstance().create(AvatarFrameProvider.getInstance().frame());
             ImageResizer.resize(avatarFrame, dimensionParameter);
-            avatarFrame.setIcon(avatarFrame.getIcon());
+            this.avatarFrame.setIcon(avatarFrame.getIcon());
         }
 
         // Avatar name case.
         else if(object instanceof InterfaceAvatarNameSetter) {
-            avatarName.setText(AvatarNameProvider.getInstance().name());
+            this.avatarName.setText(AvatarNameProvider.getInstance().name());
         } else throw new IllegalArgumentException();
     }
 

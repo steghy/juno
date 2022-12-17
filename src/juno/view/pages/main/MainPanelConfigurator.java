@@ -29,6 +29,9 @@ import juno.view.avatar.AvatarPanel;
 import juno.view.pages.main.menu.MenuPanel;
 import juno.view.pages.main.title.TitlePanel;
 
+import javax.swing.*;
+import java.awt.*;
+
 /**
  * @author Simone Gentili
  */
@@ -45,11 +48,18 @@ public class MainPanelConfigurator {
         TitlePanel titlePanel = TitlePanel.getInstance();
         MenuPanel menuPanel = MenuPanel.getInstance();
         AvatarPanel avatarPanel = new AvatarPanel(3.5);
+        JLabel label = new JLabel();
+
+        label.setText("Logged as: ");
+        label.setOpaque(false);
+        label.setForeground(Color.WHITE);
+        label.setFont(new Font(Font.DIALOG, Font.ITALIC, 10));
 
         // Components settings.
         mainPanel.setFirstComponent(titlePanel);  // title panel
         mainPanel.setSecondComponent(menuPanel);  // Menu panel.
-        mainPanel.setThirdComponent(avatarPanel); // Avatar panel.
+        mainPanel.setThirdComponent(label);      // label.
+        mainPanel.setFourthComponent(avatarPanel); // Avatar panel.
 
         // Main component initialization.
         mainPanel.init();

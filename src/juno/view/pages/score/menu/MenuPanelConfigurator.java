@@ -58,11 +58,7 @@ public class MenuPanelConfigurator {
         AbstractButton backButton = ButtonFactory.createButton(ButtonLibrary.BACK);
 
         // Images resizing.
-        ImageResizer.resize(backButton, 3.0);
-
-        // Border settings.
-        avatarFramesPanel.setBorder(new RoundedBorder(50, 2, null, Color.RED));
-        avatarImagesPanel.setBorder(new RoundedBorder(50, 2, null, Color.RED));
+        ImageResizer.resize(backButton, 3.5);
 
         // Components settings.
         menuPanel.setFirstComponent(avatarFramesPanel);       // Avatar frames panel.

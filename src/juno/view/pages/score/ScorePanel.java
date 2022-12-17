@@ -81,12 +81,12 @@ public class ScorePanel
 
         // Avatar panel.
         gbc.gridx = 0;
-        gbc.gridy = 2;
+        gbc.gridy = 0;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.anchor = GridBagConstraints.LINE_START;
         gbc.insets = new Insets(17,0,17,0);
-        gbc.ipadx = 0;
+        gbc.ipadx = 1;
         gbc.ipady = 0;
         this.add(Objects.requireNonNull(getThirdComponent()), gbc);
     }
