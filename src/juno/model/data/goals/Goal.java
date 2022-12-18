@@ -41,6 +41,9 @@ import java.util.stream.Stream;
 public enum Goal
         implements InterfaceGoal, Observable, Observer {
 
+    /** Registration. */
+    REGISTRATION(0),
+
     /** First match won. */
     FIRST_MATCH_WON(1),
 
@@ -177,7 +180,7 @@ public enum Goal
      // points of this Goal object.
      // @param points An integer value.
     private void unlockIf(int points) {
-        if(this.points >= points) unlock();
+        if(this.points == points) unlock();
     }
 
 }

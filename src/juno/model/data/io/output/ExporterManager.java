@@ -53,8 +53,7 @@ public class ExporterManager
     @Override
     public void export() {
         InterfaceDataExporter dataExporter = Objects.requireNonNull(getDataExporter());
-        InterfaceExportableSetter exportableSetter = getExportableSetter();
-        Objects.requireNonNull(exportableSetter).setExportable();
+        Objects.requireNonNull(getExportableSetter()).setExportable();
         for(Map.Entry<Exportable, String> entry : super.exportableMap().entrySet()) {
             Exportable exportable = entry.getKey();
             String path = entry.getValue();

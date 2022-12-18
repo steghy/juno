@@ -36,27 +36,31 @@ public class Initializer {
     /** Initialize the juno.model.data.io.output package. */
     public static void initialize() {
         // Components.
-        // Exporter.
-        ExporterManager exporter = ExporterManager.getInstance();
+        // ExporterManager.
+        ExporterManager exporterManager = ExporterManager.getInstance();
 
-        // Exit manager.
+        // ExitManager.
         ExitManager exitManager = ExitManager.getInstance();
 
         // JSONDataExporter.
         JSONDataExporter jsonDataExporter = JSONDataExporter.getInstance();
 
-        // Exportable setter.
+        // ExportableSetter.
         ExportableSetter exportableSetter = ExportableSetter.getInstance();
+
+        // TemporaryFileRemover.
+        TemporaryFilesRemover temporaryFilesRemover = TemporaryFilesRemover.getInstance();
 
         ///////////////////////////////////////////////////////////////////
 
         // Connections.
-        // Data exporter.
-        exporter.setDataExporter(jsonDataExporter);
-        exporter.setExportableSetter(exportableSetter);
+        // ExporterManager.
+        exporterManager.setDataExporter(jsonDataExporter);
+        exporterManager.setExportableSetter(exportableSetter);
 
-        // Exit manager.
-        exitManager.setExporter(exporter);
+        // ExitManager.
+        exitManager.setExporter(exporterManager);
+        exitManager.setFileRemover(temporaryFilesRemover);
     }
 
 }

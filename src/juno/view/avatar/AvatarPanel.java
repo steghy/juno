@@ -29,11 +29,11 @@ import juno.model.data.avatar.*;
 import juno.model.data.awards.avatar.InterfaceAvatarImage;
 import juno.model.data.awards.frame.InterfaceAvatarFrame;
 import juno.model.util.Observer;
-import juno.view.awards.avatars.GAvatarImage;
-import juno.view.awards.avatars.factory.GAvatarImageCreator;
-import juno.view.awards.frames.GFrame;
-import juno.view.awards.frames.factory.GFrameCreator;
-import juno.view.util.ImageButton;
+import juno.view.gobject.avatars.GAvatarImage;
+import juno.view.gobject.avatars.GAvatarImageCreator;
+import juno.view.gobject.frames.GAvatarFrame;
+import juno.view.gobject.frames.GAvatarFrameCreator;
+import juno.view.panels.AbstractThirdComponent;
 import juno.view.util.ImageLabel;
 import juno.view.util.ImageResizer;
 
@@ -44,7 +44,7 @@ import java.awt.*;
  * @author Simone Gentili
  */
 public class AvatarPanel
-        extends JPanel
+        extends AbstractThirdComponent
         implements Observer {
 
     // The avatar image label.
@@ -69,10 +69,9 @@ public class AvatarPanel
         avatarImage = new ImageLabel();
         avatarFrame = new ImageLabel();
         avatarName = new JLabel();
-        // Observer / Observable connections.
-        AvatarFrameSetter.getInstance().addObserver(this);
-        AvatarImageSetter.getInstance().addObserver(this);
         AvatarNameSetter.getInstance().addObserver(this);
+        AvatarImageSetter.getInstance().addObserver(this);
+        AvatarFrameSetter.getInstance().addObserver(this);
         init();
     }
 
@@ -120,23 +119,28 @@ public class AvatarPanel
 
     @Override
     public void update(Object object) {
+        Avatar avatar = Avatar.getInstance();
         // Avatar image case.
-        if(object instanceof InterfaceAvatarImageSetter<?>) {
-            GAvatarImage<InterfaceAvatarImage> avatarImage = (GAvatarImage<InterfaceAvatarImage>) GAvatarImageCreator.getInstance().create(AvatarImageProvider.getInstance().avatarImage());
+        if(object instanceof AvatarImageSetter) {
+            GAvatarImage<InterfaceAvatarImage> avatarImage =
+                    (GAvatarImage<InterfaceAvatarImage>) GAvatarImageCreator.getInstance()
+                            .create(avatar.getAvatarImage());
             ImageResizer.resize(avatarImage, dimensionParameter * 2);
             this.avatarImage.setIcon(avatarImage.getIcon());
         }
 
         // Avatar frame case.
-        else if(object instanceof InterfaceAvatarFrameSetter<?>) {
-            GFrame<InterfaceAvatarFrame> avatarFrame = (GFrame<InterfaceAvatarFrame>) GFrameCreator.getInstance().create(AvatarFrameProvider.getInstance().frame());
+        else if(object instanceof AvatarFrameSetter) {
+            GAvatarFrame<InterfaceAvatarFrame> avatarFrame =
+                    (GAvatarFrame<InterfaceAvatarFrame>) GAvatarFrameCreator.getInstance()
+                            .create(avatar.getAvatarFrame());
             ImageResizer.resize(avatarFrame, dimensionParameter);
             this.avatarFrame.setIcon(avatarFrame.getIcon());
         }
 
         // Avatar name case.
-        else if(object instanceof InterfaceAvatarNameSetter) {
-            this.avatarName.setText(AvatarNameProvider.getInstance().name());
+        else if(object instanceof AvatarNameSetter) {
+            this.avatarName.setText(avatar.getAvatarName());
         } else throw new IllegalArgumentException();
     }
 

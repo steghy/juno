@@ -27,6 +27,7 @@ package juno.model.data.avatar;
 
 import juno.model.data.awards.avatar.InterfaceAvatarImage;
 import juno.model.util.AbstractObservable;
+import juno.model.util.InterfaceSetter;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -34,7 +35,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public class AvatarImageSetter
         extends AbstractObservable
-        implements InterfaceAvatarImageSetter<InterfaceAvatarImage> {
+        implements InterfaceSetter<InterfaceAvatarImage> {
 
     // The AvatarImageSetter instance.
     private static AvatarImageSetter instance;
@@ -52,8 +53,10 @@ public class AvatarImageSetter
     }
 
     @Override
-    public void setAvatarImage(@NotNull InterfaceAvatarImage avatarImage) {
-        Avatar.getInstance().avatarImage = avatarImage;
+    public void set(@NotNull InterfaceAvatarImage avatarImage) {
+        if(avatarImage.isUnlock()) Avatar.getInstance().avatarImage = avatarImage;
+        else throw new IllegalArgumentException(
+                avatarImage + " is not unlocked.");
         updateAll();
     }
 

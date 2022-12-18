@@ -53,14 +53,32 @@ public class MenuPanelConfigurator {
         MenuPanel menuPanel = MenuPanel.getInstance();
 
         // Components.
-        AvatarFramesPanel avatarFramesPanel = AvatarFramesPanel.getInstance();
-        AvatarImagesPanel avatarImagesPanel = AvatarImagesPanel.getInstance();
         AbstractButton backButton = ButtonFactory.createButton(ButtonLibrary.BACK);
 
         // Images resizing.
         ImageResizer.resize(backButton, 3.5);
 
         // Components settings.
+        // AvatarFramesPanel.
+        JScrollPane avatarFramesPanel = new JScrollPane(AvatarFramesPanel.getInstance() ,
+                JScrollPane.VERTICAL_SCROLLBAR_NEVER,
+                JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        avatarFramesPanel.setPreferredSize(new Dimension(750, 125));
+        avatarFramesPanel.setIgnoreRepaint(true);
+        avatarFramesPanel.setMinimumSize(new Dimension(500, 125));
+        avatarFramesPanel.getViewport().setOpaque(false);
+        avatarFramesPanel.setOpaque(false);
+
+        // AvatarImagePanel.
+        JScrollPane avatarImagesPanel = new JScrollPane(AvatarImagesPanel.getInstance(),
+                JScrollPane.VERTICAL_SCROLLBAR_NEVER,
+                JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        avatarImagesPanel.setPreferredSize(new Dimension(750, 125));
+        avatarImagesPanel.setIgnoreRepaint(true);
+        avatarImagesPanel.setMinimumSize(new Dimension(500, 125));
+        avatarImagesPanel.getViewport().setOpaque(false);
+        avatarImagesPanel.setOpaque(false);
+
         menuPanel.setFirstComponent(avatarFramesPanel);       // Avatar frames panel.
         menuPanel.setSecondComponent(avatarImagesPanel);      // Avatar images panel.
         menuPanel.setThirdComponent(backButton);              // Back button.
@@ -70,9 +88,9 @@ public class MenuPanelConfigurator {
 
         // Border settings
         RoundedBorder insideBorder = new RoundedBorder(
-                50, 1, null, Color.WHITE);
+                15, 1, null, Color.WHITE);
         RoundedBorder outsideBorder = new RoundedBorder(
-                50, 1, null, Color.RED);
+                25, 1, null, Color.RED);
         Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
         menuPanel.setBorder(border);
 

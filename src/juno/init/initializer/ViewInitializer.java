@@ -28,10 +28,8 @@ package juno.init.initializer;
 import juno.view.frame.FrameInitializer;
 import juno.view.pages.card.TopCardPanelConfigurator;
 import juno.view.pages.main.MainPanelInitializer;
-import juno.view.pages.new_game.NewGameInitializer;
 import juno.view.pages.options.OptionsInitializer;
 import juno.view.pages.pre_access.PreAccessInitializer;
-import juno.view.pages.score.ScorePanelInitializer;
 
 /**
  * @author Simone Gentili
@@ -44,10 +42,10 @@ public class ViewInitializer {
     /** Initialize the juno.view package. */
     public static void initialize() {
         // juno.view.awards.avatars package.
-        juno.view.awards.avatars.Initializer.initialize();
+        juno.view.gobject.avatars.Initializer.initialize();
 
         // juno.view.awards.frames package.
-        juno.view.awards.frames.Initializer.initialize();
+        juno.view.gobject.frames.Initializer.initialize();
 
         // juno.view.pages.new_game package.
         juno.view.pages.new_game.NewGameInitializer.initialize();

@@ -27,7 +27,7 @@ package juno.model.deck;
 
 
 import juno.model.card.InterfaceCard;
-import juno.view.card.factory.GDeckFactory;
+import juno.view.gobject.cards.GCardFactory;
 
 /**
  * @author Simone Gentili
@@ -79,7 +79,7 @@ public class Initializer {
 
         // Observer / Observable connections.
         deckFactory.addObserver(deck);
-        deckFactory.addObserver(GDeckFactory.getInstance());
+        deckFactory.addObserver(GCardFactory.getInstance());
     }
 
 }

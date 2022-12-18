@@ -98,7 +98,6 @@ public class Initializer {
         guestProfileCreator.setPanelChanger(panelChanger);
         guestProfileCreator.setCardPanel(topCardPanel);
         guestProfileCreator.setPanelKey(panelKey);
-        guestProfileCreator.setProfileNameSetter(profileNameSetter);
     }
 
 }

@@ -29,6 +29,8 @@ import juno.view.avatar.AvatarPanel;
 import juno.view.pages.score.menu.MenuPanel;
 import juno.view.pages.score.title.TitlePanel;
 
+import javax.swing.*;
+
 /**
  * @author Simone Gentili
  */

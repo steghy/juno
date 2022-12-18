@@ -33,6 +33,7 @@ import juno.model.data.avatar.AvatarImageSetter;
 import juno.model.data.avatar.AvatarNameSetter;
 import juno.model.data.awards.avatar.AvatarImage;
 import juno.model.data.awards.frame.AvatarFrame;
+import juno.model.data.score.GamesWonCounter;
 import juno.model.sound.AudioPlayer;
 import juno.view.frame.Frame;
 

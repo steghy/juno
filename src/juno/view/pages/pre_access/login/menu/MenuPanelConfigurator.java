@@ -33,6 +33,8 @@ public class MenuPanelConfigurator {
     // Builds a MenuPanelConfigurator object.
     private MenuPanelConfigurator() {}
 
-    public static void configure() {}
+    public static void configure() {
+
+    }
 
 }

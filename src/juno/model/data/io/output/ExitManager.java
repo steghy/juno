@@ -31,7 +31,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class ExitManager
-        extends AbstractExporterManagerUser
+        extends AbstractExitManager
         implements InterfaceExitManager {
 
     // The ExitManager instance.
@@ -52,6 +52,7 @@ public class ExitManager
     @Override
     public void exit() {
         Objects.requireNonNull(getExporter()).export();
+        Objects.requireNonNull(getFileRemover()).removeTemporaryFiles();
         System.exit(0);
     }
 

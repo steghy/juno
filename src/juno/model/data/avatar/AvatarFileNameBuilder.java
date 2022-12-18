@@ -27,15 +27,27 @@ package juno.model.data.avatar;
 
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * @author Simone Gentili
+ */
 public class AvatarFileNameBuilder {
 
+    /** The ending path of the name. */
     public static final String ending = "-avatar.json";
 
+    // Builds an AvatarFileNameBuilder object.
     private AvatarFileNameBuilder() {}
 
+    /**
+     * Builds the name of the avatar config file with
+     * the specified profile name.
+     * @param profileName A String object.
+     * @return A String object.
+     */
     public static String build(@NotNull String profileName) {
         if(profileName.length() == 0) throw new IllegalArgumentException(
                 "Invalid profile name length.");
-        return profileName + ending;
+        return profileName.toLowerCase() + ending;
     }
+
 }

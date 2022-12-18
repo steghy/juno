@@ -28,7 +28,6 @@ package juno.view.pages.pre_access.access.menu;
 import juno.controller.pre_access.GuestProfileCreator;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.ExitAction;
-import juno.model.data.io.output.ExitManager;
 import juno.view.factories.ButtonFactory;
 import juno.view.factories.ButtonLibrary;
 import juno.view.pages.pre_access.card.PreAccessCardPanel;
@@ -73,6 +72,8 @@ public class MenuPanelConfigurator {
         // Action listeners setting.
         createAnAccountButton.addActionListener(new ChangePanelAction(
                 PreAccessCardPanel.getInstance(), PreAccessCardPanel.REGISTRATION_PANEL));
+        logInButton.addActionListener(new ChangePanelAction(
+                PreAccessCardPanel.getInstance(), PreAccessCardPanel.LOG_IN_PANEL));
         continueWithoutAnAccountButton.addActionListener(GuestProfileCreator.getInstance());
         exitButton.addActionListener(new ExitAction(null));
 

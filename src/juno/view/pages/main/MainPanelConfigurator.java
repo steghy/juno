@@ -48,8 +48,9 @@ public class MainPanelConfigurator {
         TitlePanel titlePanel = TitlePanel.getInstance();
         MenuPanel menuPanel = MenuPanel.getInstance();
         AvatarPanel avatarPanel = new AvatarPanel(3.5);
-        JLabel label = new JLabel();
 
+        // JLabel component.
+        JLabel label = new JLabel();
         label.setText("Logged as: ");
         label.setOpaque(false);
         label.setForeground(Color.WHITE);

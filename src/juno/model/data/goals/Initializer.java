@@ -25,8 +25,8 @@
 
 package juno.model.data.goals;
 
-import juno.model.data.awards.avatar.AvatarImage;
-import juno.model.data.awards.frame.AvatarFrame;
+import juno.model.data.score.GamesWonCounter;
+import juno.model.data.score.LostGamesCounter;
 
 /**
  * @author Simone Gentili
@@ -38,32 +38,21 @@ public class Initializer {
 
     /** Initialize the goals and they relative awards. */
     public static void initialize() {
-        // First match won.
-        Goal.FIRST_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_2);
-        Goal.FIRST_MATCH_WON.addObserver(AvatarFrame.GREY_FRAME);
+        // Components.
+        // GamesWonCounter.
+        GamesWonCounter gamesWonCounter = GamesWonCounter.getInstance();
 
-        // First match lose.
-        Goal.FIRST_MATCH_LOSE.addObserver(AvatarImage.AVATAR_IMAGE_3);
+        // LostGamesCounter.
+        LostGamesCounter lostGamesCounter = LostGamesCounter.getInstance();
 
-        // Ten match won.
-        Goal.TEN_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_4);
-        Goal.TEN_MATCH_WON.addObserver(AvatarFrame.BLUE_FRAME);
+        ////////////////////////////////////////////////////////////////////
 
-        // Ten match lose.
-        Goal.TEN_MATCH_LOSE.addObserver(AvatarImage.AVATAR_IMAGE_5);
+        // Observer / Observable connections.
+        // Games won goals case.
+        Goal.getGamesWonGoals().forEach(gamesWonCounter::addObserver);
 
-        // Fifty match won.
-        Goal.FIFTY_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_6);
-        Goal.FIFTY_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_7);
-
-        // Fifty match lose.
-        Goal.FIFTY_MATCH_LOSE.addObserver(AvatarImage.AVATAR_IMAGE_8);
-
-        // One hundred match won.
-        Goal.ONE_HUNDRED_MATCH_WON.addObserver(AvatarFrame.GOLD_FRAME);
-
-        // One hundred match lose.
-        Goal.ONE_HUNDRED_MATCH_LOSE.addObserver(AvatarImage.AVATAR_IMAGE_9);
+        // Lost games goals case.
+        Goal.getLostGamesGoals().forEach(lostGamesCounter::addObserver);
     }
 
 }

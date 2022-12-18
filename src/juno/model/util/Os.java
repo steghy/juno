@@ -87,4 +87,10 @@ public class Os {
 	public static boolean isFile(@NotNull File file) {
 		return file.isFile();
 	}
+
+	public static boolean removeFile(@NotNull String path) {
+		File file = new File(path);
+		return file.delete();
+	}
+
 }

@@ -25,13 +25,15 @@
 
 package juno.view.pages.score.avatar_frame;
 
-import juno.controller.awards.AvatarFrameSetterAction;
+import juno.controller.awards.SetterAction;
+import juno.model.data.avatar.AvatarFrameSetter;
 import juno.model.data.awards.frame.AvatarFrame;
 import juno.model.data.awards.frame.InterfaceAvatarFrame;
-import juno.view.awards.frames.GFrame;
-import juno.view.awards.frames.factory.GFramesFactory;
+import juno.view.gobject.frames.GAvatarFrame;
+import juno.view.gobject.frames.GAvatarFrameFactory;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author Simone Gentili
@@ -42,14 +44,22 @@ public class AvatarFramesPanelConfigurator {
     private AvatarFramesPanelConfigurator() {}
 
     public static void configure() {
-        // Component.
+        // Main Component.
         AvatarFramesPanel avatarFramesPanel = AvatarFramesPanel.getInstance();
 
+        // Component.
+        GAvatarFrameFactory gAvatarFramesFactory = GAvatarFrameFactory.getInstance();
+
         // Adding graphic avatar frames.
-        GFramesFactory.getInstance().getGFrames(List.of(AvatarFrame.values()))
-                .forEach(avatarFrame -> {
-                    GFrame<InterfaceAvatarFrame> gAvatarFrame = (GFrame<InterfaceAvatarFrame>) avatarFrame;
-                    gAvatarFrame.addActionListener(new AvatarFrameSetterAction(gAvatarFrame));
+        // Generation.
+        gAvatarFramesFactory.generate(List.of(AvatarFrame.values()));
+        // Getting.
+        Objects.requireNonNull(gAvatarFramesFactory.getGObjects())
+                .forEach(temp -> {
+                    GAvatarFrame<InterfaceAvatarFrame> gAvatarFrame = (GAvatarFrame<InterfaceAvatarFrame>) temp;
+                    gAvatarFrame.addActionListener(new SetterAction<>(gAvatarFrame, AvatarFrameSetter.getInstance()));
+                    gAvatarFrame.setEnabled(false);
+                    AvatarFrame.valueOf(gAvatarFrame.getObject().name()).addObserver(gAvatarFrame);
                     avatarFramesPanel.addAvatarFrame(gAvatarFrame);
                 });
 

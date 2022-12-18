@@ -25,13 +25,15 @@
 
 package juno.view.pages.score.avatar_image;
 
-import juno.controller.awards.AvatarImageSetterAction;
+import juno.controller.awards.SetterAction;
+import juno.model.data.avatar.AvatarImageSetter;
 import juno.model.data.awards.avatar.AvatarImage;
 import juno.model.data.awards.avatar.InterfaceAvatarImage;
-import juno.view.awards.avatars.GAvatarImage;
-import juno.view.awards.avatars.factory.GAvatarImageFactory;
+import juno.view.gobject.avatars.GAvatarImage;
+import juno.view.gobject.avatars.GAvatarImageFactory;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author Simone Gentili
@@ -45,11 +47,19 @@ public class AvatarImagesPanelConfigurator {
         // Main Component.
         AvatarImagesPanel avatarImagesPanel = AvatarImagesPanel.getInstance();
 
+        // Component.
+        GAvatarImageFactory gAvatarImageFactory = GAvatarImageFactory.getInstance();
+
         // Adding graphic avatar frames.
-        GAvatarImageFactory.getInstance().getGAvatars(List.of(AvatarImage.values()))
-                .forEach(avatarImage -> {
-                    GAvatarImage<InterfaceAvatarImage> gAvatarImage = (GAvatarImage<InterfaceAvatarImage>) avatarImage;
-                    gAvatarImage.addActionListener(new AvatarImageSetterAction(gAvatarImage));
+        // Generation.
+        gAvatarImageFactory.generate(List.of(AvatarImage.values()));
+        // Getting.
+        Objects.requireNonNull(gAvatarImageFactory.getGObjects())
+                .forEach(temp -> {
+                    GAvatarImage<InterfaceAvatarImage> gAvatarImage = (GAvatarImage<InterfaceAvatarImage>) temp;
+                    gAvatarImage.addActionListener(new SetterAction<>(gAvatarImage, AvatarImageSetter.getInstance()));
+                    gAvatarImage.setEnabled(false);
+                    AvatarImage.valueOf(gAvatarImage.getObject().name()).addObserver(gAvatarImage);
                     avatarImagesPanel.addAvatarImage(gAvatarImage);
                 });
 

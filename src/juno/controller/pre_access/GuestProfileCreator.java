@@ -29,8 +29,9 @@ import juno.model.data.avatar.AvatarFrameSetter;
 import juno.model.data.avatar.AvatarImageSetter;
 import juno.model.data.awards.avatar.AvatarImage;
 import juno.model.data.awards.frame.AvatarFrame;
-import juno.model.data.profile.profile.InterfaceProfileNameSetter;
-import org.jetbrains.annotations.NotNull;
+import juno.model.data.goals.Goal;
+import juno.model.data.profile.profile.Profile;
+import juno.model.data.profile.profile.ProfileNameSetter;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -42,9 +43,6 @@ import java.util.Objects;
 public class GuestProfileCreator
         extends AbstractRequestResolver
         implements ActionListener {
-
-    // The profile name setter.
-    private InterfaceProfileNameSetter profileNameSetter;
 
     // The GuestProfileCreator instance.
     private static GuestProfileCreator instance;
@@ -61,14 +59,6 @@ public class GuestProfileCreator
         return instance;
     }
 
-    /**
-     * Sets the profile name provider of this object.
-     * @param profileNameSetter An InterfaceProfileNameProvider object.
-     */
-    public void setProfileNameSetter(@NotNull InterfaceProfileNameSetter profileNameSetter) {
-        this.profileNameSetter = profileNameSetter;
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         resolve();
@@ -76,10 +66,10 @@ public class GuestProfileCreator
 
     @Override
     public void resolve() {
-        AvatarFrameSetter.getInstance().setAvatarFrame(AvatarFrame.GREY_FRAME);
-        AvatarImageSetter.getInstance().setAvatarImage(AvatarImage.AVATAR_IMAGE_1);
-        profileNameSetter.setProfileName("Guest");
-        Objects.requireNonNull(getExporterManager()).export();
+        Goal.REGISTRATION.unlock();
+        ProfileNameSetter.getInstance().setProfileName(Profile.GUEST_NAME);
+        AvatarImageSetter.getInstance().set(AvatarImage.AVATAR_IMAGE_1);
+        AvatarFrameSetter.getInstance().set(AvatarFrame.GREY_FRAME);
         Objects.requireNonNull(getPanelChanger()).changePanel(getCardPanel(), getPanelKey());
     }
 

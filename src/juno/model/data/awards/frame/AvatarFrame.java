@@ -45,8 +45,26 @@ public enum AvatarFrame
     /** The blue frame. */
     BLUE_FRAME,
 
-    /** The goal frame. */
-    GOLD_FRAME;
+    /** The gold frame. */
+    GOLD_FRAME,
+
+    /** The pink frame. */
+    PINK_FRAME,
+
+    /** The cyan green frame. */
+    CYAN_GREEN_FRAME,
+
+    /** The red frame. */
+    RED_FRAME,
+
+    /** The white frame. */
+    WHITE_FRAME,
+
+    /** The yellow frame. */
+    YELLOW_FRAME,
+
+    /** The black frame. */
+    BLACK_FRAME;
 
     // The Observers List.
     private final List<Observer> observerList;

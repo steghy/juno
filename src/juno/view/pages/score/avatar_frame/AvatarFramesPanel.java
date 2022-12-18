@@ -26,7 +26,7 @@
 package juno.view.pages.score.avatar_frame;
 
 import juno.model.data.awards.frame.InterfaceAvatarFrame;
-import juno.view.awards.frames.GFrame;
+import juno.view.gobject.frames.GAvatarFrame;
 import juno.view.util.ImageResizer;
 import org.jetbrains.annotations.NotNull;
 
@@ -41,7 +41,7 @@ public class AvatarFramesPanel
         extends JPanel {
 
     // The List of GFrame objects.
-    private final java.util.List<GFrame<InterfaceAvatarFrame>> avatarFrames;
+    private final java.util.List<GAvatarFrame<InterfaceAvatarFrame>> avatarFrames;
 
     // The AvatarFramesPanel instance.
     private static AvatarFramesPanel instance;
@@ -63,7 +63,7 @@ public class AvatarFramesPanel
     /** Initialize the AvatarFramesPanel instance. */
     public void init() {
         setOpaque(false);
-        setLayout(new GridLayout(1, 5));
+        setLayout(new GridLayout(1, 1));
         avatarFrames.forEach(this::add);
     }
 
@@ -72,7 +72,7 @@ public class AvatarFramesPanel
      * avatar frames List.
      * @param avatarFrame A GFrame object.
      */
-    public void addAvatarFrame(@NotNull GFrame<InterfaceAvatarFrame> avatarFrame) {
+    public void addAvatarFrame(@NotNull GAvatarFrame<InterfaceAvatarFrame> avatarFrame) {
         ImageResizer.resize(avatarFrame, 4.5);
         avatarFrames.add(avatarFrame);
     }
@@ -81,7 +81,7 @@ public class AvatarFramesPanel
      * Returns the avatar frames.
      * @return A List object.
      */
-    public java.util.List<GFrame<InterfaceAvatarFrame>> getAvatarFrames() {
+    public java.util.List<GAvatarFrame<InterfaceAvatarFrame>> getAvatarFrames() {
         return avatarFrames;
     }
 

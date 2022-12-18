@@ -27,15 +27,15 @@ package juno.model.data.avatar;
 
 import juno.model.data.awards.frame.InterfaceAvatarFrame;
 import juno.model.util.AbstractObservable;
+import juno.model.util.InterfaceSetter;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the avatar frame.
  */
 public class AvatarFrameSetter
         extends AbstractObservable
-        implements InterfaceAvatarFrameSetter<InterfaceAvatarFrame> {
+        implements InterfaceSetter<InterfaceAvatarFrame> {
 
     // The AvatarFrameSetter instance.
     private static AvatarFrameSetter instance;
@@ -53,8 +53,10 @@ public class AvatarFrameSetter
     }
 
     @Override
-    public void setAvatarFrame(@NotNull InterfaceAvatarFrame avatarFrame) {
-        Avatar.getInstance().avatarFrame = avatarFrame;
+    public void set(@NotNull InterfaceAvatarFrame avatarFrame) {
+        if(avatarFrame.isUnlock()) Avatar.getInstance().avatarFrame = avatarFrame;
+        else throw new IllegalArgumentException(
+                avatarFrame + " is not unlocked.");
         updateAll();
     }
 

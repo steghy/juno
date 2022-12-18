@@ -46,6 +46,12 @@ public class ModelInitializer {
 
         // juno.model.data.avatar package.
         juno.model.data.avatar.Initializer.initialize();
+
+        // juno.model.data.goals package.
+        juno.model.data.goals.Initializer.initialize();
+
+        // juno.model.data.awards package.
+        juno.model.data.awards.Initializer.initialize();
     }
 
 }

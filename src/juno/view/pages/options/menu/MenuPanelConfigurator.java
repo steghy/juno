@@ -27,7 +27,7 @@ package juno.view.pages.options.menu;
 
 import juno.controller.audio.AudioToggleAction;
 import juno.controller.util.ChangePanelAction;
-import juno.controller.FullscreenToggleAction;
+import juno.controller.util.FullscreenToggleAction;
 import juno.model.sound.AudioPlayer;
 import juno.view.factories.ButtonFactory;
 import juno.view.factories.ButtonLibrary;
@@ -74,9 +74,9 @@ public class MenuPanelConfigurator {
 
         // Border settings
         RoundedBorder insideBorder = new RoundedBorder(
-                50, 1, null, Color.WHITE);
+                15, 1, null, Color.WHITE);
         RoundedBorder outsideBorder = new RoundedBorder(
-                50, 1, null, Color.RED);
+                20, 1, null, Color.RED);
         Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
         menuPanel.setBorder(border);
 

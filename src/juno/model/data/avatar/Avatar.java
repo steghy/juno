@@ -38,19 +38,17 @@ import java.util.Map;
  * @author Simone Gentili
  */
 public class Avatar
-        implements InterfaceAvatarProvider<InterfaceAvatarImage, InterfaceAvatarFrame>, Configurable, Exportable {
+        implements Configurable, Exportable {
 
     /** The avatar name key */
     public static final String NAME_KEY = "name";
-
     /** The avatar image key. */
     public static final String AVATAR_IMAGE_KEY = "avatarImage";
-
     /** The avatar frame key. */
     public static final String AVATAR_FRAME_KEY = "avatarFrame";
 
     // The avatar name.
-    String name;
+    String avatarName;
 
     // The avatar image.
     InterfaceAvatarImage avatarImage;
@@ -58,15 +56,15 @@ public class Avatar
     // The avatar frame.
     InterfaceAvatarFrame avatarFrame;
 
-    // The AvatarPanelModel instance.
+    // The Avatar instance.
     private static Avatar instance;
 
-    // Builds the AvatarPanelModel instance.
+    // Builds the Avatar instance.
     private Avatar() {}
 
     /**
-     * Returns the AvatarPanelModel instance.
-     * @return The AvatarPanelModel instance.
+     * Returns the Avatar instance.
+     * @return The Avatar instance.
      */
     public static Avatar getInstance() {
         if(instance == null) instance = new Avatar();
@@ -74,41 +72,57 @@ public class Avatar
     }
 
     @Override
-    public InterfaceAvatarImage avatarImage() {
-        return avatarImage;
-    }
-
-    @Override
-    public InterfaceAvatarFrame frame() {
-        return avatarFrame;
-    }
-
-    @Override
-    public String name() {
-        return name;
-    }
-
-    @Override
     public void configure(@NotNull Map<String, Object> map) {
+        // Avatar name case.
         if(map.containsKey(NAME_KEY)) {
             Object object = map.get(NAME_KEY);
             if(object instanceof String temp)
-                AvatarNameSetter.getInstance().setAvatarName(temp);
+                AvatarNameSetter.getInstance().set(temp);
             else throw new IllegalArgumentException();
         } else throw new IllegalArgumentException();
 
+        // Avatar image case.
         if(map.containsKey(AVATAR_IMAGE_KEY)) {
             Object object = map.get(AVATAR_IMAGE_KEY);
-        }
+            if(object instanceof InterfaceAvatarImage temp) {
+                AvatarImageSetter.getInstance().set(temp);
+            } else throw new IllegalArgumentException(
+                    "Invalid object type: " + object.getClass() +
+                            ". InterfaceAvatarImage expected.");
+        } else throw new IllegalArgumentException(
+                AVATAR_IMAGE_KEY + " is missing.");
+
+        // Avatar frame case.
+        if(map.containsKey(AVATAR_FRAME_KEY)) {
+            Object object = map.get(AVATAR_FRAME_KEY);
+            if(object instanceof InterfaceAvatarFrame temp) {
+                AvatarFrameSetter.getInstance().set(temp);
+            } else throw new IllegalArgumentException(
+                    "Invalid object type: " + object.getClass() +
+                            ". InterfaceAvatarFrame expected.");
+        } else throw new IllegalArgumentException(
+                AVATAR_FRAME_KEY + " is missing.");
     }
 
     @Override
     public Map<String, Object> exportData() {
         Map<String, Object> map = new HashMap<>();
-        map.put(NAME_KEY, name);
+        map.put(NAME_KEY, avatarName);
         map.put(AVATAR_FRAME_KEY, avatarFrame);
         map.put(AVATAR_IMAGE_KEY, avatarImage);
         return map;
+    }
+
+    public InterfaceAvatarImage getAvatarImage() {
+        return avatarImage;
+    }
+
+    public InterfaceAvatarFrame getAvatarFrame() {
+        return avatarFrame;
+    }
+
+    public String getAvatarName() {
+        return avatarName;
     }
 
 }

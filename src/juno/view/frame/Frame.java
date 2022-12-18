@@ -36,14 +36,16 @@ import java.awt.*;
 public class Frame
         extends JFrame {
 
-    public static GraphicsDevice device = GraphicsEnvironment
-                                          .getLocalGraphicsEnvironment()
-                                          .getScreenDevices()[0];
-
+    /** The default width of the frame. */
     public static final int DEFAULT_WIDTH = 1500;
-    public static final int DEFAULT_HEIGHT = 1500;
 
+    /** The default height of the frame. */
+    public static final int DEFAULT_HEIGHT = 1200;
+
+    // The main background.
     private JLabel background;
+
+    // The panel.
     private JPanel panel;
 
     // The Frame instance.
@@ -67,23 +69,24 @@ public class Frame
         setDefaultDimension();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        background.setLayout(new BorderLayout());
         background.setOpaque(false);
+        background.setLayout(new BorderLayout());
         background.add(panel, BorderLayout.CENTER);
         add(background, BorderLayout.CENTER);
     }
 
     public void setDefaultDimension() {
         Dimension dimension = new Dimension(DEFAULT_WIDTH, DEFAULT_HEIGHT);
-        this.setSize(dimension);
-        this.setPreferredSize(dimension);
-        this.setMaximumSize(dimension);
+        setSize(dimension);
+        setPreferredSize(dimension);
     }
 
     public void setBackground(@NotNull JLabel background) {
         this.background = background;
     }
+
     public void setPanel(@NotNull JPanel panel) {
         this.panel = panel;
     }
+
 }
