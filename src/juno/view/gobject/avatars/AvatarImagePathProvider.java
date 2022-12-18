@@ -25,16 +25,16 @@
 
 package juno.view.gobject.avatars;
 
-import juno.init.Directories;
-import juno.init.InterfaceDirectories;
+import juno.init.InterfacePathProvider;
+import juno.init.PathProvider;
 import juno.model.data.awards.avatar.InterfaceAvatarImage;
-import juno.view.gobject.InterfacePathProvider;
+import juno.view.gobject.InterfacePathObjectProvider;
 
 /**
  * @author Simone Gentili
  */
 public class AvatarImagePathProvider
-        implements InterfacePathProvider<InterfaceAvatarImage> {
+        implements InterfacePathObjectProvider<InterfaceAvatarImage> {
 
     // The AvatarImagePathProvider instance.
     private static AvatarImagePathProvider instance;
@@ -52,8 +52,8 @@ public class AvatarImagePathProvider
     }
 
     @Override
-    public InterfaceDirectories getPath(InterfaceAvatarImage avatar) {
-        return Directories.AVATARS;
+    public InterfacePathProvider getPathObjectOf(InterfaceAvatarImage avatar) {
+        return PathProvider.AVATARS;
     }
 
 }

@@ -25,8 +25,8 @@
 
 package juno.controller.pre_access;
 
-import juno.controller.InterfaceRegistrationDataProvider;
 import juno.model.data.io.input.configurable.Configurable;
+import juno.model.data.io.output.Exportable;
 import juno.model.data.profile.InterfaceErrorProvider;
 import org.jetbrains.annotations.NotNull;
 
@@ -56,11 +56,11 @@ public class RegistrationDataSelector
     }
 
     public void elaborate(@NotNull Configurable configurable,
-                          @NotNull InterfaceRegistrationDataProvider dataProvider,
+                          @NotNull Exportable exportable,
                           @NotNull InterfaceErrorProvider errorProvider) {
         // Checking compatibility.
         Objects.requireNonNull(getChecker())
-                .areCompatible(configurable, dataProvider.provideRegistrationData());
+                .areCompatible(configurable, exportable.exportData());
         // The errors.
         Map<String, String> errors = errorProvider.getErrors();
         if(!errors.isEmpty()) {

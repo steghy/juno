@@ -28,13 +28,6 @@ package juno.init;
 /**
  * @author Simone Gentili
  */
-@FunctionalInterface
-public interface InterfacePathProvider {
-
-    /**
-     *
-     * @return
-     */
-    String path();
-
-}
+public interface InterfacePathProvider
+        extends InterfaceAbsolutePathProvider,
+                InterfaceCanonicalPathProvider {}

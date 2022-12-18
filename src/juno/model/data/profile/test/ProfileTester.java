@@ -25,7 +25,7 @@
 
 package juno.model.data.profile.test;
 
-import juno.init.Directories;
+import juno.init.PathProvider;
 import juno.model.data.io.input.JSONDataImporter;
 import juno.model.data.profile.profile.Profile;
 import juno.model.util.PathGenerator;
@@ -36,7 +36,7 @@ public class ProfileTester {
 
     public static void main(String[] args) throws IOException {
         Profile profile = Profile.getInstance();
-        String profileConfigurationFilePath = PathGenerator.generate(Directories.PROFILES.absolutePath(), "steghy-profile.json");
+        String profileConfigurationFilePath = PathGenerator.generate(PathProvider.PROFILES.absolutePath(), "steghy-profile.json");
         profile.configure(JSONDataImporter.getInstance().importData(profileConfigurationFilePath));
         System.out.println(profile);
     }

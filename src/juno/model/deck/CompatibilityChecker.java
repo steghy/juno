@@ -30,6 +30,8 @@ import juno.model.card.actions.InterfaceAction;
 import juno.model.card.colors.InterfaceColor;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 /**
  * This class defines a compatibility checker
  * between the specified card and the top card
@@ -50,7 +52,7 @@ class CompatibilityChecker
      * Returns the CompatibilityChecker instance.
      * @return The CompatibilityChecker instance.
      */
-    static CompatibilityChecker getInstance(){
+    public static CompatibilityChecker getInstance(){
         if(instance == null) instance = new CompatibilityChecker();
         return instance;
     }
@@ -59,6 +61,7 @@ class CompatibilityChecker
     public boolean isCompatible(@NotNull InterfaceCard card){
         // Top card of the discarded pile.
         InterfaceDiscardedPile<InterfaceCard> discardedPile = getDiscardedPile();
+        Objects.requireNonNull(discardedPile);
         InterfaceCard topCard = discardedPile.get(discardedPile.size() - 1);
         InterfaceColor  topCardColor  = topCard.color();
         InterfaceAction topCardAction = topCard.action();

@@ -25,13 +25,15 @@
 
 package juno.model.subjects.factory;
 
+import juno.model.util.InterfaceFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Simone Gentili
  */
-public abstract class AbstractAiPlayerFactory {
+public abstract class AbstractAiPlayerFactory<T>
+        implements InterfaceFactory<T> {
 
     // The name factory.
     private InterfaceNameFactory nameFactory;

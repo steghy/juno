@@ -64,7 +64,7 @@ public class GAvatarFrameCreator
         GAvatarFrame<InterfaceAvatarFrame> graphicFrame = new GAvatarFrame<>(frame);
         ImageComponentInitializer.initialize(
                 graphicFrame,
-                Objects.requireNonNull(getProvider()).getPath(frame),
+                Objects.requireNonNull(getProvider()).getPathObjectOf(frame),
                 false,
                 frame.toString(),
                 frame.name() + extension,

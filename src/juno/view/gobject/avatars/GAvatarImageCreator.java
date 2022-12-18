@@ -64,7 +64,7 @@ public class GAvatarImageCreator
         GAvatarImage<InterfaceAvatarImage> graphicAvatar = new GAvatarImage<>(avatar);
         ImageComponentInitializer.initialize(
                 graphicAvatar,
-                Objects.requireNonNull(getProvider()).getPath(avatar),
+                Objects.requireNonNull(getProvider()).getPathObjectOf(avatar),
                 true,
                 avatar.toString(),
                 avatar.name() + extension,

@@ -25,8 +25,9 @@
 
 package juno.view.pages.new_game.single_player.players.menu;
 
+import juno.controller.new_game.PlayersSetter;
 import juno.controller.util.ChangePanelAction;
-import juno.controller.new_game.PlayersNumberAction;
+import juno.controller.new_game.PlayersAction;
 import juno.view.factories.ButtonFactory;
 import juno.view.factories.ButtonLibrary;
 import juno.view.pages.new_game.card.NewGameCardPanel;
@@ -73,9 +74,10 @@ public class MenuPanelConfigurator {
                 NewGameCardPanel.getInstance(), NewGameCardPanel.NEW_GAME_PANEL));
 
         // Difficulty actions.
-        twoPlayers.addActionListener(new PlayersNumberAction(2));
-        threePlayers.addActionListener(new PlayersNumberAction(3));
-        fourPlayers.addActionListener(new PlayersNumberAction(4));
+        PlayersSetter playersSetter = PlayersSetter.getInstance();
+        twoPlayers.addActionListener(new PlayersAction(2, playersSetter));
+        threePlayers.addActionListener(new PlayersAction(3, playersSetter));
+        fourPlayers.addActionListener(new PlayersAction(4, playersSetter));
 
         // Border settings.
         RoundedBorder insideBorder = new RoundedBorder(

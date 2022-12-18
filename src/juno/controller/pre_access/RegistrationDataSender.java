@@ -25,8 +25,8 @@
 
 package juno.controller.pre_access;
 
-import juno.controller.InterfaceRegistrationDataProvider;
 import juno.model.data.io.input.configurable.Configurable;
+import juno.model.data.io.output.Exportable;
 import juno.model.data.profile.InterfaceErrorProvider;
 import org.jetbrains.annotations.NotNull;
 
@@ -43,7 +43,7 @@ public class RegistrationDataSender
     private final Configurable configurable;
 
     // The registration data provider.
-    private final InterfaceRegistrationDataProvider dataProvider;
+    private final Exportable exportable;
 
     // The error provider.
     private final InterfaceErrorProvider errorProvider;
@@ -56,21 +56,21 @@ public class RegistrationDataSender
      * Configurable and InterfaceRegistrationDataSender
      * objects.
      * @param configurable A Configurable object.
-     * @param provider An InterfaceRegistrationDataProvider.
+     * @param exportable An Exportable object.
      */
     public RegistrationDataSender(@NotNull Configurable configurable,
-                                  @NotNull InterfaceRegistrationDataProvider provider,
+                                  @NotNull Exportable exportable,
                                   @NotNull InterfaceErrorProvider errorProvider,
                                   @NotNull InterfaceRegistrationDataSelector dataSelector) {
         this.configurable = configurable;
-        this.dataProvider = provider;
+        this.exportable = exportable;
         this.errorProvider = errorProvider;
         this.dataSelector = dataSelector;
     }
 
     @Override
-    public void actionPerformed(@NotNull ActionEvent event) {
-        dataSelector.elaborate(configurable, dataProvider, errorProvider);
+    public void actionPerformed(ActionEvent event) {
+        dataSelector.elaborate(configurable, exportable, errorProvider);
     }
 
 }

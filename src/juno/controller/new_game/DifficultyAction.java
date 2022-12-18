@@ -26,6 +26,7 @@
 package juno.controller.new_game;
 
 import juno.model.subjects.ai.InterfaceDifficulty;
+import juno.model.util.InterfaceSetter;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -35,24 +36,29 @@ import java.awt.event.ActionEvent;
 /**
  * @author Simone Gentili
  */
-public class DifficultyAction
+public class DifficultyAction<T>
         extends AbstractAction {
 
     // The difficulty.
-    private final InterfaceDifficulty difficulty;
+    private final T difficulty;
+
+    // The difficulty setter.
+    private final InterfaceSetter<T> setter;
 
     /**
      * Builds a DifficultyAction object with the
      * specified difficulty object.
      * @param difficulty An InterfaceDifficulty object.
      */
-    public DifficultyAction(@NotNull InterfaceDifficulty difficulty) {
+    public DifficultyAction(@NotNull T difficulty,
+                            @NotNull InterfaceSetter<T> setter) {
         this.difficulty = difficulty;
+        this.setter = setter;
     }
 
     @Override
-    public void actionPerformed(@NotNull ActionEvent e) {
-        SinglePlayerSettingData.difficulty = difficulty;
+    public void actionPerformed(ActionEvent e) {
+        setter.set(difficulty);
     }
 
 }

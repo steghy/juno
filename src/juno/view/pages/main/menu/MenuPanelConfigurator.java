@@ -26,7 +26,7 @@
 package juno.view.pages.main.menu;
 
 import juno.controller.util.ChangePanelAction;
-import juno.controller.ExitAction;
+import juno.controller.util.ExitAction;
 import juno.model.data.io.output.ExitManager;
 import juno.view.factories.ButtonFactory;
 import juno.view.factories.ButtonLibrary;

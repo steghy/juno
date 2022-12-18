@@ -39,6 +39,21 @@ public class MediumExaminer<T>
         extends AbstractCardExaminer<T>
         implements InterfaceMediumExaminer<T> {
 
+    // The MediumExaminer instance.
+    private static MediumExaminer<?> instance;
+
+    // Builds the MediumExaminer instance.
+    private MediumExaminer() {}
+
+    /**
+     * Returns the MediumExaminer instance.
+     * @return The MediumExaminer instance.
+     */
+    public static MediumExaminer<?> getInstance() {
+        if(instance == null) instance = new MediumExaminer<>();
+        return instance;
+    }
+
     @Override
     public T response(@NotNull List<T> cards) {
         Random r = new Random();

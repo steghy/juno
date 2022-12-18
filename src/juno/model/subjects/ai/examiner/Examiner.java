@@ -36,8 +36,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class Examiner<T>
-        extends AbstractMultiExaminer<T>
-        implements InterfaceExaminer<T> {
+        extends AbstractMultiExaminer<T> {
 
     // The Examiner instance.
     private static Examiner<?> instance;
@@ -61,15 +60,15 @@ public class Examiner<T>
         List<T> compatibleCards = Objects.requireNonNull(getItemsProvider())
                 .getCompatibleCards(cards);
 
-        // Easy case.
+        // Easy difficulty case.
         if(difficulty.isEasy())   return Objects.requireNonNull(getEasyExaminer())
                 .response(compatibleCards);
 
-        // Medium case.
+        // Medium difficulty case.
         if(difficulty.isMedium()) return Objects.requireNonNull(getMediumExaminer())
                 .response(compatibleCards);
 
-        // Hard case.
+        // Hard difficulty case.
         else                      return Objects.requireNonNull(getHardExaminer())
                 .response(compatibleCards);
     }

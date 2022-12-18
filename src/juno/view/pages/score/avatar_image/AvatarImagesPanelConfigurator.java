@@ -25,7 +25,7 @@
 
 package juno.view.pages.score.avatar_image;
 
-import juno.controller.awards.SetterAction;
+import juno.controller.util.SetterAction;
 import juno.model.data.avatar.AvatarImageSetter;
 import juno.model.data.awards.avatar.AvatarImage;
 import juno.model.data.awards.avatar.InterfaceAvatarImage;

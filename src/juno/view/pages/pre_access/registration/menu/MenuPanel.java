@@ -25,8 +25,8 @@
 
 package juno.view.pages.pre_access.registration.menu;
 
-import juno.controller.InterfaceRegistrationDataProvider;
 import juno.controller.pre_access.InterfaceDataLineProvider;
+import juno.model.data.io.output.Exportable;
 import juno.model.data.profile.profile.Profile;
 import juno.view.panels.AbstractSixthComponent;
 
@@ -40,8 +40,7 @@ import java.util.Objects;
  */
 public class MenuPanel
         extends AbstractSixthComponent
-        implements InterfaceRegistrationDataProvider,
-                    InterfaceDataLineProvider {
+        implements Exportable, InterfaceDataLineProvider {
 
     // The data lines map.
     private final Map<String, DataLine> dataLines;
@@ -141,16 +140,18 @@ public class MenuPanel
     }
 
     @Override
-    public Map<String, Object> provideRegistrationData() {
+    public Map<String, Object> exportData() {
         Map<String, Object> map = new HashMap<>();
         getDataLines().forEach((k,v) -> {
             switch (k) {
+                // Profile, Name, Last name case.
                 case (Profile.PROFILE_NAME_KEY),
-                        (Profile.LAST_NAME_KEY),
-                        (Profile.NAME_KEY) -> {
+                        (Profile.NAME_KEY),
+                        (Profile.LAST_NAME_KEY) -> {
                     String text = v.getTextField().getText();
                     if(text.length() != 0)
                         map.put(k, text);
+                    // Age case.
                 } case (Profile.AGE_KEY) -> {
                     String text = v.getTextField().getText();
                     if(text.length() != 0) {

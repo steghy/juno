@@ -39,6 +39,21 @@ public class HardExaminer<T>
         extends AbstractCardExaminer<T>
         implements InterfaceHardExaminer<T> {
 
+    // The HardExaminer instance.
+    private static HardExaminer<?> instance;
+
+    // Builds the HardExaminer instance.
+    private HardExaminer() {}
+
+    /**
+     * Returns the HardExaminer instance.
+     * @return The HardExaminer instance.
+     */
+    public static HardExaminer<?> getInstance() {
+        if(instance == null) instance = new HardExaminer<>();
+        return instance;
+    }
+
     @Override
     public T response(@NotNull List<T> cards) {
         Random r = new Random();

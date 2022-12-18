@@ -25,7 +25,7 @@
 
 package juno.model.data.io.output;
 
-import juno.init.Directories;
+import juno.init.PathProvider;
 import juno.model.data.avatar.Avatar;
 import juno.model.data.avatar.AvatarFileNameBuilder;
 import juno.model.data.profile.profile.Profile;
@@ -68,16 +68,16 @@ public class ExportableSetter
         String profileName = Objects.requireNonNull(Profile.getInstance().profileName());
         if(!profileName.equals(Profile.GUEST_NAME)) {
             // Profile case.
-            map.put(Profile.getInstance(), PathGenerator.generate(Directories.PROFILES.absolutePath(),
+            map.put(Profile.getInstance(), PathGenerator.generate(PathProvider.PROFILES.absolutePath(),
                     ProfileFileNameBuilder.build(profileName)));
             // Games won case.
-            map.put(GamesWonCounter.getInstance(), PathGenerator.generate(Directories.SCORE.absolutePath(),
+            map.put(GamesWonCounter.getInstance(), PathGenerator.generate(PathProvider.SCORE.absolutePath(),
                     GamesWonFileNameBuilder.build(profileName)));
             // Lost games case.
-            map.put(LostGamesCounter.getInstance(), PathGenerator.generate(Directories.SCORE.absolutePath(),
+            map.put(LostGamesCounter.getInstance(), PathGenerator.generate(PathProvider.SCORE.absolutePath(),
                     LostGamesFileNameBuilder.build(profileName)));
             // Avatar data case.
-            map.put(Avatar.getInstance(), PathGenerator.generate(Directories.AVATAR.absolutePath(),
+            map.put(Avatar.getInstance(), PathGenerator.generate(PathProvider.AVATAR.absolutePath(),
                     AvatarFileNameBuilder.build(profileName)));
         }
     }

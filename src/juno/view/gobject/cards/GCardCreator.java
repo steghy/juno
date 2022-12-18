@@ -74,7 +74,7 @@ public class GCardCreator
         rolloverFile = file + rollover;
         ImageComponentInitializer.initialize(
                 graphicCard,
-                Objects.requireNonNull(getProvider()).getPath(card),
+                Objects.requireNonNull(getProvider()).getPathObjectOf(card),
                 false,
                 card.toString(),
                 file + extension,

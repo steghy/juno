@@ -26,6 +26,7 @@
 package juno.model.deck;
 
 
+import juno.model.util.InterfaceFactory;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
@@ -98,8 +99,8 @@ public class Deck<T>
 
     @Override @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceDeckFactory<?> factory) {
-            addAll((Collection<? extends T>) factory.getDeck());
+        if(object instanceof InterfaceFactory<?> factory) {
+            addAll((Collection<? extends T>) factory.getObjects());
             Objects.requireNonNull(getMixer()).shuffle(this);
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +

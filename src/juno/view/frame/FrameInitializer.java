@@ -25,7 +25,7 @@
 
 package juno.view.frame;
 
-import juno.init.Directories;
+import juno.init.PathProvider;
 import juno.view.pages.card.TopCardPanel;
 import juno.view.util.Constant;
 import juno.view.util.ImageComponentInitializer;
@@ -44,7 +44,7 @@ public class FrameInitializer {
 
         ImageComponentInitializer.initialize(
                 background,
-                Directories.BACKGROUNDS,
+                PathProvider.BACKGROUNDS,
                 true,
                 "Background",
                 "background.gif",

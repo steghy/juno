@@ -25,7 +25,9 @@
 
 package juno.model.subjects.ai;
 
+import juno.model.subjects.AbstractPlayer;
 import juno.model.subjects.InterfacePlayer;
+import juno.model.subjects.ai.examiner.InterfaceExaminer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -36,8 +38,10 @@ import java.util.Objects;
  * @param <T> The type of the cards.
  */
 public class AI<T>
-        extends AbstractAI<T>
-        implements InterfacePlayer<T> {
+        extends AbstractPlayer<T> {
+
+    // The examiner.
+    private final InterfaceExaminer<T> examiner;
 
     // The name.
     private final String name;
@@ -52,15 +56,16 @@ public class AI<T>
      * @param difficulty A Difficulty object.
      */
     public AI(@NotNull String name,
-              @NotNull InterfaceDifficulty difficulty) {
+              @NotNull InterfaceDifficulty difficulty,
+              @NotNull InterfaceExaminer<T> examiner) {
         this.name = name;
         this.difficulty = difficulty;
+        this.examiner = examiner;
     }
 
     @Override @Nullable
     public T move() {
-        return Objects.requireNonNull(getExaminer())
-                .responseRelativeTo(cards(), difficulty);
+        return examiner.responseRelativeTo(cards(), difficulty);
     }
 
     @Override

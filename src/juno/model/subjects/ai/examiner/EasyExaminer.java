@@ -39,6 +39,21 @@ public class EasyExaminer<T>
         extends AbstractCardExaminer<T>
         implements InterfaceEasyExaminer<T> {
 
+    // The EasyExaminer instance.
+    private static EasyExaminer<?> instance;
+
+    // Builds the EasyExaminer instance.
+    private EasyExaminer() {}
+
+    /**
+     * Returns the EasyExaminer instance.
+     * @return The EasyExaminer instance.
+     */
+    public static EasyExaminer<?> getInstance() {
+        if(instance == null) instance = new EasyExaminer<>();
+        return instance;
+    }
+
     @Override
     public T response(@NotNull List<T> cards) {
         Random r = new Random();

@@ -25,8 +25,8 @@
 
 package juno.model.data.profile;
 
-import juno.controller.InterfaceRegistrationDataProvider;
-import juno.init.Directories;
+import juno.init.PathProvider;
+import juno.model.data.io.output.Exportable;
 import juno.model.data.profile.profile.Profile;
 import juno.model.util.Os;
 import juno.model.util.PathGenerator;
@@ -41,7 +41,7 @@ public class ErrorProviderDecorator
         implements InterfaceErrorDecorator {
 
     // The data provider.
-    private final InterfaceRegistrationDataProvider dataProvider;
+    private final Exportable exportable;
 
     // The error provider;
     private final InterfaceErrorProvider errorProvider;
@@ -52,20 +52,20 @@ public class ErrorProviderDecorator
      * @param errorProvider An InterfaceErrorProvider object.
      */
     public ErrorProviderDecorator(@NotNull InterfaceErrorProvider errorProvider,
-                                  @NotNull InterfaceRegistrationDataProvider dataProvider) {
+                                  @NotNull Exportable exportable) {
         this.errorProvider = errorProvider;
-        this.dataProvider = dataProvider;
+        this.exportable = exportable;
     }
 
     @Override
     public Map<String, String> getErrors() {
         Map<String, String> errors = errorProvider.getErrors();
-        Map<String, Object> data = dataProvider.provideRegistrationData();
+        Map<String, Object> data = exportable.exportData();
         if(data.containsKey(Profile.PROFILE_NAME_KEY)) {
             Object object = data.get(Profile.PROFILE_NAME_KEY);
             if(object instanceof String profileName) {
                 if(Os.exists(PathGenerator.generate(
-                        Directories.PROFILES.absolutePath(),
+                        PathProvider.PROFILES.absolutePath(),
                         ProfileFileNameBuilder.build((profileName))))) {
                     errors.put(Profile.PROFILE_NAME_KEY, "profile name already used");
                 } else if(profileName.equalsIgnoreCase(Profile.GUEST_NAME)) {

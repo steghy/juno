@@ -25,8 +25,8 @@
 
 package juno.model.subjects.players;
 
-import juno.model.subjects.factory.InterfaceAiPlayerFactory;
 import juno.model.util.Donut;
+import juno.model.util.InterfaceFactory;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
@@ -88,9 +88,9 @@ public class PlayersProvider<T>
     @Override
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceAiPlayerFactory<?> aiPlayersFactory) {
+        if(object instanceof InterfaceFactory<?> factory) {
             players = new Donut<>();
-            players.addAll((Collection<? extends T>) aiPlayersFactory.getAiPlayers());
+            players.addAll((Collection<? extends T>) factory.getObjects());
             players.add(Objects.requireNonNull(getPlayer()));
             updateAll();
         } else throw new IllegalArgumentException(

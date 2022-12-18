@@ -30,6 +30,4 @@ package juno.model.subjects.ai.examiner;
  * @param <T> The type of the cards.
  */
 public interface InterfaceFilter<T>
-        extends InterfaceActionFilter<T>,
-        InterfaceNumberFilter<T>,
-        InterfaceJollyFilter<T> {}
+        extends InterfaceActionFilter<T>, InterfaceNumberFilter<T>, InterfaceJollyFilter<T> {}

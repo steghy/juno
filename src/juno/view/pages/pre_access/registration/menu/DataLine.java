@@ -85,6 +85,10 @@ public class DataLine
         this.add(Objects.requireNonNull(textField), gbc);
     }
 
+    /**
+     * Returns the JTextField of this object.
+     * @return A JTextField object.
+     */
     public JTextField getTextField() {
         return textField;
     }

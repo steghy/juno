@@ -25,8 +25,8 @@
 
 package juno.view.factories;
 
-import juno.init.Directories;
-import juno.init.InterfaceDirectories;
+import juno.init.InterfacePathProvider;
+import juno.init.PathProvider;
 import juno.view.util.Constant;
 import juno.view.util.ImageButton;
 import juno.view.util.ImageComponentInitializer;
@@ -43,7 +43,7 @@ public class ButtonFactory {
     private static String rollover = "_ROLLOVER";
     private static String selected = "_SELECTED";
 
-    private static InterfaceDirectories directories = Directories.BUTTONS;
+    private static InterfacePathProvider pathProvider = PathProvider.BUTTONS;
 
     private static boolean download = false;
 
@@ -67,7 +67,7 @@ public class ButtonFactory {
             button = new ImageToggleButton();
             ImageComponentInitializer.initialize(
                     button,
-                    directories,
+                    pathProvider,
                     download,
                     BUTTON.name(),
                     BUTTON.name() + extension,
@@ -87,7 +87,7 @@ public class ButtonFactory {
             button = new ImageButton();
             ImageComponentInitializer.initialize(
                     button,
-                    directories,
+                    pathProvider,
                     download,
                     BUTTON.name(),
                     BUTTON.name() + extension,

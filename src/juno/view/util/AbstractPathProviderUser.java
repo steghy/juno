@@ -25,7 +25,7 @@
 
 package juno.view.util;
 
-import juno.view.gobject.InterfacePathProvider;
+import juno.view.gobject.InterfacePathObjectProvider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -36,13 +36,13 @@ import org.jetbrains.annotations.Nullable;
 public abstract class AbstractPathProviderUser<T> {
 
     // The card path provider.
-    private InterfacePathProvider<T> provider;
+    private InterfacePathObjectProvider<T> provider;
 
     /**
      * Sets the card path provider of this object.
      * @param provider An InterfaceCPathProvider object.
      */
-    public void setProvider(@NotNull InterfacePathProvider<T> provider) {
+    public void setProvider(@NotNull InterfacePathObjectProvider<T> provider) {
         this.provider = provider;
     }
 
@@ -51,7 +51,7 @@ public abstract class AbstractPathProviderUser<T> {
      * @return An InterfaceCPathProvider object.
      */
     @Nullable
-    public InterfacePathProvider<T> getProvider() {
+    public InterfacePathObjectProvider<T> getProvider() {
         return provider;
     }
 

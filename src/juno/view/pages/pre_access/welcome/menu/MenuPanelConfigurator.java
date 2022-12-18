@@ -25,7 +25,7 @@
 
 package juno.view.pages.pre_access.welcome.menu;
 
-import juno.controller.ExitAction;
+import juno.controller.util.ExitAction;
 import juno.controller.pre_access.GuestProfileCreator;
 import juno.model.data.io.output.ExitManager;
 import juno.view.factories.ButtonFactory;

@@ -26,7 +26,7 @@
 package juno.view.gobject.cards;
 
 import juno.model.card.InterfaceCard;
-import juno.model.deck.InterfaceDeckFactory;
+import juno.model.util.InterfaceFactory;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import juno.view.gobject.AbstractGObjectFactory;
@@ -100,8 +100,8 @@ public class GCardFactory
 
     @Override @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceDeckFactory<?> factory)
-            generate((List<InterfaceCard>) Objects.requireNonNull(factory.getDeck()));
+        if(object instanceof InterfaceFactory<?> factory)
+            generate((List<InterfaceCard>) Objects.requireNonNull(factory.getObjects()));
         else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceDeckInitialized expected.");

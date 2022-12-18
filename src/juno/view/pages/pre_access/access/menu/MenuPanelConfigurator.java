@@ -27,7 +27,7 @@ package juno.view.pages.pre_access.access.menu;
 
 import juno.controller.pre_access.GuestProfileCreator;
 import juno.controller.util.ChangePanelAction;
-import juno.controller.ExitAction;
+import juno.controller.util.ExitAction;
 import juno.view.factories.ButtonFactory;
 import juno.view.factories.ButtonLibrary;
 import juno.view.pages.pre_access.card.PreAccessCardPanel;

@@ -25,18 +25,18 @@
 
 package juno.view.gobject.cards;
 
-import juno.init.Directories;
-import juno.init.InterfaceDirectories;
+import juno.init.InterfacePathProvider;
+import juno.init.PathProvider;
 import juno.model.card.InterfaceCard;
 import juno.model.card.colors.InterfaceColor;
-import juno.view.gobject.InterfacePathProvider;
+import juno.view.gobject.InterfacePathObjectProvider;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Simone Gentili
  */
 public class CardPathProvider
-        implements InterfacePathProvider<InterfaceCard> {
+        implements InterfacePathObjectProvider<InterfaceCard> {
 
     // The CardPathProvider instance.
     private static CardPathProvider instance;
@@ -54,14 +54,14 @@ public class CardPathProvider
     }
 
     @Override
-    public InterfaceDirectories getPath(@NotNull InterfaceCard card) {
+    public InterfacePathProvider getPathObjectOf(@NotNull InterfaceCard card) {
         if(card.color() != null) {
             InterfaceColor color = card.color();
-            if(color.isBlue())  return Directories.BLUE_CARDS;
-            if(color.isRed())   return Directories.RED_CARDS;
-            if(color.isGreen()) return Directories.GREEN_CARDS;
-            if(color.isYellow())  return Directories.YELLOW_CARDS;
-        } return Directories.JOLLY_CARDS;
+            if(color.isBlue())  return PathProvider.BLUE_CARDS;
+            if(color.isRed())   return PathProvider.RED_CARDS;
+            if(color.isGreen()) return PathProvider.GREEN_CARDS;
+            if(color.isYellow())  return PathProvider.YELLOW_CARDS;
+        } return PathProvider.JOLLY_CARDS;
     }
 
 }

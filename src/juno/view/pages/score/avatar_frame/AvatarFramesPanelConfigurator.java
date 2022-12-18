@@ -25,7 +25,7 @@
 
 package juno.view.pages.score.avatar_frame;
 
-import juno.controller.awards.SetterAction;
+import juno.controller.util.SetterAction;
 import juno.model.data.avatar.AvatarFrameSetter;
 import juno.model.data.awards.frame.AvatarFrame;
 import juno.model.data.awards.frame.InterfaceAvatarFrame;

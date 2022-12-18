@@ -25,7 +25,7 @@
 
 package juno.init.test;
 
-import juno.init.Directories;
+import juno.init.PathProvider;
 
 import java.io.File;
 import java.util.Arrays;
@@ -35,9 +35,9 @@ import static java.lang.System.out;
 public class PathsTester {
 
 	public static void main(String[] args) {
-		Arrays.asList(Directories.values()).stream()
+		Arrays.asList(PathProvider.values()).stream()
 			.forEach(pathObject -> {
-				File file = new File(pathObject.path());
+				File file = new File(pathObject.canonicalPath());
 				out.println((file.exists() ? 
 						file.getAbsolutePath() + " | EXISTS" : 
 						file.getAbsolutePath() + " | NOT EXISTS"));
