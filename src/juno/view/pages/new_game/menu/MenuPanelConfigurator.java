@@ -26,8 +26,8 @@
 package juno.view.pages.new_game.menu;
 
 import juno.controller.util.ChangePanelAction;
-import juno.view.factories.ButtonCreator;
-import juno.view.factories.Button;
+import juno.view.button.ButtonCreator;
+import juno.view.button.Button;
 import juno.view.pages.main.card.MainCardPanel;
 import juno.view.pages.new_game.card.NewGameCardPanel;
 import juno.view.util.ImageResizer;

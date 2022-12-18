@@ -23,12 +23,14 @@
  * SOFTWARE.
  */
 
-package juno.view.util;
+package juno.view.download;
 
 import juno.init.Downloader;
 import juno.init.GitHubURLBuilder;
 import juno.init.InterfacePathProvider;
 import juno.model.util.Os;
+import juno.view.util.Constant;
+import juno.view.util.InterfaceImageComponentInitializer;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -45,10 +47,10 @@ public class ImageComponentInitializer
     public Constant BOTH_MISSING = Constant.THROW_EXCEPTION;
     public Constant BOTH_SELECTED_MISSING = Constant.THROW_EXCEPTION;
     public Constant ALL_MISSING = Constant.THROW_EXCEPTION;
-    public Constant IMAGE_MISSING = Constant.THROW_EXCEPTION;
-    public Constant ROLLOVER_IMAGE_MISSING = Constant.THROW_EXCEPTION;
-    public Constant SELECTED_IMAGE_MISSING = Constant.THROW_EXCEPTION;
-    public Constant ROLLOVER_SELECTED_IMAGE_MISSING = Constant.THROW_EXCEPTION;
+    public Constant IMAGE_MISSING = Constant.KEEP_ROLLOVER_IMAGE;
+    public Constant ROLLOVER_IMAGE_MISSING = Constant.KEEP_IMAGE;
+    public Constant SELECTED_IMAGE_MISSING = Constant.KEEP_ROLLOVER_SELECTED_IMAGE;
+    public Constant ROLLOVER_SELECTED_IMAGE_MISSING = Constant.KEEP_SELECTED_IMAGE;
     public boolean download = true;
 
     // The ImageComponentInitializer instance.

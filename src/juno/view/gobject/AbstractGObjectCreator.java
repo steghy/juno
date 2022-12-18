@@ -26,7 +26,7 @@
 package juno.view.gobject;
 
 import juno.view.util.InterfaceImageComponentInitializer;
-import juno.view.util.InterfacePathObjectAssembler;
+import juno.view.download.InterfacePathObjectAssembler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

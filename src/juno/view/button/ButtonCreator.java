@@ -23,9 +23,10 @@
  * SOFTWARE.
  */
 
-package juno.view.factories;
+package juno.view.button;
 
 import juno.init.InterfacePathProvider;
+import juno.view.download.InterfacePathObjectAssembler;
 import juno.view.gobject.AbstractGObjectCreator;
 import juno.view.gobject.InterfacePathObjectProvider;
 import juno.view.util.*;

@@ -23,14 +23,14 @@
  * SOFTWARE.
  */
 
-package juno.view.factories;
+package juno.view.button;
 
 /**
  * @author Simone Gentili
  */
 @FunctionalInterface
-public interface InterfaceSimpleButton {
+public interface InterfaceToggleButton {
 
-    boolean isSimpleButton();
+    boolean isToggleButton();
 
 }

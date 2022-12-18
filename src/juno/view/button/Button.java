@@ -23,7 +23,7 @@
  * SOFTWARE.
  */
 
-package juno.view.factories;
+package juno.view.button;
 
 /**
  * @author Simone Gentili

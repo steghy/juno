@@ -23,9 +23,38 @@
  * SOFTWARE.
  */
 
-package juno.view.factories;
+package juno.view.button;
 
+import juno.view.download.ImageComponentInitializer;
+import juno.view.download.PathObjectAssembler;
+
+/**
+ * @author Simone Gentili
+ */
 public class Initializer {
 
+    // Builds an Initializer object.
+    private Initializer() {}
+
+    /** Initialize the juno.view.button package. */
+    public static void initialize() {
+        // Component.
+        // ButtonCreator.
+        ButtonCreator buttonCreator = ButtonCreator.getInstance();
+
+        // ImageComponentInitializer.
+        ImageComponentInitializer imageComponentInitializer = ImageComponentInitializer.getInstance();
+
+        // PathObjectAssembler.
+        PathObjectAssembler pathObjectAssembler = PathObjectAssembler.getInstance();
+
+        // ButtonDirectoryPathProvider.
+        ButtonDirectoryPathProvider buttonDirectoryPathProvider = ButtonDirectoryPathProvider.getInstance();
+
+
+        buttonCreator.setInitializer(imageComponentInitializer);
+        buttonCreator.setAssembler(pathObjectAssembler);
+        buttonCreator.setProvider(buttonDirectoryPathProvider);
+    }
 
 }

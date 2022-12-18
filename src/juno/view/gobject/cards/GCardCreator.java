@@ -30,6 +30,8 @@ import juno.model.card.InterfaceCard;
 import juno.view.gobject.AbstractGObjectCreator;
 import juno.view.gobject.InterfaceGObject;
 import juno.view.gobject.InterfaceGObjectCreator;
+import juno.view.gobject.InterfacePathObjectProvider;
+import juno.view.download.InterfacePathObjectAssembler;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -66,12 +68,14 @@ public class GCardCreator
             file = card.action().toString();
         } else throw new IllegalArgumentException("Invalid card attributes.");
         rolloverFile = file + "_ROLLOVER.png";
-        InterfacePathProvider pathObject = Objects.requireNonNull(getProvider()).getPathObjectOf(card);
+        InterfacePathObjectAssembler assembler = getAssembler();
+        InterfacePathObjectProvider<InterfaceCard> provider = getProvider();
+        InterfacePathProvider pathObject = Objects.requireNonNull(provider).getPathObjectOf(card);
+        Objects.requireNonNull(assembler);
         Objects.requireNonNull(getInitializer()).initialize(
                 graphicCard,
-                Objects.requireNonNull(getAssembler())
-                        .assemble(pathObject, file + ".png"),
-                getAssembler().assemble(pathObject, rolloverFile + ".png"));
+                assembler.assemble(pathObject, file + ".png"),
+                assembler.assemble(pathObject, rolloverFile + "_ROLLOVER" + ".png"));
         return graphicCard;
     }
 

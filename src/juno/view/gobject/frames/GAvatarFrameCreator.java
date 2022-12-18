@@ -25,10 +25,13 @@
 
 package juno.view.gobject.frames;
 
+import juno.init.InterfacePathProvider;
 import juno.model.data.awards.frame.InterfaceAvatarFrame;
 import juno.view.gobject.AbstractGObjectCreator;
 import juno.view.gobject.InterfaceGObject;
 import juno.view.gobject.InterfaceGObjectCreator;
+import juno.view.gobject.InterfacePathObjectProvider;
+import juno.view.download.InterfacePathObjectAssembler;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -58,12 +61,14 @@ public class GAvatarFrameCreator
     @Override
     public InterfaceGObject<InterfaceAvatarFrame> create(@NotNull InterfaceAvatarFrame frame) {
         GAvatarFrame<InterfaceAvatarFrame> graphicFrame = new GAvatarFrame<>(frame);
+        InterfacePathObjectAssembler assembler = getAssembler();
+        InterfacePathObjectProvider<InterfaceAvatarFrame> provider = getProvider();
+        InterfacePathProvider pathObject = Objects.requireNonNull(provider).getPathObjectOf(frame);
+        Objects.requireNonNull(assembler);
         Objects.requireNonNull(getInitializer()).initialize(
                 graphicFrame,
-                Objects.requireNonNull(getAssembler())
-                        .assemble(Objects.requireNonNull(getProvider())
-                                .getPathObjectOf(frame), frame.name() + ".png"),
-                null);
+                assembler.assemble(pathObject, frame.name() + ".png"),
+                assembler.assemble(pathObject, frame.name() + "_ROLLOVER" + ".png"));
         return graphicFrame;
     }
 

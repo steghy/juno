@@ -23,38 +23,13 @@
  * SOFTWARE.
  */
 
-package juno.view.util;
-
-import juno.init.InterfacePathProvider;
-import juno.model.util.PathGenerator;
-import org.jetbrains.annotations.NotNull;
+package juno.view.button;
 
 /**
  * @author Simone Gentili
  */
-public class PathObjectAssembler
-        implements InterfacePathObjectAssembler {
-
-    // The PathObjectAssembler instance.
-    private static PathObjectAssembler instance;
-
-    // Builds the PathObjectAssembler instance.
-    private PathObjectAssembler() {}
-
-    /**
-     * Returns the PathObjectAssembler instance.
-     * @return The PathObjectAssembler instance.
-     */
-    public static PathObjectAssembler getInstance() {
-        if(instance == null) instance = new PathObjectAssembler();
-        return instance;
-    }
-
-    @Override
-    public InterfacePathProvider assemble(@NotNull InterfacePathProvider provider,
-                                          @NotNull String path) {
-        return new PathObject(PathGenerator.generate(provider.absolutePath(), path),
-                              PathGenerator.generate(provider.canonicalPath(), path));
-    }
-
+public interface InterfaceButton
+        extends InterfaceSimpleButton,
+                InterfaceToggleButton {
+    String name();
 }

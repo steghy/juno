@@ -23,13 +23,16 @@
  * SOFTWARE.
  */
 
-package juno.view.factories;
+package juno.view.download;
+
+import juno.init.InterfacePathProvider;
 
 /**
  * @author Simone Gentili
  */
-public interface InterfaceButton
-        extends InterfaceSimpleButton,
-                InterfaceToggleButton {
-    String name();
+@FunctionalInterface
+public interface InterfacePathObjectAssembler {
+
+    InterfacePathProvider assemble(InterfacePathProvider provider, String path);
+
 }

@@ -26,8 +26,8 @@
 package juno.view.pages.score.menu;
 
 import juno.controller.util.ChangePanelAction;
-import juno.view.factories.ButtonCreator;
-import juno.view.factories.Button;
+import juno.view.button.ButtonCreator;
+import juno.view.button.Button;
 import juno.view.pages.main.card.MainCardPanel;
 import juno.view.pages.score.avatar_frame.AvatarFramesPanel;
 import juno.view.pages.score.avatar_frame.AvatarFramesPanelConfigurator;

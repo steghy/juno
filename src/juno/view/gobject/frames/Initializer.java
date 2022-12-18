@@ -25,6 +25,9 @@
 
 package juno.view.gobject.frames;
 
+import juno.view.download.ImageComponentInitializer;
+import juno.view.download.PathObjectAssembler;
+
 /**
  * @author Simone Gentili
  */
@@ -42,6 +45,12 @@ public class Initializer {
         // GFramesFactory.
         GAvatarFrameFactory gFramesFactory = GAvatarFrameFactory.getInstance();
 
+        // PathObjectAssembler.
+        PathObjectAssembler pathObjectAssembler = PathObjectAssembler.getInstance();
+
+        // ImageComponentInitializer.
+        ImageComponentInitializer imageComponentInitializer = ImageComponentInitializer.getInstance();
+
         // FPathProvider.
         AvatarFramePathProvider avatarFramePathProvider = AvatarFramePathProvider.getInstance();
 
@@ -50,6 +59,8 @@ public class Initializer {
         // Connections.
         // GFrameCreator.
         gFrameCreator.setProvider(avatarFramePathProvider);
+        gFrameCreator.setInitializer(imageComponentInitializer);
+        gFrameCreator.setAssembler(pathObjectAssembler);
 
         // GFramesFactory.
         gFramesFactory.setCreator(gFrameCreator);

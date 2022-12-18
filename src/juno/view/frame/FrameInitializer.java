@@ -27,8 +27,8 @@ package juno.view.frame;
 
 import juno.init.PathProvider;
 import juno.view.pages.card.TopCardPanel;
-import juno.view.util.ImageComponentInitializer;
-import juno.view.util.PathObjectAssembler;
+import juno.view.download.ImageComponentInitializer;
+import juno.view.download.PathObjectAssembler;
 
 import javax.swing.*;
 

@@ -23,16 +23,32 @@
  * SOFTWARE.
  */
 
-package juno.view.util;
+package juno.view.button;
 
 import juno.init.InterfacePathProvider;
+import juno.init.PathProvider;
+import juno.view.gobject.InterfacePathObjectProvider;
 
-/**
- * @author Simone Gentili
- */
-@FunctionalInterface
-public interface InterfacePathObjectAssembler {
+public class ButtonDirectoryPathProvider
+        implements InterfacePathObjectProvider<InterfaceButton> {
 
-    InterfacePathProvider assemble(InterfacePathProvider provider, String path);
+    // The ButtonDirectoryPathProvider instance.
+    private static ButtonDirectoryPathProvider instance;
 
+    // Builds the DirectoryPathProvider instance.
+    private ButtonDirectoryPathProvider() {}
+
+    /**
+     * Returns the ButtonDirectoryPathProvider instance.
+     * @return The ButtonDirectoryPathProvider instance.
+     */
+    public static ButtonDirectoryPathProvider getInstance() {
+        if(instance == null) instance = new ButtonDirectoryPathProvider();
+        return instance;
+    }
+
+    @Override
+    public InterfacePathProvider getPathObjectOf(InterfaceButton card) {
+        return PathProvider.BUTTONS;
+    }
 }

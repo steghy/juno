@@ -41,6 +41,9 @@ public class ViewInitializer {
 
     /** Initialize the juno.view package. */
     public static void initialize() {
+        // juno.view.button package.
+        juno.view.button.Initializer.initialize();
+
         // juno.view.awards.avatars package.
         juno.view.gobject.avatars.Initializer.initialize();
 

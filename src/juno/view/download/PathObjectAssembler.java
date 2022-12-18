@@ -23,29 +23,38 @@
  * SOFTWARE.
  */
 
-package juno.view.util;
+package juno.view.download;
 
 import juno.init.InterfacePathProvider;
+import juno.model.util.PathGenerator;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * @param canonicalPath The canonical path.
- * @param absolutePath  The absolute path.
  * @author Simone Gentili
  */
-public record PathObject(String canonicalPath, String absolutePath)
-        implements InterfacePathProvider {
+public class PathObjectAssembler
+        implements InterfacePathObjectAssembler {
+
+    // The PathObjectAssembler instance.
+    private static PathObjectAssembler instance;
+
+    // Builds the PathObjectAssembler instance.
+    private PathObjectAssembler() {}
 
     /**
-     * Builds a PathObject with the specified
-     * canonical path and absolute path objects.
-     *
-     * @param canonicalPath A String object.
-     * @param absolutePath  A String object.
+     * Returns the PathObjectAssembler instance.
+     * @return The PathObjectAssembler instance.
      */
-    public PathObject(@NotNull String canonicalPath,
-                      @NotNull String absolutePath) {
-        this.canonicalPath = canonicalPath;
-        this.absolutePath = absolutePath;
+    public static PathObjectAssembler getInstance() {
+        if(instance == null) instance = new PathObjectAssembler();
+        return instance;
     }
+
+    @Override
+    public InterfacePathProvider assemble(@NotNull InterfacePathProvider provider,
+                                          @NotNull String path) {
+        return new PathObject(PathGenerator.generate(provider.canonicalPath(), path),
+                              PathGenerator.generate(provider.absolutePath(), path));
+    }
+
 }

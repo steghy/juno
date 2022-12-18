@@ -25,24 +25,54 @@
 
 package juno.view.util;
 
+/**
+ * @author Simone Gentili
+ */
 public enum Constant {
 
+    /** Throw exception constant. */
     THROW_EXCEPTION,
 
+    /** Red button constant. */
     RED_BUTTON,
+
+    /** Blue button constant. */
     BLUE_BUTTON,
+
+    /** Yellow button constant. */
     YELLOW_BUTTON,
+
+    /** Cyan button constant. */
     CYAN_BUTTON,
+
+    /** Green button constant. */
     GREEN_BUTTON,
 
+    /** Red label constant. */
     RED_LABEL,
+
+    /** Blue label constant. */
     BLUE_LABEL,
+
+    /** Yellow label constant. */
     YELLOW_LABEL,
+
+    /** Cyan label constant. */
     CYAN_LABEL,
+
+    /** Green label constant. */
     GREEN_LABEL,
 
+    /** Keep image constant. */
     KEEP_IMAGE,
+
+    /** Keep rollover image constant. */
     KEEP_ROLLOVER_IMAGE,
+
+    /** Keep selected image constant. */
     KEEP_SELECTED_IMAGE,
-    KEEP_ROLLOVER_SELECTED_IMAGE;
+
+    /** Keep rollover selected image constant. */
+    KEEP_ROLLOVER_SELECTED_IMAGE
+
 }

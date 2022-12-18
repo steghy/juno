@@ -25,8 +25,8 @@
 
 package juno.view.pages.new_game.multiplayer.unavailable.title;
 
-import juno.view.factories.ButtonCreator;
-import juno.view.factories.Button;
+import juno.view.button.ButtonCreator;
+import juno.view.button.Button;
 import juno.view.util.ImageResizer;
 
 import javax.swing.*;
