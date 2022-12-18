@@ -25,11 +25,15 @@
 
 package juno.view.util;
 
+import juno.init.InterfacePathProvider;
+
 import javax.swing.*;
 
 @FunctionalInterface
 public interface InterfaceAbstractButtonInitializer {
 
-    void initialize(AbstractButton button);
+    void initialize(AbstractButton button,
+                    InterfacePathProvider file,
+                    InterfacePathProvider rolloverFiler);
 
 }

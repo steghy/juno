@@ -30,8 +30,8 @@ import juno.controller.pre_access.RegistrationDataSender;
 import juno.controller.util.RegistrationPanelRestorer;
 import juno.model.data.profile.ErrorProviderDecorator;
 import juno.model.data.profile.profile.Profile;
-import juno.view.factories.ButtonFactory;
-import juno.view.factories.ButtonLibrary;
+import juno.view.factories.ButtonCreator;
+import juno.view.factories.Button;
 import juno.view.pages.pre_access.card.PreAccessCardPanel;
 import juno.view.pages.pre_access.registration.RegistrationPanel;
 import juno.view.util.ImageResizer;
@@ -86,8 +86,9 @@ public class MenuPanelConfigurator {
         DataLine age = new DataLine(ageLabel, ageTextField);
 
         // Buttons.
-        AbstractButton confirmButton = ButtonFactory.createButton(ButtonLibrary.CONFIRM);
-        AbstractButton backButton = ButtonFactory.createButton(ButtonLibrary.BACK);
+        ButtonCreator creator = ButtonCreator.getInstance();
+        AbstractButton confirmButton = creator.create(Button.CONFIRM);
+        AbstractButton backButton = creator.create(Button.BACK);
 
         // Labels.
         menuPanel.setFirstComponent(profileName); // Profile name.

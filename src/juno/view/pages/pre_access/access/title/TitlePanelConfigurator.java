@@ -25,8 +25,8 @@
 
 package juno.view.pages.pre_access.access.title;
 
-import juno.view.factories.ButtonFactory;
-import juno.view.factories.ButtonLibrary;
+import juno.view.factories.ButtonCreator;
+import juno.view.factories.Button;
 import juno.view.util.ImageResizer;
 import juno.view.util.RoundedBorder;
 
@@ -49,7 +49,8 @@ public class TitlePanelConfigurator {
         TitlePanel titlePanel = TitlePanel.getInstance();
 
         // Sub component.
-        AbstractButton title = ButtonFactory.createButton(ButtonLibrary.WELCOME_BACK);
+        ButtonCreator creator = ButtonCreator.getInstance();
+        AbstractButton title = creator.create(Button.WELCOME_BACK);
 
         // Resize image.
         ImageResizer.resize(title, 3.0);

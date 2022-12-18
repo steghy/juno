@@ -25,8 +25,8 @@
 
 package juno.view.pages.new_game.multiplayer.unavailable.title;
 
-import juno.view.factories.ButtonFactory;
-import juno.view.factories.ButtonLibrary;
+import juno.view.factories.ButtonCreator;
+import juno.view.factories.Button;
 import juno.view.util.ImageResizer;
 
 import javax.swing.*;
@@ -44,7 +44,8 @@ public class TitlePanelConfigurator {
         TitlePanel titlePanel = TitlePanel.getInstance();
 
         // Component.
-        AbstractButton titleButton = ButtonFactory.createButton(ButtonLibrary.UNAVAILABLE_SERVICE);
+        ButtonCreator creator = ButtonCreator.getInstance();
+        AbstractButton titleButton = creator.create(Button.UNAVAILABLE_SERVICE);
 
         // Image resizing.
         ImageResizer.resize(titleButton, 2.0);

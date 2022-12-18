@@ -26,8 +26,8 @@
 package juno.view.pages.score.menu;
 
 import juno.controller.util.ChangePanelAction;
-import juno.view.factories.ButtonFactory;
-import juno.view.factories.ButtonLibrary;
+import juno.view.factories.ButtonCreator;
+import juno.view.factories.Button;
 import juno.view.pages.main.card.MainCardPanel;
 import juno.view.pages.score.avatar_frame.AvatarFramesPanel;
 import juno.view.pages.score.avatar_frame.AvatarFramesPanelConfigurator;
@@ -53,7 +53,8 @@ public class MenuPanelConfigurator {
         MenuPanel menuPanel = MenuPanel.getInstance();
 
         // Components.
-        AbstractButton backButton = ButtonFactory.createButton(ButtonLibrary.BACK);
+        ButtonCreator creator = ButtonCreator.getInstance();
+        AbstractButton backButton = creator.create(Button.BACK);
 
         // Images resizing.
         ImageResizer.resize(backButton, 3.5);

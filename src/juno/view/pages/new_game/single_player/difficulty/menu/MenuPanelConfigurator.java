@@ -29,8 +29,8 @@ import juno.controller.new_game.DifficultySetter;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.new_game.DifficultyAction;
 import juno.model.subjects.ai.Difficulty;
-import juno.view.factories.ButtonFactory;
-import juno.view.factories.ButtonLibrary;
+import juno.view.factories.ButtonCreator;
+import juno.view.factories.Button;
 import juno.view.pages.new_game.single_player.card.SinglePlayerCardPanel;
 import juno.view.util.ImageResizer;
 import juno.view.util.RoundedBorder;
@@ -52,11 +52,12 @@ public class MenuPanelConfigurator {
         MenuPanel menuPanel = MenuPanel.getInstance();
 
         // Components.
-        AbstractButton easyDifficultyButton   = ButtonFactory.createButton(ButtonLibrary.EASY);
-        AbstractButton mediumDifficultyButton = ButtonFactory.createButton(ButtonLibrary.MEDIUM);
-        AbstractButton hardDifficultyButton   = ButtonFactory.createButton(ButtonLibrary.HARD);
-        AbstractButton backButton   = ButtonFactory.createButton(ButtonLibrary.BACK);
-        AbstractButton startButton  = ButtonFactory.createButton(ButtonLibrary.BACK);
+        ButtonCreator creator = ButtonCreator.getInstance();
+        AbstractButton easyDifficultyButton   = creator.create(Button.EASY);
+        AbstractButton mediumDifficultyButton = creator.create(Button.MEDIUM);
+        AbstractButton hardDifficultyButton   = creator.create(Button.HARD);
+        AbstractButton backButton   = creator.create(Button.BACK);
+        AbstractButton startButton  = creator.create(Button.BACK);
 
         // Images resizing.
         ImageResizer.resize(easyDifficultyButton, 3.0);

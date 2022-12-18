@@ -28,8 +28,8 @@ package juno.view.pages.pre_access.welcome.menu;
 import juno.controller.util.ExitAction;
 import juno.controller.pre_access.GuestProfileCreator;
 import juno.model.data.io.output.ExitManager;
-import juno.view.factories.ButtonFactory;
-import juno.view.factories.ButtonLibrary;
+import juno.view.factories.ButtonCreator;
+import juno.view.factories.Button;
 import juno.view.pages.pre_access.card.PreAccessCardPanel;
 import juno.view.pages.pre_access.registration.RegistrationPanel;
 import juno.view.util.ImageResizer;
@@ -52,9 +52,10 @@ public class MenuPanelConfigurator {
         MenuPanel menuPanel = MenuPanel.getInstance();
 
         // Components.
-        AbstractButton createAnAccountButton = ButtonFactory.createButton(ButtonLibrary.CREATE_AN_ACCOUNT);
-        AbstractButton continueWithoutAnAccountButton = ButtonFactory.createButton(ButtonLibrary.CONTINUE_WITHOUT_AN_ACCOUNT);
-        AbstractButton exitButton = ButtonFactory.createButton(ButtonLibrary.EXIT);
+        ButtonCreator creator = ButtonCreator.getInstance();
+        AbstractButton createAnAccountButton = creator.create(Button.CREATE_AN_ACCOUNT);
+        AbstractButton continueWithoutAnAccountButton = creator.create(Button.CONTINUE_WITHOUT_AN_ACCOUNT);
+        AbstractButton exitButton = creator.create(Button.EXIT);
 
         // Images resizing.
         ImageResizer.resize(createAnAccountButton, 3.0);

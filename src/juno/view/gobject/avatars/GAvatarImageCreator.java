@@ -26,9 +26,9 @@
 package juno.view.gobject.avatars;
 
 import juno.model.data.awards.avatar.InterfaceAvatarImage;
+import juno.view.gobject.AbstractGObjectCreator;
 import juno.view.gobject.InterfaceGObject;
 import juno.view.gobject.InterfaceGObjectCreator;
-import juno.view.util.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -36,13 +36,9 @@ import java.util.Objects;
 /**
  * @author Simone Gentili
  */
-@SuppressWarnings("ALL")
 public class GAvatarImageCreator
-        extends AbstractPathProviderUser<InterfaceAvatarImage>
+        extends AbstractGObjectCreator<InterfaceAvatarImage>
         implements InterfaceGObjectCreator<InterfaceAvatarImage> {
-
-    // The extension of the avatar image.
-    private String extension = ".png";
 
     // The GAvatarImageCreator instance.
     private static GAvatarImageCreator instance;
@@ -62,14 +58,12 @@ public class GAvatarImageCreator
     @Override
     public InterfaceGObject<InterfaceAvatarImage> create(@NotNull InterfaceAvatarImage avatar) {
         GAvatarImage<InterfaceAvatarImage> graphicAvatar = new GAvatarImage<>(avatar);
-        ImageComponentInitializer.initialize(
+        Objects.requireNonNull(getInitializer()).initialize(
                 graphicAvatar,
-                Objects.requireNonNull(getProvider()).getPathObjectOf(avatar),
-                true,
-                avatar.toString(),
-                avatar.name() + extension,
-                null,
-                Constant.THROW_EXCEPTION);
+                Objects.requireNonNull(getAssembler())
+                        .assemble(Objects.requireNonNull(getProvider())
+                                .getPathObjectOf(avatar), avatar.name() + ".png"),
+                null);
         return graphicAvatar;
     }
 

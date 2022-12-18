@@ -28,8 +28,8 @@ package juno.view.pages.new_game.single_player.players.menu;
 import juno.controller.new_game.PlayersSetter;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.new_game.PlayersAction;
-import juno.view.factories.ButtonFactory;
-import juno.view.factories.ButtonLibrary;
+import juno.view.factories.ButtonCreator;
+import juno.view.factories.Button;
 import juno.view.pages.new_game.card.NewGameCardPanel;
 import juno.view.pages.new_game.single_player.card.SinglePlayerCardPanel;
 import juno.view.util.ImageResizer;
@@ -51,10 +51,11 @@ public class MenuPanelConfigurator {
         MenuPanel menuPanel = MenuPanel.getInstance();
 
         // Components.
-        AbstractButton twoPlayers = ButtonFactory.createButton(ButtonLibrary.TWO_PLAYERS);
-        AbstractButton threePlayers = ButtonFactory.createButton(ButtonLibrary.THREE_PLAYERS);
-        AbstractButton fourPlayers = ButtonFactory.createButton(ButtonLibrary.FOUR_PLAYERS);
-        AbstractButton backButton = ButtonFactory.createButton(ButtonLibrary.BACK);
+        ButtonCreator creator = ButtonCreator.getInstance();
+        AbstractButton twoPlayers = creator.create(Button.TWO_PLAYERS);
+        AbstractButton threePlayers = creator.create(Button.THREE_PLAYERS);
+        AbstractButton fourPlayers = creator.create(Button.FOUR_PLAYERS);
+        AbstractButton backButton = creator.create(Button.BACK);
 
         // Images resizing.
         ImageResizer.resize(twoPlayers, 3.0);

@@ -28,8 +28,8 @@ package juno.view.pages.main.menu;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.ExitAction;
 import juno.model.data.io.output.ExitManager;
-import juno.view.factories.ButtonFactory;
-import juno.view.factories.ButtonLibrary;
+import juno.view.factories.ButtonCreator;
+import juno.view.factories.Button;
 import juno.view.pages.main.card.MainCardPanel;
 import juno.view.util.ImageResizer;
 import juno.view.util.RoundedBorder;
@@ -51,10 +51,11 @@ public class MenuPanelConfigurator {
         MenuPanel menuPanel = MenuPanel.getInstance();
 
         // Components
-        AbstractButton newGameButton = ButtonFactory.createButton(ButtonLibrary.NEW_GAME);
-        AbstractButton optionsButton = ButtonFactory.createButton(ButtonLibrary.OPTIONS);
-        AbstractButton scoreButton = ButtonFactory.createButton(ButtonLibrary.SCORE);
-        AbstractButton exitButton = ButtonFactory.createButton(ButtonLibrary.EXIT);
+        ButtonCreator creator = ButtonCreator.getInstance();
+        AbstractButton newGameButton = creator.create(Button.NEW_GAME);
+        AbstractButton optionsButton = creator.create(Button.OPTIONS);
+        AbstractButton scoreButton = creator.create(Button.SCORE);
+        AbstractButton exitButton = creator.create(Button.EXIT);
 
         // Images resizing.
         ImageResizer.resize(newGameButton, 1.0);

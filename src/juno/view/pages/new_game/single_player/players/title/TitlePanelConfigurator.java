@@ -25,8 +25,8 @@
 
 package juno.view.pages.new_game.single_player.players.title;
 
-import juno.view.factories.ButtonFactory;
-import juno.view.factories.ButtonLibrary;
+import juno.view.factories.ButtonCreator;
+import juno.view.factories.Button;
 import juno.view.util.ImageResizer;
 import juno.view.util.RoundedBorder;
 
@@ -47,7 +47,8 @@ public class TitlePanelConfigurator {
         TitlePanel titlePanel = TitlePanel.getInstance();
 
         // Component.
-        AbstractButton title = ButtonFactory.createButton(ButtonLibrary.PLAYERS);
+        ButtonCreator creator = ButtonCreator.getInstance();
+        AbstractButton title = creator.create(Button.PLAYERS);
 
         // Image resizing.
         ImageResizer.resize(title, 3.0);

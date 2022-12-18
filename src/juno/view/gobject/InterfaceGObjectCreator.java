@@ -25,7 +25,6 @@
 
 package juno.view.gobject;
 
-import juno.view.gobject.InterfaceGObject;
 
 /**
  * @author Simone Gentili

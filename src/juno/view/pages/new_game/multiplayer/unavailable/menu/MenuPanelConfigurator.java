@@ -26,8 +26,8 @@
 package juno.view.pages.new_game.multiplayer.unavailable.menu;
 
 import juno.controller.util.ChangePanelAction;
-import juno.view.factories.ButtonFactory;
-import juno.view.factories.ButtonLibrary;
+import juno.view.factories.ButtonCreator;
+import juno.view.factories.Button;
 import juno.view.pages.new_game.card.NewGameCardPanel;
 import juno.view.util.ImageResizer;
 
@@ -47,7 +47,8 @@ public class MenuPanelConfigurator {
         MenuPanel menuPanel = MenuPanel.getInstance();
 
         // Components.
-        AbstractButton backButton = ButtonFactory.createButton(ButtonLibrary.BACK);
+        ButtonCreator creator = ButtonCreator.getInstance();
+        AbstractButton backButton = creator.create(Button.BACK);
         JLabel unavailableServiceLabel = new JLabel();
 
         // Image resizing.

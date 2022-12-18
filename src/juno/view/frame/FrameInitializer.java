@@ -27,8 +27,8 @@ package juno.view.frame;
 
 import juno.init.PathProvider;
 import juno.view.pages.card.TopCardPanel;
-import juno.view.util.Constant;
 import juno.view.util.ImageComponentInitializer;
+import juno.view.util.PathObjectAssembler;
 
 import javax.swing.*;
 
@@ -41,17 +41,10 @@ public class FrameInitializer {
 
         JLabel background = new JLabel();
         JPanel topCardPanel = TopCardPanel.getInstance();
-
-        ImageComponentInitializer.initialize(
-                background,
-                PathProvider.BACKGROUNDS,
-                true,
-                "Background",
-                "background.gif",
-                null,
-                Constant.THROW_EXCEPTION
-        );
-
+                ImageComponentInitializer.getInstance()
+                        .initialize(
+                                background,
+                                PathObjectAssembler.getInstance().assemble(PathProvider.BACKGROUNDS, "background.gif"));
         frame.setBackground(background);
         frame.setPanel(topCardPanel);
         frame.init();

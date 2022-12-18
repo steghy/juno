@@ -26,9 +26,9 @@
 package juno.view.gobject.frames;
 
 import juno.model.data.awards.frame.InterfaceAvatarFrame;
+import juno.view.gobject.AbstractGObjectCreator;
 import juno.view.gobject.InterfaceGObject;
 import juno.view.gobject.InterfaceGObjectCreator;
-import juno.view.util.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -36,13 +36,9 @@ import java.util.Objects;
 /**
  * @author Simone Gentili
  */
-@SuppressWarnings("ALL")
 public class GAvatarFrameCreator
-        extends AbstractPathProviderUser<InterfaceAvatarFrame>
+        extends AbstractGObjectCreator<InterfaceAvatarFrame>
         implements InterfaceGObjectCreator<InterfaceAvatarFrame> {
-
-    // The extension of the avatar image.
-    private String extension = ".png";
 
     // The GAvatarFrameCreator instance.
     private static GAvatarFrameCreator instance;
@@ -62,14 +58,12 @@ public class GAvatarFrameCreator
     @Override
     public InterfaceGObject<InterfaceAvatarFrame> create(@NotNull InterfaceAvatarFrame frame) {
         GAvatarFrame<InterfaceAvatarFrame> graphicFrame = new GAvatarFrame<>(frame);
-        ImageComponentInitializer.initialize(
+        Objects.requireNonNull(getInitializer()).initialize(
                 graphicFrame,
-                Objects.requireNonNull(getProvider()).getPathObjectOf(frame),
-                false,
-                frame.toString(),
-                frame.name() + extension,
-                null,
-                Constant.THROW_EXCEPTION);
+                Objects.requireNonNull(getAssembler())
+                        .assemble(Objects.requireNonNull(getProvider())
+                                .getPathObjectOf(frame), frame.name() + ".png"),
+                null);
         return graphicFrame;
     }
 

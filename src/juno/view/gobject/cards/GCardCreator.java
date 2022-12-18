@@ -25,10 +25,11 @@
 
 package juno.view.gobject.cards;
 
+import juno.init.InterfacePathProvider;
 import juno.model.card.InterfaceCard;
+import juno.view.gobject.AbstractGObjectCreator;
 import juno.view.gobject.InterfaceGObject;
 import juno.view.gobject.InterfaceGObjectCreator;
-import juno.view.util.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -36,16 +37,9 @@ import java.util.Objects;
 /**
  * @author Simone Gentili
  */
-@SuppressWarnings("ALL")
 public class GCardCreator
-        extends AbstractPathProviderUser<InterfaceCard>
+        extends AbstractGObjectCreator<InterfaceCard>
         implements InterfaceGObjectCreator<InterfaceCard> {
-
-    // The rollover name part of the card image.
-    private String rollover = "_rollover";
-
-    // The extension of the card image.
-    private String extension = ".png";
 
     // The GCardCreator instance.
     private static GCardCreator instance;
@@ -71,18 +65,13 @@ public class GCardCreator
         } else if (card.action() != null) {
             file = card.action().toString();
         } else throw new IllegalArgumentException("Invalid card attributes.");
-        rolloverFile = file + rollover;
-        ImageComponentInitializer.initialize(
+        rolloverFile = file + "_ROLLOVER.png";
+        InterfacePathProvider pathObject = Objects.requireNonNull(getProvider()).getPathObjectOf(card);
+        Objects.requireNonNull(getInitializer()).initialize(
                 graphicCard,
-                Objects.requireNonNull(getProvider()).getPathObjectOf(card),
-                false,
-                card.toString(),
-                file + extension,
-                rolloverFile + extension,
-                null,
-                Constant.THROW_EXCEPTION,
-                Constant.THROW_EXCEPTION,
-                Constant.KEEP_IMAGE);
+                Objects.requireNonNull(getAssembler())
+                        .assemble(pathObject, file + ".png"),
+                getAssembler().assemble(pathObject, rolloverFile + ".png"));
         return graphicCard;
     }
 

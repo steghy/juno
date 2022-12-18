@@ -26,8 +26,8 @@
 package juno.view.pages.new_game.single_player.mode.menu;
 
 import juno.controller.util.ChangePanelAction;
-import juno.view.factories.ButtonFactory;
-import juno.view.factories.ButtonLibrary;
+import juno.view.factories.ButtonCreator;
+import juno.view.factories.Button;
 import juno.view.pages.new_game.single_player.card.SinglePlayerCardPanel;
 import juno.view.util.ImageResizer;
 import juno.view.util.RoundedBorder;
@@ -49,7 +49,8 @@ public class MenuPanelConfigurator {
         MenuPanel difficultyPanel = MenuPanel.getInstance();
 
         // Components.
-        AbstractButton stackingModeButton = ButtonFactory.createButton(ButtonLibrary.STACKING);
+        ButtonCreator creator = ButtonCreator.getInstance();
+        AbstractButton stackingModeButton = creator.create(Button.STACKING);
 
         // Images resizing.
         ImageResizer.resize(stackingModeButton, 3.0);

@@ -29,8 +29,8 @@ import juno.controller.audio.AudioToggleAction;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.FullscreenToggleAction;
 import juno.model.sound.AudioPlayer;
-import juno.view.factories.ButtonFactory;
-import juno.view.factories.ButtonLibrary;
+import juno.view.factories.ButtonCreator;
+import juno.view.factories.Button;
 import juno.view.frame.Frame;
 import juno.view.pages.main.card.MainCardPanel;
 import juno.view.util.ImageResizer;
@@ -53,9 +53,10 @@ public class MenuPanelConfigurator {
         MenuPanel menuPanel = MenuPanel.getInstance();
 
         // Components.
-        AbstractButton audioToggle = ButtonFactory.createButton(ButtonLibrary.AUDIO_TOGGLE);
-        AbstractButton fullscreenToggle = ButtonFactory.createButton(ButtonLibrary.FULLSCREEN_TOGGLE);
-        AbstractButton backButton = ButtonFactory.createButton(ButtonLibrary.BACK);
+        ButtonCreator creator = ButtonCreator.getInstance();
+        AbstractButton audioToggle = creator.create(Button.AUDIO_TOGGLE);
+        AbstractButton fullscreenToggle = creator.create(Button.FULLSCREEN_TOGGLE);
+        AbstractButton backButton = creator.create(Button.BACK);
 
         // Images resizing.
         ImageResizer.resize(audioToggle, 3.5);
