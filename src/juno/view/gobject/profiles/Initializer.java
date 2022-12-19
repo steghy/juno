@@ -25,6 +25,11 @@
 
 package juno.view.gobject.profiles;
 
+import juno.model.requester.PathProviderAssembler;
+import juno.view.img_initializer.ImageComponentInitializer;
+import juno.view.pages.pre_access.card.PreAccessManager;
+
+
 /**
  * @author Simone Gentili
  */
@@ -35,11 +40,37 @@ public class Initializer {
 
     public static void initialize() {
         // Components.
+        // GProfileCreator.
+        GProfileCreator gProfileCreator = GProfileCreator.getInstance();
+
+        // GProfileFactory.
+        GProfileFactory gProfileFactory = GProfileFactory.getInstance();
+
+        // PathObjectAssembler.
+        PathProviderAssembler pathProviderAssembler = PathProviderAssembler.getInstance();
+
+        // ImageComponentInitializer.
+        ImageComponentInitializer imageComponentInitializer = ImageComponentInitializer.getInstance();
+
+        // ProfilePathProvider.
+        ProfilePathProvider profilePathProvider = ProfilePathProvider.getInstance();
+
+        // PreAccessManager.
+        PreAccessManager preAccessManager = PreAccessManager.getInstance();
 
         //////////////////////////////////////////////////////////////////////////////////////////7
 
         // Connections.
+        // GProfileCreator.
+        gProfileCreator.setProvider(profilePathProvider);
+        gProfileCreator.setInitializer(imageComponentInitializer);
+        gProfileCreator.setAssembler(pathProviderAssembler);
 
+        // GProfileFactory.
+        gProfileFactory.setCreator(gProfileCreator);
+
+        // Observer / Observable.
+        preAccessManager.addObserver(gProfileFactory);
     }
 
 }

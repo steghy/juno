@@ -48,7 +48,7 @@ public class ImageComponentInitializer
     public Constraints ROLLOVER_IMAGE_MISSING = Constraints.KEEP_IMAGE;
     public Constraints SELECTED_IMAGE_MISSING = Constraints.KEEP_ROLLOVER_SELECTED_IMAGE;
     public Constraints ROLLOVER_SELECTED_IMAGE_MISSING = Constraints.KEEP_SELECTED_IMAGE;
-    public boolean download = true;
+    public boolean download = false;
 
     // The ImageComponentInitializer instance.
     private static ImageComponentInitializer instance;

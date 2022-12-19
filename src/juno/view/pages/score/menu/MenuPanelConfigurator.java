@@ -29,10 +29,10 @@ import juno.controller.util.ChangePanelAction;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
 import juno.view.pages.main.card.MainCardPanel;
-import juno.view.pages.score.avatar_frame.AvatarFramesPanel;
-import juno.view.pages.score.avatar_frame.AvatarFramesPanelConfigurator;
-import juno.view.pages.score.avatar_image.AvatarImagesPanel;
-import juno.view.pages.score.avatar_image.AvatarImagesPanelConfigurator;
+import juno.view.pages.score.avatar_frames_panel.AvatarFramesPanel;
+import juno.view.pages.score.avatar_frames_panel.AvatarFramesPanelConfigurator;
+import juno.view.pages.score.avatar_images_panel.AvatarImagesPanel;
+import juno.view.pages.score.avatar_images_panel.AvatarImagesPanelConfigurator;
 import juno.view.util.ImageResizer;
 import juno.view.util.RoundedBorder;
 

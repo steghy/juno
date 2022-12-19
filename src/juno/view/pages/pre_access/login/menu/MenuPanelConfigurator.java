@@ -25,6 +25,15 @@
 
 package juno.view.pages.pre_access.login.menu;
 
+import juno.controller.util.ChangePanelAction;
+import juno.view.button.Button;
+import juno.view.button.ButtonCreator;
+import juno.view.pages.pre_access.card.PreAccessCardPanel;
+import juno.view.pages.pre_access.login.profiles_panel.ProfilesPanel;
+import juno.view.util.ImageResizer;
+
+import javax.swing.*;
+
 /**
  * @author Simone Gentili
  */
@@ -34,7 +43,28 @@ public class MenuPanelConfigurator {
     private MenuPanelConfigurator() {}
 
     public static void configure() {
+        // Main component.
+        MenuPanel menuPanel = MenuPanel.getInstance();
 
+        // Components.
+        ButtonCreator creator = ButtonCreator.getInstance();
+        AbstractButton backButton = creator.create(Button.BACK);
+        ProfilesPanel profilesPanel = ProfilesPanel.getInstance();
+
+        // Image resizing.
+        ImageResizer.resize(backButton, 3.5);
+
+        // Action listener.
+        backButton.addActionListener(new ChangePanelAction(
+                PreAccessCardPanel.getInstance(),
+                PreAccessCardPanel.ACCESS_PANEL));
+
+        // Components setting.
+        menuPanel.setFirstComponent(profilesPanel); // Profiles panel.
+        menuPanel.setSecondComponent(backButton); // Back button.
+
+        // Main component initialization.
+        menuPanel.init();
     }
 
 }

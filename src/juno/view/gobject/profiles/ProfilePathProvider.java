@@ -29,14 +29,16 @@ import juno.model.requester.InterfacePathProvider;
 import juno.model.requester.ProgramDirectory;
 import juno.view.gobject.InterfacePathObjectProvider;
 
+import java.io.File;
+
 /**
  * @author Simone Gentili
  */
-public class ProfilePathProvider<T>
-        implements InterfacePathObjectProvider<T> {
+public class ProfilePathProvider
+        implements InterfacePathObjectProvider<File> {
 
     // The ProfilePathProvider instance.
-    private static ProfilePathProvider<?> instance;
+    private static ProfilePathProvider instance;
 
     // Builds the ProfilePathProvider instance.
     private ProfilePathProvider() {}
@@ -45,13 +47,13 @@ public class ProfilePathProvider<T>
      * Returns the ProfilePathProvider instance.
      * @return The ProfilePathProvider instance.
      */
-    public static ProfilePathProvider<?> getInstance() {
-        if(instance == null) instance = new ProfilePathProvider<>();
+    public static ProfilePathProvider getInstance() {
+        if(instance == null) instance = new ProfilePathProvider();
         return instance;
     }
 
     @Override
-    public InterfacePathProvider getPathObjectOf(T profile) {
+    public InterfacePathProvider getPathObjectOf(File profile) {
         return ProgramDirectory.BUTTONS;
     }
 

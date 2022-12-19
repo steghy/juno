@@ -26,6 +26,7 @@
 package juno.view.gobject.profiles;
 
 import juno.model.util.InterfaceFactory;
+import juno.model.util.Observable;
 import juno.model.util.Observer;
 import juno.view.gobject.AbstractGObjectFactory;
 import juno.view.gobject.InterfaceGObject;
@@ -33,21 +34,27 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class GProfileFactory
         extends AbstractGObjectFactory<File>
-        implements Observer {
+        implements Observer, Observable {
 
     // The graphic profile objects.
     private List<InterfaceGObject<File>> gProfiles;
+
+    // The Observers List.
+    private final List<Observer> observerList;
 
     // The GProfileFactory instance.
     private static GProfileFactory instance;
 
     // Builds the GProfileFactory instance.
-    private GProfileFactory() {}
+    private GProfileFactory() {
+        observerList = new ArrayList<>();
+    }
 
     /**
      * Returns the GProfileFactory instance.
@@ -68,6 +75,22 @@ public class GProfileFactory
         gProfiles = profiles.stream()
                 .map(Objects.requireNonNull(getCreator())::create)
                 .toList();
+        updateAll();
+    }
+
+    @Override
+    public void addObserver(@NotNull Observer observer) {
+        observerList.add(observer);
+    }
+
+    @Override
+    public void removeObserver(@NotNull Observer observer) {
+        observerList.remove(observer);
+    }
+
+    @Override
+    public void updateAll() {
+        observerList.forEach(observer -> observer.update(this));
     }
 
     @Override @SuppressWarnings("unchecked")
