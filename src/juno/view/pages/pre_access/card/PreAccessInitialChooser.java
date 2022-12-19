@@ -60,6 +60,7 @@ public class PreAccessInitialChooser
      * @param path A String object.
      * @param configurable A Configurable object.
      */
+    @SuppressWarnings("ALL")
     public void setFirstPanelToShow(@NotNull String path,
                                     @NotNull Configurable configurable) {
         List<File> files = null;
@@ -67,7 +68,7 @@ public class PreAccessInitialChooser
             files = Objects.requireNonNull(getProvider())
                     .getConfigurationFiles(configurable, path);
         } catch (FileNotFoundException e) {
-            // Directory not found !!! solve.
+            new File(path).mkdir();
             e.printStackTrace();
         } if(files != null && files.size() > 0) {
             LayoutManager layoutManager = PreAccessCardPanel.getInstance().getLayout();
@@ -76,7 +77,7 @@ public class PreAccessInitialChooser
             } else {
                 throw new IllegalArgumentException("CardLayout expected");
             }
-        }
-        ProfileNameSetter.getInstance().addObserver(AvatarNameSetter.getInstance());
+        } ProfileNameSetter.getInstance().addObserver(AvatarNameSetter.getInstance());
     }
+
 }

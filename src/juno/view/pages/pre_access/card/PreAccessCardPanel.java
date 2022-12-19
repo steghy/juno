@@ -30,12 +30,22 @@ import juno.view.panels.AbstractFourthComponent;
 import java.awt.*;
 import java.util.Objects;
 
+/**
+ * @author Simone Gentili
+ */
 public class PreAccessCardPanel
         extends AbstractFourthComponent {
 
+    /** The welcome panel key. */
     public static final String WELCOME_PANEL = "Welcome panel";
+
+    /** The access panel key. */
     public static final String ACCESS_PANEL = "Access panel";
+
+    /** The registration panel key. */
     public static final String REGISTRATION_PANEL = "Registration panel";
+
+    /** The log in panel key. */
     public static final String LOG_IN_PANEL = "Log in panel";
 
     // The PreAccessCardPanel instance.

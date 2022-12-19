@@ -145,10 +145,11 @@ public class Profile
             } else if (ageFromMap == null) age = null;
             else errors.put(AGE_KEY, "Age must be a number");
         }
+
         // Checking for errors.
         if(!errors.isEmpty()) {
             restore();
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(errors.toString());
         }
     }
 
