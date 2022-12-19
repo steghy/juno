@@ -25,7 +25,7 @@
 
 package juno.model.sound.test;
 
-import juno.init.PathProvider;
+import juno.model.requester.ProgramDirectory;
 import juno.model.sound.AudioPlayer;
 
 import java.io.File;
@@ -36,7 +36,7 @@ public class AudioPlayerTester {
 	public static void main(String[] args) {
 
 		// MUSIC PATH
-		String musicDirectory = PathProvider.MUSIC.absolutePath();
+		String musicDirectory = ProgramDirectory.MUSIC.absolutePath();
 		File directory = new File(musicDirectory);
 
 		// AUDIO PLAYER INITIALIZATION

@@ -25,8 +25,8 @@
 
 package juno.view.gobject.cards;
 
-import juno.init.InterfacePathProvider;
-import juno.init.PathProvider;
+import juno.model.requester.InterfacePathProvider;
+import juno.model.requester.ProgramDirectory;
 import juno.model.card.InterfaceCard;
 import juno.model.card.colors.InterfaceColor;
 import juno.view.gobject.InterfacePathObjectProvider;
@@ -57,11 +57,11 @@ public class CardPathProvider
     public InterfacePathProvider getPathObjectOf(@NotNull InterfaceCard card) {
         if(card.color() != null) {
             InterfaceColor color = card.color();
-            if(color.isBlue())  return PathProvider.BLUE_CARDS;
-            if(color.isRed())   return PathProvider.RED_CARDS;
-            if(color.isGreen()) return PathProvider.GREEN_CARDS;
-            if(color.isYellow())  return PathProvider.YELLOW_CARDS;
-        } return PathProvider.JOLLY_CARDS;
+            if(color.isBlue())  return ProgramDirectory.BLUE_CARDS;
+            if(color.isRed())   return ProgramDirectory.RED_CARDS;
+            if(color.isGreen()) return ProgramDirectory.GREEN_CARDS;
+            if(color.isYellow())  return ProgramDirectory.YELLOW_CARDS;
+        } return ProgramDirectory.JOLLY_CARDS;
     }
 
 }

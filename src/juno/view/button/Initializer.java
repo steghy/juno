@@ -25,8 +25,8 @@
 
 package juno.view.button;
 
-import juno.view.download.ImageComponentInitializer;
-import juno.view.download.PathObjectAssembler;
+import juno.view.img_initializer.ImageComponentInitializer;
+import juno.model.requester.PathProviderAssembler;
 
 /**
  * @author Simone Gentili
@@ -46,7 +46,7 @@ public class Initializer {
         ImageComponentInitializer imageComponentInitializer = ImageComponentInitializer.getInstance();
 
         // PathObjectAssembler.
-        PathObjectAssembler pathObjectAssembler = PathObjectAssembler.getInstance();
+        PathProviderAssembler pathObjectAssembler = PathProviderAssembler.getInstance();
 
         // ButtonDirectoryPathProvider.
         ButtonDirectoryPathProvider buttonDirectoryPathProvider = ButtonDirectoryPathProvider.getInstance();

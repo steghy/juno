@@ -28,6 +28,8 @@ package juno.init;
 import juno.init.initializer.ControllerInitializer;
 import juno.init.initializer.ModelInitializer;
 import juno.init.initializer.ViewInitializer;
+import juno.model.requester.ProgramDirectory;
+import juno.model.requester.GitHubRepositorySetter;
 import juno.model.sound.AudioPlayer;
 import juno.view.frame.Frame;
 
@@ -38,8 +40,10 @@ import java.util.Objects;
 public class Main {
 
     public static void main(String[] args) {
-        Repository.setRepository();
         try {
+            // Setting GitHub repository.
+            GitHubRepositorySetter.setRepository();
+
             // Pre initialization.
             ModelInitializer.initialize();
             ControllerInitializer.initialize();
@@ -48,7 +52,7 @@ public class Main {
             // Audio player.
             AudioPlayer audioPlayer = AudioPlayer.getInstance();
             audioPlayer.setTracks(Objects
-                    .requireNonNull(new File(PathProvider.MUSIC.absolutePath()).listFiles()));
+                    .requireNonNull(new File(ProgramDirectory.MUSIC.absolutePath()).listFiles()));
             audioPlayer.play();
             audioPlayer.setLoop(true);
 

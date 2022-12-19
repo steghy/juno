@@ -25,7 +25,7 @@
 
 package juno.model.data.profile;
 
-import juno.init.PathProvider;
+import juno.model.requester.ProgramDirectory;
 import juno.model.data.io.output.Exportable;
 import juno.model.data.profile.profile.Profile;
 import juno.model.util.Os;
@@ -65,7 +65,7 @@ public class ErrorProviderDecorator
             Object object = data.get(Profile.PROFILE_NAME_KEY);
             if(object instanceof String profileName) {
                 if(Os.exists(PathGenerator.generate(
-                        PathProvider.PROFILES.absolutePath(),
+                        ProgramDirectory.PROFILES.absolutePath(),
                         ProfileFileNameBuilder.build((profileName))))) {
                     errors.put(Profile.PROFILE_NAME_KEY, "profile name already used");
                 } else if(profileName.equalsIgnoreCase(Profile.GUEST_NAME)) {

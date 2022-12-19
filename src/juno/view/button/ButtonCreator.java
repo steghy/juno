@@ -25,8 +25,9 @@
 
 package juno.view.button;
 
-import juno.init.InterfacePathProvider;
-import juno.view.download.InterfacePathObjectAssembler;
+import juno.model.requester.InterfacePathProvider;
+import juno.model.requester.InterfacePathProviderAssembler;
+import juno.view.img_initializer.InterfaceImageComponentInitializer;
 import juno.view.gobject.AbstractGObjectCreator;
 import juno.view.gobject.InterfacePathObjectProvider;
 import juno.view.util.*;
@@ -62,7 +63,7 @@ public class ButtonCreator
         String selected = "_SELECTED";
         String extension = ".png";
         InterfaceImageComponentInitializer initializer = getInitializer();
-        InterfacePathObjectAssembler assembler = getAssembler();
+        InterfacePathProviderAssembler assembler = getAssembler();
         InterfacePathObjectProvider<InterfaceButton> provider = getProvider();
         InterfacePathProvider pathObject = Objects.requireNonNull(provider).getPathObjectOf(button);
         Objects.requireNonNull(assembler);

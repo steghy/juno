@@ -25,8 +25,8 @@
 
 package juno.view.gobject.frames;
 
-import juno.init.InterfacePathProvider;
-import juno.init.PathProvider;
+import juno.model.requester.InterfacePathProvider;
+import juno.model.requester.ProgramDirectory;
 import juno.model.data.awards.frame.InterfaceAvatarFrame;
 import juno.view.gobject.InterfacePathObjectProvider;
 
@@ -53,7 +53,7 @@ public class AvatarFramePathProvider
 
     @Override
     public InterfacePathProvider getPathObjectOf(InterfaceAvatarFrame frame) {
-        return PathProvider.FRAMES;
+        return ProgramDirectory.FRAMES;
     }
 
 }

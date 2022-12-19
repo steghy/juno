@@ -25,8 +25,8 @@
 
 package juno.view.gobject.avatars;
 
-import juno.view.download.ImageComponentInitializer;
-import juno.view.download.PathObjectAssembler;
+import juno.view.img_initializer.ImageComponentInitializer;
+import juno.model.requester.PathProviderAssembler;
 
 /**
  * @author Simone Gentili
@@ -49,7 +49,7 @@ public class Initializer {
         AvatarImagePathProvider aPathProvider = AvatarImagePathProvider.getInstance();
 
         // PathObjectAssembler.
-        PathObjectAssembler pathObjectAssembler = PathObjectAssembler.getInstance();
+        PathProviderAssembler pathObjectAssembler = PathProviderAssembler.getInstance();
 
         // ImageComponentInitializer.
         ImageComponentInitializer imageComponentInitializer = ImageComponentInitializer.getInstance();

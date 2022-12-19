@@ -25,7 +25,7 @@
 
 package juno.view.gobject;
 
-import juno.init.InterfacePathProvider;
+import juno.model.requester.InterfacePathProvider;
 
 /**
  * @author Simone Gentili

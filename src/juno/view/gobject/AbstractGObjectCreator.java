@@ -25,8 +25,8 @@
 
 package juno.view.gobject;
 
-import juno.view.util.InterfaceImageComponentInitializer;
-import juno.view.download.InterfacePathObjectAssembler;
+import juno.view.img_initializer.InterfaceImageComponentInitializer;
+import juno.model.requester.InterfacePathProviderAssembler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -36,7 +36,7 @@ public abstract class AbstractGObjectCreator<T> {
     private InterfacePathObjectProvider<T> provider;
 
     // The path object assembler.
-    private InterfacePathObjectAssembler assembler;
+    private InterfacePathProviderAssembler assembler;
 
     // The image component initializer.
     private InterfaceImageComponentInitializer initializer;
@@ -53,7 +53,7 @@ public abstract class AbstractGObjectCreator<T> {
      * Sets the assembler path object of this object.
      * @param assembler An InterfacePathObjectAssembler object.
      */
-    public void setAssembler(@NotNull InterfacePathObjectAssembler assembler) {
+    public void setAssembler(@NotNull InterfacePathProviderAssembler assembler) {
         this.assembler = assembler;
     }
 
@@ -79,7 +79,7 @@ public abstract class AbstractGObjectCreator<T> {
      * @return An InterfacePathObjectAssembler object.
      */
     @Nullable
-    public InterfacePathObjectAssembler getAssembler() {
+    public InterfacePathProviderAssembler getAssembler() {
         return assembler;
     }
 

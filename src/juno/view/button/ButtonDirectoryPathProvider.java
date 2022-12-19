@@ -25,8 +25,8 @@
 
 package juno.view.button;
 
-import juno.init.InterfacePathProvider;
-import juno.init.PathProvider;
+import juno.model.requester.InterfacePathProvider;
+import juno.model.requester.ProgramDirectory;
 import juno.view.gobject.InterfacePathObjectProvider;
 
 public class ButtonDirectoryPathProvider
@@ -49,6 +49,6 @@ public class ButtonDirectoryPathProvider
 
     @Override
     public InterfacePathProvider getPathObjectOf(InterfaceButton card) {
-        return PathProvider.BUTTONS;
+        return ProgramDirectory.BUTTONS;
     }
 }

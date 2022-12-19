@@ -25,7 +25,7 @@
 
 package juno.view.pages.pre_access.card;
 
-import juno.init.PathProvider;
+import juno.model.requester.ProgramDirectory;
 import juno.model.data.io.input.configurable.CConfigurationFilesProvider;
 import juno.model.data.profile.profile.Profile;
 import juno.view.pages.pre_access.access.AccessPanel;
@@ -67,7 +67,7 @@ public class PreAccessCardPanelConfigurator {
 
         // Call.
         PreAccessInitialChooser.getInstance()
-                .setFirstPanelToShow(PathProvider.PROFILES.absolutePath(),
+                .setFirstPanelToShow(ProgramDirectory.PROFILES.absolutePath(),
                                      Profile.getInstance());
     }
 

@@ -35,6 +35,9 @@ public class ModelInitializer {
 
     /** Initialize the juno.model package. */
     public static void initialize() {
+        // juno.model.requester package.
+        juno.model.requester.Initializer.initialize();
+
         // juno.model.data.io.input package.
         juno.model.data.io.input.Initializer.initialize();
 

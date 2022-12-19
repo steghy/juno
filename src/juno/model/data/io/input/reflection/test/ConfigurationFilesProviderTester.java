@@ -25,7 +25,7 @@
 
 package juno.model.data.io.input.reflection.test;
 
-import juno.init.PathProvider;
+import juno.model.requester.ProgramDirectory;
 import juno.model.data.io.input.Initializer;
 import juno.model.data.io.input.reflection.RConfigurationFilesProvider;
 import juno.model.util.PathGenerator;
@@ -45,7 +45,7 @@ public class ConfigurationFilesProviderTester {
         filesProvider.setRecursive(false);
 
 
-        String path = PathGenerator.generate(PathProvider.CONFIG.absolutePath(), "");
+        String path = PathGenerator.generate(ProgramDirectory.CONFIG.absolutePath(), "");
 
         System.out.println("Pre configuration files provider");
 
