@@ -80,7 +80,6 @@ public class ImageComponentInitializer
         boolean imageExists = true;
         if (!Os.exists(imageAbsolutePath)) {
             if(download) {
-                // Attempt to download the file from the GitHub repository.
                 try {
                     Downloader.downloadUsingNIO(githubURLBuilder.getURL(imageCanonicalPath), imageAbsolutePath);
                 } catch (IOException e) {
