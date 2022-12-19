@@ -23,22 +23,14 @@
  * SOFTWARE.
  */
 
-package juno.init.initializer;
-
-import juno.controller.pre_access.registration.Initializer;
+package juno.controller.pre_access.registration;
 
 /**
  * @author Simone Gentili
  */
-public class ControllerInitializer {
+@FunctionalInterface
+public interface InterfaceRequestResolver {
 
-    // Builds the ControllerInitializer.
-    private ControllerInitializer() {}
-
-    /** Initialize the juno.controller package. */
-    public static void initialize() {
-        // juno.controller.pre_access package.
-        Initializer.initialize();
-    }
+    void resolve();
 
 }

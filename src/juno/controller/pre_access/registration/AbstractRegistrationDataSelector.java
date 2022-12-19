@@ -23,10 +23,9 @@
  * SOFTWARE.
  */
 
-package juno.controller.pre_access;
+package juno.controller.pre_access.registration;
 
 import juno.model.data.io.input.AbstractCCompatibilityCheckerUser;
-import juno.model.data.io.input.configurable.AbstractCCompatibilityCheckerAndCopierUser;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

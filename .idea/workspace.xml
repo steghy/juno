@@ -5,11 +5,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/data/config/avatar/steghy-avatar.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/config/profiles/steghy-profile.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/config/scores/steghy-games-won.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/config/scores/steghy-lost-games.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/controller/pre_access/AvatarInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/gobject/profiles/GProfile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/gobject/profiles/GProfileCreator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/gobject/profiles/Initializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/gobject/profiles/ProfilePathProvider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/images/buttons/BACK.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/images/buttons/BACK.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/profile/profile/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/profile/profile/Profile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/pre_access/card/PreAccessCardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/pre_access/card/PreAccessCardPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/pre_access/card/PreAccessInitialChooser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/pre_access/card/PreAccessInitialChooser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/eheheheh-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/eskere-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/gentili-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/simoncino-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/profiles/steghy98-profile.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/profile/profile/Profile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/profile/profile/Profile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/pre_access/card/PreAccessCardPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/pre_access/card/PreAccessCardPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/pre_access/card/PreAccessInitialChooser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/pre_access/card/PreAccessInitialChooser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/pre_access/AbstractErrorNotifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/pre_access/registration/AbstractErrorNotifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/pre_access/AbstractRegistrationDataSelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/pre_access/registration/AbstractRegistrationDataSelector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/pre_access/AbstractRequestResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/pre_access/registration/AbstractRequestResolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/pre_access/ErrorNotifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/pre_access/registration/ErrorNotifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/pre_access/GuestProfileCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/pre_access/registration/GuestProfileCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/pre_access/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/pre_access/registration/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/pre_access/InterfaceDataLineProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/pre_access/registration/InterfaceDataLineProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/pre_access/InterfaceErrorNotifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/pre_access/registration/InterfaceErrorNotifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/pre_access/InterfaceRegistrationDataSelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/pre_access/registration/InterfaceRegistrationDataSelector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/pre_access/InterfaceRequestResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/pre_access/registration/InterfaceRequestResolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/pre_access/RegistrationDataSelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/pre_access/registration/RegistrationDataSelector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/pre_access/RegistrationDataSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/pre_access/registration/RegistrationDataSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/pre_access/RequestResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/pre_access/registration/RequestResolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/util/RegistrationPanelRestorer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/util/RegistrationPanelRestorer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/init/initializer/ControllerInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/init/initializer/ControllerInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/configurable/AbstractCConfigurationFilesProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/configurable/AbstractCConfigurationFileResearcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/configurable/CConfigurationFilesProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/configurable/CConfigurationFileResearcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/configurable/InterfaceCConfigurationFilesProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/configurable/InterfaceCConfigurationFileResearcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/InterfacePathObjectProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/gobject/InterfacePathObjectProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/pre_access/access/menu/MenuPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/pre_access/access/menu/MenuPanelConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/pre_access/card/AbstractPreAccessInitialChooser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/pre_access/card/AbstractPreAccessManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/pre_access/card/PreAccessCardPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/pre_access/card/PreAccessCardPanelConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/pre_access/card/PreAccessInitialChooser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/pre_access/card/PreAccessManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/pre_access/registration/menu/MenuPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/pre_access/registration/menu/MenuPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/pre_access/registration/menu/MenuPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/pre_access/registration/menu/MenuPanelConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/pre_access/welcome/menu/MenuPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/pre_access/welcome/menu/MenuPanelConfigurator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

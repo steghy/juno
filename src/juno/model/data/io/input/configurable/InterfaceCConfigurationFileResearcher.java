@@ -23,22 +23,32 @@
  * SOFTWARE.
  */
 
-package juno.init.initializer;
+package juno.model.data.io.input.configurable;
 
-import juno.controller.pre_access.registration.Initializer;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.List;
 
 /**
+ * This interface defines a method for obtaining
+ * configuration files for a specified object.
  * @author Simone Gentili
  */
-public class ControllerInitializer {
+@FunctionalInterface
+public interface InterfaceCConfigurationFileResearcher {
 
-    // Builds the ControllerInitializer.
-    private ControllerInitializer() {}
-
-    /** Initialize the juno.controller package. */
-    public static void initialize() {
-        // juno.controller.pre_access package.
-        Initializer.initialize();
-    }
+    /**
+     * Returns a list containing the configuration
+     * files compatible with the specified Configurable
+     * object present within the specified path.
+     * @param configurable A Configurable object.
+     * @param path A String object.
+     * @return A List object.
+     * @throws FileNotFoundException If the specified
+     *         path does not exist.
+     */
+    List<File> getConfigurationFiles(Configurable configurable,
+                                     String path)
+            throws FileNotFoundException;
 
 }

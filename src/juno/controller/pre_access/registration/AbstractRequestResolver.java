@@ -23,60 +23,60 @@
  * SOFTWARE.
  */
 
-package juno.model.data.io.input.configurable;
+package juno.controller.pre_access.registration;
 
+import juno.controller.pre_access.registration.InterfaceRequestResolver;
+import juno.model.data.io.output.AbstractExporterManagerAndPanelChangerUser;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
+import javax.swing.*;
 
 /**
- * This abstract class defines configuration files provider
- * which use a compatibility checker (InterfaceCompatibilityChecker)
- * to operate.
  * @author Simone Gentili
  */
-public abstract class AbstractCConfigurationFilesProvider
-        extends AbstractCCompatibilityCheckerAndCopierUser {
+public abstract class AbstractRequestResolver
+        extends AbstractExporterManagerAndPanelChangerUser
+        implements InterfaceRequestResolver {
 
-    // The recursive value.
-    private boolean recursive;
+    // The card panel.
+    private JPanel cardPanel;
 
-    // The extensions.
-    private List<String> extensions;
+    // The panel key.
+    private String panelKey;
 
     /**
-     * Sets the recursive value of this object.
-     * @param recursive A boolean value.
+     * Sets the card panel of this object.
+     * @param cardPanel A JPanel object.
      */
-    public void setRecursive(boolean recursive) {
-        this.recursive = recursive;
+    public void setCardPanel(@NotNull JPanel cardPanel) {
+        this.cardPanel = cardPanel;
     }
 
     /**
-     * Sets the extensions list of this object.
-     * @param extensions A List object.
+     * Sets the panel key of this object.
+     * @param panelKey A String object.
      */
-    public void setExtensions(@NotNull List<String> extensions) {
-        this.extensions = extensions;
+    public void setPanelKey(@NotNull String panelKey) {
+        this.panelKey = panelKey;
     }
 
     /**
-     * Returns true if, and only if, the recursive value
-     * of this object is true.
-     * @return A boolean value.
-     */
-    public boolean isRecursive() {
-        return recursive;
-    }
-
-    /**
-     * Returns the extensions list of this object.
-     * @return A List object.
+     * Returns the card panel of this object.
+     * @return A JPanel object.
      */
     @Nullable
-    public List<String> getExtensions() {
-        return extensions;
+    public JPanel getCardPanel() {
+        return cardPanel;
+    }
+
+    /**
+     * Returns the panel key of this object.
+     * @return A String object.
+     */
+    @Nullable
+    public String getPanelKey() {
+        return panelKey;
     }
 
 }

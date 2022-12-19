@@ -25,7 +25,7 @@
 
 package juno.controller.util;
 
-import juno.controller.pre_access.InterfaceDataLineProvider;
+import juno.controller.pre_access.registration.InterfaceDataLineProvider;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.event.ActionEvent;

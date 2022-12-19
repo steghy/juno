@@ -23,7 +23,7 @@
  * SOFTWARE.
  */
 
-package juno.controller.pre_access;
+package juno.controller.pre_access.registration;
 
 import juno.model.data.avatar.AvatarFrameSetter;
 import juno.model.data.avatar.AvatarImageSetter;

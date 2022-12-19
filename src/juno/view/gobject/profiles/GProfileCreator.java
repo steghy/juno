@@ -23,16 +23,37 @@
  * SOFTWARE.
  */
 
-package juno.controller.pre_access;
+package juno.view.gobject.profiles;
 
-import java.util.Map;
+import juno.view.gobject.AbstractGObjectCreator;
+import juno.view.gobject.InterfaceGObject;
+import juno.view.gobject.InterfaceGObjectCreator;
+import org.jetbrains.annotations.NotNull;
 
-/**
- * @author Simone Gentili
- */
-@FunctionalInterface
-public interface InterfaceErrorNotifier {
+import java.io.File;
 
-    void notifyErrors(Map<String, String> errors);
+public class GProfileCreator
+        extends AbstractGObjectCreator<File>
+        implements InterfaceGObjectCreator<File> {
+
+    // The GProfileCreator instance.
+    private static GProfileCreator instance;
+
+    // Builds the GProfileCreator instance.
+    private GProfileCreator() {}
+
+    /**
+     * Returns the GProfileCreator instance.
+     * @return The GProfileCreator instance.
+     */
+    public static GProfileCreator getInstance() {
+        if(instance == null) instance = new GProfileCreator();
+        return instance;
+    }
+
+    @Override
+    public InterfaceGObject<File> create(@NotNull File object) {
+        return null;
+    }
 
 }

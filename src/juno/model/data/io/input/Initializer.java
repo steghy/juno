@@ -26,7 +26,7 @@
 package juno.model.data.io.input;
 
 import juno.model.data.io.input.configurable.CCompatibilityChecker;
-import juno.model.data.io.input.configurable.CConfigurationFilesProvider;
+import juno.model.data.io.input.configurable.CConfigurationFileResearcher;
 import juno.model.data.io.input.reflection.Configurator;
 import juno.model.data.io.input.reflection.RCompatibilityChecker;
 import juno.model.data.io.input.reflection.RConfigurationFilesProvider;
@@ -56,7 +56,7 @@ public class Initializer {
         CCompatibilityChecker cCompatibilityChecker = CCompatibilityChecker.getInstance();
 
         // CConfigurationFilesProvider.
-        CConfigurationFilesProvider cConfigurationFilesProvider = CConfigurationFilesProvider.getInstance();
+        CConfigurationFileResearcher cConfigurationFilesProvider = CConfigurationFileResearcher.getInstance();
 
         // RCompatibilityChecker.
         RCompatibilityChecker rCompatibilityChecker = RCompatibilityChecker.getInstance();

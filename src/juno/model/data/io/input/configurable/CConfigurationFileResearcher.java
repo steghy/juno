@@ -36,8 +36,8 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * This class defines a configuration file provider.
- * The method implemented by the 'InterfaceConfigurationFilesProvider'
+ * This class defines a configuration file researcher.
+ * The method implemented by the 'InterfaceConfigurationFilesResearcher'
  * interface allows to obtain the configuration files
  * compatible with the specified object. A configuration
  * file is considered compatible only if no exceptions
@@ -52,22 +52,22 @@ import java.util.Objects;
  * method.
  * @author Simone Gentili
  */
-public class CConfigurationFilesProvider
-        extends AbstractCConfigurationFilesProvider
-        implements InterfaceCConfigurationFilesProvider {
+public class CConfigurationFileResearcher
+        extends AbstractCConfigurationFileResearcher
+        implements InterfaceCConfigurationFileResearcher {
 
-    // The ConfigurationFilesProvider instance.
-    private static CConfigurationFilesProvider instance;
+    // The ConfigurationFileResearcher instance.
+    private static CConfigurationFileResearcher instance;
 
-    // Builds the ConfigurationFilesProvider instance.
-    private CConfigurationFilesProvider() {}
+    // Builds the ConfigurationFileResearcher instance.
+    private CConfigurationFileResearcher() {}
 
     /**
-     * Returns the ConfigurationFilesProvider instance.
-     * @return The ConfigurationFilesProvider instance.
+     * Returns the ConfigurationFileResearcher instance.
+     * @return The ConfigurationFileResearcher instance.
      */
-    public static CConfigurationFilesProvider getInstance() {
-        if (instance == null) instance = new CConfigurationFilesProvider();
+    public static CConfigurationFileResearcher getInstance() {
+        if (instance == null) instance = new CConfigurationFileResearcher();
         return instance;
     }
 

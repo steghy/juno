@@ -25,7 +25,7 @@
 
 package juno.view.pages.pre_access.registration.menu;
 
-import juno.controller.pre_access.InterfaceDataLineProvider;
+import juno.controller.pre_access.registration.InterfaceDataLineProvider;
 import juno.model.data.io.output.Exportable;
 import juno.model.data.profile.profile.Profile;
 import juno.view.panels.AbstractSixthComponent;

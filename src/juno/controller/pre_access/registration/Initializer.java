@@ -23,8 +23,12 @@
  * SOFTWARE.
  */
 
-package juno.controller.pre_access;
+package juno.controller.pre_access.registration;
 
+import juno.controller.pre_access.registration.ErrorNotifier;
+import juno.controller.pre_access.registration.GuestProfileCreator;
+import juno.controller.pre_access.registration.RegistrationDataSelector;
+import juno.controller.pre_access.registration.RequestResolver;
 import juno.controller.util.PanelChanger;
 import juno.model.data.io.input.configurable.CCompatibilityChecker;
 import juno.model.data.io.output.ExporterManager;

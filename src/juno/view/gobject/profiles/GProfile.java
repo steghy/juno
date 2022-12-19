@@ -23,22 +23,35 @@
  * SOFTWARE.
  */
 
-package juno.init.initializer;
+package juno.view.gobject.profiles;
 
-import juno.controller.pre_access.registration.Initializer;
+import juno.view.gobject.InterfaceGObject;
+import juno.view.util.ImageButton;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Simone Gentili
+ * @param <T> The type of the objects.
  */
-public class ControllerInitializer {
+public class GProfile<T>
+        extends ImageButton
+        implements InterfaceGObject<T> {
 
-    // Builds the ControllerInitializer.
-    private ControllerInitializer() {}
+    // The file.
+    private final T file;
 
-    /** Initialize the juno.controller package. */
-    public static void initialize() {
-        // juno.controller.pre_access package.
-        Initializer.initialize();
+    /**
+     * Builds a GProfile with the
+     * specified object.
+     * @param file An object.
+     */
+    public GProfile(@NotNull T file) {
+        this.file = file;
+    }
+
+    @Override
+    public T getObject() {
+        return file;
     }
 
 }

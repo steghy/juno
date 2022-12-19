@@ -23,32 +23,34 @@
  * SOFTWARE.
  */
 
-package juno.model.data.io.input.configurable;
+package juno.controller.pre_access.registration;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.List;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
- * This interface defines a method for obtaining
- * configuration files for a specified object.
  * @author Simone Gentili
  */
-@FunctionalInterface
-public interface InterfaceCConfigurationFilesProvider {
+public abstract class AbstractErrorNotifier {
+
+    // The data line provider.
+    private InterfaceDataLineProvider dataLineProvider;
 
     /**
-     * Returns a list containing the configuration
-     * files compatible with the specified Configurable
-     * object present within the specified path.
-     * @param configurable A Configurable object.
-     * @param path A String object.
-     * @return A List object.
-     * @throws FileNotFoundException If the specified
-     *         path does not exist.
+     * Sets the data line provider of this object.
+     * @param dataLineProvider An InterfaceDataLineProvider object.
      */
-    List<File> getConfigurationFiles(Configurable configurable,
-                                     String path)
-            throws FileNotFoundException;
+    public void setDataLineProvider(@NotNull InterfaceDataLineProvider dataLineProvider) {
+        this.dataLineProvider = dataLineProvider;
+    }
+
+    /**
+     * Returns the data line provider of this object.
+     * @return An InterfaceDataLineProvider object.
+     */
+    @Nullable
+    public InterfaceDataLineProvider getDataLineProvider() {
+        return dataLineProvider;
+    }
 
 }

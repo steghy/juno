@@ -34,6 +34,6 @@ import juno.model.requester.InterfacePathProvider;
 @FunctionalInterface
 public interface InterfacePathObjectProvider<T> {
 
-    InterfacePathProvider getPathObjectOf(T card);
+    InterfacePathProvider getPathObjectOf(T object);
 
 }

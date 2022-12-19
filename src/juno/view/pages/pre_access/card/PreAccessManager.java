@@ -25,33 +25,48 @@
 
 package juno.view.pages.pre_access.card;
 
-import juno.model.data.avatar.AvatarNameSetter;
 import juno.model.data.io.input.configurable.Configurable;
-import juno.model.data.profile.profile.Profile;
-import juno.model.data.profile.profile.ProfileNameSetter;
+import juno.model.util.InterfaceFactory;
+import juno.model.util.Observable;
+import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
-public class PreAccessInitialChooser
-        extends AbstractPreAccessInitialChooser {
+/**
+ * @author Simone Gentili
+ */
+public class PreAccessManager
+        extends AbstractPreAccessManager
+        implements InterfaceFactory<File>, Observable {
+
+    // The configuration files.
+    private final List<File> configurationFiles;
+
+    // The Observers List.
+    private final List<Observer> observerList;
 
     // The PreAccessInitialChooser instance.
-    private static PreAccessInitialChooser instance;
+    private static PreAccessManager instance;
 
     // Builds the PreAccessInitialChooser instance.
-    private PreAccessInitialChooser() {}
+    private PreAccessManager() {
+        observerList = new ArrayList<>();
+        configurationFiles = new ArrayList<>();
+    }
 
     /**
      * Returns the PreAccessInitialChooser instance.
      * @return The PreAccessInitialChooser instance.
      */
-    public static PreAccessInitialChooser getInstance() {
-        if(instance == null) instance = new PreAccessInitialChooser();
+    public static PreAccessManager getInstance() {
+        if(instance == null) instance = new PreAccessManager();
         return instance;
     }
 
@@ -65,19 +80,42 @@ public class PreAccessInitialChooser
                                     @NotNull Configurable configurable) {
         List<File> files = null;
         try {
-            files = Objects.requireNonNull(getProvider())
+            files = Objects.requireNonNull(getResearcher())
                     .getConfigurationFiles(configurable, path);
         } catch (FileNotFoundException e) {
             new File(path).mkdir();
             e.printStackTrace();
         } if(files != null && files.size() > 0) {
             LayoutManager layoutManager = PreAccessCardPanel.getInstance().getLayout();
-            if(layoutManager instanceof CardLayout cardLayout) {
+            if(layoutManager instanceof CardLayout cardLayout)
                 cardLayout.show(PreAccessCardPanel.getInstance(), PreAccessCardPanel.ACCESS_PANEL);
-            } else {
-                throw new IllegalArgumentException("CardLayout expected");
-            }
-        } ProfileNameSetter.getInstance().addObserver(AvatarNameSetter.getInstance());
+            else throw new IllegalArgumentException(
+                        "Invalid object type: " + layoutManager.getClass() +
+                                ". CardLayout type expected.");
+            configurationFiles.clear();
+            configurationFiles.addAll(files);
+            updateAll();
+        }
+    }
+
+    @Override
+    public void addObserver(@NotNull Observer observer) {
+        observerList.add(observer);
+    }
+
+    @Override
+    public void removeObserver(@NotNull Observer observer) {
+        observerList.remove(observer);
+    }
+
+    @Override
+    public void updateAll() {
+        observerList.forEach(observer -> observer.update(this));
+    }
+
+    @Override
+    public Collection<File> getObjects() {
+        return configurationFiles;
     }
 
 }

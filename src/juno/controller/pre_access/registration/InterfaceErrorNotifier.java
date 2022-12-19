@@ -23,36 +23,16 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.pre_access.card;
+package juno.controller.pre_access.registration;
 
-import juno.model.data.io.input.configurable.InterfaceCConfigurationFilesProvider;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import java.util.Map;
 
 /**
  * @author Simone Gentili
  */
-public abstract class AbstractPreAccessInitialChooser {
+@FunctionalInterface
+public interface InterfaceErrorNotifier {
 
-    // The configuration files provider.
-    private InterfaceCConfigurationFilesProvider provider;
-
-    /**
-     * Sets the configuration files provider of this object.
-     * @param provider An InterfaceConfigurationFilesProvider object.
-     */
-    public void setConfigurationFilesProvider(@NotNull InterfaceCConfigurationFilesProvider provider) {
-        this.provider = provider;
-    }
-
-    /**
-     * Returns the configuration files provider of this object.
-     * @return An InterfaceConfigurationFilesProvider object.
-     */
-    @Nullable
-    public InterfaceCConfigurationFilesProvider getProvider() {
-        return provider;
-    }
-
+    void notifyErrors(Map<String, String> errors);
 
 }

@@ -23,59 +23,36 @@
  * SOFTWARE.
  */
 
-package juno.controller.pre_access;
+package juno.view.gobject.profiles;
 
-import juno.model.data.io.output.AbstractExporterManagerAndPanelChangerUser;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import javax.swing.*;
+import juno.model.requester.InterfacePathProvider;
+import juno.model.requester.ProgramDirectory;
+import juno.view.gobject.InterfacePathObjectProvider;
 
 /**
  * @author Simone Gentili
  */
-public abstract class AbstractRequestResolver
-        extends AbstractExporterManagerAndPanelChangerUser
-        implements InterfaceRequestResolver {
+public class ProfilePathProvider<T>
+        implements InterfacePathObjectProvider<T> {
 
-    // The card panel.
-    private JPanel cardPanel;
+    // The ProfilePathProvider instance.
+    private static ProfilePathProvider<?> instance;
 
-    // The panel key.
-    private String panelKey;
+    // Builds the ProfilePathProvider instance.
+    private ProfilePathProvider() {}
 
     /**
-     * Sets the card panel of this object.
-     * @param cardPanel A JPanel object.
+     * Returns the ProfilePathProvider instance.
+     * @return The ProfilePathProvider instance.
      */
-    public void setCardPanel(@NotNull JPanel cardPanel) {
-        this.cardPanel = cardPanel;
+    public static ProfilePathProvider<?> getInstance() {
+        if(instance == null) instance = new ProfilePathProvider<>();
+        return instance;
     }
 
-    /**
-     * Sets the panel key of this object.
-     * @param panelKey A String object.
-     */
-    public void setPanelKey(@NotNull String panelKey) {
-        this.panelKey = panelKey;
-    }
-
-    /**
-     * Returns the card panel of this object.
-     * @return A JPanel object.
-     */
-    @Nullable
-    public JPanel getCardPanel() {
-        return cardPanel;
-    }
-
-    /**
-     * Returns the panel key of this object.
-     * @return A String object.
-     */
-    @Nullable
-    public String getPanelKey() {
-        return panelKey;
+    @Override
+    public InterfacePathProvider getPathObjectOf(T profile) {
+        return ProgramDirectory.BUTTONS;
     }
 
 }

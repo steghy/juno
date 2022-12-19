@@ -23,22 +23,18 @@
  * SOFTWARE.
  */
 
-package juno.init.initializer;
+package juno.controller.pre_access.registration;
 
-import juno.controller.pre_access.registration.Initializer;
+import juno.view.pages.pre_access.registration.menu.DataLine;
+
+import java.util.Map;
 
 /**
  * @author Simone Gentili
  */
-public class ControllerInitializer {
+@FunctionalInterface
+public interface InterfaceDataLineProvider {
 
-    // Builds the ControllerInitializer.
-    private ControllerInitializer() {}
-
-    /** Initialize the juno.controller package. */
-    public static void initialize() {
-        // juno.controller.pre_access package.
-        Initializer.initialize();
-    }
+    Map<String, DataLine> getDataLines();
 
 }

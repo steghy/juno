@@ -25,15 +25,6 @@
 
 package juno.controller.pre_access;
 
-import juno.model.data.io.input.configurable.Configurable;
-import juno.model.data.io.output.Exportable;
-import juno.model.data.profile.InterfaceErrorProvider;
-
-@FunctionalInterface
-public interface InterfaceRegistrationDataSelector {
-
-    void elaborate(Configurable configurable,
-                   Exportable exportable,
-                   InterfaceErrorProvider errorProvider);
+public class AvatarInitializer {
 
 }

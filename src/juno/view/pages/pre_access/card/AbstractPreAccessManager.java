@@ -23,15 +23,35 @@
  * SOFTWARE.
  */
 
-package juno.controller.pre_access;
+package juno.view.pages.pre_access.card;
 
-import juno.view.pages.pre_access.registration.menu.DataLine;
+import juno.model.data.io.input.configurable.InterfaceCConfigurationFileResearcher;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.Map;
+/**
+ * @author Simone Gentili
+ */
+public abstract class AbstractPreAccessManager {
 
-@FunctionalInterface
-public interface InterfaceDataLineProvider {
+    // The configuration file researcher.
+    private InterfaceCConfigurationFileResearcher researcher;
 
-    Map<String, DataLine> getDataLines();
+    /**
+     * Sets the configuration files researcher of this object.
+     * @param researcher An InterfaceConfigurationFileResearcher object.
+     */
+    public void setResearcher(@NotNull InterfaceCConfigurationFileResearcher researcher) {
+        this.researcher = researcher;
+    }
+
+    /**
+     * Returns the configuration files researcher of this object.
+     * @return An InterfaceConfigurationFileResearcher object.
+     */
+    @Nullable
+    public InterfaceCConfigurationFileResearcher getResearcher() {
+        return researcher;
+    }
 
 }

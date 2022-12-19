@@ -23,7 +23,7 @@
  * SOFTWARE.
  */
 
-package juno.controller.pre_access;
+package juno.controller.pre_access.registration;
 
 import juno.model.data.io.input.configurable.Configurable;
 import juno.model.data.io.output.Exportable;

@@ -23,7 +23,7 @@
  * SOFTWARE.
  */
 
-package juno.controller.pre_access;
+package juno.controller.pre_access.registration;
 
 import juno.view.pages.pre_access.registration.menu.DataLine;
 import org.jetbrains.annotations.NotNull;
@@ -39,7 +39,7 @@ import java.util.Objects;
  */
 public class ErrorNotifier
         extends AbstractErrorNotifier
-        implements InterfaceErrorNotifier{
+        implements InterfaceErrorNotifier {
 
     // The ChangeRegistrationPanelState instance.
     private static ErrorNotifier instance;

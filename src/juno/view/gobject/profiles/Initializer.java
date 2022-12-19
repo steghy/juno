@@ -23,14 +23,23 @@
  * SOFTWARE.
  */
 
-package juno.controller.pre_access;
+package juno.view.gobject.profiles;
 
 /**
  * @author Simone Gentili
  */
-@FunctionalInterface
-public interface InterfaceRequestResolver {
+public class Initializer {
 
-    void resolve();
+    // Builds an Initializer object.
+    private Initializer() {}
+
+    public static void initialize() {
+        // Components.
+
+        //////////////////////////////////////////////////////////////////////////////////////////7
+
+        // Connections.
+
+    }
 
 }

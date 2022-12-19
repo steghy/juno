@@ -23,34 +23,17 @@
  * SOFTWARE.
  */
 
-package juno.controller.pre_access;
+package juno.controller.pre_access.registration;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import juno.model.data.io.input.configurable.Configurable;
+import juno.model.data.io.output.Exportable;
+import juno.model.data.profile.InterfaceErrorProvider;
 
-/**
- * @author Simone Gentili
- */
-public abstract class AbstractErrorNotifier {
+@FunctionalInterface
+public interface InterfaceRegistrationDataSelector {
 
-    // The data line provider.
-    private InterfaceDataLineProvider dataLineProvider;
-
-    /**
-     * Sets the data line provider of this object.
-     * @param dataLineProvider An InterfaceDataLineProvider object.
-     */
-    public void setDataLineProvider(@NotNull InterfaceDataLineProvider dataLineProvider) {
-        this.dataLineProvider = dataLineProvider;
-    }
-
-    /**
-     * Returns the data line provider of this object.
-     * @return An InterfaceDataLineProvider object.
-     */
-    @Nullable
-    public InterfaceDataLineProvider getDataLineProvider() {
-        return dataLineProvider;
-    }
+    void elaborate(Configurable configurable,
+                   Exportable exportable,
+                   InterfaceErrorProvider errorProvider);
 
 }
