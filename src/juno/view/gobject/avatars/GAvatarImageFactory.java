@@ -67,7 +67,8 @@ public class GAvatarImageFactory
     @Override
     public void generate(@NotNull List<InterfaceAvatarImage> avatarImages) {
         this.avatarImages = avatarImages.stream()
-                .map(Objects.requireNonNull(getCreator())::create).toList();
+                .map(Objects.requireNonNull(getCreator())::create)
+                .toList();
     }
 
 }

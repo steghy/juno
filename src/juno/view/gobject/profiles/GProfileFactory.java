@@ -23,51 +23,60 @@
  * SOFTWARE.
  */
 
-package juno.view.gobject.frames;
+package juno.view.gobject.profiles;
 
-import juno.model.data.awards.frame.InterfaceAvatarFrame;
+import juno.model.util.InterfaceFactory;
+import juno.model.util.Observer;
 import juno.view.gobject.AbstractGObjectFactory;
 import juno.view.gobject.InterfaceGObject;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.io.File;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * @author Simone Gentili
- */
-public class GAvatarFrameFactory
-        extends AbstractGObjectFactory<InterfaceAvatarFrame> {
+public class GProfileFactory
+        extends AbstractGObjectFactory<File>
+        implements Observer {
 
-    // The graphic avatar frames objects.
-    private List<InterfaceGObject<InterfaceAvatarFrame>> avatarFrames;
+    // The graphic profile objects.
+    private List<InterfaceGObject<File>> gProfiles;
 
-    // The GAvatarFramesFactory instance.
-    private static GAvatarFrameFactory instance;
+    // The GProfileFactory instance.
+    private static GProfileFactory instance;
 
-    // Builds the GAvatarFramesFactory instance.
-    private GAvatarFrameFactory() {}
+    // Builds the GProfileFactory instance.
+    private GProfileFactory() {}
 
     /**
-     * Returns the GAvatarFramesFactory instance.
-     * @return The GAvatarFramesFactory instance.
+     * Returns the GProfileFactory instance.
+     * @return The GProfileFactory instance.
      */
-    public static GAvatarFrameFactory getInstance() {
-        if(instance == null) instance = new GAvatarFrameFactory();
+    public static GProfileFactory getInstance() {
+        if(instance == null) instance = new GProfileFactory();
         return instance;
     }
 
     @Override @Nullable
-    public List<InterfaceGObject<InterfaceAvatarFrame>> getGObjects() {
-        return avatarFrames;
+    public List<InterfaceGObject<File>> getGObjects() {
+        return gProfiles;
     }
 
     @Override
-    public void generate(@NotNull List<InterfaceAvatarFrame> avatarFrames) {
-        this.avatarFrames = avatarFrames.stream()
+    public void generate(@NotNull List<File> profiles) {
+        gProfiles = profiles.stream()
                 .map(Objects.requireNonNull(getCreator())::create)
                 .toList();
+    }
+
+    @Override @SuppressWarnings("unchecked")
+    public void update(@NotNull Object object) {
+        if(object instanceof InterfaceFactory<?> factory)
+            generate((List<File>) factory.getObjects());
+        else throw new IllegalArgumentException(
+                "Invalid object type: " + object.getClass() +
+                        ". InterfaceFactory type expected.");
     }
 
 }
