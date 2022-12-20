@@ -49,6 +49,7 @@ public enum Button
     SCORE(true),
     OPTIONS(true),
     EXIT(true),
+    LOG_OUT(true),
 
     // OPTIONS //
     SETTINGS(true),

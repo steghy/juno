@@ -25,8 +25,7 @@
 
 package juno.view.pages.main;
 
-import juno.view.panels.AbstractFourthComponent;
-import juno.view.panels.AbstractThirdComponent;
+import juno.view.panels.AbstractFifthComponent;
 
 import java.awt.*;
 import java.util.Objects;
@@ -35,7 +34,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class MainPanel
-        extends AbstractFourthComponent {
+        extends AbstractFifthComponent {
 
     // The MainPanel instance.
     private static MainPanel instance;
@@ -101,6 +100,18 @@ public class MainPanel
         gbc.anchor = GridBagConstraints.FIRST_LINE_START;
         gbc.insets = new Insets(45,30,0, 0);
         this.add(Objects.requireNonNull(getFourthComponent()), gbc);
+
+        // Log out button.
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
+        gbc.anchor = GridBagConstraints.LAST_LINE_END;
+        gbc.insets = new Insets(0,0,30,35);
+        this.add(Objects.requireNonNull(getFifthComponent()), gbc);
+
     }
 
 }

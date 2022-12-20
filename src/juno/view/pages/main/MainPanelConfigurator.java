@@ -25,9 +25,13 @@
 
 package juno.view.pages.main;
 
+import juno.controller.util.ChangePanelAction;
 import juno.view.avatar.AvatarPanel;
+import juno.view.button.ButtonCreator;
+import juno.view.pages.card.TopCardPanel;
 import juno.view.pages.main.menu.MenuPanel;
 import juno.view.pages.main.title.TitlePanel;
+import juno.view.util.ImageResizer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -49,18 +53,29 @@ public class MainPanelConfigurator {
         MenuPanel menuPanel = MenuPanel.getInstance();
         AvatarPanel avatarPanel = new AvatarPanel(3.5);
 
-        // JLabel component.
+        // Log out button.
+        AbstractButton logOutButton = ButtonCreator.getInstance().create(juno.view.button.Button.LOG_OUT);
+
+        // Image resizing.
+        ImageResizer.resize(logOutButton, 3.5);
+
+        // Avatar label.
         JLabel label = new JLabel();
         label.setText("Logged as: ");
         label.setOpaque(false);
         label.setForeground(Color.WHITE);
         label.setFont(new Font(Font.DIALOG, Font.ITALIC, 10));
 
+        // Action listener.
+        logOutButton.addActionListener(
+                new ChangePanelAction(TopCardPanel.getInstance(), TopCardPanel.PRE_ACCESS_PANEL));
+
         // Components settings.
-        mainPanel.setFirstComponent(titlePanel);  // title panel
-        mainPanel.setSecondComponent(menuPanel);  // Menu panel.
-        mainPanel.setThirdComponent(label);      // label.
+        mainPanel.setFirstComponent(titlePanel);   // title panel
+        mainPanel.setSecondComponent(menuPanel);   // Menu panel.
+        mainPanel.setThirdComponent(label);        // label.
         mainPanel.setFourthComponent(avatarPanel); // Avatar panel.
+        mainPanel.setFifthComponent(logOutButton); // Log out button.
 
         // Main component initialization.
         mainPanel.init();
