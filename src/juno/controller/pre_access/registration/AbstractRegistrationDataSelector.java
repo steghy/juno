@@ -25,6 +25,7 @@
 
 package juno.controller.pre_access.registration;
 
+import juno.controller.pre_access.loggers.InterfaceLogger;
 import juno.model.data.io.input.AbstractCCompatibilityCheckerUser;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -38,8 +39,8 @@ public abstract class AbstractRegistrationDataSelector
     // The error notifier.
     private InterfaceErrorNotifier notifier;
 
-    // The request resolver.
-    private InterfaceRequestResolver resolver;
+    // The logger object.
+    private InterfaceLogger logger;
 
     /**
      * Sets the error notifier of this object.
@@ -50,11 +51,11 @@ public abstract class AbstractRegistrationDataSelector
     }
 
     /**
-     * Sets the request resolver of this object.
-     * @param resolver An InterfaceRequestResolver object.
+     * Sets the logger object of this object.
+     * @param resolver An InterfaceLogger object.
      */
-    public void setResolver(@NotNull InterfaceRequestResolver resolver) {
-        this.resolver = resolver;
+    public void setLogger(@NotNull InterfaceLogger resolver) {
+        this.logger = resolver;
     }
 
     /**
@@ -67,12 +68,12 @@ public abstract class AbstractRegistrationDataSelector
     }
 
     /**
-     * Returns the request resolver of this object.
-     * @return An InterfaceRequestResolver object.
+     * Returns the logger object of this object.
+     * @return An InterfaceLogger object.
      */
     @Nullable
-    public InterfaceRequestResolver getResolver() {
-        return resolver;
+    public InterfaceLogger getLogger() {
+        return logger;
     }
 
 }

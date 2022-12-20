@@ -23,9 +23,9 @@
  * SOFTWARE.
  */
 
-package juno.controller.pre_access.registration;
+package juno.controller.util;
 
-import juno.controller.pre_access.registration.InterfaceRequestResolver;
+import juno.controller.pre_access.loggers.InterfaceLogger;
 import juno.model.data.io.output.AbstractExporterManagerAndPanelChangerUser;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -35,9 +35,9 @@ import javax.swing.*;
 /**
  * @author Simone Gentili
  */
-public abstract class AbstractRequestResolver
+public abstract class AbstractChangePanelUser
         extends AbstractExporterManagerAndPanelChangerUser
-        implements InterfaceRequestResolver {
+        implements InterfaceLogger {
 
     // The card panel.
     private JPanel cardPanel;

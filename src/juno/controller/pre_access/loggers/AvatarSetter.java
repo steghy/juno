@@ -23,44 +23,35 @@
  * SOFTWARE.
  */
 
-package juno.controller.pre_access.registration;
-
-import juno.model.data.avatar.AvatarFrameSetter;
-import juno.model.data.avatar.AvatarImageSetter;
-import juno.model.data.awards.avatar.AvatarImage;
-import juno.model.data.awards.frame.AvatarFrame;
-import juno.model.data.goals.Goal;
+package juno.controller.pre_access.loggers;
 
 import java.util.Objects;
 
 /**
  * @author Simone Gentili
  */
-public class RequestResolver
-        extends AbstractRequestResolver {
+public class AvatarSetter
+        extends AbstractAvatarSetter {
 
-    // The RequestResolver instance.
-    private static RequestResolver instance;
+    // The AvatarSetter instance.
+    private static AvatarSetter instance;
 
-    // Builds the RequestResolver instance.
-    private RequestResolver() {}
+    // Builds the AvatarSetter instance.
+    private AvatarSetter() {}
 
     /**
-     * Returns the RequestResolver instance.
-     * @return The RequestResolver instance.
+     * Returns the AvatarSetter instance.
+     * @return The AvatarSetter instance.
      */
-    public static RequestResolver getInstance() {
-        if(instance == null) instance = new RequestResolver();
+    public static AvatarSetter getInstance() {
+        if(instance == null) instance = new AvatarSetter();
         return instance;
     }
 
     @Override
-    public void resolve() {
-        Goal.REGISTRATION.unlock();
-        AvatarImageSetter.getInstance().set(AvatarImage.AVATAR_IMAGE_1);
-        AvatarFrameSetter.getInstance().set(AvatarFrame.GREY_FRAME);
-        Objects.requireNonNull(getExporterManager()).export();
-        Objects.requireNonNull(getPanelChanger()).changePanel(getCardPanel(), getPanelKey());
+    public void setAvatar() {
+        Objects.requireNonNull(getAvatarFrameSetter()).set(getAvatarFrame());
+        Objects.requireNonNull(getAvatarImageSetter()).set(getAvatarImage());
     }
 
 }

@@ -26,7 +26,7 @@
 package juno.controller.pre_access.log_in;
 
 import juno.controller.pre_access.log_in.entry_builders.*;
-import juno.model.data.io.input.JSONDataImporter;
+import juno.model.data.goals.RegistrationGoal;
 
 import java.util.List;
 
@@ -43,15 +43,22 @@ public class Initializer {
         // UserDataSetter.
         UserDataSetter userDataSetter = UserDataSetter.getInstance();
 
+        // AccountLoader.
+        AccountSetter accountLoader = AccountSetter.getInstance();
+
         /////////////////////////////////////////////////////////////
 
         // Connections.
         // UserDataSetter.
         List<InterfaceEntryBuilder> builders = userDataSetter.builders();
-        builders.add(AvatarEntryBuilder.getInstance());
         builders.add(GamesWonEntryBuilder.getInstance());
         builders.add(LostGamesEntryBuilder.getInstance());
+        builders.add(AvatarEntryBuilder.getInstance());
         builders.add(ProfileEntryBuilder.getInstance());
+
+        // AccountLoader.
+        accountLoader.setSetter(userDataSetter);
+        accountLoader.setRegistrationGoal(RegistrationGoal.getInstance());
     }
 
 }

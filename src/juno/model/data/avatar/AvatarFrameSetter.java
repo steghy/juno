@@ -54,7 +54,9 @@ public class AvatarFrameSetter
 
     @Override
     public void set(@NotNull InterfaceAvatarFrame avatarFrame) {
-        Avatar.getInstance().avatarFrame = avatarFrame;
+        if(avatarFrame.isUnlock()) Avatar.getInstance().avatarFrame = avatarFrame;
+        else throw new IllegalArgumentException(
+                avatarFrame + " is not unlocked.");
         updateAll();
     }
 

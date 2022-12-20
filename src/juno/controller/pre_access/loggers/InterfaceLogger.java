@@ -23,14 +23,14 @@
  * SOFTWARE.
  */
 
-package juno.controller.pre_access.registration;
+package juno.controller.pre_access.loggers;
 
 /**
  * @author Simone Gentili
  */
 @FunctionalInterface
-public interface InterfaceRequestResolver {
+public interface InterfaceLogger {
 
-    void resolve();
+    void logIn();
 
 }

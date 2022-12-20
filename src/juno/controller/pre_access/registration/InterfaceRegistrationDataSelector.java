@@ -29,6 +29,9 @@ import juno.model.data.io.input.configurable.Configurable;
 import juno.model.data.io.output.Exportable;
 import juno.model.data.profile.InterfaceErrorProvider;
 
+/**
+ * @author Simone Gentili
+ */
 @FunctionalInterface
 public interface InterfaceRegistrationDataSelector {
 

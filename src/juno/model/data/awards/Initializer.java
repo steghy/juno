@@ -28,6 +28,7 @@ package juno.model.data.awards;
 import juno.model.data.awards.avatar.AvatarImage;
 import juno.model.data.awards.frame.AvatarFrame;
 import juno.model.data.goals.Goal;
+import juno.model.data.goals.RegistrationGoal;
 
 /**
  * @author Simone Gentili
@@ -40,8 +41,8 @@ public class Initializer {
     /** Initialize the juno.model.data.awards package. */
     public static void initialize() {
         // Registration.
-        Goal.REGISTRATION.addObserver(AvatarImage.AVATAR_IMAGE_1);
-        Goal.REGISTRATION.addObserver(AvatarFrame.GREY_FRAME);
+        RegistrationGoal.getInstance().addObserver(AvatarImage.AVATAR_IMAGE_1);
+        RegistrationGoal.getInstance().addObserver(AvatarFrame.GREY_FRAME);
 
         // First match won.
         Goal.FIRST_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_2);

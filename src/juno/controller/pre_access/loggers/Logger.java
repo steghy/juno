@@ -23,53 +23,36 @@
  * SOFTWARE.
  */
 
-package juno.controller.pre_access.registration;
+package juno.controller.pre_access.loggers;
 
-import juno.model.data.avatar.AvatarFrameSetter;
-import juno.model.data.avatar.AvatarImageSetter;
-import juno.model.data.awards.avatar.AvatarImage;
-import juno.model.data.awards.frame.AvatarFrame;
-import juno.model.data.goals.Goal;
-import juno.model.data.profile.profile.Profile;
-import juno.model.data.profile.profile.ProfileNameSetter;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Objects;
 
 /**
  * @author Simone Gentili
  */
-public class GuestProfileCreator
-        extends AbstractRequestResolver
-        implements ActionListener {
+public class Logger
+        extends AbstractLogger {
 
-    // The GuestProfileCreator instance.
-    private static GuestProfileCreator instance;
+    // The Logger instance.
+    private static Logger instance;
 
-    // Builds the GuestProfileCreator instance.
-    private GuestProfileCreator() {}
+    // Builds the Logger instance.
+    private Logger() {}
 
     /**
-     * Returns the GuestProfileCreator instance.
-     * @return The GuestProfileCreator instance.
+     * Returns the Logger instance.
+     * @return The Logger instance.
      */
-    public static GuestProfileCreator getInstance() {
-        if(instance == null) instance = new GuestProfileCreator();
+    public static Logger getInstance() {
+        if(instance == null) instance = new Logger();
         return instance;
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        resolve();
-    }
-
-    @Override
-    public void resolve() {
-        Goal.REGISTRATION.unlock();
-        ProfileNameSetter.getInstance().setProfileName(Profile.GUEST_NAME);
-        AvatarImageSetter.getInstance().set(AvatarImage.AVATAR_IMAGE_1);
-        AvatarFrameSetter.getInstance().set(AvatarFrame.GREY_FRAME);
+    public void logIn() {
+        Objects.requireNonNull(getRegistrationGoal()).unlock();
+        Objects.requireNonNull(getAvatarSetter()).setAvatar();
+        Objects.requireNonNull(getExporterManager()).export();
         Objects.requireNonNull(getPanelChanger()).changePanel(getCardPanel(), getPanelKey());
     }
 

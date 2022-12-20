@@ -54,7 +54,9 @@ public class AvatarImageSetter
 
     @Override
     public void set(@NotNull InterfaceAvatarImage avatarImage) {
-        Avatar.getInstance().avatarImage = avatarImage;
+        if(avatarImage.isUnlock()) Avatar.getInstance().avatarImage = avatarImage;
+        else throw new IllegalArgumentException(
+                avatarImage + " is not unlocked.");
         updateAll();
     }
 

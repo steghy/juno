@@ -35,6 +35,9 @@ public class ControllerInitializer {
 
     /** Initialize the juno.controller package. */
     public static void initialize() {
+        // juno.controller.pre_access.loggers package.
+        juno.controller.pre_access.loggers.Initializer.initialize();
+
         // juno.controller.pre_access.registration package.
         juno.controller.pre_access.registration.Initializer.initialize();
 

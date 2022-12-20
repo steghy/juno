@@ -41,9 +41,6 @@ import java.util.stream.Stream;
 public enum Goal
         implements InterfaceGoal, Observable, Observer {
 
-    /** Registration. */
-    REGISTRATION(0),
-
     /** First match won. */
     FIRST_MATCH_WON(1),
 

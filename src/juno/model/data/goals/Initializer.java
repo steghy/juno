@@ -53,6 +53,7 @@ public class Initializer {
 
         // Lost games goals case.
         Goal.getLostGamesGoals().forEach(lostGamesCounter::addObserver);
+
     }
 
 }

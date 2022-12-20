@@ -25,7 +25,7 @@
 
 package juno.view.pages.pre_access.login.profiles_panel;
 
-import juno.controller.pre_access.log_in.UserDataSetter;
+import juno.controller.pre_access.log_in.AccountSetter;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.SetterAction;
 import juno.model.util.Observer;
@@ -79,7 +79,7 @@ public class ProfilesPanel
                 gProfile.setVerticalTextPosition(AbstractButton.CENTER);
                 gProfile.setHorizontalTextPosition(AbstractButton.CENTER);
                 gProfile.setHorizontalAlignment(AbstractButton.CENTER);
-                button.addActionListener(new SetterAction<>(gProfile, UserDataSetter.getInstance()));
+                button.addActionListener(new SetterAction<>(gProfile, AccountSetter.getInstance()));
                 button.addActionListener(new ChangePanelAction(TopCardPanel.getInstance(), TopCardPanel.MAIN_PANEL));
                 add(button);
             });

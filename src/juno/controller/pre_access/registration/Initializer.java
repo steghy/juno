@@ -25,15 +25,8 @@
 
 package juno.controller.pre_access.registration;
 
-import juno.controller.pre_access.registration.ErrorNotifier;
-import juno.controller.pre_access.registration.GuestProfileCreator;
-import juno.controller.pre_access.registration.RegistrationDataSelector;
-import juno.controller.pre_access.registration.RequestResolver;
-import juno.controller.util.PanelChanger;
+import juno.controller.pre_access.loggers.Logger;
 import juno.model.data.io.input.configurable.CCompatibilityChecker;
-import juno.model.data.io.output.ExporterManager;
-import juno.model.data.profile.profile.ProfileNameSetter;
-import juno.view.pages.card.TopCardPanel;
 import juno.view.pages.pre_access.registration.menu.MenuPanel;
 
 /**
@@ -53,8 +46,8 @@ public class Initializer {
         // ErrorNotifier.
         ErrorNotifier errorNotifier = ErrorNotifier.getInstance();
 
-        // RequestResolver.
-        RequestResolver requestResolver = RequestResolver.getInstance();
+        // Logger.
+        Logger logger = Logger.getInstance();
 
         // CCompatibilityChecker.
         CCompatibilityChecker checker = CCompatibilityChecker.getInstance();
@@ -62,46 +55,16 @@ public class Initializer {
         // MenuPanel (Data line provider).
         MenuPanel menuPanel = MenuPanel.getInstance();
 
-        // ExporterManager.
-        ExporterManager exporterManager = ExporterManager.getInstance();
-
-        // TopCardPanel.
-        TopCardPanel topCardPanel = TopCardPanel.getInstance();
-
-        // PanelKey.
-        String panelKey = TopCardPanel.MAIN_PANEL;
-
-        // PanelChanger.
-        PanelChanger panelChanger = PanelChanger.getInstance();
-
-        // GuestProfileCreator.
-        GuestProfileCreator guestProfileCreator = GuestProfileCreator.getInstance();
-
-        // Profile name setter.
-        ProfileNameSetter profileNameSetter = ProfileNameSetter.getInstance();
-
         /////////////////////////////////////////////////////////////////////////
 
         // Connections.
         // RegistrationDataSelector.
         registrationDataSelector.setNotifier(errorNotifier);
-        registrationDataSelector.setResolver(requestResolver);
+        registrationDataSelector.setLogger(logger);
         registrationDataSelector.setChecker(checker);
 
         // ErrorNotifier.
         errorNotifier.setDataLineProvider(menuPanel);
-
-        // RequestResolver.
-        requestResolver.setExporterManager(exporterManager);
-        requestResolver.setPanelChanger(panelChanger);
-        requestResolver.setCardPanel(topCardPanel);
-        requestResolver.setPanelKey(panelKey);
-
-        // GuestProfileCreator.
-        guestProfileCreator.setExporterManager(exporterManager);
-        guestProfileCreator.setPanelChanger(panelChanger);
-        guestProfileCreator.setCardPanel(topCardPanel);
-        guestProfileCreator.setPanelKey(panelKey);
     }
 
 }

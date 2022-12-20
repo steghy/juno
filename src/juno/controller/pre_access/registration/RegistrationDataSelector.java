@@ -68,7 +68,7 @@ public class RegistrationDataSelector
             Objects.requireNonNull(getNotifier()).notifyErrors(errors);
         } else {
             // Resolve the registration request.
-            Objects.requireNonNull(getResolver()).resolve();
+            Objects.requireNonNull(getLogger()).logIn();
         }
     }
 

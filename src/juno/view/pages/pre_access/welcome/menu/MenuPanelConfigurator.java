@@ -26,7 +26,7 @@
 package juno.view.pages.pre_access.welcome.menu;
 
 import juno.controller.util.ExitAction;
-import juno.controller.pre_access.registration.GuestProfileCreator;
+import juno.controller.pre_access.loggers.GuestLogger;
 import juno.model.data.io.output.ExitManager;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
@@ -79,7 +79,7 @@ public class MenuPanelConfigurator {
                                 ". CardLayout expected.");
             }
         });
-        continueWithoutAnAccountButton.addActionListener(GuestProfileCreator.getInstance());
+        continueWithoutAnAccountButton.addActionListener(GuestLogger.getInstance());
         exitButton.addActionListener(new ExitAction(ExitManager.getInstance()));
 
         // Border settings.
