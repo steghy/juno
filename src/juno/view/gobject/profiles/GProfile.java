@@ -27,6 +27,7 @@ package juno.view.gobject.profiles;
 
 import juno.view.gobject.InterfaceGObject;
 import juno.view.util.ImageButton;
+import juno.view.util.ImageLabel;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -34,7 +35,7 @@ import org.jetbrains.annotations.NotNull;
  * @param <T> The type of the objects.
  */
 public class GProfile<T>
-        extends ImageButton
+        extends ImageLabel
         implements InterfaceGObject<T> {
 
     // The file.

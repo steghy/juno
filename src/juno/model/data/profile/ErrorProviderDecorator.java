@@ -25,7 +25,7 @@
 
 package juno.model.data.profile;
 
-import juno.controller.pre_access.log_in.name_builder.ProfileFileNameBuilder;
+import juno.controller.pre_access.log_in.name_builders.ProfileFileNameBuilder;
 import juno.model.requester.ProgramDirectory;
 import juno.model.data.io.output.Exportable;
 import juno.model.data.profile.profile.Profile;
@@ -67,7 +67,7 @@ public class ErrorProviderDecorator
             if(object instanceof String profileName) {
                 if(Os.exists(PathGenerator.generate(
                         ProgramDirectory.PROFILES.absolutePath(),
-                        ProfileFileNameBuilder.build((profileName))))) {
+                        ProfileFileNameBuilder.getInstance().build((profileName))))) {
                     errors.put(Profile.PROFILE_NAME_KEY, "profile name already used");
                 } else if(profileName.equalsIgnoreCase(Profile.GUEST_NAME)) {
                     errors.put(Profile.PROFILE_NAME_KEY, "guest name cannot be used");

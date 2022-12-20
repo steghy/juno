@@ -29,13 +29,11 @@ import juno.model.requester.InterfacePathProvider;
 import juno.model.requester.ProgramDirectory;
 import juno.view.gobject.InterfacePathObjectProvider;
 
-import java.io.File;
-
 /**
  * @author Simone Gentili
  */
 public class ProfilePathProvider
-        implements InterfacePathObjectProvider<File> {
+        implements InterfacePathObjectProvider<String> {
 
     // The ProfilePathProvider instance.
     private static ProfilePathProvider instance;
@@ -53,7 +51,7 @@ public class ProfilePathProvider
     }
 
     @Override
-    public InterfacePathProvider getPathObjectOf(File profile) {
+    public InterfacePathProvider getPathObjectOf(String profile) {
         return ProgramDirectory.BUTTONS;
     }
 

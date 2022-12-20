@@ -25,6 +25,7 @@
 
 package juno.init;
 
+import juno.controller.avatar.Subscritions;
 import juno.init.initializer.ControllerInitializer;
 import juno.init.initializer.ModelInitializer;
 import juno.init.initializer.ViewInitializer;
@@ -43,6 +44,9 @@ public class Main {
         try {
             // Setting GitHub repository.
             GitHubRepositorySetter.setRepository();
+
+            // Subscriptions.
+            Subscritions.make();
 
             // Pre initialization.
             ModelInitializer.initialize();

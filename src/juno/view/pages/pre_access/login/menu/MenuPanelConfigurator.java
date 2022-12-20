@@ -33,6 +33,7 @@ import juno.view.pages.pre_access.login.profiles_panel.ProfilesPanel;
 import juno.view.util.ImageResizer;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * @author Simone Gentili
@@ -49,7 +50,6 @@ public class MenuPanelConfigurator {
         // Components.
         ButtonCreator creator = ButtonCreator.getInstance();
         AbstractButton backButton = creator.create(Button.BACK);
-        ProfilesPanel profilesPanel = ProfilesPanel.getInstance();
 
         // Image resizing.
         ImageResizer.resize(backButton, 3.5);
@@ -60,6 +60,14 @@ public class MenuPanelConfigurator {
                 PreAccessCardPanel.ACCESS_PANEL));
 
         // Components setting.
+        JScrollPane profilesPanel = new JScrollPane(ProfilesPanel.getInstance(),
+                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        profilesPanel.setPreferredSize(new Dimension(200, 500));
+        profilesPanel.setIgnoreRepaint(true);
+        profilesPanel.setMinimumSize(new Dimension(200, 500));
+        profilesPanel.getViewport().setOpaque(false);
+        profilesPanel.setOpaque(false);
         menuPanel.setFirstComponent(profilesPanel); // Profiles panel.
         menuPanel.setSecondComponent(backButton); // Back button.
 

@@ -27,13 +27,13 @@ package juno.model.data.io.output;
 
 import juno.model.requester.ProgramDirectory;
 import juno.model.data.avatar.Avatar;
-import juno.controller.pre_access.log_in.name_builder.AvatarFileNameBuilder;
+import juno.controller.pre_access.log_in.name_builders.AvatarFileNameBuilder;
 import juno.model.data.profile.profile.Profile;
-import juno.controller.pre_access.log_in.name_builder.ProfileFileNameBuilder;
+import juno.controller.pre_access.log_in.name_builders.ProfileFileNameBuilder;
 import juno.model.data.score.GamesWonCounter;
-import juno.controller.pre_access.log_in.name_builder.GamesWonFileNameBuilder;
+import juno.controller.pre_access.log_in.name_builders.GamesWonFileNameBuilder;
 import juno.model.data.score.LostGamesCounter;
-import juno.controller.pre_access.log_in.name_builder.LostGamesFileNameBuilder;
+import juno.controller.pre_access.log_in.name_builders.LostGamesFileNameBuilder;
 import juno.model.util.PathGenerator;
 
 import java.util.Map;

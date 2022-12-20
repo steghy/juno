@@ -25,12 +25,7 @@
 
 package juno.view.pages.pre_access.login.profiles_panel;
 
-import juno.view.gobject.profiles.GProfile;
 import juno.view.gobject.profiles.GProfileFactory;
-import juno.view.util.ImageResizer;
-
-import java.io.File;
-import java.util.List;
 
 /**
  * @author Simone Gentili
@@ -49,9 +44,6 @@ public class ProfilesPanelConfigurator {
 
         // Observer / Observable connection.
         gProfileFactory.addObserver(profilesPanel);
-
-        // Adding graphic profile buttons.
-        List<GProfile<File>> gProfiles = profilesPanel.gProfiles();
     }
 
 }

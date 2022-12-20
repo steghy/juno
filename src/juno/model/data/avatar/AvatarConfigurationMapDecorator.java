@@ -35,13 +35,25 @@ import java.util.Map;
  * @author Simone Gentili
  */
 public class AvatarConfigurationMapDecorator
-        implements InterfaceAvatarConfigurationMapDecorator{
+        implements InterfaceConfigurationMapDecorator {
 
     // The AvatarConfigurationMapDecorator instance.
     private static AvatarConfigurationMapDecorator instance;
 
+    // Builds the AvatarConfigurationMapDecorator instance.
+    private AvatarConfigurationMapDecorator() {}
+
+    /**
+     * Returns the AvatarConfigurationMapDecorator instance.
+     * @return The AvatarConfigurationMapDecorator instance.
+     */
+    public static AvatarConfigurationMapDecorator getInstance() {
+        if(instance == null) instance = new AvatarConfigurationMapDecorator();
+        return instance;
+    }
+
     @Override
-    public Map<String, Object> getDecoratedMap(@NotNull Map<String, Object> map) {
+    public Map<String, Object> decorate(@NotNull Map<String, Object> map) {
         // Avatar image case.
         if(map.containsKey(Avatar.AVATAR_IMAGE_KEY)) {
             Object object = map.get(Avatar.AVATAR_IMAGE_KEY);

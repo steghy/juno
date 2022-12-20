@@ -25,8 +25,6 @@
 
 package juno.init.initializer;
 
-import juno.controller.pre_access.registration.Initializer;
-
 /**
  * @author Simone Gentili
  */
@@ -37,8 +35,17 @@ public class ControllerInitializer {
 
     /** Initialize the juno.controller package. */
     public static void initialize() {
-        // juno.controller.pre_access package.
-        Initializer.initialize();
+        // juno.controller.pre_access.registration package.
+        juno.controller.pre_access.registration.Initializer.initialize();
+
+        // juno.controller.pre_access.log_in.entry.
+        juno.controller.pre_access.log_in.entry_builders.Initializer.initialize();
+
+        // juno.controller.pre_access.log_in.path_builder.
+        juno.controller.pre_access.log_in.path_builders.Initializer.initialize();
+
+        // juno.controller.pre_access.log_in.
+        juno.controller.pre_access.log_in.Initializer.initialize();
     }
 
 }

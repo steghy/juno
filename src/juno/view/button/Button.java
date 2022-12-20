@@ -42,6 +42,7 @@ public enum Button
     CONTINUE_WITHOUT_AN_ACCOUNT(true),
     LOG_IN(true),
     CONFIRM(true),
+    PROFILE_BUTTON(true),
 
     // MAIN MENU SECTION //
     NEW_GAME(true),

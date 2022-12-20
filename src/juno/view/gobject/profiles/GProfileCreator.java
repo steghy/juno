@@ -25,23 +25,20 @@
 
 package juno.view.gobject.profiles;
 
-import juno.model.requester.InterfacePathProvider;
 import juno.model.requester.InterfacePathProviderAssembler;
 import juno.view.gobject.AbstractGObjectCreator;
 import juno.view.gobject.InterfaceGObject;
 import juno.view.gobject.InterfaceGObjectCreator;
-import juno.view.gobject.InterfacePathObjectProvider;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.File;
 import java.util.Objects;
 
 /**
  * @author Simone Gentili
  */
 public class GProfileCreator
-        extends AbstractGObjectCreator<File>
-        implements InterfaceGObjectCreator<File> {
+        extends AbstractGObjectCreator<String>
+        implements InterfaceGObjectCreator<String> {
 
     // The GProfileCreator instance.
     private static GProfileCreator instance;
@@ -59,16 +56,11 @@ public class GProfileCreator
     }
 
     @Override
-    public InterfaceGObject<File> create(@NotNull File profile) {
-        GProfile<File> graphicProfile = new GProfile<>(profile);
+    public InterfaceGObject<String> create(@NotNull String profile) {
+        GProfile<String> graphicProfile = new GProfile<>(profile);
         InterfacePathProviderAssembler assembler = getAssembler();
-        InterfacePathObjectProvider<File> provider = getProvider();
-        InterfacePathProvider pathObject = Objects.requireNonNull(provider).getPathObjectOf(profile);
         Objects.requireNonNull(assembler);
-        Objects.requireNonNull(getInitializer()).initialize(
-                graphicProfile,
-                assembler.assemble(pathObject, "PROFILE_BUTTON" + ".png"),
-                assembler.assemble(pathObject, "PROFILE_BUTTON" + "_ROLLOVER" + ".png"));
+        graphicProfile.setText(profile);
         return graphicProfile;
     }
 

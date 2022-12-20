@@ -28,22 +28,22 @@ package juno.view.gobject.profiles;
 import juno.model.util.InterfaceFactory;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
-import juno.view.gobject.AbstractGObjectFactory;
 import juno.view.gobject.InterfaceGObject;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class GProfileFactory
-        extends AbstractGObjectFactory<File>
+        extends AbstractGProfileFactory<String>
         implements Observer, Observable {
 
     // The graphic profile objects.
-    private List<InterfaceGObject<File>> gProfiles;
+    private List<InterfaceGObject<String>> gProfiles;
 
     // The Observers List.
     private final List<Observer> observerList;
@@ -66,12 +66,12 @@ public class GProfileFactory
     }
 
     @Override @Nullable
-    public List<InterfaceGObject<File>> getGObjects() {
+    public List<InterfaceGObject<String>> getGObjects() {
         return gProfiles;
     }
 
     @Override
-    public void generate(@NotNull List<File> profiles) {
+    public void generate(@NotNull List<String> profiles) {
         gProfiles = profiles.stream()
                 .map(Objects.requireNonNull(getCreator())::create)
                 .toList();
@@ -95,8 +95,18 @@ public class GProfileFactory
 
     @Override @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceFactory<?> factory)
-            generate((List<File>) factory.getObjects());
+        if(object instanceof InterfaceFactory<?> factory) {
+            List<File> files = (List<File>) factory.getObjects();
+            generate(files.stream().map(file -> {
+                try {
+                    return (String) Objects.requireNonNull(getImporter())
+                            .importData(file.getAbsolutePath()).get(getKey());
+                } catch (IOException e) {
+                    throw new IllegalArgumentException(
+                            file.getAbsolutePath() + " not exists.");
+                }
+            }).toList());
+        }
         else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceFactory type expected.");

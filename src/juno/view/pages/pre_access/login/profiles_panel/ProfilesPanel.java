@@ -25,16 +25,19 @@
 
 package juno.view.pages.pre_access.login.profiles_panel;
 
+import juno.controller.pre_access.log_in.UserDataSetter;
+import juno.controller.util.ChangePanelAction;
+import juno.controller.util.SetterAction;
 import juno.model.util.Observer;
+import juno.view.button.ButtonCreator;
 import juno.view.gobject.InterfaceGObjectFactory;
 import juno.view.gobject.profiles.GProfile;
+import juno.view.pages.card.TopCardPanel;
 import juno.view.util.ImageResizer;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.util.ArrayList;
 
 /**
  * @author Simone Gentili
@@ -43,17 +46,13 @@ public class ProfilesPanel
         extends JPanel
         implements Observer {
 
-    // The graphic profiles button list.
-    private final java.util.List<GProfile<File>> gProfiles;
-
     // The ProfilesPanel instance.
     private static ProfilesPanel instance;
 
     // Builds the ProfilesPanel instance.
     private ProfilesPanel() {
         setOpaque(false);
-        setLayout(new GridLayout(1, 1));
-        gProfiles = new ArrayList<>();
+        setLayout(new GridLayout(15, 1));
     }
 
     /**
@@ -65,22 +64,24 @@ public class ProfilesPanel
         return instance;
     }
 
-    /**
-     * Returns the graphic profiles list of this object.
-     * @return A List object.
-     */
-    public java.util.List<GProfile<File>> gProfiles() {
-        return gProfiles;
-    }
-
     @Override @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
         if(object instanceof InterfaceGObjectFactory<?> factory) {
             factory.getGObjects().forEach(gObject -> {
-                GProfile<File> gProfile = (GProfile<File>) gObject;
-                ImageResizer.resize(gProfile, 15.0);
-                add(gProfile);
-                gProfiles.add(gProfile);
+                GProfile<String> gProfile = (GProfile<String>) gObject;
+                AbstractButton button = ButtonCreator.getInstance()
+                        .create(juno.view.button.Button.PROFILE_BUTTON);
+                button.setLayout(new BorderLayout());
+                button.add(gProfile, BorderLayout.CENTER);
+                ImageResizer.resize(button, 8.0);
+                gProfile.setForeground(Color.WHITE);
+                gProfile.setFont(new Font(Font.DIALOG, Font.ITALIC, 15));
+                gProfile.setVerticalTextPosition(AbstractButton.CENTER);
+                gProfile.setHorizontalTextPosition(AbstractButton.CENTER);
+                gProfile.setHorizontalAlignment(AbstractButton.CENTER);
+                button.addActionListener(new SetterAction<>(gProfile, UserDataSetter.getInstance()));
+                button.addActionListener(new ChangePanelAction(TopCardPanel.getInstance(), TopCardPanel.MAIN_PANEL));
+                add(button);
             });
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
