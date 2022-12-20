@@ -23,27 +23,38 @@
  * SOFTWARE.
  */
 
-package juno.model.data.score;
+package juno.controller.pre_access.log_in.entry;
 
+import juno.model.data.io.input.configurable.Configurable;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Locale;
+import java.io.File;
+import java.util.Map;
 
 /**
  * @author Simone Gentili
  */
-public class GamesWonFileNameBuilder {
+public class AvatarEntryBuilder
+        extends AbstractEntryBuilder {
 
-    /** The ending String object. */
-    public static final String ending = "-games-won.json";
+    // The AvatarEntryBuilder instance.
+    private static AvatarEntryBuilder instance;
 
-    // Builds a GamesWonFileNameBuilder object.
-    private GamesWonFileNameBuilder() {}
+    // Builds the AvatarEntryBuilder instance.
+    private AvatarEntryBuilder() {}
 
-    public static String build(@NotNull String profileName) {
-        if(profileName.length() == 0) throw new IllegalArgumentException(
-                "Invalid profile name length.");
-        return profileName.toLowerCase() + ending;
+    /**
+     * Returns the AvatarEntryBuilder instance.
+     * @return The AvatarEntryBuilder instance.
+     */
+    public static AvatarEntryBuilder getInstance() {
+        if(instance == null) instance = new AvatarEntryBuilder();
+        return instance;
+    }
+
+    @Override
+    public Map.Entry<Configurable, File> create(@NotNull String name) {
+        return null;
     }
 
 }

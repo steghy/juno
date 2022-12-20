@@ -23,14 +23,14 @@
  * SOFTWARE.
  */
 
-package juno.model.data.score;
+package juno.controller.pre_access.log_in.name_builder;
 
 /**
- * @author Simone Gentii
+ * @author Simone Gentili
  */
 @FunctionalInterface
-public interface InterfaceCountProvider {
+public interface InterfaceFileNameBuilder {
 
-    int getCount();
+    String build(String name);
 
 }

@@ -23,14 +23,44 @@
  * SOFTWARE.
  */
 
-package juno.model.data.score;
+package juno.controller.pre_access.log_in.name_builder;
+
+import org.jetbrains.annotations.NotNull;
 
 /**
- * @author Simone Gentii
+ * @author Simone Gentili
  */
-@FunctionalInterface
-public interface InterfaceCountProvider {
+public class ProfileFileNameBuilder
+        implements InterfaceFileNameBuilder {
 
-    int getCount();
+    /** The ending String object. */
+    public static final String ending = "-profile.json";
+
+    // The ProfileFileNameBuilder instance.
+    private static ProfileFileNameBuilder instance;
+
+    // Builds the ProfileFileNameBuilder object.
+    private ProfileFileNameBuilder() {}
+
+    /**
+     * Returns the ProfileFileNameBuilder instance.
+     * @return The ProfileFileNameBuilder instance.
+     */
+    public static ProfileFileNameBuilder getInstance() {
+        if(instance == null) instance = new ProfileFileNameBuilder();
+        return instance;
+    }
+
+    /**
+     * Builds the file name for the profile.
+     * @param profileName A String object.
+     * @return A String object
+     */
+    @Override
+    public String build(@NotNull String profileName) {
+        if(profileName.length() == 0) throw new IllegalArgumentException(
+                "Invalid profile name length");
+        return profileName.toLowerCase() + ending;
+    }
 
 }

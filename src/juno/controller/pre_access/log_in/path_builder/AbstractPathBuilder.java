@@ -23,25 +23,56 @@
  * SOFTWARE.
  */
 
-package juno.model.data.profile;
+package juno.controller.pre_access.log_in.path_builder;
 
+import juno.controller.pre_access.log_in.name_builder.InterfaceFileNameBuilder;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Simone Gentili
  */
-public class ProfileFileNameBuilder {
+public abstract class AbstractPathBuilder
+        implements InterfacePathBuilder {
 
-    /** The ending String object. */
-    public static final String ending = "-profile.json";
+    // The file name builder.
+    private InterfaceFileNameBuilder builder;
 
-    // Builds a ProfileFileNameBuilder object.
-    private ProfileFileNameBuilder() {}
+    // Directory.
+    private String directory;
 
-    public static String build(@NotNull String profileName) {
-        if(profileName.length() == 0) throw new IllegalArgumentException(
-                "Invalid profile name length");
-        return profileName.toLowerCase() + ending;
+    /**
+     * Sets the file name builder of this object.
+     * @param builder An InterfaceFileNameBuilder object.
+     */
+    public void setBuilder(@NotNull InterfaceFileNameBuilder builder) {
+        this.builder = builder;
+    }
+
+    /**
+     * Sets the directory path of this object.
+     * @param directory A String object.
+     */
+    public void setDirectory(@NotNull String directory) {
+        this.directory = directory;
+    }
+
+    /**
+     * Returns the file name builder of this object.
+     * @return An InterfaceFileNameBuilder object.
+     */
+    @Nullable
+    public InterfaceFileNameBuilder getBuilder() {
+        return builder;
+    }
+
+    /**
+     * Returns the directory of this object.
+     * @return A String object.
+     */
+    @Nullable
+    public String getDirectory() {
+        return directory;
     }
 
 }

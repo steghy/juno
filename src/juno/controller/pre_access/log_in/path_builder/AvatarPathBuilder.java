@@ -23,14 +23,39 @@
  * SOFTWARE.
  */
 
-package juno.model.data.score;
+package juno.controller.pre_access.log_in.path_builder;
+
+import juno.model.util.PathGenerator;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 /**
- * @author Simone Gentii
+ * @author Simone Gentili
  */
-@FunctionalInterface
-public interface InterfaceCountProvider {
+public class AvatarPathBuilder
+        extends AbstractPathBuilder {
 
-    int getCount();
+    // The AvatarPathBuilder instance.
+    private static AvatarPathBuilder instance;
+
+    // Builds the AvatarPathBuilder instance.
+    private AvatarPathBuilder() {}
+
+    /**
+     * Returns the AvatarPathBuilder instance.
+     * @return The AvatarPathBuilder instance.
+     */
+    public static AvatarPathBuilder getInstance() {
+        if(instance == null) instance = new AvatarPathBuilder();
+        return instance;
+    }
+
+    @Override
+    public String build(@NotNull String name) {
+        return PathGenerator.generate(
+                Objects.requireNonNull(getDirectory()),
+                Objects.requireNonNull(getBuilder()).build(name));
+    }
 
 }

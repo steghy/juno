@@ -23,20 +23,33 @@
  * SOFTWARE.
  */
 
-package juno.model.data.avatar;
+package juno.controller.pre_access.log_in.name_builder;
 
 import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Simone Gentili
  */
-public class AvatarFileNameBuilder {
+public class AvatarFileNameBuilder
+        implements InterfaceFileNameBuilder {
 
     /** The ending path of the name. */
     public static final String ending = "-avatar.json";
 
-    // Builds an AvatarFileNameBuilder object.
+    // The AvatarFileNameBuilder instance.
+    private static AvatarFileNameBuilder instance;
+
+    // Builds the AvatarFileNameBuilder instance.
     private AvatarFileNameBuilder() {}
+
+    /**
+     * Returns the AvatarFileNameBuilder instance.
+     * @return The AvatarFileNameBuilder instance.
+     */
+    public static AvatarFileNameBuilder getInstance() {
+        if(instance == null) instance = new AvatarFileNameBuilder();
+        return instance;
+    }
 
     /**
      * Builds the name of the avatar config file with
@@ -44,7 +57,8 @@ public class AvatarFileNameBuilder {
      * @param profileName A String object.
      * @return A String object.
      */
-    public static String build(@NotNull String profileName) {
+    @Override
+    public String build(@NotNull String profileName) {
         if(profileName.length() == 0) throw new IllegalArgumentException(
                 "Invalid profile name length.");
         return profileName.toLowerCase() + ending;

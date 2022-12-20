@@ -25,6 +25,7 @@
 
 package juno.model.data.profile;
 
+import juno.controller.pre_access.log_in.name_builder.ProfileFileNameBuilder;
 import juno.model.requester.ProgramDirectory;
 import juno.model.data.io.output.Exportable;
 import juno.model.data.profile.profile.Profile;

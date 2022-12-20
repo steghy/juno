@@ -23,21 +23,39 @@
  * SOFTWARE.
  */
 
-package juno.model.data.score;
+package juno.controller.pre_access.log_in.path_builder;
 
+import juno.model.util.PathGenerator;
 import org.jetbrains.annotations.NotNull;
 
-public class LostGamesFileNameBuilder {
+import java.util.Objects;
 
-    public static final String ending = "-lost-games.json";
+/**
+ * @author Simone Gentili
+ */
+public class GamesWonPathBuilder
+        extends AbstractPathBuilder {
 
-    // Builds a LostGamesFileNameBuilder object.
-    private LostGamesFileNameBuilder() {}
+    // The GamesWonPathBuilder instance.
+    private static GamesWonPathBuilder instance;
+    
+    // Builds the GamesWonPath instance.
+    private GamesWonPathBuilder() {}
 
-    public static String build(@NotNull String profileName) {
-        if(profileName.length() == 0) throw new IllegalArgumentException(
-                "Invalid profile name length.");
-        return profileName.toLowerCase() + ending;
+    /**
+     * Returns the GamesWonPathBuilder instance.
+     * @return The GamesWonPathBuilder instance.
+     */
+    public static GamesWonPathBuilder getInstance() {
+        if(instance == null) instance = new GamesWonPathBuilder();
+        return instance;
+    }
+
+    @Override
+    public String build(@NotNull String name) {
+        return PathGenerator.generate(
+                Objects.requireNonNull(getDirectory()),
+                Objects.requireNonNull(getBuilder()).build(name));
     }
 
 }

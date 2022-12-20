@@ -23,14 +23,40 @@
  * SOFTWARE.
  */
 
-package juno.model.data.score;
+package juno.controller.pre_access.log_in.name_builder;
 
-/**
- * @author Simone Gentii
- */
-@FunctionalInterface
-public interface InterfaceCountProvider {
+import org.jetbrains.annotations.NotNull;
 
-    int getCount();
+public class LostGamesFileNameBuilder
+        implements InterfaceFileNameBuilder {
+
+    public static final String ending = "-lost-games.json";
+
+    // The LostGamesFileNameBuilder instance.
+    private static LostGamesFileNameBuilder instance;
+
+    // Builds the LostGamesFileNameBuilder object.
+    private LostGamesFileNameBuilder() {}
+
+    /**
+     * Returns the LostGamesFileNameBuilder instance.
+     * @return The LostGamesFileNameBuilder instance.
+     */
+    public static LostGamesFileNameBuilder getInstance() {
+        if(instance == null) instance = new LostGamesFileNameBuilder();
+        return instance;
+    }
+
+    /**
+     * Builds the lost games file name.
+     * @param profileName A String object.
+     * @return A String object.
+     */
+    @Override
+    public String build(@NotNull String profileName) {
+        if(profileName.length() == 0) throw new IllegalArgumentException(
+                "Invalid profile name length.");
+        return profileName.toLowerCase() + ending;
+    }
 
 }

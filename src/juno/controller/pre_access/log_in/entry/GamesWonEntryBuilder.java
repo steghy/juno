@@ -23,14 +23,38 @@
  * SOFTWARE.
  */
 
-package juno.model.data.score;
+package juno.controller.pre_access.log_in.entry;
+
+import juno.model.data.io.input.configurable.Configurable;
+import org.jetbrains.annotations.NotNull;
+
+import java.io.File;
+import java.util.Map;
 
 /**
- * @author Simone Gentii
+ * @author Simone Gentili
  */
-@FunctionalInterface
-public interface InterfaceCountProvider {
+public class GamesWonEntryBuilder
+        extends AbstractEntryBuilder {
 
-    int getCount();
+    // The GamesWonEntryBuilder instance.
+    private static GamesWonEntryBuilder instance;
+
+    // Builds the GamesWonEntryBuilder instance.
+    private GamesWonEntryBuilder() {}
+
+    /**
+     * Returns the GamesWonEntryBuilder instance.
+     * @return The GamesWonEntryBuilder instance.
+     */
+    public static GamesWonEntryBuilder getInstance() {
+        if(instance == null) instance = new GamesWonEntryBuilder();
+        return instance;
+    }
+
+    @Override
+    public Map.Entry<Configurable, File> create(@NotNull String name) {
+        return null;
+    }
 
 }

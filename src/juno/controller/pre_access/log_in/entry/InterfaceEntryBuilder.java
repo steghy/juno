@@ -23,14 +23,19 @@
  * SOFTWARE.
  */
 
-package juno.model.data.score;
+package juno.controller.pre_access.log_in.entry;
+
+import juno.model.data.io.input.configurable.Configurable;
+
+import java.io.File;
+import java.util.Map;
 
 /**
- * @author Simone Gentii
+ * @author Simone Gentili
  */
 @FunctionalInterface
-public interface InterfaceCountProvider {
+public interface InterfaceEntryBuilder {
 
-    int getCount();
+    Map.Entry<Configurable, File> create(String name);
 
 }
