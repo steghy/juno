@@ -69,7 +69,7 @@ public class MenuPanelConfigurator {
         profilesPanel.getViewport().setOpaque(false);
         profilesPanel.setOpaque(false);
         menuPanel.setFirstComponent(profilesPanel); // Profiles panel.
-        menuPanel.setSecondComponent(backButton); // Back button.
+        menuPanel.setSecondComponent(backButton);   // Back button.
 
         // Main component initialization.
         menuPanel.init();

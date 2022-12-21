@@ -44,10 +44,10 @@ public class ImageComponentInitializer
     public Constraints BOTH_MISSING = Constraints.THROW_EXCEPTION;
     public Constraints BOTH_SELECTED_MISSING = Constraints.THROW_EXCEPTION;
     public Constraints ALL_MISSING = Constraints.THROW_EXCEPTION;
-    public Constraints IMAGE_MISSING = Constraints.KEEP_ROLLOVER_IMAGE;
-    public Constraints ROLLOVER_IMAGE_MISSING = Constraints.KEEP_IMAGE;
-    public Constraints SELECTED_IMAGE_MISSING = Constraints.KEEP_ROLLOVER_SELECTED_IMAGE;
-    public Constraints ROLLOVER_SELECTED_IMAGE_MISSING = Constraints.KEEP_SELECTED_IMAGE;
+    public Constraints IMAGE_MISSING = Constraints.THROW_EXCEPTION;
+    public Constraints ROLLOVER_IMAGE_MISSING = Constraints.THROW_EXCEPTION;
+    public Constraints SELECTED_IMAGE_MISSING = Constraints.THROW_EXCEPTION;
+    public Constraints ROLLOVER_SELECTED_IMAGE_MISSING = Constraints.THROW_EXCEPTION;
     public boolean download = false;
 
     // The ImageComponentInitializer instance.
@@ -71,6 +71,7 @@ public class ImageComponentInitializer
                            @NotNull InterfacePathProvider file,
                            InterfacePathProvider rolloverFile) {
         // Image section.
+        button.setName(file.canonicalPath());
         String imageAbsolutePath = file.absolutePath();
         boolean imageExists = true;
         if (!Os.exists(imageAbsolutePath)) {
@@ -147,6 +148,7 @@ public class ImageComponentInitializer
                            @NotNull InterfacePathProvider selectedFile,
                            InterfacePathProvider rolloverSelectedFile) {
         // Image case.
+        button.setName(file.canonicalPath());
         String imageAbsolutePath = file.absolutePath();
         boolean imageExists = true;
         if (!Os.exists(imageAbsolutePath)) {
@@ -290,6 +292,7 @@ public class ImageComponentInitializer
     public void initialize(@NotNull JLabel label,
                            @NotNull InterfacePathProvider file) {
         // Image case.
+        label.setName(file.canonicalPath());
         String imageAbsolutePath = file.absolutePath();
         boolean imageExists = true;
         if(!Os.exists(imageAbsolutePath)) {

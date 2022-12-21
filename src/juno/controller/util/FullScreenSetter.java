@@ -23,39 +23,53 @@
  * SOFTWARE.
  */
 
-package juno.controller.pre_access.log_in.path_builders;
+package juno.controller.util;
 
-import juno.model.util.PathGenerator;
+import juno.model.util.AbstractObservable;
+import juno.model.util.InterfaceSetter;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
+import javax.swing.*;
+import java.awt.*;
 
-/**
- * @author Simone Gentili
- */
-public class AvatarPathBuilder
-        extends AbstractPathBuilder {
+public class FullScreenSetter
+        extends AbstractObservable
+        implements InterfaceSetter<JFrame> {
 
-    // The AvatarPathBuilder instance.
-    private static AvatarPathBuilder instance;
+    // The Graphics device.
+    private final GraphicsDevice device;
 
-    // Builds the AvatarPathBuilder instance.
-    private AvatarPathBuilder() {}
+    // The FullScreenSetter instance.
+    private static FullScreenSetter instance;
+
+    // Builds the FullScreenSetter instance.
+    private FullScreenSetter() {
+        this.device = GraphicsEnvironment
+                .getLocalGraphicsEnvironment()
+                .getDefaultScreenDevice();
+    }
 
     /**
-     * Returns the AvatarPathBuilder instance.
-     * @return The AvatarPathBuilder instance.
+     * Returns the FullScreenSetter instance.
+     * @return The FullScreenSetter instance.
      */
-    public static AvatarPathBuilder getInstance() {
-        if(instance == null) instance = new AvatarPathBuilder();
+    public static FullScreenSetter getInstance() {
+        if(instance == null) instance = new FullScreenSetter();
         return instance;
     }
 
     @Override
-    public String build(@NotNull String name) {
-        return PathGenerator.generate(
-                Objects.requireNonNull(getDirectory()),
-                Objects.requireNonNull(getBuilder()).build(name));
+    public void set(@NotNull JFrame frame) {
+        frame.dispose();
+        if (frame.isUndecorated()) {
+            device.setFullScreenWindow(null);
+            frame.setUndecorated(false);
+        } else {
+            frame.setUndecorated(true);
+            device.setFullScreenWindow(frame);
+        }
+        frame.setVisible(true);
+        frame.repaint();
     }
 
 }

@@ -36,12 +36,6 @@ import java.awt.*;
 public class Frame
         extends JFrame {
 
-    /** The default width of the frame. */
-    public static final int DEFAULT_WIDTH = 1500;
-
-    /** The default height of the frame. */
-    public static final int DEFAULT_HEIGHT = 1200;
-
     // The main background.
     private JLabel background;
 
@@ -76,9 +70,7 @@ public class Frame
     }
 
     public void setDefaultDimension() {
-        Dimension dimension = new Dimension(DEFAULT_WIDTH, DEFAULT_HEIGHT);
-        setSize(dimension);
-        setPreferredSize(dimension);
+        setMinimumSize(new Dimension(1200, 700));
     }
 
     public void setBackground(@NotNull JLabel background) {

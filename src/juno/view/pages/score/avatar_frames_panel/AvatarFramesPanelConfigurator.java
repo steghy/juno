@@ -25,7 +25,7 @@
 
 package juno.view.pages.score.avatar_frames_panel;
 
-import juno.controller.util.SetterAction;
+import juno.controller.util.GSetterAction;
 import juno.model.data.avatar.AvatarFrameSetter;
 import juno.model.data.awards.frame.AvatarFrame;
 import juno.model.data.awards.frame.InterfaceAvatarFrame;
@@ -59,7 +59,7 @@ public class AvatarFramesPanelConfigurator {
         Objects.requireNonNull(gAvatarFramesFactory.getGObjects())
                 .forEach(temp -> {
                     GAvatarFrame<InterfaceAvatarFrame> gAvatarFrame = (GAvatarFrame<InterfaceAvatarFrame>) temp;
-                    gAvatarFrame.addActionListener(new SetterAction<>(gAvatarFrame, AvatarFrameSetter.getInstance()));
+                    gAvatarFrame.addActionListener(new GSetterAction<>(gAvatarFrame, AvatarFrameSetter.getInstance()));
                     gAvatarFrame.setEnabled(false);
                     AvatarFrame.valueOf(gAvatarFrame.getObject().name()).addObserver(gAvatarFrame);
                     gAvatarFrames.add(gAvatarFrame);

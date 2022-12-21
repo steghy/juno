@@ -25,12 +25,10 @@
 
 package juno.model.data.profile;
 
-import juno.controller.pre_access.log_in.name_builders.ProfileFileNameBuilder;
-import juno.model.requester.ProgramDirectory;
+import juno.controller.pre_access.log_in.InterfacePathBuilder;
 import juno.model.data.io.output.Exportable;
 import juno.model.data.profile.profile.Profile;
 import juno.model.util.Os;
-import juno.model.util.PathGenerator;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
@@ -47,15 +45,20 @@ public class ErrorProviderDecorator
     // The error provider;
     private final InterfaceErrorProvider errorProvider;
 
+    // The path builder.
+    private final InterfacePathBuilder pathBuilder;
+
     /**
      * Builds an ErrorDecorator with the specified
      * error provider object.
      * @param errorProvider An InterfaceErrorProvider object.
      */
     public ErrorProviderDecorator(@NotNull InterfaceErrorProvider errorProvider,
+                                  @NotNull InterfacePathBuilder pathBuilder,
                                   @NotNull Exportable exportable) {
         this.errorProvider = errorProvider;
         this.exportable = exportable;
+        this.pathBuilder = pathBuilder;
     }
 
     @Override
@@ -65,9 +68,7 @@ public class ErrorProviderDecorator
         if(data.containsKey(Profile.PROFILE_NAME_KEY)) {
             Object object = data.get(Profile.PROFILE_NAME_KEY);
             if(object instanceof String profileName) {
-                if(Os.exists(PathGenerator.generate(
-                        ProgramDirectory.PROFILES.absolutePath(),
-                        ProfileFileNameBuilder.getInstance().build((profileName))))) {
+                if(Os.exists(pathBuilder.build((profileName)))) {
                     errors.put(Profile.PROFILE_NAME_KEY, "profile name already used");
                 } else if(profileName.equalsIgnoreCase(Profile.GUEST_NAME)) {
                     errors.put(Profile.PROFILE_NAME_KEY, "guest name cannot be used");

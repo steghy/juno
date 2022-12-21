@@ -23,14 +23,42 @@
  * SOFTWARE.
  */
 
-package juno.controller.pre_access.log_in.name_builders;
+package juno.controller.util;
+
+import juno.model.util.InterfaceSetter;
+import juno.view.gobject.InterfaceGObject;
+import org.jetbrains.annotations.NotNull;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * @author Simone Gentili
  */
-@FunctionalInterface
-public interface InterfaceFileNameBuilder {
+public class GSetterAction<T>
+        implements ActionListener {
 
-    String build(String name);
+    // The graphic object.
+    private final InterfaceGObject<T> gObject;
+
+    // The setter.
+    private final InterfaceSetter<T> setter;
+
+    /**
+     * Builds a SetterAction object with the specified
+     * graphic object and setter objects.
+     * @param gObject An InterfaceGObject object.
+     * @param setter An InterfaceSetter object.
+     */
+    public GSetterAction(@NotNull InterfaceGObject<T> gObject,
+                         @NotNull InterfaceSetter<T> setter) {
+        this.gObject = gObject;
+        this.setter = setter;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        setter.set(gObject.getObject());
+    }
 
 }

@@ -25,16 +25,14 @@
 
 package juno.view.pages.score.avatar_images_panel;
 
-import juno.controller.util.SetterAction;
+import juno.controller.util.GSetterAction;
 import juno.model.data.avatar.AvatarImageSetter;
 import juno.model.data.awards.avatar.AvatarImage;
 import juno.model.data.awards.avatar.InterfaceAvatarImage;
 import juno.view.gobject.avatars.GAvatarImage;
 import juno.view.gobject.avatars.GAvatarImageFactory;
-import juno.view.gobject.profiles.GProfile;
 import juno.view.util.ImageResizer;
 
-import java.io.File;
 import java.util.List;
 import java.util.Objects;
 
@@ -62,7 +60,7 @@ public class AvatarImagesPanelConfigurator {
         Objects.requireNonNull(gAvatarImageFactory.getGObjects())
                 .forEach(temp -> {
                     GAvatarImage<InterfaceAvatarImage> gAvatarImage = (GAvatarImage<InterfaceAvatarImage>) temp;
-                    gAvatarImage.addActionListener(new SetterAction<>(gAvatarImage, AvatarImageSetter.getInstance()));
+                    gAvatarImage.addActionListener(new GSetterAction<>(gAvatarImage, AvatarImageSetter.getInstance()));
                     gAvatarImage.setEnabled(false);
                     AvatarImage.valueOf(gAvatarImage.getObject().name()).addObserver(gAvatarImage);
                     gAvatarImages.add(gAvatarImage);

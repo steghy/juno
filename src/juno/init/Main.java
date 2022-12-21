@@ -27,6 +27,7 @@ package juno.init;
 
 import juno.controller.avatar.Subscriptions;
 import juno.controller.pre_access.ConfigurationFilesFactory;
+import juno.controller.util.FullScreenSetter;
 import juno.init.initializer.ControllerInitializer;
 import juno.init.initializer.ModelInitializer;
 import juno.init.initializer.ViewInitializer;
@@ -66,6 +67,8 @@ public class Main {
                     .requireNonNull(new File(ProgramDirectory.MUSIC.absolutePath()).listFiles()));
             // audioPlayer.play();
             audioPlayer.setLoop(true);
+
+            FullScreenSetter.getInstance().set(Frame.getInstance());
 
             // Frame.
             Frame frame = Frame.getInstance();

@@ -25,11 +25,13 @@
 
 package juno.view.pages.pre_access.registration.menu;
 
+import juno.controller.pre_access.log_in.PathBuilder;
 import juno.controller.pre_access.registration.RegistrationDataSelector;
 import juno.controller.pre_access.registration.RegistrationDataSender;
 import juno.controller.pre_access.registration.RegistrationPanelRestorer;
 import juno.model.data.profile.ErrorProviderDecorator;
 import juno.model.data.profile.profile.Profile;
+import juno.model.requester.ProgramDirectory;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
 import juno.view.pages.pre_access.card.PreAccessCardPanel;
@@ -109,7 +111,10 @@ public class MenuPanelConfigurator {
                 new RegistrationDataSender(
                         Profile.getInstance(),
                         menuPanel,
-                        new ErrorProviderDecorator(Objects.requireNonNull(Profile.getInstance().getProvider()), menuPanel),
+                        new ErrorProviderDecorator(
+                                Objects.requireNonNull(Profile.getInstance().getProvider()),
+                                new PathBuilder("-profile.json", ProgramDirectory.PROFILES.absolutePath()),
+                                menuPanel),
                         RegistrationDataSelector.getInstance()));
 
         backButton.addActionListener(listener -> {
