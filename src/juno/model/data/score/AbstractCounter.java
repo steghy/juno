@@ -29,6 +29,7 @@ import juno.model.data.io.input.configurable.Configurable;
 import juno.model.data.io.output.Exportable;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
+import juno.controller.log_out.Restorable;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ import java.util.Map;
  * @author Simone Gentili
  */
 public abstract class AbstractCounter
-        implements Observable, Configurable, Exportable {
+        implements Observable, Configurable, Exportable, Restorable {
 
     /** The count key. */
     public static final String COUNT_KEY = "count";
@@ -99,6 +100,11 @@ public abstract class AbstractCounter
         Map<String, Object> map = new HashMap<>();
         map.put(COUNT_KEY, count);
         return map;
+    }
+
+    @Override
+    public void restore() {
+        count = 0;
     }
 
     /**

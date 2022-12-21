@@ -25,16 +25,14 @@
 
 package juno.controller.pre_access.log_in.entry_builders;
 
-import juno.model.data.io.input.configurable.Configurable;
-
 import java.util.Map;
 
 /**
  * @author Simone Gentili
  */
 @FunctionalInterface
-public interface InterfaceEntryBuilder {
+public interface InterfaceEntryBuilder<T, E> {
 
-    Map.Entry<Configurable, Map<String, Object>> create(String name);
+    Map.Entry<T, E> create(String name);
 
 }

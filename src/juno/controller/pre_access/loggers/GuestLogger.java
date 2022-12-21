@@ -61,7 +61,7 @@ public class GuestLogger
         Objects.requireNonNull(getGuestNameSetter()).setGuestProfileName();
         Objects.requireNonNull(getRegistrationGoal()).unlock();
         Objects.requireNonNull(getAvatarSetter()).setAvatar();
-        Objects.requireNonNull(getPanelChanger()).changePanel(getCardPanel(), getPanelKey());
+        Objects.requireNonNull(getPanelChanger()).changePanel();
     }
 
 }

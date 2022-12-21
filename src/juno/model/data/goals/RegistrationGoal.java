@@ -25,12 +25,13 @@
 
 package juno.model.data.goals;
 
+import juno.controller.log_out.Restorable;
 import juno.model.util.AbstractObservable;
 import juno.model.util.Observable;
 
 public class RegistrationGoal
         extends AbstractObservable
-        implements InterfaceGoal, Observable {
+        implements InterfaceGoal, Observable, Restorable {
 
     private boolean unlock;
 
@@ -61,6 +62,12 @@ public class RegistrationGoal
     @Override
     public boolean isReached() {
         return unlock;
+    }
+
+    @Override
+    public void restore() {
+        unlock = false;
+        updateAll();
     }
 
 }

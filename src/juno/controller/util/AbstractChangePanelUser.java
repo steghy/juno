@@ -25,58 +25,32 @@
 
 package juno.controller.util;
 
-import juno.controller.pre_access.loggers.InterfaceLogger;
-import juno.model.data.io.output.AbstractExporterManagerAndPanelChangerUser;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import javax.swing.*;
 
 /**
  * @author Simone Gentili
  */
-public abstract class AbstractChangePanelUser
-        extends AbstractExporterManagerAndPanelChangerUser
-        implements InterfaceLogger {
+public abstract class AbstractChangePanelUser {
 
-    // The card panel.
-    private JPanel cardPanel;
-
-    // The panel key.
-    private String panelKey;
+    // The panel changer.
+    private InterfacePanelChanger panelChanger;
 
     /**
-     * Sets the card panel of this object.
-     * @param cardPanel A JPanel object.
+     * Sets the panel changer of this object.
+     * @param panelChanger An InterfacePanelChanger object.
      */
-    public void setCardPanel(@NotNull JPanel cardPanel) {
-        this.cardPanel = cardPanel;
+    public void setPanelChanger(@NotNull InterfacePanelChanger panelChanger) {
+        this.panelChanger = panelChanger;
     }
 
     /**
-     * Sets the panel key of this object.
-     * @param panelKey A String object.
-     */
-    public void setPanelKey(@NotNull String panelKey) {
-        this.panelKey = panelKey;
-    }
-
-    /**
-     * Returns the card panel of this object.
-     * @return A JPanel object.
+     * Returns the panel changer of this object.
+     * @return An InterfacePanelChanger object.
      */
     @Nullable
-    public JPanel getCardPanel() {
-        return cardPanel;
-    }
-
-    /**
-     * Returns the panel key of this object.
-     * @return A String object.
-     */
-    @Nullable
-    public String getPanelKey() {
-        return panelKey;
+    public InterfacePanelChanger getPanelChanger() {
+        return panelChanger;
     }
 
 }

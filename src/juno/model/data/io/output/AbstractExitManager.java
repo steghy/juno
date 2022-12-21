@@ -25,33 +25,54 @@
 
 package juno.model.data.io.output;
 
+import juno.model.util.InterfaceProvider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Simone Gentili
  */
-public abstract class AbstractExitManager
-        extends AbstractExporterManagerUser {
+public abstract class AbstractExitManager<T>
+        implements InterfaceExitManager {
 
-    // The temporary file remover.
-    private InterfaceTemporaryFileRemover fileRemover;
+    // The exporter manager.
+    private InterfaceExporterManager<T> exporter;
+
+    // The object to export provider.
+    private InterfaceProvider<T> provider;
 
     /**
-     * Sets the file remover of this object.
-     * @param fileRemover An InterfaceTemporaryFileRemover object.
+     * Sets the exporter manager of this object.
+     * @param exporter An InterfaceExporterManager object.
      */
-    public void setFileRemover(@NotNull InterfaceTemporaryFileRemover fileRemover) {
-        this.fileRemover = fileRemover;
+    public void setExporter(@NotNull InterfaceExporterManager<T> exporter) {
+        this.exporter = exporter;
     }
 
     /**
-     * Returns the file remover of this object.
-     * @return An InterfaceTemporaryFileRemover object.
+     * Sets the provider of this object.
+     * @param provider An InterfaceProvider object.
+     */
+    public void setProvider(@NotNull InterfaceProvider<T> provider) {
+        this.provider = provider;
+    }
+
+    /**
+     * Returns the exporter manager of this object.
+     * @return An InterfaceExporterManager object.
      */
     @Nullable
-    public InterfaceTemporaryFileRemover getFileRemover() {
-        return fileRemover;
+    public InterfaceExporterManager<T> getExporter() {
+        return exporter;
+    }
+
+    /**
+     * Returns the provider of this object.
+     * @return An InterfaceProvider object.
+     */
+    @Nullable
+    public InterfaceProvider<T> getProvider() {
+        return provider;
     }
 
 }

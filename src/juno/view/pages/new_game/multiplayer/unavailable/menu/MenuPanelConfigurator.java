@@ -26,6 +26,7 @@
 package juno.view.pages.new_game.multiplayer.unavailable.menu;
 
 import juno.controller.util.ChangePanelAction;
+import juno.controller.util.PanelChanger;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
 import juno.view.pages.new_game.card.NewGameCardPanel;
@@ -71,7 +72,7 @@ public class MenuPanelConfigurator {
 
         // Action listeners.
         backButton.addActionListener(new ChangePanelAction(
-                NewGameCardPanel.getInstance(), NewGameCardPanel.NEW_GAME_PANEL));
+                new PanelChanger(NewGameCardPanel.getInstance(), NewGameCardPanel.NEW_GAME_PANEL)));
 
         // Main component initialization.
         menuPanel.init();

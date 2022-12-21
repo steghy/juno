@@ -66,7 +66,7 @@ public class AvatarFramesPanelConfigurator {
                 });
 
         // ImageResizing.
-        gAvatarFrames.forEach(gAvatarFrame -> ImageResizer.resize(gAvatarFrame, 4.5));
+        gAvatarFrames.forEach(gAvatarFrame -> ImageResizer.resize(gAvatarFrame, 6.5));
 
         // Main component initialization.
         avatarFramesPanel.init();

@@ -26,13 +26,14 @@
 package juno.model.data.profile.profile;
 
 import juno.model.util.AbstractObservable;
+import juno.model.util.InterfaceSetter;
 
 /**
  * @author Simone Gentili
  */
 public class AgeSetter
         extends AbstractObservable
-        implements InterfaceAgeSetter {
+        implements InterfaceSetter<Integer> {
 
     // The AgeSetter instance.
     private static AgeSetter instance;
@@ -50,7 +51,7 @@ public class AgeSetter
     }
 
     @Override
-    public void setAge(int age) {
+    public void set(Integer age) {
         if(age < 1) throw new IllegalArgumentException(
                 "must be greater than 0");
         if(age > Profile.MAXIMUM_AGE) throw new IllegalArgumentException(

@@ -25,7 +25,6 @@ public class GuestProfileNameSetter
 
     @Override
     public void setGuestProfileName() {
-        Objects.requireNonNull(getNameSetter()).setProfileName(getGuestName());
+        Objects.requireNonNull(getNameSetter()).set(getGuestName());
     }
-
 }

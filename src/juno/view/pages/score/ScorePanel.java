@@ -63,7 +63,7 @@ public class ScorePanel
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
         gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,17,0);
+        gbc.insets = new Insets(0,0,30,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
         this.add(Objects.requireNonNull(getFirstComponent()), gbc);
@@ -74,19 +74,19 @@ public class ScorePanel
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
         gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(17,0,17,0);
+        gbc.insets = new Insets(0,0,0,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
         this.add(Objects.requireNonNull(getSecondComponent()), gbc);
 
         // Avatar panel.
         gbc.gridx = 0;
-        gbc.gridy = 0;
+        gbc.gridy = 2;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-        gbc.anchor = GridBagConstraints.LINE_START;
-        gbc.insets = new Insets(17,0,17,0);
-        gbc.ipadx = 1;
+        gbc.anchor = GridBagConstraints.PAGE_END;
+        gbc.insets = new Insets(0,0,0,0);
+        gbc.ipadx = 0;
         gbc.ipady = 0;
         this.add(Objects.requireNonNull(getThirdComponent()), gbc);
     }

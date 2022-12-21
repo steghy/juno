@@ -27,6 +27,7 @@ package juno.view.pages.main.menu;
 
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.ExitAction;
+import juno.controller.util.PanelChanger;
 import juno.model.data.io.output.ExitManager;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
@@ -58,20 +59,26 @@ public class MenuPanelConfigurator {
         AbstractButton exitButton = creator.create(Button.EXIT);
 
         // Images resizing.
-        ImageResizer.resize(newGameButton, 1.0);
-        ImageResizer.resize(optionsButton, 3.0);
-        ImageResizer.resize(scoreButton, 3.0);
-        ImageResizer.resize(exitButton, 3.0);
+        ImageResizer.resize(newGameButton, 2.5);
+        ImageResizer.resize(optionsButton, 4.0);
+        ImageResizer.resize(scoreButton, 4.0);
+        ImageResizer.resize(exitButton, 4.0);
 
         // Action listeners.
-        newGameButton.addActionListener(new ChangePanelAction(MainCardPanel.getInstance(), MainCardPanel.NEW_GAME_PANEL));
-        scoreButton.addActionListener(new ChangePanelAction(MainCardPanel.getInstance(), MainCardPanel.SCORE_PANEL));
-        optionsButton.addActionListener(new ChangePanelAction(MainCardPanel.getInstance(), MainCardPanel.OPTIONS_PANEL));
+        newGameButton.addActionListener(
+                new ChangePanelAction(
+                        new PanelChanger(MainCardPanel.getInstance(), MainCardPanel.NEW_GAME_PANEL)));
+        scoreButton.addActionListener(
+                new ChangePanelAction(
+                        new PanelChanger(MainCardPanel.getInstance(), MainCardPanel.SCORE_PANEL)));
+        optionsButton.addActionListener(
+                new ChangePanelAction(
+                        new PanelChanger(MainCardPanel.getInstance(), MainCardPanel.OPTIONS_PANEL)));
         exitButton.addActionListener(new ExitAction(ExitManager.getInstance()));
 
         // Border setting.
-        RoundedBorder insideBorder = new RoundedBorder(50, 1, null, Color.WHITE);
-        RoundedBorder outsideBorder = new RoundedBorder(50, 1, null, Color.RED);
+        RoundedBorder insideBorder = new RoundedBorder(10, 1, null, Color.WHITE);
+        RoundedBorder outsideBorder = new RoundedBorder(25, 1, null, Color.RED);
         Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
         menuPanel.setBorder(border);
 

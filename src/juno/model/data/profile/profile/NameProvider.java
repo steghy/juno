@@ -25,11 +25,13 @@
 
 package juno.model.data.profile.profile;
 
+import juno.model.util.InterfaceProvider;
+
 /**
  * @author Simone Gentili
  */
 public class NameProvider
-        implements InterfaceNameProvider {
+        implements InterfaceProvider<String> {
 
     // The NameProvider instance.
     private static NameProvider instance;
@@ -47,7 +49,7 @@ public class NameProvider
     }
 
     @Override
-    public String getName() {
+    public String provide() {
         return Profile.getInstance().name;
     }
 

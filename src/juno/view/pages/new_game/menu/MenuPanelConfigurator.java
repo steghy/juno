@@ -26,6 +26,7 @@
 package juno.view.pages.new_game.menu;
 
 import juno.controller.util.ChangePanelAction;
+import juno.controller.util.PanelChanger;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
 import juno.view.pages.main.card.MainCardPanel;
@@ -68,11 +69,11 @@ public class MenuPanelConfigurator {
 
         // Action listeners.
         singlePlayer.addActionListener(new ChangePanelAction(
-                NewGameCardPanel.getInstance(), NewGameCardPanel.SINGLE_PLAYER_PANEL));
+                new PanelChanger(NewGameCardPanel.getInstance(), NewGameCardPanel.SINGLE_PLAYER_PANEL)));
         multiPlayer.addActionListener(new ChangePanelAction(
-                NewGameCardPanel.getInstance(), NewGameCardPanel.MULTIPLAYER_PANEL));
+                new PanelChanger(NewGameCardPanel.getInstance(), NewGameCardPanel.MULTIPLAYER_PANEL)));
         backButton.addActionListener(new ChangePanelAction(
-                MainCardPanel.getInstance(), MainCardPanel.MAIN_PANEL));
+                new PanelChanger(MainCardPanel.getInstance(), MainCardPanel.MAIN_PANEL)));
 
         // Components settings.
         newGameMenuPanel.setFirstComponent(singlePlayer); // Single-player button.

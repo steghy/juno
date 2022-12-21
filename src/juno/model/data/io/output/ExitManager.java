@@ -25,17 +25,17 @@
 
 package juno.model.data.io.output;
 
+
 import java.util.Objects;
 
 /**
  * @author Simone Gentili
  */
-public class ExitManager
-        extends AbstractExitManager
-        implements InterfaceExitManager {
+public class ExitManager<T>
+        extends AbstractExitManager<T> {
 
     // The ExitManager instance.
-    private static ExitManager instance;
+    private static ExitManager<?> instance;
 
     // Builds the ExitManager instance.
     private ExitManager() {}
@@ -44,15 +44,15 @@ public class ExitManager
      * Returns the ExitManager instance.
      * @return The ExitManager instance.
      */
-    public static ExitManager getInstance() {
-        if(instance == null) instance = new ExitManager();
+    public static ExitManager<?> getInstance() {
+        if(instance == null) instance = new ExitManager<>();
         return instance;
     }
 
     @Override
     public void exit() {
-        Objects.requireNonNull(getExporter()).export();
-        Objects.requireNonNull(getFileRemover()).removeTemporaryFiles();
+        Objects.requireNonNull(getExporter())
+                .export(Objects.requireNonNull(getProvider()).provide());
         System.exit(0);
     }
 

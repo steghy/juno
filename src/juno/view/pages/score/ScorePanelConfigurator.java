@@ -46,7 +46,7 @@ public class ScorePanelConfigurator {
         // Components.
         MenuPanel menuPanel = MenuPanel.getInstance();
         TitlePanel titlePanel = TitlePanel.getInstance();
-        AvatarPanel avatarPanel = new AvatarPanel(3.5);
+        AvatarPanel avatarPanel = new AvatarPanel(4.5);
 
         // Adding components.
         scorePanel.setFirstComponent(titlePanel);   // Title panel.

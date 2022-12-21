@@ -27,7 +27,7 @@ package juno.view.pages.pre_access.registration.menu;
 
 import juno.controller.pre_access.registration.RegistrationDataSelector;
 import juno.controller.pre_access.registration.RegistrationDataSender;
-import juno.controller.util.RegistrationPanelRestorer;
+import juno.controller.pre_access.registration.RegistrationPanelRestorer;
 import juno.model.data.profile.ErrorProviderDecorator;
 import juno.model.data.profile.profile.Profile;
 import juno.view.button.ButtonCreator;

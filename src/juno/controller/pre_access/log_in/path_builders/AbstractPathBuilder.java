@@ -25,6 +25,7 @@
 
 package juno.controller.pre_access.log_in.path_builders;
 
+import juno.controller.pre_access.log_in.InterfacePathBuilder;
 import juno.controller.pre_access.log_in.name_builders.InterfaceFileNameBuilder;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

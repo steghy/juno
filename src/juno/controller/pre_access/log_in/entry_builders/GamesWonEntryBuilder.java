@@ -36,7 +36,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class GamesWonEntryBuilder
-        extends AbstractEntryBuilder {
+        extends AbstractEntryBuilder<Configurable, Map<String, Object>> {
 
     // The GamesWonEntryBuilder instance.
     private static GamesWonEntryBuilder instance;

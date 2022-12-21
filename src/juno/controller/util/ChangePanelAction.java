@@ -27,37 +27,25 @@ package juno.controller.util;
 
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.util.Objects;
+import java.awt.event.ActionListener;
 
 /**
  * @author Simone Gentili
  */
 public class ChangePanelAction
-        extends AbstractPanelChangerUser {
+    implements ActionListener {
 
-    // The card panel.
-    private final JPanel cardPanel;
+    // The panel changer.
+    private final InterfacePanelChanger panelChanger;
 
-    // The key of the panel.
-    private final String panelKey;
-
-    /**
-     * Builds a ChangePanelAction object with
-     * the specified objects.
-     * @param cardPanel A JPanel object.
-     * @param panel A String object.
-     */
-    public ChangePanelAction(@NotNull JPanel cardPanel,
-                             @NotNull String panel) {
-        this.cardPanel = cardPanel;
-        this.panelKey = panel;
+    public ChangePanelAction(@NotNull InterfacePanelChanger panelChanger) {
+        this.panelChanger = panelChanger;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        PanelChanger.getInstance().changePanel(cardPanel, panelKey);
+        panelChanger.changePanel();
     }
 
 }

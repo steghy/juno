@@ -25,7 +25,6 @@
 
 package juno.controller.util;
 
-import javax.swing.*;
 
 /**
  * @author Simone Gentili
@@ -33,7 +32,6 @@ import javax.swing.*;
 @FunctionalInterface
 public interface InterfacePanelChanger {
 
-    void changePanel(JPanel cardPanel,
-                     String panelKey);
+    void changePanel();
 
 }

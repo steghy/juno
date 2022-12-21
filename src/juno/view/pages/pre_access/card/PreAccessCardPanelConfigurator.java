@@ -25,9 +25,7 @@
 
 package juno.view.pages.pre_access.card;
 
-import juno.model.requester.ProgramDirectory;
-import juno.model.data.io.input.configurable.CConfigurationFileResearcher;
-import juno.model.data.profile.profile.Profile;
+import juno.controller.pre_access.ConfigurationFilesFactory;
 import juno.view.pages.pre_access.access.AccessPanel;
 import juno.view.pages.pre_access.login.LogInPanel;
 import juno.view.pages.pre_access.registration.RegistrationPanel;
@@ -46,7 +44,6 @@ public class PreAccessCardPanelConfigurator {
         PreAccessCardPanel preAccessCardPanel = PreAccessCardPanel.getInstance();
 
         // Components.
-        PreAccessManager preAccessInitialChooser = PreAccessManager.getInstance();
         WelcomePanel welcomePanel = WelcomePanel.getInstance();
         AccessPanel accessPanel = AccessPanel.getInstance();
         RegistrationPanel registrationPanel = RegistrationPanel.getInstance();
@@ -60,14 +57,6 @@ public class PreAccessCardPanelConfigurator {
 
         // Main components initialization.
         preAccessCardPanel.init();
-
-        // Pre access initial chooser setting.
-        preAccessInitialChooser.setResearcher(CConfigurationFileResearcher.getInstance());
-
-        // Call the setFirstPanelToShow() method.
-        PreAccessManager.getInstance().setFirstPanelToShow(
-                ProgramDirectory.PROFILES.absolutePath(),
-                Profile.getInstance());
     }
 
 }

@@ -26,6 +26,7 @@
 package juno.view.pages.pre_access.login.menu;
 
 import juno.controller.util.ChangePanelAction;
+import juno.controller.util.PanelChanger;
 import juno.view.button.Button;
 import juno.view.button.ButtonCreator;
 import juno.view.pages.pre_access.card.PreAccessCardPanel;
@@ -56,8 +57,7 @@ public class MenuPanelConfigurator {
 
         // Action listener.
         backButton.addActionListener(new ChangePanelAction(
-                PreAccessCardPanel.getInstance(),
-                PreAccessCardPanel.ACCESS_PANEL));
+                new PanelChanger(PreAccessCardPanel.getInstance(), PreAccessCardPanel.ACCESS_PANEL)));
 
         // Components setting.
         JScrollPane profilesPanel = new JScrollPane(ProfilesPanel.getInstance(),

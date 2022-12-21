@@ -28,6 +28,7 @@ package juno.view.pages.new_game.single_player.players.menu;
 import juno.controller.new_game.PlayersSetter;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.new_game.PlayersAction;
+import juno.controller.util.PanelChanger;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
 import juno.view.pages.new_game.card.NewGameCardPanel;
@@ -66,13 +67,13 @@ public class MenuPanelConfigurator {
         // Action listeners.
         // Change panel actions.
         twoPlayers.addActionListener(new ChangePanelAction(
-                SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.DIFFICULTY_PANEL));
+                new PanelChanger(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.DIFFICULTY_PANEL)));
         threePlayers.addActionListener(new ChangePanelAction(
-                SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.DIFFICULTY_PANEL));
+                new PanelChanger(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.DIFFICULTY_PANEL)));
         fourPlayers.addActionListener(new ChangePanelAction(
-                SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.DIFFICULTY_PANEL));
+                new PanelChanger(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.DIFFICULTY_PANEL)));
         backButton.addActionListener(new ChangePanelAction(
-                NewGameCardPanel.getInstance(), NewGameCardPanel.NEW_GAME_PANEL));
+                new PanelChanger(NewGameCardPanel.getInstance(), NewGameCardPanel.NEW_GAME_PANEL)));
 
         // Difficulty actions.
         PlayersSetter playersSetter = PlayersSetter.getInstance();

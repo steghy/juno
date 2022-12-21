@@ -27,7 +27,7 @@ package juno.model.data.profile.profile;
 
 import juno.model.data.io.input.configurable.Configurable;
 import juno.model.data.io.output.Exportable;
-import juno.model.util.Restorable;
+import juno.controller.log_out.Restorable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -98,7 +98,7 @@ public class Profile
             Object profileNameFromMap = map.get(PROFILE_NAME_KEY);
             if (profileNameFromMap instanceof String temp) {
                 try {
-                    ProfileNameSetter.getInstance().setProfileName(temp);
+                    ProfileNameSetter.getInstance().set(temp);
                 } catch (IllegalArgumentException e) {
                     e.printStackTrace();
                     errors.put(PROFILE_NAME_KEY, e.getMessage());
@@ -111,7 +111,7 @@ public class Profile
             Object nameFromMap = map.get(NAME_KEY);
             if (map.get(NAME_KEY) instanceof String temp) {
                 try {
-                    NameSetter.getInstance().setName(temp);
+                    NameSetter.getInstance().set(temp);
                 } catch (IllegalArgumentException e) {
                     e.printStackTrace();
                     errors.put(NAME_KEY, e.getMessage());
@@ -124,7 +124,7 @@ public class Profile
             Object lastNameFromMap = map.get(LAST_NAME_KEY);
             if (map.get(LAST_NAME_KEY) instanceof String temp) {
                 try {
-                    LastNameSetter.getInstance().setLastName(temp);
+                    LastNameSetter.getInstance().set(temp);
                 } catch (IllegalArgumentException e) {
                     e.printStackTrace();
                     errors.put(LAST_NAME_KEY, e.getMessage());
@@ -137,7 +137,7 @@ public class Profile
             Object ageFromMap = map.get(AGE_KEY);
             if (map.get(AGE_KEY) instanceof Integer temp) {
                 try {
-                    AgeSetter.getInstance().setAge(temp);
+                    AgeSetter.getInstance().set(temp);
                 } catch (IllegalArgumentException e) {
                     e.printStackTrace();
                     errors.put(AGE_KEY, e.getMessage());

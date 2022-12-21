@@ -31,7 +31,7 @@ import juno.model.data.avatar.AvatarImageSetter;
 import juno.model.data.awards.avatar.AvatarImage;
 import juno.model.data.awards.frame.AvatarFrame;
 import juno.model.data.goals.RegistrationGoal;
-import juno.model.data.io.output.ExporterManager;
+import juno.model.data.profile.profile.Profile;
 import juno.model.data.profile.profile.ProfileNameSetter;
 import juno.view.pages.card.TopCardPanel;
 
@@ -67,22 +67,17 @@ public class Initializer {
         avatarSetter.setAvatarImageSetter(AvatarImageSetter.getInstance());
 
         // GuestProfileNameSetter.
-        guestProfileNameSetter.setGuestName("Guest");
+        guestProfileNameSetter.setGuestName(Profile.GUEST_NAME);
         guestProfileNameSetter.setNameSetter(ProfileNameSetter.getInstance());
 
         // Logger.
-        logger.setCardPanel(TopCardPanel.getInstance());
-        logger.setPanelKey(TopCardPanel.MAIN_PANEL);
+        logger.setPanelChanger(new PanelChanger(TopCardPanel.getInstance(), TopCardPanel.MAIN_PANEL));
         logger.setAvatarSetter(avatarSetter);
-        logger.setPanelChanger(PanelChanger.getInstance());
-        logger.setExporterManager(ExporterManager.getInstance());
         logger.setRegistrationGoal(RegistrationGoal.getInstance());
 
         // GuestLogger.
-        guestLogger.setCardPanel(TopCardPanel.getInstance());
-        guestLogger.setPanelKey(TopCardPanel.MAIN_PANEL);
+        guestLogger.setPanelChanger(new PanelChanger(TopCardPanel.getInstance(), TopCardPanel.MAIN_PANEL));
         guestLogger.setAvatarSetter(avatarSetter);
-        guestLogger.setPanelChanger(PanelChanger.getInstance());
         guestLogger.setRegistrationGoal(RegistrationGoal.getInstance());
         guestLogger.setGuestNameSetter(guestProfileNameSetter);
     }

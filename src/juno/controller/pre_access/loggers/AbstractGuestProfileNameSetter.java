@@ -25,7 +25,7 @@
 
 package juno.controller.pre_access.loggers;
 
-import juno.model.data.profile.profile.InterfaceProfileNameSetter;
+import juno.model.util.InterfaceSetter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -36,7 +36,7 @@ public abstract class AbstractGuestProfileNameSetter
         implements InterfaceGuestProfileNameSetter {
 
     // The profile name setter.
-    private InterfaceProfileNameSetter nameSetter;
+    private InterfaceSetter<String> nameSetter;
 
     // The guest profile name.
     private String guestName;
@@ -45,7 +45,7 @@ public abstract class AbstractGuestProfileNameSetter
      * Sets the profile name setter of this object.
      * @param nameSetter An InterfaceProfileNameSetter object.
      */
-    public void setNameSetter(@NotNull InterfaceProfileNameSetter nameSetter) {
+    public void setNameSetter(@NotNull InterfaceSetter<String> nameSetter) {
         this.nameSetter = nameSetter;
     }
 
@@ -62,7 +62,7 @@ public abstract class AbstractGuestProfileNameSetter
      * @return An InterfaceProfileNameSetter object.
      */
     @Nullable
-    public InterfaceProfileNameSetter getNameSetter() {
+    public InterfaceSetter<String> getNameSetter() {
         return nameSetter;
     }
 

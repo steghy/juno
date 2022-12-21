@@ -36,27 +36,29 @@ import java.awt.*;
 public class PanelChanger
         implements InterfacePanelChanger {
 
-    // The PanelChanger instance.
-    private static PanelChanger instance;
+    // The panel.
+    private final JPanel panel;
 
-    // Builds a PanelChanger instance.
-    private PanelChanger() {}
+    // The key.
+    private final String key;
 
     /**
-     * Returns the PanelChanger instance.
-     * @return The PanelChanger instance.
+     * Builds a PanelChanger with the
+     * specified JPanel and String objects.
+     * @param panel A JPanel object.
+     * @param key A String object.
      */
-    public static PanelChanger getInstance() {
-        if(instance == null) instance = new PanelChanger();
-        return instance;
+    public PanelChanger(@NotNull JPanel panel,
+                        @NotNull String key) {
+        this.panel = panel;
+        this.key = key;
     }
 
     @Override
-    public void changePanel(@NotNull JPanel cardPanel,
-                            @NotNull String panelKey) {
-        LayoutManager layoutManager = cardPanel.getLayout();
+    public void changePanel() {
+        LayoutManager layoutManager = panel.getLayout();
         if(layoutManager instanceof CardLayout cardLayout) {
-            cardLayout.show(cardPanel, panelKey);
+            cardLayout.show(panel, key);
         } else {
             throw new IllegalArgumentException(
                     "Invalid layout manager type: " + layoutManager.getClass() +

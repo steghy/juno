@@ -25,7 +25,13 @@
 
 package juno.view.pages.main;
 
+import juno.controller.log_out.LogOutAction;
+import juno.controller.log_out.Restorer;
+import juno.controller.pre_access.ConfigurationFilesFactory;
 import juno.controller.util.ChangePanelAction;
+import juno.controller.util.PanelChanger;
+import juno.model.data.io.output.ExporterManager;
+import juno.model.data.profile.profile.ProfileNameProvider;
 import juno.view.avatar.AvatarPanel;
 import juno.view.button.ButtonCreator;
 import juno.view.pages.card.TopCardPanel;
@@ -51,13 +57,13 @@ public class MainPanelConfigurator {
         // Components.
         TitlePanel titlePanel = TitlePanel.getInstance();
         MenuPanel menuPanel = MenuPanel.getInstance();
-        AvatarPanel avatarPanel = new AvatarPanel(3.5);
+        AvatarPanel avatarPanel = new AvatarPanel(4.5);
 
         // Log out button.
         AbstractButton logOutButton = ButtonCreator.getInstance().create(juno.view.button.Button.LOG_OUT);
 
         // Image resizing.
-        ImageResizer.resize(logOutButton, 3.5);
+        ImageResizer.resize(logOutButton, 7.0);
 
         // Avatar label.
         JLabel label = new JLabel();
@@ -67,8 +73,13 @@ public class MainPanelConfigurator {
         label.setFont(new Font(Font.DIALOG, Font.ITALIC, 10));
 
         // Action listener.
-        logOutButton.addActionListener(
-                new ChangePanelAction(TopCardPanel.getInstance(), TopCardPanel.PRE_ACCESS_PANEL));
+        logOutButton.addActionListener(new LogOutAction<>(
+                Restorer.getInstance(),
+                ExporterManager.getInstance(),
+                ProfileNameProvider.getInstance(),
+                ConfigurationFilesFactory.getInstance()));
+        logOutButton.addActionListener(new ChangePanelAction(
+                new PanelChanger(TopCardPanel.getInstance(), TopCardPanel.PRE_ACCESS_PANEL)));
 
         // Components settings.
         mainPanel.setFirstComponent(titlePanel);   // title panel

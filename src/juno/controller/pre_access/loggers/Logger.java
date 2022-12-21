@@ -52,8 +52,7 @@ public class Logger
     public void logIn() {
         Objects.requireNonNull(getRegistrationGoal()).unlock();
         Objects.requireNonNull(getAvatarSetter()).setAvatar();
-        Objects.requireNonNull(getExporterManager()).export();
-        Objects.requireNonNull(getPanelChanger()).changePanel(getCardPanel(), getPanelKey());
+        Objects.requireNonNull(getPanelChanger()).changePanel();
     }
 
 }

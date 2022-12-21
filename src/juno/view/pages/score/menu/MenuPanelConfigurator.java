@@ -26,6 +26,7 @@
 package juno.view.pages.score.menu;
 
 import juno.controller.util.ChangePanelAction;
+import juno.controller.util.PanelChanger;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
 import juno.view.pages.main.card.MainCardPanel;
@@ -57,16 +58,16 @@ public class MenuPanelConfigurator {
         AbstractButton backButton = creator.create(Button.BACK);
 
         // Images resizing.
-        ImageResizer.resize(backButton, 3.5);
+        ImageResizer.resize(backButton, 4.0);
 
         // Components settings.
         // AvatarFramesPanel.
         JScrollPane avatarFramesPanel = new JScrollPane(AvatarFramesPanel.getInstance() ,
                 JScrollPane.VERTICAL_SCROLLBAR_NEVER,
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        avatarFramesPanel.setPreferredSize(new Dimension(750, 125));
+        avatarFramesPanel.setPreferredSize(new Dimension(450, 100));
         avatarFramesPanel.setIgnoreRepaint(true);
-        avatarFramesPanel.setMinimumSize(new Dimension(500, 125));
+        avatarFramesPanel.setMinimumSize(new Dimension(450, 100));
         avatarFramesPanel.getViewport().setOpaque(false);
         avatarFramesPanel.setOpaque(false);
 
@@ -74,9 +75,9 @@ public class MenuPanelConfigurator {
         JScrollPane avatarImagesPanel = new JScrollPane(AvatarImagesPanel.getInstance(),
                 JScrollPane.VERTICAL_SCROLLBAR_NEVER,
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        avatarImagesPanel.setPreferredSize(new Dimension(750, 125));
+        avatarImagesPanel.setPreferredSize(new Dimension(450, 100));
         avatarImagesPanel.setIgnoreRepaint(true);
-        avatarImagesPanel.setMinimumSize(new Dimension(500, 125));
+        avatarImagesPanel.setMinimumSize(new Dimension(450, 100));
         avatarImagesPanel.getViewport().setOpaque(false);
         avatarImagesPanel.setOpaque(false);
 
@@ -85,7 +86,7 @@ public class MenuPanelConfigurator {
         menuPanel.setThirdComponent(backButton);              // Back button.
 
         // Action listeners.
-        backButton.addActionListener(new ChangePanelAction(MainCardPanel.getInstance(), MainCardPanel.MAIN_PANEL));
+        backButton.addActionListener(new ChangePanelAction(new PanelChanger(MainCardPanel.getInstance(), MainCardPanel.MAIN_PANEL)));
 
         // Border settings
         RoundedBorder insideBorder = new RoundedBorder(

@@ -25,6 +25,7 @@
 
 package juno.view.gobject.frames;
 
+import juno.model.data.awards.frame.InterfaceAvatarFrame;
 import juno.model.util.Observer;
 import juno.view.gobject.InterfaceGObject;
 import juno.view.util.ImageButton;
@@ -57,9 +58,8 @@ public class GAvatarFrame<T>
 
     @Override
     public void update(Object object) {
-        if(isEnabled()) throw new IllegalArgumentException(
-                "This graphic frame is already enabled.");
-        setEnabled(true);
+        if(object instanceof InterfaceAvatarFrame avatarFrame)
+            setEnabled(avatarFrame.isUnlock());
     }
 
 }

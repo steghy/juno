@@ -29,8 +29,8 @@ package juno.model.data.io.output;
  * @author Simone Gentili
  */
 @FunctionalInterface
-public interface InterfaceExporterManager {
+public interface InterfaceExporterManager<T> {
 
-    void export();
+    void export(T object);
 
 }

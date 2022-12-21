@@ -25,11 +25,11 @@
 
 package juno.view.gobject.profiles;
 
+import juno.controller.pre_access.ConfigurationFilesFactory;
 import juno.model.data.io.input.JSONDataImporter;
 import juno.model.data.profile.profile.Profile;
 import juno.model.requester.PathProviderAssembler;
 import juno.view.img_initializer.ImageComponentInitializer;
-import juno.view.pages.pre_access.card.PreAccessManager;
 
 
 /**
@@ -60,9 +60,6 @@ public class Initializer {
         // JSONDataImporter.
         JSONDataImporter jsonDataImporter = JSONDataImporter.getInstance();
 
-        // PreAccessManager.
-        PreAccessManager preAccessManager = PreAccessManager.getInstance();
-
         //////////////////////////////////////////////////////////////////////////////////////////7
 
         // Connections.
@@ -77,7 +74,7 @@ public class Initializer {
         gProfileFactory.setKey(Profile.PROFILE_NAME_KEY);
 
         // Observer / Observable.
-        preAccessManager.addObserver(gProfileFactory);
+        ConfigurationFilesFactory.getInstance().addObserver(gProfileFactory);
     }
 
 }

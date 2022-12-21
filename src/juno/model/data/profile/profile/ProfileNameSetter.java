@@ -27,6 +27,7 @@ package juno.model.data.profile.profile;
 
 import juno.model.data.profile.Characters;
 import juno.model.util.AbstractObservable;
+import juno.model.util.InterfaceSetter;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -34,7 +35,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public class ProfileNameSetter
         extends AbstractObservable
-        implements InterfaceProfileNameSetter {
+        implements InterfaceSetter<String> {
 
     // The ProfileNameSetter instance.
     private static ProfileNameSetter instance;
@@ -52,7 +53,7 @@ public class ProfileNameSetter
     }
 
     @Override
-    public void setProfileName(@NotNull String profileName) {
+    public void set(@NotNull String profileName) {
         int length = profileName.length();
         if(length == 0) throw new IllegalArgumentException(
                 "the length must be greater than zero");

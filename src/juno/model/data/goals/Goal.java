@@ -98,6 +98,11 @@ public enum Goal
         updateAll();
     }
 
+    void lock() {
+        unlock = false;
+        updateAll();
+    }
+
     @Override
     public boolean isReached() {
         return unlock;
@@ -136,14 +141,6 @@ public enum Goal
         else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                 ". InterfaceGamesWonCounter or InterfaceLostGamesCounter types expected.");
-    }
-
-    /**
-     * Return the unreached Goal objects.
-     * @return A List object.
-     */
-    public static List<Goal> getUnreachedGoals() {
-        return Stream.of(Goal.values()).filter(goal -> !goal.isReached()).toList();
     }
 
     /**

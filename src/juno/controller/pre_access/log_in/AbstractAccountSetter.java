@@ -30,24 +30,23 @@ import juno.model.util.InterfaceSetter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Simone Gentili
  */
-public abstract class AbstractAccountSetter
-        implements InterfaceSetter<String> {
+public abstract class AbstractAccountSetter<T>
+        implements InterfaceSetter<T> {
 
-    // The user data setter.
-    private InterfaceSetter<String> setter;
+    // The setters list.
+    private final List<InterfaceSetter<T>> setters = new ArrayList<>();
 
     // The Registration goal.
     private InterfaceGoal registrationGoal;
 
-    /**
-     * Sets the user data setter of this object.
-     * @param setter An InterfaceSetter object.
-     */
-    public void setSetter(@NotNull InterfaceSetter<String> setter) {
-        this.setter = setter;
+    public List<InterfaceSetter<T>> setters() {
+        return setters;
     }
 
     /**
@@ -56,15 +55,6 @@ public abstract class AbstractAccountSetter
      */
     public void setRegistrationGoal(@NotNull InterfaceGoal registrationGoal) {
         this.registrationGoal = registrationGoal;
-    }
-
-    /**
-     * Returns the user data setter of this object.
-     * @return An InterfaceSetter object.
-     */
-    @Nullable
-    public InterfaceSetter<String> getSetter() {
-        return setter;
     }
 
     /**

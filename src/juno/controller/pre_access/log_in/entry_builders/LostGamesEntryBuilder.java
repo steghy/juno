@@ -28,7 +28,6 @@ package juno.controller.pre_access.log_in.entry_builders;
 import juno.model.data.io.input.configurable.Configurable;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Objects;
@@ -37,7 +36,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class LostGamesEntryBuilder
-        extends AbstractEntryBuilder {
+        extends AbstractEntryBuilder<Configurable, Map<String, Object>> {
 
     // The LostGamesEntryBuilder instance.
     private static LostGamesEntryBuilder instance;

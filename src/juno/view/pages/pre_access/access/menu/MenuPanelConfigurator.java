@@ -28,6 +28,7 @@ package juno.view.pages.pre_access.access.menu;
 import juno.controller.pre_access.loggers.GuestLogger;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.ExitAction;
+import juno.controller.util.PanelChanger;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
 import juno.view.pages.pre_access.card.PreAccessCardPanel;
@@ -59,10 +60,10 @@ public class MenuPanelConfigurator {
         AbstractButton exitButton = creator.create(Button.EXIT);
 
         // Images resizing.
-        ImageResizer.resize(createAnAccountButton, 3.0);
-        ImageResizer.resize(logInButton, 3.0);
-        ImageResizer.resize(continueWithoutAnAccountButton, 3.0);
-        ImageResizer.resize(exitButton, 3.0);
+        ImageResizer.resize(createAnAccountButton, 4.0);
+        ImageResizer.resize(logInButton, 4.0);
+        ImageResizer.resize(continueWithoutAnAccountButton, 4.0);
+        ImageResizer.resize(exitButton, 4.0);
 
         // Main component setting.
         menuPanel.setFirstComponent(createAnAccountButton);          // 'Create an account' button.
@@ -72,17 +73,17 @@ public class MenuPanelConfigurator {
 
         // Action listeners setting.
         createAnAccountButton.addActionListener(new ChangePanelAction(
-                PreAccessCardPanel.getInstance(), PreAccessCardPanel.REGISTRATION_PANEL));
+                new PanelChanger(PreAccessCardPanel.getInstance(), PreAccessCardPanel.REGISTRATION_PANEL)));
         logInButton.addActionListener(new ChangePanelAction(
-                PreAccessCardPanel.getInstance(), PreAccessCardPanel.LOG_IN_PANEL));
+                new PanelChanger(PreAccessCardPanel.getInstance(), PreAccessCardPanel.LOG_IN_PANEL)));
         continueWithoutAnAccountButton.addActionListener(GuestLogger.getInstance());
         exitButton.addActionListener(new ExitAction(null));
 
         // Border setting.
         RoundedBorder insideBorder = new RoundedBorder(
-                50, 1, null, Color.WHITE);
+                10, 1, null, Color.WHITE);
         RoundedBorder outsideBorder = new RoundedBorder(
-                50, 1, null, Color.RED);
+                25, 1, null, Color.RED);
         Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
         menuPanel.setBorder(border);
 

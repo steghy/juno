@@ -25,10 +25,17 @@
 
 package juno.controller.pre_access.log_in;
 
-import juno.controller.pre_access.log_in.entry_builders.*;
+import juno.model.data.avatar.Avatar;
 import juno.model.data.goals.RegistrationGoal;
+import juno.model.data.io.input.JSONDataImporter;
+import juno.model.data.io.input.configurable.Configurable;
+import juno.model.data.profile.profile.Profile;
+import juno.model.data.score.GamesWonCounter;
+import juno.model.data.score.LostGamesCounter;
+import juno.model.requester.ProgramDirectory;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Simone Gentili
@@ -41,24 +48,36 @@ public class Initializer {
     public static void initialize() {
         // Components.
         // UserDataSetter.
-        UserDataSetter userDataSetter = UserDataSetter.getInstance();
+        UserDataSetter userDataSetter = new UserDataSetter();
 
-        // AccountLoader.
-        AccountSetter accountLoader = AccountSetter.getInstance();
+        UserDataSetter avatarUserDataSetter = new UserDataSetter();
+
+        // AccountSetter.
+        AccountSetter accountSetter = AccountSetter.getInstance();
 
         /////////////////////////////////////////////////////////////
 
         // Connections.
         // UserDataSetter.
-        List<InterfaceEntryBuilder> builders = userDataSetter.builders();
-        builders.add(GamesWonEntryBuilder.getInstance());
-        builders.add(LostGamesEntryBuilder.getInstance());
-        builders.add(AvatarEntryBuilder.getInstance());
-        builders.add(ProfileEntryBuilder.getInstance());
+        Map<Configurable, InterfacePathBuilder> userData = new HashMap<>();
+        userData.put(Profile.getInstance(), new PathBuilder("-profile.json", ProgramDirectory.PROFILES.absolutePath()));
+        userData.put(GamesWonCounter.getInstance(), new PathBuilder("-games-won.json", ProgramDirectory.SCORE.absolutePath()));
+        userData.put(LostGamesCounter.getInstance(), new PathBuilder("-lost-games.json", ProgramDirectory.SCORE.absolutePath()));
+
+        MapSetter<Configurable> mapSetter = new MapSetter<>(userData);
+        userDataSetter.setMapSetter(mapSetter);
+        userDataSetter.setDataImporter(JSONDataImporter.getInstance());
+
+        Map<Configurable, InterfacePathBuilder> avatarUserData = new HashMap<>();
+        avatarUserData.put(Avatar.getInstance(), new PathBuilder("-avatar.json", ProgramDirectory.AVATAR.absolutePath()));
+        MapSetter<Configurable> mapSetter1 = new MapSetter<>(avatarUserData);
+        avatarUserDataSetter.setMapSetter(mapSetter1);
+        avatarUserDataSetter.setDataImporter(JSONDataImporter.getInstance());
 
         // AccountLoader.
-        accountLoader.setSetter(userDataSetter);
-        accountLoader.setRegistrationGoal(RegistrationGoal.getInstance());
+        accountSetter.setters().add(userDataSetter);
+        accountSetter.setters().add(avatarUserDataSetter);
+        accountSetter.setRegistrationGoal(RegistrationGoal.getInstance());
     }
 
 }

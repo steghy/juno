@@ -25,7 +25,9 @@
 
 package juno.model.data.avatar;
 
+import juno.model.data.awards.avatar.AvatarImage;
 import juno.model.data.awards.avatar.InterfaceAvatarImage;
+import juno.model.data.awards.frame.AvatarFrame;
 import juno.model.data.awards.frame.InterfaceAvatarFrame;
 import juno.model.data.io.input.configurable.Configurable;
 import juno.model.data.io.output.Exportable;
@@ -41,7 +43,7 @@ public class Avatar
         implements Configurable, Exportable {
 
     /** The avatar name key */
-    public static final String NAME_KEY = "name";
+    public static final String AVATAR_NAME_KEY = "name";
     /** The avatar image key. */
     public static final String AVATAR_IMAGE_KEY = "avatarImage";
     /** The avatar frame key. */
@@ -74,18 +76,21 @@ public class Avatar
     @Override
     public void configure(@NotNull Map<String, Object> map) {
         // Avatar name case.
-        if(map.containsKey(NAME_KEY)) {
-            Object object = map.get(NAME_KEY);
+        if(map.containsKey(AVATAR_NAME_KEY)) {
+            Object object = map.get(AVATAR_NAME_KEY);
             if(object instanceof String temp)
                 AvatarNameSetter.getInstance().set(temp);
-            else throw new IllegalArgumentException();
-        } else throw new IllegalArgumentException();
+            else throw new IllegalArgumentException(
+                    "Invalid object type: " + object.getClass() +
+                            ". String type expected.");
+        } else throw new IllegalArgumentException(
+                AVATAR_NAME_KEY + " is missing.");
 
         // Avatar image case.
         if(map.containsKey(AVATAR_IMAGE_KEY)) {
             Object object = map.get(AVATAR_IMAGE_KEY);
-            if(object instanceof InterfaceAvatarImage temp) {
-                AvatarImageSetter.getInstance().set(temp);
+            if(object instanceof String temp) {
+                AvatarImageSetter.getInstance().set(AvatarImage.valueOf(temp));
             } else throw new IllegalArgumentException(
                     "Invalid object type: " + object.getClass() +
                             ". InterfaceAvatarImage expected.");
@@ -95,8 +100,8 @@ public class Avatar
         // Avatar frame case.
         if(map.containsKey(AVATAR_FRAME_KEY)) {
             Object object = map.get(AVATAR_FRAME_KEY);
-            if(object instanceof InterfaceAvatarFrame temp) {
-                AvatarFrameSetter.getInstance().set(temp);
+            if(object instanceof String temp) {
+                AvatarFrameSetter.getInstance().set(AvatarFrame.valueOf(temp));
             } else throw new IllegalArgumentException(
                     "Invalid object type: " + object.getClass() +
                             ". InterfaceAvatarFrame expected.");
@@ -107,7 +112,7 @@ public class Avatar
     @Override
     public Map<String, Object> exportData() {
         Map<String, Object> map = new HashMap<>();
-        map.put(NAME_KEY, avatarName);
+        map.put(AVATAR_NAME_KEY, avatarName);
         map.put(AVATAR_FRAME_KEY, avatarFrame);
         map.put(AVATAR_IMAGE_KEY, avatarImage);
         return map;

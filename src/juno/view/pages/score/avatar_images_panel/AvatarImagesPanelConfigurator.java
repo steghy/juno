@@ -69,7 +69,7 @@ public class AvatarImagesPanelConfigurator {
                 });
 
         // Image resizing.
-        gAvatarImages.forEach(gAvatarImage -> ImageResizer.resize(gAvatarImage, 4.5));
+        gAvatarImages.forEach(gAvatarImage -> ImageResizer.resize(gAvatarImage, 6.5));
 
         // Main component initialization.
         avatarImagesPanel.init();

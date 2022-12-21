@@ -90,6 +90,11 @@ public enum AvatarImage
         updateAll();
     }
 
+    void lock() {
+        unlock = false;
+        updateAll();
+    }
+
     @Override
     public void addObserver(@NotNull Observer observer) {
         observerList.add(observer);
@@ -107,7 +112,10 @@ public enum AvatarImage
 
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceGoal) unlock();
+        if(object instanceof InterfaceGoal goal) {
+            if(goal.isReached()) unlock();
+            else lock();
+        }
         else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceGoal type expected.");

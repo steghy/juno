@@ -28,6 +28,7 @@ package juno.view.pages.new_game.single_player.difficulty.menu;
 import juno.controller.new_game.DifficultySetter;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.new_game.DifficultyAction;
+import juno.controller.util.PanelChanger;
 import juno.model.subjects.ai.Difficulty;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
@@ -69,13 +70,13 @@ public class MenuPanelConfigurator {
         // Action listeners.
         // Change panel actions.
         easyDifficultyButton.addActionListener(new ChangePanelAction(
-                SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MODE_PANEL));
+                new PanelChanger(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MODE_PANEL)));
         mediumDifficultyButton.addActionListener(new ChangePanelAction(
-                SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MODE_PANEL));
+                new PanelChanger(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MODE_PANEL)));
         hardDifficultyButton.addActionListener(new ChangePanelAction(
-                SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MODE_PANEL));
+                new PanelChanger(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MODE_PANEL)));
         backButton.addActionListener(new ChangePanelAction(
-                SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.PLAYERS_NUMBER_PANEL));
+                new PanelChanger(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.PLAYERS_NUMBER_PANEL)));
 
         // Difficulty actions.
         DifficultySetter difficultySetter = DifficultySetter.getInstance();

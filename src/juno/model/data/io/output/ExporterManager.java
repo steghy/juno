@@ -25,15 +25,21 @@
 
 package juno.model.data.io.output;
 
+import juno.controller.pre_access.log_in.InterfaceMapSetter;
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
-import java.util.Map;
 import java.util.Objects;
 
 /**
  * @author Simone Gentili
  */
 public class ExporterManager
-        extends AbstractExporterManager {
+        extends AbstractDataExporterUser
+        implements InterfaceExporterManager<String> {
+
+    // The map setter.
+    private InterfaceMapSetter<Exportable> mapSetter;
 
     // The Exporter instance.
     private static ExporterManager instance;
@@ -50,20 +56,24 @@ public class ExporterManager
         return instance;
     }
 
+    /**
+     * Sets the map setter of this object.
+     * @param mapSetter An InterfaceMapSetter object.
+     */
+    public void setMapSetter(@NotNull InterfaceMapSetter<Exportable> mapSetter) {
+        this.mapSetter = mapSetter;
+    }
+
     @Override
-    public void export() {
+    public void export(String name) {
         InterfaceDataExporter dataExporter = Objects.requireNonNull(getDataExporter());
-        Objects.requireNonNull(getExportableSetter()).setExportable();
-        for(Map.Entry<Exportable, String> entry : super.exportableMap().entrySet()) {
-            Exportable exportable = entry.getKey();
-            String path = entry.getValue();
+        mapSetter.getSettedMap(name).forEach((k, v) -> {
             try {
-                dataExporter.exportData(path, exportable.exportData());
+                dataExporter.exportData(v, k.exportData());
             } catch (IOException e) {
                 throw new RuntimeException(e);
-                // File problems resolver.
             }
-        }
+        });
     }
 
 }

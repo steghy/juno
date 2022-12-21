@@ -33,7 +33,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class AccountSetter
-        extends AbstractAccountSetter {
+        extends AbstractAccountSetter<String> {
 
     // The AccountSetter instance.
     private static AccountSetter instance;
@@ -53,7 +53,8 @@ public class AccountSetter
     @Override
     public void set(@NotNull String name) {
         Objects.requireNonNull(getRegistrationGoal()).unlock();
-        Objects.requireNonNull(getSetter()).set(name);
+        for(int i = 0; i < setters().size(); i++)
+            setters().get(i).set(name);
     }
 
 }

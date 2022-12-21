@@ -25,7 +25,7 @@
 
 package juno.controller.pre_access.log_in.entry_builders;
 
-import juno.controller.pre_access.log_in.path_builders.InterfacePathBuilder;
+import juno.controller.pre_access.log_in.InterfacePathBuilder;
 import juno.model.data.io.input.InterfaceDataImporter;
 import juno.model.data.io.input.configurable.Configurable;
 import org.jetbrains.annotations.NotNull;
@@ -34,8 +34,8 @@ import org.jetbrains.annotations.Nullable;
 /**
  * @author Simone Gentili
  */
-public abstract class AbstractEntryBuilder
-        implements InterfaceEntryBuilder {
+public abstract class AbstractEntryBuilder<T, E>
+        implements InterfaceEntryBuilder<T, E> {
 
     // The path builder.
     private InterfacePathBuilder builder;

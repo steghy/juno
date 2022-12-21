@@ -25,6 +25,7 @@
 
 package juno.view.gobject.avatars;
 
+import juno.model.data.awards.avatar.InterfaceAvatarImage;
 import juno.model.util.Observer;
 import juno.view.gobject.InterfaceGObject;
 import juno.view.util.ImageButton;
@@ -57,9 +58,9 @@ public class GAvatarImage<T>
 
     @Override
     public void update(Object object) {
-        if(isEnabled()) throw new IllegalArgumentException(
-                "This graphic avatar image is already enabled.");
-        setEnabled(true);
+        if(object instanceof InterfaceAvatarImage avatarImage) {
+            setEnabled(avatarImage.isUnlock());
+        }
     }
 
 }

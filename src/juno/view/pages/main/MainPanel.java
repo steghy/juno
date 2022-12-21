@@ -60,56 +60,56 @@ public class MainPanel
         // Title panel.
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.weightx = 0.1;
-        gbc.weighty = 0.1;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,10,0);
+        gbc.anchor = GridBagConstraints.PAGE_END;
+        gbc.insets = new Insets(0,0,30,0);
         this.add(Objects.requireNonNull(getFirstComponent()), gbc);
 
         // Menu panel.
         gbc.gridx = 0;
         gbc.gridy = 1;
-        gbc.weightx = 0.3;
-        gbc.weighty = 0.3;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
         gbc.ipadx = 0;
         gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,20,0);
+        gbc.insets = new Insets(0,0,30,0);
         this.add(Objects.requireNonNull(getSecondComponent()), gbc);
 
         // Label avatar panel.
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 0.3;
-        gbc.weighty = 0.3;
-        gbc.ipadx = 0;
-        gbc.ipady = 0;
-        gbc.anchor = GridBagConstraints.FIRST_LINE_START;
-        gbc.insets = new Insets(30,35,0,0);
-        this.add(Objects.requireNonNull(getThirdComponent()), gbc);
-
-        // Avatar panel.
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 0.5;
-        gbc.weighty = 0.5;
-        gbc.ipadx = 0;
-        gbc.ipady = 0;
-        gbc.anchor = GridBagConstraints.FIRST_LINE_START;
-        gbc.insets = new Insets(45,30,0, 0);
-        this.add(Objects.requireNonNull(getFourthComponent()), gbc);
-
-        // Log out button.
         gbc.gridx = 0;
         gbc.gridy = 2;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
         gbc.ipadx = 0;
         gbc.ipady = 0;
+        gbc.anchor = GridBagConstraints.PAGE_END;
+        gbc.insets = new Insets(0,0,0,0);
+        this.add(Objects.requireNonNull(getThirdComponent()), gbc);
+
+        // Avatar panel.
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
+        gbc.anchor = GridBagConstraints.PAGE_END;
+        gbc.insets = new Insets(0,0,0, 0);
+        this.add(Objects.requireNonNull(getFourthComponent()), gbc);
+
+        // Log out button.
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.LAST_LINE_END;
-        gbc.insets = new Insets(0,0,30,35);
+        gbc.insets = new Insets(0,0,0,0);
         this.add(Objects.requireNonNull(getFifthComponent()), gbc);
 
     }

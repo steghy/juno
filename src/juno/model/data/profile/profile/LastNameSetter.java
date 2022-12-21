@@ -27,6 +27,7 @@ package juno.model.data.profile.profile;
 
 import juno.model.data.profile.Characters;
 import juno.model.util.AbstractObservable;
+import juno.model.util.InterfaceSetter;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -34,7 +35,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public class LastNameSetter
         extends AbstractObservable
-        implements InterfaceLastNameSetter {
+        implements InterfaceSetter<String> {
 
     // The LastNameSetter instance.
     private static LastNameSetter instance;
@@ -52,7 +53,7 @@ public class LastNameSetter
     }
 
     @Override
-    public void setLastName(@NotNull String lastName) {
+    public void set(@NotNull String lastName) {
         int length = lastName.length();
         if(length == 0) throw new IllegalArgumentException(
                 "the length must be greater than zero");

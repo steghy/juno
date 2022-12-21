@@ -27,6 +27,7 @@ package juno.view.pages.pre_access.login.profiles_panel;
 
 import juno.controller.pre_access.log_in.AccountSetter;
 import juno.controller.util.ChangePanelAction;
+import juno.controller.util.PanelChanger;
 import juno.controller.util.SetterAction;
 import juno.model.util.Observer;
 import juno.view.button.ButtonCreator;
@@ -67,6 +68,7 @@ public class ProfilesPanel
     @Override @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
         if(object instanceof InterfaceGObjectFactory<?> factory) {
+            this.removeAll();
             factory.getGObjects().forEach(gObject -> {
                 GProfile<String> gProfile = (GProfile<String>) gObject;
                 AbstractButton button = ButtonCreator.getInstance()
@@ -80,7 +82,7 @@ public class ProfilesPanel
                 gProfile.setHorizontalTextPosition(AbstractButton.CENTER);
                 gProfile.setHorizontalAlignment(AbstractButton.CENTER);
                 button.addActionListener(new SetterAction<>(gProfile, AccountSetter.getInstance()));
-                button.addActionListener(new ChangePanelAction(TopCardPanel.getInstance(), TopCardPanel.MAIN_PANEL));
+                button.addActionListener(new ChangePanelAction(new PanelChanger(TopCardPanel.getInstance(), TopCardPanel.MAIN_PANEL)));
                 add(button);
             });
         } else throw new IllegalArgumentException(

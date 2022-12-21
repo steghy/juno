@@ -37,7 +37,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class AvatarEntryBuilder
-        extends AbstractEntryBuilder {
+        extends AbstractEntryBuilder<Configurable, Map<String, Object>> {
 
     // The map decorator.
     private InterfaceConfigurationMapDecorator decorator;
