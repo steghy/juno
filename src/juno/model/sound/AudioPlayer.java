@@ -38,7 +38,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class AudioPlayer
-		implements InterfaceAdvancedAudioPlayer, Observable, Runnable{
+		implements InterfaceAdvancedAudioPlayer, Observable {
 
 	private final List<Observer> observerList;
 	private Clip clip;
@@ -218,8 +218,4 @@ public class AudioPlayer
 		observerList.forEach(observer -> observer.update(this));
 	}
 
-	@Override
-	public void run() {
-
-	}
 }

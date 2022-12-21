@@ -25,11 +25,8 @@
 
 package juno.view.pages.options.menu;
 
-import juno.model.util.InterfaceSetter;
-import juno.model.util.Observer;
 import juno.view.panels.AbstractThirdComponent;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.Objects;
 
@@ -37,8 +34,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class MenuPanel
-        extends AbstractThirdComponent
-        implements Observer {
+        extends AbstractThirdComponent {
 
     // The MenuPanel instance.
     private static MenuPanel instance;
@@ -93,15 +89,6 @@ public class MenuPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
         this.add(Objects.requireNonNull(getThirdComponent()), gbc);
-    }
-
-    @Override
-    public void update(Object object) {
-        if(object instanceof InterfaceSetter<?>) {
-            JToggleButton toggleButton = (JToggleButton) Objects.requireNonNull(getSecondComponent());
-            toggleButton.setSelected(!toggleButton.isSelected());
-        }
-
     }
 
 }

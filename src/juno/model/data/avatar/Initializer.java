@@ -48,9 +48,6 @@ public class Initializer {
 
         // Connections.
         avatarNameSetter.setNameProvider(profileNameProvider);
-
-        // Observer / Observable. NOT HERE !!
-        // nameSetter.addObserver(avatarNameSetter);
     }
 
 }

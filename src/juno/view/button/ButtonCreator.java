@@ -75,7 +75,7 @@ public class ButtonCreator
                     assembler.assemble(pathObject, button.name() + extension),
                     assembler.assemble(pathObject, button.name() + rollover + extension),
                     assembler.assemble(pathObject, button.name() + selected + extension),
-                    assembler.assemble(pathObject, button.name() + rollover + selected + extension));
+                    assembler.assemble(pathObject, button.name() + selected + rollover + extension));
         } else {
             temp = new ImageButton();
             initializer.initialize(

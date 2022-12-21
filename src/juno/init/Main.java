@@ -37,6 +37,8 @@ import juno.model.requester.ProgramDirectory;
 import juno.model.requester.GitHubRepositorySetter;
 import juno.model.sound.AudioPlayer;
 import juno.view.frame.Frame;
+import juno.view.pages.options.menu.MenuPanel;
+import juno.view.pages.options.menu.MenuPanelConfigurator;
 
 import javax.swing.*;
 import java.io.File;
@@ -68,7 +70,7 @@ public class Main {
             // audioPlayer.play();
             audioPlayer.setLoop(true);
 
-            FullScreenSetter.getInstance().set(Frame.getInstance());
+            ((JToggleButton) Objects.requireNonNull(MenuPanel.getInstance().getSecondComponent())).doClick();
 
             // Frame.
             Frame frame = Frame.getInstance();

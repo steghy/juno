@@ -53,8 +53,8 @@ public enum Button
 
     // OPTIONS //
     SETTINGS(true),
-    AUDIO_TOGGLE(true),
-    FULLSCREEN_TOGGLE(true),
+    AUDIO_TOGGLE(false),
+    FULLSCREEN_TOGGLE(false),
     BACK(true),
 
     // NEW GAME MENU //

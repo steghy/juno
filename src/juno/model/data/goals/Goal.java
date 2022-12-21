@@ -153,6 +153,10 @@ public enum Goal
         return goals.stream().filter(goal -> !goal.isReached()).toList();
     }
 
+    public static List<Goal> getReachedGoals() {
+        return Stream.of(Goal.values()).filter(Goal::isReached).toList();
+    }
+
     /**
      * Returns Goal objects that refer to games won.
      * @return A List object.

@@ -42,7 +42,7 @@ public class GoalsRestorer implements Restorable {
 
     @Override
     public void restore() {
-        List.of(Goal.values()).forEach(Goal::lock);
+        Goal.getReachedGoals().forEach(Goal::lock);
     }
 
 }

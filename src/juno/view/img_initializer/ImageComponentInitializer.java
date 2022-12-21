@@ -44,10 +44,10 @@ public class ImageComponentInitializer
     public Constraints BOTH_MISSING = Constraints.THROW_EXCEPTION;
     public Constraints BOTH_SELECTED_MISSING = Constraints.THROW_EXCEPTION;
     public Constraints ALL_MISSING = Constraints.THROW_EXCEPTION;
-    public Constraints IMAGE_MISSING = Constraints.THROW_EXCEPTION;
-    public Constraints ROLLOVER_IMAGE_MISSING = Constraints.THROW_EXCEPTION;
-    public Constraints SELECTED_IMAGE_MISSING = Constraints.THROW_EXCEPTION;
-    public Constraints ROLLOVER_SELECTED_IMAGE_MISSING = Constraints.THROW_EXCEPTION;
+    public Constraints IMAGE_MISSING = Constraints.KEEP_ROLLOVER_IMAGE;
+    public Constraints ROLLOVER_IMAGE_MISSING = Constraints.KEEP_IMAGE;
+    public Constraints SELECTED_IMAGE_MISSING = Constraints.KEEP_ROLLOVER_SELECTED_IMAGE;
+    public Constraints ROLLOVER_SELECTED_IMAGE_MISSING = Constraints.KEEP_SELECTED_IMAGE;
     public boolean download = false;
 
     // The ImageComponentInitializer instance.
@@ -69,7 +69,7 @@ public class ImageComponentInitializer
     @Override
     public void initialize(@NotNull AbstractButton button,
                            @NotNull InterfacePathProvider file,
-                           InterfacePathProvider rolloverFile) {
+                           @NotNull InterfacePathProvider rolloverFile) {
         // Image section.
         button.setName(file.canonicalPath());
         String imageAbsolutePath = file.absolutePath();
@@ -144,9 +144,9 @@ public class ImageComponentInitializer
     @Override
     public void initialize(@NotNull AbstractButton button,
                            @NotNull InterfacePathProvider file,
-                           InterfacePathProvider rolloverFile,
+                           @NotNull InterfacePathProvider rolloverFile,
                            @NotNull InterfacePathProvider selectedFile,
-                           InterfacePathProvider rolloverSelectedFile) {
+                           @NotNull InterfacePathProvider rolloverSelectedFile) {
         // Image case.
         button.setName(file.canonicalPath());
         String imageAbsolutePath = file.absolutePath();
@@ -199,7 +199,7 @@ public class ImageComponentInitializer
             } else selectedImageExists = false;
         }
 
-        // ROLLOVER SELECTED IMAGE
+        // Rollover selected image.
         String rolloverSelectedImageAbsolutePath = rolloverSelectedFile.absolutePath();
         boolean rolloverSelectedImageExists = true;
         if(!Os.exists(rolloverSelectedImageAbsolutePath)) {

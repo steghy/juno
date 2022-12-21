@@ -72,9 +72,6 @@ public class MenuPanelConfigurator {
         fullscreenToggle.addActionListener(new SetterAction<>(Frame.getInstance(), FullScreenSetter.getInstance()));
         backButton.addActionListener(new ChangePanelAction(new PanelChanger(MainCardPanel.getInstance(), MainCardPanel.MAIN_PANEL)));
 
-        // Observer / Observable.
-        FullScreenSetter.getInstance().addObserver(menuPanel);
-
         // Border settings
         RoundedBorder insideBorder = new RoundedBorder(
                 15, 1, null, Color.WHITE);
