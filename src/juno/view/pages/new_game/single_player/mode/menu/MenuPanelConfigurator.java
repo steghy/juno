@@ -54,7 +54,7 @@ public class MenuPanelConfigurator {
         AbstractButton stackingModeButton = creator.create(Button.STACKING);
 
         // Images resizing.
-        ImageResizer.resize(stackingModeButton, 3.0);
+        ImageResizer.resize(stackingModeButton, 4.0);
 
         // Action listeners.
         stackingModeButton.addActionListener(
@@ -62,8 +62,8 @@ public class MenuPanelConfigurator {
                         new PanelChanger(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MATCH_PANEL)));
 
         // Border settings.
-        RoundedBorder insideBorder = new RoundedBorder(50, 2, null, Color.WHITE);
-        RoundedBorder outsideBorder = new RoundedBorder(50, 2, null, Color.RED);
+        RoundedBorder insideBorder = new RoundedBorder(10, 1, null, Color.WHITE);
+        RoundedBorder outsideBorder = new RoundedBorder(25, 1, null, Color.RED);
         Border border = BorderFactory.createCompoundBorder(outsideBorder, insideBorder);
         difficultyPanel.setBorder(border);
 

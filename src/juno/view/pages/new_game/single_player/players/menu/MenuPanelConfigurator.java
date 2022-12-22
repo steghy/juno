@@ -59,10 +59,10 @@ public class MenuPanelConfigurator {
         AbstractButton backButton = creator.create(Button.BACK);
 
         // Images resizing.
-        ImageResizer.resize(twoPlayers, 3.0);
-        ImageResizer.resize(threePlayers, 3.0);
-        ImageResizer.resize(fourPlayers, 3.0);
-        ImageResizer.resize(backButton, 3.0);
+        ImageResizer.resize(twoPlayers, 4.0);
+        ImageResizer.resize(threePlayers, 4.0);
+        ImageResizer.resize(fourPlayers, 4.0);
+        ImageResizer.resize(backButton, 4.0);
 
         // Action listeners.
         // Change panel actions.
@@ -83,9 +83,9 @@ public class MenuPanelConfigurator {
 
         // Border settings.
         RoundedBorder insideBorder = new RoundedBorder(
-                50, 2, null, Color.WHITE);
+                10, 1, null, Color.WHITE);
         RoundedBorder outsideBorder = new RoundedBorder(
-                50, 2, null, Color.RED);
+                25, 1, null, Color.RED);
         Border border = BorderFactory.createCompoundBorder(outsideBorder, insideBorder);
         menuPanel.setBorder(border);
 
