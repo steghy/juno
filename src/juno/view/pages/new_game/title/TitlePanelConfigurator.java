@@ -51,13 +51,13 @@ public class TitlePanelConfigurator {
         AbstractButton titleButton = creator.create(Button.NEW_GAME);
 
         // Image resizing.
-        ImageResizer.resize(titleButton, 3.0);
+        ImageResizer.resize(titleButton, 4.0);
 
         // Border settings.
         RoundedBorder insideBorder = new RoundedBorder(
-                50, 1, null, Color.WHITE);
+                10, 1, null, Color.WHITE);
         RoundedBorder outsideBorder = new RoundedBorder(
-                50, 1, null, Color.RED);
+                25, 1, null, Color.RED);
         Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
         titlePanel.setBorder(border);
 

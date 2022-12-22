@@ -88,8 +88,10 @@ public class GProfileProcessor
         GProfile<String> gProfile = (GProfile<String>) gObject;
         AbstractButton button = creator.create(this.button);
         button.setLayout(new BorderLayout());
+        button.setOpaque(false);
         button.add(gProfile, BorderLayout.CENTER);
         ImageResizer.resize(button, 8.0);
+        gProfile.setOpaque(false);
         gProfile.setText(gProfile.getObject());
         gProfile.setForeground(Color.WHITE);
         gProfile.setFont(new Font(Font.DIALOG, Font.ITALIC, 15));

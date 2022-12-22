@@ -48,7 +48,7 @@ public class MenuPanelConfigurator {
 
     public static void configure() {
         // Main component.
-        MenuPanel newGameMenuPanel = MenuPanel.getInstance();
+        MenuPanel menuPanel = MenuPanel.getInstance();
 
         // Components.
         ButtonCreator creator = ButtonCreator.getInstance();
@@ -57,15 +57,15 @@ public class MenuPanelConfigurator {
         AbstractButton backButton = creator.create(Button.BACK);
 
         // Images resizing.
-        ImageResizer.resize(singlePlayer, 3.0);
-        ImageResizer.resize(multiPlayer, 3.0);
-        ImageResizer.resize(backButton, 3.0);
+        ImageResizer.resize(singlePlayer, 4.0);
+        ImageResizer.resize(multiPlayer, 4.0);
+        ImageResizer.resize(backButton, 4.0);
 
         // Border settings.
-        RoundedBorder insideBorder = new RoundedBorder(50, 1, null, Color.WHITE);
-        RoundedBorder outsideBorder = new RoundedBorder(50, 1, null, Color.RED);
+        RoundedBorder insideBorder = new RoundedBorder(10, 1, null, Color.WHITE);
+        RoundedBorder outsideBorder = new RoundedBorder(25, 1, null, Color.RED);
         Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
-        newGameMenuPanel.setBorder(border);
+        menuPanel.setBorder(border);
 
         // Action listeners.
         singlePlayer.addActionListener(new ChangePanelAction(
@@ -76,12 +76,12 @@ public class MenuPanelConfigurator {
                 new PanelChanger(MainCardPanel.getInstance(), MainCardPanel.MAIN_PANEL)));
 
         // Components settings.
-        newGameMenuPanel.setFirstComponent(singlePlayer); // Single-player button.
-        newGameMenuPanel.setSecondComponent(multiPlayer); // Multiplayer button.
-        newGameMenuPanel.setThirdComponent(backButton);   // Back button.
+        menuPanel.setFirstComponent(singlePlayer); // Single-player button.
+        menuPanel.setSecondComponent(multiPlayer); // Multiplayer button.
+        menuPanel.setThirdComponent(backButton);   // Back button.
 
         // Main component initialization.
-        newGameMenuPanel.init();
+        menuPanel.init();
     }
 
 }

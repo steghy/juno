@@ -25,13 +25,10 @@
 
 package juno.view.gobject.profiles;
 
-import juno.model.requester.InterfacePathProviderAssembler;
 import juno.view.gobject.AbstractGObjectCreator;
 import juno.view.gobject.InterfaceGObject;
 import juno.view.gobject.InterfaceGObjectCreator;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Objects;
 
 /**
  * @author Simone Gentili
@@ -57,11 +54,7 @@ public class GProfileCreator<T>
 
     @Override
     public InterfaceGObject<T> create(@NotNull T object) {
-        GProfile<T> graphicProfile = new GProfile<>(object);
-        InterfacePathProviderAssembler assembler = getAssembler();
-        Objects.requireNonNull(assembler);
-        // graphicProfile.setText(profile);
-        return graphicProfile;
+        return new GProfile<>(object);
     }
 
 }

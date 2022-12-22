@@ -61,11 +61,11 @@ public class MenuPanelConfigurator {
         AbstractButton startButton  = creator.create(Button.BACK);
 
         // Images resizing.
-        ImageResizer.resize(easyDifficultyButton, 3.0);
-        ImageResizer.resize(mediumDifficultyButton, 3.0);
-        ImageResizer.resize(hardDifficultyButton, 3.0);
-        ImageResizer.resize(backButton, 3.0);
-        ImageResizer.resize(startButton, 3.0);
+        ImageResizer.resize(easyDifficultyButton, 4.0);
+        ImageResizer.resize(mediumDifficultyButton, 4.0);
+        ImageResizer.resize(hardDifficultyButton, 4.0);
+        ImageResizer.resize(backButton, 4.0);
+        ImageResizer.resize(startButton, 4.0);
 
         // Action listeners.
         // Change panel actions.
