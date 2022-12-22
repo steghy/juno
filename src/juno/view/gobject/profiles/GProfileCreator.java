@@ -36,12 +36,12 @@ import java.util.Objects;
 /**
  * @author Simone Gentili
  */
-public class GProfileCreator
-        extends AbstractGObjectCreator<String>
-        implements InterfaceGObjectCreator<String> {
+public class GProfileCreator<T>
+        extends AbstractGObjectCreator<T>
+        implements InterfaceGObjectCreator<T> {
 
     // The GProfileCreator instance.
-    private static GProfileCreator instance;
+    private static GProfileCreator<?> instance;
 
     // Builds the GProfileCreator instance.
     private GProfileCreator() {}
@@ -50,17 +50,17 @@ public class GProfileCreator
      * Returns the GProfileCreator instance.
      * @return The GProfileCreator instance.
      */
-    public static GProfileCreator getInstance() {
-        if(instance == null) instance = new GProfileCreator();
+    public static GProfileCreator<?> getInstance() {
+        if(instance == null) instance = new GProfileCreator<>();
         return instance;
     }
 
     @Override
-    public InterfaceGObject<String> create(@NotNull String profile) {
-        GProfile<String> graphicProfile = new GProfile<>(profile);
+    public InterfaceGObject<T> create(@NotNull T object) {
+        GProfile<T> graphicProfile = new GProfile<>(object);
         InterfacePathProviderAssembler assembler = getAssembler();
         Objects.requireNonNull(assembler);
-        graphicProfile.setText(profile);
+        // graphicProfile.setText(profile);
         return graphicProfile;
     }
 

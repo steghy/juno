@@ -23,31 +23,18 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.pre_access.login;
+package juno.view.pages.pre_access.login.profiles_panel;
 
-import juno.view.pages.pre_access.login.menu.MenuPanelConfigurator;
-import juno.view.pages.pre_access.login.profiles_panel.Initializer;
-import juno.view.pages.pre_access.login.profiles_panel.ProfilesPanelConfigurator;
-import juno.view.pages.pre_access.login.title.TitlePanelConfigurator;
+import juno.view.gobject.InterfaceGObject;
+
+import javax.swing.*;
 
 /**
  * @author Simone Gentili
  */
-public class LogInPanelInitializer {
+@FunctionalInterface
+public interface InterfaceGProfileProcessor<T> {
 
-    // Builds a LogInPanelInitializer object.
-    private LogInPanelInitializer() {}
-
-    /** Initialize the juno.view.pages.pre_access.login package. */
-    public static void initialize() {
-        // Components.
-        TitlePanelConfigurator.configure();
-        ProfilesPanelConfigurator.configure();
-        Initializer.initialize();
-        MenuPanelConfigurator.configure();
-
-        // Main components.
-        LogInPanelConfigurator.configure();
-    }
+    AbstractButton process(InterfaceGObject<T> gObject);
 
 }

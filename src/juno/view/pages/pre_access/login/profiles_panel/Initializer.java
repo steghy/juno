@@ -23,31 +23,25 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.pre_access.login;
+package juno.view.pages.pre_access.login.profiles_panel;
 
-import juno.view.pages.pre_access.login.menu.MenuPanelConfigurator;
-import juno.view.pages.pre_access.login.profiles_panel.Initializer;
-import juno.view.pages.pre_access.login.profiles_panel.ProfilesPanelConfigurator;
-import juno.view.pages.pre_access.login.title.TitlePanelConfigurator;
+import juno.view.button.Button;
+import juno.view.button.ButtonCreator;
 
 /**
  * @author Simone Gentili
  */
-public class LogInPanelInitializer {
+public class Initializer {
 
-    // Builds a LogInPanelInitializer object.
-    private LogInPanelInitializer() {}
+    // Builds an Initializer object.
+    private Initializer() {}
 
-    /** Initialize the juno.view.pages.pre_access.login package. */
     public static void initialize() {
-        // Components.
-        TitlePanelConfigurator.configure();
-        ProfilesPanelConfigurator.configure();
-        Initializer.initialize();
-        MenuPanelConfigurator.configure();
-
-        // Main components.
-        LogInPanelConfigurator.configure();
+        GProfileProcessor gProfileProcessor = GProfileProcessor.getInstance();
+        ProfilesPanel profilesPanel = ProfilesPanel.getInstance();
+        gProfileProcessor.setCreator(ButtonCreator.getInstance());
+        gProfileProcessor.setButton(Button.PROFILE_BUTTON);
+        profilesPanel.setProcessor(gProfileProcessor);
     }
 
 }

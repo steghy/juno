@@ -40,10 +40,11 @@ public class Initializer {
     // Builds an Initializer object.
     private Initializer() {}
 
+    @SuppressWarnings("unchecked")
     public static void initialize() {
         // Components.
         // GProfileCreator.
-        GProfileCreator gProfileCreator = GProfileCreator.getInstance();
+        GProfileCreator<String> gProfileCreator = (GProfileCreator<String>) GProfileCreator.getInstance();
 
         // GProfileFactory.
         GProfileFactory gProfileFactory = GProfileFactory.getInstance();

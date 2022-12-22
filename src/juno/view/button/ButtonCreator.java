@@ -40,7 +40,8 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class ButtonCreator
-        extends AbstractGObjectCreator<InterfaceButton> {
+        extends AbstractGObjectCreator<InterfaceButton>
+        implements InterfaceButtonCreator {
 
     // The ImageButtonCreator instance.
     private static ButtonCreator instance;
@@ -57,6 +58,7 @@ public class ButtonCreator
         return instance;
     }
 
+    @Override
     public AbstractButton create(@NotNull InterfaceButton button) {
         AbstractButton temp;
         String rollover = "_ROLLOVER";

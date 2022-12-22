@@ -106,8 +106,7 @@ public class GProfileFactory
                             file.getAbsolutePath() + " not exists.");
                 }
             }).toList());
-        }
-        else throw new IllegalArgumentException(
+        } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceFactory type expected.");
     }
