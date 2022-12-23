@@ -45,8 +45,8 @@ public class MultiplayerCardPanelConfigurator {
         UnavailableServicePanel unavailableServicePanel = UnavailableServicePanel.getInstance();
 
         // Component settings
-        multiplayerCardPanel.setFirstComponent(availableServicePanel);
-        multiplayerCardPanel.setSecondComponent(unavailableServicePanel);
+        multiplayerCardPanel.setFirstComponent(unavailableServicePanel);
+        multiplayerCardPanel.setSecondComponent(availableServicePanel);
 
         // Main component initialization.
         multiplayerCardPanel.init();

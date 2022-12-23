@@ -25,6 +25,9 @@
 
 package juno.controller.new_game;
 
+import juno.controller.util.AbstractChangePanelUser;
+import juno.model.subjects.ai.InterfaceDifficulty;
+import juno.model.subjects.factory.InterfaceAiPlayerGenerator;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.event.ActionEvent;
@@ -33,17 +36,36 @@ import java.awt.event.ActionListener;
 /**
  * @author Simone Gentili
  */
-public class StartGameAction<T>
+public class StartGameAction
+        extends AbstractChangePanelUser
         implements ActionListener {
 
-    private static StartGameAction<?> instance;
+    // The ai players generator.
+    private InterfaceAiPlayerGenerator<InterfaceDifficulty> generator;
 
-    public static StartGameAction<?> getInstance() {
-        if(instance == null) instance = new StartGameAction<>();
+    // The StartGameAction instance.
+    private static StartGameAction instance;
+
+    /**
+     * Returns the StartGameAction instance.
+     * @return The StartGameAction instance.
+     */
+    public static StartGameAction getInstance() {
+        if(instance == null) instance = new StartGameAction();
         return instance;
     }
 
     @Override
-    public void actionPerformed(@NotNull ActionEvent e) {}
+    public void actionPerformed(ActionEvent e) {
+        generator.generate(GameData.players - 1, GameData.difficulty);
+    }
+
+    /**
+     * Sets the ai player generator of this object.
+     * @param generator An InterfaceAiPlayerGenerator object.
+     */
+    public void setGenerator(@NotNull InterfaceAiPlayerGenerator<InterfaceDifficulty> generator) {
+        this.generator = generator;
+    }
 
 }

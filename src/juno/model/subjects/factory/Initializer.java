@@ -25,16 +25,41 @@
 
 package juno.model.subjects.factory;
 
+import juno.model.card.InterfaceCard;
+import juno.model.subjects.ai.InterfaceDifficulty;
+import juno.model.subjects.ai.examiner.Examiner;
+import juno.model.subjects.ai.examiner.InterfaceExaminer;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the difficulty objects.
- * @param <E> The type of the cards.
  */
-@FunctionalInterface
-public interface InterfaceAiPlayerGenerator<T> {
+public class Initializer {
 
-    void generate(int num,
-                  T difficulty);
+    // Builds an Initializer object.
+    private Initializer() {}
+
+    @SuppressWarnings("unchecked")
+    public static void initialize() {
+        // Components.
+        // AiPlayerFactory.
+        AiPlayerFactory<InterfaceCard, InterfaceDifficulty> aiPlayerFactory =
+                (AiPlayerFactory<InterfaceCard, InterfaceDifficulty>) AiPlayerFactory.getInstance();
+
+        // NameFactory.
+        NameFactory nameFactory = NameFactory.getInstance();
+
+        // AiBuilder.
+        AiBuilder<InterfaceCard> aiBuilder = (AiBuilder<InterfaceCard>) AiBuilder.getInstance();
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
+
+        // Connections.
+        // AiPlayerFactory.
+        aiPlayerFactory.setBuilder(aiBuilder);
+        aiPlayerFactory.setNameFactory(nameFactory);
+
+        // AiBuilder.
+        aiBuilder.setExaminer((InterfaceExaminer<InterfaceCard>) Examiner.getInstance());
+    }
 
 }

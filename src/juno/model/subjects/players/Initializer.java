@@ -25,35 +25,32 @@
 
 package juno.model.subjects.players;
 
-import juno.model.subjects.shift.AbstractPlayersMaintainer;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import juno.model.card.InterfaceCard;
+import juno.model.subjects.InterfacePlayer;
+import juno.model.subjects.factory.AiPlayerFactory;
+import juno.model.subjects.human.HumanPlayer;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the player
  */
-public abstract class AbstractPlayersProvider<T>
-        extends AbstractPlayersMaintainer<T> {
+public class Initializer {
 
-    // The human players.
-    private T player;
+    // Builds an Initializer object.
+    private Initializer() {}
 
-    /**
-     * Sets the human player of this object.
-     * @param player An object.
-     */
-    public void setPlayer(@NotNull T player) {
-        this.player = player;
-    }
+    @SuppressWarnings("unchecked")
+    public static void initializer() {
+        // Components.
+        // PlayersProvider.
+        PlayersProvider<InterfacePlayer<InterfaceCard>> playersProvider = (PlayersProvider<InterfacePlayer<InterfaceCard>>) PlayersProvider.getInstance();
 
-    /**
-     * Returns the human player of this object.
-     * @return An object.
-     */
-    @Nullable
-    public T getPlayer() {
-        return player;
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        // Connections.
+        playersProvider.setPlayer((InterfacePlayer<InterfaceCard>) HumanPlayer.getInstance());
+
+        // Observer / Observable.
+        AiPlayerFactory.getInstance().addObserver(playersProvider);
     }
 
 }

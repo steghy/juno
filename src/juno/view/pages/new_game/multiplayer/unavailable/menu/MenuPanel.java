@@ -60,8 +60,8 @@ public class MenuPanel
         // Unavailable service panel
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.weightx = 0.5;
-        gbc.weighty = 0.5;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.fill = GridBagConstraints.CENTER;
         add(Objects.requireNonNull(getFirstComponent()), gbc);
@@ -69,8 +69,8 @@ public class MenuPanel
         // Back button.
         gbc.gridx = 0;
         gbc.gridy = 1;
-        gbc.weightx = 0.5;
-        gbc.weighty = 0.5;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.fill = GridBagConstraints.CENTER;
         add(Objects.requireNonNull(getSecondComponent()), gbc);

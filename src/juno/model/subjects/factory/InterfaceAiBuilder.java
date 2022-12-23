@@ -23,37 +23,15 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.players;
+package juno.model.subjects.factory;
 
-import juno.model.subjects.shift.AbstractPlayersMaintainer;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import juno.model.subjects.InterfacePlayer;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the player
  */
-public abstract class AbstractPlayersProvider<T>
-        extends AbstractPlayersMaintainer<T> {
+@FunctionalInterface
+public interface InterfaceAiBuilder<T, E> {
 
-    // The human players.
-    private T player;
-
-    /**
-     * Sets the human player of this object.
-     * @param player An object.
-     */
-    public void setPlayer(@NotNull T player) {
-        this.player = player;
-    }
-
-    /**
-     * Returns the human player of this object.
-     * @return An object.
-     */
-    @Nullable
-    public T getPlayer() {
-        return player;
-    }
-
+    InterfacePlayer<T> build(String name, E difficulty);
 }

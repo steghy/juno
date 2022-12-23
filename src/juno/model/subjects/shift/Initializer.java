@@ -23,37 +23,44 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.players;
+package juno.model.subjects.shift;
 
-import juno.model.subjects.shift.AbstractPlayersMaintainer;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import juno.controller.util.InterfaceInitializer;
+import juno.model.card.InterfaceCard;
+import juno.model.subjects.InterfacePlayer;
+import juno.model.subjects.players.PlayersProvider;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the player
  */
-public abstract class AbstractPlayersProvider<T>
-        extends AbstractPlayersMaintainer<T> {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // The human players.
-    private T player;
+    // The Initializer instance.
+    private static Initializer instance;
+
+    // Builds an Initializer object.
+    private Initializer() {}
 
     /**
-     * Sets the human player of this object.
-     * @param player An object.
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
      */
-    public void setPlayer(@NotNull T player) {
-        this.player = player;
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
     }
 
-    /**
-     * Returns the human player of this object.
-     * @return An object.
-     */
-    @Nullable
-    public T getPlayer() {
-        return player;
+    @Override
+    @SuppressWarnings("unchecked")
+    public void initialize() {
+        // Observer / Observable.
+        PlayersProvider<InterfacePlayer<InterfaceCard>> playersProvider =
+                (PlayersProvider<InterfacePlayer<InterfaceCard>>) PlayersProvider.getInstance();
+
+        playersProvider.addObserver(Inverter.getInstance());
+        playersProvider.addObserver(TurnJumper.getInstance());
+        playersProvider.addObserver(TurnMover.getInstance());
     }
 
 }

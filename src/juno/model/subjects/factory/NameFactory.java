@@ -45,6 +45,7 @@ public class NameFactory
     // Builds the NameFactory instance.
     private NameFactory() {
         names = new ArrayList<>();
+        init();
     }
 
     /**

@@ -25,6 +25,10 @@
 
 package juno.controller.new_game;
 
+import juno.model.subjects.ai.InterfaceDifficulty;
+import juno.model.subjects.factory.AiPlayerFactory;
+import juno.model.subjects.factory.InterfaceAiPlayerGenerator;
+
 /**
  * @author Simone Gentili
  */
@@ -33,12 +37,16 @@ public class Initializer {
     // Builds an Initializer object.
     private Initializer() {}
 
+    @SuppressWarnings("unchecked")
     public static void initialize() {
         // Components.
+        // StartGameAction.
+        StartGameAction startGameAction = StartGameAction.getInstance();
 
         ////////////////////////////////////////////////////////
 
         // Connections.
+        startGameAction.setGenerator((InterfaceAiPlayerGenerator<InterfaceDifficulty>) AiPlayerFactory.getInstance());
     }
 
 }

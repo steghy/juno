@@ -26,9 +26,6 @@
 package juno.model.subjects.factory;
 
 import juno.model.subjects.InterfacePlayer;
-import juno.model.subjects.ai.AI;
-import juno.model.subjects.ai.InterfaceDifficulty;
-import juno.model.subjects.ai.examiner.InterfaceExaminer;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
@@ -41,10 +38,14 @@ import java.util.Objects;
 /**
  * @author Simone Gentili
  * @param <T> The type of the cards.
+ * @param <E> The type of the difficulty.
  */
-public class AiPlayerFactory<T>
+public class AiPlayerFactory<T, E>
         extends AbstractAiPlayerFactory<InterfacePlayer<T>>
-        implements InterfaceAiPlayerGenerator<InterfaceDifficulty, T>, Observable {
+        implements InterfaceAiPlayerGenerator<E>, Observable {
+
+    // The Ai builder
+    private InterfaceAiBuilder<T, E> builder;
 
     // The Observers List.
     private final List<Observer> observerList;
@@ -53,7 +54,7 @@ public class AiPlayerFactory<T>
     private List<InterfacePlayer<T>> players;
 
     // The AiPlayerFactory instance.
-    private static AiPlayerFactory<?> instance;
+    private static AiPlayerFactory<?, ?> instance;
 
     // Builds the AiPlayerFactory instance.
     private AiPlayerFactory() {
@@ -64,20 +65,26 @@ public class AiPlayerFactory<T>
      * Returns the AiPlayerFactory instance.
      * @return The AiPlayerFactory instance.
      */
-    public static AiPlayerFactory<?> getInstance() {
+    public static AiPlayerFactory<?, ?> getInstance() {
         if(instance == null) instance = new AiPlayerFactory<>();
         return instance;
     }
 
     @Override
     public void generate(int num,
-                         @NotNull InterfaceDifficulty difficulty,
-                         @NotNull InterfaceExaminer<T> examiner) {
+                         @NotNull E difficulty) {
         if(num < 1) throw new IllegalArgumentException("Invalid players number");
-        players = new ArrayList<>();
-        Objects.requireNonNull(getNameFactory()).getNames(num)
-                .forEach(name -> players.add(new AI<>(name, difficulty, examiner)));
+        players = Objects.requireNonNull(getNameFactory())
+                .getNames(num).stream().map(name -> builder.build(name, difficulty)).toList();
         updateAll();
+    }
+
+    /**
+     * Sets the Ai builder of this object.
+     * @param builder An InterfaceAiBuilder object.
+     */
+    public void setBuilder(@NotNull InterfaceAiBuilder<T, E> builder) {
+        this.builder = builder;
     }
 
     @Override @Nullable

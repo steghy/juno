@@ -87,10 +87,10 @@ public class MenuPanelConfigurator {
 
         // Inside Border.
         RoundedBorder insideBorder = new RoundedBorder(
-                50, 2, null, Color.WHITE);
+                10, 1, null, Color.WHITE);
         // Outside Border.
         RoundedBorder outsideBorder = new RoundedBorder(
-                50, 2, null, Color.RED);
+                25, 1, null, Color.RED);
         // Composed Border.
         Border border = BorderFactory.createCompoundBorder(outsideBorder, insideBorder);
         menuPanel.setBorder(border);

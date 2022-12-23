@@ -31,8 +31,10 @@ import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
 import juno.view.pages.new_game.card.NewGameCardPanel;
 import juno.view.util.ImageResizer;
+import juno.view.util.RoundedBorder;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 /**
@@ -53,22 +55,40 @@ public class MenuPanelConfigurator {
         JLabel unavailableServiceLabel = new JLabel();
 
         // Image resizing.
-        ImageResizer.resize(backButton, 2.0);
+        ImageResizer.resize(backButton, 4.0);
 
         // Unavailable service text.
         String unavailableServiceText =
-                """
-                        We are sorry to inform you that unfortunately\s
-                        this mode is not yet available, however if you\s
-                        want to contribute to the development of this video game,\s
-                        please visit the site 'site here'.""";
+                        "<html> We are sorry to inform you that unfortunately <br> this mode is not yet available, however <br> if you want to contribute to the development of <br> this video game, please visit the official repository <br>:'site here'.</html>";
+
         unavailableServiceLabel.setText(unavailableServiceText);
-        unavailableServiceLabel.setFont(new Font(Font.DIALOG, Font.BOLD, 30));
+        unavailableServiceLabel.setFont(new Font(Font.DIALOG, Font.ITALIC, 19));
         unavailableServiceLabel.setForeground(Color.WHITE);
+
+        // Unavailable service label size settings.
+        unavailableServiceLabel.setPreferredSize(new Dimension(500, 500));
+
+        // JScrollPane setting.
+        JScrollPane unavailableServiceScrollPane = new JScrollPane(unavailableServiceLabel ,
+                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+                JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        unavailableServiceScrollPane.setPreferredSize(new Dimension(450, 450));
+        unavailableServiceScrollPane.setIgnoreRepaint(true);
+        unavailableServiceScrollPane.setMinimumSize(new Dimension(450, 450));
+        unavailableServiceScrollPane.getViewport().setOpaque(false);
+        unavailableServiceScrollPane.setOpaque(false);
 
         // Components settings.
         menuPanel.setFirstComponent(unavailableServiceLabel); // Unavailable service label.
         menuPanel.setSecondComponent(backButton);             // Back button.
+
+        // Border settings.
+        RoundedBorder insideBorder = new RoundedBorder(
+                10, 1, null, Color.WHITE);
+        RoundedBorder outsideBorder = new RoundedBorder(
+                25, 1, null, Color.RED);
+        Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
+        menuPanel.setBorder(border);
 
         // Action listeners.
         backButton.addActionListener(new ChangePanelAction(

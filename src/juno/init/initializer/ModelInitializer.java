@@ -55,6 +55,20 @@ public class ModelInitializer {
 
         // juno.model.data.awards package.
         juno.model.data.awards.Initializer.initialize();
+
+        // juno.model.deck package
+        juno.model.deck.Initializer.initialize();
+
+        // juno.model.subjects.ai package
+        juno.model.subjects.factory.Initializer.initialize();
+
+        // juno.model.subjects.ai.examiner package
+        juno.model.subjects.ai.examiner.Initializer.initialize();
+
+        // juno.model.subjects.players package
+        juno.model.subjects.players.Initializer.initializer();
+
+        juno.model.subjects.shift.Initializer.getInstance().initialize();
     }
 
 }

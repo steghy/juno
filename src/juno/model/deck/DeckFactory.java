@@ -95,7 +95,8 @@ public class DeckFactory
                 if(action.isJolly()) deck.add(new Card(null, null, action));
                 else for(int i = 0; i < 2; i++) deck.add(new Card(color, null, action));
             });
-        }); updateAll();
+        });
+        updateAll();
     }
 
     @Override

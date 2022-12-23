@@ -23,37 +23,34 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.players;
+package juno.controller.util;
 
-import juno.model.subjects.shift.AbstractPlayersMaintainer;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the player
  */
-public abstract class AbstractPlayersProvider<T>
-        extends AbstractPlayersMaintainer<T> {
+public class InitializeAction
+        implements ActionListener {
 
-    // The human players.
-    private T player;
+    // The initializer.
+    private final InterfaceInitializer initializer;
 
     /**
-     * Sets the human player of this object.
-     * @param player An object.
+     * Builds an InitializeAction object with
+     * the specified initializer object.
+     * @param initializer An InterfaceInitializer object.
      */
-    public void setPlayer(@NotNull T player) {
-        this.player = player;
+    public InitializeAction(@NotNull InterfaceInitializer initializer) {
+        this.initializer = initializer;
     }
 
-    /**
-     * Returns the human player of this object.
-     * @return An object.
-     */
-    @Nullable
-    public T getPlayer() {
-        return player;
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        initializer.initialize();
     }
 
 }

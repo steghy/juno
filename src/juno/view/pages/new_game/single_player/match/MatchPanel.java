@@ -49,6 +49,9 @@ public class MatchPanel
     }
 
     /** Initialize the MatchPanel instance. */
-    public void init() {}
+    public void init() {
+        setOpaque(false);
+        setLayout(null);
+    }
 
 }

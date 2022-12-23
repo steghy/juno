@@ -23,37 +23,14 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.players;
-
-import juno.model.subjects.shift.AbstractPlayersMaintainer;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+package juno.controller.util;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the player
  */
-public abstract class AbstractPlayersProvider<T>
-        extends AbstractPlayersMaintainer<T> {
+@FunctionalInterface
+public interface InterfaceInitializer {
 
-    // The human players.
-    private T player;
-
-    /**
-     * Sets the human player of this object.
-     * @param player An object.
-     */
-    public void setPlayer(@NotNull T player) {
-        this.player = player;
-    }
-
-    /**
-     * Returns the human player of this object.
-     * @return An object.
-     */
-    @Nullable
-    public T getPlayer() {
-        return player;
-    }
+    void initialize();
 
 }

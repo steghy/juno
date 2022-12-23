@@ -56,6 +56,9 @@ public class ViewInitializer {
         // juno.view.awards.frames package.
         juno.view.gobject.frames.Initializer.initialize();
 
+        // juno.view.gobject.card package.
+        juno.view.gobject.cards.Initializer.initialize();
+
         // juno.view.pages.new_game package.
         juno.view.pages.new_game.NewGameInitializer.initialize();
 

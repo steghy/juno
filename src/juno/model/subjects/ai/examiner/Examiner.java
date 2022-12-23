@@ -34,6 +34,7 @@ import java.util.Objects;
 
 /**
  * @author Simone Gentili
+ * @param <T> The type of the cards.
  */
 public class Examiner<T>
         extends AbstractMultiExaminer<T> {

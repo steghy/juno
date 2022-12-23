@@ -23,37 +23,52 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.players;
+package juno.model.subjects.factory;
 
-import juno.model.subjects.shift.AbstractPlayersMaintainer;
+
+import juno.model.subjects.InterfacePlayer;
+import juno.model.subjects.ai.AI;
+import juno.model.subjects.ai.InterfaceDifficulty;
+import juno.model.subjects.ai.examiner.InterfaceExaminer;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the player
+ * @param <T> The type of the cards.
  */
-public abstract class AbstractPlayersProvider<T>
-        extends AbstractPlayersMaintainer<T> {
+public class AiBuilder<T>
+        implements InterfaceAiBuilder<T, InterfaceDifficulty> {
 
-    // The human players.
-    private T player;
+    // The Ai examiner.
+    private InterfaceExaminer<T> examiner;
+
+    // The AiBuilder instance.
+    private static AiBuilder<?> instance;
+
+    // Builds the AiBuilder instance.
+    private AiBuilder() {}
 
     /**
-     * Sets the human player of this object.
-     * @param player An object.
+     * Returns the AiBuilder instance.
+     * @return The AiBuilder instance.
      */
-    public void setPlayer(@NotNull T player) {
-        this.player = player;
+    public static AiBuilder<?> getInstance() {
+        if(instance == null) instance = new AiBuilder<>();
+        return instance;
+    }
+
+    @Override
+    public InterfacePlayer<T> build(@NotNull String name,
+                                    @NotNull InterfaceDifficulty difficulty) {
+        return new AI<>(name, difficulty, examiner);
     }
 
     /**
-     * Returns the human player of this object.
-     * @return An object.
+     * Sets the Ai examiner of this object.
+     * @param examiner An InterfaceExaminer object.
      */
-    @Nullable
-    public T getPlayer() {
-        return player;
+    public void setExaminer(@NotNull InterfaceExaminer<T> examiner) {
+        this.examiner = examiner;
     }
 
 }

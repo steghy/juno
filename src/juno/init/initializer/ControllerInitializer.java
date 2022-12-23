@@ -49,6 +49,9 @@ public class ControllerInitializer {
 
         // juno.controller.pre_access.log_in.
         juno.controller.pre_access.log_in.Initializer.initialize();
+
+        // juno.controller.new_game package.
+        juno.controller.new_game.Initializer.initialize();
     }
 
 }

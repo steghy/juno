@@ -56,6 +56,20 @@ public class MenuPanelConfigurator {
         // Components.
         ButtonCreator creator = ButtonCreator.getInstance();
         AbstractButton backButton = creator.create(Button.BACK);
+        JLabel avatarFramesLabel = new JLabel();
+        JLabel avatarImagesLabel  = new JLabel();
+
+        // Labels setting.
+        // Avatar frames label.
+        avatarFramesLabel.setText("Avatar frames");
+        avatarFramesLabel.setOpaque(false);
+        avatarFramesLabel.setForeground(Color.WHITE);
+        avatarFramesLabel.setFont(new Font(Font.DIALOG, Font.ITALIC, 14));
+        // AvatarImagesLabel.
+        avatarImagesLabel.setText("Avatar images");
+        avatarImagesLabel.setOpaque(false);
+        avatarImagesLabel.setForeground(Color.WHITE);
+        avatarImagesLabel.setFont(new Font(Font.DIALOG, Font.ITALIC, 14));
 
         // Images resizing.
         ImageResizer.resize(backButton, 4.0);
@@ -65,9 +79,9 @@ public class MenuPanelConfigurator {
         JScrollPane avatarFramesPanel = new JScrollPane(AvatarFramesPanel.getInstance() ,
                 JScrollPane.VERTICAL_SCROLLBAR_NEVER,
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        avatarFramesPanel.setPreferredSize(new Dimension(450, 100));
+        avatarFramesPanel.setPreferredSize(new Dimension(550, 110));
         avatarFramesPanel.setIgnoreRepaint(true);
-        avatarFramesPanel.setMinimumSize(new Dimension(450, 100));
+        avatarFramesPanel.setMinimumSize(new Dimension(550, 110));
         avatarFramesPanel.getViewport().setOpaque(false);
         avatarFramesPanel.setOpaque(false);
 
@@ -81,16 +95,18 @@ public class MenuPanelConfigurator {
         avatarImagesPanel.getViewport().setOpaque(false);
         avatarImagesPanel.setOpaque(false);
 
-        menuPanel.setFirstComponent(avatarFramesPanel);       // Avatar frames panel.
-        menuPanel.setSecondComponent(avatarImagesPanel);      // Avatar images panel.
-        menuPanel.setThirdComponent(backButton);              // Back button.
+        menuPanel.setFirstComponent(avatarFramesLabel);        // Avatar frames label.
+        menuPanel.setSecondComponent(avatarFramesPanel);       // Avatar frames panel.
+        menuPanel.setThirdComponent(avatarImagesLabel);        // Avatar images label.
+        menuPanel.setFourthComponent(avatarImagesPanel);       // Avatar images panel.
+        menuPanel.setFifthComponent(backButton);               // Back button.
 
         // Action listeners.
         backButton.addActionListener(new ChangePanelAction(new PanelChanger(MainCardPanel.getInstance(), MainCardPanel.MAIN_PANEL)));
 
         // Border settings
         RoundedBorder insideBorder = new RoundedBorder(
-                15, 1, null, Color.WHITE);
+                10, 1, null, Color.WHITE);
         RoundedBorder outsideBorder = new RoundedBorder(
                 25, 1, null, Color.RED);
         Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);

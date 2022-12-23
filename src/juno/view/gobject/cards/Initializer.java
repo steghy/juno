@@ -25,6 +25,7 @@
 
 package juno.view.gobject.cards;
 
+import juno.model.deck.DeckFactory;
 import juno.view.img_initializer.ImageComponentInitializer;
 import juno.model.requester.PathProviderAssembler;
 
@@ -42,8 +43,11 @@ public class Initializer {
         // GCardCreator.
         GCardCreator gCardCreator = GCardCreator.getInstance();
 
-        // GDeckFactory.
-        GCardFactory gDeckFactory = GCardFactory.getInstance();
+        // GCardFactory.
+        GCardFactory gCardFactory = GCardFactory.getInstance();
+
+        // GCardMapFactory.
+        GCardMapFactory gCardMapFactory = GCardMapFactory.getInstance();
 
         // PathObjectAssembler.
         PathProviderAssembler pathObjectAssembler = PathProviderAssembler.getInstance();
@@ -62,8 +66,15 @@ public class Initializer {
         gCardCreator.setInitializer(imageComponentInitializer);
         gCardCreator.setAssembler(pathObjectAssembler);
 
-        // GDeckFactory.
-        gDeckFactory.setCreator(gCardCreator);
+        // GCardFactory..
+        gCardFactory.setCreator(gCardCreator);
+
+        // GCardMapFactory.
+        gCardMapFactory.setFactory(gCardFactory);
+
+        // Observer / Observable.
+        gCardFactory.addObserver(gCardMapFactory);
+        DeckFactory.getInstance().addObserver(gCardFactory);
     }
 
 }
