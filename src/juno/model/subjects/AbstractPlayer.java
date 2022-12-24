@@ -25,6 +25,8 @@
 
 package juno.model.subjects;
 
+import juno.model.util.AbstractObservable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +35,7 @@ import java.util.List;
  * @param <T> The type of the cards.
  */
 public abstract class AbstractPlayer<T>
+        extends AbstractObservable
         implements InterfacePlayer<T> {
 
     // The List of the cards.

@@ -44,6 +44,7 @@ public class SinglePlayerInitializer {
         DifficultyInitializer.initialize();
         MatchInitializer.initialize();
         ModeInitializer.initialize();
+        MatchInitializer.initialize();
         PlayersNumberInitializer.initialize();
 
         // Main component configuration.

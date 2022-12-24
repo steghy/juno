@@ -30,6 +30,7 @@ import juno.controller.log_out.LogOutAction;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.PanelChanger;
 import juno.view.avatar.AvatarPanel;
+import juno.view.avatar.UserAvatarPanel;
 import juno.view.button.ButtonCreator;
 import juno.view.pages.card.TopCardPanel;
 import juno.view.pages.main.menu.MenuPanel;
@@ -54,7 +55,7 @@ public class MainPanelConfigurator {
         // Components.
         TitlePanel titlePanel = TitlePanel.getInstance();
         MenuPanel menuPanel = MenuPanel.getInstance();
-        AvatarPanel avatarPanel = new AvatarPanel(4.5);
+        UserAvatarPanel avatarPanel = new UserAvatarPanel(4.5);
 
         // Log out button.
         AbstractButton logOutButton = ButtonCreator.getInstance().create(juno.view.button.Button.LOG_OUT);

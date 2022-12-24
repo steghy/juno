@@ -69,6 +69,8 @@ public class ModelInitializer {
         juno.model.subjects.players.Initializer.initializer();
 
         juno.model.subjects.shift.Initializer.getInstance().initialize();
+
+        juno.model.subjects.human.Initializer.getInstance().initialize();
     }
 
 }

@@ -39,8 +39,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 class CompatibilityChecker
-        extends AbstractDiscardedPileUser<InterfaceCard>
-        implements InterfaceCompatibilityChecker<InterfaceCard> {
+        extends AbstractCompatibilityChecker<InterfaceCard, InterfaceColor> {
 
     // The CompatibilityChecker instance.
     private static CompatibilityChecker instance;
@@ -59,6 +58,7 @@ class CompatibilityChecker
 
     @Override
     public boolean isCompatible(@NotNull InterfaceCard card){
+
         // Top card of the discarded pile.
         InterfaceDiscardedPile<InterfaceCard> discardedPile = getDiscardedPile();
         Objects.requireNonNull(discardedPile);
@@ -76,15 +76,28 @@ class CompatibilityChecker
         if (cardAction != null && cardAction.isJolly()) return true;
 
         // Color case.
-        if (cardColor != null && topCardColor != null) {
-            if (cardColor.isBlue() && topCardColor.isBlue()) {
+        InterfaceColor actualColor = Objects.requireNonNull(getProvider()).provide();
+        if (cardColor != null) {
+            if (cardColor.isYellow() && actualColor.isYellow()) {
                 return true;
-            } if (cardColor.isGreen() && topCardColor.isGreen()) {
+            } if (cardColor.isBlue() && actualColor.isBlue()) {
                 return true;
-            } if (cardColor.isYellow() && topCardColor.isYellow()) {
+            } if (cardColor.isGreen() && actualColor.isGreen()) {
                 return true;
-            } if (cardColor.isRed() && topCardColor.isRed()) {
+            } if (cardColor.isRed() && actualColor.isRed()) {
                 return true;
+            }
+
+            if (topCardColor != null) {
+                if (cardColor.isBlue() && topCardColor.isBlue()) {
+                    return true;
+                } if (cardColor.isGreen() && topCardColor.isGreen()) {
+                    return true;
+                } if (cardColor.isYellow() && topCardColor.isYellow()) {
+                    return true;
+                } if (cardColor.isRed() && topCardColor.isRed()) {
+                    return true;
+                }
             }
         }
 

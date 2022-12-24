@@ -29,7 +29,7 @@ package juno.view.button;
  * @author Simone Gentili
  */
 public enum Button
-        implements InterfaceButton{
+        implements InterfaceButton {
 
     // LOGO //
     JUNO(true),
@@ -72,6 +72,12 @@ public enum Button
     // MODE //
     MODE(true),
     STACKING(true),
+
+    // MATCH //
+    COVER_TO_NORTH(true),
+    COVER_TO_SOUTH(true),
+    COVER_TO_EAST(true),
+    COVER_TO_WEST(true),
 
     // MULTIPLAYER //
     UNAVAILABLE_SERVICE(true),

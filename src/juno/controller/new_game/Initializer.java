@@ -25,9 +25,12 @@
 
 package juno.controller.new_game;
 
+import juno.controller.util.PanelChanger;
 import juno.model.subjects.ai.InterfaceDifficulty;
 import juno.model.subjects.factory.AiPlayerFactory;
 import juno.model.subjects.factory.InterfaceAiPlayerGenerator;
+import juno.view.pages.new_game.card.NewGameCardPanel;
+import juno.view.pages.new_game.single_player.card.SinglePlayerCardPanel;
 
 /**
  * @author Simone Gentili
@@ -47,6 +50,7 @@ public class Initializer {
 
         // Connections.
         startGameAction.setGenerator((InterfaceAiPlayerGenerator<InterfaceDifficulty>) AiPlayerFactory.getInstance());
+        startGameAction.setPanelChanger(new PanelChanger(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MATCH_PANEL));
     }
 
 }

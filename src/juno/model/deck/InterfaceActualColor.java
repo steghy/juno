@@ -23,18 +23,10 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.pre_access.login.profiles_panel;
+package juno.model.deck;
 
-import juno.view.gobject.InterfaceGObject;
+import juno.model.util.InterfaceProvider;
+import juno.model.util.InterfaceSetter;
 
-import javax.swing.*;
-
-/**
- * @author Simone Gentili
- */
-@FunctionalInterface
-public interface InterfaceGProfileProcessor<T> {
-
-    AbstractButton process(InterfaceGObject<T> gObject);
-
-}
+public interface InterfaceActualColor<T>
+        extends InterfaceSetter<T>, InterfaceProvider<T> {}

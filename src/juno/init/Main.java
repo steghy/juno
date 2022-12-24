@@ -26,17 +26,26 @@
 package juno.init;
 
 import juno.controller.avatar.Subscriptions;
+import juno.controller.new_game.GameData;
+import juno.controller.new_game.Test;
 import juno.controller.pre_access.ConfigurationFilesFactory;
 import juno.controller.util.FullScreenSetter;
 import juno.init.initializer.ControllerInitializer;
 import juno.init.initializer.ModelInitializer;
 import juno.init.initializer.ViewInitializer;
+import juno.model.card.InterfaceCard;
 import juno.model.data.score.GamesWonCounter;
 import juno.model.data.score.LostGamesCounter;
+import juno.model.deck.Deck;
+import juno.model.deck.DeckFactory;
 import juno.model.requester.ProgramDirectory;
 import juno.model.requester.GitHubRepositorySetter;
 import juno.model.sound.AudioPlayer;
+import juno.model.subjects.ai.AI;
+import juno.model.subjects.ai.Difficulty;
+import juno.model.subjects.factory.AiPlayerFactory;
 import juno.view.frame.Frame;
+import juno.view.pages.new_game.single_player.match.panels.east.EastCardPanel;
 import juno.view.pages.options.menu.MenuPanel;
 import juno.view.pages.options.menu.MenuPanelConfigurator;
 
@@ -75,6 +84,11 @@ public class Main {
             // Frame.
             Frame frame = Frame.getInstance();
             frame.setVisible(true);
+
+            while(true) {
+                TimeUnit.SECONDS.sleep(7);
+                Test.test();
+            }
 
         } catch (Exception e) {
             e.printStackTrace();

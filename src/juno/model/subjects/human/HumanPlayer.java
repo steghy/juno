@@ -25,9 +25,12 @@
 
 package juno.model.subjects.human;
 
-import juno.model.subjects.InterfacePlayer;
+import juno.model.subjects.InterfaceAdder;
+import juno.model.subjects.InterfaceRemover;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Objects;
 
 /**
  * @author Simone Gentili
@@ -35,10 +38,7 @@ import org.jetbrains.annotations.Nullable;
  */
 public class HumanPlayer<T>
         extends AbstractHumanPlayer<T>
-        implements InterfacePlayer<T> {
-
-    // The name.
-    private String name;
+        implements InterfaceAdder<T>, InterfaceRemover<T> {
 
     // HumanPlayer instance.
     private static HumanPlayer<?> instance;
@@ -57,20 +57,26 @@ public class HumanPlayer<T>
 
     @Override @Nullable
     public T move() {
-        return getReceiver().receive();
+        return Objects.requireNonNull(getReceiver()).receive();
     }
 
     @Override
     public String name() {
-        return name;
+        return Objects.requireNonNull(getProvider()).provide();
     }
 
-    /**
-     * Sets the name of this object.
-     * @param name A String object
-     */
-    public void setName(@NotNull String name) {
-        this.name = name;
+    @Override
+    public void add(@NotNull T object) {
+        cards().add(object);
+        updateAll();
+    }
+
+    @Override
+    public void remove(@NotNull T object) {
+        boolean result = cards().remove(object);
+        if(result) throw new IllegalArgumentException(
+                "The card " + object + " is not in: " + cards());
+        updateAll();
     }
 
 }

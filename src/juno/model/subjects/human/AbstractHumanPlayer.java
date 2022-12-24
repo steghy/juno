@@ -26,7 +26,9 @@
 package juno.model.subjects.human;
 
 import juno.model.subjects.AbstractPlayer;
+import juno.model.util.InterfaceProvider;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Simone Gentili
@@ -38,6 +40,9 @@ public abstract class AbstractHumanPlayer<T>
     // The receiver.
     InterfaceReceiver<T> receiver;
 
+    // The profile name provider.
+    InterfaceProvider<String> provider;
+
     /**
      * Sets the receiver of this object.
      * @param receiver An InterfaceReceiver object.
@@ -47,11 +52,29 @@ public abstract class AbstractHumanPlayer<T>
     }
 
     /**
+     * Sets the profile name provider of this object.
+     * @param provider An InterfaceProvider object.
+     */
+    public void setProvider(@NotNull InterfaceProvider<String> provider) {
+        this.provider = provider;
+    }
+
+    /**
      * Returns the receiver of this object.
      * @return An InterfaceReceiver object.
      */
+    @Nullable
     public InterfaceReceiver<T> getReceiver() {
         return receiver;
+    }
+
+    /**
+     * Returns the profile name provider of this object.
+     * @return An InterfaceProvider object.
+     */
+    @Nullable
+    public InterfaceProvider<String> getProvider() {
+        return provider;
     }
 
 }

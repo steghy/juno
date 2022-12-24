@@ -35,23 +35,23 @@ import org.jetbrains.annotations.Nullable;
 public abstract class AbstractDiscardedPileUser<T> {
 
     // The Discarded pile.
-    private InterfaceDiscardedPile<T> supplier;
+    private InterfaceDiscardedPile<T> discardedPile;
 
     /**
-     * Sets the List supplier of this object.
-     * @param supplier A List object.
+     * Sets the discarded pile of this object.
+     * @param discardedPile A List object.
      */
-    public void setSupplier(@NotNull InterfaceDiscardedPile<T> supplier) {
-        this.supplier = supplier;
+    public void setDiscardedPile(@NotNull InterfaceDiscardedPile<T> discardedPile) {
+        this.discardedPile = discardedPile;
     }
 
     /**
-     * Returns the List supplier of this object.
+     * Returns the discarded pile of this object.
      * @return A List object.
      */
     @Nullable
     public InterfaceDiscardedPile<T> getDiscardedPile() {
-        return supplier;
+        return discardedPile;
     }
 
 }

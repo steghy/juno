@@ -26,12 +26,23 @@
 package juno.controller.new_game;
 
 import juno.controller.util.AbstractChangePanelUser;
+import juno.model.card.InterfaceCard;
+import juno.model.deck.Deck;
+import juno.model.deck.DeckFactory;
+import juno.model.subjects.ai.AI;
 import juno.model.subjects.ai.InterfaceDifficulty;
+import juno.model.subjects.factory.AiPlayerFactory;
 import juno.model.subjects.factory.InterfaceAiPlayerGenerator;
+import juno.model.util.InterfaceFactory;
+import juno.model.util.InterfaceGenerator;
+import juno.view.pages.new_game.single_player.match.panels.east.EastCardPanel;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Time;
+import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Simone Gentili
@@ -42,6 +53,9 @@ public class StartGameAction
 
     // The ai players generator.
     private InterfaceAiPlayerGenerator<InterfaceDifficulty> generator;
+
+    // The deck generator.
+    private InterfaceGenerator deckGenerator;
 
     // The StartGameAction instance.
     private static StartGameAction instance;
@@ -57,6 +71,7 @@ public class StartGameAction
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        Objects.requireNonNull(getPanelChanger()).changePanel();
         generator.generate(GameData.players - 1, GameData.difficulty);
     }
 

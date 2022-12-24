@@ -44,7 +44,7 @@ public class ProfilesPanel
     private static ProfilesPanel instance;
 
     // The GProfile processor.
-    private InterfaceGProfileProcessor<String> processor;
+    private InterfaceGraphicProcessor<AbstractButton, InterfaceGObject<String>> processor;
 
     // Builds the ProfilesPanel instance.
     private ProfilesPanel() {
@@ -65,7 +65,7 @@ public class ProfilesPanel
      * Sets the graphic profile processor of this object.
      * @param processor An InterfaceGProfileProcessor object.
      */
-    public void setProcessor(@NotNull InterfaceGProfileProcessor<String> processor) {
+    public void setProcessor(@NotNull InterfaceGraphicProcessor<AbstractButton, InterfaceGObject<String>> processor) {
         this.processor = processor;
     }
 

@@ -25,13 +25,16 @@
 
 package juno.view.pages.new_game.single_player.match;
 
-import javax.swing.*;
+import juno.view.panels.AbstractFifthComponent;
+
+import java.awt.*;
+import java.util.Objects;
 
 /**
  * @author Simone Gentili
  */
 public class MatchPanel
-        extends JPanel {
+        extends AbstractFifthComponent {
 
     // The MatchPanel instance.
     private static MatchPanel instance;
@@ -51,7 +54,12 @@ public class MatchPanel
     /** Initialize the MatchPanel instance. */
     public void init() {
         setOpaque(false);
-        setLayout(null);
+        setLayout(new BorderLayout());
+        add(Objects.requireNonNull(getFirstComponent()), BorderLayout.SOUTH);
+        add(Objects.requireNonNull(getSecondComponent()), BorderLayout.WEST);
+        add(Objects.requireNonNull(getThirdComponent()), BorderLayout.NORTH);
+        add(Objects.requireNonNull(getFourthComponent()), BorderLayout.EAST);
+        add(Objects.requireNonNull(getFifthComponent()), BorderLayout.CENTER);
     }
 
 }

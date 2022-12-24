@@ -26,19 +26,23 @@
 package juno.model.subjects.ai;
 
 import juno.model.subjects.AbstractPlayer;
-import juno.model.subjects.InterfacePlayer;
+import juno.model.subjects.InterfaceAdder;
+import juno.model.subjects.InterfaceRemover;
 import juno.model.subjects.ai.examiner.InterfaceExaminer;
+import juno.model.util.InterfaceProvider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Objects;
 
 /**
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
 public class AI<T>
-        extends AbstractPlayer<T> {
+        extends AbstractPlayer<T>
+        implements InterfaceRemover<T>, InterfaceAdder<T>, InterfaceProvider<T> {
+
+    // The latest card involved.
+    private T card;
 
     // The examiner.
     private final InterfaceExaminer<T> examiner;
@@ -71,6 +75,27 @@ public class AI<T>
     @Override
     public String name() {
         return name;
+    }
+
+    @Override
+    public void add(@NotNull T card) {
+        cards().add(card);
+        this.card = card;
+        updateAll();
+    }
+
+    @Override
+    public void remove(@NotNull T card) {
+        boolean result = cards().remove(card);
+        if(!result) throw new IllegalArgumentException(
+                "The card " + card + " is not in: " + cards());
+        this.card = card;
+        updateAll();
+    }
+
+    @Override @Nullable
+    public T provide() {
+        return card;
     }
 
 }

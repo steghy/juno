@@ -44,7 +44,7 @@ import java.awt.*;
  * @author Simone Gentili
  */
 public class GProfileProcessor
-        implements InterfaceGProfileProcessor<String> {
+        implements InterfaceGraphicProcessor<AbstractButton, InterfaceGObject<String>> {
 
     // The button creator.
     private InterfaceButtonCreator creator;

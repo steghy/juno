@@ -25,6 +25,8 @@
 
 package juno.model.subjects.players;
 
+import juno.model.card.InterfaceCard;
+import juno.model.subjects.human.HumanPlayer;
 import juno.model.util.Donut;
 import juno.model.util.InterfaceFactory;
 import juno.model.util.Observable;

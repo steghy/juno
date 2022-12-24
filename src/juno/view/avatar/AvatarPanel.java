@@ -25,17 +25,8 @@
 
 package juno.view.avatar;
 
-import juno.model.data.avatar.*;
-import juno.model.data.awards.avatar.InterfaceAvatarImage;
-import juno.model.data.awards.frame.InterfaceAvatarFrame;
-import juno.model.util.Observer;
-import juno.view.gobject.avatars.GAvatarImage;
-import juno.view.gobject.avatars.GAvatarImageCreator;
-import juno.view.gobject.frames.GAvatarFrame;
-import juno.view.gobject.frames.GAvatarFrameCreator;
-import juno.view.panels.AbstractThirdComponent;
 import juno.view.util.ImageLabel;
-import juno.view.util.ImageResizer;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
@@ -44,8 +35,7 @@ import java.awt.*;
  * @author Simone Gentili
  */
 public class AvatarPanel
-        extends AbstractThirdComponent
-        implements Observer {
+        extends JPanel {
 
     // The avatar image label.
     private final ImageLabel avatarImage;
@@ -56,25 +46,34 @@ public class AvatarPanel
     // The avatar name label.
     private final JLabel avatarName;
 
-    // The dimension parameter.
-    private final double dimensionParameter;
 
     /**
-     * Builds an AvatarPanel with the specified
-     * dimension parameter.
-     * @param dimensionParameter A double value.
+     * Builds an AvatarPanel.
      */
-    public AvatarPanel(double dimensionParameter) {
-        this.dimensionParameter = dimensionParameter;
-        avatarImage = new ImageLabel();
+    public AvatarPanel() {
         avatarFrame = new ImageLabel();
+        avatarImage = new ImageLabel();
         avatarName = new JLabel();
-        AvatarNameSetter.getInstance().addObserver(this);
-        AvatarImageSetter.getInstance().addObserver(this);
-        AvatarFrameSetter.getInstance().addObserver(this);
         init();
     }
 
+    /**
+     * Builds an AvatarPanel with the specified
+     * avatar frame, avatar image and avatar name
+     * objects.
+     * @param avatarImage An ImageLabel object.
+     * @param avatarFrame An ImageLabel object.
+     * @param avatarName A JLabel object.
+     */
+    public AvatarPanel(@NotNull ImageLabel avatarImage,
+                       @NotNull ImageLabel avatarFrame,
+                       @NotNull JLabel avatarName) {
+        this.avatarFrame = avatarFrame;
+        this.avatarImage = avatarImage;
+        this.avatarName = avatarName;
+    }
+
+    /** Initialize this AvatarPanel object */
     public void init() {
         setOpaque(false);
         JPanel panel = new JPanel();
@@ -117,31 +116,30 @@ public class AvatarPanel
         add(avatarFrame, BorderLayout.CENTER);
     }
 
-    @Override
-    public void update(Object object) {
-        Avatar avatar = Avatar.getInstance();
-        // Avatar image case.
-        if(object instanceof AvatarImageSetter) {
-            GAvatarImage<InterfaceAvatarImage> avatarImage =
-                    (GAvatarImage<InterfaceAvatarImage>) GAvatarImageCreator.getInstance()
-                            .create(avatar.getAvatarImage());
-            ImageResizer.resize(avatarImage, dimensionParameter * 2);
-            this.avatarImage.setIcon(avatarImage.getIcon());
-        }
-
-        // Avatar frame case.
-        else if(object instanceof AvatarFrameSetter) {
-            GAvatarFrame<InterfaceAvatarFrame> avatarFrame =
-                    (GAvatarFrame<InterfaceAvatarFrame>) GAvatarFrameCreator.getInstance()
-                            .create(avatar.getAvatarFrame());
-            ImageResizer.resize(avatarFrame, dimensionParameter);
-            this.avatarFrame.setIcon(avatarFrame.getIcon());
-        }
-
-        // Avatar name case.
-        else if(object instanceof AvatarNameSetter) {
-            this.avatarName.setText(avatar.getAvatarName());
-        } else throw new IllegalArgumentException();
+    /**
+     * Returns the avatar name of this object.
+     * @return A JLabel object.
+     */
+    public JLabel getAvatarName() {
+        return avatarName;
     }
+
+    /**
+     * Returns the avatar frame of this object.
+     * @return An ImageLabel object.
+     */
+    public ImageLabel getAvatarFrame() {
+        return avatarFrame;
+    }
+
+    /**
+     * Returns the avatar image of this object.
+     * @return An ImageLabel object.
+     */
+    public ImageLabel getAvatarImage() {
+        return avatarImage;
+    }
+
+
 
 }

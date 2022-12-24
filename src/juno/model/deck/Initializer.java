@@ -43,6 +43,9 @@ public class Initializer {
         // Compatible cards provider.
         CompatibleCardsProvider compatibleCardsProvider = CompatibleCardsProvider.getInstance();
 
+        // ActualColor.
+        ActualColor actualColor = ActualColor.getInstance();
+
         // Compatibility checker.
         CompatibilityChecker compatibilityChecker = CompatibilityChecker.getInstance();
 
@@ -51,9 +54,6 @@ public class Initializer {
 
         // Deck factory.
         DeckFactory deckFactory = DeckFactory.getInstance();
-
-        // Card factory.
-        // CardFactory cardFactory = CardFactory.getInstance();
 
         // Deck filler.
         DeckFiller<InterfaceCard>  filler = (DeckFiller<InterfaceCard>) DeckFiller.getInstance();
@@ -70,8 +70,12 @@ public class Initializer {
         // Compatible cards provider.
         compatibleCardsProvider.setCompatibilityChecker(compatibilityChecker);
 
+        // CompatibilityChecker.
+        compatibilityChecker.setDiscardedPile(discardedPile);
+        compatibilityChecker.setProvider(actualColor);
+
         // Filler.
-        filler.setSupplier(discardedPile);
+        filler.setDiscardedPile(discardedPile);
 
         // Deck.
         deck.setDeckFiller(filler);
