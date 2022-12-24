@@ -28,7 +28,4 @@ package juno.view.scroll_panes;
 import javax.swing.*;
 
 public abstract class AbstractScrollPane
-        extends JScrollPane {
-
-    public
-}
+        extends JScrollPane {}

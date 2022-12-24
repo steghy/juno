@@ -26,7 +26,7 @@
 package juno.model.data.io.output;
 
 import juno.controller.pre_access.log_in.InterfacePathBuilder;
-import juno.controller.pre_access.log_in.MapSetter;
+import juno.controller.pre_access.log_in.PathMapBuilder;
 import juno.controller.pre_access.log_in.PathBuilder;
 import juno.model.data.avatar.Avatar;
 import juno.model.data.profile.profile.Profile;
@@ -68,8 +68,8 @@ public class Initializer {
         map.put(GamesWonCounter.getInstance(), new PathBuilder("-games-won.json", ProgramDirectory.SCORE.absolutePath()));
         map.put(LostGamesCounter.getInstance(), new PathBuilder("-lost-games.json", ProgramDirectory.SCORE.absolutePath()));
         map.put(Avatar.getInstance(), new PathBuilder("-avatar.json", ProgramDirectory.AVATAR.absolutePath()));
-        MapSetter<Exportable> mapSetter = new MapSetter<>(map);
-        exporterManager.setMapSetter(mapSetter);
+        PathMapBuilder<Exportable> mapSetter = new PathMapBuilder<>(map);
+        exporterManager.setMapBuilder(mapSetter);
         exporterManager.setDataExporter(jsonDataExporter);
 
         // ExitManager.

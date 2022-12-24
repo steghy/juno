@@ -23,34 +23,17 @@
  * SOFTWARE.
  */
 
-package juno.controller.log_out;
+package juno.controller.pre_access.log_in;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.Map;
 
 /**
  * @author Simone Gentili
+ * @param <T> The type of the keys.
  */
-public class LogOutAction
-        implements ActionListener {
+@FunctionalInterface
+public interface InterfacePathMapBuilder<T> {
 
-    // The account exiter object.
-    private final InterfaceAccountExiter accountExiter;
-
-    /**
-     * Builds a LogOutAction with the specified
-     * account exiter object.
-     * @param accountExiter An InterfaceAccountExiter object.
-     */
-    public LogOutAction(@NotNull InterfaceAccountExiter accountExiter) {
-        this.accountExiter = accountExiter;
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        accountExiter.logOut();
-    }
+    Map<T, String> build(String name);
 
 }

@@ -23,17 +23,38 @@
  * SOFTWARE.
  */
 
-package juno.controller.pre_access.log_in;
+package juno.model.data.io.output;
 
-import java.util.Map;
+import juno.controller.pre_access.log_in.InterfacePathMapBuilder;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the keys.
+ * @param <T> The object to export.
  */
-@FunctionalInterface
-public interface InterfaceMapSetter<T> {
+public abstract class AbstractExporterManager<T, E>
+        extends AbstractDataExporterUser
+        implements InterfaceExporterManager<T> {
 
-    Map<T, String> getSettedMap(String name);
+    // The path map builder.
+    private InterfacePathMapBuilder<E> mapBuilder;
+
+    /**
+     * Sets the path map builder of this object.
+     * @param mapBuilder An InterfacePathMapBuilder object.
+     */
+    public void setMapBuilder(@NotNull InterfacePathMapBuilder<E> mapBuilder) {
+        this.mapBuilder = mapBuilder;
+    }
+
+    /**
+     * Returns the path map builder of this object.
+     * @return An InterfacePathMapBuilder object.
+     */
+    @Nullable
+    public InterfacePathMapBuilder<E> getMapBuilder() {
+        return mapBuilder;
+    }
 
 }

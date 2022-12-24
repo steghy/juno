@@ -25,13 +25,10 @@
 
 package juno.view.pages.main;
 
+import juno.controller.log_out.AccountExiter;
 import juno.controller.log_out.LogOutAction;
-import juno.controller.log_out.Restorer;
-import juno.controller.pre_access.ConfigurationFilesFactory;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.PanelChanger;
-import juno.model.data.io.output.ExporterManager;
-import juno.model.data.profile.profile.ProfileNameProvider;
 import juno.view.avatar.AvatarPanel;
 import juno.view.button.ButtonCreator;
 import juno.view.pages.card.TopCardPanel;
@@ -73,11 +70,7 @@ public class MainPanelConfigurator {
         label.setFont(new Font(Font.DIALOG, Font.ITALIC, 10));
 
         // Action listener.
-        logOutButton.addActionListener(new LogOutAction<>(
-                Restorer.getInstance(),
-                ExporterManager.getInstance(),
-                ProfileNameProvider.getInstance(),
-                ConfigurationFilesFactory.getInstance()));
+        logOutButton.addActionListener(new LogOutAction(AccountExiter.getInstance()));
         logOutButton.addActionListener(new ChangePanelAction(
                 new PanelChanger(TopCardPanel.getInstance(), TopCardPanel.PRE_ACCESS_PANEL)));
 

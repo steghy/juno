@@ -23,34 +23,37 @@
  * SOFTWARE.
  */
 
-package juno.controller.log_out;
+package juno.controller.pre_access.log_in;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author Simone Gentili
+ * @param <T> The type of the Map keys.
  */
-public class LogOutAction
-        implements ActionListener {
+public class PathMapBuilder<T>
+        implements InterfacePathMapBuilder<T> {
 
-    // The account exiter object.
-    private final InterfaceAccountExiter accountExiter;
+    // The Map T -> InterfacePathBuilder.
+    private final Map<T, InterfacePathBuilder> pathBuilders;
 
     /**
-     * Builds a LogOutAction with the specified
-     * account exiter object.
-     * @param accountExiter An InterfaceAccountExiter object.
+     * Builds a PathMapBuilder object with the specified
+     * Map object.
+     * @param pathBuilders A Map object.
      */
-    public LogOutAction(@NotNull InterfaceAccountExiter accountExiter) {
-        this.accountExiter = accountExiter;
+    public PathMapBuilder(@NotNull Map<T, InterfacePathBuilder> pathBuilders) {
+        this.pathBuilders = pathBuilders;
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        accountExiter.logOut();
+    public Map<T, String> build(@NotNull String name) {
+        return pathBuilders.entrySet().stream()
+                .collect(Collectors.toMap(Map.Entry::getKey,
+                        e -> e.getValue().build(name)));
     }
 
 }

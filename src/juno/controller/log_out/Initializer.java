@@ -25,9 +25,12 @@
 
 package juno.controller.log_out;
 
+import juno.controller.pre_access.ConfigurationFilesFactory;
 import juno.model.data.goals.GoalsRestorer;
 import juno.model.data.goals.RegistrationGoal;
+import juno.model.data.io.output.ExporterManager;
 import juno.model.data.profile.profile.Profile;
+import juno.model.data.profile.profile.ProfileNameProvider;
 import juno.model.data.score.GamesWonCounter;
 import juno.model.data.score.LostGamesCounter;
 
@@ -42,19 +45,21 @@ public class Initializer {
     private Initializer() {}
 
     public static void initialize() {
-        // Components.
-        // Restorer.
         Restorer restorer = Restorer.getInstance();
-
-        /////////////////////////////////////////////
-
-        // Connections.
+        AccountExiter accountExiter = AccountExiter.getInstance();
+        ///////////////////////////////////////////////////////////
+        // Restorer.
         List<Restorable> restorableList = restorer.restorableList();
         restorableList.add(Profile.getInstance());
         restorableList.add(LostGamesCounter.getInstance());
         restorableList.add(GamesWonCounter.getInstance());
         restorableList.add(RegistrationGoal.getInstance());
         restorableList.add(GoalsRestorer.getInstance());
+        // AccountExiter.
+        accountExiter.setGenerator(ConfigurationFilesFactory.getInstance());
+        accountExiter.setProvider(ProfileNameProvider.getInstance());
+        accountExiter.setExporterManager(ExporterManager.getInstance());
+        accountExiter.setRestorable(Restorer.getInstance());
     }
 
 }

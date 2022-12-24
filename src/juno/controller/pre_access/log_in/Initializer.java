@@ -46,35 +46,28 @@ public class Initializer {
     private Initializer() {}
 
     public static void initialize() {
-        // Components.
-        // UserDataSetter.
         UserDataSetter userDataSetter = new UserDataSetter();
-
         UserDataSetter avatarUserDataSetter = new UserDataSetter();
-
-        // AccountSetter.
         AccountSetter accountSetter = AccountSetter.getInstance();
-
         /////////////////////////////////////////////////////////////
 
-        // Connections.
-        // UserDataSetter.
+        // UserDataSetter setting.
         Map<Configurable, InterfacePathBuilder> userData = new HashMap<>();
         userData.put(Profile.getInstance(), new PathBuilder("-profile.json", ProgramDirectory.PROFILES.absolutePath()));
         userData.put(GamesWonCounter.getInstance(), new PathBuilder("-games-won.json", ProgramDirectory.SCORE.absolutePath()));
         userData.put(LostGamesCounter.getInstance(), new PathBuilder("-lost-games.json", ProgramDirectory.SCORE.absolutePath()));
+        PathMapBuilder<Configurable> mapSetter = new PathMapBuilder<>(userData);
+        userDataSetter.setMapBuilder(mapSetter);
+        userDataSetter.setImporter(JSONDataImporter.getInstance());
 
-        MapSetter<Configurable> mapSetter = new MapSetter<>(userData);
-        userDataSetter.setMapSetter(mapSetter);
-        userDataSetter.setDataImporter(JSONDataImporter.getInstance());
-
+        // AvatarUserDataSetter setting.
         Map<Configurable, InterfacePathBuilder> avatarUserData = new HashMap<>();
         avatarUserData.put(Avatar.getInstance(), new PathBuilder("-avatar.json", ProgramDirectory.AVATAR.absolutePath()));
-        MapSetter<Configurable> mapSetter1 = new MapSetter<>(avatarUserData);
-        avatarUserDataSetter.setMapSetter(mapSetter1);
-        avatarUserDataSetter.setDataImporter(JSONDataImporter.getInstance());
+        PathMapBuilder<Configurable> mapSetter1 = new PathMapBuilder<>(avatarUserData);
+        avatarUserDataSetter.setMapBuilder(mapSetter1);
+        avatarUserDataSetter.setImporter(JSONDataImporter.getInstance());
 
-        // AccountLoader.
+        // AccountLoader setting.
         accountSetter.setters().add(userDataSetter);
         accountSetter.setters().add(avatarUserDataSetter);
         accountSetter.setRegistrationGoal(RegistrationGoal.getInstance());

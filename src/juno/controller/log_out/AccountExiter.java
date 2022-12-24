@@ -23,25 +23,37 @@
  * SOFTWARE.
  */
 
-package juno.controller.pre_access.log_in;
+package juno.controller.log_out;
 
-import org.jetbrains.annotations.NotNull;
+import java.util.Objects;
 
-import java.util.Map;
-import java.util.stream.Collectors;
+/**
+ * @author Simone Gentili
+ */
+public class AccountExiter
+        extends AbstractAccountExiter<String> {
 
-public class MapSetter<T> implements InterfaceMapSetter<T> {
+    // The Account exiter.
+    private static AccountExiter instance;
 
-    private final Map<T, InterfacePathBuilder> pathBuilders;
+    // Builds the account exiter.
+    private AccountExiter() {}
 
-    public MapSetter(@NotNull Map<T, InterfacePathBuilder> pathBuilders) {
-        this.pathBuilders = pathBuilders;
+    /**
+     * Returns the AccountExiter instance.
+     * @return The AccountExiter instance.
+     */
+    public static AccountExiter getInstance() {
+        if(instance == null) instance = new AccountExiter();
+        return instance;
     }
 
-    public Map<T, String> getSettedMap(String name) {
-        return pathBuilders.entrySet().stream()
-                .collect(Collectors.toMap(Map.Entry::getKey,
-                        e -> e.getValue().build(name)));
+    @Override
+    public void logOut() {
+        String object = Objects.requireNonNull(getProvider()).provide();
+        Objects.requireNonNull(getExporterManager()).export(object);
+        Objects.requireNonNull(getRestorable()).restore();
+        Objects.requireNonNull(getGenerator()).generate();
     }
 
 }

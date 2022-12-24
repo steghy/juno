@@ -25,35 +25,24 @@
 
 package juno.model.data.io.output;
 
-import juno.controller.util.InterfacePanelChanger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Simone Gentili
+ * @param <T> The object to export.
  */
-public abstract class AbstractExporterManagerAndPanelChangerUser {
+public abstract class AbstractExporterManagerUser<T> {
 
     // The exporter manager.
-    private InterfaceExporterManager exporterManager;
-
-    // The panel changer.
-    private InterfacePanelChanger panelChanger;
+    private InterfaceExporterManager<T> exporterManager;
 
     /**
      * Sets the exporter manager of this object.
      * @param exporterManager An InterfaceExporterManager object.
      */
-    public void setExporterManager(@NotNull InterfaceExporterManager exporterManager) {
+    public void setExporterManager(@NotNull InterfaceExporterManager<T> exporterManager) {
         this.exporterManager = exporterManager;
-    }
-
-    /**
-     * Sets the panel changer of this object.
-     * @param panelChanger An InterfacePanelChanger object.
-     */
-    public void setPanelChanger(@NotNull InterfacePanelChanger panelChanger) {
-        this.panelChanger = panelChanger;
     }
 
     /**
@@ -61,17 +50,8 @@ public abstract class AbstractExporterManagerAndPanelChangerUser {
      * @return An InterfaceExporterManager object.
      */
     @Nullable
-    public InterfaceExporterManager getExporterManager() {
+    public InterfaceExporterManager<T> getExporterManager() {
         return exporterManager;
-    }
-
-    /**
-     * Returns the panel changer of this object.
-     * @return An InterfacePanelChanger object.
-     */
-    @Nullable
-    public InterfacePanelChanger getPanelChanger() {
-        return panelChanger;
     }
 
 }

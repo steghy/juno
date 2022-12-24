@@ -28,18 +28,29 @@ package juno.controller.pre_access.log_in;
 import juno.model.util.PathGenerator;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * @author Simone Gentili
+ */
 public class PathBuilder
         implements InterfacePathBuilder {
 
+    // The ending path of the output string.
     private final String ending;
+
+    // The previous part of the path.
     private final String path;
 
+    /**
+     * Builds a PathBuilder with the specified
+     * String objects.
+     * @param ending A String object.
+     * @param path A String object.
+     */
     public PathBuilder(@NotNull String ending,
                        @NotNull String path) {
         this.ending = ending;
         this.path = path;
     }
-
 
     @Override
     public String build(@NotNull String name) {

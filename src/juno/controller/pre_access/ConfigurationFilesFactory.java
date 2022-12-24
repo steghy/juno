@@ -39,6 +39,7 @@ import java.util.Objects;
 public class ConfigurationFilesFactory
         extends AbstractConfigurationFilesFactory<File> {
 
+    // The configuration files.
     private List<File> configurationFiles;
 
     // The ConfigurationFilesFactory instance.
@@ -68,6 +69,7 @@ public class ConfigurationFilesFactory
             configurationFiles = Objects.requireNonNull(getResearcher())
                     .getConfigurationFiles(getConfigurable(), getPath());
         } catch (FileNotFoundException e) {
+            // Creates the profile directory.
             (new File(Objects.requireNonNull(getPath()))).mkdir();
         } updateAll();
     }

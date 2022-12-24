@@ -25,32 +25,9 @@
 
 package juno.controller.log_out;
 
-import org.jetbrains.annotations.NotNull;
+@FunctionalInterface
+public interface InterfaceAccountExiter {
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-/**
- * @author Simone Gentili
- */
-public class LogOutAction
-        implements ActionListener {
-
-    // The account exiter object.
-    private final InterfaceAccountExiter accountExiter;
-
-    /**
-     * Builds a LogOutAction with the specified
-     * account exiter object.
-     * @param accountExiter An InterfaceAccountExiter object.
-     */
-    public LogOutAction(@NotNull InterfaceAccountExiter accountExiter) {
-        this.accountExiter = accountExiter;
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        accountExiter.logOut();
-    }
+    void logOut();
 
 }

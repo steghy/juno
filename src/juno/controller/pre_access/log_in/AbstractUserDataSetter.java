@@ -23,34 +23,40 @@
  * SOFTWARE.
  */
 
-package juno.controller.log_out;
+package juno.controller.pre_access.log_in;
 
+import juno.model.data.io.input.AbstractDataImporterUser;
+import juno.model.util.InterfaceSetter;
 import org.jetbrains.annotations.NotNull;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Simone Gentili
+ * @param <T> The type of the object to set.
+ * @param <E> The type of the map keys.
  */
-public class LogOutAction
-        implements ActionListener {
+public abstract class AbstractUserDataSetter<T, E>
+        extends AbstractDataImporterUser
+        implements InterfaceSetter<T> {
 
-    // The account exiter object.
-    private final InterfaceAccountExiter accountExiter;
+    // The map builder.
+    private InterfacePathMapBuilder<E> mapBuilder;
 
     /**
-     * Builds a LogOutAction with the specified
-     * account exiter object.
-     * @param accountExiter An InterfaceAccountExiter object.
+     * Sets the path map builder of this object.
+     * @param mapBuilder An InterfacePathMapBuilder object.
      */
-    public LogOutAction(@NotNull InterfaceAccountExiter accountExiter) {
-        this.accountExiter = accountExiter;
+    public void setMapBuilder(@NotNull InterfacePathMapBuilder<E> mapBuilder) {
+        this.mapBuilder = mapBuilder;
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        accountExiter.logOut();
+    /**
+     * Returns the path map builder of this object.
+     * @return An InterfacePathMapBuilder object.
+     */
+    @Nullable
+    public InterfacePathMapBuilder<E> getMapBuilder() {
+        return mapBuilder;
     }
 
 }

@@ -25,44 +25,31 @@
 
 package juno.controller.pre_access.log_in;
 
-import juno.model.data.io.input.InterfaceDataImporter;
 import juno.model.data.io.input.configurable.Configurable;
-import juno.model.util.InterfaceSetter;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * @author Simone Gentili
  */
 public class UserDataSetter
-        implements InterfaceSetter<String> {
+        extends AbstractUserDataSetter<String, Configurable> {
 
-    // The data importer.
-    private InterfaceDataImporter dataImporter;
-
-    // The configuration map.
-    private InterfaceMapSetter<Configurable> mapSetter;
-
+    // Builds a UserDataSetter object.
     public UserDataSetter() {}
 
     @Override
     public void set(@NotNull String name) {
-        mapSetter.getSettedMap(name).forEach((k, v) -> {
-            try {
-                k.configure(dataImporter.importData(v));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-    }
-
-    public void setDataImporter(@NotNull InterfaceDataImporter dataImporter) {
-        this.dataImporter = dataImporter;
-    }
-
-    public void setMapSetter(@NotNull InterfaceMapSetter<Configurable> mapSetter) {
-        this.mapSetter = mapSetter;
+        Objects.requireNonNull(getMapBuilder())
+                .build(name).forEach((k, v) -> {
+                    try {
+                        k.configure(Objects.requireNonNull(getImporter()).importData(v));
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
     }
 
 }
