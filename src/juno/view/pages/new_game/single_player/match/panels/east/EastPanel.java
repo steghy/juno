@@ -30,18 +30,28 @@ import juno.view.panels.AbstractSecondComponent;
 import java.awt.*;
 import java.util.Objects;
 
+/**
+ * @author Simone Gentili
+ */
 public class EastPanel
         extends AbstractSecondComponent {
 
+    // The EastPanel instance.
     private static EastPanel instance;
 
+    // Returns the EastPanel instance.
     private EastPanel() {}
 
+    /**
+     * Returns the EastPanel instance.
+     * @return The EastPanel instance.
+     */
     public static EastPanel getInstance() {
         if(instance == null) instance = new EastPanel();
         return instance;
     }
 
+    /** Initialize the EastPanel instance. */
     public void init() {
         setOpaque(false);
         setLayout(new GridBagLayout());
@@ -52,7 +62,7 @@ public class EastPanel
         gbc.gridy = 0;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-        gbc.anchor = GridBagConstraints.PAGE_END;
+        gbc.anchor = GridBagConstraints.LINE_END;
         gbc.insets = new Insets(0,0,0,5);
         gbc.ipadx = 0;
         gbc.ipady = 0;
@@ -63,7 +73,7 @@ public class EastPanel
         gbc.gridy = 0;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-        gbc.anchor = GridBagConstraints.PAGE_END;
+        gbc.anchor = GridBagConstraints.LINE_END;
         gbc.insets = new Insets(0,0,0,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;

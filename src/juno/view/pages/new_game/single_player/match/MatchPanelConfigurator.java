@@ -26,6 +26,7 @@
 package juno.view.pages.new_game.single_player.match;
 
 import juno.view.pages.new_game.single_player.match.panels.east.EastPanel;
+import juno.view.pages.new_game.single_player.match.panels.west.WestPanel;
 
 import javax.swing.*;
 
@@ -41,11 +42,11 @@ public class MatchPanelConfigurator {
         // Main component.
         MatchPanel matchPanel = MatchPanel.getInstance();
 
-        matchPanel.setFirstComponent(new JLabel());
-        matchPanel.setSecondComponent(EastPanel.getInstance());  // Vertical east panel.
-        matchPanel.setThirdComponent(new JLabel());
-        matchPanel.setFourthComponent(new JLabel());
-        matchPanel.setFifthComponent(new JLabel());
+        matchPanel.setFirstComponent(new JLabel());              // South panel
+        matchPanel.setSecondComponent(EastPanel.getInstance());  // East panel.
+        matchPanel.setThirdComponent(new JLabel());  // North panel.
+        matchPanel.setFourthComponent(WestPanel.getInstance());  // West panel.
+        matchPanel.setFifthComponent(new JLabel());              // Center panel.
 
 
         // Main component initialization.

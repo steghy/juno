@@ -23,7 +23,38 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.new_game.single_player.match.panels.north;
+package juno.view.pages.new_game.single_player.match.panels.west;
 
-public class NorthPanel {
+import javax.swing.*;
+import java.awt.*;
+
+/**
+ * @author Simone Gentili
+ */
+public class WestPanelConfigurator {
+
+    // Builds a WestPanelConfigurator object.
+    private WestPanelConfigurator() {}
+
+    public static void configure() {
+        WestPanel westPanel = WestPanel.getInstance();
+
+        // East card panel.
+        JScrollPane westCardPanel = new JScrollPane(WestCardPanel.getInstance(),
+                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+                JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        westCardPanel.setPreferredSize(new Dimension(150, 600));
+        westCardPanel.setIgnoreRepaint(false);
+        westCardPanel.setMinimumSize(new Dimension(150, 600));
+        westCardPanel.getViewport().setOpaque(false);
+        westCardPanel.setOpaque(false);
+
+        // Setting components.
+        westPanel.setFirstComponent(new JLabel());   // Avatar panel.
+        westPanel.setSecondComponent(westCardPanel); // Cards scrollable panel.
+
+        // Main component initialization.
+        westPanel.init();
+    }
+
 }

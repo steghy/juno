@@ -26,6 +26,7 @@
 package juno.view.pages.new_game.single_player.match;
 
 import juno.view.pages.new_game.single_player.match.panels.east.EastPanelConfigurator;
+import juno.view.pages.new_game.single_player.match.panels.west.WestPanelConfigurator;
 
 /**
  * @author Simone Gentili
@@ -37,6 +38,7 @@ public class MatchInitializer {
 
     public static void initialize() {
         EastPanelConfigurator.configure();
+        WestPanelConfigurator.configure();
         MatchPanelConfigurator.configure();
     }
 

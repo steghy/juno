@@ -25,5 +25,59 @@
 
 package juno.view.pages.new_game.single_player.match.panels.west;
 
-public class WestPanel {
+import juno.view.panels.AbstractSecondComponent;
+
+import java.awt.*;
+import java.util.Objects;
+
+/**
+ * @author Simone Gentili
+ */
+public class WestPanel
+        extends AbstractSecondComponent {
+
+    // The WestPanel instance.
+    private static WestPanel instance;
+
+    // Builds the WestPanel instance.
+    private WestPanel() {}
+
+    /**
+     * Returns the WestPanel instance.
+     * @return The WestPanel instance.
+     */
+    public static WestPanel getInstance() {
+        if(instance == null) instance = new WestPanel();
+        return instance;
+    }
+
+    /** Initialize the WestPanel instance. */
+    public void init() {
+        setOpaque(false);
+        setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        // West cards panel.
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.anchor = GridBagConstraints.LINE_START;
+        gbc.insets = new Insets(0,0,0,5);
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
+        this.add(Objects.requireNonNull(getSecondComponent()), gbc);
+
+        // Avatar panel.
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.anchor = GridBagConstraints.LINE_START;
+        gbc.insets = new Insets(0,0,0,0);
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
+        this.add(Objects.requireNonNull(getFirstComponent()), gbc);
+    }
+
 }

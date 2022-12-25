@@ -56,9 +56,9 @@ public class MatchPanel
         setOpaque(false);
         setLayout(new BorderLayout());
         add(Objects.requireNonNull(getFirstComponent()), BorderLayout.SOUTH);
-        add(Objects.requireNonNull(getSecondComponent()), BorderLayout.WEST);
+        add(Objects.requireNonNull(getSecondComponent()), BorderLayout.EAST);
         add(Objects.requireNonNull(getThirdComponent()), BorderLayout.NORTH);
-        add(Objects.requireNonNull(getFourthComponent()), BorderLayout.EAST);
+        add(Objects.requireNonNull(getFourthComponent()), BorderLayout.WEST);
         add(Objects.requireNonNull(getFifthComponent()), BorderLayout.CENTER);
     }
 

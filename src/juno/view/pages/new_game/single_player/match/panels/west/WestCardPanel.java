@@ -23,7 +23,7 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.new_game.single_player.match.panels.east;
+package juno.view.pages.new_game.single_player.match.panels.west;
 
 import juno.model.subjects.InterfaceAdder;
 import juno.model.subjects.InterfaceRemover;
@@ -39,32 +39,27 @@ import java.awt.*;
 /**
  * @author Simone Gentili
  */
-public class EastCardPanel
-        extends JPanel
-        implements Observer {
+public class WestCardPanel
+        extends JPanel implements Observer {
 
-    // The EastCardPanel instance.
-    private static EastCardPanel instance;
+    // The WestCardPanel instance.
+    private static WestCardPanel instance;
 
-    // Builds the EastCardPanel instance.
-    private EastCardPanel() {
+    // Builds the WestCardPanel instance.
+    private WestCardPanel() {
         setOpaque(false);
         setLayout(new GridLayout(108, 1));
     }
 
-    /**
-     * Returns the EastCardPanel instance.
-     * @return The EastCardPanel instance.
-     */
-    public static EastCardPanel getInstance() {
-        if(instance == null) instance = new EastCardPanel();
+    public static WestCardPanel getInstance() {
+        if(instance == null) instance = new WestCardPanel();
         return instance;
     }
 
     @Override
     public void update(@NotNull Object object) {
         if(object instanceof InterfaceAdder<?>) {
-            AbstractButton button = ButtonCreator.getInstance().create(Button.COVER_TO_WEST);
+            AbstractButton button = ButtonCreator.getInstance().create(Button.COVER_TO_EAST);
             ImageResizer.resize(button, 4.5);
             add(button);
             revalidate();

@@ -26,6 +26,8 @@
 package juno.controller.new_game;
 
 import juno.controller.util.AbstractChangePanelUser;
+import juno.controller.util.ChangePanelAction;
+import juno.controller.util.PanelChanger;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.Deck;
 import juno.model.deck.DeckFactory;
@@ -35,6 +37,8 @@ import juno.model.subjects.factory.AiPlayerFactory;
 import juno.model.subjects.factory.InterfaceAiPlayerGenerator;
 import juno.model.util.InterfaceFactory;
 import juno.model.util.InterfaceGenerator;
+import juno.view.frame.Frame;
+import juno.view.pages.new_game.single_player.card.SinglePlayerCardPanel;
 import juno.view.pages.new_game.single_player.match.panels.east.EastCardPanel;
 import org.jetbrains.annotations.NotNull;
 
@@ -73,6 +77,7 @@ public class StartGameAction
     public void actionPerformed(ActionEvent e) {
         Objects.requireNonNull(getPanelChanger()).changePanel();
         generator.generate(GameData.players - 1, GameData.difficulty);
+        DeckFactory.getInstance().generate();
     }
 
     /**
