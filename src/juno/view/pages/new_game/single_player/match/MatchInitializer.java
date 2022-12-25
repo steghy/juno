@@ -25,6 +25,8 @@
 
 package juno.view.pages.new_game.single_player.match;
 
+import juno.controller.util.InterfaceInitializer;
+import juno.view.pages.new_game.single_player.match.panels.center.CenterPanelInitializer;
 import juno.view.pages.new_game.single_player.match.panels.east.EastPanelConfigurator;
 import juno.view.pages.new_game.single_player.match.panels.north.NorthPanelConfigurator;
 import juno.view.pages.new_game.single_player.match.panels.south.SouthPanelConfigurator;
@@ -33,13 +35,27 @@ import juno.view.pages.new_game.single_player.match.panels.west.WestPanelConfigu
 /**
  * @author Simone Gentili
  */
-public class MatchInitializer {
+public class MatchInitializer
+        implements InterfaceInitializer {
 
-    // Builds a MatchInitializer object.
+    // The MatchInitializer instance.
+    private static MatchInitializer instance;
+
+    // Builds the MatchInitializer instance.
     private MatchInitializer() {}
 
-    public static void initialize() {
-        juno.view.pages.new_game.single_player.match.panels.center.Initializer.initialize();
+    /**
+     * Returns the MatchInitializer instance.
+     * @return The MatchInitializer instance.
+     */
+    public static MatchInitializer getInstance() {
+        if(instance == null) instance = new MatchInitializer();
+        return instance;
+    }
+
+    @Override
+    public void initialize() {
+        CenterPanelInitializer.initialize();
         SouthPanelConfigurator.configure();
         EastPanelConfigurator.configure();
         NorthPanelConfigurator.configure();

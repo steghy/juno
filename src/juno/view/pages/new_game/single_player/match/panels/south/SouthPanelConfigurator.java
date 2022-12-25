@@ -28,6 +28,9 @@ package juno.view.pages.new_game.single_player.match.panels.south;
 import juno.model.card.InterfaceCard;
 import juno.model.subjects.human.HumanPlayer;
 import juno.model.util.InterfaceProvider;
+import juno.view.button.Button;
+import juno.view.button.ButtonCreator;
+import juno.view.util.ImageResizer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -40,29 +43,29 @@ public class SouthPanelConfigurator {
     // Builds a SouthPanelConfigurator object.
     private SouthPanelConfigurator() {}
 
+    @SuppressWarnings("unchecked")
     public static void configure() {
         // Main component.
         SouthPanel southPanel = SouthPanel.getInstance();
-
-        // East card panel.
-        JScrollPane southCardPanel = new JScrollPane(SouthCardPanel.getInstance(),
+        // Card panel.
+        JScrollPane cardPanel = new JScrollPane(SouthCardPanel.getInstance(),
                 JScrollPane.VERTICAL_SCROLLBAR_NEVER,
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        southCardPanel.setPreferredSize(new Dimension(600, 150));
-        southCardPanel.setIgnoreRepaint(false);
-        southCardPanel.setMinimumSize(new Dimension(600, 150));
-        southCardPanel.getViewport().setOpaque(false);
-        southCardPanel.setOpaque(false);
-
+        cardPanel.setPreferredSize(new Dimension(600, 150));
+        cardPanel.setIgnoreRepaint(false);
+        cardPanel.setMinimumSize(new Dimension(600, 150));
+        cardPanel.getViewport().setOpaque(false);
+        cardPanel.setOpaque(false);
+        // Uno button.
+        AbstractButton unoButton = ButtonCreator.getInstance().create(Button.JUNO);
+        ImageResizer.resize(unoButton, 4.0);
 
         // Observer / Observable.
         HumanPlayer.getInstance().addObserver(SouthCardPanel.getInstance());
-
         SouthCardPanel.getInstance().setProvider((InterfaceProvider<InterfaceCard>) HumanPlayer.getInstance());
-
         // Setting components.
-        southPanel.setFirstComponent(southCardPanel);    // Avatar panel.
-
+        southPanel.setFirstComponent(cardPanel);  // Avatar panel.
+        southPanel.setSecondComponent(unoButton); // Uno button.
         // Main component initialization.
         southPanel.init();
     }

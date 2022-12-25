@@ -28,10 +28,10 @@ package juno.view.pages.new_game.single_player.match.panels.center;
 /**
  * @author Simone Gentili
  */
-public class Initializer {
+public class CenterPanelInitializer {
 
     // Builds an Initializer object.
-    private Initializer() {}
+    private CenterPanelInitializer() {}
 
     /** Initialize the match center panel. */
     public static void initialize() {

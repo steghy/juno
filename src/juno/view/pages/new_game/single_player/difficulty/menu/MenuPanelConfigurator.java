@@ -58,14 +58,12 @@ public class MenuPanelConfigurator {
         AbstractButton mediumDifficultyButton = creator.create(Button.MEDIUM);
         AbstractButton hardDifficultyButton   = creator.create(Button.HARD);
         AbstractButton backButton   = creator.create(Button.BACK);
-        AbstractButton startButton  = creator.create(Button.BACK);
 
         // Images resizing.
         ImageResizer.resize(easyDifficultyButton, 4.0);
         ImageResizer.resize(mediumDifficultyButton, 4.0);
         ImageResizer.resize(hardDifficultyButton, 4.0);
         ImageResizer.resize(backButton, 4.0);
-        ImageResizer.resize(startButton, 4.0);
 
         // Action listeners.
         // Change panel actions.
@@ -84,7 +82,6 @@ public class MenuPanelConfigurator {
         mediumDifficultyButton.addActionListener(new DifficultyAction<>(Difficulty.MEDIUM, difficultySetter));
         hardDifficultyButton.addActionListener(new DifficultyAction<>(Difficulty.HARD, difficultySetter));
 
-
         // Inside Border.
         RoundedBorder insideBorder = new RoundedBorder(
                 10, 1, null, Color.WHITE);
@@ -100,7 +97,6 @@ public class MenuPanelConfigurator {
         menuPanel.setSecondComponent(mediumDifficultyButton); // Medium difficulty button.
         menuPanel.setThirdComponent(hardDifficultyButton);    // Hard difficulty button.
         menuPanel.setFourthComponent(backButton);   // Back button.
-        menuPanel.setFifthComponent(startButton);   // Start button.
 
         // Main component initialization.
         menuPanel.init();

@@ -28,6 +28,7 @@ package juno.view.pages.new_game.single_player;
 import juno.view.pages.new_game.single_player.card.SinglePlayerCardPanelConfigurator;
 import juno.view.pages.new_game.single_player.difficulty.DifficultyInitializer;
 import juno.view.pages.new_game.single_player.match.MatchInitializer;
+import juno.view.pages.new_game.single_player.match.MatchPanel;
 import juno.view.pages.new_game.single_player.mode.ModeInitializer;
 import juno.view.pages.new_game.single_player.players.PlayersNumberInitializer;
 
@@ -41,9 +42,9 @@ public class SinglePlayerInitializer {
 
     public static void initialize() {
         // Components initialization.
+        MatchInitializer.getInstance().initialize();
         DifficultyInitializer.initialize();
         ModeInitializer.initialize();
-        MatchInitializer.initialize();
         PlayersNumberInitializer.initialize();
 
         // Main component configuration.

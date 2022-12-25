@@ -25,6 +25,8 @@
 
 package juno.view.pages.new_game.single_player.match;
 
+import juno.model.util.InterfaceFactory;
+import juno.model.util.Observer;
 import juno.view.panels.AbstractFifthComponent;
 
 import java.awt.*;
@@ -34,7 +36,8 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class MatchPanel
-        extends AbstractFifthComponent {
+        extends AbstractFifthComponent
+        implements Observer {
 
     // The MatchPanel instance.
     private static MatchPanel instance;
@@ -55,11 +58,29 @@ public class MatchPanel
     public void init() {
         setOpaque(false);
         setLayout(new BorderLayout());
-        add(Objects.requireNonNull(getFirstComponent()), BorderLayout.SOUTH);
-        add(Objects.requireNonNull(getSecondComponent()), BorderLayout.EAST);
-        add(Objects.requireNonNull(getThirdComponent()), BorderLayout.NORTH);
-        add(Objects.requireNonNull(getFourthComponent()), BorderLayout.WEST);
-        add(Objects.requireNonNull(getFifthComponent()), BorderLayout.CENTER);
+    }
+
+    @Override
+    public void update(Object object) {
+        if(object instanceof InterfaceFactory<?> factory) {
+            removeAll();
+            add(Objects.requireNonNull(getFirstComponent()), BorderLayout.SOUTH);
+            add(Objects.requireNonNull(getFifthComponent()), BorderLayout.CENTER);
+            int size = factory.getObjects().size();
+            if(size > 3) throw new IllegalArgumentException(
+                    "Unsupported number of players.");
+            if(size >= 1)
+                add(Objects.requireNonNull(getThirdComponent()), BorderLayout.NORTH);
+            if(size >= 2)
+                add(Objects.requireNonNull(getSecondComponent()), BorderLayout.EAST);
+            if(size == 3) {
+                add(Objects.requireNonNull(getFourthComponent()), BorderLayout.WEST);
+            }
+            revalidate();
+            repaint();
+        } else throw new IllegalArgumentException(
+                "Invalid object type: " + object.getClass() +
+                        ". InterfaceFactory type expected.");
     }
 
 }

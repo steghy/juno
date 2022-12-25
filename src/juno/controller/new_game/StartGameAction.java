@@ -56,10 +56,7 @@ public class StartGameAction
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        // firstPlayerManager.setFirst();
-        ((AbstractButton) e.getSource()).setEnabled(false);
-    }
+    public void actionPerformed(ActionEvent e) {}
 
     /**
      * Sets the first player manager of this object.

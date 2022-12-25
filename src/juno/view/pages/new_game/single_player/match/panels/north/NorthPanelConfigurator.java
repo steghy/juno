@@ -25,6 +25,13 @@
 
 package juno.view.pages.new_game.single_player.match.panels.north;
 
+import juno.controller.util.ChangePanelAction;
+import juno.controller.util.PanelChanger;
+import juno.view.button.Button;
+import juno.view.button.ButtonCreator;
+import juno.view.pages.new_game.single_player.card.SinglePlayerCardPanel;
+import juno.view.util.ImageResizer;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -41,16 +48,28 @@ public class NorthPanelConfigurator {
         NorthPanel northPanel = NorthPanel.getInstance();
 
         // East card panel.
-        JScrollPane northCardPanel = new JScrollPane(NorthCardPanel.getInstance(),
+        JScrollPane cardPanel = new JScrollPane(NorthCardPanel.getInstance(),
                 JScrollPane.VERTICAL_SCROLLBAR_NEVER,
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        northCardPanel.setPreferredSize(new Dimension(600, 150));
-        northCardPanel.setIgnoreRepaint(false);
-        northCardPanel.setMinimumSize(new Dimension(600, 150));
-        northCardPanel.getViewport().setOpaque(false);
-        northCardPanel.setOpaque(false);
+        cardPanel.setPreferredSize(new Dimension(600, 150));
+        cardPanel.setIgnoreRepaint(false);
+        cardPanel.setMinimumSize(new Dimension(600, 150));
+        cardPanel.getViewport().setOpaque(false);
+        cardPanel.setOpaque(false);
 
-        northPanel.setFirstComponent(northCardPanel); // Cards scrollable panel.
+        // Exit button.
+        AbstractButton exitButton = ButtonCreator.getInstance().create(Button.EXIT);
+
+        // Image resizing.
+        ImageResizer.resize(exitButton, 4.0);
+
+        // Action listener.
+        exitButton.addActionListener(new ChangePanelAction(
+                new PanelChanger(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MODE_PANEL)));
+
+        // Setting components.
+        northPanel.setFirstComponent(cardPanel); // Cards scrollable panel.
+        northPanel.setSecondComponent(exitButton); // Exit button.
 
         // Main component initialization.
         northPanel.init();

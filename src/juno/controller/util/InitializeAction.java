@@ -40,8 +40,8 @@ public class InitializeAction
     private final InterfaceInitializer initializer;
 
     /**
-     * Builds an InitializeAction object with
-     * the specified initializer object.
+     * Builds an InitializeAction with the specified
+     * initializer object.
      * @param initializer An InterfaceInitializer object.
      */
     public InitializeAction(@NotNull InterfaceInitializer initializer) {

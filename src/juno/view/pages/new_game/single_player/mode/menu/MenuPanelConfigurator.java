@@ -26,7 +26,7 @@
 package juno.view.pages.new_game.single_player.mode.menu;
 
 import juno.controller.new_game.GameInitializer;
-import juno.controller.new_game.InitializeAction;
+import juno.controller.util.InitializeAction;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.PanelChanger;
 import juno.view.button.ButtonCreator;
@@ -54,15 +54,19 @@ public class MenuPanelConfigurator {
         // Components.
         ButtonCreator creator = ButtonCreator.getInstance();
         AbstractButton stackingModeButton = creator.create(Button.STACKING);
+        AbstractButton backButton = creator.create(Button.BACK);
 
         // Images resizing.
         ImageResizer.resize(stackingModeButton, 4.0);
+        ImageResizer.resize(backButton, 4.0);
 
         // Action listeners.
         stackingModeButton.addActionListener(new InitializeAction(GameInitializer.getInstance()));
         stackingModeButton.addActionListener(new ChangePanelAction(
                 new PanelChanger(SinglePlayerCardPanel.getInstance(),
                         SinglePlayerCardPanel.MATCH_PANEL)));
+        backButton.addActionListener(new ChangePanelAction(
+                new PanelChanger(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.DIFFICULTY_PANEL)));
 
         // Border settings.
         RoundedBorder insideBorder = new RoundedBorder(10, 1, null, Color.WHITE);
@@ -72,6 +76,7 @@ public class MenuPanelConfigurator {
 
         // Components settings.
         difficultyPanel.setFirstComponent(stackingModeButton); // Stacking mode button.
+        difficultyPanel.setSecondComponent(backButton);
 
         // Main component initialization.
         difficultyPanel.init();

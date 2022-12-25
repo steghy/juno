@@ -25,7 +25,6 @@
 
 package juno.view.pages.new_game.single_player.match.panels.center;
 
-import juno.controller.new_game.ActionTest;
 import juno.controller.new_game.DrawAction;
 import juno.controller.new_game.NextTurnAction;
 import juno.controller.new_game.StartGameAction;
@@ -67,12 +66,6 @@ public class CenterPanelConfigurator {
         AbstractButton startButton = creator.create(Button.START);
         ImageResizer.resize(startButton, 2.5);
         startButton.addActionListener(StartGameAction.getInstance());
-
-        // Button test.
-        AbstractButton buttonTest = ButtonCreator.getInstance().create(Button.CONFIRM);
-        ImageResizer.resize(buttonTest, 4.5);
-        buttonTest.addActionListener(new ActionTest());
-
 
         // Settings.
         centerPanel.setFirstComponent(CirclePanel.getInstance());

@@ -25,6 +25,7 @@
 
 package juno.view.pages.new_game.single_player.match;
 
+import juno.model.subjects.factory.AiPlayerFactory;
 import juno.view.pages.new_game.single_player.match.panels.center.CenterPanel;
 import juno.view.pages.new_game.single_player.match.panels.east.EastPanel;
 import juno.view.pages.new_game.single_player.match.panels.north.NorthPanel;
@@ -43,11 +44,15 @@ public class MatchPanelConfigurator {
         // Main component.
         MatchPanel matchPanel = MatchPanel.getInstance();
 
+        // Observer / Observable.
+        AiPlayerFactory.getInstance().addObserver(matchPanel);
+
+        // Setting components.
         matchPanel.setFirstComponent(SouthPanel.getInstance());  // South panel
         matchPanel.setSecondComponent(EastPanel.getInstance());  // East panel.
-        matchPanel.setThirdComponent(NorthPanel.getInstance());              // North panel.
+        matchPanel.setThirdComponent(NorthPanel.getInstance());  // North panel.
         matchPanel.setFourthComponent(WestPanel.getInstance());  // West panel.
-        matchPanel.setFifthComponent(CenterPanel.getInstance());              // Center panel.
+        matchPanel.setFifthComponent(CenterPanel.getInstance()); // Center panel.
 
 
         // Main component initialization.
