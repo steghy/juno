@@ -28,8 +28,12 @@ package juno.controller.pre_access.registration;
 import juno.model.data.io.input.configurable.Configurable;
 import juno.model.data.io.output.Exportable;
 import juno.model.data.profile.InterfaceErrorProvider;
+import juno.model.util.Observable;
+import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -38,13 +42,18 @@ import java.util.Objects;
  */
 public class RegistrationDataSelector
         extends AbstractRegistrationDataSelector
-        implements InterfaceRegistrationDataSelector {
+        implements InterfaceRegistrationDataSelector, Observable {
+
+    // The Observers List.
+    private final List<Observer> observerList;
 
     // The RegistrationDataSelector instance.
     private static RegistrationDataSelector instance;
 
     // Builds the RegistrationDataSelector instance.
-    private RegistrationDataSelector() {}
+    private RegistrationDataSelector() {
+        observerList = new ArrayList<>();
+    }
 
     /**
      * Returns the RegistrationDataSelector instance.
@@ -69,7 +78,23 @@ public class RegistrationDataSelector
         } else {
             // Resolve the registration request.
             Objects.requireNonNull(getLogger()).logIn();
+            updateAll();
         }
+    }
+
+    @Override
+    public void addObserver(@NotNull Observer observer) {
+        observerList.add(observer);
+    }
+
+    @Override
+    public void removeObserver(@NotNull Observer observer) {
+        observerList.remove(observer);
+    }
+
+    @Override
+    public void updateAll() {
+        observerList.forEach(observer -> observer.update(this));
     }
 
 }

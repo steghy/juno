@@ -51,6 +51,10 @@ public class WestCardPanel
         setLayout(new GridLayout(108, 1));
     }
 
+    /**
+     * Returns the WestCardPanel instance.
+     * @return The WestCardPanel instance.
+     */
     public static WestCardPanel getInstance() {
         if(instance == null) instance = new WestCardPanel();
         return instance;

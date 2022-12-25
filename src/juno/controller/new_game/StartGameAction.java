@@ -25,47 +25,29 @@
 
 package juno.controller.new_game;
 
-import juno.controller.util.AbstractChangePanelUser;
-import juno.controller.util.ChangePanelAction;
-import juno.controller.util.PanelChanger;
-import juno.model.card.InterfaceCard;
-import juno.model.deck.Deck;
-import juno.model.deck.DeckFactory;
-import juno.model.subjects.ai.AI;
-import juno.model.subjects.ai.InterfaceDifficulty;
-import juno.model.subjects.factory.AiPlayerFactory;
-import juno.model.subjects.factory.InterfaceAiPlayerGenerator;
-import juno.model.util.InterfaceFactory;
-import juno.model.util.InterfaceGenerator;
-import juno.view.frame.Frame;
-import juno.view.pages.new_game.single_player.card.SinglePlayerCardPanel;
-import juno.view.pages.new_game.single_player.match.panels.east.EastCardPanel;
+import juno.model.subjects.shift.InterfaceFirstPlayerManager;
 import org.jetbrains.annotations.NotNull;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Time;
-import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author Simone Gentili
  */
 public class StartGameAction
-        extends AbstractChangePanelUser
         implements ActionListener {
 
-    // The ai players generator.
-    private InterfaceAiPlayerGenerator<InterfaceDifficulty> generator;
-
-    // The deck generator.
-    private InterfaceGenerator deckGenerator;
+    private InterfaceFirstPlayerManager firstPlayerManager;
 
     // The StartGameAction instance.
     private static StartGameAction instance;
 
+    // Builds the StartGameAction instance.
+    private StartGameAction() {}
+
     /**
-     * Returns the StartGameAction instance.
+     * Builds the StartGameAction instance.
      * @return The StartGameAction instance.
      */
     public static StartGameAction getInstance() {
@@ -75,17 +57,16 @@ public class StartGameAction
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Objects.requireNonNull(getPanelChanger()).changePanel();
-        generator.generate(GameData.players - 1, GameData.difficulty);
-        DeckFactory.getInstance().generate();
+        // firstPlayerManager.setFirst();
+        ((AbstractButton) e.getSource()).setEnabled(false);
     }
 
     /**
-     * Sets the ai player generator of this object.
-     * @param generator An InterfaceAiPlayerGenerator object.
+     * Sets the first player manager of this object.
+     * @param firstPlayerManager An InterfaceFirstPlayerManager object.
      */
-    public void setGenerator(@NotNull InterfaceAiPlayerGenerator<InterfaceDifficulty> generator) {
-        this.generator = generator;
+    public void setFirstPlayerManager(@NotNull InterfaceFirstPlayerManager firstPlayerManager) {
+        this.firstPlayerManager = firstPlayerManager;
     }
 
 }

@@ -30,6 +30,7 @@ import juno.model.card.InterfaceCard;
 import juno.model.card.actions.Action;
 import juno.model.card.colors.Color;
 import juno.model.util.InterfaceFactory;
+import juno.model.util.InterfaceGenerator;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
@@ -47,8 +48,7 @@ import java.util.*;
  * @author Simone Gentili
  */
 public class DeckFactory
-        implements InterfaceFactory<InterfaceCard>,
-                    InterfaceDeckGenerator, Observable {
+        implements InterfaceFactory<InterfaceCard>, InterfaceGenerator, Observable {
 
     // The Observers List.
     private final List<Observer> observerList;

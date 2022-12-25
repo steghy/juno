@@ -26,10 +26,7 @@
 package juno.model.subjects.ai;
 
 import juno.model.subjects.AbstractPlayer;
-import juno.model.subjects.InterfaceAdder;
-import juno.model.subjects.InterfaceRemover;
 import juno.model.subjects.ai.examiner.InterfaceExaminer;
-import juno.model.util.InterfaceProvider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -38,8 +35,7 @@ import org.jetbrains.annotations.Nullable;
  * @param <T> The type of the cards.
  */
 public class AI<T>
-        extends AbstractPlayer<T>
-        implements InterfaceRemover<T>, InterfaceAdder<T>, InterfaceProvider<T> {
+        extends AbstractPlayer<T> {
 
     // The latest card involved.
     private T card;

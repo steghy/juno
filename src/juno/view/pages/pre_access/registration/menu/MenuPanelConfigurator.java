@@ -103,8 +103,8 @@ public class MenuPanelConfigurator {
         menuPanel.setSixthComponent(backButton);    // Back button.
 
         // Images resizing.
-        ImageResizer.resize(confirmButton, 3.0);
-        ImageResizer.resize(backButton, 3.0);
+        ImageResizer.resize(confirmButton, 4.0);
+        ImageResizer.resize(backButton, 4.0);
 
         // Action listeners.
         confirmButton.addActionListener(
@@ -134,9 +134,9 @@ public class MenuPanelConfigurator {
         backButton.addActionListener(new RegistrationPanelRestorer(menuPanel));
 
         // Inside border.
-        RoundedBorder insideBorder = new RoundedBorder(50, 1, null, Color.WHITE);
+        RoundedBorder insideBorder = new RoundedBorder(10, 1, null, Color.WHITE);
         // Outside border.
-        RoundedBorder outsideBorder = new RoundedBorder(50, 1, null, Color.RED);
+        RoundedBorder outsideBorder = new RoundedBorder(25, 1, null, Color.RED);
         // Composed border.
         Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
         menuPanel.setBorder(border);

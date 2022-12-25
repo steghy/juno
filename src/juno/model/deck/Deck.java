@@ -49,8 +49,7 @@ import java.util.Objects;
  */
 public class Deck<T>
         extends AbstractDeck<T>
-        implements InterfaceDeck<T>,
-                    Observable, Observer {
+        implements Observable, Observer {
 
     /* The Observers List */
     private final List<Observer> observerList;

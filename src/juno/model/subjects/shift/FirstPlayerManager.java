@@ -25,6 +25,9 @@
 
 package juno.model.subjects.shift;
 
+import juno.model.card.InterfaceCard;
+import juno.model.deck.InterfaceDeck;
+import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.players.InterfacePlayersProvider;
 import juno.model.util.Donut;
 import juno.model.util.Observable;
@@ -33,20 +36,24 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the players.
  */
-public class FirstPlayerManager<T>
-        extends AbstractPlayersMaintainer<T>
+public class FirstPlayerManager
+        extends AbstractPlayersMaintainer<InterfacePlayer<InterfaceCard>>
         implements InterfaceFirstPlayerManager, Observable, Observer {
+
+    // The deck.
+    private InterfaceDeck<InterfaceCard> deck;
 
     // The Observers List.
     private final List<Observer> observerList;
 
     // The FirstPlayerManager instance.
-    private static FirstPlayerManager<?> instance;
+    private static FirstPlayerManager instance;
 
     // Builds the FirstPlayerManager instance.
     private FirstPlayerManager() {
@@ -57,14 +64,21 @@ public class FirstPlayerManager<T>
      * Returns the FirstPlayerManager instance.
      * @return The FirstPlayerManager instance.
      */
-    public static FirstPlayerManager<?> getInstance() {
-        if(instance == null) instance = new FirstPlayerManager<>();
+    public static FirstPlayerManager getInstance() {
+        if(instance == null) instance = new FirstPlayerManager();
         return instance;
     }
 
-
     @Override
-    public void setFirst() {}
+    public void setFirst() {
+        goRecursive(Objects.requireNonNull(players));
+    }
+
+    private void goRecursive(@NotNull List<InterfacePlayer<InterfaceCard>> players) {
+        players.forEach(player -> {
+                player.add(deck.draw());
+        });
+    }
 
     @Override
     public void addObserver(@NotNull Observer observer) {
@@ -85,12 +99,20 @@ public class FirstPlayerManager<T>
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
         if(object instanceof InterfacePlayersProvider<?> provider) {
-            players = (Donut<T>) provider.getPlayers();
+            players = (Donut<InterfacePlayer<InterfaceCard>>) provider.getPlayers();
         } else {
             throw new IllegalArgumentException(
                     "Invalid Subject type: " + object.getClass() +
                             ". InterfacePlayersProvider expected.");
         }
+    }
+
+    /**
+     * Sets the deck of this object.
+     * @param deck An InterfaceDeck object.
+     */
+    public void setDeck(@NotNull InterfaceDeck<InterfaceCard> deck) {
+        this.deck = deck;
     }
 
 }

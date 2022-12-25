@@ -25,7 +25,7 @@
 
 package juno.view.pages.new_game.single_player.match.panels.east;
 
-import juno.view.panels.AbstractSecondComponent;
+import juno.view.panels.AbstractFirstComponent;
 
 import java.awt.*;
 import java.util.Objects;
@@ -34,7 +34,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class EastPanel
-        extends AbstractSecondComponent {
+        extends AbstractFirstComponent {
 
     // The EastPanel instance.
     private static EastPanel instance;
@@ -57,19 +57,8 @@ public class EastPanel
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
 
-        // Avatar panel.
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 0.0;
-        gbc.weighty = 0.0;
-        gbc.anchor = GridBagConstraints.LINE_END;
-        gbc.insets = new Insets(0,0,0,5);
-        gbc.ipadx = 0;
-        gbc.ipady = 0;
-        this.add(Objects.requireNonNull(getFirstComponent()), gbc);
-
         // East cards panel.
-        gbc.gridx = 1;
+        gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
@@ -77,7 +66,7 @@ public class EastPanel
         gbc.insets = new Insets(0,0,0,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        this.add(Objects.requireNonNull(getSecondComponent()), gbc);
+        this.add(Objects.requireNonNull(getFirstComponent()), gbc);
     }
 
 }

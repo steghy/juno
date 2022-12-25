@@ -25,7 +25,6 @@
 
 package juno.view.panels;
 
-import juno.view.panels.AbstractFourthComponent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

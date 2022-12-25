@@ -26,6 +26,8 @@
 package juno.view.pages.new_game.single_player.match;
 
 import juno.view.pages.new_game.single_player.match.panels.east.EastPanelConfigurator;
+import juno.view.pages.new_game.single_player.match.panels.north.NorthPanelConfigurator;
+import juno.view.pages.new_game.single_player.match.panels.south.SouthPanelConfigurator;
 import juno.view.pages.new_game.single_player.match.panels.west.WestPanelConfigurator;
 
 /**
@@ -37,7 +39,10 @@ public class MatchInitializer {
     private MatchInitializer() {}
 
     public static void initialize() {
+        juno.view.pages.new_game.single_player.match.panels.center.Initializer.initialize();
+        SouthPanelConfigurator.configure();
         EastPanelConfigurator.configure();
+        NorthPanelConfigurator.configure();
         WestPanelConfigurator.configure();
         MatchPanelConfigurator.configure();
     }

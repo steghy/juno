@@ -25,7 +25,8 @@
 
 package juno.view.pages.new_game.single_player.mode.menu;
 
-import juno.controller.new_game.StartGameAction;
+import juno.controller.new_game.GameInitializer;
+import juno.controller.new_game.InitializeAction;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.PanelChanger;
 import juno.view.button.ButtonCreator;
@@ -58,7 +59,10 @@ public class MenuPanelConfigurator {
         ImageResizer.resize(stackingModeButton, 4.0);
 
         // Action listeners.
-        stackingModeButton.addActionListener(StartGameAction.getInstance());
+        stackingModeButton.addActionListener(new InitializeAction(GameInitializer.getInstance()));
+        stackingModeButton.addActionListener(new ChangePanelAction(
+                new PanelChanger(SinglePlayerCardPanel.getInstance(),
+                        SinglePlayerCardPanel.MATCH_PANEL)));
 
         // Border settings.
         RoundedBorder insideBorder = new RoundedBorder(10, 1, null, Color.WHITE);

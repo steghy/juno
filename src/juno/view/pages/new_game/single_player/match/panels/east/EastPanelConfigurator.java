@@ -51,8 +51,7 @@ public class EastPanelConfigurator {
         eastCardPanel.setOpaque(false);
 
         // Setting components.
-        eastPanel.setFirstComponent(new JLabel());   // Avatar panel.
-        eastPanel.setSecondComponent(eastCardPanel); // Cards scrollable panel.
+        eastPanel.setFirstComponent(eastCardPanel);
 
         // Main component initialization.
         eastPanel.init();

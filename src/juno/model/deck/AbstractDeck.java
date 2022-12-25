@@ -35,7 +35,7 @@ import java.util.Stack;
  * @param <T> The type of the cards.
  */
 public abstract class AbstractDeck<T>
-        extends Stack<T> {
+        extends Stack<T> implements InterfaceDeck<T> {
 
     // The Deck filler.
     private InterfaceDeckFiller<T> filler;

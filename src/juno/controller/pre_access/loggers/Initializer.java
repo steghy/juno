@@ -25,6 +25,7 @@
 
 package juno.controller.pre_access.loggers;
 
+import juno.controller.pre_access.registration.RegistrationDataSelector;
 import juno.controller.util.PanelChanger;
 import juno.model.data.avatar.AvatarFrameSetter;
 import juno.model.data.avatar.AvatarImageSetter;
@@ -47,39 +48,33 @@ public class Initializer {
         // Components.
         // Logger.
         Logger logger = Logger.getInstance();
-
         // GuestLogger.
         GuestLogger guestLogger = GuestLogger.getInstance();
-
         // AvatarSetter.
         AvatarSetter avatarSetter = AvatarSetter.getInstance();
-
         // GuestProfileNameSetter.
         GuestProfileNameSetter guestProfileNameSetter = GuestProfileNameSetter.getInstance();
-
         /////////////////////////////////////////////////////////////////////////////////
-
         // Connections.
         // AvatarSetter.
         avatarSetter.setAvatarFrame(AvatarFrame.GREY_FRAME);
         avatarSetter.setAvatarImage(AvatarImage.AVATAR_IMAGE_1);
         avatarSetter.setAvatarFrameSetter(AvatarFrameSetter.getInstance());
         avatarSetter.setAvatarImageSetter(AvatarImageSetter.getInstance());
-
         // GuestProfileNameSetter.
         guestProfileNameSetter.setGuestName(Profile.GUEST_NAME);
         guestProfileNameSetter.setNameSetter(ProfileNameSetter.getInstance());
-
         // Logger.
         logger.setPanelChanger(new PanelChanger(TopCardPanel.getInstance(), TopCardPanel.MAIN_PANEL));
         logger.setAvatarSetter(avatarSetter);
         logger.setRegistrationGoal(RegistrationGoal.getInstance());
-
         // GuestLogger.
         guestLogger.setPanelChanger(new PanelChanger(TopCardPanel.getInstance(), TopCardPanel.MAIN_PANEL));
         guestLogger.setAvatarSetter(avatarSetter);
         guestLogger.setRegistrationGoal(RegistrationGoal.getInstance());
         guestLogger.setGuestNameSetter(guestProfileNameSetter);
+        // Registration message notifier.
+        RegistrationDataSelector.getInstance().addObserver(RegistrationNotifier.getInstance());
     }
 
 }

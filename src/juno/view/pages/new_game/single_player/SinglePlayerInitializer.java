@@ -42,7 +42,6 @@ public class SinglePlayerInitializer {
     public static void initialize() {
         // Components initialization.
         DifficultyInitializer.initialize();
-        MatchInitializer.initialize();
         ModeInitializer.initialize();
         MatchInitializer.initialize();
         PlayersNumberInitializer.initialize();

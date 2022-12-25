@@ -25,7 +25,7 @@
 
 package juno.view.pages.new_game.single_player.match.panels.south;
 
-import juno.view.panels.AbstractSecondComponent;
+import juno.view.panels.AbstractFirstComponent;
 
 import java.awt.*;
 import java.util.Objects;
@@ -34,7 +34,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class SouthPanel
-        extends AbstractSecondComponent {
+        extends AbstractFirstComponent {
 
     // The SouthPanel instance.
     private static SouthPanel instance;
@@ -57,17 +57,6 @@ public class SouthPanel
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
 
-        // Avatar panel.
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        gbc.weightx = 0.0;
-        gbc.weighty = 0.0;
-        gbc.anchor = GridBagConstraints.PAGE_START;
-        gbc.insets = new Insets(0,0,0,0);
-        gbc.ipadx = 0;
-        gbc.ipady = 0;
-        this.add(Objects.requireNonNull(getFirstComponent()), gbc);
-
         // Cards panel.
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -77,7 +66,7 @@ public class SouthPanel
         gbc.insets = new Insets(0,0,0,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        this.add(Objects.requireNonNull(getSecondComponent()), gbc);
+        this.add(Objects.requireNonNull(getFirstComponent()), gbc);
     }
 
 }

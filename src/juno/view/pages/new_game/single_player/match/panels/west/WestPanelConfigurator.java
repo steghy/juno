@@ -50,8 +50,7 @@ public class WestPanelConfigurator {
         westCardPanel.setOpaque(false);
 
         // Setting components.
-        westPanel.setFirstComponent(new JLabel());   // Avatar panel.
-        westPanel.setSecondComponent(westCardPanel); // Cards scrollable panel.
+        westPanel.setFirstComponent(westCardPanel);   // Avatar panel.
 
         // Main component initialization.
         westPanel.init();

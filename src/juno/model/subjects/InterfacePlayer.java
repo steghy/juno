@@ -25,15 +25,14 @@
 
 package juno.model.subjects;
 
+import juno.model.util.InterfaceProvider;
 import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
-public interface InterfacePlayer<T>
-        extends InterfaceCardsPlayer<T>,
-                InterfaceSubject {
+public interface InterfacePlayer<T> extends InterfaceCardsPlayer<T>, InterfaceSubject, InterfaceAdder<T>, InterfaceRemover<T>, InterfaceProvider<T> {
 
     @Nullable
     T move();

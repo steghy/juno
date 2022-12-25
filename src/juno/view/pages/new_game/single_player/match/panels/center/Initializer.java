@@ -23,15 +23,20 @@
  * SOFTWARE.
  */
 
-package juno.model.deck;
+package juno.view.pages.new_game.single_player.match.panels.center;
 
 /**
  * @author Simone Gentili
  */
-@FunctionalInterface
-public interface InterfaceDeckGenerator {
+public class Initializer {
 
-    /** Generates the deck */
-    void generate();
+    // Builds an Initializer object.
+    private Initializer() {}
 
+    /** Initialize the match center panel. */
+    public static void initialize() {
+        DiscardedPilePanelConfigurator.configure();
+        CirclePanelConfigurator.configure();
+        CenterPanelConfigurator.configure();
+    }
 }

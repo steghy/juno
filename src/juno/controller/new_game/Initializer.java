@@ -25,12 +25,11 @@
 
 package juno.controller.new_game;
 
-import juno.controller.util.PanelChanger;
+import juno.model.deck.DeckFactory;
 import juno.model.subjects.ai.InterfaceDifficulty;
 import juno.model.subjects.factory.AiPlayerFactory;
 import juno.model.subjects.factory.InterfaceAiPlayerGenerator;
-import juno.view.pages.new_game.card.NewGameCardPanel;
-import juno.view.pages.new_game.single_player.card.SinglePlayerCardPanel;
+import juno.model.subjects.shift.FirstPlayerManager;
 
 /**
  * @author Simone Gentili
@@ -43,14 +42,19 @@ public class Initializer {
     @SuppressWarnings("unchecked")
     public static void initialize() {
         // Components.
-        // StartGameAction.
-        StartGameAction startGameAction = StartGameAction.getInstance();
-
+        // GameInitializer.
+        GameInitializer gameInitializer = GameInitializer.getInstance();
+        // AiCardPanelConnector.
+        AiCardPanelConnector connector = AiCardPanelConnector.getInstance();
         ////////////////////////////////////////////////////////
-
         // Connections.
-        startGameAction.setGenerator((InterfaceAiPlayerGenerator<InterfaceDifficulty>) AiPlayerFactory.getInstance());
-        startGameAction.setPanelChanger(new PanelChanger(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MATCH_PANEL));
+        // GameInitializer.
+        gameInitializer.setAiGenerator((InterfaceAiPlayerGenerator<InterfaceDifficulty>) AiPlayerFactory.getInstance());
+        gameInitializer.setDeckGenerator(DeckFactory.getInstance());
+        // StartGameAction.
+        StartGameAction.getInstance().setFirstPlayerManager(FirstPlayerManager.getInstance());
+        // AiCardPanelConnector.
+        AiPlayerFactory.getInstance().addObserver(connector);
     }
 
 }

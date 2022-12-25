@@ -30,6 +30,9 @@ import juno.controller.pre_access.ConfigurationFilesFactory;
 import juno.init.initializer.ControllerInitializer;
 import juno.init.initializer.ModelInitializer;
 import juno.init.initializer.ViewInitializer;
+import juno.model.card.InterfaceCard;
+import juno.model.deck.Deck;
+import juno.model.deck.DiscardedPile;
 import juno.model.requester.ProgramDirectory;
 import juno.model.requester.GitHubRepositorySetter;
 import juno.model.sound.AudioPlayer;
@@ -39,6 +42,7 @@ import juno.view.pages.options.menu.MenuPanel;
 import javax.swing.*;
 import java.io.File;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
 
@@ -74,6 +78,7 @@ public class Main {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "An unknown error has occurred. " +
                     "Consult the program logs for more information.");
+            System.exit(1);
         }
     }
 }

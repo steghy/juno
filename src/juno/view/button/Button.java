@@ -78,6 +78,8 @@ public enum Button
     COVER_TO_SOUTH(true),
     COVER_TO_EAST(true),
     COVER_TO_WEST(true),
+    CIRCLE(true),
+    INVERTED_CIRCLE(true),
 
     // MULTIPLAYER //
     UNAVAILABLE_SERVICE(true),

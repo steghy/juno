@@ -25,9 +25,11 @@
 
 package juno.model.deck;
 
+import juno.model.util.InterfaceProvider;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,15 +48,18 @@ import java.util.Stack;
  */
 public class DiscardedPile<T>
         extends Stack<T>
-        implements InterfaceDiscardedPile<T>, Observable {
+        implements InterfaceDiscardedPile<T>, InterfaceProvider<T>, Observable {
 
-    /* The Observers List */
+    // The last inserted card.
+    private T card;
+
+    // The Observers List.
     private final List<Observer> observerList;
 
-    /* The DiscardedPile instance. */
+    // The DiscardedPile instance.
     private static DiscardedPile<?> instance;
 
-    /* Builds the DiscardedPile instance. */
+    // Builds the DiscardedPile instance.
     private DiscardedPile() {
         observerList = new ArrayList<>();
     }
@@ -71,7 +76,13 @@ public class DiscardedPile<T>
     @Override
     public void discard(@NotNull T card) {
         push(card);
+        this.card = card;
         updateAll();
+    }
+
+    @Override @Nullable
+    public T provide() {
+        return card;
     }
 
     @Override

@@ -23,6 +23,41 @@
  * SOFTWARE.
  */
 
-package juno.controller.new_game;
+package juno.controller.pre_access.loggers;
 
-public abstract class AbstractStartGameAction {}
+import juno.controller.pre_access.registration.InterfaceRegistrationDataSelector;
+import juno.model.util.Observer;
+
+import javax.swing.*;
+
+/**
+ * @author Simone Gentili
+ */
+public class RegistrationNotifier
+        implements Observer {
+
+    // The RegistrationNotifier instance.
+    private static RegistrationNotifier instance;
+
+    // Builds the RegistrationNotifier.
+    private RegistrationNotifier() {}
+
+    public static RegistrationNotifier getInstance() {
+        if(instance == null) instance = new RegistrationNotifier();
+        return instance;
+    }
+
+    public void notifyRegistrationMessage() {
+        JOptionPane.showMessageDialog(null, "Thank you for the registration.");
+    }
+
+    @Override
+    public void update(Object object) {
+        if(object instanceof InterfaceRegistrationDataSelector) {
+            notifyRegistrationMessage();
+        } else throw new IllegalArgumentException(
+                "Invalid object type: " + object.getClass() +
+                        ". InterfaceRegistrationDataSelector type expected.");
+    }
+
+}
