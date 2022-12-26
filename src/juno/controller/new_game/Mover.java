@@ -26,94 +26,78 @@
 package juno.controller.new_game;
 
 import juno.model.card.InterfaceCard;
-import juno.model.deck.InterfaceDeck;
+import juno.model.deck.Deck;
+import juno.model.deck.DiscardedPile;
 import juno.model.subjects.InterfacePlayer;
+import juno.model.subjects.shift.PlayersProvider;
+import juno.model.subjects.shift.TurnMover;
 import juno.model.util.AbstractObservable;
-import juno.model.util.InterfaceProvider;
+import juno.model.util.Donut;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
+import java.util.Objects;
 
-/**
- * @author Simone Gentili
- */
-public class CardDispenser
+public class Mover
         extends AbstractObservable
         implements ActionListener, Observer {
-
-    // The deck.
-    private InterfaceDeck<InterfaceCard> deck;
-
-    // The players.
-    private List<InterfacePlayer<InterfaceCard>> players;
-
-    // The players size.
-    private int size;
-
-    // The players size copy.
-    private int copy;
 
     // The timer.
     private final Timer timer;
 
-    // The CardDispenser instance.
-    private static CardDispenser instance;
+    // The Mover instance.
+    private static Mover instance;
 
-    // Builds the CardDispenser instance.
-    private CardDispenser() {
-        timer = new Timer(500, this);
+    // Builds the Mover instance.
+    private Mover() {
+        timer = new Timer(1000, this);
     }
 
     /**
-     * Returns the CardDispenser instance.
-     * @return The CardDispenser instance.
+     * Returns the Mover instance.
+     * @return The Mover instance.
      */
-    public static CardDispenser getInstance() {
-        if(instance == null) instance = new CardDispenser();
+    public static Mover getInstance() {
+        if(instance == null) instance = new Mover();
         return instance;
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public void actionPerformed(ActionEvent e) {
-        size--;
-        if(size < 0) {
-            timer.stop();
-            size = copy;
-            updateAll();
+        // Players provider.
+        PlayersProvider<InterfacePlayer<InterfaceCard>> provider =
+                (PlayersProvider<InterfacePlayer<InterfaceCard>>) PlayersProvider.getInstance();
+        // The players.
+        Donut<InterfacePlayer<InterfaceCard>> players = provider.provide();
+        // The current player.
+        InterfacePlayer<InterfaceCard> current = Objects.requireNonNull(players).current();
+        // The deck.
+        Deck<InterfaceCard> deck = (Deck<InterfaceCard>) Deck.getInstance();
+        // The discarded pile.
+        DiscardedPile<InterfaceCard> discardedPile = (DiscardedPile<InterfaceCard>) DiscardedPile.getInstance();
+        if(!(current == provider.getPlayer())) {
+            InterfaceCard card = current.move();
+            if(card == null)
+                current.add(deck.draw());
+            else {
+                discardedPile.discard(card);
+                current.remove(card);
+            }
+            TurnMover.getInstance().next();
         } else {
-            for(int i = 0; i < 7; i++)
-                players.get(size).add(deck.draw());
+            timer.stop();
+            updateAll();
         }
-    }
-
-    /**
-     * Sets the deck of this object.
-     * @param deck An InterfaceDeck object.
-     */
-    public void setDeck(@NotNull InterfaceDeck<InterfaceCard> deck) {
-        this.deck = deck;
-    }
-
-    /**
-     * Returns the timer of this object.
-     * @return A Timer object.
-     */
-    public Timer getTimer() {
-        return timer;
     }
 
     @Override
-    @SuppressWarnings("unchecked")
-    public void update(Object object) {
-        if(object instanceof InterfaceProvider<?> provider) {
-            players = (List<InterfacePlayer<InterfaceCard>>) provider.provide();
-            size = players.size();
-            copy = size;
-        }
+    public void update(@NotNull Object object) {
+        if(object instanceof ActionListener)
+            timer.start();
     }
 
 }

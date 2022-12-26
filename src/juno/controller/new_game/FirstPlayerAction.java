@@ -41,9 +41,9 @@ import java.util.List;
 /**
  * @author Simone Gentili
  */
-public class CardDispenser
+public class FirstPlayerAction
         extends AbstractObservable
-        implements ActionListener, Observer {
+        implements ActionListener, Observer, InterfaceProvider<List<InterfacePlayer<InterfaceCard>>> {
 
     // The deck.
     private InterfaceDeck<InterfaceCard> deck;
@@ -61,10 +61,10 @@ public class CardDispenser
     private final Timer timer;
 
     // The CardDispenser instance.
-    private static CardDispenser instance;
+    private static FirstPlayerAction instance;
 
     // Builds the CardDispenser instance.
-    private CardDispenser() {
+    private FirstPlayerAction() {
         timer = new Timer(500, this);
     }
 
@@ -72,8 +72,8 @@ public class CardDispenser
      * Returns the CardDispenser instance.
      * @return The CardDispenser instance.
      */
-    public static CardDispenser getInstance() {
-        if(instance == null) instance = new CardDispenser();
+    public static FirstPlayerAction getInstance() {
+        if(instance == null) instance = new FirstPlayerAction();
         return instance;
     }
 
@@ -85,9 +85,25 @@ public class CardDispenser
             size = copy;
             updateAll();
         } else {
-            for(int i = 0; i < 7; i++)
-                players.get(size).add(deck.draw());
+            players.get(size).add(deck.draw());
         }
+    }
+
+    @Override
+    public List<InterfacePlayer<InterfaceCard>> provide() {
+        return players;
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public void update(@NotNull Object object) {
+        if(object instanceof InterfaceProvider<?> provider) {
+            players = (List<InterfacePlayer<InterfaceCard>>) provider.provide();
+            size = players.size();
+            copy = size;
+        } else throw new IllegalArgumentException(
+                "Invalid object type: " + object.getClass() +
+                        ". InterfacePlayersProvider type expected.");
     }
 
     /**
@@ -106,14 +122,14 @@ public class CardDispenser
         return timer;
     }
 
-    @Override
-    @SuppressWarnings("unchecked")
-    public void update(Object object) {
-        if(object instanceof InterfaceProvider<?> provider) {
-            players = (List<InterfacePlayer<InterfaceCard>>) provider.provide();
-            size = players.size();
-            copy = size;
-        }
+    /**
+     * Sets the players list of this object.
+     * @param players A List object.
+     */
+    public void setPlayers(@NotNull List<InterfacePlayer<InterfaceCard>> players) {
+        this.players = players;
+        this.size = players.size();
+        copy = size;
     }
 
 }

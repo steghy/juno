@@ -61,6 +61,9 @@ public class Examiner<T>
         List<T> compatibleCards = Objects.requireNonNull(getItemsProvider())
                 .getCompatibleCards(cards);
 
+        // Empty compatible cards case.
+        if(compatibleCards.size() == 0) return null;
+
         // Easy difficulty case.
         if(difficulty.isEasy())   return Objects.requireNonNull(getEasyExaminer())
                 .response(compatibleCards);
@@ -70,7 +73,7 @@ public class Examiner<T>
                 .response(compatibleCards);
 
         // Hard difficulty case.
-        else                      return Objects.requireNonNull(getHardExaminer())
+        else return Objects.requireNonNull(getHardExaminer())
                 .response(compatibleCards);
     }
 

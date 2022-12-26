@@ -35,6 +35,6 @@ import org.jetbrains.annotations.Nullable;
 public abstract class AbstractPlayersMaintainer<T> {
 
     @Nullable
-    public Donut<T> players;
+    Donut<T> players;
 
 }

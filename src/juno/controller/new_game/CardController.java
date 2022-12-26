@@ -25,13 +25,61 @@
 
 package juno.controller.new_game;
 
-public class CardController {
+import juno.model.card.InterfaceCard;
+import juno.model.subjects.InterfacePlayer;
+import juno.model.util.AbstractObservable;
+import juno.model.util.InterfaceGenerator;
+import juno.model.util.InterfaceProvider;
+import juno.model.util.Observer;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+/**
+ * @author Simone Gentili
+ */
+public class CardController
+        extends AbstractObservable
+        implements
+        Observer,
+        InterfaceProvider<List<InterfacePlayer<InterfaceCard>>>,
+        InterfaceGenerator {
+
+    // The players.
+    private List<InterfacePlayer<InterfaceCard>> players;
+
+    // The CardController instance.
+    private static CardController instance;
 
     // Builds a CardController.
     private CardController() {}
 
-    public void controll() {
+    /**
+     * Returns the CardController instance.
+     * @return The CardController instance.
+     */
+    public static CardController getInstance() {
+        if(instance == null) instance = new CardController();
+        return instance;
+    }
 
+    @Override
+    public List<InterfacePlayer<InterfaceCard>> provide() {
+        return players;
+    }
+
+    @Override
+    public void generate() {
+        Map<InterfacePlayer<InterfaceCard>, InterfaceCard> map =
+                players.stream().collect(Collectors.toMap(player -> player, InterfaceProvider::provide));
+    }
+
+    @Override @SuppressWarnings("unchecked")
+    public void update(Object object) {
+        if(object instanceof InterfaceProvider<?> provider) {
+            players = (List<InterfacePlayer<InterfaceCard>>) provider.provide();
+            generate();
+        } else throw new IllegalArgumentException();
     }
 
 }

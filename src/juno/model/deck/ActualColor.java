@@ -25,8 +25,11 @@
 
 package juno.model.deck;
 
+import juno.model.card.InterfaceCard;
 import juno.model.card.colors.InterfaceColor;
 import juno.model.util.AbstractObservable;
+import juno.model.util.InterfaceProvider;
+import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -35,7 +38,7 @@ import org.jetbrains.annotations.Nullable;
  */
 public class ActualColor
         extends AbstractObservable
-        implements InterfaceActualColor<InterfaceColor> {
+        implements InterfaceActualColor<InterfaceColor>, Observer {
 
     // The actual color.
     private InterfaceColor color;
@@ -64,6 +67,22 @@ public class ActualColor
     @Override @Nullable
     public InterfaceColor provide() {
         return color;
+    }
+
+    @Override
+    public void update(@NotNull Object object) {
+        if(object instanceof InterfaceProvider<?> provider) {
+            Object temp = provider.provide();
+            if(temp instanceof InterfaceCard card) {
+                if(card.color() != null)
+                    set(card.color());
+            } else throw new IllegalArgumentException(
+                    "Invalid object type: " + temp.getClass() +
+                            ". InterfaceCard type expected.");
+        } else throw new IllegalArgumentException(
+                "Invalid object type: " + object.getClass() +
+                        ". InterfaceProvider type expected");
+
     }
 
 }

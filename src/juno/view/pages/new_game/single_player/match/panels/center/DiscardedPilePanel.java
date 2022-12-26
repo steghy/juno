@@ -25,6 +25,7 @@
 
 package juno.view.pages.new_game.single_player.match.panels.center;
 
+import juno.controller.log_out.Restorable;
 import juno.controller.util.InterfaceInitializer;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.InterfaceDiscardedPile;
@@ -95,7 +96,7 @@ public class DiscardedPilePanel
             removeAll();
             ImageResizer.resize(gCard, 1.5);
             add(gCard, BorderLayout.CENTER);
-        } else if(object instanceof InterfaceInitializer) {
+        } else if(object instanceof Restorable) {
             removeAll();
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +

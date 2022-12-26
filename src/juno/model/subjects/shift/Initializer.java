@@ -28,7 +28,8 @@ package juno.model.subjects.shift;
 import juno.controller.util.InterfaceInitializer;
 import juno.model.card.InterfaceCard;
 import juno.model.subjects.InterfacePlayer;
-import juno.model.subjects.players.PlayersProvider;
+import juno.model.subjects.factory.AiPlayerFactory;
+import juno.model.subjects.human.HumanPlayer;
 
 /**
  * @author Simone Gentili
@@ -57,6 +58,8 @@ public class Initializer
         // Observer / Observable.
         PlayersProvider<InterfacePlayer<InterfaceCard>> playersProvider =
                 (PlayersProvider<InterfacePlayer<InterfaceCard>>) PlayersProvider.getInstance();
+        playersProvider.setPlayer((InterfacePlayer<InterfaceCard>) HumanPlayer.getInstance());
+        AiPlayerFactory.getInstance().addObserver(playersProvider);
         playersProvider.addObserver(Inverter.getInstance());
         playersProvider.addObserver(TurnJumper.getInstance());
         playersProvider.addObserver(TurnMover.getInstance());

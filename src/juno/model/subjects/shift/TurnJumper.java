@@ -25,8 +25,8 @@
 
 package juno.model.subjects.shift;
 
-import juno.model.subjects.players.InterfacePlayersProvider;
 import juno.model.util.Donut;
+import juno.model.util.InterfaceProvider;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
@@ -88,10 +88,10 @@ public class TurnJumper<T>
     @Override
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof InterfacePlayersProvider<?> provider)
-            players = (Donut<T>) provider.getPlayers();
+        if(object instanceof InterfaceProvider<?> provider)
+            players = (Donut<T>) provider.provide();
         else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
-                        ". InterfacePlayersProvider type expected.");
+                        ". InterfaceProvider type expected.");
     }
 }

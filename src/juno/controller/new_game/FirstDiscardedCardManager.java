@@ -25,52 +25,49 @@
 
 package juno.controller.new_game;
 
-import juno.controller.util.InterfaceInitializer;
-import juno.model.subjects.InterfacePlayer;
-import juno.model.subjects.shift.PlayersProvider;
-import juno.model.util.Donut;
+import juno.model.card.InterfaceCard;
+import juno.model.deck.Deck;
+import juno.model.deck.DiscardedPile;
 import juno.model.util.Observer;
 
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Objects;
 
 /**
  * @author Simone Gentili
  */
-public class StartGameAction
-        implements ActionListener, Observer {
+public class FirstDiscardedCardManager
+        implements Observer {
 
-    // The StartGameAction instance.
-    private static StartGameAction instance;
+    // The FirstDiscardedCardManager instance.
+    private static FirstDiscardedCardManager instance;
 
-    // Builds the StartGameAction instance.
-    private StartGameAction() {}
+    // The FirstDiscardedCardManager instance.
+    private FirstDiscardedCardManager() {}
 
     /**
-     * Builds the StartGameAction instance.
-     * @return The StartGameAction instance.
+     * Returns the FirstDiscardedCardManager instance.
+     * @return The FirstDiscardedCardManager instance.
      */
-    public static StartGameAction getInstance() {
-        if(instance == null) instance = new StartGameAction();
+    public static FirstDiscardedCardManager getInstance() {
+        if(instance == null) instance = new FirstDiscardedCardManager();
         return instance;
     }
 
-    @Override
     @SuppressWarnings("unchecked")
-    public void actionPerformed(ActionEvent e) {
-        CardDispenser.getInstance().getTimer().start();
-        Donut<InterfacePlayer<?>> players = (Donut<InterfacePlayer<?>>) PlayersProvider.getInstance().provide();
-        Objects.requireNonNull(players).initialize(0);
+    public void discardFirstCard() {
+        Deck<InterfaceCard> deck = (Deck<InterfaceCard>) Deck.getInstance();
+        DiscardedPile<InterfaceCard> discardedPile = (DiscardedPile<InterfaceCard>) DiscardedPile.getInstance();
+        InterfaceCard card = deck.draw();
+        while(card.color() == null) {
+            deck.add(0, card);
+            card = deck.draw();
+        } discardedPile.discard(card);
     }
 
     @Override
     public void update(Object object) {
-        if(object instanceof InterfaceInitializer) {
-            actionPerformed(null);
-        } else throw new IllegalArgumentException(
-                "Invalid object type: " + object.getClass() +
-                        ". InterfaceInitializer type expected.");
+        if(object instanceof ActionListener)
+            discardFirstCard();
     }
 
 }

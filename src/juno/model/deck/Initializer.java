@@ -89,6 +89,7 @@ public class Initializer {
         deckFactory.addObserver(deck);
         deckFactory.addObserver(GCardFactory.getInstance());
         gameInitializer.addObserver(discardedPile);
+        discardedPile.addObserver(actualColor);
     }
 
 }

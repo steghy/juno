@@ -23,21 +23,37 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.players;
+package juno.model.subjects.shift;
 
-import juno.model.util.Donut;
+import juno.model.subjects.shift.AbstractPlayersMaintainer;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the cards.
+ * @param <T> The type of the player
  */
-@FunctionalInterface
-public interface InterfacePlayersProvider<T> {
+public abstract class AbstractPlayersProvider<T>
+        extends AbstractPlayersMaintainer<T> {
+
+    // The human players.
+    private T player;
 
     /**
-     *
-     * @return A Donut object.
+     * Sets the human player of this object.
+     * @param player An object.
      */
-    Donut<T> getPlayers();
+    public void setPlayer(@NotNull T player) {
+        this.player = player;
+    }
+
+    /**
+     * Returns the human player of this object.
+     * @return An object.
+     */
+    @Nullable
+    public T getPlayer() {
+        return player;
+    }
 
 }

@@ -72,9 +72,9 @@ public class MatchPanel
             if(size >= 1)
                 add(Objects.requireNonNull(getThirdComponent()), BorderLayout.NORTH);
             if(size >= 2)
-                add(Objects.requireNonNull(getSecondComponent()), BorderLayout.EAST);
+                add(Objects.requireNonNull(getSecondComponent()), BorderLayout.WEST);
             if(size == 3) {
-                add(Objects.requireNonNull(getFourthComponent()), BorderLayout.WEST);
+                add(Objects.requireNonNull(getFourthComponent()), BorderLayout.EAST);
             }
             revalidate();
             repaint();

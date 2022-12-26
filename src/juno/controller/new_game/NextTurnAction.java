@@ -38,7 +38,7 @@ public class NextTurnAction
         implements ActionListener {
 
     // The turn mover.
-    private InterfaceTurnMover turnMover;
+    private final InterfaceTurnMover turnMover;
 
     /**
      * Builds a NextTurnAction with the

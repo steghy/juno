@@ -62,40 +62,40 @@ public class MenuPanel
         gbc.gridy = 0;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-        gbc.insets = new Insets(0,20,0,0);
+        gbc.insets = new Insets(0,0,20,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.CENTER;
         this.add(Objects.requireNonNull(getFirstComponent()), gbc);
 
         // Medium difficulty button.
-        gbc.gridx = 1;
-        gbc.gridy = 0;
+        gbc.gridx = 0;
+        gbc.gridy = 1;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-        gbc.insets = new Insets(0,20,0,0);
+        gbc.insets = new Insets(0,0,20,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.CENTER;
         this.add(Objects.requireNonNull(getSecondComponent()), gbc);
 
         // Hard difficulty button.
-        gbc.gridx = 2;
-        gbc.gridy = 0;
+        gbc.gridx = 0;
+        gbc.gridy = 2;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-        gbc.insets = new Insets(0,0,0,0);
+        gbc.insets = new Insets(0,0,20,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.CENTER;
         this.add(Objects.requireNonNull(getThirdComponent()), gbc);
 
         // Back button.
-        gbc.gridx = 1;
-        gbc.gridy = 1;
+        gbc.gridx = 0;
+        gbc.gridy = 3;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-        gbc.insets = new Insets(20,0,0,0);
+        gbc.insets = new Insets(0,0,20,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.CENTER;

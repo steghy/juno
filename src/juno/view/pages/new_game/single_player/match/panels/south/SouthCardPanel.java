@@ -25,6 +25,7 @@
 
 package juno.view.pages.new_game.single_player.match.panels.south;
 
+import juno.controller.new_game.Mover;
 import juno.controller.util.InterfaceInitializer;
 import juno.model.card.InterfaceCard;
 import juno.model.subjects.InterfaceAdder;
@@ -94,6 +95,8 @@ public class SouthCardPanel
             remove(gCard);
         } else if(object instanceof InterfaceInitializer) {
             removeAll();
+        } else if(object instanceof Mover) {
+            
         } else throw new IllegalArgumentException(
                     "Invalid object type: " + object.getClass() +
                             ". InterfaceAdder, InterfaceRemover " +

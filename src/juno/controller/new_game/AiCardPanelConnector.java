@@ -64,12 +64,15 @@ public class AiCardPanelConnector
         if(object instanceof InterfaceAiPlayerGenerator<?>) {
             List<? extends InterfacePlayer<?>> aiList = AiPlayerFactory.getInstance().getObjects();
             Objects.requireNonNull(aiList);
-            if(aiList.size() > 0) {
-                ((AI<?>) aiList.get(0)).addObserver(EastCardPanel.getInstance());
-            } if(aiList.size() > 1) {
+            if(aiList.size() == 1) {
+                ((AI<?>) aiList.get(0)).addObserver(NorthCardPanel.getInstance());
+            } else if(aiList.size() == 2) {
+                ((AI<?>) aiList.get(0)).addObserver(WestCardPanel.getInstance());
                 ((AI<?>) aiList.get(1)).addObserver(NorthCardPanel.getInstance());
-            } if(aiList.size() > 2) {
-                ((AI<?>) aiList.get(2)).addObserver(WestCardPanel.getInstance());
+            } else if(aiList.size() == 3) {
+                ((AI<?>) aiList.get(0)).addObserver(WestCardPanel.getInstance());
+                ((AI<?>) aiList.get(1)).addObserver(NorthCardPanel.getInstance());
+                ((AI<?>) aiList.get(2)).addObserver(EastCardPanel.getInstance());
             }
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +

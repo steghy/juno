@@ -25,7 +25,6 @@
 
 package juno.view.pages.new_game.single_player.match.panels.center;
 
-import juno.controller.new_game.GameInitializer;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.DiscardedPile;
 import juno.model.util.InterfaceProvider;
@@ -51,7 +50,6 @@ public class DiscardedPilePanelConfigurator {
 
         // Observer / Observable.
         DiscardedPile.getInstance().addObserver(discardedPilePanel);
-        GameInitializer.getInstance().addObserver(discardedPilePanel);
     }
 
 }

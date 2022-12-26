@@ -23,14 +23,9 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.players;
+package juno.model.subjects.shift;
 
-import juno.model.card.InterfaceCard;
-import juno.model.subjects.human.HumanPlayer;
-import juno.model.util.Donut;
-import juno.model.util.InterfaceFactory;
-import juno.model.util.Observable;
-import juno.model.util.Observer;
+import juno.model.util.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -45,7 +40,7 @@ import java.util.Objects;
  */
 public class PlayersProvider<T>
         extends AbstractPlayersProvider<T>
-        implements InterfacePlayersProvider<T>, Observable, Observer {
+        implements InterfaceProvider<Donut<T>>, Observable, Observer {
 
     // The Observers List.
     private final List<Observer> observerList;
@@ -68,7 +63,7 @@ public class PlayersProvider<T>
     }
 
     @Override @Nullable
-    public Donut<T> getPlayers() {
+    public Donut<T> provide() {
         return players;
     }
 

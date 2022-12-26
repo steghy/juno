@@ -46,7 +46,7 @@ public class ActualColorPanel
 
     // Builds the ActualColorPanel instance.
     private ActualColorPanel() {
-        setOpaque(false);
+        setOpaque(true);
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(75, 75));
     }
@@ -65,22 +65,20 @@ public class ActualColorPanel
         if(object instanceof InterfaceActualColor<?> actualColor) {
             Object temp = actualColor.provide();
             if(temp instanceof InterfaceColor color) {
-                setOpaque(true);
                 if(color.isRed()) setBackground(Color.RED);
                 else if(color.isBlue()) setBackground(Color.BLUE);
                 else if(color.isGreen()) setBackground(Color.GREEN);
                 else if(color.isYellow()) setBackground(Color.YELLOW);
-                revalidate();
-                repaint();
             } else throw new IllegalArgumentException(
                     "Invalid object type: " + temp.getClass() +
                             ". InterfaceColor type expected.");
         } else if(object instanceof InterfaceInitializer) {
-            // setOpaque(false);
-            // setBackground(null);
+            setBackground(Color.lightGray);
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceActualColor expected.");
+        revalidate();
+        repaint();
     }
 
 }

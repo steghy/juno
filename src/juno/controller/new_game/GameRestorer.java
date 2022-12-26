@@ -23,37 +23,17 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.players;
+package juno.controller.new_game;
 
-import juno.model.subjects.shift.AbstractPlayersMaintainer;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+public class GameRestorer {
 
-/**
- * @author Simone Gentili
- * @param <T> The type of the player
- */
-public abstract class AbstractPlayersProvider<T>
-        extends AbstractPlayersMaintainer<T> {
+    private static GameRestorer instance;
 
-    // The human players.
-    private T player;
+    private GameRestorer() {}
 
-    /**
-     * Sets the human player of this object.
-     * @param player An object.
-     */
-    public void setPlayer(@NotNull T player) {
-        this.player = player;
-    }
-
-    /**
-     * Returns the human player of this object.
-     * @return An object.
-     */
-    @Nullable
-    public T getPlayer() {
-        return player;
+    public static GameRestorer getInstance() {
+        if(instance == null) instance = new GameRestorer();
+        return instance;
     }
 
 }

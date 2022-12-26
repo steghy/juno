@@ -49,9 +49,9 @@ public class MatchPanelConfigurator {
 
         // Setting components.
         matchPanel.setFirstComponent(SouthPanel.getInstance());  // South panel
-        matchPanel.setSecondComponent(EastPanel.getInstance());  // East panel.
+        matchPanel.setSecondComponent(WestPanel.getInstance());  // East panel.
         matchPanel.setThirdComponent(NorthPanel.getInstance());  // North panel.
-        matchPanel.setFourthComponent(WestPanel.getInstance());  // West panel.
+        matchPanel.setFourthComponent(EastPanel.getInstance());  // West panel.
         matchPanel.setFifthComponent(CenterPanel.getInstance()); // Center panel.
 
 

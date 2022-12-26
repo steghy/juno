@@ -65,7 +65,7 @@ public class DeckPanel
     @Override
     public void update(@NotNull Object object) {
         if(object instanceof InterfaceInitializer) {
-            setEnabled(false);
+            Objects.requireNonNull(getFirstComponent()).setEnabled(false);
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + getInstance() +
                         ". InterfaceInitializer type expected.");
