@@ -28,8 +28,7 @@ package juno.view.pages.new_game.single_player.match.panels.south;
 import juno.controller.new_game.Mover;
 import juno.controller.util.InterfaceInitializer;
 import juno.model.card.InterfaceCard;
-import juno.model.subjects.InterfaceAdder;
-import juno.model.subjects.InterfaceRemover;
+import juno.model.subjects.human.HumanPlayer;
 import juno.model.util.InterfaceProvider;
 import juno.model.util.Observer;
 import juno.view.gobject.cards.GCard;
@@ -82,17 +81,19 @@ public class SouthCardPanel
 
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceAdder<?>) {
-            InterfaceCard card = provider.provide();
-            GCard<InterfaceCard> gCard = (GCard<InterfaceCard>)
-                    Objects.requireNonNull(GCardMapFactory.getInstance().getGObjectsMap()).get(card);
-            ImageResizer.resize(gCard, 2.5);
-            add(gCard);
-        } else if(object instanceof InterfaceRemover<?>) {
-            InterfaceCard card = provider.provide();
-            GCard<InterfaceCard> gCard = (GCard<InterfaceCard>)
-                    Objects.requireNonNull(GCardMapFactory.getInstance().getGObjectsMap()).get(card);
-            remove(gCard);
+        if(object instanceof HumanPlayer<?> humanPlayer) {
+            if(humanPlayer.isRemoved()) {
+                InterfaceCard card = provider.provide();
+                GCard<InterfaceCard> gCard = (GCard<InterfaceCard>)
+                        Objects.requireNonNull(GCardMapFactory.getInstance().getGObjectsMap()).get(card);
+                remove(gCard);
+            } else {
+                InterfaceCard card = provider.provide();
+                GCard<InterfaceCard> gCard = (GCard<InterfaceCard>)
+                        Objects.requireNonNull(GCardMapFactory.getInstance().getGObjectsMap()).get(card);
+                ImageResizer.resize(gCard, 2.5);
+                add(gCard);
+            }
         } else if(object instanceof InterfaceInitializer) {
             removeAll();
         } else if(object instanceof Mover) {

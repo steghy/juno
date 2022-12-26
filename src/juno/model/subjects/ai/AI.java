@@ -37,6 +37,8 @@ import org.jetbrains.annotations.Nullable;
 public class AI<T>
         extends AbstractPlayer<T> {
 
+    private boolean cardRemoved;
+
     // The latest card involved.
     private T card;
 
@@ -77,6 +79,7 @@ public class AI<T>
     public void add(@NotNull T card) {
         cards().add(card);
         this.card = card;
+        cardRemoved = false;
         updateAll();
     }
 
@@ -86,12 +89,17 @@ public class AI<T>
         if(!result) throw new IllegalArgumentException(
                 "The card " + card + " is not in: " + cards());
         this.card = card;
+        cardRemoved = true;
         updateAll();
     }
 
     @Override @Nullable
     public T provide() {
         return card;
+    }
+
+    public boolean getRemoved() {
+        return cardRemoved;
     }
 
 }
