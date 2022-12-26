@@ -25,11 +25,14 @@
 
 package juno.controller.new_game;
 
+import juno.model.card.InterfaceCard;
+import juno.model.deck.Deck;
 import juno.model.deck.DeckFactory;
+import juno.model.deck.InterfaceDeck;
 import juno.model.subjects.ai.InterfaceDifficulty;
 import juno.model.subjects.factory.AiPlayerFactory;
 import juno.model.subjects.factory.InterfaceAiPlayerGenerator;
-import juno.model.subjects.shift.FirstPlayerManager;
+import juno.model.subjects.players.PlayersProvider;
 
 /**
  * @author Simone Gentili
@@ -44,17 +47,27 @@ public class Initializer {
         // Components.
         // GameInitializer.
         GameInitializer gameInitializer = GameInitializer.getInstance();
+
         // AiCardPanelConnector.
         AiCardPanelConnector connector = AiCardPanelConnector.getInstance();
-        ////////////////////////////////////////////////////////
-        // Connections.
+
+        // CardDispenser.
+        CardDispenser cardDispenser = CardDispenser.getInstance();
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        // Connections
         // GameInitializer.
         gameInitializer.setAiGenerator((InterfaceAiPlayerGenerator<InterfaceDifficulty>) AiPlayerFactory.getInstance());
         gameInitializer.setDeckGenerator(DeckFactory.getInstance());
-        // StartGameAction.
-        StartGameAction.getInstance().setFirstPlayerManager(FirstPlayerManager.getInstance());
-        // AiCardPanelConnector.
+
+        // CardDispenser.
+        cardDispenser.setDeck((InterfaceDeck<InterfaceCard>) Deck.getInstance());
+
+        // Observer / Observable.
         AiPlayerFactory.getInstance().addObserver(connector);
+        PlayersProvider.getInstance().addObserver(CardDispenser.getInstance());
+        gameInitializer.addObserver(StartGameAction.getInstance());
     }
 
 }

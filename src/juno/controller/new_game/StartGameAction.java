@@ -25,10 +25,11 @@
 
 package juno.controller.new_game;
 
-import juno.model.subjects.shift.InterfaceFirstPlayerManager;
-import org.jetbrains.annotations.NotNull;
+import juno.controller.util.InterfaceInitializer;
+import juno.model.card.colors.Color;
+import juno.model.deck.ActualColor;
+import juno.model.util.Observer;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -36,9 +37,7 @@ import java.awt.event.ActionListener;
  * @author Simone Gentili
  */
 public class StartGameAction
-        implements ActionListener {
-
-    private InterfaceFirstPlayerManager firstPlayerManager;
+        implements ActionListener, Observer {
 
     // The StartGameAction instance.
     private static StartGameAction instance;
@@ -56,14 +55,21 @@ public class StartGameAction
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {}
+    public void actionPerformed(ActionEvent e) {
+        CardDispenser cardDispenser = CardDispenser.getInstance();
+        cardDispenser.setCardsToDraw(1);
+        cardDispenser.getTimer().start();
+        // ((AbstractButton) e.getSource()).setEnabled(false);
+        ActualColor.getInstance().set(Color.RED);
+    }
 
-    /**
-     * Sets the first player manager of this object.
-     * @param firstPlayerManager An InterfaceFirstPlayerManager object.
-     */
-    public void setFirstPlayerManager(@NotNull InterfaceFirstPlayerManager firstPlayerManager) {
-        this.firstPlayerManager = firstPlayerManager;
+    @Override
+    public void update(Object object) {
+        if(object instanceof InterfaceInitializer) {
+            actionPerformed(null);
+        } else throw new IllegalArgumentException(
+                "Invalid object type: " + object.getClass() +
+                        ". InterfaceInitializer type expected.");
     }
 
 }

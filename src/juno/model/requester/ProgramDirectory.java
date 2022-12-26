@@ -53,13 +53,26 @@ public enum ProgramDirectory
 
 	// Data -> Images.
 	IMAGES(DATA, "images"),
+
+	// Images -> Gifs.
 	GIFS(IMAGES, "gifs"),
+
+	// Images -> Logos.
 	LOGOS(IMAGES, "logos"),
+
+	// Images -> Backgrounds.
 	BACKGROUNDS(IMAGES, "backgrounds"),
+
+	// Images -> Buttons.
 	BUTTONS(IMAGES, "buttons"),
 
 	// Images -> Cards.
 	CARDS(IMAGES, "cards"),
+
+	// Images -> Colors.
+	COLORS(IMAGES, "colors"),
+
+	// Cards -> Cover and cards.
 	COVER(CARDS, "cover"),
 	RED_CARDS(CARDS, "red"),
 	BLUE_CARDS(CARDS, "blue"),

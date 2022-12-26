@@ -25,6 +25,7 @@
 
 package juno.view.pages.new_game.single_player.match.panels.center;
 
+import juno.controller.util.InterfaceInitializer;
 import juno.model.subjects.shift.InterfaceInverter;
 import juno.model.util.Observer;
 import juno.view.panels.AbstractSecondComponent;
@@ -78,11 +79,15 @@ public class CirclePanel
             } else {
                 add(getSecondComponent());
                 inverted = true;
-            } revalidate();
-            repaint();
+            }
+        } else if(object instanceof InterfaceInitializer) {
+            removeAll();
+            add(getFirstComponent());
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
-                        ". InterfaceInverter type expected.");
+                        ". InterfaceInverter or InterfaceInitializer type expected.");
+        revalidate();
+        repaint();
     }
 
 }

@@ -25,21 +25,6 @@
 
 package juno.view.pages.new_game.single_player.match.panels.center;
 
-import juno.controller.new_game.DrawAction;
-import juno.controller.new_game.NextTurnAction;
-import juno.controller.new_game.StartGameAction;
-import juno.model.card.InterfaceCard;
-import juno.model.deck.Deck;
-import juno.model.deck.InterfaceDeck;
-import juno.model.subjects.InterfacePlayer;
-import juno.model.subjects.human.HumanPlayer;
-import juno.model.subjects.shift.TurnMover;
-import juno.view.button.Button;
-import juno.view.button.ButtonCreator;
-import juno.view.util.ImageResizer;
-
-import javax.swing.*;
-
 /**
  * @author Simone Gentili
  */
@@ -48,30 +33,16 @@ public class CenterPanelConfigurator {
     // Builds a CenterPanelConfigurator object.
     private CenterPanelConfigurator() {}
 
-    @SuppressWarnings("unchecked")
+    /** Configures the CenterPanel instance. */
     public static void configure() {
-        // Center panel.
+        // Main component.
         CenterPanel centerPanel = CenterPanel.getInstance();
 
-        // Deck button.
-        ButtonCreator creator = ButtonCreator.getInstance();
-        AbstractButton deckButton = creator.create(Button.COVER_TO_NORTH);
-        ImageResizer.resize(deckButton, 2.5);
-        deckButton.addActionListener(new DrawAction<>(
-                (InterfacePlayer<InterfaceCard>) HumanPlayer.getInstance(),
-                (InterfaceDeck<InterfaceCard>) Deck.getInstance()));
-        deckButton.addActionListener(new NextTurnAction(TurnMover.getInstance()));
-
-        // Start button.
-        AbstractButton startButton = creator.create(Button.START);
-        ImageResizer.resize(startButton, 2.5);
-        startButton.addActionListener(StartGameAction.getInstance());
-
-        // Settings.
+        // Main component settings.
         centerPanel.setFirstComponent(CirclePanel.getInstance());
-        centerPanel.setSecondComponent(deckButton);
+        centerPanel.setSecondComponent(DeckPanel.getInstance());
         centerPanel.setThirdComponent(DiscardedPilePanel.getInstance());
-        centerPanel.setFourthComponent(startButton);
+        centerPanel.setFourthComponent(ActualColorPanel.getInstance());
 
         // Initialization.
         centerPanel.init();

@@ -35,6 +35,8 @@ public class CenterPanelInitializer {
 
     /** Initialize the match center panel. */
     public static void initialize() {
+        ActualColorPanelConfigurator.configure();
+        DeckPanelConfigurator.configure();
         DiscardedPilePanelConfigurator.configure();
         CirclePanelConfigurator.configure();
         CenterPanelConfigurator.configure();

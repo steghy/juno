@@ -26,12 +26,15 @@
 package juno.model.deck;
 
 import juno.model.card.colors.InterfaceColor;
+import juno.model.util.AbstractObservable;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Simone Gentili
  */
 public class ActualColor
+        extends AbstractObservable
         implements InterfaceActualColor<InterfaceColor> {
 
     // The actual color.
@@ -55,9 +58,10 @@ public class ActualColor
     @Override
     public void set(@NotNull InterfaceColor color) {
         this.color = color;
+        updateAll();
     }
 
-    @Override
+    @Override @Nullable
     public InterfaceColor provide() {
         return color;
     }

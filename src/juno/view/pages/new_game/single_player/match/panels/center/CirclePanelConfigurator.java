@@ -25,6 +25,7 @@
 
 package juno.view.pages.new_game.single_player.match.panels.center;
 
+import juno.controller.new_game.GameInitializer;
 import juno.model.requester.PathProviderAssembler;
 import juno.model.requester.ProgramDirectory;
 import juno.model.subjects.shift.Inverter;
@@ -59,7 +60,10 @@ public class CirclePanelConfigurator {
         // Settings.
         circlePanel.setFirstComponent(circle);
         circlePanel.setSecondComponent(invertedCircle);
+
+        // Observer / Observable.
         Inverter.getInstance().addObserver(circlePanel);
+        GameInitializer.getInstance().addObserver(circlePanel);
 
         // Circle panel initialization.
         circlePanel.init();

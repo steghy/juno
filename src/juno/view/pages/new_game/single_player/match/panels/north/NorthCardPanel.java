@@ -25,8 +25,10 @@
 
 package juno.view.pages.new_game.single_player.match.panels.north;
 
+import juno.controller.util.InterfaceInitializer;
 import juno.model.subjects.InterfaceAdder;
 import juno.model.subjects.InterfaceRemover;
+import juno.model.util.InterfaceFactory;
 import juno.model.util.Observer;
 import juno.view.button.Button;
 import juno.view.button.ButtonCreator;
@@ -67,18 +69,19 @@ public class NorthCardPanel
             AbstractButton button = ButtonCreator.getInstance().create(Button.COVER_TO_SOUTH);
             ImageResizer.resize(button, 4.5);
             add(button);
-            revalidate();
-            repaint();
-        } else if (object instanceof InterfaceRemover<?>) {
+        } else if(object instanceof InterfaceRemover<?>) {
             int count = getComponentCount();
             if(count == 0) throw new IllegalArgumentException(
                     "There is no components to remove.");
             remove(getComponentCount() - 1);
-            revalidate();
-            repaint();
+        } else if(object instanceof InterfaceInitializer) {
+            removeAll();
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
-                        ". InterfaceAdder or InterfaceRemover type expected.");
+                        ". InterfaceAdder, InterfaceRemover " +
+                        "or InterfaceInitializer type expected.");
+        revalidate();
+        repaint();
     }
 
 }

@@ -25,6 +25,7 @@
 
 package juno.view.pages.new_game.single_player.match.panels.north;
 
+import juno.controller.new_game.GameInitializer;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.PanelChanger;
 import juno.view.button.Button;
@@ -47,15 +48,18 @@ public class NorthPanelConfigurator {
         // Main component.
         NorthPanel northPanel = NorthPanel.getInstance();
 
+        // Component.
+        NorthCardPanel northCardPanel = NorthCardPanel.getInstance();
+
         // East card panel.
-        JScrollPane cardPanel = new JScrollPane(NorthCardPanel.getInstance(),
+        JScrollPane northCardScrollPanel = new JScrollPane(northCardPanel,
                 JScrollPane.VERTICAL_SCROLLBAR_NEVER,
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        cardPanel.setPreferredSize(new Dimension(600, 150));
-        cardPanel.setIgnoreRepaint(false);
-        cardPanel.setMinimumSize(new Dimension(600, 150));
-        cardPanel.getViewport().setOpaque(false);
-        cardPanel.setOpaque(false);
+        northCardScrollPanel.setPreferredSize(new Dimension(600, 150));
+        northCardScrollPanel.setIgnoreRepaint(false);
+        northCardScrollPanel.setMinimumSize(new Dimension(600, 150));
+        northCardScrollPanel.getViewport().setOpaque(false);
+        northCardScrollPanel.setOpaque(false);
 
         // Exit button.
         AbstractButton exitButton = ButtonCreator.getInstance().create(Button.EXIT);
@@ -63,12 +67,15 @@ public class NorthPanelConfigurator {
         // Image resizing.
         ImageResizer.resize(exitButton, 4.0);
 
-        // Action listener.
+        // Action listener. (Restoring ?)
         exitButton.addActionListener(new ChangePanelAction(
                 new PanelChanger(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MODE_PANEL)));
 
+        // Observer / Observable.
+        GameInitializer.getInstance().addObserver(northCardPanel);
+
         // Setting components.
-        northPanel.setFirstComponent(cardPanel); // Cards scrollable panel.
+        northPanel.setFirstComponent(northCardScrollPanel); // Cards scrollable panel.
         northPanel.setSecondComponent(exitButton); // Exit button.
 
         // Main component initialization.

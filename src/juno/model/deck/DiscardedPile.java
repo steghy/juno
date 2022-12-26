@@ -25,6 +25,7 @@
 
 package juno.model.deck;
 
+import juno.controller.util.InterfaceInitializer;
 import juno.model.util.InterfaceProvider;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
@@ -48,7 +49,7 @@ import java.util.Stack;
  */
 public class DiscardedPile<T>
         extends Stack<T>
-        implements InterfaceDiscardedPile<T>, InterfaceProvider<T>, Observable {
+        implements InterfaceDiscardedPile<T>, InterfaceProvider<T>, Observable, Observer {
 
     // The last inserted card.
     private T card;
@@ -98,6 +99,15 @@ public class DiscardedPile<T>
     @Override
     public void updateAll() {
         observerList.forEach(observer -> observer.update(this));
+    }
+
+    @Override
+    public void update(@NotNull Object object) {
+        if(object instanceof InterfaceInitializer) {
+            clear();
+        } else throw new IllegalArgumentException(
+                "Invalid object type: " + object.getClass() +
+                        ". InterfaceInitializer type expected.");
     }
 
 }

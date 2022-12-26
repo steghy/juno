@@ -99,6 +99,7 @@ public class Deck<T>
     @Override @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
         if(object instanceof InterfaceFactory<?> factory) {
+            clear();
             addAll((Collection<? extends T>) factory.getObjects());
             Objects.requireNonNull(getMixer()).shuffle(this);
         } else throw new IllegalArgumentException(

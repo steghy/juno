@@ -25,6 +25,7 @@
 
 package juno.view.pages.new_game.single_player.match.panels.south;
 
+import juno.controller.util.InterfaceInitializer;
 import juno.model.card.InterfaceCard;
 import juno.model.subjects.InterfaceAdder;
 import juno.model.subjects.InterfaceRemover;
@@ -70,6 +71,10 @@ public class SouthCardPanel
         return instance;
     }
 
+    /**
+     * Sets the card provider of this object.
+     * @param provider An InterfaceProvider object.
+     */
     public void setProvider(@NotNull InterfaceProvider<InterfaceCard> provider) {
         this.provider = provider;
     }
@@ -78,20 +83,23 @@ public class SouthCardPanel
     public void update(@NotNull Object object) {
         if(object instanceof InterfaceAdder<?>) {
             InterfaceCard card = provider.provide();
-            GCard<InterfaceCard> gCard = (GCard<InterfaceCard>) Objects.requireNonNull(GCardMapFactory.getInstance().getGObjectsMap()).get(card);
+            GCard<InterfaceCard> gCard = (GCard<InterfaceCard>)
+                    Objects.requireNonNull(GCardMapFactory.getInstance().getGObjectsMap()).get(card);
             ImageResizer.resize(gCard, 2.5);
             add(gCard);
-            revalidate();
-            repaint();
         } else if(object instanceof InterfaceRemover<?>) {
             InterfaceCard card = provider.provide();
-            GCard<InterfaceCard> gCard = (GCard<InterfaceCard>) Objects.requireNonNull(GCardMapFactory.getInstance().getGObjectsMap()).get(card);
+            GCard<InterfaceCard> gCard = (GCard<InterfaceCard>)
+                    Objects.requireNonNull(GCardMapFactory.getInstance().getGObjectsMap()).get(card);
             remove(gCard);
-            revalidate();
-            repaint();
+        } else if(object instanceof InterfaceInitializer) {
+            removeAll();
         } else throw new IllegalArgumentException(
-                "Invalid object type: " + object.getClass() +
-            ". InterfaceAdder or InterfaceRemover type expected.");
+                    "Invalid object type: " + object.getClass() +
+                            ". InterfaceAdder, InterfaceRemover " +
+                            "or InterfaceInitializer type expected.");
+        revalidate();
+        repaint();
     }
 
 }

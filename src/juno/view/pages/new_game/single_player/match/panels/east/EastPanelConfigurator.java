@@ -25,6 +25,8 @@
 
 package juno.view.pages.new_game.single_player.match.panels.east;
 
+import juno.controller.new_game.GameInitializer;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -36,22 +38,29 @@ public class EastPanelConfigurator {
     // Builds an EastPanelConfigurator object.
     private EastPanelConfigurator() {}
 
+    /** Configures the EastPanel instance. */
     public static void configure() {
         // Main component.
         EastPanel eastPanel = EastPanel.getInstance();
 
+        // Component.
+        EastCardPanel eastCardPanel = EastCardPanel.getInstance();
+
         // East card panel.
-        JScrollPane eastCardPanel = new JScrollPane(EastCardPanel.getInstance(),
+        JScrollPane eastCardScrollPanel = new JScrollPane(eastCardPanel,
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        eastCardPanel.setPreferredSize(new Dimension(150, 600));
-        eastCardPanel.setIgnoreRepaint(false);
-        eastCardPanel.setMinimumSize(new Dimension(150, 600));
-        eastCardPanel.getViewport().setOpaque(false);
-        eastCardPanel.setOpaque(false);
+        eastCardScrollPanel.setPreferredSize(new Dimension(150, 600));
+        eastCardScrollPanel.setIgnoreRepaint(false);
+        eastCardScrollPanel.setMinimumSize(new Dimension(150, 600));
+        eastCardScrollPanel.getViewport().setOpaque(false);
+        eastCardScrollPanel.setOpaque(false);
+
+        // Observer / Observable.
+        GameInitializer.getInstance().addObserver(eastCardPanel);
 
         // Setting components.
-        eastPanel.setFirstComponent(eastCardPanel);
+        eastPanel.setFirstComponent(eastCardScrollPanel);
 
         // Main component initialization.
         eastPanel.init();

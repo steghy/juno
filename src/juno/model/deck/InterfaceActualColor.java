@@ -28,5 +28,9 @@ package juno.model.deck;
 import juno.model.util.InterfaceProvider;
 import juno.model.util.InterfaceSetter;
 
+/**
+ * @author Simone Gentili
+ * @param <T> The type of the color.
+ */
 public interface InterfaceActualColor<T>
         extends InterfaceSetter<T>, InterfaceProvider<T> {}

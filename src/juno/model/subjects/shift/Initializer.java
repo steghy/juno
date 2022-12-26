@@ -27,8 +27,6 @@ package juno.model.subjects.shift;
 
 import juno.controller.util.InterfaceInitializer;
 import juno.model.card.InterfaceCard;
-import juno.model.deck.Deck;
-import juno.model.deck.InterfaceDeck;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.players.PlayersProvider;
 
@@ -62,9 +60,6 @@ public class Initializer
         playersProvider.addObserver(Inverter.getInstance());
         playersProvider.addObserver(TurnJumper.getInstance());
         playersProvider.addObserver(TurnMover.getInstance());
-        playersProvider.addObserver(FirstPlayerManager.getInstance());
-        // FirstPlayerManager.
-        FirstPlayerManager.getInstance().setDeck((InterfaceDeck<InterfaceCard>) Deck.getInstance());
     }
 
 }

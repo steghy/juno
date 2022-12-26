@@ -60,10 +60,10 @@ public class SouthPanel
         // Cards panel.
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.weightx = 1.0;
-        gbc.weighty = 1.0;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
         gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,0,0);
+        gbc.insets = new Insets(0,50,0,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
         this.add(Objects.requireNonNull(getFirstComponent()), gbc);
@@ -73,8 +73,8 @@ public class SouthPanel
         gbc.gridy = 0;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-        gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,50,0,0);
+        gbc.anchor = GridBagConstraints.PAGE_END;
+        gbc.insets = new Insets(0,0,0,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
         this.add(Objects.requireNonNull(getSecondComponent()), gbc);

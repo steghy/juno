@@ -25,14 +25,13 @@
 
 package juno.view.pages.new_game.single_player.match.panels.center;
 
+import juno.controller.util.InterfaceInitializer;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.InterfaceDiscardedPile;
-import juno.model.util.InterfaceFactory;
 import juno.model.util.InterfaceProvider;
 import juno.model.util.Observer;
 import juno.view.gobject.InterfaceGObjectMapFactory;
 import juno.view.gobject.cards.GCard;
-import juno.view.util.ImageLabel;
 import juno.view.util.ImageResizer;
 import org.jetbrains.annotations.NotNull;
 
@@ -49,9 +48,6 @@ public class DiscardedPilePanel
     // The graphic cards factory.
     private InterfaceGObjectMapFactory<InterfaceCard> factory;
 
-    // The card.
-    private ImageLabel card;
-
     // The top discarded pile card provider.
     private InterfaceProvider<InterfaceCard> provider;
 
@@ -60,7 +56,6 @@ public class DiscardedPilePanel
 
     // Builds the DiscardedPilePanel instance.
     private DiscardedPilePanel() {
-        card = new ImageLabel();
         setOpaque(false);
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(150, 250));
@@ -100,9 +95,14 @@ public class DiscardedPilePanel
             removeAll();
             ImageResizer.resize(gCard, 1.5);
             add(gCard, BorderLayout.CENTER);
-            revalidate();
-            repaint();
-        }
+        } else if(object instanceof InterfaceInitializer) {
+            removeAll();
+        } else throw new IllegalArgumentException(
+                "Invalid object type: " + object.getClass() +
+                        "InterfaceDiscardedPile or InterfaceInitializer" +
+                        " type expected.");
+        revalidate();
+        repaint();
     }
 
 }

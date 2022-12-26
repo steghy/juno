@@ -23,15 +23,12 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.new_game.single_player.match.panels.west;
+package juno.view.pages.new_game.single_player.match.panels.center;
 
 import juno.controller.util.InterfaceInitializer;
-import juno.model.subjects.InterfaceAdder;
-import juno.model.subjects.InterfaceRemover;
+import juno.model.card.colors.InterfaceColor;
+import juno.model.deck.InterfaceActualColor;
 import juno.model.util.Observer;
-import juno.view.button.Button;
-import juno.view.button.ButtonCreator;
-import juno.view.util.ImageResizer;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -40,46 +37,50 @@ import java.awt.*;
 /**
  * @author Simone Gentili
  */
-public class WestCardPanel
-        extends JPanel implements Observer {
+public class ActualColorPanel
+        extends JPanel
+        implements Observer {
 
-    // The WestCardPanel instance.
-    private static WestCardPanel instance;
+    // The ActualColorPanel instance.
+    private static ActualColorPanel instance;
 
-    // Builds the WestCardPanel instance.
-    private WestCardPanel() {
+    // Builds the ActualColorPanel instance.
+    private ActualColorPanel() {
         setOpaque(false);
-        setLayout(new GridLayout(108, 1));
+        setLayout(new BorderLayout());
+        setPreferredSize(new Dimension(75, 75));
     }
 
     /**
-     * Returns the WestCardPanel instance.
-     * @return The WestCardPanel instance.
+     * Returns the ActualColorPanel instance.
+     * @return The ActualColorPanel instance.
      */
-    public static WestCardPanel getInstance() {
-        if(instance == null) instance = new WestCardPanel();
+    public static ActualColorPanel getInstance() {
+        if(instance == null) instance = new ActualColorPanel();
         return instance;
     }
 
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceAdder<?>) {
-            AbstractButton button = ButtonCreator.getInstance().create(Button.COVER_TO_EAST);
-            ImageResizer.resize(button, 4.5);
-            add(button);
-        } else if (object instanceof InterfaceRemover<?>) {
-            int count = getComponentCount();
-            if(count == 0) throw new IllegalArgumentException(
-                    "There is no components to remove.");
-            remove(getComponentCount() - 1);
+        if(object instanceof InterfaceActualColor<?> actualColor) {
+            Object temp = actualColor.provide();
+            if(temp instanceof InterfaceColor color) {
+                setOpaque(true);
+                if(color.isRed()) setBackground(Color.RED);
+                else if(color.isBlue()) setBackground(Color.BLUE);
+                else if(color.isGreen()) setBackground(Color.GREEN);
+                else if(color.isYellow()) setBackground(Color.YELLOW);
+                revalidate();
+                repaint();
+            } else throw new IllegalArgumentException(
+                    "Invalid object type: " + temp.getClass() +
+                            ". InterfaceColor type expected.");
         } else if(object instanceof InterfaceInitializer) {
-            removeAll();
+            // setOpaque(false);
+            // setBackground(null);
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
-                        ". InterfaceAdder, InterfaceRemover " +
-                        "or InterfaceInitializer type expected.");
-        revalidate();
-        repaint();
+                        ". InterfaceActualColor expected.");
     }
 
 }

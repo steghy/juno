@@ -25,6 +25,8 @@
 
 package juno.model.subjects.human;
 
+import juno.controller.util.InterfaceInitializer;
+import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -35,7 +37,8 @@ import java.util.Objects;
  * @param <T> The type of the card.
  */
 public class HumanPlayer<T>
-        extends AbstractHumanPlayer<T> {
+        extends AbstractHumanPlayer<T>
+        implements Observer {
 
     private T card;
 
@@ -83,6 +86,15 @@ public class HumanPlayer<T>
     @Override
     public T provide() {
         return card;
+    }
+
+    @Override
+    public void update(@NotNull Object object) {
+        if(object instanceof InterfaceInitializer)
+            cards().clear();
+        else throw new IllegalArgumentException(
+                "Invalid object type: " + object.getClass() +
+                        ". InterfaceInitializer type expected.");
     }
 
 }

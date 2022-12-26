@@ -91,7 +91,7 @@ public class TurnMover<T>
             players = (Donut<T>) provider.getPlayers();
         else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
-                        ". InterfacePlayersProvider expected.");
+                        ". InterfacePlayersProvider type expected.");
     }
 
 }

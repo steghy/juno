@@ -90,13 +90,13 @@ public class CenterPanel
         gbc.ipady = 0;
         this.add(Objects.requireNonNull(getThirdComponent()), gbc);
 
-        // Start button
-        gbc.gridx = 0;
-        gbc.gridy = 2;
+        // Actual color label.
+        gbc.gridx = 1;
+        gbc.gridy = 0;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
         gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,0,0);
+        gbc.insets = new Insets(0,0,20,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
         this.add(Objects.requireNonNull(getFourthComponent()), gbc);

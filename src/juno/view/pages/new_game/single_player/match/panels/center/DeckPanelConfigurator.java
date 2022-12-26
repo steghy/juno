@@ -25,33 +25,55 @@
 
 package juno.view.pages.new_game.single_player.match.panels.center;
 
+import juno.controller.new_game.DrawAction;
 import juno.controller.new_game.GameInitializer;
+import juno.controller.new_game.NextTurnAction;
 import juno.model.card.InterfaceCard;
-import juno.model.deck.DiscardedPile;
-import juno.model.util.InterfaceProvider;
-import juno.view.gobject.cards.GCardMapFactory;
+import juno.model.deck.Deck;
+import juno.model.deck.InterfaceDeck;
+import juno.model.subjects.InterfacePlayer;
+import juno.model.subjects.human.HumanPlayer;
+import juno.model.subjects.shift.TurnMover;
+import juno.view.button.Button;
+import juno.view.button.ButtonCreator;
+import juno.view.util.ImageResizer;
+
+import javax.swing.*;
 
 /**
  * @author Simone Gentili
  */
-public class DiscardedPilePanelConfigurator {
+public class DeckPanelConfigurator {
 
-    // Builds a DiscardedPilePanelConfigurator object.
-    private DiscardedPilePanelConfigurator() {}
+    // Builds a DeckPanelConfigurator object.
+    private DeckPanelConfigurator() {}
 
-    /** Configure the DiscardedPilePanel instance. */
+    /** Configure the DeckPanel instance. */
     @SuppressWarnings("unchecked")
     public static void configure() {
-        // Main component.
-        DiscardedPilePanel discardedPilePanel = DiscardedPilePanel.getInstance();
+        // Main Component.
+        DeckPanel deckPanel = DeckPanel.getInstance();
 
-        // Main component setting.
-        discardedPilePanel.setProvider((InterfaceProvider<InterfaceCard>) DiscardedPile.getInstance());
-        discardedPilePanel.setFactory(GCardMapFactory.getInstance());
+        // Component.
+        AbstractButton deckButton = ButtonCreator.getInstance().create(Button.COVER_TO_NORTH);
+
+        // Image resizing.
+        ImageResizer.resize(deckButton, 2.5);
+
+        // Action listener.
+        deckButton.addActionListener(new DrawAction<>(
+                (InterfacePlayer<InterfaceCard>) HumanPlayer.getInstance(),
+                (InterfaceDeck<InterfaceCard>) Deck.getInstance()));
+        deckButton.addActionListener(new NextTurnAction(TurnMover.getInstance()));
 
         // Observer / Observable.
-        DiscardedPile.getInstance().addObserver(discardedPilePanel);
-        GameInitializer.getInstance().addObserver(discardedPilePanel);
+        GameInitializer.getInstance().addObserver(deckPanel);
+
+        // Main component setting.
+        deckPanel.setFirstComponent(deckButton);
+
+        // Main component initialization.
+        deckPanel.init();
     }
 
 }

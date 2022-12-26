@@ -25,6 +25,8 @@
 
 package juno.view.pages.new_game.single_player.match.panels.west;
 
+import juno.controller.new_game.GameInitializer;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -36,21 +38,29 @@ public class WestPanelConfigurator {
     // Builds a WestPanelConfigurator object.
     private WestPanelConfigurator() {}
 
+    /** Configures the WestPanel instance. */
     public static void configure() {
+        // Main component.
         WestPanel westPanel = WestPanel.getInstance();
 
+        // Component.
+        WestCardPanel westCardPanel = WestCardPanel.getInstance();
+
         // East card panel.
-        JScrollPane westCardPanel = new JScrollPane(WestCardPanel.getInstance(),
+        JScrollPane westCardScrollPanel = new JScrollPane(westCardPanel,
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        westCardPanel.setPreferredSize(new Dimension(150, 600));
-        westCardPanel.setIgnoreRepaint(false);
-        westCardPanel.setMinimumSize(new Dimension(150, 600));
-        westCardPanel.getViewport().setOpaque(false);
-        westCardPanel.setOpaque(false);
+        westCardScrollPanel.setPreferredSize(new Dimension(150, 600));
+        westCardScrollPanel.setIgnoreRepaint(false);
+        westCardScrollPanel.setMinimumSize(new Dimension(150, 600));
+        westCardScrollPanel.getViewport().setOpaque(false);
+        westCardScrollPanel.setOpaque(false);
+
+        // Observer / Observable.
+        GameInitializer.getInstance().addObserver(westCardPanel);
 
         // Setting components.
-        westPanel.setFirstComponent(westCardPanel);   // Avatar panel.
+        westPanel.setFirstComponent(westCardScrollPanel); // Avatar panel.
 
         // Main component initialization.
         westPanel.init();

@@ -23,48 +23,52 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.human;
+package juno.view.pages.new_game.single_player.match.panels.center;
 
-import juno.controller.new_game.GameInitializer;
 import juno.controller.util.InterfaceInitializer;
-import juno.model.card.InterfaceCard;
-import juno.model.data.profile.profile.ProfileNameProvider;
+import juno.model.util.Observer;
+import juno.view.panels.AbstractFirstComponent;
+import org.jetbrains.annotations.NotNull;
+
+import java.awt.*;
+import java.util.Objects;
 
 /**
  * @author Simone Gentili
  */
-public class Initializer
-        implements InterfaceInitializer {
+public class DeckPanel
+        extends AbstractFirstComponent
+        implements Observer {
 
-    // The Initializer instance.
-    private static Initializer instance;
+    // The DeckPanel instance.
+    private static DeckPanel instance;
 
-    // Builds the Initializer instance.
-    private Initializer() {}
+    // Builds the DeckPanel instance.
+    private DeckPanel() {}
 
     /**
-     * Returns the Initializer instance.
-     * @return The Initializer instance.
+     * Returns the DeckPanel instance.
+     * @return The DeckPanel instance.
      */
-    public static Initializer getInstance() {
-        if(instance == null) instance = new Initializer();
+    public static DeckPanel getInstance() {
+        if(instance == null) instance = new DeckPanel();
         return instance;
     }
 
-    @Override
-    @SuppressWarnings("unchecked")
-    public void initialize() {
-        // Component.
-        // HumanPlayer.
-        HumanPlayer<InterfaceCard> humanPlayer =
-                (HumanPlayer<InterfaceCard>) HumanPlayer.getInstance();
-        //////////////////////////////////////////////////////////////////
-        // Connections.
-        // HumanPlayer.
-        humanPlayer.setProvider(ProfileNameProvider.getInstance());
+    public void init() {
+        setOpaque(false);
+        setLayout(new BorderLayout());
+        Objects.requireNonNull(getFirstComponent());
+        add(getFirstComponent());
+    }
 
-        // Observer / Observable.
-        GameInitializer.getInstance().addObserver(humanPlayer);
+    @Override
+    public void update(@NotNull Object object) {
+        if(object instanceof InterfaceInitializer) {
+            setEnabled(false);
+        } else throw new IllegalArgumentException(
+                "Invalid object type: " + getInstance() +
+                        ". InterfaceInitializer type expected.");
     }
 
 }

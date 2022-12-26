@@ -28,6 +28,7 @@ package juno.controller.new_game;
 import juno.controller.util.InterfaceInitializer;
 import juno.model.subjects.ai.InterfaceDifficulty;
 import juno.model.subjects.factory.InterfaceAiPlayerGenerator;
+import juno.model.util.AbstractObservable;
 import juno.model.util.InterfaceGenerator;
 import org.jetbrains.annotations.NotNull;
 
@@ -35,6 +36,7 @@ import org.jetbrains.annotations.NotNull;
  * @author Simone Gentili
  */
 public class GameInitializer
+        extends AbstractObservable
         implements InterfaceInitializer {
 
     // The ai players generator.
@@ -75,6 +77,7 @@ public class GameInitializer
     public void initialize() {
         aiGenerator.generate(GameData.players - 1, GameData.difficulty);
         deckGenerator.generate();
+        updateAll();
     }
 
 }

@@ -26,6 +26,7 @@
 package juno.model.deck;
 
 
+import juno.controller.new_game.GameInitializer;
 import juno.model.card.InterfaceCard;
 import juno.view.gobject.cards.GCardFactory;
 
@@ -64,6 +65,9 @@ public class Initializer {
         // Discarded pile.
         DiscardedPile<InterfaceCard> discardedPile = (DiscardedPile<InterfaceCard>) DiscardedPile.getInstance();
 
+        // The game initializer.
+        GameInitializer gameInitializer = GameInitializer.getInstance();
+
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // Connections.
@@ -84,6 +88,7 @@ public class Initializer {
         // Observer / Observable connections.
         deckFactory.addObserver(deck);
         deckFactory.addObserver(GCardFactory.getInstance());
+        gameInitializer.addObserver(discardedPile);
     }
 
 }

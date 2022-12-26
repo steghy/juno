@@ -25,9 +25,9 @@
 
 package juno.view.pages.new_game.single_player.match.panels.south;
 
+import juno.controller.new_game.GameInitializer;
 import juno.model.card.InterfaceCard;
 import juno.model.subjects.human.HumanPlayer;
-import juno.model.util.InterfaceProvider;
 import juno.view.button.Button;
 import juno.view.button.ButtonCreator;
 import juno.view.util.ImageResizer;
@@ -43,29 +43,43 @@ public class SouthPanelConfigurator {
     // Builds a SouthPanelConfigurator object.
     private SouthPanelConfigurator() {}
 
+    /** Configures the SouthPanel instance. */
     @SuppressWarnings("unchecked")
     public static void configure() {
         // Main component.
         SouthPanel southPanel = SouthPanel.getInstance();
+
+        // Component.
+        SouthCardPanel southCardPanel = SouthCardPanel.getInstance();
+
         // Card panel.
-        JScrollPane cardPanel = new JScrollPane(SouthCardPanel.getInstance(),
+        JScrollPane southCardScrollPanel = new JScrollPane(southCardPanel,
                 JScrollPane.VERTICAL_SCROLLBAR_NEVER,
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        cardPanel.setPreferredSize(new Dimension(600, 150));
-        cardPanel.setIgnoreRepaint(false);
-        cardPanel.setMinimumSize(new Dimension(600, 150));
-        cardPanel.getViewport().setOpaque(false);
-        cardPanel.setOpaque(false);
-        // Uno button.
+        southCardScrollPanel.setPreferredSize(new Dimension(600, 150));
+        southCardScrollPanel.setIgnoreRepaint(false);
+        southCardScrollPanel.setMinimumSize(new Dimension(600, 150));
+        southCardScrollPanel.getViewport().setOpaque(false);
+        southCardScrollPanel.setOpaque(false);
+
+        // Uno button. (Temporary)
         AbstractButton unoButton = ButtonCreator.getInstance().create(Button.JUNO);
+
+        // Image resizing.
         ImageResizer.resize(unoButton, 4.0);
 
         // Observer / Observable.
-        HumanPlayer.getInstance().addObserver(SouthCardPanel.getInstance());
-        SouthCardPanel.getInstance().setProvider((InterfaceProvider<InterfaceCard>) HumanPlayer.getInstance());
+        HumanPlayer<InterfaceCard> humanPlayer = (HumanPlayer<InterfaceCard>) HumanPlayer.getInstance();
+        humanPlayer.addObserver(southCardPanel);
+        GameInitializer.getInstance().addObserver(southCardPanel);
+
+        // Component setting.
+        southCardPanel.setProvider(humanPlayer);
+
         // Setting components.
-        southPanel.setFirstComponent(cardPanel);  // Avatar panel.
-        southPanel.setSecondComponent(unoButton); // Uno button.
+        southPanel.setFirstComponent(southCardScrollPanel);  // Avatar panel.
+        southPanel.setSecondComponent(unoButton);            // Uno button.
+
         // Main component initialization.
         southPanel.init();
     }

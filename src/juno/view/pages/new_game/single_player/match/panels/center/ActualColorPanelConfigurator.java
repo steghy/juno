@@ -23,14 +23,27 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.shift;
+package juno.view.pages.new_game.single_player.match.panels.center;
+
+import juno.controller.new_game.GameInitializer;
+import juno.model.deck.ActualColor;
 
 /**
  * @author Simone Gentili
  */
-@FunctionalInterface
-public interface InterfaceFirstPlayerManager {
+public class ActualColorPanelConfigurator {
 
-    void setFirst();
+    // Builds an ActualColorPanelConfigurator object.
+    private ActualColorPanelConfigurator() {}
+
+    /** Configures the ActualColorPanel instance. */
+    public static void configure() {
+        // Main component.
+        ActualColorPanel actualColorPanel = ActualColorPanel.getInstance();
+
+        // Observer / Observable.
+        GameInitializer.getInstance().addObserver(actualColorPanel);
+        ActualColor.getInstance().addObserver(actualColorPanel);
+    }
 
 }
