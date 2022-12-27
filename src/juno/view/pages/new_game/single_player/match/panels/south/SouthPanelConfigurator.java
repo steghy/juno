@@ -25,9 +25,13 @@
 
 package juno.view.pages.new_game.single_player.match.panels.south;
 
+import juno.controller.new_game.DiscardedCardSetter;
 import juno.controller.new_game.GameInitializer;
+import juno.controller.new_game.Mover;
 import juno.model.card.InterfaceCard;
+import juno.model.deck.CompatibilityChecker;
 import juno.model.subjects.human.HumanPlayer;
+import juno.model.util.InterfaceSetter;
 import juno.view.button.Button;
 import juno.view.button.ButtonCreator;
 import juno.view.util.ImageResizer;
@@ -51,6 +55,7 @@ public class SouthPanelConfigurator {
 
         // Component.
         SouthCardPanel southCardPanel = SouthCardPanel.getInstance();
+        CompatibleGCardEnabler compatibleGCardEnabler = CompatibleGCardEnabler.getInstance();
 
         // Card panel.
         JScrollPane southCardScrollPanel = new JScrollPane(southCardPanel,
@@ -72,9 +77,13 @@ public class SouthPanelConfigurator {
         HumanPlayer<InterfaceCard> humanPlayer = (HumanPlayer<InterfaceCard>) HumanPlayer.getInstance();
         humanPlayer.addObserver(southCardPanel);
         GameInitializer.getInstance().addObserver(southCardPanel);
+        Mover.getInstance().addObserver(southCardPanel);
 
         // Component setting.
         southCardPanel.setProvider(humanPlayer);
+        southCardPanel.setDiscardedCardSetter((InterfaceSetter<InterfaceCard>) DiscardedCardSetter.getInstance());
+        southCardPanel.setPlayableCardSetter(CompatibleGCardEnabler.getInstance());
+        compatibleGCardEnabler.setCompatibilityChecker(CompatibilityChecker.getInstance());
 
         // Setting components.
         southPanel.setFirstComponent(southCardScrollPanel);  // Avatar panel.

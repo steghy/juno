@@ -26,9 +26,7 @@
 package juno.controller.new_game;
 
 import juno.model.card.InterfaceCard;
-import juno.model.deck.Deck;
-import juno.model.deck.DeckFactory;
-import juno.model.deck.InterfaceDeck;
+import juno.model.deck.*;
 import juno.model.subjects.ai.InterfaceDifficulty;
 import juno.model.subjects.factory.AiPlayerFactory;
 import juno.model.subjects.factory.InterfaceAiPlayerGenerator;
@@ -57,7 +55,12 @@ public class Initializer {
         // Mover.
         Mover mover = Mover.getInstance();
 
+        // FirstDiscardedCardManager.
         FirstDiscardedCardManager firstDiscardedCard = FirstDiscardedCardManager.getInstance();
+
+        // DiscardedCardSetter.
+        DiscardedCardSetter<InterfaceCard> discardedCardSetter =
+                (DiscardedCardSetter<InterfaceCard>) DiscardedCardSetter.getInstance();
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -68,6 +71,9 @@ public class Initializer {
 
         // CardDispenser.
         cardDispenser.setDeck((InterfaceDeck<InterfaceCard>) Deck.getInstance());
+
+        // DiscardedCardSetter.
+        discardedCardSetter.setDiscardedPile((InterfaceDiscardedPile<InterfaceCard>) DiscardedPile.getInstance());
 
         // Observer / Observable.
         AiPlayerFactory.getInstance().addObserver(connector);

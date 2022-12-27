@@ -27,6 +27,7 @@ package juno.view.pages.new_game.single_player.match.panels.center;
 
 import juno.controller.new_game.DrawAction;
 import juno.controller.new_game.GameInitializer;
+import juno.controller.new_game.Mover;
 import juno.controller.new_game.NextTurnAction;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.Deck;
@@ -68,6 +69,7 @@ public class DeckPanelConfigurator {
 
         // Observer / Observable.
         GameInitializer.getInstance().addObserver(deckPanel);
+        Mover.getInstance().addObserver(deckPanel);
 
         // Main component setting.
         deckPanel.setFirstComponent(deckButton);

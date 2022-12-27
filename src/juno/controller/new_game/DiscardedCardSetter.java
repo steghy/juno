@@ -23,19 +23,40 @@
  * SOFTWARE.
  */
 
-package juno.controller.util;
+package juno.controller.new_game;
+
+import juno.model.deck.AbstractDiscardedPileUser;
+import juno.model.util.InterfaceSetter;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 /**
  * @author Simone Gentili
+ * @param <T> The type of the card.
  */
-public class Initializer {
+public class DiscardedCardSetter<T>
+        extends AbstractDiscardedPileUser<T>
+        implements InterfaceSetter<T> {
 
-    // Builds an Initializer object.
-    private Initializer() {}
+    // The DiscardedCardSetter instance.
+    private static DiscardedCardSetter<?> instance;
 
-    /** Initialize the juno.controller.util package. */
-    public static void initialize() {
-        // Components.
+    // Builds the DiscardedCardSetter instance.
+    private DiscardedCardSetter() {}
+
+    /**
+     * Returns the DiscardedCardSetter instance.
+     * @return The DiscardedCardSetter instance.
+     */
+    public static DiscardedCardSetter<?> getInstance() {
+        if(instance == null) instance = new DiscardedCardSetter<>();
+        return instance;
+    }
+
+    @Override
+    public void set(@NotNull T object) {
+        Objects.requireNonNull(getDiscardedPile()).discard(object);
     }
 
 }

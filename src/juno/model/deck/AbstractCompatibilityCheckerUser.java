@@ -32,7 +32,7 @@ import org.jetbrains.annotations.Nullable;
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
-public abstract class AbstractCompatibleCardsProvider<T> {
+public abstract class AbstractCompatibilityCheckerUser<T> {
 
     // The compatibility checker.
     private InterfaceCompatibilityChecker<T> compatibilityChecker;

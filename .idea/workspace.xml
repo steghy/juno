@@ -5,14 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/south/CompatibleGCardEnabler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/config/avatar/Tonino-avatar.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/config/profiles/Tonino-profile.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/config/scores/Tonino-games-won.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/config/scores/Tonino-lost-games.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/ai/AI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/ai/AI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/human/HumanPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/human/HumanPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/east/EastCardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/east/EastCardPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/avatar/ToninoVendetta-avatar.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/config/avatar/ToninoVendetta-avatar.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/AbstractCompatibleCardsProvider.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/CompatibleCardsProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/deck/CompatibleCardsProvider.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/subjects/human/HumanPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/subjects/human/HumanPlayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/center/DeckPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/center/DeckPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/center/DeckPanelConfigurator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/center/DeckPanelConfigurator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/north/NorthCardPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/north/NorthCardPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/south/SouthCardPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/south/SouthCardPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/south/SouthPanelConfigurator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/south/SouthPanelConfigurator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/new_game/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/new_game/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/new_game/Mover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/new_game/Mover.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/util/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/new_game/DiscardedCardSetter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/util/SetterAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/util/SetterAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/AbstractCompatibleCardsProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/AbstractCompatibilityCheckerUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/CompatibilityChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/CompatibilityChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/CompatibleCardsProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/CompatibleCardsProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/avatars/GAvatarImageCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/gobject/avatars/GAvatarImageCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/cards/GCardCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/gobject/cards/GCardCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/DeckPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/DeckPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/DeckPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/DeckPanelConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/DiscardedPilePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/DiscardedPilePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/north/NorthCardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/north/NorthCardPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/south/CompatibleGCardEnabler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/south/CompatibleGCardEnabler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/south/SouthCardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/south/SouthCardPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/west/WestCardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/west/WestCardPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/south/SouthPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/south/SouthPanelConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/util/ImageButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/util/ImageButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/util/ImageLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/util/ImageLabel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,7 +220,7 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/juno_project$Main.ic" NAME="Main Coverage Results" MODIFIED="1671996392229" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/juno_project$Main.ic" NAME="Main Coverage Results" MODIFIED="1672129431365" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>juno.init.initializer.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/juno_project$juno_view_example2_Main.ic" NAME="juno.view.example2.Main Coverage Results" MODIFIED="1667835329402" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

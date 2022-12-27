@@ -25,6 +25,7 @@
 
 package juno.view.pages.new_game.single_player.match.panels.center;
 
+import juno.controller.new_game.Mover;
 import juno.controller.util.InterfaceInitializer;
 import juno.model.util.Observer;
 import juno.view.panels.AbstractFirstComponent;
@@ -56,7 +57,7 @@ public class DeckPanel
     }
 
     public void init() {
-        setOpaque(false);
+        setOpaque(true);
         setLayout(new BorderLayout());
         Objects.requireNonNull(getFirstComponent());
         add(getFirstComponent());
@@ -66,6 +67,8 @@ public class DeckPanel
     public void update(@NotNull Object object) {
         if(object instanceof InterfaceInitializer) {
             Objects.requireNonNull(getFirstComponent()).setEnabled(false);
+        } else if(object instanceof Mover) {
+            Objects.requireNonNull(getFirstComponent()).setEnabled(true);
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + getInstance() +
                         ". InterfaceInitializer type expected.");

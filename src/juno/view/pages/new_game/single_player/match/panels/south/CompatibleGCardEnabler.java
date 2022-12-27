@@ -25,10 +25,21 @@
 
 package juno.view.pages.new_game.single_player.match.panels.south;
 
+import juno.model.card.InterfaceCard;
+import juno.model.deck.AbstractCompatibilityCheckerUser;
+import juno.model.util.InterfaceSetter;
+import juno.view.gobject.cards.GCard;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+import java.util.Objects;
+
 /**
  * @author Simone Gentili
  */
-public class CompatibleGCardEnabler {
+public class CompatibleGCardEnabler
+        extends AbstractCompatibilityCheckerUser<InterfaceCard>
+        implements InterfaceSetter<List<GCard<InterfaceCard>>> {
 
     // The CompatibleGCardEnabler.
     private static CompatibleGCardEnabler instance;
@@ -43,6 +54,14 @@ public class CompatibleGCardEnabler {
     public static CompatibleGCardEnabler getInstance() {
         if(instance == null) instance = new CompatibleGCardEnabler();
         return instance;
+    }
+
+    @Override
+    public void set(@NotNull List<GCard<InterfaceCard>> object) {
+        object.forEach(gCard -> {
+            gCard.setEnabled(Objects.requireNonNull(getCompatibilityChecker())
+                    .isCompatible(gCard.getObject()));
+        });
     }
 
 }

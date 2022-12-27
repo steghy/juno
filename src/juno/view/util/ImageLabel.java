@@ -42,8 +42,11 @@ public class ImageLabel
                 dimension.getHeight() != 0) {
             super.setSize(dimension);
             Icon icon = getIcon();
+            Icon disabledIcon = getDisabledIcon();
             if(icon != null)
                 setIcon(new ImageIcon(ImageResizer.resize(this, icon)));
+            if(disabledIcon != null)
+                setDisabledIcon(new ImageIcon(ImageResizer.resize(this, disabledIcon)));
         }
     }
 
@@ -53,8 +56,11 @@ public class ImageLabel
         if(width != 0 && height != 0) {
             super.setSize(width, height);
             Icon icon = getIcon();
+            Icon disabledIcon = getIcon();
             if(icon != null)
                 setIcon(new ImageIcon(ImageResizer.resize(this, icon)));
+            if(disabledIcon != null)
+                setDisabledIcon(new ImageIcon(ImageResizer.resize(this, disabledIcon)));
         }
     }
 
@@ -65,8 +71,11 @@ public class ImageLabel
             super.setPreferredSize(dimension);
             super.setSize(dimension);
             Icon icon = getIcon();
+            Icon disabledIcon = getDisabledIcon();
             if(icon != null)
                 setIcon(new ImageIcon(ImageResizer.resize(this, icon)));
+            if(disabledIcon != null)
+                setDisabledIcon(new ImageIcon(ImageResizer.resize(this, disabledIcon)));
         }
     }
 

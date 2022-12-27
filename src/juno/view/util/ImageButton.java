@@ -43,10 +43,13 @@ public class ImageButton
             super.setSize(dimension);
             Icon icon = getIcon();
             Icon rolloverIcon = getRolloverIcon();
+            Icon disabledIcon = getDisabledIcon();
             if(icon != null) {
                 setIcon(new ImageIcon(ImageResizer.resize(this, icon)));
             } if(rolloverIcon != null) {
                 setRolloverIcon(new ImageIcon(ImageResizer.resize(this, rolloverIcon)));
+            } if(disabledIcon != null) {
+                setDisabledIcon(new ImageIcon(ImageResizer.resize(this, disabledIcon)));
             }
         }
     }
@@ -58,10 +61,13 @@ public class ImageButton
             super.setSize(width, height);
             Icon icon = getIcon();
             Icon rolloverIcon = getRolloverIcon();
+            Icon disabledIcon = getDisabledIcon();
             if(icon != null) {
                 setIcon(new ImageIcon(ImageResizer.resize(this, icon)));
             } if(rolloverIcon != null) {
                 setRolloverIcon(new ImageIcon(ImageResizer.resize(this, rolloverIcon)));
+            } if(disabledIcon != null) {
+                setDisabledIcon(new ImageIcon(ImageResizer.resize(this, disabledIcon)));
             }
         }
     }
@@ -74,10 +80,13 @@ public class ImageButton
             super.setSize(dimension);
             Icon icon = getIcon();
             Icon rolloverIcon = getRolloverIcon();
+            Icon disabledIcon = getDisabledIcon();
             if(icon != null) {
                 setIcon(new ImageIcon(ImageResizer.resize(this, icon)));
             } if(rolloverIcon != null) {
                 setRolloverIcon(new ImageIcon(ImageResizer.resize(this, rolloverIcon)));
+            } if(disabledIcon != null) {
+                setDisabledIcon(new ImageIcon(ImageResizer.resize(this, disabledIcon)));
             }
         }
     }

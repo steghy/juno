@@ -35,7 +35,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class CompatibleCardsProvider
-        extends AbstractCompatibleCardsProvider<InterfaceCard>
+        extends AbstractCompatibilityCheckerUser<InterfaceCard>
         implements InterfaceCompatibleCardsProvider<InterfaceCard> {
 
     // The CompatibleCardsProvider instance.

@@ -38,7 +38,7 @@ import java.util.Objects;
  * of the discarded pile.
  * @author Simone Gentili
  */
-class CompatibilityChecker
+public class CompatibilityChecker
         extends AbstractCompatibilityChecker<InterfaceCard, InterfaceColor> {
 
     // The CompatibilityChecker instance.
@@ -57,7 +57,7 @@ class CompatibilityChecker
     }
 
     @Override
-    public boolean isCompatible(@NotNull InterfaceCard card){
+    public boolean isCompatible(@NotNull InterfaceCard card) {
 
         // Top card of the discarded pile.
         InterfaceDiscardedPile<InterfaceCard> discardedPile = getDiscardedPile();

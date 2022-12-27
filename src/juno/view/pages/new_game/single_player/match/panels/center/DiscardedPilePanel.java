@@ -26,14 +26,12 @@
 package juno.view.pages.new_game.single_player.match.panels.center;
 
 import juno.controller.log_out.Restorable;
-import juno.controller.util.InterfaceInitializer;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.InterfaceDiscardedPile;
 import juno.model.util.InterfaceProvider;
 import juno.model.util.Observer;
 import juno.view.gobject.InterfaceGObjectMapFactory;
 import juno.view.gobject.cards.GCard;
-import juno.view.util.ImageResizer;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -59,7 +57,7 @@ public class DiscardedPilePanel
     private DiscardedPilePanel() {
         setOpaque(false);
         setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(150, 250));
+        setPreferredSize(new Dimension(200, 300));
     }
 
     /**
@@ -94,7 +92,6 @@ public class DiscardedPilePanel
             GCard<InterfaceCard> gCard = (GCard<InterfaceCard>)
                     factory.getGObjectsMap().get(provider.provide());
             removeAll();
-            ImageResizer.resize(gCard, 1.5);
             add(gCard, BorderLayout.CENTER);
         } else if(object instanceof Restorable) {
             removeAll();

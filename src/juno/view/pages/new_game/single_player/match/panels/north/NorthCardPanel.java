@@ -26,10 +26,7 @@
 package juno.view.pages.new_game.single_player.match.panels.north;
 
 import juno.controller.util.InterfaceInitializer;
-import juno.model.subjects.InterfaceAdder;
-import juno.model.subjects.InterfaceRemover;
 import juno.model.subjects.ai.AI;
-import juno.model.util.InterfaceFactory;
 import juno.model.util.Observer;
 import juno.view.button.Button;
 import juno.view.button.ButtonCreator;
@@ -77,6 +74,8 @@ public class NorthCardPanel
                 ImageResizer.resize(button, 4.5);
                 add(button);
             }
+        } else if(object instanceof InterfaceInitializer) {
+            removeAll();
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceAdder, InterfaceRemover " +

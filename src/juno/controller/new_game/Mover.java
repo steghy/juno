@@ -53,7 +53,7 @@ public class Mover
 
     // Builds the Mover instance.
     private Mover() {
-        timer = new Timer(1000, this);
+        timer = new Timer(500, this);
     }
 
     /**
@@ -68,7 +68,7 @@ public class Mover
     @Override
     @SuppressWarnings("unchecked")
     public void actionPerformed(ActionEvent e) {
-        // Players provider.
+        // Players provider
         PlayersProvider<InterfacePlayer<InterfaceCard>> provider =
                 (PlayersProvider<InterfacePlayer<InterfaceCard>>) PlayersProvider.getInstance();
         // The players.
