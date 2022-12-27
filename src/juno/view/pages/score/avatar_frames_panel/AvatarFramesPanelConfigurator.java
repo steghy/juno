@@ -61,7 +61,7 @@ public class AvatarFramesPanelConfigurator {
                     GAvatarFrame<InterfaceAvatarFrame> gAvatarFrame = (GAvatarFrame<InterfaceAvatarFrame>) temp;
                     gAvatarFrame.addActionListener(new GSetterAction<>(gAvatarFrame, AvatarFrameSetter.getInstance()));
                     gAvatarFrame.setEnabled(false);
-                    AvatarFrame.valueOf(gAvatarFrame.getObject().name()).addObserver(gAvatarFrame);
+                    AvatarFrame.valueOf(gAvatarFrame.object().name()).addObserver(gAvatarFrame);
                     gAvatarFrames.add(gAvatarFrame);
                 });
 

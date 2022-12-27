@@ -23,36 +23,34 @@
  * SOFTWARE.
  */
 
-package juno.view.gobject.profiles;
+package juno.view.gobject;
 
-import juno.view.gobject.InterfaceGObject;
 import juno.view.util.ImageButton;
-import juno.view.util.ImageLabel;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the objects.
+ * @param <T> The type of the object.
  */
-public class GProfile<T>
-        extends ImageLabel
+public class GObjectButton<T>
+        extends ImageButton
         implements InterfaceGObject<T> {
 
-    // The file.
-    private final T file;
+    // The Object.
+    private final T object;
 
     /**
-     * Builds a GProfile with the
+     * Builds a GObjectButton with the
      * specified object.
-     * @param file An object.
+     * @param object An object.
      */
-    public GProfile(@NotNull T file) {
-        this.file = file;
+    public GObjectButton(@NotNull T object) {
+        this.object = object;
     }
 
     @Override
-    public T getObject() {
-        return file;
+    public T object() {
+        return object;
     }
 
 }

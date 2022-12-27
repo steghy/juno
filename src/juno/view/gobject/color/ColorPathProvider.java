@@ -23,23 +23,37 @@
  * SOFTWARE.
  */
 
-package juno.model.card.colors;
+package juno.view.gobject.color;
+
+import juno.model.card.colors.InterfaceColor;
+import juno.model.requester.InterfacePathProvider;
+import juno.model.requester.ProgramDirectory;
+import juno.view.gobject.InterfacePathObjectProvider;
 
 /**
- * This Interface groups the following interfaces
- * for determining the color of cards:
- * - InterfaceRed
- * - InterfaceBlue
- * - InterfaceYellow
- * - InterfaceGreen
  * @author Simone Gentili
  */
-public interface InterfaceColor extends
-        InterfaceRed,
-        InterfaceBlue,
-        InterfaceYellow,
-        InterfaceGreen {
+public class ColorPathProvider
+        implements InterfacePathObjectProvider<InterfaceColor> {
 
-    String name();
+    // The ColorPathProvider instance.
+    private static ColorPathProvider instance;
+
+    // Builds the ColorPathProvider instance.
+    private ColorPathProvider() {}
+
+    /**
+     * Returns the ColorPathProvider instance.
+     * @return The ColorPathProvider instance.
+     */
+    public static ColorPathProvider getInstance() {
+        if(instance == null) instance = new ColorPathProvider();
+        return instance;
+    }
+
+    @Override
+    public InterfacePathProvider getPathObjectOf(InterfaceColor object) {
+        return ProgramDirectory.COLORS;
+    }
 
 }

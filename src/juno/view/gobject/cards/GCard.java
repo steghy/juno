@@ -50,7 +50,7 @@ public class GCard<T>
     }
 
     @Override
-    public T getObject() {
+    public T object() {
         return card;
     }
 

@@ -60,7 +60,7 @@ public class CompatibleGCardEnabler
     public void set(@NotNull List<GCard<InterfaceCard>> object) {
         object.forEach(gCard -> {
             gCard.setEnabled(Objects.requireNonNull(getCompatibilityChecker())
-                    .isCompatible(gCard.getObject()));
+                    .isCompatible(gCard.object()));
         });
     }
 

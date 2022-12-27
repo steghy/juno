@@ -62,7 +62,7 @@ public class AvatarImagesPanelConfigurator {
                     GAvatarImage<InterfaceAvatarImage> gAvatarImage = (GAvatarImage<InterfaceAvatarImage>) temp;
                     gAvatarImage.addActionListener(new GSetterAction<>(gAvatarImage, AvatarImageSetter.getInstance()));
                     gAvatarImage.setEnabled(false);
-                    AvatarImage.valueOf(gAvatarImage.getObject().name()).addObserver(gAvatarImage);
+                    AvatarImage.valueOf(gAvatarImage.object().name()).addObserver(gAvatarImage);
                     gAvatarImages.add(gAvatarImage);
                 });
 

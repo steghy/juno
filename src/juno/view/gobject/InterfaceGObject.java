@@ -38,6 +38,6 @@ public interface InterfaceGObject<T> {
      * button card.
      * @return A T card.
      */
-    T getObject();
+    T object();
 
 }

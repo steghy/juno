@@ -23,23 +23,24 @@
  * SOFTWARE.
  */
 
-package juno.model.card.colors;
+package juno.view.gobject;
 
-/**
- * This Interface groups the following interfaces
- * for determining the color of cards:
- * - InterfaceRed
- * - InterfaceBlue
- * - InterfaceYellow
- * - InterfaceGreen
- * @author Simone Gentili
- */
-public interface InterfaceColor extends
-        InterfaceRed,
-        InterfaceBlue,
-        InterfaceYellow,
-        InterfaceGreen {
+import juno.view.util.ImageLabel;
+import org.jetbrains.annotations.NotNull;
 
-    String name();
+public class GObjectLabel<T>
+        extends ImageLabel
+        implements InterfaceGObject<T> {
+
+    private final T object;
+
+    public GObjectLabel(@NotNull T object) {
+        this.object = object;
+    }
+
+    @Override
+    public T object() {
+        return object;
+    }
 
 }

@@ -27,6 +27,7 @@ package juno.view.gobject.frames;
 
 import juno.model.data.awards.frame.InterfaceAvatarFrame;
 import juno.model.util.Observer;
+import juno.view.gobject.GObjectButton;
 import juno.view.gobject.InterfaceGObject;
 import juno.view.util.ImageButton;
 import org.jetbrains.annotations.NotNull;
@@ -35,29 +36,14 @@ import org.jetbrains.annotations.NotNull;
  * @author Simone Gentili
  * @param <T> The type of the avatar frames.
  */
-public class GAvatarFrame<T>
-        extends ImageButton
-        implements InterfaceGObject<T>, Observer {
+public class GAvatarFrame<T> extends GObjectButton<T> {
 
-    // The avatar frame.
-    private final T frame;
-
-    /**
-     * Builds a GAvatarFrame with the specified
-     * avatar frame object.
-     * @param frame An avatar frame object.
-     */
-    public GAvatarFrame(@NotNull T frame) {
-        this.frame = frame;
+    public GAvatarFrame(@NotNull T object) {
+        super(object);
     }
 
     @Override
-    public T getObject() {
-        return frame;
-    }
-
-    @Override
-    public void update(Object object) {
+    public void update(@NotNull Object object) {
         if(object instanceof InterfaceAvatarFrame avatarFrame)
             setEnabled(avatarFrame.isUnlock());
     }

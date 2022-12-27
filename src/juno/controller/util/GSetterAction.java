@@ -58,7 +58,7 @@ public class GSetterAction<T>
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        setter.set(gObject.getObject());
+        setter.set(gObject.object());
     }
 
 }

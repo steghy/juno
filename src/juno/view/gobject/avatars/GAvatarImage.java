@@ -52,7 +52,7 @@ public class GAvatarImage<T>
     }
 
     @Override
-    public T getObject() {
+    public T object() {
         return avatar;
     }
 

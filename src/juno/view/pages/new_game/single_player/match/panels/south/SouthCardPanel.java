@@ -109,7 +109,7 @@ public class SouthCardPanel
             InterfaceCard card = provider.provide();
             GCard<InterfaceCard> gCard = (GCard<InterfaceCard>)
                     Objects.requireNonNull(GCardMapFactory.getInstance().getGObjectsMap()).get(card);
-            SetterAction<InterfaceCard> setterAction = new SetterAction<>(gCard.getObject(), discardedCardSetter);
+            SetterAction<InterfaceCard> setterAction = new SetterAction<>(gCard.object(), discardedCardSetter);
             gCard.addActionListener(setterAction);
             setterAction.addObserver(this);
             gCard.setEnabled(false);

@@ -5,14 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/data/images/colors/BLUE.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/images/colors/GREEN.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/images/colors/RED.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/images/colors/YELLOW.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/gobject/GObjectLabel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/gobject/color/ColorCreator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/gobject/color/ColorPathProvider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/util/GSetterAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/util/GSetterAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/card/colors/InterfaceColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/card/colors/InterfaceColor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/InterfaceGObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/gobject/InterfaceGObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/avatars/GAvatarImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/gobject/avatars/GAvatarImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/cards/GCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/gobject/cards/GCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/cards/GCardMapFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/gobject/cards/GCardMapFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/frames/GAvatarFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/gobject/frames/GAvatarFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/profiles/GProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/gobject/GObjectButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/profiles/GProfileCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/gobject/profiles/GProfileCreator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/CenterPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/CenterPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/south/CompatibleGCardEnabler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/south/CompatibleGCardEnabler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/south/SouthCardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/south/SouthCardPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/south/SouthPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/south/SouthPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/pre_access/login/profiles_panel/GProfileProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/pre_access/login/profiles_panel/GProfileProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/score/avatar_frames_panel/AvatarFramesPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/score/avatar_frames_panel/AvatarFramesPanelConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/score/avatar_images_panel/AvatarImagesPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/score/avatar_images_panel/AvatarImagesPanelConfigurator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

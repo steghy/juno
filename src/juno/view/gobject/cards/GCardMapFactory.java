@@ -71,7 +71,7 @@ public class GCardMapFactory
     @Override
     public void generate(@NotNull List<InterfaceGObject<InterfaceCard>> gCards) {
         gCardsMap = gCards.stream()
-                .collect(Collectors.toMap(InterfaceGObject::getObject, value -> value));
+                .collect(Collectors.toMap(InterfaceGObject::object, value -> value));
     }
 
     @Override

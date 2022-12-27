@@ -25,9 +25,7 @@
 
 package juno.view.gobject.profiles;
 
-import juno.view.gobject.AbstractGObjectCreator;
-import juno.view.gobject.InterfaceGObject;
-import juno.view.gobject.InterfaceGObjectCreator;
+import juno.view.gobject.*;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -54,7 +52,7 @@ public class GProfileCreator<T>
 
     @Override
     public InterfaceGObject<T> create(@NotNull T object) {
-        return new GProfile<>(object);
+        return new GObjectLabel<>(object);
     }
 
 }

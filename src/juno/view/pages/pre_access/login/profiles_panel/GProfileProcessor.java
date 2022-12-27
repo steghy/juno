@@ -31,8 +31,8 @@ import juno.controller.util.GSetterAction;
 import juno.controller.util.PanelChanger;
 import juno.view.button.InterfaceButton;
 import juno.view.button.InterfaceButtonCreator;
+import juno.view.gobject.GObjectLabel;
 import juno.view.gobject.InterfaceGObject;
-import juno.view.gobject.profiles.GProfile;
 import juno.view.pages.card.TopCardPanel;
 import juno.view.util.ImageResizer;
 import org.jetbrains.annotations.NotNull;
@@ -85,14 +85,14 @@ public class GProfileProcessor
 
     @Override
     public AbstractButton process(@NotNull InterfaceGObject<String> gObject) {
-        GProfile<String> gProfile = (GProfile<String>) gObject;
+        GObjectLabel<String> gProfile = (GObjectLabel<String>) gObject;
         AbstractButton button = creator.create(this.button);
         button.setLayout(new BorderLayout());
         button.setOpaque(false);
         button.add(gProfile, BorderLayout.CENTER);
         ImageResizer.resize(button, 8.0);
         gProfile.setOpaque(false);
-        gProfile.setText(gProfile.getObject());
+        gProfile.setText(gProfile.object());
         gProfile.setForeground(Color.WHITE);
         gProfile.setFont(new Font(Font.DIALOG, Font.ITALIC, 15));
         gProfile.setVerticalTextPosition(AbstractButton.CENTER);
