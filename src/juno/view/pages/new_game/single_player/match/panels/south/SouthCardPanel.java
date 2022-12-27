@@ -35,9 +35,7 @@ import juno.model.util.InterfaceSetter;
 import juno.model.util.Observer;
 import juno.view.gobject.cards.GCard;
 import juno.view.gobject.cards.GCardMapFactory;
-import juno.view.util.ImageResizer;
 import org.jetbrains.annotations.NotNull;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.Arrays;
