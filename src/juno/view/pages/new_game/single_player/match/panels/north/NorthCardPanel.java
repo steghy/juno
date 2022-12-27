@@ -37,6 +37,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ *
  * @author Simone Gentili
  */
 public class NorthCardPanel
@@ -63,7 +64,7 @@ public class NorthCardPanel
 
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof AI<?> ai) {
+        if(object instanceof AI<?, ?> ai) {
             if(ai.getRemoved()) {
                 int count = getComponentCount();
                 if(count == 0) throw new IllegalArgumentException(

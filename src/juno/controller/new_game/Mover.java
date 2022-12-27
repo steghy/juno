@@ -29,6 +29,7 @@ import juno.model.card.InterfaceCard;
 import juno.model.deck.Deck;
 import juno.model.deck.DiscardedPile;
 import juno.model.subjects.InterfacePlayer;
+import juno.model.subjects.ai.InterfaceAi;
 import juno.model.subjects.shift.PlayersProvider;
 import juno.model.subjects.shift.TurnMover;
 import juno.model.util.AbstractObservable;
@@ -41,6 +42,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
+/**
+ * @author Simone Gentili
+ */
 public class Mover
         extends AbstractObservable
         implements ActionListener, Observer {
@@ -53,7 +57,7 @@ public class Mover
 
     // Builds the Mover instance.
     private Mover() {
-        timer = new Timer(500, this);
+        timer = new Timer(1500, this);
     }
 
     /**
@@ -68,26 +72,29 @@ public class Mover
     @Override
     @SuppressWarnings("unchecked")
     public void actionPerformed(ActionEvent e) {
-        // Players provider
         PlayersProvider<InterfacePlayer<InterfaceCard>> provider =
                 (PlayersProvider<InterfacePlayer<InterfaceCard>>) PlayersProvider.getInstance();
-        // The players.
         Donut<InterfacePlayer<InterfaceCard>> players = provider.provide();
-        // The current player.
         InterfacePlayer<InterfaceCard> current = Objects.requireNonNull(players).current();
-        // The deck.
         Deck<InterfaceCard> deck = (Deck<InterfaceCard>) Deck.getInstance();
-        // The discarded pile.
         DiscardedPile<InterfaceCard> discardedPile = (DiscardedPile<InterfaceCard>) DiscardedPile.getInstance();
-        if(!(current == provider.getPlayer())) {
-            InterfaceCard card = current.move();
-            if(card == null)
+
+        // Ai case.
+        if(current instanceof InterfaceAi<?, ?> ai) {
+            // The chosen card.
+            InterfaceCard card = (InterfaceCard) ai.move();
+
+            // Ai hasn't cards to play.
+            if(card == null) {
                 current.add(deck.draw());
-            else {
+                card = (InterfaceCard) ai.move();
+            }
+
+            // Ai has a card to play.
+            if(card != null) {
                 discardedPile.discard(card);
                 current.remove(card);
-            }
-            TurnMover.getInstance().next();
+            } TurnMover.getInstance().next();
         } else {
             timer.stop();
             updateAll();

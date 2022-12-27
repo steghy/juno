@@ -36,7 +36,7 @@ import java.util.Random;
  * @param <T> The type of the cards.
  */
 public class MediumExaminer<T>
-        extends AbstractCardExaminer<T>
+        extends AbstractFilterUser<T>
         implements InterfaceMediumExaminer<T> {
 
     // The MediumExaminer instance.

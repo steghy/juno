@@ -29,7 +29,6 @@ import juno.model.deck.InterfaceDeck;
 import juno.model.subjects.InterfacePlayer;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -61,7 +60,6 @@ public class DrawAction<T>
     @Override
     public void actionPerformed(ActionEvent e) {
         player.add(deck.draw());
-        ((AbstractButton) e.getSource()).setEnabled(false);
     }
 
 }

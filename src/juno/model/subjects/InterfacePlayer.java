@@ -32,9 +32,10 @@ import org.jetbrains.annotations.Nullable;
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
-public interface InterfacePlayer<T> extends InterfaceCardsPlayer<T>, InterfaceSubject, InterfaceAdder<T>, InterfaceRemover<T>, InterfaceProvider<T> {
-
-    @Nullable
-    T move();
-
-}
+public interface InterfacePlayer<T>
+        extends
+        InterfaceCardsPlayer<T>,
+        InterfaceSubject,
+        InterfaceAdder<T>,
+        InterfaceRemover<T>,
+        InterfaceProvider<T> {}

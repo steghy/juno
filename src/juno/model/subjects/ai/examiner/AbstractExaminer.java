@@ -34,7 +34,7 @@ import org.jetbrains.annotations.Nullable;
  * @param <T> The type of the items.
  */
 public abstract class AbstractExaminer<T>
-        implements InterfaceExaminer<T> {
+        implements InterfaceCardExaminer<T> {
 
     // The item's provider.
     private InterfaceCompatibleCardsProvider<T> itemsProvider;

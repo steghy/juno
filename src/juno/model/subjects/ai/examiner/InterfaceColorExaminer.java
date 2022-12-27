@@ -23,11 +23,18 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects;
+package juno.model.subjects.ai.examiner;
 
+import java.util.List;
+
+/**
+ * @author Simone Gentili
+ * @param <T> The type of the color.
+ * @param <E> The type of the cards.
+ */
 @FunctionalInterface
-public interface InputReceiver<T> {
+public interface InterfaceColorExaminer<T, E> {
 
-    T receive();
-    
+    T responseRelativeTo(List<E> cards);
+
 }

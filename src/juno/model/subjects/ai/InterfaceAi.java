@@ -23,15 +23,12 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.ai.examiner;
+package juno.model.subjects.ai;
 
-/**
- * @author Simone Gentili
- * @param <T> The type of the cards.
- */
-public interface InterfaceFilter<T>
-        extends
-        InterfaceActionFilter<T>,
-        InterfaceNumberFilter<T>,
-        InterfaceJollyFilter<T>,
-        InterfaceColorFilter<T> {}
+public interface InterfaceAi<T, E> {
+
+    T move();
+
+    E color();
+
+}

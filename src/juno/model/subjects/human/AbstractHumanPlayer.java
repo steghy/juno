@@ -37,19 +37,8 @@ import org.jetbrains.annotations.Nullable;
 public abstract class AbstractHumanPlayer<T>
         extends AbstractPlayer<T> {
 
-    // The receiver.
-    InterfaceReceiver<T> receiver;
-
     // The profile name provider.
     InterfaceProvider<String> provider;
-
-    /**
-     * Sets the receiver of this object.
-     * @param receiver An InterfaceReceiver object.
-     */
-    public void setReceiver(@NotNull InterfaceReceiver<T> receiver) {
-        this.receiver = receiver;
-    }
 
     /**
      * Sets the profile name provider of this object.
@@ -57,15 +46,6 @@ public abstract class AbstractHumanPlayer<T>
      */
     public void setProvider(@NotNull InterfaceProvider<String> provider) {
         this.provider = provider;
-    }
-
-    /**
-     * Returns the receiver of this object.
-     * @return An InterfaceReceiver object.
-     */
-    @Nullable
-    public InterfaceReceiver<T> getReceiver() {
-        return receiver;
     }
 
     /**

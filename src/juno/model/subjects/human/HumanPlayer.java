@@ -28,7 +28,6 @@ package juno.model.subjects.human;
 import juno.controller.util.InterfaceInitializer;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
@@ -39,9 +38,6 @@ import java.util.Objects;
 public class HumanPlayer<T>
         extends AbstractHumanPlayer<T>
         implements Observer {
-
-    // Boolean value for removing.
-    private boolean removed;
 
     // The last card involved.
     private T card;
@@ -59,11 +55,6 @@ public class HumanPlayer<T>
     public static HumanPlayer<?> getInstance() {
         if(instance == null) instance = new HumanPlayer<>();
         return instance;
-    }
-
-    @Override @Nullable
-    public T move() {
-        return Objects.requireNonNull(getReceiver()).receive();
     }
 
     @Override
@@ -99,10 +90,6 @@ public class HumanPlayer<T>
         else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceInitializer type expected.");
-    }
-
-    public boolean isRemoved() {
-        return removed;
     }
 
 }

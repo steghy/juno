@@ -23,15 +23,15 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.ai.examiner;
+package juno.model.deck;
+
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the cards.
  */
-public interface InterfaceFilter<T>
-        extends
-        InterfaceActionFilter<T>,
-        InterfaceNumberFilter<T>,
-        InterfaceJollyFilter<T>,
-        InterfaceColorFilter<T> {}
+@FunctionalInterface
+public interface InterfaceCardEffectActivator<T> {
+
+    void activate(T card);
+
+}

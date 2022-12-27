@@ -26,7 +26,8 @@
 package juno.model.subjects.ai;
 
 import juno.model.subjects.AbstractPlayer;
-import juno.model.subjects.ai.examiner.InterfaceExaminer;
+import juno.model.subjects.ai.examiner.InterfaceCardExaminer;
+import juno.model.subjects.ai.examiner.InterfaceColorExaminer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -34,16 +35,20 @@ import org.jetbrains.annotations.Nullable;
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
-public class AI<T>
-        extends AbstractPlayer<T> {
+public class AI<T, E>
+        extends AbstractPlayer<T>
+        implements InterfaceAi<T, E> {
 
+    // The boolean value of the card removed.
     private boolean cardRemoved;
 
     // The latest card involved.
     private T card;
 
     // The examiner.
-    private final InterfaceExaminer<T> examiner;
+    private final InterfaceCardExaminer<T> cardExaminer;
+
+    private final InterfaceColorExaminer<E, T> colorExaminer;
 
     // The name.
     private final String name;
@@ -59,15 +64,22 @@ public class AI<T>
      */
     public AI(@NotNull String name,
               @NotNull InterfaceDifficulty difficulty,
-              @NotNull InterfaceExaminer<T> examiner) {
+              @NotNull InterfaceCardExaminer<T> cardExaminer,
+              @NotNull InterfaceColorExaminer<E, T> colorExaminer) {
         this.name = name;
         this.difficulty = difficulty;
-        this.examiner = examiner;
+        this.cardExaminer = cardExaminer;
+        this.colorExaminer = colorExaminer;
     }
 
     @Override @Nullable
     public T move() {
-        return examiner.responseRelativeTo(cards(), difficulty);
+        return cardExaminer.responseRelativeTo(cards(), difficulty);
+    }
+
+    @Override
+    public E color() {
+        return colorExaminer.responseRelativeTo(cards());
     }
 
     @Override

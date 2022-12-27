@@ -36,21 +36,21 @@ import java.util.Objects;
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
-public class Examiner<T>
+public class CardExaminer<T>
         extends AbstractMultiExaminer<T> {
 
     // The Examiner instance.
-    private static Examiner<?> instance;
+    private static CardExaminer<?> instance;
 
     // Builds the Examiner instance.
-    private Examiner() {}
+    private CardExaminer() {}
 
     /**
      * Returns the Examiner instance.
      * @return The Examiner instance.
      */
-    public static Examiner<?> getInstance() {
-        if(instance == null) instance = new Examiner<>();
+    public static CardExaminer<?> getInstance() {
+        if(instance == null) instance = new CardExaminer<>();
         return instance;
     }
 
@@ -65,7 +65,7 @@ public class Examiner<T>
         if(compatibleCards.size() == 0) return null;
 
         // Easy difficulty case.
-        if(difficulty.isEasy())   return Objects.requireNonNull(getEasyExaminer())
+        if(difficulty.isEasy()) return Objects.requireNonNull(getEasyExaminer())
                 .response(compatibleCards);
 
         // Medium difficulty case.

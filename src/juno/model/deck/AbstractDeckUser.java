@@ -23,51 +23,34 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.human;
+package juno.model.deck;
 
-import juno.controller.new_game.GameInitializer;
-import juno.controller.util.InterfaceInitializer;
-import juno.model.card.InterfaceCard;
-import juno.model.data.profile.profile.ProfileNameProvider;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Simone Gentili
  */
-public class Initializer
-        implements InterfaceInitializer {
+public abstract class AbstractDeckUser<T> {
 
-    // The Initializer instance.
-    private static Initializer instance;
-
-    // Builds the Initializer instance.
-    private Initializer() {}
+    // The deck.
+    private InterfaceDeck<T> deck;
 
     /**
-     * Returns the Initializer instance.
-     * @return The Initializer instance.
+     * Sets the deck of this object.
+     * @param deck An InterfaceDeck object.
      */
-    public static Initializer getInstance() {
-        if(instance == null) instance = new Initializer();
-        return instance;
+    public void setDeck(@NotNull InterfaceDeck<T> deck) {
+        this.deck = deck;
     }
 
-    @Override
-    @SuppressWarnings("unchecked")
-    public void initialize() {
-        // Component.
-
-        // HumanPlayer.
-        HumanPlayer<InterfaceCard> humanPlayer =
-                (HumanPlayer<InterfaceCard>) HumanPlayer.getInstance();
-
-        //////////////////////////////////////////////////////////////////
-
-        // Connections.
-        // HumanPlayer.
-        humanPlayer.setProvider(ProfileNameProvider.getInstance());
-
-        // Observer / Observable.
-        GameInitializer.getInstance().addObserver(humanPlayer);
+    /**
+     * Returns the deck of this object.
+     * @return An InterfaceDeck object.
+     */
+    @Nullable
+    public InterfaceDeck<T> getDeck() {
+        return deck;
     }
 
 }

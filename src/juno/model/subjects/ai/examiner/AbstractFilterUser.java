@@ -25,24 +25,33 @@
 
 package juno.model.subjects.ai.examiner;
 
-import juno.model.subjects.ai.InterfaceDifficulty;
-
-import java.util.List;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
-@FunctionalInterface
-public interface InterfaceExaminer<T> {
+public abstract class AbstractFilterUser<T> {
+
+    // The filter.
+    InterfaceFilter<T> filter;
 
     /**
-     *
-     * @param items
-     * @param difficulty
-     * @return
+     * Sets the filter of this object.
+     * @param filter An InterfaceFilter object.
      */
-    T responseRelativeTo(List<T> items,
-                         InterfaceDifficulty difficulty);
+    public void setFilter(@NotNull InterfaceFilter<T> filter) {
+        this.filter = filter;
+    }
+
+    /**
+     * Sets the filter of this object.
+     * @return An InterfaceFilter object.
+     */
+    @Nullable
+    public InterfaceFilter<T> getFilter() {
+        return filter;
+    }
 
 }

@@ -25,6 +25,8 @@
 
 package juno.model.deck;
 
+import juno.model.util.InterfaceProvider;
+
 import java.util.List;
 
 /**
@@ -34,7 +36,7 @@ import java.util.List;
  * @author Simone Gentili
  * @param <T> The type of the items.
  */
-public interface InterfaceDiscardedPile<T> extends List<T> {
+public interface InterfaceDiscardedPile<T> extends List<T>, InterfaceProvider<T> {
 
     /**
      * Discard the specified item on top of the

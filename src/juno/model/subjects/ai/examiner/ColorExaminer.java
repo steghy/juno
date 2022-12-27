@@ -23,15 +23,40 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.human;
+package juno.model.subjects.ai.examiner;
 
-@FunctionalInterface
-public interface InterfaceReceiver<T> {
+import juno.model.card.InterfaceCard;
+import juno.model.card.colors.Color;
+import juno.model.card.colors.InterfaceColor;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.*;
+
+/**
+ * @author Simone Gentili
+ */
+public class ColorExaminer
+        extends AbstractFilterUser<InterfaceCard>
+        implements InterfaceColorExaminer<InterfaceColor, InterfaceCard>{
+
+    // The ColorExaminer instance.
+    private static ColorExaminer instance;
+
+    // Builds the ColorExaminer instance.
+    private ColorExaminer() {}
 
     /**
-     *
-     * @return
+     * Returns the ColorExaminer instance.
+     * @return The ColorExaminer instance.
      */
-    T receive();
+    public static ColorExaminer getInstance() {
+        if(instance == null) instance = new ColorExaminer();
+        return instance;
+    }
+
+    @Override
+    public InterfaceColor responseRelativeTo(@NotNull List<InterfaceCard> cards) {
+        return Color.RED;
+    }
 
 }

@@ -54,7 +54,6 @@ public class MatchPanelConfigurator {
         matchPanel.setFourthComponent(EastPanel.getInstance());  // West panel.
         matchPanel.setFifthComponent(CenterPanel.getInstance()); // Center panel.
 
-
         // Main component initialization.
         matchPanel.init();
     }

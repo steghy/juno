@@ -52,7 +52,7 @@ public class Initializer {
         CompatibleCardsProvider compatibleCardsProvider = CompatibleCardsProvider.getInstance();
 
         // Examiner.
-        Examiner<InterfaceCard> examiner = (Examiner<InterfaceCard>) Examiner.getInstance();
+        CardExaminer<InterfaceCard> examiner = (CardExaminer<InterfaceCard>) CardExaminer.getInstance();
 
         // Filter.
         Filter filter = Filter.getInstance();

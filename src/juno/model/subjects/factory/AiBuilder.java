@@ -29,21 +29,25 @@ package juno.model.subjects.factory;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.ai.AI;
 import juno.model.subjects.ai.InterfaceDifficulty;
-import juno.model.subjects.ai.examiner.InterfaceExaminer;
+import juno.model.subjects.ai.examiner.InterfaceCardExaminer;
+import juno.model.subjects.ai.examiner.InterfaceColorExaminer;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
-public class AiBuilder<T>
+public class AiBuilder<T, E>
         implements InterfaceAiBuilder<T, InterfaceDifficulty> {
 
-    // The Ai examiner.
-    private InterfaceExaminer<T> examiner;
+    // The AI card examiner.
+    private InterfaceCardExaminer<T> examiner;
+
+    // The AI color examiner.
+    private InterfaceColorExaminer<E, T> colorExaminer;
 
     // The AiBuilder instance.
-    private static AiBuilder<?> instance;
+    private static AiBuilder<?, ?> instance;
 
     // Builds the AiBuilder instance.
     private AiBuilder() {}
@@ -52,7 +56,7 @@ public class AiBuilder<T>
      * Returns the AiBuilder instance.
      * @return The AiBuilder instance.
      */
-    public static AiBuilder<?> getInstance() {
+    public static AiBuilder<?, ?> getInstance() {
         if(instance == null) instance = new AiBuilder<>();
         return instance;
     }
@@ -60,14 +64,14 @@ public class AiBuilder<T>
     @Override
     public InterfacePlayer<T> build(@NotNull String name,
                                     @NotNull InterfaceDifficulty difficulty) {
-        return new AI<>(name, difficulty, examiner);
+        return new AI<>(name, difficulty, examiner, colorExaminer);
     }
 
     /**
      * Sets the Ai examiner of this object.
      * @param examiner An InterfaceExaminer object.
      */
-    public void setExaminer(@NotNull InterfaceExaminer<T> examiner) {
+    public void setExaminer(@NotNull InterfaceCardExaminer<T> examiner) {
         this.examiner = examiner;
     }
 

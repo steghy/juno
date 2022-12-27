@@ -28,6 +28,10 @@ package juno.model.deck;
 
 import juno.controller.new_game.GameInitializer;
 import juno.model.card.InterfaceCard;
+import juno.model.subjects.InterfacePlayer;
+import juno.model.subjects.shift.Inverter;
+import juno.model.subjects.shift.PlayersProvider;
+import juno.model.subjects.shift.TurnJumper;
 import juno.view.gobject.cards.GCardFactory;
 
 /**
@@ -65,8 +69,15 @@ public class Initializer {
         // Discarded pile.
         DiscardedPile<InterfaceCard> discardedPile = (DiscardedPile<InterfaceCard>) DiscardedPile.getInstance();
 
-        // The game initializer.
+        // Game initializer.
         GameInitializer gameInitializer = GameInitializer.getInstance();
+
+        // Card effect activator.
+        CardEffectActivator cardEffectActivator = CardEffectActivator.getInstance();
+
+        // Players provider.
+        PlayersProvider<InterfacePlayer<InterfaceCard>> playersProvider =
+                (PlayersProvider<InterfacePlayer<InterfaceCard>>) PlayersProvider.getInstance();
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -85,11 +96,18 @@ public class Initializer {
         deck.setDeckFiller(filler);
         deck.setMixer(mixer);
 
+        // CardEffectActivator.
+        cardEffectActivator.setDeck(deck);
+        cardEffectActivator.setInverter(Inverter.getInstance());
+        cardEffectActivator.setTurnJumper(TurnJumper.getInstance());
+        cardEffectActivator.setPlayersProvider(playersProvider);
+
         // Observer / Observable connections.
         deckFactory.addObserver(deck);
         deckFactory.addObserver(GCardFactory.getInstance());
         gameInitializer.addObserver(discardedPile);
         discardedPile.addObserver(actualColor);
+        discardedPile.addObserver(cardEffectActivator);
     }
 
 }

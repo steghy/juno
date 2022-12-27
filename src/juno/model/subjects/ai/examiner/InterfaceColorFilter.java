@@ -25,33 +25,14 @@
 
 package juno.model.subjects.ai.examiner;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import java.util.List;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the cards.
  */
-public abstract class AbstractCardExaminer<T> {
+@FunctionalInterface
+public interface InterfaceColorFilter<T> {
 
-    // The filter.
-    InterfaceFilter<T> filter;
-
-    /**
-     * Sets the filter of this object.
-     * @param filter An InterfaceFilter object.
-     */
-    public void setFilter(@NotNull InterfaceFilter<T> filter) {
-        this.filter = filter;
-    }
-
-    /**
-     * Sets the filter of this object.
-     * @return An InterfaceFilter object.
-     */
-    @Nullable
-    public InterfaceFilter<T> getFilter() {
-        return filter;
-    }
+    List<T> colored(List<T> cards);
 
 }

@@ -26,9 +26,10 @@
 package juno.model.subjects.factory;
 
 import juno.model.card.InterfaceCard;
+import juno.model.card.colors.InterfaceColor;
 import juno.model.subjects.ai.InterfaceDifficulty;
-import juno.model.subjects.ai.examiner.Examiner;
-import juno.model.subjects.ai.examiner.InterfaceExaminer;
+import juno.model.subjects.ai.examiner.CardExaminer;
+import juno.model.subjects.ai.examiner.InterfaceCardExaminer;
 
 /**
  * @author Simone Gentili
@@ -49,7 +50,8 @@ public class Initializer {
         NameFactory nameFactory = NameFactory.getInstance();
 
         // AiBuilder.
-        AiBuilder<InterfaceCard> aiBuilder = (AiBuilder<InterfaceCard>) AiBuilder.getInstance();
+        AiBuilder<InterfaceCard, InterfaceColor> aiBuilder =
+                (AiBuilder<InterfaceCard, InterfaceColor>) AiBuilder.getInstance();
 
         ////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -59,7 +61,7 @@ public class Initializer {
         aiPlayerFactory.setNameFactory(nameFactory);
 
         // AiBuilder.
-        aiBuilder.setExaminer((InterfaceExaminer<InterfaceCard>) Examiner.getInstance());
+        aiBuilder.setExaminer((InterfaceCardExaminer<InterfaceCard>) CardExaminer.getInstance());
     }
 
 }

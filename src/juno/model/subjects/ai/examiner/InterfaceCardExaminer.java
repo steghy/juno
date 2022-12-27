@@ -25,13 +25,24 @@
 
 package juno.model.subjects.ai.examiner;
 
+import juno.model.subjects.ai.InterfaceDifficulty;
+
+import java.util.List;
+
 /**
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
-public interface InterfaceFilter<T>
-        extends
-        InterfaceActionFilter<T>,
-        InterfaceNumberFilter<T>,
-        InterfaceJollyFilter<T>,
-        InterfaceColorFilter<T> {}
+@FunctionalInterface
+public interface InterfaceCardExaminer<T> {
+
+    /**
+     *
+     * @param items
+     * @param difficulty
+     * @return
+     */
+    T responseRelativeTo(List<T> items,
+                         InterfaceDifficulty difficulty);
+
+}

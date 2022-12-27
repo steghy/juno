@@ -41,6 +41,10 @@ public abstract class AbstractPlayer<T>
     // The List of the cards.
     List<T> cards = new ArrayList<>();
 
+    /**
+     * Returns the cards of this object.
+     * @return A List object.
+     */
     public List<T> cards() {
         return cards;
     }

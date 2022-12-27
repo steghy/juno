@@ -63,7 +63,7 @@ public class EastCardPanel
 
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof AI<?> ai) {
+        if(object instanceof AI<?, ?> ai) {
             if(ai.getRemoved()) {
                 int count = getComponentCount();
                 if(count == 0) throw new IllegalArgumentException(
