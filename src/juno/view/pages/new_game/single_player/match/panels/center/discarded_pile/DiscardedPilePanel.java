@@ -25,13 +25,14 @@
 
 package juno.view.pages.new_game.single_player.match.panels.center.discarded_pile;
 
-import juno.controller.log_out.Restorable;
+import juno.controller.util.InterfaceInitializer;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.InterfaceDiscardedPile;
 import juno.model.util.InterfaceProvider;
 import juno.model.util.Observer;
-import juno.view.gobject.InterfaceGObjectMapFactory;
+import juno.view.gobject.InterfaceGObjectCreator;
 import juno.view.gobject.cards.GCard;
+import juno.view.util.ImageResizer;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -44,8 +45,8 @@ public class DiscardedPilePanel
         extends JPanel
         implements Observer {
 
-    // The graphic cards factory.
-    private InterfaceGObjectMapFactory<InterfaceCard> factory;
+    // The graphic card creator.
+    private InterfaceGObjectCreator<InterfaceCard> creator;
 
     // The top discarded pile card provider.
     private InterfaceProvider<InterfaceCard> provider;
@@ -79,21 +80,22 @@ public class DiscardedPilePanel
     }
 
     /**
-     * Sets the graphic card factory of this object.
-     * @param factory An InterfaceGObjectMapFactory object.
+     * Sets the graphic card creator of this object.
+     * @param creator An InterfaceGObjectCreator object.
      */
-    public void setFactory(@NotNull InterfaceGObjectMapFactory<InterfaceCard> factory) {
-        this.factory = factory;
+    public void setCreator(@NotNull InterfaceGObjectCreator<InterfaceCard> creator) {
+        this.creator = creator;
     }
 
     @Override
     public void update(@NotNull Object object) {
         if(object instanceof InterfaceDiscardedPile<?>) {
             GCard<InterfaceCard> gCard = (GCard<InterfaceCard>)
-                    factory.getGObjectsMap().get(provider.provide());
+                    creator.create(provider.provide());
+            ImageResizer.resize(gCard, 2.0);
             removeAll();
             add(gCard, BorderLayout.CENTER);
-        } else if(object instanceof Restorable) {
+        } else if(object instanceof InterfaceInitializer) {
             removeAll();
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +

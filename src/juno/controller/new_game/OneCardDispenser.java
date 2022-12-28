@@ -26,41 +26,59 @@
 package juno.controller.new_game;
 
 import juno.model.card.InterfaceCard;
+import juno.model.deck.InterfaceDeck;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.util.AbstractObservable;
-import juno.model.util.InterfaceGenerator;
 import juno.model.util.InterfaceProvider;
 import juno.model.util.Observer;
+import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.stream.Collectors;
 
 /**
  * @author Simone Gentili
  */
-public class CardController
-        extends AbstractObservable
-        implements Observer, InterfaceProvider<List<InterfacePlayer<InterfaceCard>>>,
-        InterfaceGenerator {
+public class OneCardDispenser
+        extends
+        AbstractObservable
+        implements
+        ActionListener,
+        Observer,
+        InterfaceCardDispenser,
+        InterfaceProvider<List<InterfacePlayer<InterfaceCard>>> {
+
+    // The deck.
+    private InterfaceDeck<InterfaceCard> deck;
 
     // The players.
     private List<InterfacePlayer<InterfaceCard>> players;
 
-    // The CardController instance.
-    private static CardController instance;
+    // The players size.
+    private int size;
 
-    // Builds a CardController.
-    private CardController() {}
+    // The players size copy.
+    private int copy;
+
+    // The timer.
+    private final Timer timer;
+
+    // The CardDispenser instance.
+    private static OneCardDispenser instance;
+
+    // Builds the CardDispenser instance.
+    private OneCardDispenser() {
+        timer = new Timer(500, this);
+    }
 
     /**
-     * Returns the CardController instance.
-     * @return The CardController instance.
+     * Returns the CardDispenser instance.
+     * @return The CardDispenser instance.
      */
-    public static CardController getInstance() {
-        if(instance == null) instance = new CardController();
+    public static OneCardDispenser getInstance() {
+        if(instance == null) instance = new OneCardDispenser();
         return instance;
     }
 
@@ -70,31 +88,39 @@ public class CardController
     }
 
     @Override
-    public void generate() {
-        List<InterfacePlayer<InterfaceCard>> players = new ArrayList<>();
-        // Caso base. Se tutte le carte sono azione ritorno tutti i giocatori.
-        // Altrimenti controllo.
-
-        // Mappa che associa ad ogni giocatore la carta pescata in precedenza
-        Map<InterfaceCard, InterfacePlayer<InterfaceCard>> map =
-                players.stream().collect(Collectors.toMap(InterfaceProvider::provide, value -> value));
-        List<InterfaceCard> cards = new ArrayList<>();
-        map.keySet().forEach(card -> {
-            if(cards.size() == 0) cards.add(card);
-            else {
-                cards.forEach(other -> {
-                    if(card.value() == null)
-                });
-            }
-        });
+    public void actionPerformed(ActionEvent e) {
+        size--;
+        if(size < 0) {
+            timer.stop();
+            size = copy;
+            updateAll();
+        } else {
+            InterfaceCard card = deck.draw();
+            players.get(size).add(card);
+        }
     }
 
-    @Override @SuppressWarnings("unchecked")
+    @Override
+    public void dispense() {
+        timer.start();
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
     public void update(Object object) {
         if(object instanceof InterfaceProvider<?> provider) {
             players = (List<InterfacePlayer<InterfaceCard>>) provider.provide();
-            generate();
-        } else throw new IllegalArgumentException();
+            size = players.size();
+            copy = size;
+        }
+    }
+
+    /**
+     * Sets the deck of this object.
+     * @param deck An InterfaceDeck object.
+     */
+    public void setDeck(@NotNull InterfaceDeck<InterfaceCard> deck) {
+        this.deck = deck;
     }
 
 }

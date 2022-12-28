@@ -43,7 +43,7 @@ import java.util.List;
  */
 public class CardDispenser
         extends AbstractObservable
-        implements ActionListener, Observer {
+        implements ActionListener, Observer, InterfaceCardDispenser {
 
     // The deck.
     private InterfaceDeck<InterfaceCard> deck;
@@ -65,7 +65,7 @@ public class CardDispenser
 
     // Builds the CardDispenser instance.
     private CardDispenser() {
-        timer = new Timer(500, this);
+        timer = new Timer(750, this);
     }
 
     /**
@@ -90,29 +90,15 @@ public class CardDispenser
         }
     }
 
-    /**
-     * Sets the deck of this object.
-     * @param deck An InterfaceDeck object.
-     */
-    public void setDeck(@NotNull InterfaceDeck<InterfaceCard> deck) {
-        this.deck = deck;
-    }
-
-    /**
-     * Returns the timer of this object.
-     * @return A Timer object.
-     */
-    public Timer getTimer() {
-        return timer;
+    public void dispense() {
+        timer.start();
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public void update(Object object) {
+    public void update(@NotNull Object object) {
         if(object instanceof InterfaceProvider<?> provider) {
             players = (List<InterfacePlayer<InterfaceCard>>) provider.provide();
-            size = players.size();
-            copy = size;
         }
     }
 

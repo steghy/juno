@@ -42,43 +42,20 @@ public class Initializer {
 
     @SuppressWarnings("unchecked")
     public static void initialize() {
-        // Components.
-        // GameInitializer.
         GameInitializer gameInitializer = GameInitializer.getInstance();
-
-        // AiCardPanelConnector.
         AiCardPanelConnector connector = AiCardPanelConnector.getInstance();
-
-        // CardDispenser.
-        CardDispenser cardDispenser = CardDispenser.getInstance();
-
-        // Mover.
+        OneCardDispenser cardDispenser = OneCardDispenser.getInstance();
         Mover mover = Mover.getInstance();
-
-        // FirstDiscardedCardManager.
         FirstDiscardedCardManager firstDiscardedCard = FirstDiscardedCardManager.getInstance();
-
-        // DiscardedCardSetter.
         DiscardedCardSetter<InterfaceCard> discardedCardSetter =
                 (DiscardedCardSetter<InterfaceCard>) DiscardedCardSetter.getInstance();
-
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        // Connections
-        // GameInitializer.
         gameInitializer.setAiGenerator((InterfaceAiPlayerGenerator<InterfaceDifficulty>) AiPlayerFactory.getInstance());
         gameInitializer.setDeckGenerator(DeckFactory.getInstance());
-
-        // CardDispenser.
         cardDispenser.setDeck((InterfaceDeck<InterfaceCard>) Deck.getInstance());
-
-        // DiscardedCardSetter.
         discardedCardSetter.setDiscardedPile((InterfaceDiscardedPile<InterfaceCard>) DiscardedPile.getInstance());
-
-        // Observer / Observable.
         AiPlayerFactory.getInstance().addObserver(connector);
         PlayersProvider.getInstance().addObserver(cardDispenser);
-        gameInitializer.addObserver(StartGameAction.getInstance());
+        gameInitializer.addObserver(GameStarter.getInstance());
         cardDispenser.addObserver(mover);
         cardDispenser.addObserver(firstDiscardedCard);
     }

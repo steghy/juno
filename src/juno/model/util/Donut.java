@@ -25,6 +25,8 @@
 
 package juno.model.util;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -59,6 +61,14 @@ public class Donut<T>
             + " for length " + size());
         }
         this.index = index;
+    }
+
+    public void initialize(@NotNull T object) {
+        if(!contains(object)) throw new IllegalArgumentException(
+                "The specified object is not contained");
+        for(int i = 0; i < size(); i++) {
+            if(get(i) == object) index = i;
+        }
     }
 
     public void invert() {

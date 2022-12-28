@@ -30,44 +30,45 @@ import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.shift.PlayersProvider;
 import juno.model.util.Donut;
 import juno.model.util.Observer;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Objects;
 
 /**
  * @author Simone Gentili
  */
-public class StartGameAction
-        implements ActionListener, Observer {
+public class GameStarter<T>
+        implements Observer {
 
-    // The StartGameAction instance.
-    private static StartGameAction instance;
+    // The card dispenser.
+    private InterfaceCardDispenser dispenser;
 
-    // Builds the StartGameAction instance.
-    private StartGameAction() {}
+    // The GameStarter instance.
+    private static GameStarter<?> instance;
+
+    // Builds the GameStarter instance.
+    private GameStarter() {}
 
     /**
-     * Builds the StartGameAction instance.
-     * @return The StartGameAction instance.
+     * Builds the GameStarter instance.
+     * @return The GameStarter instance.
      */
-    public static StartGameAction getInstance() {
-        if(instance == null) instance = new StartGameAction();
+    public static GameStarter<?> getInstance() {
+        if(instance == null) instance = new GameStarter<>();
         return instance;
     }
 
-    @Override
     @SuppressWarnings("unchecked")
-    public void actionPerformed(ActionEvent e) {
-        CardDispenser.getInstance().getTimer().start();
-        Donut<InterfacePlayer<?>> players = (Donut<InterfacePlayer<?>>) PlayersProvider.getInstance().provide();
+    public void start(@NotNull InterfacePlayer<T> player) {
+        dispenser.dispense();
         Objects.requireNonNull(players).initialize(0);
     }
 
     @Override
     public void update(Object object) {
         if(object instanceof InterfaceInitializer) {
-            actionPerformed(null);
+
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceInitializer type expected.");

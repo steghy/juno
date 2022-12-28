@@ -32,7 +32,6 @@ import juno.view.gobject.InterfaceGObject;
 import juno.view.gobject.InterfaceGObjectCreator;
 import juno.view.gobject.InterfacePathObjectProvider;
 import juno.model.requester.InterfacePathProviderAssembler;
-import juno.view.util.ImageResizer;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
@@ -89,8 +88,10 @@ public class GCardCreator
                 assembler.assemble(pathObject, file + ".png"),
                 assembler.assemble(pathObject, rolloverFile + "_ROLLOVER" + ".png"));
         graphicCard.setDisabledIcon(graphicCard.getIcon());
-        graphicCard.setPreferredSize(new Dimension(graphicCard.getIcon().getIconWidth(), graphicCard.getIcon().getIconHeight()));
-        ImageResizer.resize(graphicCard, 2.5);
+        graphicCard.setPreferredSize(
+                new Dimension(
+                        graphicCard.getIcon().getIconWidth(),
+                        graphicCard.getIcon().getIconHeight()));
         return graphicCard;
     }
 

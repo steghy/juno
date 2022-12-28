@@ -80,7 +80,6 @@ public class SouthPanelConfigurator {
         Mover.getInstance().addObserver(southCardPanel);
 
         // Component setting.
-        southCardPanel.setProvider(humanPlayer);
         southCardPanel.setDiscardedCardSetter((InterfaceSetter<InterfaceCard>) DiscardedCardSetter.getInstance());
         southCardPanel.setPlayableCardSetter(CompatibleGCardEnabler.getInstance());
         compatibleGCardEnabler.setCompatibilityChecker(CompatibilityChecker.getInstance());

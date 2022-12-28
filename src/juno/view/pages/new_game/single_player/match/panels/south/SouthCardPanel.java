@@ -48,9 +48,6 @@ public class SouthCardPanel
         extends JPanel
         implements Observer {
 
-    // The card provider.
-    private InterfaceProvider<InterfaceCard> provider;
-
     // The playable card setter.
     private InterfaceSetter<java.util.List<GCard<InterfaceCard>>> playableCardSetter;
 
@@ -79,14 +76,6 @@ public class SouthCardPanel
     }
 
     /**
-     * Sets the card provider of this object.
-     * @param provider An InterfaceProvider object.
-     */
-    public void setProvider(@NotNull InterfaceProvider<InterfaceCard> provider) {
-        this.provider = provider;
-    }
-
-    /**
      * Sets the discarded card setter of this object.
      * @param discardedCardSetter An InterfaceSetter object.
      */
@@ -106,7 +95,7 @@ public class SouthCardPanel
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
         if(object instanceof HumanPlayer<?> humanPlayer) {
-            InterfaceCard card = provider.provide();
+            InterfaceCard card = (InterfaceCard) humanPlayer.provide();
             GCard<InterfaceCard> gCard = (GCard<InterfaceCard>)
                     Objects.requireNonNull(GCardMapFactory.getInstance().getGObjectsMap()).get(card);
             SetterAction<InterfaceCard> setterAction = new SetterAction<>(gCard.object(), discardedCardSetter);

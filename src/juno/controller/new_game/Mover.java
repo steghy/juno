@@ -103,8 +103,11 @@ public class Mover
 
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof ActionListener)
+        if(object instanceof InterfaceCardDispenser)
             timer.start();
+        else throw new IllegalArgumentException(
+                "Invalid object type: " + object.getClass() +
+                        ". InterfaceCardDispenser type expected");
     }
 
 }

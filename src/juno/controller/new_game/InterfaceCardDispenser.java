@@ -23,34 +23,14 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.new_game.single_player.match.panels.center.discarded_pile;
-
-import juno.model.card.InterfaceCard;
-import juno.model.deck.DiscardedPile;
-import juno.model.util.InterfaceProvider;
-import juno.view.gobject.cards.GCardCreator;
-import juno.view.gobject.cards.GCardMapFactory;
+package juno.controller.new_game;
 
 /**
  * @author Simone Gentili
  */
-public class DiscardedPilePanelConfigurator {
+@FunctionalInterface
+public interface InterfaceCardDispenser {
 
-    // Builds a DiscardedPilePanelConfigurator object.
-    private DiscardedPilePanelConfigurator() {}
-
-    /** Configure the DiscardedPilePanel instance. */
-    @SuppressWarnings("unchecked")
-    public static void configure() {
-        // Main component.
-        DiscardedPilePanel discardedPilePanel = DiscardedPilePanel.getInstance();
-
-        // Main component setting.
-        discardedPilePanel.setProvider((InterfaceProvider<InterfaceCard>) DiscardedPile.getInstance());
-        discardedPilePanel.setCreator(GCardCreator.getInstance());
-
-        // Observer / Observable.
-        DiscardedPile.getInstance().addObserver(discardedPilePanel);
-    }
+    void dispense();
 
 }
