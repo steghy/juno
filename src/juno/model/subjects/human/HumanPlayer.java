@@ -39,6 +39,9 @@ public class HumanPlayer<T>
         extends AbstractHumanPlayer<T>
         implements Observer {
 
+    // The removed value;
+    private boolean removed;
+
     // The last card involved.
     private T card;
 
@@ -66,6 +69,7 @@ public class HumanPlayer<T>
     public void add(@NotNull T card) {
         cards().add(card);
         this.card = card;
+        removed = false;
         updateAll();
     }
 
@@ -75,6 +79,7 @@ public class HumanPlayer<T>
         if(!result) throw new IllegalArgumentException(
                 "The card " + card + " is not in: " + cards());
         this.card = card;
+        removed = true;
         updateAll();
     }
 
@@ -90,6 +95,10 @@ public class HumanPlayer<T>
         else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceInitializer type expected.");
+    }
+
+    public boolean isRemoved() {
+        return removed;
     }
 
 }

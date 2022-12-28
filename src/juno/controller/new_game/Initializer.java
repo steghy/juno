@@ -27,6 +27,7 @@ package juno.controller.new_game;
 
 import juno.model.card.InterfaceCard;
 import juno.model.deck.*;
+import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.ai.InterfaceDifficulty;
 import juno.model.subjects.factory.AiPlayerFactory;
 import juno.model.subjects.factory.InterfaceAiPlayerGenerator;
@@ -54,17 +55,25 @@ public class Initializer {
         DiscardedCardSetter<InterfaceCard> discardedCardSetter =
                 (DiscardedCardSetter<InterfaceCard>) DiscardedCardSetter.getInstance();
 
-        // Game starter.
-        CardController.getInstance().addObserver(gameStarter);
+        // Deck.
+        Deck<InterfaceCard> deck = (Deck<InterfaceCard>) Deck.getInstance();
+
+        // Players provider.
+        PlayersProvider<InterfacePlayer<InterfaceCard>> playersProvider =
+                (PlayersProvider<InterfacePlayer<InterfaceCard>>) PlayersProvider.getInstance();
+        // Ai players factory.
+        AiPlayerFactory<?, ?> aiPlayerFactory = AiPlayerFactory.getInstance();
+
 
         // Discarded card setter.
         discardedCardSetter.setDiscardedPile((InterfaceDiscardedPile<InterfaceCard>) DiscardedPile.getInstance());
 
         // Ai player factory.
-        AiPlayerFactory.getInstance().addObserver(connector);
+        aiPlayerFactory.addObserver(connector);
 
         // Players provider.
-        PlayersProvider.getInstance().addObserver(oneCardDispenser);
+        playersProvider.addObserver(oneCardDispenser);
+        playersProvider.addObserver(cardDispenser);
 
         // Game initializer.
         gameInitializer.setAiGenerator((InterfaceAiPlayerGenerator<InterfaceDifficulty>) AiPlayerFactory.getInstance());
@@ -72,18 +81,18 @@ public class Initializer {
         gameInitializer.addObserver(oneCardDispenser);
 
         // One card dispenser.
-        oneCardDispenser.setDeck((InterfaceDeck<InterfaceCard>) Deck.getInstance());
+        oneCardDispenser.setDeck(deck);
         oneCardDispenser.addObserver(cardController);
 
         // Card dispenser.
-        cardDispenser.setDeck((InterfaceDeck<InterfaceCard>) Deck.getInstance());
+        cardDispenser.setDeck(deck);
         cardDispenser.addObserver(mover);
         cardDispenser.addObserver(firstDiscardedCard);
 
         // Card controller.
-        cardController.addObserver(oneCardDispenser);
         cardController.addObserver(gameStarter);
-        cardController.setDeck((InterfaceDeck<InterfaceCard>) Deck.getInstance());
+        cardController.addObserver(oneCardDispenser);
+        cardController.setDeck(deck);
     }
 
 }

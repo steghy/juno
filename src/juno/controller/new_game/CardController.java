@@ -50,13 +50,15 @@ public class CardController
     private InterfaceDeck<InterfaceCard> deck;
 
     // The players.
-    private List<InterfacePlayer<InterfaceCard>> players;
+    private final List<InterfacePlayer<InterfaceCard>> players;
 
     // The CardController instance.
     private static CardController instance;
 
     // Builds a CardController.
-    private CardController() {}
+    private CardController() {
+        players = new ArrayList<>();
+    }
 
     /**
      * Returns the CardController instance.
@@ -100,7 +102,7 @@ public class CardController
     @Override @SuppressWarnings("unchecked")
     public void update(Object object) {
         if(object instanceof InterfaceProvider<?> provider) {
-            players = (List<InterfacePlayer<InterfaceCard>>) provider.provide();
+            players.addAll((List<InterfacePlayer<InterfaceCard>>) provider.provide());
             generate();
         } else throw new IllegalArgumentException();
     }

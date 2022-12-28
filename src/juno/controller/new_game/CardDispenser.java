@@ -99,7 +99,11 @@ public class CardDispenser
     public void update(@NotNull Object object) {
         if(object instanceof InterfaceProvider<?> provider) {
             players = (List<InterfacePlayer<InterfaceCard>>) provider.provide();
-        }
+            size = players.size();
+            copy = size;
+        } else throw new IllegalArgumentException(
+                "Invalid object type: " + object.getClass() +
+                        ". GameStarter type expected.");
     }
 
     /**

@@ -99,12 +99,16 @@ public class SouthCardPanel
             InterfaceCard card = (InterfaceCard) humanPlayer.provide();
             GCard<InterfaceCard> gCard = (GCard<InterfaceCard>)
                     Objects.requireNonNull(GCardMapFactory.getInstance().getGObjectsMap()).get(card);
-            SetterAction<InterfaceCard> setterAction = new SetterAction<>(gCard.object(), discardedCardSetter);
-            gCard.addActionListener(setterAction);
-            setterAction.addObserver(this);
-            gCard.setEnabled(false);
-            ImageResizer.resize(gCard, 2.5);
-            add(gCard);
+            if(humanPlayer.isRemoved())
+                remove(gCard);
+            else {
+                SetterAction<InterfaceCard> setterAction = new SetterAction<>(gCard.object(), discardedCardSetter);
+                gCard.addActionListener(setterAction);
+                setterAction.addObserver(this);
+                gCard.setEnabled(false);
+                ImageResizer.resize(gCard, 2.5);
+                add(gCard);
+            }
         } else if(object instanceof InterfaceInitializer) {
             removeAll();
         } else if(object instanceof Mover) {
