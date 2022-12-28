@@ -23,7 +23,7 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.new_game.single_player.match.panels.center;
+package juno.view.pages.new_game.single_player.match.panels.center.deck;
 
 import juno.controller.new_game.Mover;
 import juno.controller.util.InterfaceInitializer;

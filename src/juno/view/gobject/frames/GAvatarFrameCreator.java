@@ -30,7 +30,6 @@ import juno.model.data.awards.frame.InterfaceAvatarFrame;
 import juno.view.gobject.AbstractGObjectCreator;
 import juno.view.gobject.InterfaceGObject;
 import juno.view.gobject.InterfaceGObjectCreator;
-import juno.view.gobject.InterfacePathObjectProvider;
 import juno.model.requester.InterfacePathProviderAssembler;
 import org.jetbrains.annotations.NotNull;
 
@@ -42,6 +41,9 @@ import java.util.Objects;
 public class GAvatarFrameCreator
         extends AbstractGObjectCreator<InterfaceAvatarFrame>
         implements InterfaceGObjectCreator<InterfaceAvatarFrame> {
+
+    // The directory path provider.
+    private InterfacePathProvider pathProvider;
 
     // The GAvatarFrameCreator instance.
     private static GAvatarFrameCreator instance;
@@ -58,17 +60,23 @@ public class GAvatarFrameCreator
         return instance;
     }
 
+    /**
+     * Sets the directory path provider of this object.
+     * @param pathProvider An interfacePathProvider object.
+     */
+    public void setProvider(@NotNull InterfacePathProvider pathProvider) {
+        this.pathProvider = pathProvider;
+    }
+
     @Override
     public InterfaceGObject<InterfaceAvatarFrame> create(@NotNull InterfaceAvatarFrame frame) {
         GAvatarFrame<InterfaceAvatarFrame> graphicFrame = new GAvatarFrame<>(frame);
         InterfacePathProviderAssembler assembler = getAssembler();
-        InterfacePathObjectProvider<InterfaceAvatarFrame> provider = getProvider();
-        InterfacePathProvider pathObject = Objects.requireNonNull(provider).getPathObjectOf(frame);
         Objects.requireNonNull(assembler);
         Objects.requireNonNull(getInitializer()).initialize(
                 graphicFrame,
-                assembler.assemble(pathObject, frame.name() + ".png"),
-                assembler.assemble(pathObject, frame.name() + "_ROLLOVER" + ".png"));
+                assembler.assemble(pathProvider, frame.name() + ".png"),
+                assembler.assemble(pathProvider, frame.name() + "_ROLLOVER" + ".png"));
         return graphicFrame;
     }
 

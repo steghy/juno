@@ -32,22 +32,12 @@ import org.jetbrains.annotations.Nullable;
 
 public abstract class AbstractGObjectCreator<T> {
 
-    // The path provider.
-    private InterfacePathObjectProvider<T> provider;
-
     // The path object assembler.
     private InterfacePathProviderAssembler assembler;
 
     // The image component initializer.
     private InterfaceImageComponentInitializer initializer;
 
-    /**
-     * Sets the path provider of this object.
-     * @param provider An InterfacePathObjectProvider object.
-     */
-    public void setProvider(@NotNull InterfacePathObjectProvider<T> provider) {
-        this.provider = provider;
-    }
 
     /**
      * Sets the assembler path object of this object.
@@ -63,15 +53,6 @@ public abstract class AbstractGObjectCreator<T> {
      */
     public void setInitializer(@NotNull InterfaceImageComponentInitializer initializer) {
         this.initializer = initializer;
-    }
-
-    /**
-     * Returns the path provider of this object.
-     * @return An InterfacePathObjectProvider object.
-     */
-    @Nullable
-    public InterfacePathObjectProvider<T> getProvider() {
-        return provider;
     }
 
     /**

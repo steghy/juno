@@ -27,8 +27,7 @@ package juno.view.gobject.avatars;
 
 import juno.model.data.awards.avatar.InterfaceAvatarImage;
 import juno.model.util.Observer;
-import juno.view.gobject.InterfaceGObject;
-import juno.view.util.ImageButton;
+import juno.view.gobject.GObjectButton;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -36,24 +35,16 @@ import org.jetbrains.annotations.NotNull;
  * @param <T> The type of the avatars.
  */
 public class GAvatarImage<T>
-        extends ImageButton
-        implements InterfaceGObject<T>, Observer {
-
-    // The avatar.
-    private final T avatar;
+        extends GObjectButton<T>
+        implements Observer {
 
     /**
      * Builds a GAvatarImage object with
-     * the specified avatar object.
-     * @param avatar An avatar object.
+     * the specified object.
+     * @param avatar An Object.
      */
     public GAvatarImage(@NotNull T avatar) {
-        this.avatar = avatar;
-    }
-
-    @Override
-    public T object() {
-        return avatar;
+        super(avatar);
     }
 
     @Override

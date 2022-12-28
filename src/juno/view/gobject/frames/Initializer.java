@@ -25,6 +25,7 @@
 
 package juno.view.gobject.frames;
 
+import juno.model.requester.ProgramDirectory;
 import juno.view.img_initializer.ImageComponentInitializer;
 import juno.model.requester.PathProviderAssembler;
 
@@ -33,36 +34,30 @@ import juno.model.requester.PathProviderAssembler;
  */
 public class Initializer {
 
-    // Builds an Initializer object.
+    // Builds the Initializer instance.
+    private static Initializer instance;
+
+    // Builds the Initializer instance.
     private Initializer() {}
+
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
 
     /** Initialize the juno.model.awards.frames package. */
     public static void initialize() {
-        // Components.
-        // GFrameCreator.
         GAvatarFrameCreator gFrameCreator = GAvatarFrameCreator.getInstance();
-
-        // GFramesFactory.
         GAvatarFrameFactory gFramesFactory = GAvatarFrameFactory.getInstance();
-
-        // PathObjectAssembler.
         PathProviderAssembler pathObjectAssembler = PathProviderAssembler.getInstance();
-
-        // ImageComponentInitializer.
         ImageComponentInitializer imageComponentInitializer = ImageComponentInitializer.getInstance();
-
-        // FPathProvider.
-        AvatarFramePathProvider avatarFramePathProvider = AvatarFramePathProvider.getInstance();
-
-        //////////////////////////////////////////////////////////////////
-
-        // Connections.
-        // GFrameCreator.
-        gFrameCreator.setProvider(avatarFramePathProvider);
+        gFrameCreator.setProvider(ProgramDirectory.FRAMES);
         gFrameCreator.setInitializer(imageComponentInitializer);
         gFrameCreator.setAssembler(pathObjectAssembler);
-
-        // GFramesFactory.
         gFramesFactory.setCreator(gFrameCreator);
     }
 

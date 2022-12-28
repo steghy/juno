@@ -45,6 +45,9 @@ public class GCardCreator
         extends AbstractGObjectCreator<InterfaceCard>
         implements InterfaceGObjectCreator<InterfaceCard> {
 
+    // The path object provider.
+    private InterfacePathObjectProvider<InterfaceCard> provider;
+
     // The GCardCreator instance.
     private static GCardCreator instance;
 
@@ -60,6 +63,14 @@ public class GCardCreator
         return instance;
     }
 
+    /**
+     * Sets the path provider of this object.
+     * @param provider An InterfacePathObjectProvider object.
+     */
+    public void setProvider(@NotNull InterfacePathObjectProvider<InterfaceCard> provider) {
+        this.provider = provider;
+    }
+
     @Override
     public InterfaceGObject<InterfaceCard> create(@NotNull InterfaceCard card) {
         GCard<InterfaceCard> graphicCard = new GCard<>(card);
@@ -71,7 +82,6 @@ public class GCardCreator
         } else throw new IllegalArgumentException("Invalid card attributes.");
         rolloverFile = file + "_ROLLOVER.png";
         InterfacePathProviderAssembler assembler = getAssembler();
-        InterfacePathObjectProvider<InterfaceCard> provider = getProvider();
         InterfacePathProvider pathObject = Objects.requireNonNull(provider).getPathObjectOf(card);
         Objects.requireNonNull(assembler);
         Objects.requireNonNull(getInitializer()).initialize(

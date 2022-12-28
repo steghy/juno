@@ -23,37 +23,34 @@
  * SOFTWARE.
  */
 
-package juno.view.gobject.avatars;
+package juno.view.pages.new_game.single_player.match.panels.center.discarded_pile;
 
-import juno.model.requester.InterfacePathProvider;
-import juno.model.requester.ProgramDirectory;
-import juno.model.data.awards.avatar.InterfaceAvatarImage;
-import juno.view.gobject.InterfacePathObjectProvider;
+import juno.model.card.InterfaceCard;
+import juno.model.deck.DiscardedPile;
+import juno.model.util.InterfaceProvider;
+import juno.view.gobject.cards.GCardMapFactory;
+import juno.view.pages.new_game.single_player.match.panels.center.discarded_pile.DiscardedPilePanel;
 
 /**
  * @author Simone Gentili
  */
-public class AvatarImagePathProvider
-        implements InterfacePathObjectProvider<InterfaceAvatarImage> {
+public class DiscardedPilePanelConfigurator {
 
-    // The AvatarImagePathProvider instance.
-    private static AvatarImagePathProvider instance;
+    // Builds a DiscardedPilePanelConfigurator object.
+    private DiscardedPilePanelConfigurator() {}
 
-    // Builds the AvatarImagePathProvider instance.
-    private AvatarImagePathProvider() {}
+    /** Configure the DiscardedPilePanel instance. */
+    @SuppressWarnings("unchecked")
+    public static void configure() {
+        // Main component.
+        DiscardedPilePanel discardedPilePanel = DiscardedPilePanel.getInstance();
 
-    /**
-     * Returns the AvatarImagePathProvider instance.
-     * @return The AvatarImagePathProvider instance.
-     */
-    public static AvatarImagePathProvider getInstance() {
-        if(instance == null) instance = new AvatarImagePathProvider();
-        return instance;
-    }
+        // Main component setting.
+        discardedPilePanel.setProvider((InterfaceProvider<InterfaceCard>) DiscardedPile.getInstance());
+        discardedPilePanel.setFactory(GCardMapFactory.getInstance());
 
-    @Override
-    public InterfacePathProvider getPathObjectOf(InterfaceAvatarImage avatar) {
-        return ProgramDirectory.AVATARS;
+        // Observer / Observable.
+        DiscardedPile.getInstance().addObserver(discardedPilePanel);
     }
 
 }

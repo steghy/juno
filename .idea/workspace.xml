@@ -5,25 +5,67 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/juno/view/gobject/GObjectLabel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/gobject/color/ColorCreator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/view/gobject/color/ColorPathProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/gobject/color/GColorMapFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/gobject/color/Initializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/colors/ColorsPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/colors/ColorsPanelConfigurator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/controller/util/GSetterAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/util/GSetterAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/card/colors/InterfaceColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/card/colors/InterfaceColor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/InterfaceGObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/gobject/InterfaceGObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/colors/BLUE.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/images/colors/BLUE.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/colors/GREEN.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/images/colors/GREEN.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/colors/RED.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/images/colors/RED.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/colors/YELLOW.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/images/colors/YELLOW.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/button/ButtonCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/button/ButtonCreator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/button/ButtonDirectoryPathProvider.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/button/Initializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/button/Initializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/AbstractGObjectCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/AbstractGObjectCreator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/GObjectButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/GObjectButton.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/avatars/AvatarImagePathProvider.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/avatars/GAvatarImage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/avatars/GAvatarImage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/avatars/GAvatarImageCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/avatars/GAvatarImageCreator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/avatars/Initializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/avatars/Initializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/cards/GCardCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/cards/GCardCreator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/cards/Initializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/cards/Initializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/cards/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/color/ColorCreator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/color/ColorPathProvider.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/frames/AvatarFramePathProvider.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/frames/GAvatarFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/frames/GAvatarFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/frames/GAvatarFrameCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/frames/GAvatarFrameCreator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/frames/Initializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/frames/Initializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/profiles/AbstractGProfileFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/profiles/AbstractGProfileFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/profiles/Initializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/profiles/Initializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/profiles/ProfilePathProvider.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/button/ButtonCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/button/ButtonCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/button/ButtonDirectoryPathProvider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/button/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/button/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/button/InterfaceButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/button/InterfaceButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/AbstractGObjectCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/gobject/AbstractGObjectCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/avatars/AvatarImagePathProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/gobject/color/GColorFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/avatars/GAvatarImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/gobject/avatars/GAvatarImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/cards/GCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/gobject/cards/GCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/cards/GCardMapFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/gobject/cards/GCardMapFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/avatars/GAvatarImageCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/gobject/avatars/GAvatarImageCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/avatars/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/gobject/avatars/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/cards/GCardCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/gobject/cards/GCardCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/cards/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/gobject/cards/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/cards/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/color/ColorCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/gobject/color/GColorCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/color/ColorPathProvider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/frames/AvatarFramePathProvider.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/frames/GAvatarFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/gobject/frames/GAvatarFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/profiles/GProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/gobject/GObjectButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/profiles/GProfileCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/gobject/profiles/GProfileCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/CenterPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/CenterPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/south/CompatibleGCardEnabler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/south/CompatibleGCardEnabler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/south/SouthCardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/south/SouthCardPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/pre_access/login/profiles_panel/GProfileProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/pre_access/login/profiles_panel/GProfileProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/score/avatar_frames_panel/AvatarFramesPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/score/avatar_frames_panel/AvatarFramesPanelConfigurator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/score/avatar_images_panel/AvatarImagesPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/score/avatar_images_panel/AvatarImagesPanelConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/frames/GAvatarFrameCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/gobject/frames/GAvatarFrameCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/frames/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/gobject/frames/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/profiles/AbstractGProfileFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/gobject/profiles/AbstractGProfileFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/profiles/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/gobject/profiles/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/profiles/ProfilePathProvider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/ActualColorPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/actual_color/ActualColorPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/ActualColorPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/actual_color/ActualColorPanelConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/CenterPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/CenterPanelConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/CenterPanelInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/CenterPanelInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/CirclePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/circle/CirclePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/CirclePanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/circle/CirclePanelConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/DeckPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/deck/DeckPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/DeckPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/deck/DeckPanelConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/DiscardedPilePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/discarded_pile/DiscardedPilePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/DiscardedPilePanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/discarded_pile/DiscardedPilePanelConfigurator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,11 +136,11 @@
       <recent name="$PROJECT_DIR$/src/juno/view/pages/ngame/splayer" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="juno.view.gobject.color" />
       <recent name="juno.controller.new_game" />
       <recent name="juno.view.pages.score.title" />
       <recent name="juno.view.pages.score.menu" />
       <recent name="juno.view.pages.score.avatar_image" />
-      <recent name="juno.view.avatar" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">

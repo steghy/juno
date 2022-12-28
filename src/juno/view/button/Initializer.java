@@ -25,6 +25,7 @@
 
 package juno.view.button;
 
+import juno.model.requester.ProgramDirectory;
 import juno.view.img_initializer.ImageComponentInitializer;
 import juno.model.requester.PathProviderAssembler;
 
@@ -33,28 +34,29 @@ import juno.model.requester.PathProviderAssembler;
  */
 public class Initializer {
 
-    // Builds an Initializer object.
+    // The Initializer instance.
+    private static Initializer instance;
+
+    // Builds the Initializer instance.
     private Initializer() {}
+
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
 
     /** Initialize the juno.view.button package. */
     public static void initialize() {
-        // Component.
-        // ButtonCreator.
         ButtonCreator buttonCreator = ButtonCreator.getInstance();
-
-        // ImageComponentInitializer.
         ImageComponentInitializer imageComponentInitializer = ImageComponentInitializer.getInstance();
-
-        // PathObjectAssembler.
         PathProviderAssembler pathObjectAssembler = PathProviderAssembler.getInstance();
-
-        // ButtonDirectoryPathProvider.
-        ButtonDirectoryPathProvider buttonDirectoryPathProvider = ButtonDirectoryPathProvider.getInstance();
-
-
         buttonCreator.setInitializer(imageComponentInitializer);
         buttonCreator.setAssembler(pathObjectAssembler);
-        buttonCreator.setProvider(buttonDirectoryPathProvider);
+        buttonCreator.setProvider(ProgramDirectory.BUTTONS);
     }
 
 }

@@ -23,7 +23,7 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.new_game.single_player.match.panels.center;
+package juno.view.pages.new_game.single_player.match.panels.center.discarded_pile;
 
 import juno.controller.log_out.Restorable;
 import juno.model.card.InterfaceCard;

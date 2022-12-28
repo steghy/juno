@@ -34,45 +34,33 @@ import juno.model.requester.PathProviderAssembler;
  */
 public class Initializer {
 
-    // Builds an Initializer object.
+    // The Initializer instance.
+    private static Initializer instance;
+
+    // Builds the Initializer instance.
     private Initializer() {}
 
-    /** Initialize the juno.view.card package. */
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
     public static void initialize() {
-        // Components.
-        // GCardCreator.
         GCardCreator gCardCreator = GCardCreator.getInstance();
-
-        // GCardFactory.
         GCardFactory gCardFactory = GCardFactory.getInstance();
-
-        // GCardMapFactory.
         GCardMapFactory gCardMapFactory = GCardMapFactory.getInstance();
-
-        // PathObjectAssembler.
         PathProviderAssembler pathObjectAssembler = PathProviderAssembler.getInstance();
-
-        // ImageComponentInitializer.
         ImageComponentInitializer imageComponentInitializer = ImageComponentInitializer.getInstance();
-
-        // CardPathProvider.
         CardPathProvider cardPathProvider = CardPathProvider.getInstance();
-
-        ///////////////////////////////////////////////////////////////////////////////
-
-        // Connections.
-        // GCardCreator.
         gCardCreator.setProvider(cardPathProvider);
         gCardCreator.setInitializer(imageComponentInitializer);
         gCardCreator.setAssembler(pathObjectAssembler);
-
-        // GCardFactory..
         gCardFactory.setCreator(gCardCreator);
-
-        // GCardMapFactory.
         gCardMapFactory.setFactory(gCardFactory);
-
-        // Observer / Observable.
         gCardFactory.addObserver(gCardMapFactory);
         DeckFactory.getInstance().addObserver(gCardFactory);
     }

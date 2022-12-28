@@ -29,7 +29,6 @@ import juno.model.requester.InterfacePathProvider;
 import juno.model.requester.InterfacePathProviderAssembler;
 import juno.view.img_initializer.InterfaceImageComponentInitializer;
 import juno.view.gobject.AbstractGObjectCreator;
-import juno.view.gobject.InterfacePathObjectProvider;
 import juno.view.util.*;
 import org.jetbrains.annotations.NotNull;
 
@@ -42,6 +41,9 @@ import java.util.Objects;
 public class ButtonCreator
         extends AbstractGObjectCreator<InterfaceButton>
         implements InterfaceButtonCreator {
+
+    // The directory path provider.
+    private InterfacePathProvider pathProvider;
 
     // The ImageButtonCreator instance.
     private static ButtonCreator instance;
@@ -58,6 +60,14 @@ public class ButtonCreator
         return instance;
     }
 
+    /**
+     * Sets the directory path provider of this object.
+     * @param pathProvider An InterfacePathProvider object.
+     */
+    public void setProvider(@NotNull InterfacePathProvider pathProvider) {
+        this.pathProvider = pathProvider;
+    }
+
     @Override
     public AbstractButton create(@NotNull InterfaceButton button) {
         AbstractButton temp;
@@ -66,24 +76,22 @@ public class ButtonCreator
         String extension = ".png";
         InterfaceImageComponentInitializer initializer = getInitializer();
         InterfacePathProviderAssembler assembler = getAssembler();
-        InterfacePathObjectProvider<InterfaceButton> provider = getProvider();
-        InterfacePathProvider pathObject = Objects.requireNonNull(provider).getPathObjectOf(button);
         Objects.requireNonNull(assembler);
         Objects.requireNonNull(initializer);
         if(button.isToggleButton()) {
             temp = new ImageToggleButton();
             initializer.initialize(
                     temp,
-                    assembler.assemble(pathObject, button.name() + extension),
-                    assembler.assemble(pathObject, button.name() + rollover + extension),
-                    assembler.assemble(pathObject, button.name() + selected + extension),
-                    assembler.assemble(pathObject, button.name() + selected + rollover + extension));
+                    assembler.assemble(pathProvider, button.name() + extension),
+                    assembler.assemble(pathProvider, button.name() + rollover + extension),
+                    assembler.assemble(pathProvider, button.name() + selected + extension),
+                    assembler.assemble(pathProvider, button.name() + selected + rollover + extension));
         } else {
             temp = new ImageButton();
             initializer.initialize(
                     temp,
-                    assembler.assemble(pathObject, button.name() + extension),
-                    assembler.assemble(pathObject, button.name() + rollover + extension));
+                    assembler.assemble(pathProvider, button.name() + extension),
+                    assembler.assemble(pathProvider, button.name() + rollover + extension));
         } return temp;
     }
 

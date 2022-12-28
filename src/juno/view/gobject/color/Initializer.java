@@ -25,35 +25,47 @@
 
 package juno.view.gobject.color;
 
-import juno.model.card.colors.InterfaceColor;
-import juno.model.requester.InterfacePathProvider;
+import juno.controller.util.InterfaceInitializer;
+import juno.model.card.colors.Color;
+import juno.model.requester.PathProviderAssembler;
 import juno.model.requester.ProgramDirectory;
-import juno.view.gobject.InterfacePathObjectProvider;
+import juno.view.img_initializer.ImageComponentInitializer;
+
+import java.util.List;
 
 /**
  * @author Simone Gentili
  */
-public class ColorPathProvider
-        implements InterfacePathObjectProvider<InterfaceColor> {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // The ColorPathProvider instance.
-    private static ColorPathProvider instance;
+    // The Initializer instance.
+    private static Initializer instance;
 
-    // Builds the ColorPathProvider instance.
-    private ColorPathProvider() {}
+    // Builds the Initializer instance.
+    private Initializer() {}
 
     /**
-     * Returns the ColorPathProvider instance.
-     * @return The ColorPathProvider instance.
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
      */
-    public static ColorPathProvider getInstance() {
-        if(instance == null) instance = new ColorPathProvider();
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
         return instance;
     }
 
     @Override
-    public InterfacePathProvider getPathObjectOf(InterfaceColor object) {
-        return ProgramDirectory.COLORS;
+    public void initialize() {
+        GColorCreator gColorCreator = GColorCreator.getInstance();
+        GColorFactory gColorFactory = GColorFactory.getInstance();
+        GColorMapFactory gColorMapFactory = GColorMapFactory.getInstance();
+        gColorCreator.setProvider(ProgramDirectory.COLORS);
+        gColorCreator.setInitializer(ImageComponentInitializer.getInstance());
+        gColorCreator.setAssembler(PathProviderAssembler.getInstance());
+        gColorFactory.setCreator(gColorCreator);
+        gColorMapFactory.setFactory(gColorFactory);
+        gColorFactory.addObserver(gColorMapFactory);
+        gColorFactory.generate(List.of(Color.values()));
     }
 
 }

@@ -36,35 +36,45 @@ import java.util.Objects;
 /**
  * @author Simone Gentili
  */
-public class ColorCreator
+public class GColorCreator
         extends AbstractGObjectCreator<InterfaceColor>
         implements InterfaceGObjectCreator<InterfaceColor> {
 
+    // The directory path provider.
+    private InterfacePathProvider pathProvider;
+
     // The ColorCreator instance.
-    private static ColorCreator instance;
+    private static GColorCreator instance;
 
     // Builds the ColorCreator instance.
-    private ColorCreator() {}
+    private GColorCreator() {}
 
     /**
      * Returns the ColorCreator instance.
      * @return The ColorCreator instance.
      */
-    public static ColorCreator getInstance() {
-        if(instance == null) instance = new ColorCreator();
+    public static GColorCreator getInstance() {
+        if(instance == null) instance = new GColorCreator();
         return instance;
     }
+
+    /**
+     * Sets the directory path provider of this object.
+     * @param pathProvider An interfacePathProvider object.
+     */
+    public void setProvider(@NotNull InterfacePathProvider pathProvider) {
+        this.pathProvider = pathProvider;
+    }
+
 
     @Override
     public InterfaceGObject<InterfaceColor> create(@NotNull InterfaceColor color) {
         GObjectLabel<InterfaceColor> graphicColor = new GObjectLabel<>(color);
         InterfacePathProviderAssembler assembler = getAssembler();
-        InterfacePathObjectProvider<InterfaceColor> provider = getProvider();
-        InterfacePathProvider pathObject = Objects.requireNonNull(provider).getPathObjectOf(color);
         Objects.requireNonNull(assembler);
         Objects.requireNonNull(getInitializer()).initialize(
                 graphicColor,
-                assembler.assemble(pathObject, color.name() + ".png"));
+                assembler.assemble(pathProvider, color.name() + ".png"));
         return graphicColor;
     }
 

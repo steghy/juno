@@ -31,5 +31,7 @@ package juno.view.button;
 public interface InterfaceButton
         extends InterfaceSimpleButton,
                 InterfaceToggleButton {
+
     String name();
+
 }

@@ -37,44 +37,33 @@ import juno.view.img_initializer.ImageComponentInitializer;
  */
 public class Initializer {
 
-    // Builds an Initializer object.
+    // The Initializer instance.
+    private static Initializer instance;
+
+    // Builds the Initializer instance.
     private Initializer() {}
+
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
 
     @SuppressWarnings("unchecked")
     public static void initialize() {
-        // Components.
-        // GProfileCreator.
         GProfileCreator<String> gProfileCreator = (GProfileCreator<String>) GProfileCreator.getInstance();
-
-        // GProfileFactory.
         GProfileFactory gProfileFactory = GProfileFactory.getInstance();
-
-        // PathObjectAssembler.
         PathProviderAssembler pathProviderAssembler = PathProviderAssembler.getInstance();
-
-        // ImageComponentInitializer.
         ImageComponentInitializer imageComponentInitializer = ImageComponentInitializer.getInstance();
-
-        // ProfilePathProvider.
-        ProfilePathProvider profilePathProvider = ProfilePathProvider.getInstance();
-
-        // JSONDataImporter.
         JSONDataImporter jsonDataImporter = JSONDataImporter.getInstance();
-
-        //////////////////////////////////////////////////////////////////////////////////////////7
-
-        // Connections.
-        // GProfileCreator.
-        gProfileCreator.setProvider(profilePathProvider);
         gProfileCreator.setInitializer(imageComponentInitializer);
         gProfileCreator.setAssembler(pathProviderAssembler);
-
-        // GProfileFactory.
         gProfileFactory.setCreator(gProfileCreator);
         gProfileFactory.setImporter(jsonDataImporter);
         gProfileFactory.setKey(Profile.PROFILE_NAME_KEY);
-
-        // Observer / Observable.
         ConfigurationFilesFactory.getInstance().addObserver(gProfileFactory);
     }
 

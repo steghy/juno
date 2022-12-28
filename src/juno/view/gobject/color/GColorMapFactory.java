@@ -23,71 +23,64 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.new_game.single_player.match.panels.center;
+package juno.view.gobject.color;
 
-import juno.controller.util.InterfaceInitializer;
-import juno.model.subjects.shift.InterfaceInverter;
+import juno.model.card.colors.InterfaceColor;
 import juno.model.util.Observer;
-import juno.view.panels.AbstractSecondComponent;
+import juno.view.gobject.AbstractGObjectMapFactory;
+import juno.view.gobject.InterfaceGObject;
+import juno.view.gobject.InterfaceGObjectGenerator;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import java.awt.*;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * @author Simone Gentili
  */
-public class CirclePanel
-        extends AbstractSecondComponent
+public class GColorMapFactory
+        extends AbstractGObjectMapFactory<InterfaceColor>
         implements Observer {
 
-    // The inverted boolean value.
-    private boolean inverted;
+    // The graphic color map.
+    private Map<InterfaceColor, InterfaceGObject<InterfaceColor>> gCardsMap;
 
-    // The CircleLabel instance.
-    private static CirclePanel instance;
+    // The graphic color map factory.
+    private static GColorMapFactory instance;
 
-    // Builds the CircleLabel instance.
-    private CirclePanel() {
-        inverted = false;
-    }
+    // Builds a GColorMapFactory instance.
+    private GColorMapFactory() {}
 
     /**
-     * Returns the CircleLabel instance.
-     * @return The CircleLabel instance.
+     * Returns the GColorMapFactory instance.
+     * @return The GColorMapFactory instance.
      */
-    public static CirclePanel getInstance() {
-        if(instance == null) instance = new CirclePanel();
+    public static GColorMapFactory getInstance() {
+        if(instance == null) instance = new GColorMapFactory();
         return instance;
     }
 
-    public void init() {
-        setOpaque(false);
-        setLayout(new BorderLayout());
-        Objects.requireNonNull(getFirstComponent());
-        Objects.requireNonNull(getSecondComponent());
-        add(getFirstComponent());
+    @Override @Nullable
+    public Map<InterfaceColor, InterfaceGObject<InterfaceColor>> getGObjectsMap() {
+        return gCardsMap;
+    }
+
+    @Override
+    public void generate(@NotNull List<InterfaceGObject<InterfaceColor>> colors) {
+        gCardsMap = colors.stream()
+                .collect(Collectors.toMap(InterfaceGObject::object, value -> value));
     }
 
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceInverter) {
-            removeAll();
-            if(inverted) {
-                add(getFirstComponent());
-                inverted = false;
-            } else {
-                add(getSecondComponent());
-                inverted = true;
-            }
-        } else if(object instanceof InterfaceInitializer) {
-            removeAll();
-            add(getFirstComponent());
+        if(object instanceof InterfaceGObjectGenerator<?>) {
+            generate(Objects.requireNonNull(getFactory()).getGObjects());
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
-                        ". InterfaceInverter or InterfaceInitializer type expected.");
-        revalidate();
-        repaint();
+                        ". InterfaceGObjectGenerator type expected.");
     }
 
 }

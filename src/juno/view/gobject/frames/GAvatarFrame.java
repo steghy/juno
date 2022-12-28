@@ -28,16 +28,21 @@ package juno.view.gobject.frames;
 import juno.model.data.awards.frame.InterfaceAvatarFrame;
 import juno.model.util.Observer;
 import juno.view.gobject.GObjectButton;
-import juno.view.gobject.InterfaceGObject;
-import juno.view.util.ImageButton;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Simone Gentili
  * @param <T> The type of the avatar frames.
  */
-public class GAvatarFrame<T> extends GObjectButton<T> {
+public class GAvatarFrame<T>
+        extends GObjectButton<T>
+        implements Observer {
 
+    /**
+     * Builds a GAvatarFrame with the
+     * specified object.
+     * @param object An Object.
+     */
     public GAvatarFrame(@NotNull T object) {
         super(object);
     }

@@ -23,36 +23,7 @@
  * SOFTWARE.
  */
 
-package juno.view.gobject.profiles;
+package juno.view.pages.new_game.single_player.match.panels.center.colors;
 
-import juno.model.requester.InterfacePathProvider;
-import juno.model.requester.ProgramDirectory;
-import juno.view.gobject.InterfacePathObjectProvider;
-
-/**
- * @author Simone Gentili
- */
-public class ProfilePathProvider
-        implements InterfacePathObjectProvider<String> {
-
-    // The ProfilePathProvider instance.
-    private static ProfilePathProvider instance;
-
-    // Builds the ProfilePathProvider instance.
-    private ProfilePathProvider() {}
-
-    /**
-     * Returns the ProfilePathProvider instance.
-     * @return The ProfilePathProvider instance.
-     */
-    public static ProfilePathProvider getInstance() {
-        if(instance == null) instance = new ProfilePathProvider();
-        return instance;
-    }
-
-    @Override
-    public InterfacePathProvider getPathObjectOf(String profile) {
-        return ProgramDirectory.BUTTONS;
-    }
-
+public class ColorsPanel {
 }

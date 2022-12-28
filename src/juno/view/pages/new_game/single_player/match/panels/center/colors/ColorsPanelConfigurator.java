@@ -23,37 +23,7 @@
  * SOFTWARE.
  */
 
-package juno.view.gobject.frames;
+package juno.view.pages.new_game.single_player.match.panels.center.colors;
 
-import juno.model.requester.InterfacePathProvider;
-import juno.model.requester.ProgramDirectory;
-import juno.model.data.awards.frame.InterfaceAvatarFrame;
-import juno.view.gobject.InterfacePathObjectProvider;
-
-/**
- * @author Simone Gentili
- */
-public class AvatarFramePathProvider
-        implements InterfacePathObjectProvider<InterfaceAvatarFrame> {
-
-    // The AvatarFramePathProvider instance.
-    private static AvatarFramePathProvider instance;
-
-    // Builds the AvatarFramePathProvider instance.
-    private AvatarFramePathProvider() {}
-
-    /**
-     * Returns the AvatarFramePathProvider instance.
-     * @return The AvatarFramePathProvider instance.
-     */
-    public static AvatarFramePathProvider getInstance() {
-        if(instance == null) instance = new AvatarFramePathProvider();
-        return instance;
-    }
-
-    @Override
-    public InterfacePathProvider getPathObjectOf(InterfaceAvatarFrame frame) {
-        return ProgramDirectory.FRAMES;
-    }
-
+public class ColorsPanelConfigurator {
 }

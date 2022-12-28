@@ -30,11 +30,9 @@ import juno.model.data.awards.avatar.InterfaceAvatarImage;
 import juno.view.gobject.AbstractGObjectCreator;
 import juno.view.gobject.InterfaceGObject;
 import juno.view.gobject.InterfaceGObjectCreator;
-import juno.view.gobject.InterfacePathObjectProvider;
 import juno.model.requester.InterfacePathProviderAssembler;
 import org.jetbrains.annotations.NotNull;
 
-import java.awt.*;
 import java.util.Objects;
 
 /**
@@ -43,6 +41,9 @@ import java.util.Objects;
 public class GAvatarImageCreator
         extends AbstractGObjectCreator<InterfaceAvatarImage>
         implements InterfaceGObjectCreator<InterfaceAvatarImage> {
+
+    // The directory path provider.
+    private InterfacePathProvider pathProvider;
 
     // The GAvatarImageCreator instance.
     private static GAvatarImageCreator instance;
@@ -59,17 +60,23 @@ public class GAvatarImageCreator
         return instance;
     }
 
+    /**
+     * Sets the directory path provider of this object.
+     * @param pathProvider An interfacePathProvider object.
+     */
+    public void setProvider(@NotNull InterfacePathProvider pathProvider) {
+        this.pathProvider = pathProvider;
+    }
+
     @Override
     public InterfaceGObject<InterfaceAvatarImage> create(@NotNull InterfaceAvatarImage avatar) {
         GAvatarImage<InterfaceAvatarImage> graphicAvatar = new GAvatarImage<>(avatar);
         InterfacePathProviderAssembler assembler = getAssembler();
-        InterfacePathObjectProvider<InterfaceAvatarImage> provider = getProvider();
-        InterfacePathProvider pathObject = Objects.requireNonNull(provider).getPathObjectOf(avatar);
         Objects.requireNonNull(assembler);
         Objects.requireNonNull(getInitializer()).initialize(
                 graphicAvatar,
-                assembler.assemble(pathObject, avatar.name() + ".png"),
-                assembler.assemble(pathObject, avatar.name() + "_ROLLOVER" + ".png"));
+                assembler.assemble(pathProvider, avatar.name() + ".png"),
+                assembler.assemble(pathProvider, avatar.name() + "_ROLLOVER" + ".png"));
         return graphicAvatar;
     }
 

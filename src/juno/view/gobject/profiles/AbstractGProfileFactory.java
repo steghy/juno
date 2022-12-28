@@ -42,6 +42,10 @@ public abstract class AbstractGProfileFactory<T>
     // The data importer.
     private InterfaceDataImporter importer;
 
+    /**
+     * Sets the String key of this object.
+     * @param key A String object.
+     */
     public void setKey(@NotNull String key) {
         this.key = key;
     }

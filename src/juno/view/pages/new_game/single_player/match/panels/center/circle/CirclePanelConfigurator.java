@@ -23,13 +23,14 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.new_game.single_player.match.panels.center;
+package juno.view.pages.new_game.single_player.match.panels.center.circle;
 
 import juno.controller.new_game.GameInitializer;
 import juno.model.requester.PathProviderAssembler;
 import juno.model.requester.ProgramDirectory;
 import juno.model.subjects.shift.Inverter;
 import juno.view.img_initializer.ImageComponentInitializer;
+import juno.view.pages.new_game.single_player.match.panels.center.circle.CirclePanel;
 import juno.view.util.ImageLabel;
 import juno.view.util.ImageResizer;
 

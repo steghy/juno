@@ -25,6 +25,11 @@
 
 package juno.view.pages.new_game.single_player.match.panels.center;
 
+import juno.view.pages.new_game.single_player.match.panels.center.actual_color.ActualColorPanel;
+import juno.view.pages.new_game.single_player.match.panels.center.circle.CirclePanel;
+import juno.view.pages.new_game.single_player.match.panels.center.deck.DeckPanel;
+import juno.view.pages.new_game.single_player.match.panels.center.discarded_pile.DiscardedPilePanel;
+
 /**
  * @author Simone Gentili
  */

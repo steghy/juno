@@ -25,6 +25,7 @@
 
 package juno.view.gobject.avatars;
 
+import juno.model.requester.ProgramDirectory;
 import juno.view.img_initializer.ImageComponentInitializer;
 import juno.model.requester.PathProviderAssembler;
 
@@ -33,36 +34,29 @@ import juno.model.requester.PathProviderAssembler;
  */
 public class Initializer {
 
-    // Builds an Initializer object.
+    // The Initializer instance.
+    private static Initializer instance;
+
+    // Builds the Initializer instance.
     private Initializer() {}
 
-    /** Initialize the juno.view.awards.avatars package. */
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
     public static void initialize() {
-        // Components.
-        // GAvatarCreator.
         GAvatarImageCreator gAvatarCreator = GAvatarImageCreator.getInstance();
-
-        // GAvatarsFactory.
         GAvatarImageFactory gAvatarsFactory = GAvatarImageFactory.getInstance();
-
-        // APathProvider.
-        AvatarImagePathProvider aPathProvider = AvatarImagePathProvider.getInstance();
-
-        // PathObjectAssembler.
         PathProviderAssembler pathObjectAssembler = PathProviderAssembler.getInstance();
-
-        // ImageComponentInitializer.
         ImageComponentInitializer imageComponentInitializer = ImageComponentInitializer.getInstance();
-
-        ////////////////////////////////////////////////////////////////
-
-        // Connections.
-        // GAvatarCreator.
-        gAvatarCreator.setProvider(aPathProvider);
+        gAvatarCreator.setProvider(ProgramDirectory.AVATARS);
         gAvatarCreator.setInitializer(imageComponentInitializer);
         gAvatarCreator.setAssembler(pathObjectAssembler);
-
-        // GAvatarsFactory.
         gAvatarsFactory.setCreator(gAvatarCreator);
     }
 

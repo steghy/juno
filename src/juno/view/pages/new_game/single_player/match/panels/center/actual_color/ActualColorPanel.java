@@ -23,12 +23,13 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.new_game.single_player.match.panels.center;
+package juno.view.pages.new_game.single_player.match.panels.center.actual_color;
 
 import juno.controller.util.InterfaceInitializer;
 import juno.model.card.colors.InterfaceColor;
 import juno.model.deck.InterfaceActualColor;
 import juno.model.util.Observer;
+import juno.view.gobject.InterfaceGObjectMapFactory;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -40,6 +41,9 @@ import java.awt.*;
 public class ActualColorPanel
         extends JPanel
         implements Observer {
+
+    // The graphic color map factory.
+    private InterfaceGObjectMapFactory<InterfaceColor> mapFactory;
 
     // The ActualColorPanel instance.
     private static ActualColorPanel instance;
@@ -60,15 +64,21 @@ public class ActualColorPanel
         return instance;
     }
 
+    /**
+     * Sets the graphic color map factory of
+     * this object.
+     * @param mapFactory An interfaceGObjectMapFactory object.
+     */
+    public void setMapFactory(@NotNull InterfaceGObjectMapFactory<InterfaceColor> mapFactory) {
+        this.mapFactory = mapFactory;
+    }
+
     @Override
     public void update(@NotNull Object object) {
         if(object instanceof InterfaceActualColor<?> actualColor) {
             Object temp = actualColor.provide();
             if(temp instanceof InterfaceColor color) {
-                if(color.isRed()) setBackground(Color.RED);
-                else if(color.isBlue()) setBackground(Color.BLUE);
-                else if(color.isGreen()) setBackground(Color.GREEN);
-                else if(color.isYellow()) setBackground(Color.YELLOW);
+                add((Component) mapFactory.getGObjectsMap().get(color), BorderLayout.CENTER);
             } else throw new IllegalArgumentException(
                     "Invalid object type: " + temp.getClass() +
                             ". InterfaceColor type expected.");
