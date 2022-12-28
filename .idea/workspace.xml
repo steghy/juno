@@ -5,20 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/juno/controller/new_game/InterfaceCardDispenser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/controller/new_game/OneCardDispenser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/controller/new_game/CardRemover.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/controller/new_game/CardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/controller/new_game/CardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/controller/new_game/CardDispenser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/controller/new_game/CardDispenser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/controller/new_game/Initializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/controller/new_game/Initializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/controller/new_game/Mover.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/controller/new_game/Mover.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/controller/new_game/StartGameAction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/card/Card.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/card/Card.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/util/Donut.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/util/Donut.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/cards/GCardCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/gobject/cards/GCardCreator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/center/discarded_pile/DiscardedPilePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/center/discarded_pile/DiscardedPilePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/center/discarded_pile/DiscardedPilePanelConfigurator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/center/discarded_pile/DiscardedPilePanelConfigurator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/south/SouthCardPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/south/SouthCardPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/south/SouthPanelConfigurator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/south/SouthPanelConfigurator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/controller/new_game/CardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/new_game/CardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/controller/new_game/CardDispenser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/new_game/CardDispenser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/new_game/GameStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/new_game/GameStarter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/controller/new_game/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/new_game/Initializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/controller/new_game/Mover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/new_game/Mover.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/controller/new_game/StartGameAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/new_game/GameStarter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/util/Donut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/util/Donut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/gobject/cards/GCardCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/gobject/cards/GCardCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/discarded_pile/DiscardedPilePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/discarded_pile/DiscardedPilePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/discarded_pile/DiscardedPilePanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/center/discarded_pile/DiscardedPilePanelConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/new_game/OneCardDispenser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/new_game/OneCardDispenser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/card/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/card/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/human/HumanPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/human/HumanPlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/south/SouthCardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/south/SouthCardPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/south/SouthPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/south/SouthPanelConfigurator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,8 +41,8 @@
         <option value="AnnotationType" />
         <option value="Record" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -110,19 +118,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GAvatarCreatorTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="juno.view.gobject.avatars.factory.test.GAvatarCreatorTester" />
-      <module name="juno-project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="juno.view.gobject.avatars.factory.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="juno.init.Main" />
       <module name="juno-project" />
@@ -162,13 +157,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="juno.controller.Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="juno.controller.Test" />
+      <module name="juno-project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="juno.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.juno.controller.Test" />
         <item itemvalue="Application.Test" />
         <item itemvalue="Application.TimerBasedAnimation" />
         <item itemvalue="Application.AvatarPanelTester" />
-        <item itemvalue="Application.GAvatarCreatorTester" />
       </list>
     </recent_temporary>
   </component>

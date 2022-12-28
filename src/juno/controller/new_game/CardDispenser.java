@@ -102,4 +102,13 @@ public class CardDispenser
         }
     }
 
+    /**
+     * Sets the deck of this object.
+     * @param deck An InterfaceDeck object.
+     */
+    public void setDeck(@NotNull InterfaceDeck<InterfaceCard> deck) {
+        this.deck = deck;
+    }
+
+
 }

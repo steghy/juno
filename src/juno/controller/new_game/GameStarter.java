@@ -25,27 +25,24 @@
 
 package juno.controller.new_game;
 
-import juno.controller.util.InterfaceInitializer;
+import juno.model.card.InterfaceCard;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.shift.PlayersProvider;
 import juno.model.util.Donut;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
-import java.awt.event.ActionEvent;
+import java.util.List;
 import java.util.Objects;
 
 /**
  * @author Simone Gentili
  */
-public class GameStarter<T>
+public class GameStarter
         implements Observer {
 
-    // The card dispenser.
-    private InterfaceCardDispenser dispenser;
-
     // The GameStarter instance.
-    private static GameStarter<?> instance;
+    private static GameStarter instance;
 
     // Builds the GameStarter instance.
     private GameStarter() {}
@@ -54,21 +51,25 @@ public class GameStarter<T>
      * Builds the GameStarter instance.
      * @return The GameStarter instance.
      */
-    public static GameStarter<?> getInstance() {
-        if(instance == null) instance = new GameStarter<>();
+    public static GameStarter getInstance() {
+        if(instance == null) instance = new GameStarter();
         return instance;
     }
 
     @SuppressWarnings("unchecked")
-    public void start(@NotNull InterfacePlayer<T> player) {
-        dispenser.dispense();
-        Objects.requireNonNull(players).initialize(0);
+    public void start(@NotNull InterfacePlayer<InterfaceCard> player) {
+        Donut<InterfacePlayer<InterfaceCard>> players =
+                (Donut<InterfacePlayer<InterfaceCard>>) PlayersProvider.getInstance().provide();
+        Objects.requireNonNull(players).initialize(player);
+        CardDispenser.getInstance().dispense();
     }
 
     @Override
     public void update(Object object) {
-        if(object instanceof InterfaceInitializer) {
-
+        if(object instanceof CardController cardController) {
+            List<InterfacePlayer<InterfaceCard>> players = cardController.provide();
+            if(players.size() == 1)
+                start(players.get(0));
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceInitializer type expected.");

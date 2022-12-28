@@ -72,7 +72,7 @@ public class HumanPlayer<T>
     @Override
     public void remove(@NotNull T card) {
         boolean result = cards().remove(card);
-        if(result) throw new IllegalArgumentException(
+        if(!result) throw new IllegalArgumentException(
                 "The card " + card + " is not in: " + cards());
         this.card = card;
         updateAll();

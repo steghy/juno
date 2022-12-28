@@ -28,6 +28,7 @@ package juno.controller.new_game;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.InterfaceDeck;
 import juno.model.subjects.InterfacePlayer;
+import juno.model.subjects.shift.PlayersProvider;
 import juno.model.util.AbstractObservable;
 import juno.model.util.InterfaceProvider;
 import juno.model.util.Observer;
@@ -37,6 +38,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author Simone Gentili
@@ -108,10 +110,19 @@ public class OneCardDispenser
     @Override
     @SuppressWarnings("unchecked")
     public void update(Object object) {
-        if(object instanceof InterfaceProvider<?> provider) {
+        if(object instanceof CardController cardController) {
+            players = cardController.provide();
+            if(players.size() != 1) {
+                size = players.size();
+                copy = size;
+                dispense();
+            }
+        } else if(object instanceof PlayersProvider<?> provider) {
             players = (List<InterfacePlayer<InterfaceCard>>) provider.provide();
-            size = players.size();
+            size = Objects.requireNonNull(players).size();
             copy = size;
+        } else if(object instanceof GameInitializer) {
+            dispense();
         }
     }
 

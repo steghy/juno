@@ -27,6 +27,7 @@ package juno.model.card;
 
 import juno.model.card.actions.InterfaceAction;
 import juno.model.card.colors.InterfaceColor;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -44,7 +45,7 @@ import org.jetbrains.annotations.Nullable;
  * @author Simone Gentili
  */
 public record Card(InterfaceColor color, Integer value, InterfaceAction action)
-        implements InterfaceCard {
+        implements InterfaceCard, Comparable<InterfaceCard> {
 
     /**
      * Builds a Card object with the specified
@@ -77,6 +78,15 @@ public record Card(InterfaceColor color, Integer value, InterfaceAction action)
     @Override
     public boolean equals(Object object){
         return this == object;
+    }
+
+    @Override
+    public int compareTo(@NotNull InterfaceCard otherCard) {
+        if(this.value == null) {
+            if(otherCard.value() == null) return 1;
+            else return -1;
+        } else if(otherCard.value() == null) return 1;
+        else return this.value.compareTo(otherCard.value());
     }
 
 }
