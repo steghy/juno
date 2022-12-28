@@ -77,6 +77,7 @@ public class GColorFactory
         this.gColors = colors.stream()
                 .map(Objects.requireNonNull(getCreator())::create)
                 .toList();
+        updateAll();
     }
 
     @Override

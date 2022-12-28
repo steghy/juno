@@ -25,5 +25,97 @@
 
 package juno.view.pages.new_game.single_player.match.panels.center.colors;
 
-public class ColorsPanel {
+import juno.controller.new_game.Mover;
+import juno.controller.util.InterfaceInitializer;
+import juno.model.util.Observer;
+import juno.view.panels.AbstractFourthComponent;
+import org.jetbrains.annotations.NotNull;
+
+import java.awt.*;
+import java.util.Objects;
+
+/**
+ * @author Simone Gentili
+ */
+public class ColorsPanel
+        extends AbstractFourthComponent
+        implements Observer {
+
+    // The ColorsPanel instance.
+    private static ColorsPanel instance;
+
+    // Builds the ColorsPanel instance.
+    private ColorsPanel() {}
+
+    /**
+     * Returns the ColorsPanel instance.
+     * @return The ColorsPanel instance.
+     */
+    public static ColorsPanel getInstance() {
+        if(instance == null) instance = new ColorsPanel();
+        return instance;
+    }
+
+    /** Initialize the ColorsPanel instance. */
+    public void init() {
+        setOpaque(false);
+        setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        // Red color.
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(0,0,0,0);
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
+        add(Objects.requireNonNull(getFirstComponent()), gbc);
+
+        // Blue color.
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(0,0,0,0);
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
+        add(Objects.requireNonNull(getSecondComponent()), gbc);
+
+        // Yellow color.
+        gbc.gridx = 2;
+        gbc.gridy = 0;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(0,0,0,0);
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
+        add(Objects.requireNonNull(getThirdComponent()), gbc);
+
+        // Green color.
+        gbc.gridx = 3;
+        gbc.gridy = 0;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(0,0,0,0);
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
+        add(Objects.requireNonNull(getFourthComponent()), gbc);
+    }
+
+    @Override
+    public void update(@NotNull Object object) {
+        if(object instanceof Mover) {
+            java.util.List.of(getComponents()).forEach(c -> setEnabled(true));
+        } else if(object instanceof InterfaceInitializer) {
+            java.util.List.of(getComponents()).forEach(c -> setEnabled(false));
+        } else throw new IllegalArgumentException(
+                "Invalid object type: " + object.getClass() +
+                        ". Mover type expected.");
+    }
+
 }

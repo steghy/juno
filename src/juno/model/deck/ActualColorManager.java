@@ -36,25 +36,25 @@ import org.jetbrains.annotations.Nullable;
 /**
  * @author Simone Gentili
  */
-public class ActualColor
+public class ActualColorManager
         extends AbstractObservable
         implements InterfaceActualColor<InterfaceColor>, Observer {
 
     // The actual color.
     private InterfaceColor color;
 
-    // The ActualColor instance.
-    private static ActualColor instance;
+    // The ActualColorManager instance.
+    private static ActualColorManager instance;
 
-    // Builds the ActualColor instance.
-    private ActualColor() {}
+    // Builds the ActualColorManager instance.
+    private ActualColorManager() {}
 
     /**
-     * Returns the ActualColor instance.
-     * @return The ActualColor instance.
+     * Returns the ActualColorManager instance.
+     * @return The ActualColorManager instance.
      */
-    public static ActualColor getInstance() {
-        if(instance == null) instance = new ActualColor();
+    public static ActualColorManager getInstance() {
+        if(instance == null) instance = new ActualColorManager();
         return instance;
     }
 

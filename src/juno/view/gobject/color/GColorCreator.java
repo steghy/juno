@@ -69,12 +69,13 @@ public class GColorCreator
 
     @Override
     public InterfaceGObject<InterfaceColor> create(@NotNull InterfaceColor color) {
-        GObjectLabel<InterfaceColor> graphicColor = new GObjectLabel<>(color);
+        GObjectButton<InterfaceColor> graphicColor = new GObjectButton<>(color);
         InterfacePathProviderAssembler assembler = getAssembler();
         Objects.requireNonNull(assembler);
         Objects.requireNonNull(getInitializer()).initialize(
                 graphicColor,
-                assembler.assemble(pathProvider, color.name() + ".png"));
+                assembler.assemble(pathProvider, color.name() + ".png"),
+                assembler.assemble(pathProvider, color.name() + "_ROLLOVER" + ".png"));
         return graphicColor;
     }
 

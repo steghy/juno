@@ -41,43 +41,19 @@ public class ViewInitializer {
 
     /** Initialize the juno.view package. */
     public static void initialize() {
-        // juno.view.img_initializer package.
         juno.view.img_initializer.Initializer.initialize();
-
-        // juno.view.button package.
         juno.view.button.Initializer.initialize();
-
-        // juno.view.gobject.profiles package.
         juno.view.gobject.profiles.Initializer.initialize();
-
-        // juno.view.awards.avatars package.
         juno.view.gobject.avatars.Initializer.initialize();
-
-        // juno.view.awards.frames package.
         juno.view.gobject.frames.Initializer.initialize();
-
-        // juno.view.gobject.card package.
         juno.view.gobject.cards.Initializer.initialize();
-
-        // juno.view.pages.new_game package.
+        juno.view.gobject.color.Initializer.getInstance().initialize();
         juno.view.pages.new_game.NewGameInitializer.initialize();
-
-        // juno.view.pages.score package.
         juno.view.pages.score.ScorePanelInitializer.initialize();
-
-        // juno.view.pages.option package.
         OptionsInitializer.initialize();
-
-        // juno.view.pages.pre_access package.
         PreAccessInitializer.initialize();
-
-        // juno.view.card.TopCardPanel configuration.
         TopCardPanelConfigurator.configure();
-
-        // juno.view.main package.
         MainPanelInitializer.initialize();
-
-        // juno.view.frame package.
         FrameInitializer.initializer();
     }
 

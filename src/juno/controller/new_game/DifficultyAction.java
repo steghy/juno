@@ -25,7 +25,6 @@
 
 package juno.controller.new_game;
 
-import juno.model.subjects.ai.InterfaceDifficulty;
 import juno.model.util.InterfaceSetter;
 import org.jetbrains.annotations.NotNull;
 

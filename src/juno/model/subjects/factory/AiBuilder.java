@@ -68,11 +68,19 @@ public class AiBuilder<T, E>
     }
 
     /**
-     * Sets the Ai examiner of this object.
-     * @param examiner An InterfaceExaminer object.
+     * Sets the Ai card examiner of this object.
+     * @param cardExaminer An InterfaceCardExaminer object.
      */
-    public void setExaminer(@NotNull InterfaceCardExaminer<T> examiner) {
-        this.examiner = examiner;
+    public void setCardExaminer(@NotNull InterfaceCardExaminer<T> cardExaminer) {
+        this.examiner = cardExaminer;
+    }
+
+    /**
+     * Sets the AI color examiner of this object.
+     * @param colorExaminer An InterfaceColorExaminer object.
+     */
+    public void setColorExaminer(@NotNull InterfaceColorExaminer<E, T> colorExaminer) {
+        this.colorExaminer = colorExaminer;
     }
 
 }

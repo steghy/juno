@@ -44,65 +44,29 @@ public class Initializer {
 
     @SuppressWarnings("unchecked")
     public static void initialize() {
-        // Components.
-        // Compatible cards provider.
         CompatibleCardsProvider compatibleCardsProvider = CompatibleCardsProvider.getInstance();
-
-        // ActualColor.
-        ActualColor actualColor = ActualColor.getInstance();
-
-        // Compatibility checker.
+        ActualColorManager actualColor = ActualColorManager.getInstance();
         CompatibilityChecker compatibilityChecker = CompatibilityChecker.getInstance();
-
-        // Deck.
         Deck<InterfaceCard> deck = (Deck<InterfaceCard>) Deck.getInstance();
-
-        // Deck factory.
         DeckFactory deckFactory = DeckFactory.getInstance();
-
-        // Deck filler.
         DeckFiller<InterfaceCard>  filler = (DeckFiller<InterfaceCard>) DeckFiller.getInstance();
-
-        // Mixer.
         Mixer<InterfaceCard> mixer = (Mixer<InterfaceCard>) Mixer.getInstance();
-
-        // Discarded pile.
         DiscardedPile<InterfaceCard> discardedPile = (DiscardedPile<InterfaceCard>) DiscardedPile.getInstance();
-
-        // Game initializer.
         GameInitializer gameInitializer = GameInitializer.getInstance();
-
-        // Card effect activator.
         CardEffectActivator cardEffectActivator = CardEffectActivator.getInstance();
-
-        // Players provider.
         PlayersProvider<InterfacePlayer<InterfaceCard>> playersProvider =
                 (PlayersProvider<InterfacePlayer<InterfaceCard>>) PlayersProvider.getInstance();
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        // Connections.
-        // Compatible cards provider.
         compatibleCardsProvider.setCompatibilityChecker(compatibilityChecker);
-
-        // CompatibilityChecker.
         compatibilityChecker.setDiscardedPile(discardedPile);
         compatibilityChecker.setProvider(actualColor);
-
-        // Filler.
         filler.setDiscardedPile(discardedPile);
-
-        // Deck.
         deck.setDeckFiller(filler);
         deck.setMixer(mixer);
-
-        // CardEffectActivator.
         cardEffectActivator.setDeck(deck);
         cardEffectActivator.setInverter(Inverter.getInstance());
         cardEffectActivator.setTurnJumper(TurnJumper.getInstance());
         cardEffectActivator.setPlayersProvider(playersProvider);
-
-        // Observer / Observable connections.
+        cardEffectActivator.setActualColor(actualColor);
         deckFactory.addObserver(deck);
         deckFactory.addObserver(GCardFactory.getInstance());
         gameInitializer.addObserver(discardedPile);

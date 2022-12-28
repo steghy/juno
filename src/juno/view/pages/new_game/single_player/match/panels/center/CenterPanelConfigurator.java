@@ -27,6 +27,7 @@ package juno.view.pages.new_game.single_player.match.panels.center;
 
 import juno.view.pages.new_game.single_player.match.panels.center.actual_color.ActualColorPanel;
 import juno.view.pages.new_game.single_player.match.panels.center.circle.CirclePanel;
+import juno.view.pages.new_game.single_player.match.panels.center.colors.ColorsPanel;
 import juno.view.pages.new_game.single_player.match.panels.center.deck.DeckPanel;
 import juno.view.pages.new_game.single_player.match.panels.center.discarded_pile.DiscardedPilePanel;
 
@@ -48,6 +49,7 @@ public class CenterPanelConfigurator {
         centerPanel.setSecondComponent(DeckPanel.getInstance());
         centerPanel.setThirdComponent(DiscardedPilePanel.getInstance());
         centerPanel.setFourthComponent(ActualColorPanel.getInstance());
+        centerPanel.setFifthComponent(ColorsPanel.getInstance());
 
         // Initialization.
         centerPanel.init();

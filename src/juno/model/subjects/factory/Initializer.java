@@ -25,43 +25,47 @@
 
 package juno.model.subjects.factory;
 
+import juno.controller.util.InterfaceInitializer;
 import juno.model.card.InterfaceCard;
 import juno.model.card.colors.InterfaceColor;
 import juno.model.subjects.ai.InterfaceDifficulty;
 import juno.model.subjects.ai.examiner.CardExaminer;
+import juno.model.subjects.ai.examiner.ColorExaminer;
 import juno.model.subjects.ai.examiner.InterfaceCardExaminer;
 
 /**
  * @author Simone Gentili
  */
-public class Initializer {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // Builds an Initializer object.
+    // The Initializer instance.
+    private static Initializer instance;
+
+    // Builds the Initializer instance.
     private Initializer() {}
 
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
     @SuppressWarnings("unchecked")
-    public static void initialize() {
-        // Components.
-        // AiPlayerFactory.
+    public void initialize() {
         AiPlayerFactory<InterfaceCard, InterfaceDifficulty> aiPlayerFactory =
                 (AiPlayerFactory<InterfaceCard, InterfaceDifficulty>) AiPlayerFactory.getInstance();
-
-        // NameFactory.
         NameFactory nameFactory = NameFactory.getInstance();
-
-        // AiBuilder.
         AiBuilder<InterfaceCard, InterfaceColor> aiBuilder =
                 (AiBuilder<InterfaceCard, InterfaceColor>) AiBuilder.getInstance();
-
-        ////////////////////////////////////////////////////////////////////////////////////////////
-
-        // Connections.
-        // AiPlayerFactory.
         aiPlayerFactory.setBuilder(aiBuilder);
         aiPlayerFactory.setNameFactory(nameFactory);
-
-        // AiBuilder.
-        aiBuilder.setExaminer((InterfaceCardExaminer<InterfaceCard>) CardExaminer.getInstance());
+        aiBuilder.setCardExaminer((InterfaceCardExaminer<InterfaceCard>) CardExaminer.getInstance());
+        aiBuilder.setColorExaminer(ColorExaminer.getInstance());
     }
 
 }

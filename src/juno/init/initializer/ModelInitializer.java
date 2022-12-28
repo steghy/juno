@@ -35,38 +35,17 @@ public class ModelInitializer {
 
     /** Initialize the juno.model package. */
     public static void initialize() {
-        // juno.model.requester package.
         juno.model.requester.Initializer.initialize();
-
-        // juno.model.data.io.input package.
         juno.model.data.io.input.Initializer.initialize();
-
-        // juno.model.data.profile package.
         juno.model.data.profile.Initializer.initialize();
-
-        // juno.model.data.io.output package.
         juno.model.data.io.output.Initializer.initialize();
-
-        // juno.model.data.avatar package.
         juno.model.data.avatar.Initializer.initialize();
-
-        // juno.model.data.goals package.
         juno.model.data.goals.Initializer.initialize();
-
-        // juno.model.data.awards package.
         juno.model.data.awards.Initializer.initialize();
-
-        // juno.model.deck package
         juno.model.deck.Initializer.initialize();
-
-        // juno.model.subjects.ai package
-        juno.model.subjects.factory.Initializer.initialize();
-
-        // juno.model.subjects.ai.examiner package
+        juno.model.subjects.factory.Initializer.getInstance().initialize();
         juno.model.subjects.ai.examiner.Initializer.initialize();
-
         juno.model.subjects.shift.Initializer.getInstance().initialize();
-
         juno.model.subjects.human.Initializer.getInstance().initialize();
     }
 
