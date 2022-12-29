@@ -32,7 +32,7 @@ import juno.model.util.InterfaceProvider;
 import juno.model.util.Observer;
 import juno.view.gobject.InterfaceGObjectCreator;
 import juno.view.gobject.cards.GCard;
-import juno.view.util.ImageResizer;
+import juno.view.util.RotatedIcon;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -91,8 +91,7 @@ public class DiscardedPilePanel
     public void update(@NotNull Object object) {
         if(object instanceof InterfaceDiscardedPile<?>) {
             GCard<InterfaceCard> gCard = (GCard<InterfaceCard>)
-                    creator.create(provider.provide());
-            ImageResizer.resize(gCard, 2.0);
+                    creator.create(provider.provide(), RotatedIcon.Rotate.ABOUT_CENTER);
             removeAll();
             add(gCard, BorderLayout.CENTER);
         } else if(object instanceof InterfaceInitializer) {

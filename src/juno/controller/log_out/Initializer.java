@@ -26,6 +26,7 @@
 package juno.controller.log_out;
 
 import juno.controller.pre_access.ConfigurationFilesFactory;
+import juno.controller.util.InterfaceInitializer;
 import juno.model.data.goals.GoalsRestorer;
 import juno.model.data.goals.RegistrationGoal;
 import juno.model.data.io.output.ExporterManager;
@@ -39,27 +40,36 @@ import java.util.List;
 /**
  * @author Simone Gentili
  */
-public class Initializer {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // Builds the Initializer object.
+    // The Initializer instance.
+    private static Initializer instance;
+
+    // Builds the Initializer instance.
     private Initializer() {}
 
-    public static void initialize() {
-        Restorer restorer = Restorer.getInstance();
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
+    public void initialize() {
         AccountExiter accountExiter = AccountExiter.getInstance();
-        ///////////////////////////////////////////////////////////
-        // Restorer.
-        List<Restorable> restorableList = restorer.restorableList();
+        List<Restorable> restorableList = accountExiter.getRestorableList();
         restorableList.add(Profile.getInstance());
         restorableList.add(LostGamesCounter.getInstance());
         restorableList.add(GamesWonCounter.getInstance());
         restorableList.add(RegistrationGoal.getInstance());
         restorableList.add(GoalsRestorer.getInstance());
-        // AccountExiter.
         accountExiter.setGenerator(ConfigurationFilesFactory.getInstance());
         accountExiter.setProvider(ProfileNameProvider.getInstance());
         accountExiter.setExporterManager(ExporterManager.getInstance());
-        accountExiter.setRestorable(Restorer.getInstance());
     }
 
 }

@@ -29,6 +29,7 @@ import juno.model.card.colors.InterfaceColor;
 import juno.model.requester.InterfacePathProvider;
 import juno.model.requester.InterfacePathProviderAssembler;
 import juno.view.gobject.*;
+import juno.view.util.RotatedIcon;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -68,14 +69,15 @@ public class GColorCreator
 
 
     @Override
-    public InterfaceGObject<InterfaceColor> create(@NotNull InterfaceColor color) {
+    public InterfaceGObject<InterfaceColor> create(@NotNull InterfaceColor color, RotatedIcon.Rotate rotate) {
         GObjectButton<InterfaceColor> graphicColor = new GObjectButton<>(color);
         InterfacePathProviderAssembler assembler = getAssembler();
         Objects.requireNonNull(assembler);
         Objects.requireNonNull(getInitializer()).initialize(
                 graphicColor,
                 assembler.assemble(pathProvider, color.name() + ".png"),
-                assembler.assemble(pathProvider, color.name() + "_ROLLOVER" + ".png"));
+                assembler.assemble(pathProvider, color.name() + "_ROLLOVER" + ".png"),
+                rotate);
         return graphicColor;
     }
 

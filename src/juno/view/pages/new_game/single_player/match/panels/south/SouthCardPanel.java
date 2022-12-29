@@ -30,12 +30,10 @@ import juno.controller.util.InterfaceInitializer;
 import juno.controller.util.SetterAction;
 import juno.model.card.InterfaceCard;
 import juno.model.subjects.human.HumanPlayer;
-import juno.model.util.InterfaceProvider;
 import juno.model.util.InterfaceSetter;
 import juno.model.util.Observer;
 import juno.view.gobject.cards.GCard;
 import juno.view.gobject.cards.GCardMapFactory;
-import juno.view.util.ImageResizer;
 import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.*;
@@ -106,7 +104,6 @@ public class SouthCardPanel
                 gCard.addActionListener(setterAction);
                 setterAction.addObserver(this);
                 gCard.setEnabled(false);
-                ImageResizer.resize(gCard, 2.5);
                 add(gCard);
             }
         } else if(object instanceof InterfaceInitializer) {

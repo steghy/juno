@@ -25,6 +25,7 @@
 
 package juno.controller.new_game;
 
+import juno.controller.new_game.game_settings.GameData;
 import juno.controller.util.InterfaceInitializer;
 import juno.model.subjects.ai.InterfaceDifficulty;
 import juno.model.subjects.factory.InterfaceAiPlayerGenerator;
@@ -76,7 +77,8 @@ public class GameInitializer
     @Override
     public void initialize() {
         // Generates the players and the deck.
-        aiGenerator.generate(GameData.players - 1, GameData.difficulty);
+        aiGenerator.generate(GameData.getPlayers() - 1,
+                GameData.getDifficulty());
         deckGenerator.generate();
         updateAll();
     }

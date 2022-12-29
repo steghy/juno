@@ -30,6 +30,7 @@ import juno.model.card.colors.Color;
 import juno.model.requester.PathProviderAssembler;
 import juno.model.requester.ProgramDirectory;
 import juno.view.img_initializer.ImageComponentInitializer;
+import juno.view.util.RotatedIcon;
 
 import java.util.List;
 
@@ -65,7 +66,7 @@ public class Initializer
         gColorFactory.setCreator(gColorCreator);
         gColorMapFactory.setFactory(gColorFactory);
         gColorFactory.addObserver(gColorMapFactory);
-        gColorFactory.generate(List.of(Color.values()));
+        gColorFactory.generate(List.of(Color.values()), RotatedIcon.Rotate.ABOUT_CENTER);
     }
 
 }

@@ -33,6 +33,7 @@ import juno.view.gobject.AbstractGObjectFactory;
 import juno.view.gobject.InterfaceGObject;
 import juno.view.gobject.InterfaceGObjectCreator;
 import juno.view.gobject.InterfaceGObjectGenerator;
+import juno.view.util.RotatedIcon;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -74,12 +75,12 @@ public class GCardFactory
     }
 
     @Override
-    public void generate(@NotNull List<InterfaceCard> cards) {
+    public void generate(@NotNull List<InterfaceCard> cards, RotatedIcon.Rotate rotate) {
         gCards = new ArrayList<>();
         InterfaceGObjectCreator<InterfaceCard> gCardCreator = getCreator();
         Objects.requireNonNull(gCardCreator);
         cards.forEach(card ->
-                gCards.add(gCardCreator.create(card)));
+                gCards.add(gCardCreator.create(card, rotate)));
         updateAll();
     }
 
@@ -101,7 +102,7 @@ public class GCardFactory
     @Override @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
         if(object instanceof InterfaceFactory<?> factory)
-            generate((List<InterfaceCard>) Objects.requireNonNull(factory.getObjects()));
+            generate((List<InterfaceCard>) Objects.requireNonNull(factory.getObjects()), RotatedIcon.Rotate.ABOUT_CENTER);
         else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceDeckInitialized expected.");

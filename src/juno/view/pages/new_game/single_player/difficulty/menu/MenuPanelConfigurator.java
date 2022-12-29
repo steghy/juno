@@ -25,10 +25,10 @@
 
 package juno.view.pages.new_game.single_player.difficulty.menu;
 
-import juno.controller.new_game.DifficultySetter;
+import juno.controller.new_game.game_settings.DifficultySetter;
 import juno.controller.util.ChangePanelAction;
-import juno.controller.new_game.DifficultyAction;
 import juno.controller.util.PanelChanger;
+import juno.controller.util.SetterAction;
 import juno.model.subjects.ai.Difficulty;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
@@ -78,9 +78,9 @@ public class MenuPanelConfigurator {
 
         // Difficulty actions.
         DifficultySetter difficultySetter = DifficultySetter.getInstance();
-        easyDifficultyButton.addActionListener(new DifficultyAction<>(Difficulty.EASY, difficultySetter));
-        mediumDifficultyButton.addActionListener(new DifficultyAction<>(Difficulty.MEDIUM, difficultySetter));
-        hardDifficultyButton.addActionListener(new DifficultyAction<>(Difficulty.HARD, difficultySetter));
+        easyDifficultyButton.addActionListener(new SetterAction<>(Difficulty.EASY, difficultySetter));
+        mediumDifficultyButton.addActionListener(new SetterAction<>(Difficulty.MEDIUM, difficultySetter));
+        hardDifficultyButton.addActionListener(new SetterAction<>(Difficulty.HARD, difficultySetter));
 
         // Inside Border.
         RoundedBorder insideBorder = new RoundedBorder(

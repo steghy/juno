@@ -66,7 +66,7 @@ public class Main {
             AudioPlayer audioPlayer = AudioPlayer.getInstance();
             audioPlayer.setTracks(Objects
                     .requireNonNull(new File(ProgramDirectory.MUSIC.absolutePath()).listFiles()));
-            // audioPlayer.play();
+            audioPlayer.play();
             audioPlayer.setLoop(true);
 
             ((JToggleButton) Objects.requireNonNull(MenuPanel.getInstance().getSecondComponent())).doClick();

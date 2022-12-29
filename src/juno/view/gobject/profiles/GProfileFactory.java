@@ -29,6 +29,7 @@ import juno.model.util.InterfaceFactory;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import juno.view.gobject.InterfaceGObject;
+import juno.view.util.RotatedIcon;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -71,9 +72,9 @@ public class GProfileFactory
     }
 
     @Override
-    public void generate(@NotNull List<String> profiles) {
+    public void generate(@NotNull List<String> profiles, RotatedIcon.Rotate rotate) {
         gProfiles = profiles.stream()
-                .map(Objects.requireNonNull(getCreator())::create)
+                .map(profile -> Objects.requireNonNull(getCreator()).create(profile, rotate))
                 .toList();
         updateAll();
     }
@@ -105,7 +106,7 @@ public class GProfileFactory
                     throw new IllegalArgumentException(
                             file.getAbsolutePath() + " not exists.");
                 }
-            }).toList());
+            }).toList(), RotatedIcon.Rotate.ABOUT_CENTER);
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceFactory type expected.");

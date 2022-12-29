@@ -35,22 +35,11 @@ public class ControllerInitializer {
 
     /** Initialize the juno.controller package. */
     public static void initialize() {
-        // juno.controller.pre_access package.
         juno.controller.pre_access.Initializer.initialize();
-
-        // juno.controller.log_out package.
-        juno.controller.log_out.Initializer.initialize();
-
-        // juno.controller.pre_access.loggers package.
+        juno.controller.log_out.Initializer.getInstance().initialize();
         juno.controller.pre_access.loggers.Initializer.initialize();
-
-        // juno.controller.pre_access.registration package.
         juno.controller.pre_access.registration.Initializer.initialize();
-
-        // juno.controller.pre_access.log_in.
         juno.controller.pre_access.log_in.Initializer.initialize();
-
-        // juno.controller.new_game package.
         juno.controller.new_game.Initializer.initialize();
     }
 

@@ -31,6 +31,9 @@ import juno.model.util.InterfaceProvider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Simone Gentili
  */
@@ -39,21 +42,13 @@ public abstract class AbstractAccountExiter<T>
         implements InterfaceAccountExiter {
 
     // The restorable.
-    private Restorable restorable;
+    private final List<Restorable> restorableList = new ArrayList<>();
 
     // The object provider.
     private InterfaceProvider<T> provider;
 
     // The profile files refresher.
     private InterfaceGenerator generator;
-
-    /**
-     * Sets the restorable object of this object.
-     * @param restorable A Restorable object.
-     */
-    public void setRestorable(@NotNull Restorable restorable) {
-        this.restorable = restorable;
-    }
 
     /**
      * Sets the provider of this object.
@@ -75,9 +70,8 @@ public abstract class AbstractAccountExiter<T>
      * Returns the restorable object of this object.
      * @return A Restorable object.
      */
-    @Nullable
-    public Restorable getRestorable() {
-        return restorable;
+    public List<Restorable> getRestorableList() {
+        return restorableList;
     }
 
     /**

@@ -26,6 +26,7 @@
 package juno.view.img_initializer;
 
 import juno.model.requester.InterfacePathProvider;
+import juno.view.util.RotatedIcon;
 
 import javax.swing.*;
 
@@ -33,6 +34,7 @@ import javax.swing.*;
 public interface InterfaceLabelInitializer {
 
     void initialize(JLabel label,
-                    InterfacePathProvider file);
+                    InterfacePathProvider file,
+                    RotatedIcon.Rotate rotate);
 
 }

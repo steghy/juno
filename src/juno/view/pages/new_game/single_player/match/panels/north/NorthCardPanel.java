@@ -25,16 +25,22 @@
 
 package juno.view.pages.new_game.single_player.match.panels.north;
 
+import juno.controller.new_game.GameStarter;
 import juno.controller.util.InterfaceInitializer;
+import juno.model.card.InterfaceCard;
 import juno.model.subjects.ai.AI;
 import juno.model.util.Observer;
 import juno.view.button.Button;
 import juno.view.button.ButtonCreator;
+import juno.view.gobject.cards.GCard;
+import juno.view.gobject.cards.GCardCreator;
 import juno.view.util.ImageResizer;
+import juno.view.util.RotatedIcon;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
 /**
  *
@@ -43,6 +49,9 @@ import java.awt.*;
 public class NorthCardPanel
         extends JPanel
         implements Observer {
+
+    // The show card boolean value.
+    private boolean showCard = true;
 
     // The NorthCardPanel instance.
     private static NorthCardPanel instance;
@@ -64,19 +73,27 @@ public class NorthCardPanel
 
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof AI<?, ?> ai) {
+        if(object instanceof GameStarter) showCard = false;
+        else if(object instanceof AI<?, ?> ai) {
             if(ai.getRemoved()) {
                 int count = getComponentCount();
                 if(count == 0) throw new IllegalArgumentException(
                         "There is no components to remove.");
                 remove(getComponentCount() - 1);
             } else {
-                AbstractButton button = ButtonCreator.getInstance().create(Button.COVER_TO_SOUTH);
-                ImageResizer.resize(button, 4.5);
-                add(button);
+                AbstractButton gCard;
+                if(showCard) {
+                    InterfaceCard card = (InterfaceCard) ai.provide();
+                    gCard = (GCard<InterfaceCard>)
+                            GCardCreator.getInstance().create(Objects.requireNonNull(card), RotatedIcon.Rotate.UPSIDE_DOWN);
+                } else {
+                    gCard = ButtonCreator.getInstance().create(Button.COVER_TO_SOUTH);
+                    ImageResizer.resize(gCard, 4.0);
+                } add(gCard);
             }
         } else if(object instanceof InterfaceInitializer) {
             removeAll();
+            showCard = true;
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceAdder, InterfaceRemover " +

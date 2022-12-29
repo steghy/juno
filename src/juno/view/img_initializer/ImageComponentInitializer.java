@@ -27,6 +27,7 @@ package juno.view.img_initializer;
 
 import juno.model.requester.InterfacePathProvider;
 import juno.model.util.Os;
+import juno.view.util.RotatedIcon;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -69,7 +70,8 @@ public class ImageComponentInitializer
     @Override
     public void initialize(@NotNull AbstractButton button,
                            @NotNull InterfacePathProvider file,
-                           @NotNull InterfacePathProvider rolloverFile) {
+                           @NotNull InterfacePathProvider rolloverFile,
+                           RotatedIcon.Rotate rotate) {
         // Image section.
         button.setName(file.canonicalPath());
         String imageAbsolutePath = file.absolutePath();
@@ -113,9 +115,9 @@ public class ImageComponentInitializer
             solve(button, BOTH_MISSING, dimension);
         } else if(rolloverImageExists && !imageExists) {
             if(IMAGE_MISSING == Constraints.KEEP_ROLLOVER_IMAGE) {
-                Icon rolloverIcon = new ImageIcon(rolloverImageAbsolutePath);
+                RotatedIcon rolloverIcon = new RotatedIcon(new ImageIcon(rolloverImageAbsolutePath), rotate);
                 button.setIcon(rolloverIcon);
-                button.setSize(rolloverIcon.getIconWidth(), rolloverIcon.getIconHeight());
+                button.setPreferredSize(new Dimension(rolloverIcon.getIconWidth(), rolloverIcon.getIconHeight()));
                 makeTransparent(button);
             } else {
                 solve(button, IMAGE_MISSING, dimension);
@@ -123,20 +125,20 @@ public class ImageComponentInitializer
 
         } else if(!rolloverImageExists) {
             if(ROLLOVER_IMAGE_MISSING == Constraints.KEEP_IMAGE) {
-                Icon icon = new ImageIcon(imageAbsolutePath);
+                RotatedIcon icon = new RotatedIcon(new ImageIcon(imageAbsolutePath), rotate);
                 button.setIcon(icon);
-                button.setSize(icon.getIconWidth(), icon.getIconHeight());
+                button.setPreferredSize(new Dimension(icon.getIconWidth(), icon.getIconHeight()));
                 makeTransparent(button);
             } else {
                 solve(button, ROLLOVER_IMAGE_MISSING, dimension);
             }
         } else {
             // button size -> image size [ not from rollover image ]
-            Icon icon = new ImageIcon(rolloverImageAbsolutePath);
+            RotatedIcon icon = new RotatedIcon(new ImageIcon(rolloverImageAbsolutePath), rotate);
             button.setRolloverIcon(icon);
-            icon = new ImageIcon(imageAbsolutePath);
+            icon = new RotatedIcon(new ImageIcon(imageAbsolutePath), rotate);
             button.setIcon(icon);
-            button.setSize(icon.getIconWidth(), icon.getIconHeight());
+            button.setPreferredSize(new Dimension(icon.getIconWidth(), icon.getIconHeight()));
             makeTransparent(button);
         }
     }
@@ -146,7 +148,8 @@ public class ImageComponentInitializer
                            @NotNull InterfacePathProvider file,
                            @NotNull InterfacePathProvider rolloverFile,
                            @NotNull InterfacePathProvider selectedFile,
-                           @NotNull InterfacePathProvider rolloverSelectedFile) {
+                           @NotNull InterfacePathProvider rolloverSelectedFile,
+                           RotatedIcon.Rotate rotate) {
         // Image case.
         button.setName(file.canonicalPath());
         String imageAbsolutePath = file.absolutePath();
@@ -225,9 +228,12 @@ public class ImageComponentInitializer
 
         else if(rolloverImageExists && !imageExists) {
             if(IMAGE_MISSING == Constraints.KEEP_ROLLOVER_IMAGE) {
-                Icon rolloverIcon = new ImageIcon(rolloverImageAbsolutePath);
+                Icon rolloverIcon;
+                ImageIcon temp = new ImageIcon(rolloverImageAbsolutePath);
+                if(rotate != null) rolloverIcon = new RotatedIcon(temp, rotate);
+                else rolloverIcon = temp;
                 button.setIcon(rolloverIcon);
-                button.setSize(rolloverIcon.getIconWidth(), rolloverIcon.getIconHeight());
+                button.setPreferredSize(new Dimension(rolloverIcon.getIconWidth(), rolloverIcon.getIconHeight()));
                 makeTransparent(button);
             } else {
                 solve(button, IMAGE_MISSING, dimension);
@@ -237,21 +243,26 @@ public class ImageComponentInitializer
 
         else if(!rolloverImageExists) {
             if(ROLLOVER_IMAGE_MISSING == Constraints.KEEP_IMAGE) {
-                Icon icon = new ImageIcon(imageAbsolutePath);
+                Icon icon;
+                ImageIcon temp = new ImageIcon(imageAbsolutePath);
+                if(rotate != null) icon = new RotatedIcon(temp, rotate);
+                else icon = temp;
                 button.setIcon(icon);
-                button.setSize(icon.getIconWidth(), icon.getIconHeight());
+                button.setPreferredSize(new Dimension(icon.getIconWidth(), icon.getIconHeight()));
                 makeTransparent(button);
             } else {
                 solve(button, ROLLOVER_IMAGE_MISSING, dimension);
                 return;
             }
         } else {
-            // button size -> image size [ not from rollover image ]
-            Icon icon = new ImageIcon(rolloverImageAbsolutePath);
+            Icon icon;
+            ImageIcon temp = new ImageIcon(rolloverImageAbsolutePath);
+            if(rotate != null) icon = new RotatedIcon(temp, rotate);
+            else icon = temp;
             button.setRolloverIcon(icon);
             icon = new ImageIcon(imageAbsolutePath);
             button.setIcon(icon);
-            button.setSize(icon.getIconWidth(), icon.getIconHeight());
+            button.setPreferredSize(new Dimension(icon.getIconWidth(), icon.getIconHeight()));
             makeTransparent(button);
         }
 
@@ -278,19 +289,21 @@ public class ImageComponentInitializer
                 solve(button, ROLLOVER_SELECTED_IMAGE_MISSING, dimension);
             }
         } else {
-            // button size -> selected image size [ not from rollover selected image ]
-            Icon icon = new ImageIcon(rolloverSelectedImageAbsolutePath);
+            Icon icon;
+            ImageIcon temp = new ImageIcon(rolloverSelectedImageAbsolutePath);
+            if(rotate != null) icon = new RotatedIcon(temp, rotate);
+            else icon = temp;
             button.setRolloverSelectedIcon(icon);
-            icon = new ImageIcon(selectedImageAbsolutePath);
             button.setSelectedIcon(icon);
-            button.setSize(icon.getIconWidth(), icon.getIconHeight());
+            button.setPreferredSize(new Dimension(icon.getIconWidth(), icon.getIconHeight()));
             makeTransparent(button);
         }
     }
 
     @Override
     public void initialize(@NotNull JLabel label,
-                           @NotNull InterfacePathProvider file) {
+                           @NotNull InterfacePathProvider file,
+                           RotatedIcon.Rotate rotate) {
         // Image case.
         label.setName(file.canonicalPath());
         String imageAbsolutePath = file.absolutePath();
@@ -307,9 +320,13 @@ public class ImageComponentInitializer
                 }
             } else imageExists = false;
         } if(imageExists) {
-            Icon icon = new ImageIcon(imageAbsolutePath);
+            Icon icon;
+            ImageIcon temp = new ImageIcon(imageAbsolutePath);
+            if(rotate != null) icon = new RotatedIcon(temp, rotate);
+            else icon = temp;
             label.setIcon(icon);
             label.setOpaque(false);
+            label.setPreferredSize(new Dimension(icon.getIconWidth(), icon.getIconWidth()));
         } else {
             solve(label, IMAGE_MISSING, dimension);
         }

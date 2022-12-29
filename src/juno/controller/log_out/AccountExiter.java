@@ -52,7 +52,7 @@ public class AccountExiter
     public void logOut() {
         String object = Objects.requireNonNull(getProvider()).provide();
         Objects.requireNonNull(getExporterManager()).export(object);
-        Objects.requireNonNull(getRestorable()).restore();
+        Objects.requireNonNull(getRestorableList()).forEach(Restorable::restore);
         Objects.requireNonNull(getGenerator()).generate();
     }
 

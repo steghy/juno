@@ -28,6 +28,7 @@ package juno.view.gobject.frames;
 import juno.model.data.awards.frame.InterfaceAvatarFrame;
 import juno.view.gobject.AbstractGObjectFactory;
 import juno.view.gobject.InterfaceGObject;
+import juno.view.util.RotatedIcon;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -64,9 +65,9 @@ public class GAvatarFrameFactory
     }
 
     @Override
-    public void generate(@NotNull List<InterfaceAvatarFrame> avatarFrames) {
+    public void generate(@NotNull List<InterfaceAvatarFrame> avatarFrames, RotatedIcon.Rotate rotate) {
         this.avatarFrames = avatarFrames.stream()
-                .map(Objects.requireNonNull(getCreator())::create)
+                .map(frame -> Objects.requireNonNull(getCreator()).create(frame, rotate))
                 .toList();
     }
 

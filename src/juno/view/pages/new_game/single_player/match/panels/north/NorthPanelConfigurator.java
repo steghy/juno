@@ -26,6 +26,7 @@
 package juno.view.pages.new_game.single_player.match.panels.north;
 
 import juno.controller.new_game.GameInitializer;
+import juno.controller.new_game.GameStarter;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.PanelChanger;
 import juno.view.button.Button;
@@ -73,6 +74,7 @@ public class NorthPanelConfigurator {
 
         // Observer / Observable.
         GameInitializer.getInstance().addObserver(northCardPanel);
+        GameStarter.getInstance().addObserver(northCardPanel);
 
         // Setting components.
         northPanel.setFirstComponent(northCardScrollPanel); // Cards scrollable panel.

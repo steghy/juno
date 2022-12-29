@@ -46,7 +46,7 @@ public class ViewInitializer {
         juno.view.gobject.profiles.Initializer.initialize();
         juno.view.gobject.avatars.Initializer.initialize();
         juno.view.gobject.frames.Initializer.initialize();
-        juno.view.gobject.cards.Initializer.initialize();
+        juno.view.gobject.cards.Initializer.getInstance().initialize();
         juno.view.gobject.color.Initializer.getInstance().initialize();
         juno.view.pages.new_game.NewGameInitializer.initialize();
         juno.view.pages.score.ScorePanelInitializer.initialize();

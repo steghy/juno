@@ -30,7 +30,7 @@ import juno.controller.util.ChangePanelAction;
 import juno.controller.util.GSetterAction;
 import juno.controller.util.PanelChanger;
 import juno.view.button.InterfaceButton;
-import juno.view.button.InterfaceButtonCreator;
+import juno.view.gobject.InterfaceGSObjectCreator;
 import juno.view.gobject.GObjectLabel;
 import juno.view.gobject.InterfaceGObject;
 import juno.view.pages.card.TopCardPanel;
@@ -47,7 +47,7 @@ public class GProfileProcessor
         implements InterfaceGraphicProcessor<AbstractButton, InterfaceGObject<String>> {
 
     // The button creator.
-    private InterfaceButtonCreator creator;
+    private InterfaceGSObjectCreator creator;
 
     // The button.
     private InterfaceButton button;
@@ -71,7 +71,7 @@ public class GProfileProcessor
      * Sets the button creator of this object.
      * @param creator An InterfaceButtonCreator object.
      */
-    public void setCreator(@NotNull InterfaceButtonCreator creator) {
+    public void setCreator(@NotNull InterfaceGSObjectCreator creator) {
         this.creator = creator;
     }
 

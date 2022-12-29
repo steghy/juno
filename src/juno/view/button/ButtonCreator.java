@@ -27,6 +27,7 @@ package juno.view.button;
 
 import juno.model.requester.InterfacePathProvider;
 import juno.model.requester.InterfacePathProviderAssembler;
+import juno.view.gobject.InterfaceGSObjectCreator;
 import juno.view.img_initializer.InterfaceImageComponentInitializer;
 import juno.view.gobject.AbstractGObjectCreator;
 import juno.view.util.*;
@@ -40,7 +41,7 @@ import java.util.Objects;
  */
 public class ButtonCreator
         extends AbstractGObjectCreator<InterfaceButton>
-        implements InterfaceButtonCreator {
+        implements InterfaceGSObjectCreator<AbstractButton, InterfaceButton> {
 
     // The directory path provider.
     private InterfacePathProvider pathProvider;
@@ -69,7 +70,8 @@ public class ButtonCreator
     }
 
     @Override
-    public AbstractButton create(@NotNull InterfaceButton button) {
+    public AbstractButton create(@NotNull InterfaceButton button,
+                                 RotatedIcon.Rotate rotate) {
         AbstractButton temp;
         String rollover = "_ROLLOVER";
         String selected = "_SELECTED";
@@ -85,13 +87,15 @@ public class ButtonCreator
                     assembler.assemble(pathProvider, button.name() + extension),
                     assembler.assemble(pathProvider, button.name() + rollover + extension),
                     assembler.assemble(pathProvider, button.name() + selected + extension),
-                    assembler.assemble(pathProvider, button.name() + selected + rollover + extension));
+                    assembler.assemble(pathProvider, button.name() + selected + rollover + extension),
+                    rotate);
         } else {
             temp = new ImageButton();
             initializer.initialize(
                     temp,
                     assembler.assemble(pathProvider, button.name() + extension),
-                    assembler.assemble(pathProvider, button.name() + rollover + extension));
+                    assembler.assemble(pathProvider, button.name() + rollover + extension),
+                    rotate);
         } return temp;
     }
 

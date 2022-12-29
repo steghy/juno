@@ -31,6 +31,7 @@ import juno.view.gobject.AbstractGObjectCreator;
 import juno.view.gobject.InterfaceGObject;
 import juno.view.gobject.InterfaceGObjectCreator;
 import juno.model.requester.InterfacePathProviderAssembler;
+import juno.view.util.RotatedIcon;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -69,14 +70,15 @@ public class GAvatarImageCreator
     }
 
     @Override
-    public InterfaceGObject<InterfaceAvatarImage> create(@NotNull InterfaceAvatarImage avatar) {
+    public InterfaceGObject<InterfaceAvatarImage> create(@NotNull InterfaceAvatarImage avatar, RotatedIcon.Rotate rotate) {
         GAvatarImage<InterfaceAvatarImage> graphicAvatar = new GAvatarImage<>(avatar);
         InterfacePathProviderAssembler assembler = getAssembler();
         Objects.requireNonNull(assembler);
         Objects.requireNonNull(getInitializer()).initialize(
                 graphicAvatar,
                 assembler.assemble(pathProvider, avatar.name() + ".png"),
-                assembler.assemble(pathProvider, avatar.name() + "_ROLLOVER" + ".png"));
+                assembler.assemble(pathProvider, avatar.name() + "_ROLLOVER" + ".png"),
+                rotate);
         return graphicAvatar;
     }
 

@@ -25,6 +25,8 @@
 
 package juno.view.pages.new_game.single_player.match.panels.center.colors;
 
+import juno.controller.new_game.GameInitializer;
+import juno.controller.new_game.Mover;
 import juno.controller.util.GSetterAction;
 import juno.controller.util.InterfaceInitializer;
 import juno.model.card.colors.Color;
@@ -33,6 +35,7 @@ import juno.model.deck.ActualColorManager;
 import juno.view.gobject.GObjectButton;
 import juno.view.gobject.color.GColorCreator;
 import juno.view.util.ImageResizer;
+import juno.view.util.RotatedIcon;
 
 /**
  * @author Simone Gentili
@@ -59,10 +62,10 @@ public class ColorsPanelInitializer
     public void initialize() {
         ColorsPanel colorsPanel = ColorsPanel.getInstance();
         GColorCreator gColorCreator = GColorCreator.getInstance();
-        GObjectButton<InterfaceColor> redButton = (GObjectButton<InterfaceColor>) gColorCreator.create(Color.RED);
-        GObjectButton<InterfaceColor> blueButton = (GObjectButton<InterfaceColor>) gColorCreator.create(Color.BLUE);
-        GObjectButton<InterfaceColor> greenButton = (GObjectButton<InterfaceColor>) gColorCreator.create(Color.GREEN);
-        GObjectButton<InterfaceColor> yellowButton = (GObjectButton<InterfaceColor>) gColorCreator.create(Color.YELLOW);
+        GObjectButton<InterfaceColor> redButton = (GObjectButton<InterfaceColor>) gColorCreator.create(Color.RED, RotatedIcon.Rotate.ABOUT_CENTER);
+        GObjectButton<InterfaceColor> blueButton = (GObjectButton<InterfaceColor>) gColorCreator.create(Color.BLUE, RotatedIcon.Rotate.ABOUT_CENTER);
+        GObjectButton<InterfaceColor> greenButton = (GObjectButton<InterfaceColor>) gColorCreator.create(Color.GREEN, RotatedIcon.Rotate.ABOUT_CENTER);
+        GObjectButton<InterfaceColor> yellowButton = (GObjectButton<InterfaceColor>) gColorCreator.create(Color.YELLOW, RotatedIcon.Rotate.ABOUT_CENTER);
         ActualColorManager actualColorManager = ActualColorManager.getInstance();
         redButton.addActionListener(new GSetterAction<>(redButton, actualColorManager));
         blueButton.addActionListener(new GSetterAction<>(blueButton, actualColorManager));
@@ -74,8 +77,11 @@ public class ColorsPanelInitializer
         ImageResizer.resize(yellowButton, 4.0);
         colorsPanel.setFirstComponent(redButton);
         colorsPanel.setSecondComponent(blueButton);
-        colorsPanel.setThirdComponent(greenButton);
-        colorsPanel.setFourthComponent(yellowButton);
+        colorsPanel.setThirdComponent(yellowButton);
+        colorsPanel.setFourthComponent(greenButton);
+        // Observer / Observable.
+        Mover.getInstance().addObserver(colorsPanel);
+        GameInitializer.getInstance().addObserver(colorsPanel);
         colorsPanel.init();
     }
 

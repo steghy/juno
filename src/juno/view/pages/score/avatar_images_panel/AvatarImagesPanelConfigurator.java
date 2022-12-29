@@ -32,6 +32,7 @@ import juno.model.data.awards.avatar.InterfaceAvatarImage;
 import juno.view.gobject.avatars.GAvatarImage;
 import juno.view.gobject.avatars.GAvatarImageFactory;
 import juno.view.util.ImageResizer;
+import juno.view.util.RotatedIcon;
 
 import java.util.List;
 import java.util.Objects;
@@ -55,7 +56,7 @@ public class AvatarImagesPanelConfigurator {
 
         // Adding graphic avatar frames.
         // Generation.
-        gAvatarImageFactory.generate(List.of(AvatarImage.values()));
+        gAvatarImageFactory.generate(List.of(AvatarImage.values()), RotatedIcon.Rotate.ABOUT_CENTER);
         // Getting.
         Objects.requireNonNull(gAvatarImageFactory.getGObjects())
                 .forEach(temp -> {

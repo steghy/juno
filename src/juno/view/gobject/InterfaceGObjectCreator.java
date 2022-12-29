@@ -26,6 +26,8 @@
 package juno.view.gobject;
 
 
+import juno.view.util.RotatedIcon;
+
 /**
  * @author Simone Gentili
  * @param <T> The type of the object.
@@ -33,6 +35,6 @@ package juno.view.gobject;
 @FunctionalInterface
 public interface InterfaceGObjectCreator<T> {
 
-    InterfaceGObject<T> create(T object);
+    InterfaceGObject<T> create(T object, RotatedIcon.Rotate rotate);
 
 }

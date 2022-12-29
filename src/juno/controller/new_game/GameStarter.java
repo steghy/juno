@@ -25,9 +25,11 @@
 
 package juno.controller.new_game;
 
+import juno.controller.new_game.dispenser.CardDispenser;
 import juno.model.card.InterfaceCard;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.shift.PlayersProvider;
+import juno.model.util.AbstractObservable;
 import juno.model.util.Donut;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
@@ -39,6 +41,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class GameStarter
+        extends AbstractObservable
         implements Observer {
 
     // The GameStarter instance.
@@ -58,6 +61,7 @@ public class GameStarter
 
     @SuppressWarnings("unchecked")
     public void start(@NotNull InterfacePlayer<InterfaceCard> player) {
+        updateAll();
         Donut<InterfacePlayer<InterfaceCard>> players =
                 (Donut<InterfacePlayer<InterfaceCard>>) PlayersProvider.getInstance().provide();
         Objects.requireNonNull(players).initialize(player);

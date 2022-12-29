@@ -28,10 +28,10 @@ package juno.view.gobject.avatars;
 import juno.model.data.awards.avatar.InterfaceAvatarImage;
 import juno.view.gobject.AbstractGObjectFactory;
 import juno.view.gobject.InterfaceGObject;
+import juno.view.util.RotatedIcon;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
@@ -65,9 +65,9 @@ public class GAvatarImageFactory
     }
 
     @Override
-    public void generate(@NotNull List<InterfaceAvatarImage> avatarImages) {
+    public void generate(@NotNull List<InterfaceAvatarImage> avatarImages, RotatedIcon.Rotate rotate) {
         this.avatarImages = avatarImages.stream()
-                .map(Objects.requireNonNull(getCreator())::create)
+                .map(avatarImage -> Objects.requireNonNull(getCreator()).create(avatarImage, rotate))
                 .toList();
     }
 

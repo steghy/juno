@@ -33,6 +33,7 @@ import juno.view.img_initializer.ImageComponentInitializer;
 import juno.view.pages.new_game.single_player.match.panels.center.circle.CirclePanel;
 import juno.view.util.ImageLabel;
 import juno.view.util.ImageResizer;
+import juno.view.util.RotatedIcon;
 
 /**
  * @author Simone Gentili
@@ -51,8 +52,8 @@ public class CirclePanelConfigurator {
         ImageLabel circle = new ImageLabel();
         ImageLabel invertedCircle = new ImageLabel();
         ImageComponentInitializer initializer = ImageComponentInitializer.getInstance();
-        initializer.initialize(circle, PathProviderAssembler.getInstance().assemble(ProgramDirectory.GIFS, "CIRCLE.gif"));
-        initializer.initialize(invertedCircle, PathProviderAssembler.getInstance().assemble(ProgramDirectory.GIFS, "INVERTED_CIRCLE.gif"));
+        initializer.initialize(circle, PathProviderAssembler.getInstance().assemble(ProgramDirectory.GIFS, "CIRCLE.gif"), RotatedIcon.Rotate.ABOUT_CENTER);
+        initializer.initialize(invertedCircle, PathProviderAssembler.getInstance().assemble(ProgramDirectory.GIFS, "INVERTED_CIRCLE.gif"), RotatedIcon.Rotate.ABOUT_CENTER);
 
         // Image Resizing.
         ImageResizer.resize(circle, 4.0);

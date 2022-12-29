@@ -25,6 +25,7 @@
 
 package juno.controller.new_game;
 
+import juno.controller.new_game.dispenser.InterfaceCardDispenser;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.Deck;
 import juno.model.deck.DiscardedPile;

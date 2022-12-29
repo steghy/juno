@@ -54,7 +54,6 @@ public class ImageButton
         }
     }
 
-    @Override
     public void setSize(int width,
                         int height) {
         if(width != 0 && height != 0) {
@@ -63,7 +62,9 @@ public class ImageButton
             Icon rolloverIcon = getRolloverIcon();
             Icon disabledIcon = getDisabledIcon();
             if(icon != null) {
-                setIcon(new ImageIcon(ImageResizer.resize(this, icon)));
+                if(icon instanceof RotatedIcon rotatedIcon) {
+                    setIcon(new RotatedIcon(icon, rotatedIcon.getRotate()));
+                } else setIcon(new ImageIcon(ImageResizer.resize(this, icon)));
             } if(rolloverIcon != null) {
                 setRolloverIcon(new ImageIcon(ImageResizer.resize(this, rolloverIcon)));
             } if(disabledIcon != null) {
@@ -77,12 +78,14 @@ public class ImageButton
         if(dimension.getWidth() != 0 &&
                 dimension.getHeight() != 0) {
             super.setPreferredSize(dimension);
-            super.setSize(dimension);
             Icon icon = getIcon();
             Icon rolloverIcon = getRolloverIcon();
             Icon disabledIcon = getDisabledIcon();
             if(icon != null) {
-                setIcon(new ImageIcon(ImageResizer.resize(this, icon)));
+                ImageIcon imageIcon = new ImageIcon(ImageResizer.resize(this, icon));
+                if(icon instanceof RotatedIcon rotatedIcon) {
+                    setIcon(new RotatedIcon(imageIcon, rotatedIcon.getRotate()));
+                } else setIcon(new ImageIcon(ImageResizer.resize(this, icon)));
             } if(rolloverIcon != null) {
                 setRolloverIcon(new ImageIcon(ImageResizer.resize(this, rolloverIcon)));
             } if(disabledIcon != null) {

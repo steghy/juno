@@ -38,38 +38,28 @@ public class ImageResizer {
     // Builds an ImageResizer object.
     private ImageResizer() {}
 
-    public static Image resize(@NotNull Component component,
-                               @NotNull String path) {
-        ImageIcon image = new ImageIcon(path);
-        return image.getImage().getScaledInstance(
-                component.getWidth(),
-                component.getHeight(), 0);
-    }
-
-    public static Image resize(@NotNull Component component,
-                               @NotNull ImageIcon icon) {
-        return  icon.getImage().getScaledInstance(
-                component.getWidth(),
-                component.getHeight(), 0);
-
-    }
-
+    @SuppressWarnings("SuspiciousNameCombination")
     public static Image resize(@NotNull Component component,
                                @NotNull Icon icon) {
-        if(icon instanceof ImageIcon image)
-            return image.getImage().getScaledInstance(
-                    component.getWidth(),
-                    component.getHeight(), 0);
+        if (icon instanceof RotatedIcon rotatedIcon) {
+            RotatedIcon.Rotate rotate = rotatedIcon.getRotate();
+            if (rotatedIcon.getIcon() instanceof ImageIcon imageIcon) {
+                if (rotate == RotatedIcon.Rotate.UP ||
+                        rotate == RotatedIcon.Rotate.DOWN) {
+                    return imageIcon.getImage().getScaledInstance(
+                            component.getPreferredSize().height,
+                            component.getPreferredSize().width, Image.SCALE_SMOOTH);
+                } else return imageIcon.getImage().getScaledInstance(
+                        component.getPreferredSize().width,
+                        component.getPreferredSize().height, Image.SCALE_SMOOTH);
+            } else throw new IllegalArgumentException();
+        } else if (icon instanceof ImageIcon imageIcon)
+            return imageIcon.getImage().getScaledInstance(
+                    component.getPreferredSize().width,
+                    component.getPreferredSize().height, Image.SCALE_SMOOTH);
         else throw new IllegalArgumentException(
-                "Invalid object type: " + icon.getClass() +
-                        ". ImageIcon type expected.");
-    }
-
-    public static Image resize(@NotNull Component component,
-                               @NotNull Image image) {
-        return  image.getScaledInstance(
-                component.getWidth(),
-                component.getHeight(), 0);
+                    "Invalid object type: " + icon.getClass() +
+                            ". ImageIcon type expected.");
     }
 
     public static void resize(@NotNull AbstractButton button,

@@ -29,6 +29,7 @@ import juno.model.requester.ProgramDirectory;
 import juno.view.pages.card.TopCardPanel;
 import juno.view.img_initializer.ImageComponentInitializer;
 import juno.model.requester.PathProviderAssembler;
+import juno.view.util.RotatedIcon;
 
 import javax.swing.*;
 
@@ -44,7 +45,8 @@ public class FrameInitializer {
                 ImageComponentInitializer.getInstance()
                         .initialize(
                                 background,
-                                PathProviderAssembler.getInstance().assemble(ProgramDirectory.BACKGROUNDS, "background.jpg"));
+                                PathProviderAssembler.getInstance().assemble(ProgramDirectory.BACKGROUNDS, "background.jpg"),
+                                RotatedIcon.Rotate.ABOUT_CENTER);
         frame.setBackground(background);
         frame.setPanel(topCardPanel);
         frame.init();

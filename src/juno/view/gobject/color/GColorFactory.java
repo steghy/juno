@@ -30,6 +30,7 @@ import juno.model.util.Observable;
 import juno.model.util.Observer;
 import juno.view.gobject.AbstractGObjectFactory;
 import juno.view.gobject.InterfaceGObject;
+import juno.view.util.RotatedIcon;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -73,9 +74,9 @@ public class GColorFactory
     }
 
     @Override
-    public void generate(@NotNull List<InterfaceColor> colors) {
+    public void generate(@NotNull List<InterfaceColor> colors, RotatedIcon.Rotate rotate) {
         this.gColors = colors.stream()
-                .map(Objects.requireNonNull(getCreator())::create)
+                .map(color -> Objects.requireNonNull(getCreator()).create(color, rotate))
                 .toList();
         updateAll();
     }

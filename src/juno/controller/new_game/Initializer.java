@@ -25,6 +25,8 @@
 
 package juno.controller.new_game;
 
+import juno.controller.new_game.dispenser.CardDispenser;
+import juno.controller.new_game.dispenser.OneCardDispenser;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.*;
 import juno.model.subjects.InterfacePlayer;
@@ -45,7 +47,6 @@ public class Initializer {
     public static void initialize() {
         // Components.
         GameInitializer gameInitializer = GameInitializer.getInstance();
-        AiCardPanelConnector connector = AiCardPanelConnector.getInstance();
         OneCardDispenser oneCardDispenser = OneCardDispenser.getInstance();
         CardDispenser cardDispenser = CardDispenser.getInstance();
         GameStarter gameStarter = GameStarter.getInstance();
@@ -61,15 +62,9 @@ public class Initializer {
         // Players provider.
         PlayersProvider<InterfacePlayer<InterfaceCard>> playersProvider =
                 (PlayersProvider<InterfacePlayer<InterfaceCard>>) PlayersProvider.getInstance();
-        // Ai players factory.
-        AiPlayerFactory<?, ?> aiPlayerFactory = AiPlayerFactory.getInstance();
-
 
         // Discarded card setter.
         discardedCardSetter.setDiscardedPile((InterfaceDiscardedPile<InterfaceCard>) DiscardedPile.getInstance());
-
-        // Ai player factory.
-        aiPlayerFactory.addObserver(connector);
 
         // Players provider.
         playersProvider.addObserver(oneCardDispenser);
@@ -90,9 +85,12 @@ public class Initializer {
         cardDispenser.addObserver(firstDiscardedCard);
 
         // Card controller.
-        cardController.addObserver(gameStarter);
         cardController.addObserver(oneCardDispenser);
+        cardController.addObserver(gameStarter);
         cardController.setDeck(deck);
+
+        // Connector initialization.
+        juno.controller.new_game.connector.Initializer.getInstance().initialize();
     }
 
 }

@@ -26,6 +26,7 @@
 package juno.view.gobject.profiles;
 
 import juno.view.gobject.*;
+import juno.view.util.RotatedIcon;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -51,7 +52,7 @@ public class GProfileCreator<T>
     }
 
     @Override
-    public InterfaceGObject<T> create(@NotNull T object) {
+    public InterfaceGObject<T> create(@NotNull T object, RotatedIcon.Rotate rotate) {
         return new GObjectLabel<>(object);
     }
 

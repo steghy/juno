@@ -26,6 +26,7 @@
 package juno.view.img_initializer;
 
 import juno.model.requester.InterfacePathProvider;
+import juno.view.util.RotatedIcon;
 
 import javax.swing.*;
 
@@ -39,6 +40,7 @@ public interface InterfaceToggleButtonInitializer {
                     InterfacePathProvider file,
                     InterfacePathProvider rolloverFile,
                     InterfacePathProvider selectedFile,
-                    InterfacePathProvider rolloverSelectedFile);
+                    InterfacePathProvider rolloverSelectedFile,
+                    RotatedIcon.Rotate rotate);
 
 }

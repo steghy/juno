@@ -37,7 +37,6 @@ import juno.model.subjects.human.HumanPlayer;
 import juno.model.subjects.shift.TurnMover;
 import juno.view.button.Button;
 import juno.view.button.ButtonCreator;
-import juno.view.pages.new_game.single_player.match.panels.center.deck.DeckPanel;
 import juno.view.util.ImageResizer;
 
 import javax.swing.*;
@@ -60,7 +59,7 @@ public class DeckPanelConfigurator {
         AbstractButton deckButton = ButtonCreator.getInstance().create(Button.COVER_TO_NORTH);
 
         // Image resizing.
-        ImageResizer.resize(deckButton, 3.5);
+        ImageResizer.resize(deckButton, 2.5);
 
         // Action listener.
         deckButton.addActionListener(new DrawAction<>(

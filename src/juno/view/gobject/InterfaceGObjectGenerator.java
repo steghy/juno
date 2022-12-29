@@ -25,6 +25,8 @@
 
 package juno.view.gobject;
 
+import juno.view.util.RotatedIcon;
+
 import java.util.List;
 
 /**
@@ -34,6 +36,6 @@ import java.util.List;
 @FunctionalInterface
 public interface InterfaceGObjectGenerator<T> {
 
-    void generate(List<T> objects);
+    void generate(List<T> objects, RotatedIcon.Rotate rotate);
 
 }
