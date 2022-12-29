@@ -81,7 +81,6 @@ public class ColorsPanelInitializer
         colorsPanel.setFourthComponent(greenButton);
         // Observer / Observable.
         Mover.getInstance().addObserver(colorsPanel);
-        GameInitializer.getInstance().addObserver(colorsPanel);
         colorsPanel.init();
     }
 

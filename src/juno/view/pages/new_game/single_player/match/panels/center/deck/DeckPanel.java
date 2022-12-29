@@ -25,8 +25,8 @@
 
 package juno.view.pages.new_game.single_player.match.panels.center.deck;
 
+import juno.controller.log_out.Restorable;
 import juno.controller.new_game.Mover;
-import juno.controller.util.InterfaceInitializer;
 import juno.model.util.Observer;
 import juno.view.panels.AbstractFirstComponent;
 import org.jetbrains.annotations.NotNull;
@@ -39,7 +39,9 @@ import java.util.Objects;
  */
 public class DeckPanel
         extends AbstractFirstComponent
-        implements Observer {
+        implements
+        Observer,
+        Restorable {
 
     // The DeckPanel instance.
     private static DeckPanel instance;
@@ -60,18 +62,22 @@ public class DeckPanel
         setOpaque(true);
         setLayout(new BorderLayout());
         Objects.requireNonNull(getFirstComponent());
-        add(getFirstComponent());
+        add(getFirstComponent(), BorderLayout.CENTER);
+        getFirstComponent().setEnabled(false);
     }
 
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceInitializer) {
-            Objects.requireNonNull(getFirstComponent()).setEnabled(false);
-        } else if(object instanceof Mover) {
+        if(object instanceof Mover) {
             Objects.requireNonNull(getFirstComponent()).setEnabled(true);
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + getInstance() +
                         ". InterfaceInitializer type expected.");
+    }
+
+    @Override
+    public void restore() {
+        Objects.requireNonNull(getFirstComponent()).setEnabled(false);
     }
 
 }

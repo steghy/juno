@@ -25,6 +25,7 @@
 
 package juno.model.deck;
 
+import juno.controller.log_out.Restorable;
 import juno.model.card.InterfaceCard;
 import juno.model.card.colors.InterfaceColor;
 import juno.model.util.AbstractObservable;
@@ -37,8 +38,12 @@ import org.jetbrains.annotations.Nullable;
  * @author Simone Gentili
  */
 public class ActualColorManager
-        extends AbstractObservable
-        implements InterfaceActualColor<InterfaceColor>, Observer {
+        extends
+        AbstractObservable
+        implements
+        InterfaceActualColor<InterfaceColor>,
+        Observer,
+        Restorable {
 
     // The actual color.
     private InterfaceColor color;
@@ -83,6 +88,11 @@ public class ActualColorManager
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceProvider type expected");
 
+    }
+
+    @Override
+    public void restore() {
+        color = null;
     }
 
 }

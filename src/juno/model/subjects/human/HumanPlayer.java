@@ -25,6 +25,7 @@
 
 package juno.model.subjects.human;
 
+import juno.controller.log_out.Restorable;
 import juno.controller.util.InterfaceInitializer;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
@@ -36,8 +37,11 @@ import java.util.Objects;
  * @param <T> The type of the card.
  */
 public class HumanPlayer<T>
-        extends AbstractHumanPlayer<T>
-        implements Observer {
+        extends
+        AbstractHumanPlayer<T>
+        implements
+        Observer,
+        Restorable {
 
     // The removed value;
     private boolean removed;
@@ -99,6 +103,12 @@ public class HumanPlayer<T>
 
     public boolean isRemoved() {
         return removed;
+    }
+
+    @Override
+    public void restore() {
+        card = null;
+        cards().clear();
     }
 
 }

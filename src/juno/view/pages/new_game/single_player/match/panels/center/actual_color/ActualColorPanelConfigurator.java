@@ -25,9 +25,7 @@
 
 package juno.view.pages.new_game.single_player.match.panels.center.actual_color;
 
-import juno.controller.new_game.GameInitializer;
 import juno.model.deck.ActualColorManager;
-import juno.view.gobject.color.GColorMapFactory;
 
 /**
  * @author Simone Gentili
@@ -40,8 +38,6 @@ public class ActualColorPanelConfigurator {
     /** Configures the ActualColorPanel instance. */
     public static void configure() {
         ActualColorPanel actualColorPanel = ActualColorPanel.getInstance();
-        actualColorPanel.setMapFactory(GColorMapFactory.getInstance());
-        GameInitializer.getInstance().addObserver(actualColorPanel);
         ActualColorManager.getInstance().addObserver(actualColorPanel);
     }
 

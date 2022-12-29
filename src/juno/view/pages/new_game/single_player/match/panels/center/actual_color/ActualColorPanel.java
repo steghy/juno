@@ -25,11 +25,14 @@
 
 package juno.view.pages.new_game.single_player.match.panels.center.actual_color;
 
-import juno.controller.util.InterfaceInitializer;
+import juno.controller.log_out.Restorable;
 import juno.model.card.colors.InterfaceColor;
 import juno.model.deck.InterfaceActualColor;
 import juno.model.util.Observer;
-import juno.view.gobject.InterfaceGObjectMapFactory;
+import juno.view.gobject.GObjectButton;
+import juno.view.gobject.color.GColorCreator;
+import juno.view.util.ImageResizer;
+import juno.view.util.RotatedIcon;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -40,10 +43,9 @@ import java.awt.*;
  */
 public class ActualColorPanel
         extends JPanel
-        implements Observer {
-
-    // The graphic color map factory.
-    private InterfaceGObjectMapFactory<InterfaceColor> mapFactory;
+        implements
+        Observer,
+        Restorable {
 
     // The ActualColorPanel instance.
     private static ActualColorPanel instance;
@@ -64,29 +66,28 @@ public class ActualColorPanel
         return instance;
     }
 
-    /**
-     * Sets the graphic color map factory of
-     * this object.
-     * @param mapFactory An interfaceGObjectMapFactory object.
-     */
-    public void setMapFactory(@NotNull InterfaceGObjectMapFactory<InterfaceColor> mapFactory) {
-        this.mapFactory = mapFactory;
-    }
-
     @Override
     public void update(@NotNull Object object) {
         if(object instanceof InterfaceActualColor<?> actualColor) {
             Object temp = actualColor.provide();
             if(temp instanceof InterfaceColor color) {
-                add((Component) mapFactory.getGObjectsMap().get(color), BorderLayout.CENTER);
+                GObjectButton<?> gColor = (GObjectButton<?>)
+                        GColorCreator.getInstance().create(color, RotatedIcon.Rotate.ABOUT_CENTER);
+                ImageResizer.resize(gColor, 4.5);
+                add(gColor, BorderLayout.CENTER);
             } else throw new IllegalArgumentException(
                     "Invalid object type: " + temp.getClass() +
                             ". InterfaceColor type expected.");
-        } else if(object instanceof InterfaceInitializer) {
-            setBackground(Color.lightGray);
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceActualColor expected.");
+        revalidate();
+        repaint();
+    }
+
+    @Override
+    public void restore() {
+        removeAll();
         revalidate();
         repaint();
     }

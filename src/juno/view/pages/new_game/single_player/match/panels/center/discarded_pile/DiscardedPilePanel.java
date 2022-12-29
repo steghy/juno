@@ -25,7 +25,7 @@
 
 package juno.view.pages.new_game.single_player.match.panels.center.discarded_pile;
 
-import juno.controller.util.InterfaceInitializer;
+import juno.controller.log_out.Restorable;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.InterfaceDiscardedPile;
 import juno.model.util.InterfaceProvider;
@@ -42,8 +42,11 @@ import java.awt.*;
  * @author Simone Gentili
  */
 public class DiscardedPilePanel
-        extends JPanel
-        implements Observer {
+        extends
+        JPanel
+        implements
+        Observer,
+        Restorable {
 
     // The graphic card creator.
     private InterfaceGObjectCreator<InterfaceCard> creator;
@@ -94,12 +97,17 @@ public class DiscardedPilePanel
                     creator.create(provider.provide(), RotatedIcon.Rotate.ABOUT_CENTER);
             removeAll();
             add(gCard, BorderLayout.CENTER);
-        } else if(object instanceof InterfaceInitializer) {
-            removeAll();
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         "InterfaceDiscardedPile or InterfaceInitializer" +
                         " type expected.");
+        revalidate();
+        repaint();
+    }
+
+    @Override
+    public void restore() {
+        removeAll();
         revalidate();
         repaint();
     }

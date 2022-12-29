@@ -25,7 +25,7 @@
 
 package juno.view.pages.new_game.single_player.match.panels.center.circle;
 
-import juno.controller.util.InterfaceInitializer;
+import juno.controller.log_out.Restorable;
 import juno.model.subjects.shift.InterfaceInverter;
 import juno.model.util.Observer;
 import juno.view.panels.AbstractSecondComponent;
@@ -38,8 +38,11 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class CirclePanel
-        extends AbstractSecondComponent
-        implements Observer {
+        extends
+        AbstractSecondComponent
+        implements
+        Observer,
+        Restorable {
 
     // The inverted boolean value.
     private boolean inverted;
@@ -66,7 +69,7 @@ public class CirclePanel
         setLayout(new BorderLayout());
         Objects.requireNonNull(getFirstComponent());
         Objects.requireNonNull(getSecondComponent());
-        add(getFirstComponent());
+        add(getFirstComponent(), BorderLayout.CENTER);
     }
 
     @Override
@@ -74,18 +77,23 @@ public class CirclePanel
         if(object instanceof InterfaceInverter) {
             removeAll();
             if(inverted) {
-                add(getFirstComponent());
+                add(Objects.requireNonNull(getFirstComponent()), BorderLayout.CENTER);
                 inverted = false;
             } else {
-                add(getSecondComponent());
+                add(Objects.requireNonNull(getSecondComponent()), BorderLayout.CENTER);
                 inverted = true;
             }
-        } else if(object instanceof InterfaceInitializer) {
-            removeAll();
-            add(getFirstComponent());
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceInverter or InterfaceInitializer type expected.");
+        revalidate();
+        repaint();
+    }
+
+    @Override
+    public void restore() {
+        removeAll();
+        add(Objects.requireNonNull(getFirstComponent()), BorderLayout.CENTER);
         revalidate();
         repaint();
     }

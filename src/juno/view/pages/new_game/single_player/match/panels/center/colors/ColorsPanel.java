@@ -25,8 +25,8 @@
 
 package juno.view.pages.new_game.single_player.match.panels.center.colors;
 
+import juno.controller.log_out.Restorable;
 import juno.controller.new_game.Mover;
-import juno.controller.util.InterfaceInitializer;
 import juno.model.util.Observer;
 import juno.view.panels.AbstractFourthComponent;
 import org.jetbrains.annotations.NotNull;
@@ -38,8 +38,11 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class ColorsPanel
-        extends AbstractFourthComponent
-        implements Observer {
+        extends
+        AbstractFourthComponent
+        implements
+        Observer,
+        Restorable {
 
     // The ColorsPanel instance.
     private static ColorsPanel instance;
@@ -109,13 +112,16 @@ public class ColorsPanel
 
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof Mover) {
-            java.util.List.of(getComponents()).forEach(c -> setEnabled(true));
-        } else if(object instanceof InterfaceInitializer) {
+        if(object instanceof Mover)
             java.util.List.of(getComponents()).forEach(c -> setEnabled(false));
-        } else throw new IllegalArgumentException(
+        else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". Mover type expected.");
+    }
+
+    @Override
+    public void restore() {
+        java.util.List.of(getComponents()).forEach(c -> setEnabled(false));
     }
 
 }

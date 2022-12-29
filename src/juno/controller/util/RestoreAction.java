@@ -30,6 +30,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 /**
  * @author Simone Gentili
@@ -38,20 +39,24 @@ public class RestoreAction
         implements ActionListener {
 
     // The restorable.
-    private final Restorable restorable;
+    private final List<Restorable> restorableObjects;
 
     /**
      * Builds a RestoreAction with the specified
      * restorable object.
      * @param restorable A Restorable object.
      */
-    public RestoreAction(@NotNull Restorable restorable) {
-        this.restorable = restorable;
+    public RestoreAction(@NotNull Restorable... restorable) {
+        this(List.of(restorable));
+    }
+
+    public RestoreAction(@NotNull List<Restorable> restorableObjects) {
+        this.restorableObjects = restorableObjects;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        restorable.restore();
+        restorableObjects.forEach(Restorable::restore);
     }
 
 }

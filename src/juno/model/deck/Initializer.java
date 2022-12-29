@@ -26,7 +26,6 @@
 package juno.model.deck;
 
 
-import juno.controller.new_game.GameInitializer;
 import juno.model.card.InterfaceCard;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.shift.Inverter;
@@ -52,7 +51,6 @@ public class Initializer {
         DeckFiller<InterfaceCard>  filler = (DeckFiller<InterfaceCard>) DeckFiller.getInstance();
         Mixer<InterfaceCard> mixer = (Mixer<InterfaceCard>) Mixer.getInstance();
         DiscardedPile<InterfaceCard> discardedPile = (DiscardedPile<InterfaceCard>) DiscardedPile.getInstance();
-        GameInitializer gameInitializer = GameInitializer.getInstance();
         CardEffectActivator cardEffectActivator = CardEffectActivator.getInstance();
         PlayersProvider<InterfacePlayer<InterfaceCard>> playersProvider =
                 (PlayersProvider<InterfacePlayer<InterfaceCard>>) PlayersProvider.getInstance();
@@ -69,7 +67,6 @@ public class Initializer {
         cardEffectActivator.setActualColor(actualColor);
         deckFactory.addObserver(deck);
         deckFactory.addObserver(GCardFactory.getInstance());
-        gameInitializer.addObserver(discardedPile);
         discardedPile.addObserver(actualColor);
         discardedPile.addObserver(cardEffectActivator);
     }

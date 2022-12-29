@@ -69,7 +69,6 @@ public class DeckPanelConfigurator {
         deckButton.addActionListener(new NextTurnAction(TurnMover.getInstance()));
 
         // Observer / Observable.
-        GameInitializer.getInstance().addObserver(deckPanel);
         Mover.getInstance().addObserver(deckPanel);
 
         // Main component setting.

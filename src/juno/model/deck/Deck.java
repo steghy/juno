@@ -26,6 +26,7 @@
 package juno.model.deck;
 
 
+import juno.controller.log_out.Restorable;
 import juno.model.util.InterfaceFactory;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
@@ -49,7 +50,7 @@ import java.util.Objects;
  */
 public class Deck<T>
         extends AbstractDeck<T>
-        implements Observable, Observer {
+        implements Observable, Observer, Restorable {
 
     /* The Observers List */
     private final List<Observer> observerList;
@@ -105,6 +106,11 @@ public class Deck<T>
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceDeckFactory expected.");
+    }
+
+    @Override
+    public void restore() {
+        clear();
     }
 
 }

@@ -29,9 +29,19 @@ import juno.controller.new_game.GameInitializer;
 import juno.controller.new_game.GameStarter;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.PanelChanger;
+import juno.controller.util.RestoreAction;
+import juno.model.deck.ActualColorManager;
+import juno.model.deck.Deck;
+import juno.model.deck.DiscardedPile;
+import juno.model.subjects.human.HumanPlayer;
 import juno.view.button.Button;
 import juno.view.button.ButtonCreator;
 import juno.view.pages.new_game.single_player.card.SinglePlayerCardPanel;
+import juno.view.pages.new_game.single_player.match.panels.center.actual_color.ActualColorPanel;
+import juno.view.pages.new_game.single_player.match.panels.center.circle.CirclePanel;
+import juno.view.pages.new_game.single_player.match.panels.center.colors.ColorsPanel;
+import juno.view.pages.new_game.single_player.match.panels.center.deck.DeckPanel;
+import juno.view.pages.new_game.single_player.match.panels.center.discarded_pile.DiscardedPilePanel;
 import juno.view.util.ImageResizer;
 import juno.view.util.RotatedIcon;
 
@@ -72,6 +82,16 @@ public class NorthPanelConfigurator {
         // Action listener. (Restoring ?)
         exitButton.addActionListener(new ChangePanelAction(
                 new PanelChanger(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MODE_PANEL)));
+        exitButton.addActionListener(new RestoreAction(
+                HumanPlayer.getInstance(),
+                Deck.getInstance(),
+                DiscardedPile.getInstance(),
+                ActualColorManager.getInstance(),
+                ActualColorPanel.getInstance(),
+                CirclePanel.getInstance(),
+                ColorsPanel.getInstance(),
+                DeckPanel.getInstance(),
+                DiscardedPilePanel.getInstance()));
 
         // Observer / Observable.
         GameInitializer.getInstance().addObserver(northCardPanel);
