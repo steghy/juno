@@ -65,7 +65,6 @@ public class CirclePanelConfigurator {
 
         // Observer / Observable.
         Inverter.getInstance().addObserver(circlePanel);
-        GameInitializer.getInstance().addObserver(circlePanel);
 
         // Circle panel initialization.
         circlePanel.init();
