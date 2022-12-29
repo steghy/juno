@@ -33,6 +33,7 @@ import juno.view.button.Button;
 import juno.view.button.ButtonCreator;
 import juno.view.pages.new_game.single_player.card.SinglePlayerCardPanel;
 import juno.view.util.ImageResizer;
+import juno.view.util.RotatedIcon;
 
 import javax.swing.*;
 import java.awt.*;
@@ -63,7 +64,7 @@ public class NorthPanelConfigurator {
         northCardScrollPanel.setOpaque(false);
 
         // Exit button.
-        AbstractButton exitButton = ButtonCreator.getInstance().create(Button.EXIT);
+        AbstractButton exitButton = ButtonCreator.getInstance().create(Button.EXIT, RotatedIcon.Rotate.ABOUT_CENTER);
 
         // Image resizing.
         ImageResizer.resize(exitButton, 4.0);

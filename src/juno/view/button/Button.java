@@ -74,10 +74,7 @@ public enum Button
     STACKING(true),
 
     // MATCH //
-    COVER_TO_NORTH(true),
-    COVER_TO_SOUTH(true),
-    COVER_TO_EAST(true),
-    COVER_TO_WEST(true),
+    COVER(true),
     CIRCLE(true),
     INVERTED_CIRCLE(true),
 

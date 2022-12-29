@@ -35,6 +35,7 @@ import juno.view.pages.score.avatar_frames_panel.AvatarFramesPanelConfigurator;
 import juno.view.pages.score.avatar_images_panel.AvatarImagesPanel;
 import juno.view.pages.score.avatar_images_panel.AvatarImagesPanelConfigurator;
 import juno.view.util.ImageResizer;
+import juno.view.util.RotatedIcon;
 import juno.view.util.RoundedBorder;
 
 import javax.swing.*;
@@ -55,7 +56,7 @@ public class MenuPanelConfigurator {
 
         // Components.
         ButtonCreator creator = ButtonCreator.getInstance();
-        AbstractButton backButton = creator.create(Button.BACK);
+        AbstractButton backButton = creator.create(Button.BACK, RotatedIcon.Rotate.ABOUT_CENTER);
         JLabel avatarFramesLabel = new JLabel();
         JLabel avatarImagesLabel  = new JLabel();
 

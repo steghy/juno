@@ -28,6 +28,7 @@ package juno.view.pages.pre_access.access.title;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
 import juno.view.util.ImageResizer;
+import juno.view.util.RotatedIcon;
 import juno.view.util.RoundedBorder;
 
 import javax.swing.*;
@@ -50,7 +51,7 @@ public class TitlePanelConfigurator {
 
         // Sub component.
         ButtonCreator creator = ButtonCreator.getInstance();
-        AbstractButton title = creator.create(Button.WELCOME_BACK);
+        AbstractButton title = creator.create(Button.WELCOME_BACK, RotatedIcon.Rotate.ABOUT_CENTER);
 
         // Resize image.
         ImageResizer.resize(title, 4.0);

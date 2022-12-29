@@ -37,6 +37,7 @@ import juno.view.button.Button;
 import juno.view.pages.pre_access.card.PreAccessCardPanel;
 import juno.view.pages.pre_access.registration.RegistrationPanel;
 import juno.view.util.ImageResizer;
+import juno.view.util.RotatedIcon;
 import juno.view.util.RoundedBorder;
 
 import javax.swing.*;
@@ -89,8 +90,8 @@ public class MenuPanelConfigurator {
 
         // Buttons.
         ButtonCreator creator = ButtonCreator.getInstance();
-        AbstractButton confirmButton = creator.create(Button.CONFIRM);
-        AbstractButton backButton = creator.create(Button.BACK);
+        AbstractButton confirmButton = creator.create(Button.CONFIRM, RotatedIcon.Rotate.ABOUT_CENTER);
+        AbstractButton backButton = creator.create(Button.BACK, RotatedIcon.Rotate.ABOUT_CENTER);
 
         // Labels.
         menuPanel.setFirstComponent(profileName); // Profile name.

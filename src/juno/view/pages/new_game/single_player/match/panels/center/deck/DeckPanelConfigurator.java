@@ -38,6 +38,7 @@ import juno.model.subjects.shift.TurnMover;
 import juno.view.button.Button;
 import juno.view.button.ButtonCreator;
 import juno.view.util.ImageResizer;
+import juno.view.util.RotatedIcon;
 
 import javax.swing.*;
 
@@ -56,7 +57,7 @@ public class DeckPanelConfigurator {
         DeckPanel deckPanel = DeckPanel.getInstance();
 
         // Component.
-        AbstractButton deckButton = ButtonCreator.getInstance().create(Button.COVER_TO_NORTH);
+        AbstractButton deckButton = ButtonCreator.getInstance().create(Button.COVER, RotatedIcon.Rotate.ABOUT_CENTER);
 
         // Image resizing.
         ImageResizer.resize(deckButton, 2.5);

@@ -32,6 +32,7 @@ import juno.view.button.ButtonCreator;
 import juno.view.pages.pre_access.card.PreAccessCardPanel;
 import juno.view.pages.pre_access.login.profiles_panel.ProfilesPanel;
 import juno.view.util.ImageResizer;
+import juno.view.util.RotatedIcon;
 
 import javax.swing.*;
 import java.awt.*;
@@ -50,7 +51,7 @@ public class MenuPanelConfigurator {
 
         // Components.
         ButtonCreator creator = ButtonCreator.getInstance();
-        AbstractButton backButton = creator.create(Button.BACK);
+        AbstractButton backButton = creator.create(Button.BACK, RotatedIcon.Rotate.ABOUT_CENTER);
 
         // Image resizing.
         ImageResizer.resize(backButton, 3.5);

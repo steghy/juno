@@ -32,9 +32,7 @@ import juno.model.subjects.ai.AI;
 import juno.model.util.Observer;
 import juno.view.button.Button;
 import juno.view.button.ButtonCreator;
-import juno.view.gobject.cards.GCard;
 import juno.view.gobject.cards.GCardCreator;
-import juno.view.gobject.cards.GCardMapFactory;
 import juno.view.util.ImageResizer;
 import juno.view.util.RotatedIcon;
 import org.jetbrains.annotations.NotNull;
@@ -87,7 +85,7 @@ public class EastCardPanel
                     InterfaceCard card = (InterfaceCard) ai.provide();
                     gCard = (AbstractButton) GCardCreator.getInstance().create(Objects.requireNonNull(card), RotatedIcon.Rotate.UP);
                 } else {
-                    gCard = ButtonCreator.getInstance().create(Button.COVER_TO_WEST);
+                    gCard = ButtonCreator.getInstance().create(Button.COVER, RotatedIcon.Rotate.UP);
                     ImageResizer.resize(gCard, 4.0);
                 } add(gCard);
             }

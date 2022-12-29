@@ -87,7 +87,7 @@ public class NorthCardPanel
                     gCard = (GCard<InterfaceCard>)
                             GCardCreator.getInstance().create(Objects.requireNonNull(card), RotatedIcon.Rotate.UPSIDE_DOWN);
                 } else {
-                    gCard = ButtonCreator.getInstance().create(Button.COVER_TO_SOUTH);
+                    gCard = ButtonCreator.getInstance().create(Button.COVER, RotatedIcon.Rotate.UPSIDE_DOWN);
                     ImageResizer.resize(gCard, 4.0);
                 } add(gCard);
             }

@@ -29,12 +29,13 @@ import juno.controller.pre_access.log_in.AccountSetter;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.GSetterAction;
 import juno.controller.util.PanelChanger;
-import juno.view.button.InterfaceButton;
-import juno.view.gobject.InterfaceGSObjectCreator;
+import juno.view.button.Button;
+import juno.view.button.ButtonCreator;
 import juno.view.gobject.GObjectLabel;
 import juno.view.gobject.InterfaceGObject;
 import juno.view.pages.card.TopCardPanel;
 import juno.view.util.ImageResizer;
+import juno.view.util.RotatedIcon;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -45,12 +46,6 @@ import java.awt.*;
  */
 public class GProfileProcessor
         implements InterfaceGraphicProcessor<AbstractButton, InterfaceGObject<String>> {
-
-    // The button creator.
-    private InterfaceGSObjectCreator creator;
-
-    // The button.
-    private InterfaceButton button;
 
     // The GProfileProcessor instance.
     private static GProfileProcessor instance;
@@ -67,26 +62,11 @@ public class GProfileProcessor
         return instance;
     }
 
-    /**
-     * Sets the button creator of this object.
-     * @param creator An InterfaceButtonCreator object.
-     */
-    public void setCreator(@NotNull InterfaceGSObjectCreator creator) {
-        this.creator = creator;
-    }
-
-    /**
-     * Sets the button of this object.
-     * @param button An InterfaceButton object.
-     */
-    public void setButton(@NotNull InterfaceButton button) {
-        this.button = button;
-    }
-
     @Override
     public AbstractButton process(@NotNull InterfaceGObject<String> gObject) {
         GObjectLabel<String> gProfile = (GObjectLabel<String>) gObject;
-        AbstractButton button = creator.create(this.button);
+        AbstractButton button = ButtonCreator.getInstance()
+                .create(Button.PROFILE_BUTTON, RotatedIcon.Rotate.ABOUT_CENTER);
         button.setLayout(new BorderLayout());
         button.setOpaque(false);
         button.add(gProfile, BorderLayout.CENTER);

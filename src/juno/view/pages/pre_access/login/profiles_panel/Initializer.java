@@ -39,8 +39,6 @@ public class Initializer {
     public static void initialize() {
         GProfileProcessor gProfileProcessor = GProfileProcessor.getInstance();
         ProfilesPanel profilesPanel = ProfilesPanel.getInstance();
-        gProfileProcessor.setCreator(ButtonCreator.getInstance());
-        gProfileProcessor.setButton(Button.PROFILE_BUTTON);
         profilesPanel.setProcessor(gProfileProcessor);
     }
 

@@ -29,13 +29,13 @@ import juno.controller.log_out.AccountExiter;
 import juno.controller.log_out.LogOutAction;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.PanelChanger;
-import juno.view.avatar.AvatarPanel;
 import juno.view.avatar.UserAvatarPanel;
 import juno.view.button.ButtonCreator;
 import juno.view.pages.card.TopCardPanel;
 import juno.view.pages.main.menu.MenuPanel;
 import juno.view.pages.main.title.TitlePanel;
 import juno.view.util.ImageResizer;
+import juno.view.util.RotatedIcon;
 
 import javax.swing.*;
 import java.awt.*;
@@ -58,7 +58,7 @@ public class MainPanelConfigurator {
         UserAvatarPanel avatarPanel = new UserAvatarPanel(4.5);
 
         // Log out button.
-        AbstractButton logOutButton = ButtonCreator.getInstance().create(juno.view.button.Button.LOG_OUT);
+        AbstractButton logOutButton = ButtonCreator.getInstance().create(juno.view.button.Button.LOG_OUT, RotatedIcon.Rotate.ABOUT_CENTER);
 
         // Image resizing.
         ImageResizer.resize(logOutButton, 7.0);

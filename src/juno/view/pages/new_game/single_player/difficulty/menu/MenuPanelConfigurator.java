@@ -34,6 +34,7 @@ import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
 import juno.view.pages.new_game.single_player.card.SinglePlayerCardPanel;
 import juno.view.util.ImageResizer;
+import juno.view.util.RotatedIcon;
 import juno.view.util.RoundedBorder;
 
 import javax.swing.*;
@@ -54,10 +55,10 @@ public class MenuPanelConfigurator {
 
         // Components.
         ButtonCreator creator = ButtonCreator.getInstance();
-        AbstractButton easyDifficultyButton   = creator.create(Button.EASY);
-        AbstractButton mediumDifficultyButton = creator.create(Button.MEDIUM);
-        AbstractButton hardDifficultyButton   = creator.create(Button.HARD);
-        AbstractButton backButton   = creator.create(Button.BACK);
+        AbstractButton easyDifficultyButton   = creator.create(Button.EASY, RotatedIcon.Rotate.ABOUT_CENTER);
+        AbstractButton mediumDifficultyButton = creator.create(Button.MEDIUM, RotatedIcon.Rotate.ABOUT_CENTER);
+        AbstractButton hardDifficultyButton   = creator.create(Button.HARD, RotatedIcon.Rotate.ABOUT_CENTER);
+        AbstractButton backButton   = creator.create(Button.BACK, RotatedIcon.Rotate.ABOUT_CENTER);
 
         // Images resizing.
         ImageResizer.resize(easyDifficultyButton, 4.0);

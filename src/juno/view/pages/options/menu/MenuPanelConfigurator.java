@@ -33,6 +33,7 @@ import juno.view.button.Button;
 import juno.view.frame.Frame;
 import juno.view.pages.main.card.MainCardPanel;
 import juno.view.util.ImageResizer;
+import juno.view.util.RotatedIcon;
 import juno.view.util.RoundedBorder;
 
 import javax.swing.*;
@@ -53,9 +54,9 @@ public class MenuPanelConfigurator {
 
         // Components.
         ButtonCreator creator = ButtonCreator.getInstance();
-        AbstractButton audioToggle = creator.create(Button.AUDIO_TOGGLE);
-        AbstractButton fullscreenToggle = creator.create(Button.FULLSCREEN_TOGGLE);
-        AbstractButton backButton = creator.create(Button.BACK);
+        AbstractButton audioToggle = creator.create(Button.AUDIO_TOGGLE, RotatedIcon.Rotate.ABOUT_CENTER);
+        AbstractButton fullscreenToggle = creator.create(Button.FULLSCREEN_TOGGLE, RotatedIcon.Rotate.ABOUT_CENTER);
+        AbstractButton backButton = creator.create(Button.BACK, RotatedIcon.Rotate.ABOUT_CENTER);
 
         // Images resizing.
         ImageResizer.resize(audioToggle, 4.5);

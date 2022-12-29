@@ -33,6 +33,7 @@ import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
 import juno.view.pages.new_game.single_player.card.SinglePlayerCardPanel;
 import juno.view.util.ImageResizer;
+import juno.view.util.RotatedIcon;
 import juno.view.util.RoundedBorder;
 
 import javax.swing.*;
@@ -53,8 +54,8 @@ public class MenuPanelConfigurator {
 
         // Components.
         ButtonCreator creator = ButtonCreator.getInstance();
-        AbstractButton stackingModeButton = creator.create(Button.STACKING);
-        AbstractButton backButton = creator.create(Button.BACK);
+        AbstractButton stackingModeButton = creator.create(Button.STACKING, RotatedIcon.Rotate.ABOUT_CENTER);
+        AbstractButton backButton = creator.create(Button.BACK, RotatedIcon.Rotate.ABOUT_CENTER);
 
         // Images resizing.
         ImageResizer.resize(stackingModeButton, 4.0);

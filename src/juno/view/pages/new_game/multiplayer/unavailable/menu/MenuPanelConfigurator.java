@@ -31,6 +31,7 @@ import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
 import juno.view.pages.new_game.card.NewGameCardPanel;
 import juno.view.util.ImageResizer;
+import juno.view.util.RotatedIcon;
 import juno.view.util.RoundedBorder;
 
 import javax.swing.*;
@@ -51,7 +52,7 @@ public class MenuPanelConfigurator {
 
         // Components.
         ButtonCreator creator = ButtonCreator.getInstance();
-        AbstractButton backButton = creator.create(Button.BACK);
+        AbstractButton backButton = creator.create(Button.BACK, RotatedIcon.Rotate.ABOUT_CENTER);
         JLabel unavailableServiceLabel = new JLabel();
 
         // Image resizing.

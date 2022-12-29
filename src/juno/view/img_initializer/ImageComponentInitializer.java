@@ -57,7 +57,6 @@ public class ImageComponentInitializer
     /** Builds the ImageComponentInitializer instance. */
     private ImageComponentInitializer() {}
 
-
     /**
      * Returns the ImageComponentInitializer instance.
      * @return The ImageComponentInitializer instance.
@@ -113,32 +112,62 @@ public class ImageComponentInitializer
         // Both missing.
         if(!imageExists && !rolloverImageExists) {
             solve(button, BOTH_MISSING, dimension);
-        } else if(rolloverImageExists && !imageExists) {
+        }
+
+        // Rollover image exist but image not exists.
+        else if(rolloverImageExists && !imageExists) {
             if(IMAGE_MISSING == Constraints.KEEP_ROLLOVER_IMAGE) {
-                RotatedIcon rolloverIcon = new RotatedIcon(new ImageIcon(rolloverImageAbsolutePath), rotate);
+                Icon rolloverIcon = new ImageIcon(rolloverImageAbsolutePath);
+                if(rotate != null)
+                    rolloverIcon = new RotatedIcon(rolloverIcon, rotate);
+                // Icon settings.
                 button.setIcon(rolloverIcon);
-                button.setPreferredSize(new Dimension(rolloverIcon.getIconWidth(), rolloverIcon.getIconHeight()));
+
+                // Button settings.
+                button.setPreferredSize(new Dimension(
+                        rolloverIcon.getIconWidth(),
+                        rolloverIcon.getIconHeight()));
                 makeTransparent(button);
             } else {
                 solve(button, IMAGE_MISSING, dimension);
             }
+        }
 
-        } else if(!rolloverImageExists) {
+        // Rollover image not exists but image exists.
+        else if(!rolloverImageExists) {
             if(ROLLOVER_IMAGE_MISSING == Constraints.KEEP_IMAGE) {
-                RotatedIcon icon = new RotatedIcon(new ImageIcon(imageAbsolutePath), rotate);
+                Icon icon = new ImageIcon(imageAbsolutePath);
+                if(rotate != null)
+                    icon = new RotatedIcon(icon, rotate);
+                // Icon settings.
                 button.setIcon(icon);
-                button.setPreferredSize(new Dimension(icon.getIconWidth(), icon.getIconHeight()));
+
+                // Button settings.
+                button.setPreferredSize(new Dimension(
+                        icon.getIconWidth(),
+                        icon.getIconHeight()));
                 makeTransparent(button);
             } else {
                 solve(button, ROLLOVER_IMAGE_MISSING, dimension);
             }
-        } else {
-            // button size -> image size [ not from rollover image ]
-            RotatedIcon icon = new RotatedIcon(new ImageIcon(rolloverImageAbsolutePath), rotate);
-            button.setRolloverIcon(icon);
-            icon = new RotatedIcon(new ImageIcon(imageAbsolutePath), rotate);
+        }
+
+        // All the images exist.
+        else {
+            Icon icon = new ImageIcon(imageAbsolutePath) ;
+            Icon rolloverIcon = new ImageIcon(rolloverImageAbsolutePath);
+            if(rotate != null) {
+                icon = new RotatedIcon(icon, rotate);
+                rolloverIcon = new RotatedIcon(rolloverIcon, rotate);
+            }
+            // Icon settings.
             button.setIcon(icon);
-            button.setPreferredSize(new Dimension(icon.getIconWidth(), icon.getIconHeight()));
+            button.setRolloverIcon(rolloverIcon);
+
+            // Button settings.
+            button.setPreferredSize(new Dimension(
+                    icon.getIconWidth(),
+                    icon.getIconHeight()));
             makeTransparent(button);
         }
     }
@@ -226,14 +255,19 @@ public class ImageComponentInitializer
         if(!imageExists && !rolloverImageExists)
             solve(button, BOTH_MISSING, dimension);
 
+        // Rollover icon exists but icon not exists.
         else if(rolloverImageExists && !imageExists) {
             if(IMAGE_MISSING == Constraints.KEEP_ROLLOVER_IMAGE) {
-                Icon rolloverIcon;
-                ImageIcon temp = new ImageIcon(rolloverImageAbsolutePath);
-                if(rotate != null) rolloverIcon = new RotatedIcon(temp, rotate);
-                else rolloverIcon = temp;
+                Icon rolloverIcon = new ImageIcon(rolloverImageAbsolutePath);
+                if(rotate != null) rolloverIcon = new RotatedIcon(rolloverIcon, rotate);
+
+                // Icon settings.
                 button.setIcon(rolloverIcon);
-                button.setPreferredSize(new Dimension(rolloverIcon.getIconWidth(), rolloverIcon.getIconHeight()));
+
+                // Button settings.
+                button.setPreferredSize(new Dimension(
+                        rolloverIcon.getIconWidth(),
+                        rolloverIcon.getIconHeight()));
                 makeTransparent(button);
             } else {
                 solve(button, IMAGE_MISSING, dimension);
@@ -241,28 +275,42 @@ public class ImageComponentInitializer
             }
         }
 
+        // Rollover icon not exists but icon exists.
         else if(!rolloverImageExists) {
             if(ROLLOVER_IMAGE_MISSING == Constraints.KEEP_IMAGE) {
-                Icon icon;
-                ImageIcon temp = new ImageIcon(imageAbsolutePath);
-                if(rotate != null) icon = new RotatedIcon(temp, rotate);
-                else icon = temp;
+                Icon icon = new ImageIcon(imageAbsolutePath);
+                if(rotate != null) icon = new RotatedIcon(icon, rotate);
+
+                // Icon settings.
                 button.setIcon(icon);
-                button.setPreferredSize(new Dimension(icon.getIconWidth(), icon.getIconHeight()));
+
+                // Buttons settings.
+                button.setPreferredSize(new Dimension(
+                        icon.getIconWidth(),
+                        icon.getIconHeight()));
                 makeTransparent(button);
             } else {
                 solve(button, ROLLOVER_IMAGE_MISSING, dimension);
                 return;
             }
-        } else {
-            Icon icon;
-            ImageIcon temp = new ImageIcon(rolloverImageAbsolutePath);
-            if(rotate != null) icon = new RotatedIcon(temp, rotate);
-            else icon = temp;
-            button.setRolloverIcon(icon);
-            icon = new ImageIcon(imageAbsolutePath);
+        }
+
+        // All the icons exist.
+        else {
+            Icon icon = new ImageIcon(imageAbsolutePath) ;
+            Icon rolloverIcon = new ImageIcon(rolloverImageAbsolutePath);
+            if(rotate != null) {
+                icon = new RotatedIcon(icon, rotate);
+                rolloverIcon = new RotatedIcon(rolloverIcon, rotate);
+            }
+            // Icon settings.
             button.setIcon(icon);
-            button.setPreferredSize(new Dimension(icon.getIconWidth(), icon.getIconHeight()));
+            button.setRolloverIcon(rolloverIcon);
+
+            // Button settings.
+            button.setPreferredSize(new Dimension(
+                    icon.getIconWidth(),
+                    icon.getIconHeight()));
             makeTransparent(button);
         }
 
@@ -270,32 +318,60 @@ public class ImageComponentInitializer
         if(!selectedImageExists && !rolloverSelectedImageExists)
             solve(button, BOTH_SELECTED_MISSING, dimension);
 
+        // Rollover selected exists but selected not exists.
         else if(rolloverSelectedImageExists && !selectedImageExists) {
             if(SELECTED_IMAGE_MISSING == Constraints.KEEP_ROLLOVER_SELECTED_IMAGE) {
-                Icon selectedRolloverIcon = new ImageIcon(rolloverSelectedImageAbsolutePath);
-                button.setSelectedIcon(selectedRolloverIcon);
-                button.setSize(selectedRolloverIcon.getIconWidth(), selectedRolloverIcon.getIconHeight());
+                Icon rolloverSelectedIcon = new ImageIcon(rolloverSelectedImageAbsolutePath);
+                if(rotate != null)
+                    rolloverSelectedIcon = new RotatedIcon(rolloverSelectedIcon, rotate);
+                // Icon settings.
+                button.setSelectedIcon(rolloverSelectedIcon);
+
+                // Button settings.
+                button.setPreferredSize(new Dimension(
+                        rolloverSelectedIcon.getIconWidth(),
+                        rolloverSelectedIcon.getIconHeight()));
                 makeTransparent(button);
             } else {
                 solve(button, SELECTED_IMAGE_MISSING, dimension);
             }
-        } else if(!rolloverSelectedImageExists) {
+        }
+
+        // Rollover selected image not exists.
+        else if(!rolloverSelectedImageExists) {
             if(ROLLOVER_SELECTED_IMAGE_MISSING == Constraints.KEEP_SELECTED_IMAGE) {
                 Icon selectedIcon = new ImageIcon(selectedImageAbsolutePath);
-                button.setIcon(selectedIcon);
-                button.setSize(selectedIcon.getIconWidth(), selectedIcon.getIconHeight());
+                if(rotate != null)
+                    selectedIcon = new RotatedIcon(selectedIcon, rotate);
+                // Icon settings
+                button.setSelectedIcon(selectedIcon);
+
+                // Button settings.
+                button.setPreferredSize(new Dimension(
+                        selectedIcon.getIconWidth(),
+                        selectedIcon.getIconHeight()));
                 makeTransparent(button);
             } else {
                 solve(button, ROLLOVER_SELECTED_IMAGE_MISSING, dimension);
             }
-        } else {
-            Icon icon;
-            ImageIcon temp = new ImageIcon(rolloverSelectedImageAbsolutePath);
-            if(rotate != null) icon = new RotatedIcon(temp, rotate);
-            else icon = temp;
-            button.setRolloverSelectedIcon(icon);
-            button.setSelectedIcon(icon);
-            button.setPreferredSize(new Dimension(icon.getIconWidth(), icon.getIconHeight()));
+        }
+
+        // All the selected images exists.
+        else {
+            Icon selectedIcon = new ImageIcon(selectedImageAbsolutePath);
+            Icon rolloverSelectedIcon = new ImageIcon(rolloverSelectedImageAbsolutePath);
+            if(rotate != null) {
+                selectedIcon = new RotatedIcon(selectedIcon, rotate);
+                rolloverSelectedIcon = new RotatedIcon(rolloverSelectedIcon, rotate);
+            }
+            // Setting icons.
+            button.setSelectedIcon(selectedIcon);
+            button.setRolloverSelectedIcon(rolloverSelectedIcon);
+
+            // Setting button.
+            button.setPreferredSize(new Dimension(
+                    selectedIcon.getIconWidth(),
+                    selectedIcon.getIconHeight()));
             makeTransparent(button);
         }
     }
@@ -320,13 +396,13 @@ public class ImageComponentInitializer
                 }
             } else imageExists = false;
         } if(imageExists) {
-            Icon icon;
-            ImageIcon temp = new ImageIcon(imageAbsolutePath);
-            if(rotate != null) icon = new RotatedIcon(temp, rotate);
-            else icon = temp;
+            Icon icon = new ImageIcon(imageAbsolutePath);
+            if(rotate != null) icon = new RotatedIcon(icon, rotate);
             label.setIcon(icon);
             label.setOpaque(false);
-            label.setPreferredSize(new Dimension(icon.getIconWidth(), icon.getIconWidth()));
+            label.setPreferredSize(new Dimension(
+                    icon.getIconWidth(),
+                    icon.getIconWidth()));
         } else {
             solve(label, IMAGE_MISSING, dimension);
         }

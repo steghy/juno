@@ -33,6 +33,7 @@ import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
 import juno.view.pages.pre_access.card.PreAccessCardPanel;
 import juno.view.util.ImageResizer;
+import juno.view.util.RotatedIcon;
 import juno.view.util.RoundedBorder;
 
 import javax.swing.*;
@@ -54,10 +55,10 @@ public class MenuPanelConfigurator {
 
         // Components.
         ButtonCreator creator = ButtonCreator.getInstance();
-        AbstractButton createAnAccountButton = creator.create(Button.CREATE_AN_ACCOUNT);
-        AbstractButton logInButton = creator.create(Button.LOG_IN);
-        AbstractButton continueWithoutAnAccountButton = creator.create(Button.CONTINUE_WITHOUT_AN_ACCOUNT);
-        AbstractButton exitButton = creator.create(Button.EXIT);
+        AbstractButton createAnAccountButton = creator.create(Button.CREATE_AN_ACCOUNT, RotatedIcon.Rotate.ABOUT_CENTER);
+        AbstractButton logInButton = creator.create(Button.LOG_IN, RotatedIcon.Rotate.ABOUT_CENTER);
+        AbstractButton continueWithoutAnAccountButton = creator.create(Button.CONTINUE_WITHOUT_AN_ACCOUNT, RotatedIcon.Rotate.ABOUT_CENTER);
+        AbstractButton exitButton = creator.create(Button.EXIT, RotatedIcon.Rotate.ABOUT_CENTER);
 
         // Images resizing.
         ImageResizer.resize(createAnAccountButton, 4.0);
