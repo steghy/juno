@@ -84,8 +84,8 @@ public class Initializer {
                 (DiscardedPile<InterfaceCard>) DiscardedPile.getInstance();
 
         // Players provider.
-        PlayersProvider<Donut<?>> playersProvider =
-                (PlayersProvider<Donut<?>>) PlayersProvider.getInstance();
+        PlayersProvider<Donut<InterfacePlayer<?>>> playersProvider =
+                (PlayersProvider<Donut<InterfacePlayer<?>>>) PlayersProvider.getInstance();
 
         // Deck.
         Deck<InterfaceCard> deck = (Deck<InterfaceCard>) Deck.getInstance();
@@ -128,8 +128,12 @@ public class Initializer {
 
         // Card controller.
         cardController.addObserver(oneCardDispenser);
-        cardController.addObserver(gameStarter);
         cardController.setDeck(deck);
+
+        // Game starter.
+        gameStarter.setDispenser(cardDispenser);
+        gameStarter.setProvider(playersProvider);
+        cardController.addObserver(gameStarter);
 
         // Connector initialization.
         juno.controller.new_game.connector.Initializer.getInstance().initialize();

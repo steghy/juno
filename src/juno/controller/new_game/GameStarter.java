@@ -25,15 +25,15 @@
 
 package juno.controller.new_game;
 
-import juno.controller.new_game.dispenser.CardController;
-import juno.controller.new_game.dispenser.CardDispenser;
+import juno.controller.new_game.dispenser.InterfaceCardDispenser;
 import juno.model.card.InterfaceCard;
 import juno.model.subjects.InterfacePlayer;
-import juno.model.subjects.shift.PlayersProvider;
 import juno.model.util.AbstractObservable;
 import juno.model.util.Donut;
+import juno.model.util.InterfaceProvider;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Objects;
@@ -44,6 +44,14 @@ import java.util.Objects;
 public class GameStarter
         extends AbstractObservable
         implements Observer {
+
+    // The card dispenser.
+    @Nullable
+    private InterfaceCardDispenser dispenser;
+
+    // The Players provider.
+    @Nullable
+    private InterfaceProvider<?> provider;
 
     // The GameStarter instance.
     private static GameStarter instance;
@@ -60,19 +68,32 @@ public class GameStarter
         return instance;
     }
 
+    /**
+     * Sets the card dispenser of this object.
+     * @param dispenser An InterfaceCardDispenser object.
+     */
+    public void setDispenser(@NotNull InterfaceCardDispenser dispenser) {
+        this.dispenser = dispenser;
+    }
+
+    public void setProvider(@NotNull InterfaceProvider<?> provider) {
+        this.provider = provider;
+    }
+
     @SuppressWarnings("unchecked")
     public void start(@NotNull InterfacePlayer<InterfaceCard> player) {
         updateAll();
-        Donut<InterfacePlayer<InterfaceCard>> players =
-                (Donut<InterfacePlayer<InterfaceCard>>) PlayersProvider.getInstance().provide();
-        Objects.requireNonNull(players).initialize(player);
-        CardDispenser.getInstance().dispense();
+        Donut<InterfacePlayer<?>> players =
+                (Donut<InterfacePlayer<?>>) Objects.requireNonNull(Objects.requireNonNull(provider).provide());
+        players.initialize(player);
+        Objects.requireNonNull(dispenser).dispense();
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public void update(Object object) {
-        if(object instanceof CardController cardController) {
-            List<InterfacePlayer<InterfaceCard>> players = cardController.provide();
+        if(object instanceof InterfaceProvider<?> cardController) {
+            List<InterfacePlayer<InterfaceCard>> players = (List<InterfacePlayer<InterfaceCard>>) cardController.provide();
             if(players.size() == 1)
                 start(players.get(0));
         } else throw new IllegalArgumentException(
