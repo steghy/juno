@@ -26,7 +26,6 @@
 package juno.controller.new_game;
 
 import juno.controller.new_game.dispenser.InterfaceCardDispenser;
-import juno.model.card.InterfaceCard;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.ai.InterfaceAi;
 import juno.model.util.Donut;
@@ -45,12 +44,12 @@ import java.util.Objects;
 /**
  * @author Simone Gentili
  */
-public class Mover
-        extends AbstractMover<InterfaceCard>
+public class Mover<T>
+        extends AbstractMover<T>
         implements ActionListener, Observer, Observable {
 
     // The players.
-    private Donut<InterfacePlayer<InterfaceCard>> players;
+    private Donut<InterfacePlayer<T>> players;
 
     // The Observers list.
     private final List<Observer> observerList;
@@ -59,7 +58,7 @@ public class Mover
     private final Timer timer;
 
     // The Mover instance.
-    private static Mover instance;
+    private static Mover<?> instance;
 
     // Builds the Mover instance.
     private Mover() {
@@ -71,19 +70,20 @@ public class Mover
      * Returns the Mover instance.
      * @return The Mover instance.
      */
-    public static Mover getInstance() {
-        if(instance == null) instance = new Mover();
+    public static Mover<?> getInstance() {
+        if(instance == null) instance = new Mover<>();
         return instance;
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public void actionPerformed(ActionEvent e) {
-        InterfacePlayer<InterfaceCard> current = players.current();
+        InterfacePlayer<T> current = players.current();
         if(current instanceof InterfaceAi<?, ?> ai) {
-            InterfaceCard card = (InterfaceCard) ai.move();
+            T card = (T) ai.move();
             if(card == null) {
                 current.add(Objects.requireNonNull(getDeck()).draw());
-                card = (InterfaceCard) ai.move();
+                card = (T) ai.move();
             }
             if(card != null) {
                 Objects.requireNonNull(getDiscardedPile()).discard(card);
@@ -102,7 +102,7 @@ public class Mover
             Objects.requireNonNull(getTurnMover()).next();
             timer.start();
         } else if(object instanceof InterfaceProvider<?> provider) {
-            players = (Donut<InterfacePlayer<InterfaceCard>>) provider.provide();
+            players = (Donut<InterfacePlayer<T>>) provider.provide();
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceCardDispenser type expected");

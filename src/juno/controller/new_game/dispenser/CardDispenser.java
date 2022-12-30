@@ -25,47 +25,41 @@
 
 package juno.controller.new_game.dispenser;
 
-import juno.model.card.InterfaceCard;
 import juno.model.deck.InterfaceDeck;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.util.AbstractObservable;
+import juno.model.util.Donut;
 import juno.model.util.InterfaceProvider;
-import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 /**
  * @author Simone Gentili
  */
-public class CardDispenser
+public class CardDispenser<T>
         extends
         AbstractObservable
         implements
         ActionListener,
-        Observer,
         InterfaceCardDispenser {
 
     // The deck.
-    private InterfaceDeck<InterfaceCard> deck;
+    private InterfaceDeck<T> deck;
 
-    // The players.
-    private List<InterfacePlayer<InterfaceCard>> players;
+    // The provider.
+    private InterfaceProvider<Donut<InterfacePlayer<T>>> provider;
 
     // The players size.
     private int size;
-
-    // The players size copy.
-    private int copy;
 
     // The timer.
     private final Timer timer;
 
     // The CardDispenser instance.
-    private static CardDispenser instance;
+    private static CardDispenser<?> instance;
 
     // Builds the CardDispenser instance.
     private CardDispenser() {
@@ -76,8 +70,8 @@ public class CardDispenser
      * Returns the CardDispenser instance.
      * @return The CardDispenser instance.
      */
-    public static CardDispenser getInstance() {
-        if(instance == null) instance = new CardDispenser();
+    public static CardDispenser<?> getInstance() {
+        if(instance == null) instance = new CardDispenser<>();
         return instance;
     }
 
@@ -85,37 +79,33 @@ public class CardDispenser
      * Sets the deck of this object.
      * @param deck An InterfaceDeck object.
      */
-    public void setDeck(@NotNull InterfaceDeck<InterfaceCard> deck) {
+    public void setDeck(@NotNull InterfaceDeck<T> deck) {
         this.deck = deck;
+    }
+
+    /**
+     * Sets the players provider of this object.
+     * @param provider An InterfaceProvider object.
+     */
+    public void setProvider(@NotNull InterfaceProvider<Donut<InterfacePlayer<T>>> provider) {
+        this.provider = provider;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        size--;
-        if(size < 0) {
+        if(size == 0) {
             timer.stop();
-            size = copy;
             updateAll();
         } else {
+            size--;
             for(int i = 0; i < 7; i++)
-                players.get(size).add(deck.draw());
+                provider.provide().get(size).add(deck.draw());
         }
     }
 
     public void dispense() {
+        size = provider.provide().size();
         timer.start();
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void update(@NotNull Object object) {
-        if(object instanceof InterfaceProvider<?> provider) {
-            players = (List<InterfacePlayer<InterfaceCard>>) provider.provide();
-            size = players.size();
-            copy = size;
-        } else throw new IllegalArgumentException(
-                "Invalid object type: " + object.getClass() +
-                        ". GameStarter type expected.");
     }
 
 }

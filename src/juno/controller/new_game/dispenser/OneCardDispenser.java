@@ -26,10 +26,8 @@
 package juno.controller.new_game.dispenser;
 
 import juno.controller.new_game.GameInitializer;
-import juno.model.card.InterfaceCard;
 import juno.model.deck.InterfaceDeck;
 import juno.model.subjects.InterfacePlayer;
-import juno.model.subjects.shift.PlayersProvider;
 import juno.model.util.AbstractObservable;
 import juno.model.util.InterfaceProvider;
 import juno.model.util.Observer;
@@ -39,26 +37,26 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * @author Simone Gentili
  */
-public class OneCardDispenser
+public class OneCardDispenser<T>
         extends
         AbstractObservable
         implements
         ActionListener,
         Observer,
         InterfaceCardDispenser,
-        InterfaceProvider<List<InterfacePlayer<InterfaceCard>>> {
+        InterfaceProvider<List<InterfacePlayer<T>>> {
 
     // The deck.
-    private InterfaceDeck<InterfaceCard> deck;
+    private InterfaceDeck<T> deck;
 
     // The players.
-    private final List<InterfacePlayer<InterfaceCard>> players;
+    private final List<InterfacePlayer<T>> players;
 
     // The players size.
     private int size;
@@ -70,7 +68,7 @@ public class OneCardDispenser
     private final Timer timer;
 
     // The CardDispenser instance.
-    private static OneCardDispenser instance;
+    private static OneCardDispenser<?> instance;
 
     // Builds the CardDispenser instance.
     private OneCardDispenser() {
@@ -82,61 +80,58 @@ public class OneCardDispenser
      * Returns the CardDispenser instance.
      * @return The CardDispenser instance.
      */
-    public static OneCardDispenser getInstance() {
-        if(instance == null) instance = new OneCardDispenser();
+    public static OneCardDispenser<?> getInstance() {
+        if(instance == null) instance = new OneCardDispenser<>();
         return instance;
-    }
-
-    @Override
-    public List<InterfacePlayer<InterfaceCard>> provide() {
-        return players;
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        size--;
-        if(size < 0) {
-            timer.stop();
-            size = copy;
-            updateAll();
-        } else {
-            InterfaceCard card = deck.draw();
-            players.get(size).add(card);
-        }
-    }
-
-    @Override
-    public void dispense() {
-        timer.start();
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public void update(Object object) {
-        if(object instanceof CardController cardController) {
-            players.clear();
-            players.addAll(cardController.provide());
-            if(players.size() != 1) {
-                size = players.size();
-                copy = size;
-                dispense();
-            }
-        } else if(object instanceof PlayersProvider<?> provider) {
-            players.clear();
-            players.addAll((List<InterfacePlayer<InterfaceCard>>) Objects.requireNonNull(provider.provide()));
-            size = Objects.requireNonNull(players).size();
-            copy = size;
-        } else if(object instanceof GameInitializer) {
-            dispense();
-        }
     }
 
     /**
      * Sets the deck of this object.
      * @param deck An InterfaceDeck object.
      */
-    public void setDeck(@NotNull InterfaceDeck<InterfaceCard> deck) {
+    public void setDeck(@NotNull InterfaceDeck<T> deck) {
         this.deck = deck;
+    }
+
+
+    @Override
+    public List<InterfacePlayer<T>> provide() {
+        return players;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(size == 0) {
+            timer.stop();
+            size = copy;
+            updateAll();
+        } else {
+            size--;
+            T card = deck.draw();
+            players.get(size).add(card);
+        }
+    }
+
+    @Override
+    public void dispense() {
+        size = players.size();
+        copy = size;
+        timer.start();
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public void update(@NotNull Object object) {
+        if(object instanceof InterfaceProvider<?> provider) {
+            players.clear();
+            players.addAll((Collection<? extends InterfacePlayer<T>>)
+                    provider.provide());
+            if(provider instanceof CardController)
+                if (players.size() != 1)
+                    dispense();
+        } else if(object instanceof GameInitializer) {
+            dispense();
+        }
     }
 
 }

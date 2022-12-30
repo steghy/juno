@@ -37,7 +37,6 @@ import juno.model.subjects.factory.InterfaceAiPlayerGenerator;
 import juno.model.subjects.human.HumanPlayer;
 import juno.model.subjects.shift.PlayersProvider;
 import juno.model.subjects.shift.TurnMover;
-import juno.model.util.Donut;
 
 /**
  * @author Simone Gentili
@@ -54,16 +53,18 @@ public class Initializer {
         GameInitializer gameInitializer = GameInitializer.getInstance();
 
         // One card dispenser.
-        OneCardDispenser oneCardDispenser = OneCardDispenser.getInstance();
+        OneCardDispenser<InterfaceCard> oneCardDispenser =
+                (OneCardDispenser<InterfaceCard>) OneCardDispenser.getInstance();
 
         // Card dispenser.
-        CardDispenser cardDispenser = CardDispenser.getInstance();
+        CardDispenser<InterfaceCard> cardDispenser =
+                (CardDispenser<InterfaceCard>) CardDispenser.getInstance();
 
         // Game starter.
         GameStarter gameStarter = GameStarter.getInstance();
 
         // Mover.
-        Mover mover = Mover.getInstance();
+        Mover<InterfaceCard> mover = (Mover<InterfaceCard>) Mover.getInstance();
 
         // Card controller.
         CardController cardController = CardController.getInstance();
@@ -84,14 +85,14 @@ public class Initializer {
                 (DiscardedPile<InterfaceCard>) DiscardedPile.getInstance();
 
         // Players provider.
-        PlayersProvider<Donut<InterfacePlayer<?>>> playersProvider =
-                (PlayersProvider<Donut<InterfacePlayer<?>>>) PlayersProvider.getInstance();
+        PlayersProvider<InterfacePlayer<InterfaceCard>> playersProvider =
+                (PlayersProvider<InterfacePlayer<InterfaceCard>>) PlayersProvider.getInstance();
 
         // Deck.
         Deck<InterfaceCard> deck = (Deck<InterfaceCard>) Deck.getInstance();
 
         // Turn mover
-        TurnMover<?> turnMover = TurnMover.getInstance();
+        TurnMover<InterfaceCard> turnMover = (TurnMover<InterfaceCard>) TurnMover.getInstance();
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -109,7 +110,6 @@ public class Initializer {
 
         // Players provider.
         playersProvider.addObserver(oneCardDispenser);
-        playersProvider.addObserver(cardDispenser);
         playersProvider.addObserver(mover);
 
         // Game initializer.
@@ -122,6 +122,7 @@ public class Initializer {
         oneCardDispenser.addObserver(cardController);
 
         // Card dispenser.
+        cardDispenser.setProvider(playersProvider);
         cardDispenser.setDeck(deck);
         cardDispenser.addObserver(mover);
         cardDispenser.addObserver(firstDiscardedCard);

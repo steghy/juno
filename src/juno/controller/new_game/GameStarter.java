@@ -76,6 +76,10 @@ public class GameStarter
         this.dispenser = dispenser;
     }
 
+    /**
+     * Sets the players provider of this object.
+     * @param provider An InterfaceProvider object.
+     */
     public void setProvider(@NotNull InterfaceProvider<?> provider) {
         this.provider = provider;
     }
@@ -91,7 +95,7 @@ public class GameStarter
 
     @Override
     @SuppressWarnings("unchecked")
-    public void update(Object object) {
+    public void update(@NotNull Object object) {
         if(object instanceof InterfaceProvider<?> cardController) {
             List<InterfacePlayer<InterfaceCard>> players = (List<InterfacePlayer<InterfaceCard>>) cardController.provide();
             if(players.size() == 1)

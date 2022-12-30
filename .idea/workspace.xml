@@ -5,21 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/juno/controller/new_game/penalty/InterfacePenaltyExecutor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/controller/new_game/penalty/PenaltyExecutor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/controller/new_game/penalty/PenaltyTimer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/controller/new_game/penalty/UnoCardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/model/subjects/shift/CurrentPlayerProvider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/img_initializer/ImageComponentInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/img_initializer/ImageComponentInitializer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/controller/new_game/AbstractMover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/new_game/AbstractMover.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/ai/AI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/ai/AI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/ai/InterfaceAi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/ai/InterfaceAi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/shift/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/shift/Initializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/shift/Inverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/shift/Inverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/shift/PlayersProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/shift/PlayersProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/shift/TurnMover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/shift/TurnMover.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/img_initializer/ImageComponentInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/img_initializer/ImageComponentInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/new_game/GameStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/new_game/GameStarter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/new_game/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/new_game/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/new_game/Mover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/new_game/Mover.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/new_game/dispenser/CardDispenser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/new_game/dispenser/CardDispenser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/new_game/dispenser/OneCardDispenser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/new_game/dispenser/OneCardDispenser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
