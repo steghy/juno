@@ -59,6 +59,7 @@ public class Mover
     // Builds the Mover instance.
     private Mover() {
         timer = new Timer(1500, this);
+
     }
 
     /**
@@ -94,7 +95,6 @@ public class Mover
             // Ai has a card to play.
             if(card != null) {
                 discardedPile.discard(card);
-                current.remove(card);
             } TurnMover.getInstance().next();
         } else {
             timer.stop();

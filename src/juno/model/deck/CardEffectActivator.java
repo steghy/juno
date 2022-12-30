@@ -93,7 +93,7 @@ public class CardEffectActivator
     @Override
     public void update(@NotNull Object object) {
         if(object instanceof InterfaceDiscardedPile<?> discardedPile) {
-            if(!(discardedPile.size() == 1))
+            if(discardedPile.size() > 1)
                 activate((InterfaceCard) discardedPile.provide());
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +

@@ -25,8 +25,8 @@
 
 package juno.view.pages.new_game.single_player.match.panels.east;
 
+import juno.controller.log_out.Restorable;
 import juno.controller.new_game.GameStarter;
-import juno.controller.util.InterfaceInitializer;
 import juno.model.card.InterfaceCard;
 import juno.model.subjects.ai.AI;
 import juno.model.util.Observer;
@@ -46,7 +46,7 @@ import java.util.Objects;
  */
 public class EastCardPanel
         extends JPanel
-        implements Observer {
+        implements Observer, Restorable {
 
     // The show card boolean value.
     private boolean showCard = true;
@@ -89,13 +89,18 @@ public class EastCardPanel
                     ImageResizer.resize(gCard, 4.0);
                 } add(gCard);
             }
-        } else if (object instanceof InterfaceInitializer) {
-            removeAll();
-            showCard = true;
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceAdder, InterfaceRemover " +
                         "or InterfaceInitializer type expected.");
+        revalidate();
+        repaint();
+    }
+
+    @Override
+    public void restore() {
+        removeAll();
+        showCard = true;
         revalidate();
         repaint();
     }

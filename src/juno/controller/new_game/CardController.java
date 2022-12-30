@@ -102,6 +102,7 @@ public class CardController
     @Override @SuppressWarnings("unchecked")
     public void update(Object object) {
         if(object instanceof InterfaceProvider<?> provider) {
+            players.clear();
             players.addAll((List<InterfacePlayer<InterfaceCard>>) provider.provide());
             generate();
         } else throw new IllegalArgumentException();

@@ -26,6 +26,7 @@
 package juno.view.gobject.profiles;
 
 import juno.controller.pre_access.ConfigurationFilesFactory;
+import juno.controller.util.InterfaceInitializer;
 import juno.model.data.io.input.JSONDataImporter;
 import juno.model.data.profile.profile.Profile;
 import juno.model.requester.PathProviderAssembler;
@@ -35,7 +36,8 @@ import juno.view.img_initializer.ImageComponentInitializer;
 /**
  * @author Simone Gentili
  */
-public class Initializer {
+public class Initializer
+        implements InterfaceInitializer {
 
     // The Initializer instance.
     private static Initializer instance;
@@ -52,8 +54,9 @@ public class Initializer {
         return instance;
     }
 
+    @Override
     @SuppressWarnings("unchecked")
-    public static void initialize() {
+    public void initialize() {
         GProfileCreator<String> gProfileCreator = (GProfileCreator<String>) GProfileCreator.getInstance();
         GProfileFactory gProfileFactory = GProfileFactory.getInstance();
         PathProviderAssembler pathProviderAssembler = PathProviderAssembler.getInstance();

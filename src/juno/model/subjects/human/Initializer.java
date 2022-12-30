@@ -25,7 +25,6 @@
 
 package juno.model.subjects.human;
 
-import juno.controller.new_game.GameInitializer;
 import juno.controller.util.InterfaceInitializer;
 import juno.model.card.InterfaceCard;
 import juno.model.data.profile.profile.ProfileNameProvider;
@@ -54,20 +53,9 @@ public class Initializer
     @Override
     @SuppressWarnings("unchecked")
     public void initialize() {
-        // Component.
-
-        // HumanPlayer.
         HumanPlayer<InterfaceCard> humanPlayer =
                 (HumanPlayer<InterfaceCard>) HumanPlayer.getInstance();
-
-        //////////////////////////////////////////////////////////////////
-
-        // Connections.
-        // HumanPlayer.
         humanPlayer.setProvider(ProfileNameProvider.getInstance());
-
-        // Observer / Observable.
-        GameInitializer.getInstance().addObserver(humanPlayer);
     }
 
 }

@@ -25,8 +25,8 @@
 
 package juno.view.pages.new_game.single_player.match.panels.north;
 
+import juno.controller.log_out.Restorable;
 import juno.controller.new_game.GameStarter;
-import juno.controller.util.InterfaceInitializer;
 import juno.model.card.InterfaceCard;
 import juno.model.subjects.ai.AI;
 import juno.model.util.Observer;
@@ -40,6 +40,8 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -48,7 +50,17 @@ import java.util.Objects;
  */
 public class NorthCardPanel
         extends JPanel
-        implements Observer {
+        implements Observer, Restorable {
+
+    // 'Left' insects value parameter.
+    private final int rightInsectsParameter;
+
+    // The 'left' value of the insects.
+    private final Map<Object, Integer> rightInsectsMap;
+
+    // The grid bag constraints.
+    private final GridBagConstraints gbc;
+
 
     // The show card boolean value.
     private boolean showCard = true;
@@ -58,8 +70,18 @@ public class NorthCardPanel
 
     // Builds the NorthCardPanel instance.
     private NorthCardPanel() {
+        rightInsectsMap = new HashMap<>();
+        rightInsectsParameter = 50;
         setOpaque(false);
-        setLayout(new GridLayout(1, 108));
+        setLayout(new GridBagLayout());
+        gbc = new GridBagConstraints();
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.LINE_END;
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
     }
 
     /**
@@ -71,6 +93,20 @@ public class NorthCardPanel
         return instance;
     }
 
+    public void addComponent(@NotNull Component c) {
+        if(rightInsectsMap.isEmpty()) gbc.insets = new Insets(0, 0, 0, 0);
+        else gbc.insets = new Insets(0, 0, 0, gbc.insets.right + rightInsectsParameter);
+        super.add(c, gbc);
+        rightInsectsMap.put(c, gbc.insets.right);
+        revalidate();
+        repaint();
+    }
+
+    public void removeComponent() {
+        Component c = getComponents()[0];
+        super.remove(c);
+    }
+
     @Override
     public void update(@NotNull Object object) {
         if(object instanceof GameStarter) showCard = false;
@@ -79,25 +115,39 @@ public class NorthCardPanel
                 int count = getComponentCount();
                 if(count == 0) throw new IllegalArgumentException(
                         "There is no components to remove.");
-                remove(getComponentCount() - 1);
+                if(showCard) removeAll();
+                else removeComponent();
             } else {
                 AbstractButton gCard;
+                // Front card.
                 if(showCard) {
                     InterfaceCard card = (InterfaceCard) ai.provide();
                     gCard = (GCard<InterfaceCard>)
                             GCardCreator.getInstance().create(Objects.requireNonNull(card), RotatedIcon.Rotate.UPSIDE_DOWN);
-                } else {
+                    add(gCard, gbc);
+                }
+
+                // Cover case.
+                else {
                     gCard = ButtonCreator.getInstance().create(Button.COVER, RotatedIcon.Rotate.UPSIDE_DOWN);
                     ImageResizer.resize(gCard, 4.0);
-                } add(gCard);
+                    addComponent(gCard);
+                }
             }
-        } else if(object instanceof InterfaceInitializer) {
-            removeAll();
-            showCard = true;
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceAdder, InterfaceRemover " +
                         "or InterfaceInitializer type expected.");
+        revalidate();
+        repaint();
+    }
+
+    @Override
+    public void restore() {
+        rightInsectsMap.clear();
+        gbc.insets = new Insets(0, 0, 0, 0);
+        removeAll();
+        showCard = true;
         revalidate();
         repaint();
     }

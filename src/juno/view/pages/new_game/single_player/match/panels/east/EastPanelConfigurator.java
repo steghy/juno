@@ -25,7 +25,6 @@
 
 package juno.view.pages.new_game.single_player.match.panels.east;
 
-import juno.controller.new_game.GameInitializer;
 import juno.controller.new_game.GameStarter;
 
 import javax.swing.*;
@@ -58,7 +57,6 @@ public class EastPanelConfigurator {
         eastCardScrollPanel.setOpaque(false);
 
         // Observer / Observable.
-        GameInitializer.getInstance().addObserver(eastCardPanel);
         GameStarter.getInstance().addObserver(eastCardPanel);
 
         // Setting components.

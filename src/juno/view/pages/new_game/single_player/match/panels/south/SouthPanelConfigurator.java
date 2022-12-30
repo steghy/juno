@@ -26,7 +26,6 @@
 package juno.view.pages.new_game.single_player.match.panels.south;
 
 import juno.controller.new_game.DiscardedCardSetter;
-import juno.controller.new_game.GameInitializer;
 import juno.controller.new_game.Mover;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.CompatibilityChecker;
@@ -77,7 +76,6 @@ public class SouthPanelConfigurator {
         // Observer / Observable.
         HumanPlayer<InterfaceCard> humanPlayer = (HumanPlayer<InterfaceCard>) HumanPlayer.getInstance();
         humanPlayer.addObserver(southCardPanel);
-        GameInitializer.getInstance().addObserver(southCardPanel);
         Mover.getInstance().addObserver(southCardPanel);
 
         // Component setting.

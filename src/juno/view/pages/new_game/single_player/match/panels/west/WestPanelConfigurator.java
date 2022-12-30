@@ -58,7 +58,6 @@ public class WestPanelConfigurator {
         westCardScrollPanel.setOpaque(false);
 
         // Observer / Observable.
-        GameInitializer.getInstance().addObserver(westCardPanel);
         GameStarter.getInstance().addObserver(westCardPanel);
 
         // Setting components.

@@ -39,6 +39,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -58,7 +59,7 @@ public class OneCardDispenser
     private InterfaceDeck<InterfaceCard> deck;
 
     // The players.
-    private List<InterfacePlayer<InterfaceCard>> players;
+    private final List<InterfacePlayer<InterfaceCard>> players;
 
     // The players size.
     private int size;
@@ -75,6 +76,7 @@ public class OneCardDispenser
     // Builds the CardDispenser instance.
     private OneCardDispenser() {
         timer = new Timer(500, this);
+        players = new ArrayList<>();
     }
 
     /**
@@ -113,14 +115,16 @@ public class OneCardDispenser
     @SuppressWarnings("unchecked")
     public void update(Object object) {
         if(object instanceof CardController cardController) {
-            players = cardController.provide();
+            players.clear();
+            players.addAll(cardController.provide());
             if(players.size() != 1) {
                 size = players.size();
                 copy = size;
                 dispense();
             }
         } else if(object instanceof PlayersProvider<?> provider) {
-            players = (List<InterfacePlayer<InterfaceCard>>) provider.provide();
+            players.clear();
+            players.addAll((List<InterfacePlayer<InterfaceCard>>) Objects.requireNonNull(provider.provide()));
             size = Objects.requireNonNull(players).size();
             copy = size;
         } else if(object instanceof GameInitializer) {

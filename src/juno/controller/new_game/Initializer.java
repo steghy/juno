@@ -53,18 +53,29 @@ public class Initializer {
         Mover mover = Mover.getInstance();
         CardController cardController = CardController.getInstance();
         FirstDiscardedCardManager firstDiscardedCard = FirstDiscardedCardManager.getInstance();
+        CardRemover<InterfaceCard> cardRemover =
+                (CardRemover<InterfaceCard>) CardRemover.getInstance();
         DiscardedCardSetter<InterfaceCard> discardedCardSetter =
                 (DiscardedCardSetter<InterfaceCard>) DiscardedCardSetter.getInstance();
+
+        // Discarded pile.
+        DiscardedPile<InterfaceCard> discardedPile =
+                (DiscardedPile<InterfaceCard>) DiscardedPile.getInstance();
+
+        // Players provider.
+        PlayersProvider<?> playersProvider = PlayersProvider.getInstance();
 
         // Deck.
         Deck<InterfaceCard> deck = (Deck<InterfaceCard>) Deck.getInstance();
 
-        // Players provider.
-        PlayersProvider<InterfacePlayer<InterfaceCard>> playersProvider =
-                (PlayersProvider<InterfacePlayer<InterfaceCard>>) PlayersProvider.getInstance();
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        // Card remover.
+        discardedPile.addObserver(cardRemover);
+        playersProvider.addObserver(cardRemover);
 
         // Discarded card setter.
-        discardedCardSetter.setDiscardedPile((InterfaceDiscardedPile<InterfaceCard>) DiscardedPile.getInstance());
+        discardedCardSetter.setDiscardedPile(discardedPile);
 
         // Players provider.
         playersProvider.addObserver(oneCardDispenser);

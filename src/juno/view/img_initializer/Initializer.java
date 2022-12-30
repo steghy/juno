@@ -25,29 +25,35 @@
 
 package juno.view.img_initializer;
 
+import juno.controller.util.InterfaceInitializer;
 import juno.model.requester.Requester;
 
 /**
  * @author Simone Gentili
  */
-public class Initializer {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // Builds an Initializer object.
+    // The Initializer instance.
+    private static Initializer instance;
+
+    // Builds the Initializer instance.
     private Initializer() {}
 
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
     /** Initialize the juno.view.img_initializer package. */
-    public static void initialize() {
-        // Component.
-        // ImageComponentInitializer.
+    @Override
+    public void initialize() {
         ImageComponentInitializer imageComponentInitializer = ImageComponentInitializer.getInstance();
-
-        // Requester.
         Requester requester = Requester.getInstance();
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////
-
-        // Connections.
-        // ImageComponentInitializer.
         imageComponentInitializer.setRequester(requester);
     }
 

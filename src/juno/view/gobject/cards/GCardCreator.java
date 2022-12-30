@@ -90,6 +90,8 @@ public class GCardCreator
                 assembler.assemble(pathObject, file + ".png"),
                 assembler.assemble(pathObject, rolloverFile + "_ROLLOVER" + ".png"),
                 rotate);
+        graphicCard.setDisabledIcon(graphicCard.getIcon());
+        graphicCard.setPreferredSize(new Dimension(graphicCard.getIcon().getIconWidth(), graphicCard.getIcon().getIconHeight()));
         ImageResizer.resize(graphicCard, 2.5);
         return graphicCard;
     }

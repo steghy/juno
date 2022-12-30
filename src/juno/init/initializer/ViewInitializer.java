@@ -41,11 +41,11 @@ public class ViewInitializer {
 
     /** Initialize the juno.view package. */
     public static void initialize() {
-        juno.view.img_initializer.Initializer.initialize();
+        juno.view.img_initializer.Initializer.getInstance().initialize();
         juno.view.button.Initializer.initialize();
-        juno.view.gobject.profiles.Initializer.initialize();
-        juno.view.gobject.avatars.Initializer.initialize();
-        juno.view.gobject.frames.Initializer.initialize();
+        juno.view.gobject.profiles.Initializer.getInstance().initialize();
+        juno.view.gobject.avatars.Initializer.getInstance().initialize();
+        juno.view.gobject.frames.Initializer.getInstance().initialize();
         juno.view.gobject.cards.Initializer.getInstance().initialize();
         juno.view.gobject.color.Initializer.getInstance().initialize();
         juno.view.pages.new_game.NewGameInitializer.initialize();

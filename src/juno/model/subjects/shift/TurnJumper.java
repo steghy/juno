@@ -66,7 +66,7 @@ public class TurnJumper<T>
     @Override
     public void skip() {
         Objects.requireNonNull(players);
-        players.next(); players.next();
+        players.next();
         updateAll();
     }
 

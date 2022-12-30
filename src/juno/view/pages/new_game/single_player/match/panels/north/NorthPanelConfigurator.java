@@ -25,7 +25,6 @@
 
 package juno.view.pages.new_game.single_player.match.panels.north;
 
-import juno.controller.new_game.GameInitializer;
 import juno.controller.new_game.GameStarter;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.PanelChanger;
@@ -42,6 +41,9 @@ import juno.view.pages.new_game.single_player.match.panels.center.circle.CircleP
 import juno.view.pages.new_game.single_player.match.panels.center.colors.ColorsPanel;
 import juno.view.pages.new_game.single_player.match.panels.center.deck.DeckPanel;
 import juno.view.pages.new_game.single_player.match.panels.center.discarded_pile.DiscardedPilePanel;
+import juno.view.pages.new_game.single_player.match.panels.east.EastCardPanel;
+import juno.view.pages.new_game.single_player.match.panels.south.SouthCardPanel;
+import juno.view.pages.new_game.single_player.match.panels.west.WestCardPanel;
 import juno.view.util.ImageResizer;
 import juno.view.util.RotatedIcon;
 
@@ -91,10 +93,13 @@ public class NorthPanelConfigurator {
                 CirclePanel.getInstance(),
                 ColorsPanel.getInstance(),
                 DeckPanel.getInstance(),
-                DiscardedPilePanel.getInstance()));
+                DiscardedPilePanel.getInstance(),
+                northCardPanel,
+                SouthCardPanel.getInstance(),
+                EastCardPanel.getInstance(),
+                WestCardPanel.getInstance()));
 
         // Observer / Observable.
-        GameInitializer.getInstance().addObserver(northCardPanel);
         GameStarter.getInstance().addObserver(northCardPanel);
 
         // Setting components.

@@ -25,6 +25,7 @@
 
 package juno.view.gobject.frames;
 
+import juno.controller.util.InterfaceInitializer;
 import juno.model.requester.ProgramDirectory;
 import juno.view.img_initializer.ImageComponentInitializer;
 import juno.model.requester.PathProviderAssembler;
@@ -32,7 +33,8 @@ import juno.model.requester.PathProviderAssembler;
 /**
  * @author Simone Gentili
  */
-public class Initializer {
+public class Initializer
+        implements InterfaceInitializer {
 
     // Builds the Initializer instance.
     private static Initializer instance;
@@ -50,7 +52,8 @@ public class Initializer {
     }
 
     /** Initialize the juno.model.awards.frames package. */
-    public static void initialize() {
+    @Override
+    public void initialize() {
         GAvatarFrameCreator gFrameCreator = GAvatarFrameCreator.getInstance();
         GAvatarFrameFactory gFramesFactory = GAvatarFrameFactory.getInstance();
         PathProviderAssembler pathObjectAssembler = PathProviderAssembler.getInstance();

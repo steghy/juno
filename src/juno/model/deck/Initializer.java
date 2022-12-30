@@ -31,7 +31,6 @@ import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.shift.Inverter;
 import juno.model.subjects.shift.PlayersProvider;
 import juno.model.subjects.shift.TurnJumper;
-import juno.view.gobject.cards.GCardFactory;
 
 /**
  * @author Simone Gentili
@@ -54,19 +53,33 @@ public class Initializer {
         CardEffectActivator cardEffectActivator = CardEffectActivator.getInstance();
         PlayersProvider<InterfacePlayer<InterfaceCard>> playersProvider =
                 (PlayersProvider<InterfacePlayer<InterfaceCard>>) PlayersProvider.getInstance();
+
+        // Compatible cards provider settings.
         compatibleCardsProvider.setCompatibilityChecker(compatibilityChecker);
+
+        // Compatibility checker settings.
         compatibilityChecker.setDiscardedPile(discardedPile);
         compatibilityChecker.setProvider(actualColor);
+
+        // Deck filler settings.
         filler.setDiscardedPile(discardedPile);
+
+        // Deck settings.
         deck.setDeckFiller(filler);
         deck.setMixer(mixer);
+
+        // Card effect activator settings.
         cardEffectActivator.setDeck(deck);
         cardEffectActivator.setInverter(Inverter.getInstance());
         cardEffectActivator.setTurnJumper(TurnJumper.getInstance());
         cardEffectActivator.setPlayersProvider(playersProvider);
         cardEffectActivator.setActualColor(actualColor);
+
+        // Observer / Observable.
+        // Deck factory.
         deckFactory.addObserver(deck);
-        deckFactory.addObserver(GCardFactory.getInstance());
+
+        // Discarded pile
         discardedPile.addObserver(actualColor);
         discardedPile.addObserver(cardEffectActivator);
     }
