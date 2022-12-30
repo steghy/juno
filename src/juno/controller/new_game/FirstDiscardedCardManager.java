@@ -26,17 +26,20 @@
 package juno.controller.new_game;
 
 import juno.model.card.InterfaceCard;
-import juno.model.deck.Deck;
-import juno.model.deck.DiscardedPile;
-import juno.model.util.Observer;
+import juno.model.deck.*;
+import org.jetbrains.annotations.NotNull;
 
-import java.awt.event.ActionListener;
+import java.util.Objects;
 
 /**
  * @author Simone Gentili
  */
 public class FirstDiscardedCardManager
-        implements Observer {
+        extends AbstractDeckUser<InterfaceCard>
+        implements InterfaceFirstDiscardedCardManager {
+
+    // The discarded pile
+    private InterfaceDiscardedPile<InterfaceCard> discardedPile;
 
     // The FirstDiscardedCardManager instance.
     private static FirstDiscardedCardManager instance;
@@ -53,21 +56,22 @@ public class FirstDiscardedCardManager
         return instance;
     }
 
-    @SuppressWarnings("unchecked")
+    /**
+     * Sets the discarded pile of this object.
+     * @param discardedPile An InterfaceDiscardedPile object.
+     */
+    public void setDiscardedPile(@NotNull InterfaceDiscardedPile<InterfaceCard> discardedPile) {
+        this.discardedPile = discardedPile;
+    }
+
+    @Override
     public void discardFirstCard() {
-        Deck<InterfaceCard> deck = (Deck<InterfaceCard>) Deck.getInstance();
-        DiscardedPile<InterfaceCard> discardedPile = (DiscardedPile<InterfaceCard>) DiscardedPile.getInstance();
-        InterfaceCard card = deck.draw();
+        InterfaceDeck<InterfaceCard> deck = getDeck();
+        InterfaceCard card = Objects.requireNonNull(deck).draw();
         while(card.color() == null) {
             deck.add(0, card);
             card = deck.draw();
         } discardedPile.discard(card);
-    }
-
-    @Override
-    public void update(Object object) {
-        if(object instanceof ActionListener)
-            discardFirstCard();
     }
 
 }

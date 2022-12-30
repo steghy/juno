@@ -23,43 +23,53 @@
  * SOFTWARE.
  */
 
-package juno.controller.new_game;
+package juno.controller.new_game.human;
 
-import juno.model.deck.InterfaceDeck;
+import juno.model.deck.AbstractDeckUser;
 import juno.model.subjects.InterfacePlayer;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 /**
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
 public class DrawAction<T>
+        extends AbstractDeckUser<T>
         implements ActionListener {
 
-    // The players.
-    private final InterfacePlayer<T> player;
+    // The human player.
+    private InterfacePlayer<T> player;
 
-    // The deck.
-    private final InterfaceDeck<T> deck;
+    // The DrawAction instance.
+    private static DrawAction<?> instance;
+
+    // Builds the DrawAction instance.
+    private DrawAction() {}
 
     /**
-     * Builds a DrawAction object with
-     * the specified player and deck objects.
-     * @param player An InterfacePlayer object.
-     * @param deck An InterfaceDeck object.
+     * Returns the DrawAction instance.
+     * @return The DrawAction instance.
      */
-    public DrawAction(@NotNull InterfacePlayer<T> player,
-                      @NotNull InterfaceDeck<T> deck) {
+    public static DrawAction<?> getInstance() {
+        if(instance == null) instance = new DrawAction<>();
+        return instance;
+    }
+
+    /**
+     * Sets the human player of this object.
+     * @param player An InterfacePlayer object.
+     */
+    public void setPlayer(@NotNull InterfacePlayer<T> player) {
         this.player = player;
-        this.deck = deck;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        player.add(deck.draw());
+        player.add(Objects.requireNonNull(getDeck()).draw());
     }
 
 }

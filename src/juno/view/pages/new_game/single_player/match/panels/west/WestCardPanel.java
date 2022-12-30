@@ -49,6 +49,12 @@ public class WestCardPanel
         extends JPanel
         implements Observer, Restorable {
 
+    // 'Top' insects value parameter.
+    private final int topInsectsParameter;
+
+    // The grid bag constraints.
+    private final GridBagConstraints gbc;
+
     // The show card boolean value.
     private boolean showCard = true;
 
@@ -57,9 +63,18 @@ public class WestCardPanel
 
     // Builds the WestCardPanel instance.
     private WestCardPanel() {
+        topInsectsParameter = 50;
         setOpaque(false);
-        setLayout(new GridLayout(108, 1));
+        setLayout(new GridBagLayout());
         setBackground(Color.GRAY);
+        gbc = new GridBagConstraints();
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.PAGE_START;
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
     }
 
     /**
@@ -71,6 +86,19 @@ public class WestCardPanel
         return instance;
     }
 
+    public void addComponent(@NotNull Component c) {
+        if(getComponents().length == 0) gbc.insets = new Insets(0, 0, 0, 0);
+        else gbc.insets = new Insets(gbc.insets.top + topInsectsParameter, 0, 0, 0);
+        super.add(c, gbc);
+        revalidate();
+        repaint();
+    }
+
+    public void removeComponent() {
+        Component c = getComponents()[0];
+        super.remove(c);
+    }
+
     @Override
     public void update(@NotNull Object object) {
         if(object instanceof GameStarter)
@@ -80,17 +108,21 @@ public class WestCardPanel
                 int count = getComponentCount();
                 if(count == 0) throw new IllegalArgumentException(
                         "There is no components to remove.");
-                remove(getComponentCount() - 1);
+                if(showCard) removeAll();
+                else removeComponent();
             } else {
                 AbstractButton gCard;
                 if(showCard) {
                     InterfaceCard card = (InterfaceCard) ai.provide();
                     gCard = (GCard<InterfaceCard>)
                             GCardCreator.getInstance().create(Objects.requireNonNull(card), RotatedIcon.Rotate.DOWN);
+                    ImageResizer.resize(gCard, 2.5);
+                    add(gCard);
                 } else {
                     gCard = ButtonCreator.getInstance().create(Button.COVER, RotatedIcon.Rotate.DOWN);
                     ImageResizer.resize(gCard, 4.0);
-                } add(gCard);
+                    addComponent(gCard);
+                }
             }
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
@@ -103,6 +135,7 @@ public class WestCardPanel
     @Override
     public void restore() {
         setOpaque(false);
+        gbc.insets = new Insets(0, 0, 0, 0);
         removeAll();
         showCard = true;
         revalidate();

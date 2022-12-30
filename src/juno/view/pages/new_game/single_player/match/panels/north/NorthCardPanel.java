@@ -40,8 +40,6 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -55,12 +53,8 @@ public class NorthCardPanel
     // 'Left' insects value parameter.
     private final int rightInsectsParameter;
 
-    // The 'left' value of the insects.
-    private final Map<Object, Integer> rightInsectsMap;
-
     // The grid bag constraints.
     private final GridBagConstraints gbc;
-
 
     // The show card boolean value.
     private boolean showCard = true;
@@ -70,10 +64,10 @@ public class NorthCardPanel
 
     // Builds the NorthCardPanel instance.
     private NorthCardPanel() {
-        rightInsectsMap = new HashMap<>();
         rightInsectsParameter = 50;
         setOpaque(false);
         setLayout(new GridBagLayout());
+        setBackground(Color.GRAY);
         gbc = new GridBagConstraints();
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
@@ -82,7 +76,6 @@ public class NorthCardPanel
         gbc.anchor = GridBagConstraints.LINE_END;
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        setBackground(Color.GRAY);
     }
 
     /**
@@ -95,10 +88,9 @@ public class NorthCardPanel
     }
 
     public void addComponent(@NotNull Component c) {
-        if(rightInsectsMap.isEmpty()) gbc.insets = new Insets(0, 0, 0, 0);
+        if(getComponents().length == 0) gbc.insets = new Insets(0, 0, 0, 0);
         else gbc.insets = new Insets(0, 0, 0, gbc.insets.right + rightInsectsParameter);
         super.add(c, gbc);
-        rightInsectsMap.put(c, gbc.insets.right);
         revalidate();
         repaint();
     }
@@ -120,16 +112,13 @@ public class NorthCardPanel
                 else removeComponent();
             } else {
                 AbstractButton gCard;
-                // Front card.
                 if(showCard) {
                     InterfaceCard card = (InterfaceCard) ai.provide();
                     gCard = (GCard<InterfaceCard>)
                             GCardCreator.getInstance().create(Objects.requireNonNull(card), RotatedIcon.Rotate.UPSIDE_DOWN);
+                    ImageResizer.resize(gCard, 2.5);
                     add(gCard, gbc);
-                }
-
-                // Cover case.
-                else {
+                } else {
                     gCard = ButtonCreator.getInstance().create(Button.COVER, RotatedIcon.Rotate.UPSIDE_DOWN);
                     ImageResizer.resize(gCard, 4.0);
                     addComponent(gCard);
@@ -146,7 +135,6 @@ public class NorthCardPanel
     @Override
     public void restore() {
         setOpaque(false);
-        rightInsectsMap.clear();
         gbc.insets = new Insets(0, 0, 0, 0);
         removeAll();
         showCard = true;

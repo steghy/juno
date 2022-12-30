@@ -23,7 +23,7 @@
  * SOFTWARE.
  */
 
-package juno.controller.new_game;
+package juno.controller.new_game.human;
 
 import juno.model.subjects.InterfacePlayer;
 import juno.view.gobject.InterfaceGObject;
@@ -39,7 +39,7 @@ import java.awt.event.ActionListener;
 public class CardRemover<T>
         implements ActionListener {
 
-    // The players.
+    // The human player.
     private InterfacePlayer<T> player;
 
     // The CardRemover instance.
@@ -67,7 +67,7 @@ public class CardRemover<T>
 
     @Override
     @SuppressWarnings("unchecked")
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(@NotNull ActionEvent e) {
         if(e.getSource() instanceof InterfaceGObject<?> gObject) {
             player.remove((T) gObject.object());
         }

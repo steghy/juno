@@ -25,15 +25,12 @@
 
 package juno.controller.new_game;
 
-public class GameRestorer {
+/**
+ * @author Simone Gentili
+ */
+@FunctionalInterface
+public interface InterfaceFirstDiscardedCardManager {
 
-    private static GameRestorer instance;
-
-    private GameRestorer() {}
-
-    public static GameRestorer getInstance() {
-        if(instance == null) instance = new GameRestorer();
-        return instance;
-    }
+    void discardFirstCard();
 
 }

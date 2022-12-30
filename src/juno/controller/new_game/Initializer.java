@@ -28,6 +28,8 @@ package juno.controller.new_game;
 import juno.controller.new_game.dispenser.CardController;
 import juno.controller.new_game.dispenser.CardDispenser;
 import juno.controller.new_game.dispenser.OneCardDispenser;
+import juno.controller.new_game.human.CardRemover;
+import juno.controller.new_game.human.DrawAction;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.*;
 import juno.model.subjects.InterfacePlayer;
@@ -52,6 +54,9 @@ public class Initializer {
         // Game initializer.
         GameInitializer gameInitializer = GameInitializer.getInstance();
 
+        // Draw action.
+        DrawAction<InterfaceCard> drawAction = (DrawAction<InterfaceCard>) DrawAction.getInstance();
+
         // One card dispenser.
         OneCardDispenser<InterfaceCard> oneCardDispenser =
                 (OneCardDispenser<InterfaceCard>) OneCardDispenser.getInstance();
@@ -70,7 +75,7 @@ public class Initializer {
         CardController cardController = CardController.getInstance();
 
         // First discarded card manager.
-        FirstDiscardedCardManager firstDiscardedCard = FirstDiscardedCardManager.getInstance();
+        FirstDiscardedCardManager firstDiscardedCardManager = FirstDiscardedCardManager.getInstance();
 
         // Card remover.
         CardRemover<InterfaceCard> cardRemover =
@@ -94,6 +99,9 @@ public class Initializer {
         // Turn mover
         TurnMover<InterfaceCard> turnMover = (TurnMover<InterfaceCard>) TurnMover.getInstance();
 
+        // Human player.
+        HumanPlayer<InterfaceCard> humanPlayer = (HumanPlayer<InterfaceCard>) HumanPlayer.getInstance();
+
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // Mover.
@@ -102,8 +110,7 @@ public class Initializer {
         mover.setDiscardedPile(discardedPile);
 
         // Card remover.
-        cardRemover.setPlayer((InterfacePlayer<InterfaceCard>)
-                HumanPlayer.getInstance());
+        cardRemover.setPlayer(humanPlayer);
 
         // Discarded card setter.
         discardedCardSetter.setDiscardedPile(discardedPile);
@@ -125,7 +132,10 @@ public class Initializer {
         cardDispenser.setProvider(playersProvider);
         cardDispenser.setDeck(deck);
         cardDispenser.addObserver(mover);
-        cardDispenser.addObserver(firstDiscardedCard);
+
+        // First discarded card.
+        firstDiscardedCardManager.setDiscardedPile(discardedPile);
+        firstDiscardedCardManager.setDeck(deck);
 
         // Card controller.
         cardController.addObserver(oneCardDispenser);
@@ -134,7 +144,12 @@ public class Initializer {
         // Game starter.
         gameStarter.setDispenser(cardDispenser);
         gameStarter.setProvider(playersProvider);
+        gameStarter.setDiscardedCardManager(firstDiscardedCardManager);
         cardController.addObserver(gameStarter);
+
+        // Draw action.
+        drawAction.setDeck(deck);
+        drawAction.setPlayer(humanPlayer);
 
         // Connector initialization.
         juno.controller.new_game.connector.Initializer.getInstance().initialize();

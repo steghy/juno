@@ -26,7 +26,7 @@
 package juno.view.pages.new_game.single_player.match.panels.south;
 
 import juno.controller.log_out.Restorable;
-import juno.controller.new_game.CardRemover;
+import juno.controller.new_game.human.CardRemover;
 import juno.controller.new_game.Mover;
 import juno.controller.util.SetterAction;
 import juno.model.card.InterfaceCard;
@@ -35,6 +35,7 @@ import juno.model.util.InterfaceSetter;
 import juno.model.util.Observer;
 import juno.view.gobject.cards.GCard;
 import juno.view.gobject.cards.GCardCreator;
+import juno.view.util.ImageResizer;
 import juno.view.util.RotatedIcon;
 import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
@@ -147,6 +148,7 @@ public class SouthCardPanel
                 GCard<InterfaceCard> gCard = (GCard<InterfaceCard>)
                         GCardCreator.getInstance().create(card, RotatedIcon.Rotate.ABOUT_CENTER);
                 SetterAction<InterfaceCard> setterAction = new SetterAction<>(gCard.object(), discardedCardSetter);
+                ImageResizer.resize(gCard, 2.5);
                 gCard.addActionListener(setterAction);
                 gCard.addActionListener(CardRemover.getInstance());
                 setterAction.addObserver(this);

@@ -32,7 +32,6 @@ import juno.view.gobject.InterfaceGObject;
 import juno.view.gobject.InterfaceGObjectCreator;
 import juno.view.gobject.InterfacePathObjectProvider;
 import juno.model.requester.InterfacePathProviderAssembler;
-import juno.view.util.ImageResizer;
 import juno.view.util.RotatedIcon;
 import org.jetbrains.annotations.NotNull;
 
@@ -92,7 +91,6 @@ public class GCardCreator
                 rotate);
         graphicCard.setDisabledIcon(graphicCard.getIcon());
         graphicCard.setPreferredSize(new Dimension(graphicCard.getIcon().getIconWidth(), graphicCard.getIcon().getIconHeight()));
-        ImageResizer.resize(graphicCard, 2.5);
         return graphicCard;
     }
 

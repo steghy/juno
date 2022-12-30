@@ -32,6 +32,7 @@ import juno.model.util.InterfaceProvider;
 import juno.model.util.Observer;
 import juno.view.gobject.InterfaceGObjectCreator;
 import juno.view.gobject.cards.GCard;
+import juno.view.util.ImageResizer;
 import juno.view.util.RotatedIcon;
 import org.jetbrains.annotations.NotNull;
 
@@ -61,7 +62,7 @@ public class DiscardedPilePanel
     private DiscardedPilePanel() {
         setOpaque(false);
         setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(200, 300));
+        setPreferredSize(new Dimension(150, 300));
     }
 
     /**
@@ -95,6 +96,7 @@ public class DiscardedPilePanel
         if(object instanceof InterfaceDiscardedPile<?>) {
             GCard<InterfaceCard> gCard = (GCard<InterfaceCard>)
                     creator.create(provider.provide(), RotatedIcon.Rotate.ABOUT_CENTER);
+            ImageResizer.resize(gCard, 1.8);
             removeAll();
             add(gCard, BorderLayout.CENTER);
         } else throw new IllegalArgumentException(
