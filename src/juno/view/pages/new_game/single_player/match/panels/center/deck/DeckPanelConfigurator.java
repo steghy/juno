@@ -26,15 +26,12 @@
 package juno.view.pages.new_game.single_player.match.panels.center.deck;
 
 import juno.controller.new_game.DrawAction;
-import juno.controller.new_game.GameInitializer;
 import juno.controller.new_game.Mover;
-import juno.controller.new_game.NextTurnAction;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.Deck;
 import juno.model.deck.InterfaceDeck;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.human.HumanPlayer;
-import juno.model.subjects.shift.TurnMover;
 import juno.view.button.Button;
 import juno.view.button.ButtonCreator;
 import juno.view.util.ImageResizer;
@@ -66,7 +63,6 @@ public class DeckPanelConfigurator {
         deckButton.addActionListener(new DrawAction<>(
                 (InterfacePlayer<InterfaceCard>) HumanPlayer.getInstance(),
                 (InterfaceDeck<InterfaceCard>) Deck.getInstance()));
-        deckButton.addActionListener(new NextTurnAction(TurnMover.getInstance()));
 
         // Observer / Observable.
         Mover.getInstance().addObserver(deckPanel);

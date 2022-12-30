@@ -26,7 +26,7 @@
 package juno.model.deck;
 
 import juno.model.subjects.shift.InterfaceInverter;
-import juno.model.subjects.shift.InterfaceTurnJumper;
+import juno.model.subjects.shift.InterfaceTurnMover;
 import juno.model.util.InterfaceProvider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -38,8 +38,8 @@ public abstract class AbstractCardEffectActivator<T, E, C>
         extends AbstractDeckUser<T>
         implements InterfaceCardEffectActivator<T> {
 
-    // The turn jumper.
-    private InterfaceTurnJumper turnJumper;
+    // The turn mover.
+    private InterfaceTurnMover turnMover;
 
     // The inverter.
     private InterfaceInverter inverter;
@@ -51,11 +51,11 @@ public abstract class AbstractCardEffectActivator<T, E, C>
     private InterfaceActualColor<C> actualColor;
 
     /**
-     * Sets the turn jumper of this object.
-     * @param turnJumper An InterfaceTurnJumper object.
+     * Sets the turn mover of this object.
+     * @param turnMover An InterfaceTurnJumper object.
      */
-    public void setTurnJumper(@NotNull InterfaceTurnJumper turnJumper) {
-        this.turnJumper = turnJumper;
+    public void setTurnMover(@NotNull InterfaceTurnMover turnMover) {
+        this.turnMover = turnMover;
     }
 
     /**
@@ -83,12 +83,12 @@ public abstract class AbstractCardEffectActivator<T, E, C>
     }
 
     /**
-     * Returns the turn jumper of this object.
-     * @return An InterfaceTurnJumper object.
+     * Returns the turn mover of this object.
+     * @return An InterfaceTurnMover object.
      */
     @Nullable
-    public InterfaceTurnJumper getTurnJumper() {
-        return turnJumper;
+    public InterfaceTurnMover getTurnMover() {
+        return turnMover;
     }
 
     /**

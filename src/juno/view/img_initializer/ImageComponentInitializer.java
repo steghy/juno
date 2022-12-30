@@ -395,7 +395,10 @@ public class ImageComponentInitializer
                     imageExists = false;
                 }
             } else imageExists = false;
-        } if(imageExists) {
+        }
+
+        // Image exists.
+        if(imageExists) {
             Icon icon = new ImageIcon(imageAbsolutePath);
             if(rotate != null) icon = new RotatedIcon(icon, rotate);
             label.setIcon(icon);

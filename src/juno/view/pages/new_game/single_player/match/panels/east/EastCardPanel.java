@@ -58,6 +58,7 @@ public class EastCardPanel
     private EastCardPanel() {
         setOpaque(false);
         setLayout(new GridLayout(108, 1));
+        setBackground(Color.GRAY);
     }
 
     /**
@@ -99,6 +100,7 @@ public class EastCardPanel
 
     @Override
     public void restore() {
+        setOpaque(false);
         removeAll();
         showCard = true;
         revalidate();

@@ -29,7 +29,6 @@ import juno.controller.log_out.Restorable;
 import juno.model.card.InterfaceCard;
 import juno.model.card.colors.InterfaceColor;
 import juno.model.util.AbstractObservable;
-import juno.model.util.InterfaceProvider;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -76,7 +75,7 @@ public class ActualColorManager
 
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceProvider<?> provider) {
+        if(object instanceof InterfaceDiscardedPile<?> provider) {
             Object temp = provider.provide();
             if(temp instanceof InterfaceCard card) {
                 if(card.color() != null)

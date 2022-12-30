@@ -25,7 +25,6 @@
 
 package juno.controller.new_game.dispenser;
 
-import juno.controller.new_game.CardController;
 import juno.controller.new_game.GameInitializer;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.InterfaceDeck;

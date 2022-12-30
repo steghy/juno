@@ -83,7 +83,7 @@ public record Card(InterfaceColor color, Integer value, InterfaceAction action)
     @Override
     public int compareTo(@NotNull InterfaceCard otherCard) {
         if(this.value == null) {
-            if(otherCard.value() == null) return 1;
+            if(otherCard.value() == null) return 0;
             else return -1;
         } else if(otherCard.value() == null) return 1;
         else return this.value.compareTo(otherCard.value());

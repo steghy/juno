@@ -61,7 +61,6 @@ public class Initializer
         playersProvider.setPlayer((InterfacePlayer<InterfaceCard>) HumanPlayer.getInstance());
         AiPlayerFactory.getInstance().addObserver(playersProvider);
         playersProvider.addObserver(Inverter.getInstance());
-        playersProvider.addObserver(TurnJumper.getInstance());
         playersProvider.addObserver(TurnMover.getInstance());
     }
 

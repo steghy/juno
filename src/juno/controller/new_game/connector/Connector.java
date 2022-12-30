@@ -25,18 +25,23 @@
 
 package juno.controller.new_game.connector;
 
-import juno.model.util.InterfaceFactory;
-import juno.model.util.Observable;
-import juno.model.util.Observer;
+import juno.model.util.*;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Simone Gentili
  */
 public class Connector
-        implements InterfaceConnector<Observable>, Observer {
+        extends AbstractObservable
+        implements InterfaceConnector<Observable>, InterfaceProvider<Map<Observable, Observer>>, Observer{
+
+    // South card panel observer.
+    Observer south;
 
     // North card panel observer.
     Observer north;
@@ -47,11 +52,15 @@ public class Connector
     // West card panel observer.
     Observer west;
 
+    final Map<Observable, Observer> map;
+
     // The Connector instance.
     private static Connector instance;
 
     // Builds the Connector instance.
-    private Connector() {}
+    private Connector() {
+        map = new HashMap<>();
+    }
 
     /**
      * Returns the Connector instance.
@@ -64,26 +73,45 @@ public class Connector
 
     @Override
     public void connect(@NotNull List<Observable> players) {
-        if(players.size() == 1) {
+        map.clear();
+        if(players.size() == 2) {
             players.get(0).addObserver(north);
-        } else if(players.size() == 2) {
-            players.get(0).addObserver(west);
-            players.get(1).addObserver(north);
+            players.get(1).addObserver(south);
+            map.put(players.get(0), north);
+            map.put(players.get(1), south);
         } else if(players.size() == 3) {
             players.get(0).addObserver(west);
             players.get(1).addObserver(north);
+            players.get(2).addObserver(south);
+            map.put(players.get(0), west);
+            map.put(players.get(1), north);
+            map.put(players.get(2), south);
+        } else if(players.size() == 4) {
+            players.get(0).addObserver(west);
+            players.get(1).addObserver(north);
             players.get(2).addObserver(east);
-        }
+            players.get(3).addObserver(south);
+            map.put(players.get(0), west);
+            map.put(players.get(1), north);
+            map.put(players.get(2), east);
+            map.put(players.get(3), south);
+        } updateAll();
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceFactory<?> provider) {
-            connect((List<Observable>) provider.getObjects());
+        if(object instanceof InterfaceProvider<?> provider) {
+            connect((List<Observable>) provider.provide());
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceProvider type expected.");
+    }
+
+    @Override
+    @Nullable
+    public Map<Observable, Observer> provide() {
+        return map;
     }
 
 }

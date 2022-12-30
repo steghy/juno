@@ -23,70 +23,50 @@
  * SOFTWARE.
  */
 
-package juno.controller.new_game;
+package juno.controller.new_game.dispenser;
 
+import juno.model.card.Card;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.InterfaceDeck;
+import juno.model.deck.Mixer;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.util.AbstractObservable;
+import juno.model.util.InterfaceGenerator;
 import juno.model.util.InterfaceProvider;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author Simone Gentili
  */
-public class FirstPlayerAction
+public class CardController
         extends AbstractObservable
-        implements ActionListener, Observer, InterfaceProvider<List<InterfacePlayer<InterfaceCard>>> {
+        implements Observer, InterfaceProvider<List<InterfacePlayer<InterfaceCard>>>, InterfaceGenerator {
 
     // The deck.
     private InterfaceDeck<InterfaceCard> deck;
 
     // The players.
-    private List<InterfacePlayer<InterfaceCard>> players;
+    private final List<InterfacePlayer<InterfaceCard>> players;
 
-    // The players size.
-    private int size;
+    // The CardController instance.
+    private static CardController instance;
 
-    // The players size copy.
-    private int copy;
-
-    // The timer.
-    private final Timer timer;
-
-    // The CardDispenser instance.
-    private static FirstPlayerAction instance;
-
-    // Builds the CardDispenser instance.
-    private FirstPlayerAction() {
-        timer = new Timer(500, this);
+    // Builds a CardController.
+    private CardController() {
+        players = new ArrayList<>();
     }
 
     /**
-     * Returns the CardDispenser instance.
-     * @return The CardDispenser instance.
+     * Returns the CardController instance.
+     * @return The CardController instance.
      */
-    public static FirstPlayerAction getInstance() {
-        if(instance == null) instance = new FirstPlayerAction();
+    public static CardController getInstance() {
+        if(instance == null) instance = new CardController();
         return instance;
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        size--;
-        if(size < 0) {
-            timer.stop();
-            size = copy;
-            updateAll();
-        } else {
-            players.get(size).add(deck.draw());
-        }
     }
 
     @Override
@@ -96,14 +76,37 @@ public class FirstPlayerAction
 
     @Override
     @SuppressWarnings("unchecked")
-    public void update(@NotNull Object object) {
+    public void generate() {
+        Map<InterfaceCard, InterfacePlayer<InterfaceCard>> map =
+                players.stream()
+                        .collect(Collectors.toMap(InterfaceProvider::provide, value -> value));
+        List<Card> cards = new ArrayList<>(players.stream().map(player -> (Card) player.provide()).toList());
+        players.forEach(p ->
+                p.remove(p.provide()));
+        players.clear();
+        Collections.sort(cards);
+        Collections.reverse(cards);
+        Card b = cards.get(0); // The biggest card.
+        deck.addAll(cards);
+        players.add(map.get(b));
+        cards.remove(b);
+        for(Card card : cards) {
+            if(b.compareTo(card) == 0)
+                players.add(map.get(card));
+            else break;
+        }
+        Mixer<InterfaceCard> mixer = (Mixer<InterfaceCard>) Mixer.getInstance();
+        mixer.shuffle(deck);
+        updateAll();
+    }
+
+    @Override @SuppressWarnings("unchecked")
+    public void update(Object object) {
         if(object instanceof InterfaceProvider<?> provider) {
-            players = (List<InterfacePlayer<InterfaceCard>>) provider.provide();
-            size = players.size();
-            copy = size;
-        } else throw new IllegalArgumentException(
-                "Invalid object type: " + object.getClass() +
-                        ". InterfacePlayersProvider type expected.");
+            players.clear();
+            players.addAll((List<InterfacePlayer<InterfaceCard>>) provider.provide());
+            generate();
+        } else throw new IllegalArgumentException();
     }
 
     /**
@@ -112,24 +115,6 @@ public class FirstPlayerAction
      */
     public void setDeck(@NotNull InterfaceDeck<InterfaceCard> deck) {
         this.deck = deck;
-    }
-
-    /**
-     * Returns the timer of this object.
-     * @return A Timer object.
-     */
-    public Timer getTimer() {
-        return timer;
-    }
-
-    /**
-     * Sets the players list of this object.
-     * @param players A List object.
-     */
-    public void setPlayers(@NotNull List<InterfacePlayer<InterfaceCard>> players) {
-        this.players = players;
-        this.size = players.size();
-        copy = size;
     }
 
 }

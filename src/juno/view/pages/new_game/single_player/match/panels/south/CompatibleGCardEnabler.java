@@ -58,10 +58,9 @@ public class CompatibleGCardEnabler
 
     @Override
     public void set(@NotNull List<GCard<InterfaceCard>> object) {
-        object.forEach(gCard -> {
+        object.forEach(gCard ->
             gCard.setEnabled(Objects.requireNonNull(getCompatibilityChecker())
-                    .isCompatible(gCard.object()));
-        });
+                    .isCompatible(gCard.object())));
     }
 
 }

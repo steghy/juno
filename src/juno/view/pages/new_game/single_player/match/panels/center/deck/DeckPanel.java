@@ -59,7 +59,7 @@ public class DeckPanel
     }
 
     public void init() {
-        setOpaque(true);
+        setOpaque(false);
         setLayout(new BorderLayout());
         Objects.requireNonNull(getFirstComponent());
         add(getFirstComponent(), BorderLayout.CENTER);

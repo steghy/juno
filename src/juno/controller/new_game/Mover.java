@@ -27,28 +27,33 @@ package juno.controller.new_game;
 
 import juno.controller.new_game.dispenser.InterfaceCardDispenser;
 import juno.model.card.InterfaceCard;
-import juno.model.deck.Deck;
-import juno.model.deck.DiscardedPile;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.ai.InterfaceAi;
-import juno.model.subjects.shift.PlayersProvider;
-import juno.model.subjects.shift.TurnMover;
-import juno.model.util.AbstractObservable;
 import juno.model.util.Donut;
+import juno.model.util.InterfaceProvider;
+import juno.model.util.Observable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
  * @author Simone Gentili
  */
 public class Mover
-        extends AbstractObservable
-        implements ActionListener, Observer {
+        extends AbstractMover<InterfaceCard>
+        implements ActionListener, Observer, Observable {
+
+    // The players.
+    private Donut<InterfacePlayer<InterfaceCard>> players;
+
+    // The Observers list.
+    private final List<Observer> observerList;
 
     // The timer.
     private final Timer timer;
@@ -59,7 +64,7 @@ public class Mover
     // Builds the Mover instance.
     private Mover() {
         timer = new Timer(1500, this);
-
+        observerList = new ArrayList<>();
     }
 
     /**
@@ -72,30 +77,18 @@ public class Mover
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public void actionPerformed(ActionEvent e) {
-        PlayersProvider<InterfacePlayer<InterfaceCard>> provider =
-                (PlayersProvider<InterfacePlayer<InterfaceCard>>) PlayersProvider.getInstance();
-        Donut<InterfacePlayer<InterfaceCard>> players = provider.provide();
-        InterfacePlayer<InterfaceCard> current = Objects.requireNonNull(players).current();
-        Deck<InterfaceCard> deck = (Deck<InterfaceCard>) Deck.getInstance();
-        DiscardedPile<InterfaceCard> discardedPile = (DiscardedPile<InterfaceCard>) DiscardedPile.getInstance();
-
-        // Ai case.
+        InterfacePlayer<InterfaceCard> current = players.current();
         if(current instanceof InterfaceAi<?, ?> ai) {
-            // The chosen card.
             InterfaceCard card = (InterfaceCard) ai.move();
-
-            // Ai hasn't cards to play.
             if(card == null) {
-                current.add(deck.draw());
+                current.add(Objects.requireNonNull(getDeck()).draw());
                 card = (InterfaceCard) ai.move();
             }
-
-            // Ai has a card to play.
             if(card != null) {
-                discardedPile.discard(card);
-            } TurnMover.getInstance().next();
+                Objects.requireNonNull(getDiscardedPile()).discard(card);
+                current.remove(card);
+            } Objects.requireNonNull(getTurnMover()).next();
         } else {
             timer.stop();
             updateAll();
@@ -103,12 +96,31 @@ public class Mover
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceCardDispenser)
+        if(object instanceof InterfaceCardDispenser) {
+            Objects.requireNonNull(getTurnMover()).next();
             timer.start();
-        else throw new IllegalArgumentException(
+        } else if(object instanceof InterfaceProvider<?> provider) {
+            players = (Donut<InterfacePlayer<InterfaceCard>>) provider.provide();
+        } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceCardDispenser type expected");
+    }
+
+    @Override
+    public void addObserver(@NotNull Observer observer) {
+        observerList.add(observer);
+    }
+
+    @Override
+    public void removeObserver(@NotNull Observer observer) {
+        observerList.remove(observer);
+    }
+
+    @Override
+    public void updateAll() {
+        observerList.forEach(observer -> observer.update(this));
     }
 
 }

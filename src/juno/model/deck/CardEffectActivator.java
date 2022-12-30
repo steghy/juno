@@ -65,7 +65,7 @@ public class CardEffectActivator
                 Objects.requireNonNull(getPlayersProvider()).provide();
         if(action != null) {
             if(action.isInvert()) Objects.requireNonNull(getInverter()).invert();
-            else if(action.isSkip()) Objects.requireNonNull(getTurnJumper()).skip();
+            else if(action.isSkip()) Objects.requireNonNull(getTurnMover()).next();
             else if(action.isDrawTwo() || action.isDrawFour()) {
                 InterfacePlayer<InterfaceCard> nextPlayer = players.peek();
                 Deck<InterfaceCard> deck = (Deck<InterfaceCard>)

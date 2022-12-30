@@ -64,6 +64,7 @@ public class CirclePanel
         return instance;
     }
 
+    /** Initialize the CircleLabel instance. */
     public void init() {
         setOpaque(false);
         setLayout(new BorderLayout());
@@ -76,13 +77,11 @@ public class CirclePanel
     public void update(@NotNull Object object) {
         if(object instanceof InterfaceInverter) {
             removeAll();
-            if(inverted) {
+            if(inverted)
                 add(Objects.requireNonNull(getFirstComponent()), BorderLayout.CENTER);
-                inverted = false;
-            } else {
+            else
                 add(Objects.requireNonNull(getSecondComponent()), BorderLayout.CENTER);
-                inverted = true;
-            }
+            inverted = !inverted;
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceInverter or InterfaceInitializer type expected.");

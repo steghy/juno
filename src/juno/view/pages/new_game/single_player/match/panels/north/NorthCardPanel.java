@@ -82,6 +82,7 @@ public class NorthCardPanel
         gbc.anchor = GridBagConstraints.LINE_END;
         gbc.ipadx = 0;
         gbc.ipady = 0;
+        setBackground(Color.GRAY);
     }
 
     /**
@@ -144,6 +145,7 @@ public class NorthCardPanel
 
     @Override
     public void restore() {
+        setOpaque(false);
         rightInsectsMap.clear();
         gbc.insets = new Insets(0, 0, 0, 0);
         removeAll();

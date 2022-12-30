@@ -25,7 +25,6 @@
 
 package juno.view.pages.new_game.single_player.match.panels.west;
 
-import juno.controller.new_game.GameInitializer;
 import juno.controller.new_game.GameStarter;
 
 import javax.swing.*;

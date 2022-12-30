@@ -25,7 +25,6 @@
 
 package juno.view.pages.new_game.single_player.match.panels.center.colors;
 
-import juno.controller.new_game.GameInitializer;
 import juno.controller.new_game.Mover;
 import juno.controller.util.GSetterAction;
 import juno.controller.util.InterfaceInitializer;

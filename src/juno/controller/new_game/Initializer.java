@@ -25,6 +25,7 @@
 
 package juno.controller.new_game;
 
+import juno.controller.new_game.dispenser.CardController;
 import juno.controller.new_game.dispenser.CardDispenser;
 import juno.controller.new_game.dispenser.OneCardDispenser;
 import juno.model.card.InterfaceCard;
@@ -33,7 +34,10 @@ import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.ai.InterfaceDifficulty;
 import juno.model.subjects.factory.AiPlayerFactory;
 import juno.model.subjects.factory.InterfaceAiPlayerGenerator;
+import juno.model.subjects.human.HumanPlayer;
 import juno.model.subjects.shift.PlayersProvider;
+import juno.model.subjects.shift.TurnMover;
+import juno.model.util.Donut;
 
 /**
  * @author Simone Gentili
@@ -46,15 +50,32 @@ public class Initializer {
     @SuppressWarnings("unchecked")
     public static void initialize() {
         // Components.
+        // Game initializer.
         GameInitializer gameInitializer = GameInitializer.getInstance();
+
+        // One card dispenser.
         OneCardDispenser oneCardDispenser = OneCardDispenser.getInstance();
+
+        // Card dispenser.
         CardDispenser cardDispenser = CardDispenser.getInstance();
+
+        // Game starter.
         GameStarter gameStarter = GameStarter.getInstance();
+
+        // Mover.
         Mover mover = Mover.getInstance();
+
+        // Card controller.
         CardController cardController = CardController.getInstance();
+
+        // First discarded card manager.
         FirstDiscardedCardManager firstDiscardedCard = FirstDiscardedCardManager.getInstance();
+
+        // Card remover.
         CardRemover<InterfaceCard> cardRemover =
                 (CardRemover<InterfaceCard>) CardRemover.getInstance();
+
+        // Discarded card setter.
         DiscardedCardSetter<InterfaceCard> discardedCardSetter =
                 (DiscardedCardSetter<InterfaceCard>) DiscardedCardSetter.getInstance();
 
@@ -63,16 +84,25 @@ public class Initializer {
                 (DiscardedPile<InterfaceCard>) DiscardedPile.getInstance();
 
         // Players provider.
-        PlayersProvider<?> playersProvider = PlayersProvider.getInstance();
+        PlayersProvider<Donut<?>> playersProvider =
+                (PlayersProvider<Donut<?>>) PlayersProvider.getInstance();
 
         // Deck.
         Deck<InterfaceCard> deck = (Deck<InterfaceCard>) Deck.getInstance();
 
+        // Turn mover
+        TurnMover<?> turnMover = TurnMover.getInstance();
+
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        // Mover.
+        mover.setTurnMover(turnMover);
+        mover.setDeck(deck);
+        mover.setDiscardedPile(discardedPile);
+
         // Card remover.
-        discardedPile.addObserver(cardRemover);
-        playersProvider.addObserver(cardRemover);
+        cardRemover.setPlayer((InterfacePlayer<InterfaceCard>)
+                HumanPlayer.getInstance());
 
         // Discarded card setter.
         discardedCardSetter.setDiscardedPile(discardedPile);
@@ -80,6 +110,7 @@ public class Initializer {
         // Players provider.
         playersProvider.addObserver(oneCardDispenser);
         playersProvider.addObserver(cardDispenser);
+        playersProvider.addObserver(mover);
 
         // Game initializer.
         gameInitializer.setAiGenerator((InterfaceAiPlayerGenerator<InterfaceDifficulty>) AiPlayerFactory.getInstance());

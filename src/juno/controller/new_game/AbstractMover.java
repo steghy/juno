@@ -23,36 +23,55 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.shift;
+package juno.controller.new_game;
 
+import juno.model.deck.AbstractDeckUser;
+import juno.model.deck.InterfaceDiscardedPile;
+import juno.model.subjects.shift.InterfaceTurnMover;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-/**
- * @author Simone Gentili
- * @param <T> The type of the player
- */
-public abstract class AbstractPlayersProvider<T>
-        extends AbstractPlayersMaintainer<T> {
+public abstract class AbstractMover<T>
+        extends AbstractDeckUser<T> {
 
-    // The human players.
-    private T player;
+    // The turn mover.
+    private InterfaceTurnMover turnMover;
+
+    // The discarded pile
+    private InterfaceDiscardedPile<T> discardedPile;
 
     /**
-     * Sets the human player of this object.
-     * @param player An object.
+     * Sets the turn mover of this object.
+     * @param turnMover An InterfaceTurnMover object.
      */
-    public void setPlayer(@NotNull T player) {
-        this.player = player;
+    public void setTurnMover(@NotNull InterfaceTurnMover turnMover) {
+        this.turnMover = turnMover;
     }
 
     /**
-     * Returns the human player of this object.
-     * @return An object.
+     * Sets the discarded pile of this object.
+     * @param discardedPile An InterfaceDiscardedPile object.
+     */
+    public void setDiscardedPile(@NotNull InterfaceDiscardedPile<T> discardedPile) {
+        this.discardedPile = discardedPile;
+    }
+
+    /**
+     * Returns the turn mover of this object.
+     * @return An InterfaceTurnMover object.
      */
     @Nullable
-    public T getPlayer() {
-        return player;
+    public InterfaceTurnMover getTurnMover() {
+        return turnMover;
+    }
+
+    /**
+     * Returns the discarded pile of this object.
+     * @return An InterfaceDiscardedPile object.
+     */
+    @Nullable
+    public InterfaceDiscardedPile<T> getDiscardedPile() {
+        return discardedPile;
     }
 
 }

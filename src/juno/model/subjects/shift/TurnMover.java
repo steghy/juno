@@ -81,7 +81,7 @@ public class TurnMover<T>
 
     @Override
     public void updateAll() {
-        observerList.forEach(observer -> observer.update(null));
+        observerList.forEach(observer -> observer.update(this));
     }
 
     @Override

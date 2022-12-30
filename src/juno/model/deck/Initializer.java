@@ -30,7 +30,7 @@ import juno.model.card.InterfaceCard;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.shift.Inverter;
 import juno.model.subjects.shift.PlayersProvider;
-import juno.model.subjects.shift.TurnJumper;
+import juno.model.subjects.shift.TurnMover;
 
 /**
  * @author Simone Gentili
@@ -42,17 +42,38 @@ public class Initializer {
 
     @SuppressWarnings("unchecked")
     public static void initialize() {
+        // Compatible card provider.
         CompatibleCardsProvider compatibleCardsProvider = CompatibleCardsProvider.getInstance();
+
+        // Actual color manager.
         ActualColorManager actualColor = ActualColorManager.getInstance();
+
+        // Compatibility checker.
         CompatibilityChecker compatibilityChecker = CompatibilityChecker.getInstance();
+
+        // Deck.
         Deck<InterfaceCard> deck = (Deck<InterfaceCard>) Deck.getInstance();
+
+        // Deck factory.
         DeckFactory deckFactory = DeckFactory.getInstance();
+
+        // Deck filler.
         DeckFiller<InterfaceCard>  filler = (DeckFiller<InterfaceCard>) DeckFiller.getInstance();
+
+        // Mixer.
         Mixer<InterfaceCard> mixer = (Mixer<InterfaceCard>) Mixer.getInstance();
+
+        // Discarded pile.
         DiscardedPile<InterfaceCard> discardedPile = (DiscardedPile<InterfaceCard>) DiscardedPile.getInstance();
+
+        // Card effect activator.
         CardEffectActivator cardEffectActivator = CardEffectActivator.getInstance();
+
+        // Players provider.
         PlayersProvider<InterfacePlayer<InterfaceCard>> playersProvider =
                 (PlayersProvider<InterfacePlayer<InterfaceCard>>) PlayersProvider.getInstance();
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // Compatible cards provider settings.
         compatibleCardsProvider.setCompatibilityChecker(compatibilityChecker);
@@ -71,7 +92,7 @@ public class Initializer {
         // Card effect activator settings.
         cardEffectActivator.setDeck(deck);
         cardEffectActivator.setInverter(Inverter.getInstance());
-        cardEffectActivator.setTurnJumper(TurnJumper.getInstance());
+        cardEffectActivator.setTurnMover(TurnMover.getInstance());
         cardEffectActivator.setPlayersProvider(playersProvider);
         cardEffectActivator.setActualColor(actualColor);
 

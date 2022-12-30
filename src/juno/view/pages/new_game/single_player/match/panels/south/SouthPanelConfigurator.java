@@ -29,7 +29,6 @@ import juno.controller.new_game.DiscardedCardSetter;
 import juno.controller.new_game.Mover;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.CompatibilityChecker;
-import juno.model.subjects.human.HumanPlayer;
 import juno.model.util.InterfaceSetter;
 import juno.view.button.Button;
 import juno.view.button.ButtonCreator;
@@ -74,8 +73,6 @@ public class SouthPanelConfigurator {
         ImageResizer.resize(unoButton, 4.0);
 
         // Observer / Observable.
-        HumanPlayer<InterfaceCard> humanPlayer = (HumanPlayer<InterfaceCard>) HumanPlayer.getInstance();
-        humanPlayer.addObserver(southCardPanel);
         Mover.getInstance().addObserver(southCardPanel);
 
         // Component setting.

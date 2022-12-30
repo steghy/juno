@@ -26,6 +26,7 @@
 package juno.view.pages.new_game.single_player.match.panels.south;
 
 import juno.controller.log_out.Restorable;
+import juno.controller.new_game.CardRemover;
 import juno.controller.new_game.Mover;
 import juno.controller.util.SetterAction;
 import juno.model.card.InterfaceCard;
@@ -55,9 +56,6 @@ public class SouthCardPanel
     // The card -> graphic card map.
     private final Map<InterfaceCard, Object> componentMap;
 
-    // The 'left' value of the insects.
-    private final Map<Object, Integer> leftInsectsMap;
-
     // The grid bag constraints.
     private final GridBagConstraints gbc;
 
@@ -73,7 +71,6 @@ public class SouthCardPanel
     // Builds the SouthCardPanel instance.
     private SouthCardPanel() {
         componentMap = new HashMap<>();
-        leftInsectsMap = new HashMap<>();
         leftInsectsParameter = 50;
         setOpaque(false);
         setLayout(new GridBagLayout());
@@ -85,6 +82,7 @@ public class SouthCardPanel
         gbc.anchor = GridBagConstraints.LINE_START;
         gbc.ipadx = 0;
         gbc.ipady = 0;
+        setBackground(Color.GRAY);
     }
 
     /**
@@ -118,7 +116,6 @@ public class SouthCardPanel
         if(componentMap.isEmpty()) gbc.insets = new Insets(0, 0, 0, 0);
         else gbc.insets = new Insets(0, gbc.insets.left + leftInsectsParameter, 0, 0);
         super.add(c, gbc);
-        leftInsectsMap.put(c, gbc.insets.left);
         componentMap.put(gCard.object(), gCard);
         revalidate();
         repaint();
@@ -126,21 +123,14 @@ public class SouthCardPanel
 
     @SuppressWarnings("unchecked")
     public void removeComponent(@NotNull Component c) {
-        java.util.List<Component> components = java.util.List.of(getComponents());
+        java.util.List<Component> components = new java.util.ArrayList<>(java.util.List.of(getComponents()));
         GCard<InterfaceCard> gCard = (GCard<InterfaceCard>) c;
         if(components.contains(c)) {
-            int index = components.indexOf(c);
-            java.util.List<Component> leftSubList = components.subList(0, index);
-            java.util.List<Component> rightSubList = components.subList(index + 1, components.size());
-            rightSubList.forEach(super::remove);
-            if(leftSubList.isEmpty())
-                gbc.insets = new Insets(0, leftInsectsMap.get(c) - leftInsectsParameter, 0, 0);
-            else
-                gbc.insets = new Insets(0, leftInsectsMap.get(leftSubList.get(leftSubList.size() - 1)), 0, 0);
             super.remove(c);
             componentMap.remove(gCard.object());
-            leftInsectsMap.remove(gCard);
-            rightSubList.forEach(this::addComponent);
+            components.remove(c);
+            gbc.insets = new Insets(0, 0, 0, 0);
+            components.forEach(this::addComponent);
         } else throw new IllegalArgumentException("Component" + c + " is not in " + this);
     }
 
@@ -158,6 +148,7 @@ public class SouthCardPanel
                         GCardCreator.getInstance().create(card, RotatedIcon.Rotate.ABOUT_CENTER);
                 SetterAction<InterfaceCard> setterAction = new SetterAction<>(gCard.object(), discardedCardSetter);
                 gCard.addActionListener(setterAction);
+                gCard.addActionListener(CardRemover.getInstance());
                 setterAction.addObserver(this);
                 gCard.setEnabled(false);
                 addComponent(gCard);
@@ -177,9 +168,10 @@ public class SouthCardPanel
 
     @Override
     public void restore() {
+        HumanPlayer.getInstance().removeObserver(this);
+        setOpaque(false);
         gbc.insets = new Insets(0,0,0,0);
         componentMap.clear();
-        leftInsectsMap.clear();
         removeAll();
         revalidate();
         repaint();

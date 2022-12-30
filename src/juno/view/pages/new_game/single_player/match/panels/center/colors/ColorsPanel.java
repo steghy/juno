@@ -75,6 +75,7 @@ public class ColorsPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
         add(Objects.requireNonNull(getFirstComponent()), gbc);
+        getFirstComponent().setEnabled(false);
 
         // Blue color.
         gbc.gridx = 1;
@@ -86,6 +87,7 @@ public class ColorsPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
         add(Objects.requireNonNull(getSecondComponent()), gbc);
+        getSecondComponent().setEnabled(false);
 
         // Yellow color.
         gbc.gridx = 2;
@@ -97,6 +99,7 @@ public class ColorsPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
         add(Objects.requireNonNull(getThirdComponent()), gbc);
+        getThirdComponent().setEnabled(false);
 
         // Green color.
         gbc.gridx = 3;
@@ -108,13 +111,15 @@ public class ColorsPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
         add(Objects.requireNonNull(getFourthComponent()), gbc);
+        getFourthComponent().setEnabled(false);
+
     }
 
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof Mover)
-            java.util.List.of(getComponents()).forEach(c -> setEnabled(false));
-        else throw new IllegalArgumentException(
+        if(object instanceof Mover) {
+
+        } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". Mover type expected.");
     }

@@ -59,6 +59,7 @@ public class WestCardPanel
     private WestCardPanel() {
         setOpaque(false);
         setLayout(new GridLayout(108, 1));
+        setBackground(Color.GRAY);
     }
 
     /**
@@ -101,6 +102,7 @@ public class WestCardPanel
 
     @Override
     public void restore() {
+        setOpaque(false);
         removeAll();
         showCard = true;
         revalidate();

@@ -26,9 +26,14 @@
 package juno.controller.new_game.connector;
 
 import juno.controller.util.InterfaceInitializer;
-import juno.model.subjects.factory.AiPlayerFactory;
+import juno.model.subjects.InterfacePlayer;
+import juno.model.subjects.shift.PlayersProvider;
+import juno.model.subjects.shift.TurnMover;
+import juno.model.util.Donut;
+import juno.model.util.InterfaceProvider;
 import juno.view.pages.new_game.single_player.match.panels.east.EastCardPanel;
 import juno.view.pages.new_game.single_player.match.panels.north.NorthCardPanel;
+import juno.view.pages.new_game.single_player.match.panels.south.SouthCardPanel;
 import juno.view.pages.new_game.single_player.match.panels.west.WestCardPanel;
 
 /**
@@ -53,12 +58,28 @@ public class Initializer
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public void initialize() {
+        // Players provider.
+        InterfaceProvider<?> provider = PlayersProvider.getInstance();
+
+        // Panel illuminator.
+        PanelIlluminator panelIlluminator = PanelIlluminator.getInstance();
+        panelIlluminator.setPlayersProvider((InterfaceProvider<Donut<InterfacePlayer<?>>>) provider);
+
+        // Connector.
         Connector connector = Connector.getInstance();
+        connector.south = SouthCardPanel.getInstance();
         connector.north = NorthCardPanel.getInstance();
         connector.west = WestCardPanel.getInstance();
         connector.east = EastCardPanel.getInstance();
-        AiPlayerFactory.getInstance().addObserver(connector);
+        connector.addObserver(panelIlluminator);
+
+        // Player factory.
+        PlayersProvider.getInstance().addObserver(connector);
+
+        // Turn mover.
+        TurnMover.getInstance().addObserver(panelIlluminator);
     }
 
 }

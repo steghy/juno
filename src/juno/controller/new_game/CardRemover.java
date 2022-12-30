@@ -25,21 +25,22 @@
 
 package juno.controller.new_game;
 
-import juno.model.deck.InterfaceDiscardedPile;
 import juno.model.subjects.InterfacePlayer;
-import juno.model.util.Donut;
-import juno.model.util.InterfaceProvider;
-import juno.model.util.Observer;
+import juno.view.gobject.InterfaceGObject;
+import org.jetbrains.annotations.NotNull;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
 public class CardRemover<T>
-        implements Observer {
+        implements ActionListener {
 
     // The players.
-    private Donut<InterfacePlayer<T>> players;
+    private InterfacePlayer<T> player;
 
     // The CardRemover instance.
     private static CardRemover<?> instance;
@@ -56,18 +57,20 @@ public class CardRemover<T>
         return instance;
     }
 
+    /**
+     * Sets the human player of this object.
+     * @param player An InterfacePlayer object.
+     */
+    public void setPlayer(@NotNull InterfacePlayer<T> player) {
+        this.player = player;
+    }
+
     @Override
     @SuppressWarnings("unchecked")
-    public void update(Object object) {
-        if(object instanceof InterfaceDiscardedPile<?> discardedPile) {
-            if(discardedPile.size() > 1)
-                players.current().remove((T) discardedPile.provide());
-        } else if(object instanceof InterfaceProvider<?> provider) {
-            players = (Donut<InterfacePlayer<T>>) provider.provide();
-        } else throw new IllegalArgumentException(
-                "Invalid object type: " + object.getClass() +
-                        ". InterfaceDiscardedPile or InterfaceProvider" +
-                        " type expected.");
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() instanceof InterfaceGObject<?> gObject) {
+            player.remove((T) gObject.object());
+        }
     }
 
 }

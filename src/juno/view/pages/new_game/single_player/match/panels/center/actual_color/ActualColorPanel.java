@@ -52,7 +52,7 @@ public class ActualColorPanel
 
     // Builds the ActualColorPanel instance.
     private ActualColorPanel() {
-        setOpaque(true);
+        setOpaque(false);
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(75, 75));
     }
@@ -71,6 +71,7 @@ public class ActualColorPanel
         if(object instanceof InterfaceActualColor<?> actualColor) {
             Object temp = actualColor.provide();
             if(temp instanceof InterfaceColor color) {
+                removeAll();
                 GObjectButton<?> gColor = (GObjectButton<?>)
                         GColorCreator.getInstance().create(color, RotatedIcon.Rotate.ABOUT_CENTER);
                 ImageResizer.resize(gColor, 4.5);
