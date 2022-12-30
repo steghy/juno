@@ -37,7 +37,7 @@ import java.util.Objects;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the cards.
+ * @param <T> The type of the players.
  */
 public class Inverter<T>
         extends AbstractPlayersMaintainer<T>

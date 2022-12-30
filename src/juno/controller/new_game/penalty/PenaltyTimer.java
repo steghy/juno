@@ -23,14 +23,8 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.ai;
+package juno.controller.new_game.penalty;
 
-public interface InterfaceAi<T, E> {
-
-    T move();
-
-    E color();
-
-    boolean uno();
-
+public class PenaltyTimer
+        {
 }

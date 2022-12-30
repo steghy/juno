@@ -56,12 +56,25 @@ public class Initializer
     @SuppressWarnings("unchecked")
     public void initialize() {
         // Observer / Observable.
+        // Players provider.
         PlayersProvider<InterfacePlayer<InterfaceCard>> playersProvider =
                 (PlayersProvider<InterfacePlayer<InterfaceCard>>) PlayersProvider.getInstance();
+
+        // The ai players factory.
+        AiPlayerFactory<?, ?> aiPlayerFactory = AiPlayerFactory.getInstance();
+
+        // Players provider.
         playersProvider.setPlayer((InterfacePlayer<InterfaceCard>) HumanPlayer.getInstance());
-        AiPlayerFactory.getInstance().addObserver(playersProvider);
+        aiPlayerFactory.addObserver(playersProvider);
+
+        // Inverter.
         playersProvider.addObserver(Inverter.getInstance());
+
+        // Turn mover.
         playersProvider.addObserver(TurnMover.getInstance());
+
+        // CurrentPlayerProvider.
+        playersProvider.addObserver(CurrentPlayerProvider.getInstance());
     }
 
 }

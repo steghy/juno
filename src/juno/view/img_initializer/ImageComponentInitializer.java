@@ -435,8 +435,7 @@ public class ImageComponentInitializer
             label.setBackground(Color.RED);
         } else {
             throw new IllegalArgumentException("Invalid Constant: " + constant);
-        }
-        label.setOpaque(true);
+        } label.setOpaque(true);
         label.setSize(dimension);
     }
 

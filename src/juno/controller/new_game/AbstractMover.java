@@ -28,16 +28,33 @@ package juno.controller.new_game;
 import juno.model.deck.AbstractDeckUser;
 import juno.model.deck.InterfaceDiscardedPile;
 import juno.model.subjects.shift.InterfaceTurnMover;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public abstract class AbstractMover<T>
         extends AbstractDeckUser<T> {
 
+    // The turn mover.
+    private InterfaceTurnMover turnMover;
+
     // The discarded pile
     private InterfaceDiscardedPile<T> discardedPile;
 
-    // The turn mover.
-    private InterfaceTurnMover turnMover;
+    /**
+     * Sets the turn mover of this object.
+     * @param turnMover An InterfaceTurnMover object.
+     */
+    public void setTurnMover(@NotNull InterfaceTurnMover turnMover) {
+        this.turnMover = turnMover;
+    }
+
+    /**
+     * Sets the discarded pile of this object.
+     * @param discardedPile An InterfaceDiscardedPile object.
+     */
+    public void setDiscardedPile(@NotNull InterfaceDiscardedPile<T> discardedPile) {
+        this.discardedPile = discardedPile;
+    }
 
     /**
      * Returns the turn mover of this object.

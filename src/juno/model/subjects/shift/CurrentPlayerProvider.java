@@ -27,71 +27,47 @@ package juno.model.subjects.shift;
 
 import juno.model.util.Donut;
 import juno.model.util.InterfaceProvider;
-import juno.model.util.Observable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 /**
  * @author Simone Gentili
  * @param <T> The type of the players.
  */
-public class TurnMover<T>
-        extends AbstractPlayersMaintainer<T>
-        implements InterfaceTurnMover, Observable, Observer {
+public class CurrentPlayerProvider<T>
+    extends AbstractPlayersMaintainer<T>
+        implements InterfaceProvider<T>, Observer {
 
-    // The Observer List.
-    private final List<Observer> observerList;
+    // The CurrentPlayerProvider instance.
+    private static CurrentPlayerProvider<?> instance;
 
-    // The TurnMover instance.
-    private static TurnMover<?> instance;
-
-    // Builds the TurnMover instance.
-    private TurnMover() {
-        observerList = new ArrayList<>();
-    }
+    // Builds the CurrentPlayerProvider instance.
+    private CurrentPlayerProvider() {}
 
     /**
-     * Returns the TurnMover instance.
-     * @return The TurnMover instance.
+     * Returns the CurrentPlayerProvider instance.
+     * @return The CurrentPlayerProvider instance
      */
-    public static TurnMover<?> getInstance(){
-        if(instance == null) instance = new TurnMover<>();
+    public static CurrentPlayerProvider<?> getInstance() {
+        if(instance == null) instance = new CurrentPlayerProvider<>();
         return instance;
     }
 
     @Override
-    public void next() {
-        Objects.requireNonNull(players).next();
-        updateAll();
-    }
-
-    @Override
-    public void addObserver(@NotNull Observer observer) {
-        observerList.add(observer);
-    }
-
-    @Override
-    public void removeObserver(@NotNull Observer observer) {
-        observerList.remove(observer);
-    }
-
-    @Override
-    public void updateAll() {
-        observerList.forEach(observer -> observer.update(this));
+    public T provide() {
+        return Objects.requireNonNull(players).current();
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceProvider<?> provider)
+        if(object instanceof InterfaceProvider<?> provider) {
             players = (Donut<T>) provider.provide();
-        else throw new IllegalArgumentException(
+        } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
-                        ". InterfaceProvider type expected.");
+                        ". InterfaceProvider type expected");
     }
 
 }

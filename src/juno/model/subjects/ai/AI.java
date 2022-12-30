@@ -31,6 +31,8 @@ import juno.model.subjects.ai.examiner.InterfaceColorExaminer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Random;
+
 /**
  * @author Simone Gentili
  * @param <T> The type of the cards.
@@ -80,6 +82,20 @@ public class AI<T, E>
     @Override
     public E color() {
         return colorExaminer.responseRelativeTo(cards());
+    }
+
+    @Override
+    public boolean uno() {
+        Random r = new Random();
+        int num = r.nextInt(4);
+        if(difficulty.isEasy()) {
+            return num < 1;
+        } if(difficulty.isMedium()) {
+            return num < 2;
+        } if(difficulty.isHard()) {
+            return num < 3;
+        } else throw new IllegalArgumentException(
+                "Invalid difficulty object.");
     }
 
     @Override
