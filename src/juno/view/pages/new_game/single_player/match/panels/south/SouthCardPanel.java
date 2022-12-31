@@ -42,6 +42,7 @@ import juno.view.util.RotatedIcon;
 import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -57,7 +58,7 @@ public class SouthCardPanel
     private final int leftInsectsParameter;
 
     // The card -> graphic card map.
-    private final Map<InterfaceCard, Object> componentMap;
+    private final Map<InterfaceCard, GCard<InterfaceCard>> componentMap;
 
     // The grid bag constraints.
     private final GridBagConstraints gbc;
@@ -113,28 +114,28 @@ public class SouthCardPanel
         this.playableCardSetter = playableCardSetter;
     }
 
-    @SuppressWarnings("unchecked")
-    public void addComponent(@NotNull Component c) {
-        GCard<InterfaceCard> gCard = (GCard<InterfaceCard>) c;
-        if(componentMap.isEmpty()) gbc.insets = new Insets(0, 0, 0, 0);
-        else gbc.insets = new Insets(0, gbc.insets.left + leftInsectsParameter, 0, 0);
-        super.add(c, gbc);
+    public void addComponent(@NotNull GCard<InterfaceCard> gCard) {
+        if(componentMap.isEmpty())
+            gbc.insets = new Insets(0, 0, 0, 0);
+        else
+            gbc.insets = new Insets(0, gbc.insets.left + leftInsectsParameter, 0, 0);
+        super.add(gCard, gbc);
         componentMap.put(gCard.object(), gCard);
         revalidate();
         repaint();
     }
 
     @SuppressWarnings("unchecked")
-    public void removeComponent(@NotNull Component c) {
-        java.util.List<Component> components = new java.util.ArrayList<>(java.util.List.of(getComponents()));
-        GCard<InterfaceCard> gCard = (GCard<InterfaceCard>) c;
-        if(components.contains(c)) {
-            super.remove(c);
-            componentMap.remove(gCard.object());
-            components.remove(c);
-            gbc.insets = new Insets(0, 0, 0, 0);
+    public void removeComponent(@NotNull GCard<InterfaceCard> gCard) {
+        ArrayList<GCard<InterfaceCard>> components =
+                new ArrayList<>(Arrays.stream(getComponents())
+                        .map(c -> (GCard<InterfaceCard>) c).toList());
+        if (components.contains(gCard)) {
+            super.remove(gCard);
+            components.remove(gCard);
+            componentMap.clear();
             components.forEach(this::addComponent);
-        } else throw new IllegalArgumentException("Component" + c + " is not in " + this);
+        } else throw new IllegalArgumentException("GCard is not in " + this);
     }
 
     @Override
@@ -144,20 +145,26 @@ public class SouthCardPanel
             InterfaceCard card = (InterfaceCard) humanPlayer.provide();
             if(humanPlayer.isRemoved())
                 if(componentMap.containsKey(card)) {
-                    removeComponent((Component) componentMap.get(card));
+                    removeComponent(componentMap.get(card));
                 } else throw new IllegalArgumentException(
                         card + " is not in: " + componentMap);
             else {
                 GCard<InterfaceCard> gCard = (GCard<InterfaceCard>)
                         GCardCreator.getInstance().create(card, RotatedIcon.Rotate.ABOUT_CENTER);
-                SetterAction<InterfaceCard> setterAction = new SetterAction<>(gCard.object(), discardedCardSetter);
                 ImageResizer.resize(gCard, 2.5);
+
+                // GCard action listeners.
+                SetterAction<InterfaceCard> setterAction =
+                        new SetterAction<>(gCard.object(), discardedCardSetter);
                 gCard.addActionListener(setterAction);
                 gCard.addActionListener(CardRemover.getInstance());
-                setterAction.addObserver(this);
+
+                // Case of the drawn card
                 for(Component c : getComponents()) c.setEnabled(false);
                 if(!componentMap.isEmpty())
                     gCard.setEnabled(CompatibilityChecker.getInstance().isCompatible(card));
+
+                // Adding the card.
                 addComponent(gCard);
             }
         } else if(object instanceof Mover) {

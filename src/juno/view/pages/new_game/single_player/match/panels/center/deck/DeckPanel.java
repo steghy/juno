@@ -26,11 +26,10 @@
 package juno.view.pages.new_game.single_player.match.panels.center.deck;
 
 import juno.controller.log_out.Restorable;
-import juno.controller.new_game.Mover;
+import juno.controller.new_game.human.DiscardedCardSetter;
 import juno.controller.new_game.human.DrawAction;
-import juno.model.subjects.human.HumanPlayer;
-import juno.model.subjects.shift.PlayersProvider;
-import juno.model.subjects.shift.TurnMover;
+import juno.model.subjects.shift.InterfaceTurnMover;
+import juno.model.util.InterfaceProvider;
 import juno.model.util.Observer;
 import juno.view.panels.AbstractFirstComponent;
 import org.jetbrains.annotations.NotNull;
@@ -41,14 +40,20 @@ import java.util.Objects;
 /**
  * @author Simone Gentili
  */
-public class DeckPanel
+public class DeckPanel<T>
         extends AbstractFirstComponent
         implements
         Observer,
         Restorable {
 
+    // The current player provider.
+    private InterfaceProvider<T> provider;
+
+    // The human player.
+    private T humanPlayer;
+
     // The DeckPanel instance.
-    private static DeckPanel instance;
+    private static DeckPanel<?> instance;
 
     // Builds the DeckPanel instance.
     private DeckPanel() {}
@@ -57,11 +62,12 @@ public class DeckPanel
      * Returns the DeckPanel instance.
      * @return The DeckPanel instance.
      */
-    public static DeckPanel getInstance() {
-        if(instance == null) instance = new DeckPanel();
+    public static DeckPanel<?> getInstance() {
+        if(instance == null) instance = new DeckPanel<>();
         return instance;
     }
 
+    /** Initialize the DeckPanel instance. */
     public void init() {
         setOpaque(false);
         setLayout(new BorderLayout());
@@ -70,16 +76,32 @@ public class DeckPanel
         getFirstComponent().setEnabled(false);
     }
 
+    /**
+     * Sets the current player provider of this object.
+     * @param provider An InterfaceProvider object.
+     */
+    public void setProvider(@NotNull InterfaceProvider<T> provider) {
+        this.provider = provider;
+    }
+
+    /**
+     * Sets the human player of this object.
+     * @param humanPlayer An Object.
+     */
+    public void setHumanPlayer(@NotNull T humanPlayer) {
+        this.humanPlayer = humanPlayer;
+    }
+
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof TurnMover<?>) {
-            if(Objects.requireNonNull(PlayersProvider.getInstance().provide()).current() == HumanPlayer.getInstance())
+        if(object instanceof InterfaceTurnMover) {
+            if(provider.provide() == humanPlayer)
                 Objects.requireNonNull(getFirstComponent()).setEnabled(true);
-        } else if(object instanceof DrawAction<?>) {
+        } else if(object instanceof DrawAction<?> || object instanceof DiscardedCardSetter<?>) {
             Objects.requireNonNull(getFirstComponent()).setEnabled(false);
         } else throw new IllegalArgumentException(
-                "Invalid object type: " + getInstance() +
-                        ". InterfaceInitializer type expected.");
+                "Invalid object type: " + object.getClass() +
+                        ". InterfaceTurnMover or DrawAction type expected.");
     }
 
     @Override

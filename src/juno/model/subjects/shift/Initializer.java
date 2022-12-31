@@ -73,6 +73,9 @@ public class Initializer
         // Turn mover.
         playersProvider.addObserver(TurnMover.getInstance());
 
+        // Turn jumper.
+        playersProvider.addObserver(TurnJumper.getInstance());
+
         // CurrentPlayerProvider.
         playersProvider.addObserver(CurrentPlayerProvider.getInstance());
     }

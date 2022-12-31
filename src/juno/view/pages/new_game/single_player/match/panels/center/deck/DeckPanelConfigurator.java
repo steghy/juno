@@ -25,9 +25,13 @@
 
 package juno.view.pages.new_game.single_player.match.panels.center.deck;
 
+import juno.controller.new_game.human.DiscardedCardSetter;
 import juno.controller.new_game.human.DrawAction;
-import juno.controller.new_game.Mover;
+import juno.model.subjects.InterfacePlayer;
+import juno.model.subjects.human.HumanPlayer;
+import juno.model.subjects.shift.CurrentPlayerProvider;
 import juno.model.subjects.shift.TurnMover;
+import juno.model.util.InterfaceProvider;
 import juno.view.button.Button;
 import juno.view.button.ButtonCreator;
 import juno.view.util.ImageResizer;
@@ -43,9 +47,11 @@ public class DeckPanelConfigurator {
     private DeckPanelConfigurator() {}
 
     /** Configure the DeckPanel instance. */
+    @SuppressWarnings("unchecked")
     public static void configure() {
         // Main Component.
-        DeckPanel deckPanel = DeckPanel.getInstance();
+        DeckPanel<InterfacePlayer<?>> deckPanel =
+                (DeckPanel<InterfacePlayer<?>>) DeckPanel.getInstance();
 
         // Component.
         AbstractButton deckButton = ButtonCreator.getInstance().create(Button.COVER, null);
@@ -59,8 +65,11 @@ public class DeckPanelConfigurator {
         // Observer / Observable.
         TurnMover.getInstance().addObserver(deckPanel);
         DrawAction.getInstance().addObserver(deckPanel);
+        DiscardedCardSetter.getInstance().addObserver(deckPanel);
 
-        // Main component setting.
+        // Settings.
+        deckPanel.setProvider((InterfaceProvider<InterfacePlayer<?>>) CurrentPlayerProvider.getInstance());
+        deckPanel.setHumanPlayer(HumanPlayer.getInstance());
         deckPanel.setFirstComponent(deckButton);
 
         // Main component initialization.

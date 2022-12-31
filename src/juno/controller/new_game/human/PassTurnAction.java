@@ -25,6 +25,7 @@
 
 package juno.controller.new_game.human;
 
+import juno.model.card.InterfaceCard;
 import juno.model.subjects.shift.InterfaceTurnMover;
 import juno.model.util.AbstractObservable;
 import juno.model.util.Observer;
@@ -74,8 +75,10 @@ public class PassTurnAction
 
     @Override
     public void update(Object object) {
-        if(object instanceof CardTimer ||
-                object instanceof DiscardedCardSetter<?>) {
+        if(object instanceof CardTimer)
+            actionPerformed(null);
+        else if(object instanceof DiscardedCardSetter<?> discardedCardSetter) {
+            InterfaceCard card = (InterfaceCard) discardedCardSetter.provide();
             actionPerformed(null);
         }
     }

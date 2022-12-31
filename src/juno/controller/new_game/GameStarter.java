@@ -104,8 +104,8 @@ public class GameStarter
         Donut<InterfacePlayer<?>> players =
                 (Donut<InterfacePlayer<?>>) Objects.requireNonNull(Objects.requireNonNull(provider).provide());
         players.initialize(player);
-        // TurnMover.getInstance().next();
         Objects.requireNonNull(dispenser).dispense();
+        TurnMover.getInstance().next();
     }
 
     @Override

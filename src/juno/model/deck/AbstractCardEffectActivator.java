@@ -38,8 +38,8 @@ public abstract class AbstractCardEffectActivator<T, E, C>
         extends AbstractDeckUser<T>
         implements InterfaceCardEffectActivator<T> {
 
-    // The turn mover.
-    private InterfaceTurnMover turnMover;
+    // The turn jumper.
+    private InterfaceTurnMover turnJumper;
 
     // The inverter.
     private InterfaceInverter inverter;
@@ -52,10 +52,10 @@ public abstract class AbstractCardEffectActivator<T, E, C>
 
     /**
      * Sets the turn mover of this object.
-     * @param turnMover An InterfaceTurnJumper object.
+     * @param turnJumper An InterfaceTurnJumper object.
      */
-    public void setTurnMover(@NotNull InterfaceTurnMover turnMover) {
-        this.turnMover = turnMover;
+    public void setTurnMover(@NotNull InterfaceTurnMover turnJumper) {
+        this.turnJumper = turnJumper;
     }
 
     /**
@@ -87,8 +87,8 @@ public abstract class AbstractCardEffectActivator<T, E, C>
      * @return An InterfaceTurnMover object.
      */
     @Nullable
-    public InterfaceTurnMover getTurnMover() {
-        return turnMover;
+    public InterfaceTurnMover getTurnJumper() {
+        return turnJumper;
     }
 
     /**

@@ -23,16 +23,13 @@
  * SOFTWARE.
  */
 
-package juno.controller.new_game.human;
+package juno.model.subjects.shift;
 
-import juno.model.deck.AbstractDiscardedPileUser;
+import juno.model.util.Donut;
 import juno.model.util.InterfaceProvider;
-import juno.model.util.InterfaceSetter;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
-import juno.view.pages.new_game.single_player.match.panels.center.discarded_pile.DiscardedPilePanel;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,61 +37,61 @@ import java.util.Objects;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the card.
+ * @param <T> The type of the players.
  */
-public class DiscardedCardSetter<T>
-        extends AbstractDiscardedPileUser<T>
-        implements InterfaceSetter<T>, InterfaceProvider<T>, Observable {
+public class TurnJumper<T>
+        extends AbstractPlayersMaintainer<T>
+        implements InterfaceTurnMover, Observable, Observer {
 
-    // The last object involved.
-    private T object;
+    // The Observer List.
+    private final List<Observer> observerList;
 
-    // The Observers list.
-    private final List<Observer> observableList;
+    // The TurnJumper instance.
+    private static TurnJumper<?> instance;
 
-    // The DiscardedCardSetter instance.
-    private static DiscardedCardSetter<?> instance;
-
-    // Builds the DiscardedCardSetter instance.
-    private DiscardedCardSetter() {
-        observableList = new ArrayList<>();
+    // Builds the TurnJumper instance.
+    private TurnJumper() {
+        observerList = new ArrayList<>();
     }
 
     /**
-     * Returns the DiscardedCardSetter instance.
-     * @return The DiscardedCardSetter instance.
+     * Returns the TurnJumper instance.
+     * @return The TurnJumper instance.
      */
-    public static DiscardedCardSetter<?> getInstance() {
-        if(instance == null) instance = new DiscardedCardSetter<>();
+    public static TurnJumper<?> getInstance(){
+        if(instance == null) instance = new TurnJumper<>();
         return instance;
     }
 
     @Override
-    public void set(@NotNull T object) {
-        Objects.requireNonNull(getDiscardedPile()).discard(object);
-        this.object = object;
+    public void next() {
+        Objects.requireNonNull(players).next();
         updateAll();
     }
 
     @Override
-    @Nullable
-    public T provide() {
-        return object;
-    }
-
-    @Override
     public void addObserver(@NotNull Observer observer) {
-        observableList.add(observer);
+        observerList.add(observer);
     }
 
     @Override
     public void removeObserver(@NotNull Observer observer) {
-        observableList.remove(observer);
+        observerList.remove(observer);
     }
 
     @Override
     public void updateAll() {
-        observableList.forEach(observer -> observer.update(this));
+        observerList.forEach(observer -> observer.update(this));
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public void update(@NotNull Object object) {
+        if(object instanceof InterfaceProvider<?> provider)
+            players = (Donut<T>) provider.provide();
+        else throw new IllegalArgumentException(
+                "Invalid object type: " + object.getClass() +
+                        ". InterfaceProvider type expected.");
     }
 
 }

@@ -65,7 +65,7 @@ public class CardEffectActivator
                 Objects.requireNonNull(getPlayersProvider()).provide();
         if(action != null) {
             if(action.isInvert()) Objects.requireNonNull(getInverter()).invert();
-            else if(action.isSkip()) Objects.requireNonNull(getTurnMover()).next();
+            else if(action.isSkip()) Objects.requireNonNull(getTurnJumper()).next();
             else if(action.isDrawTwo() || action.isDrawFour()) {
                 InterfacePlayer<InterfaceCard> nextPlayer = players.peek();
                 Deck<InterfaceCard> deck = (Deck<InterfaceCard>)
@@ -75,7 +75,7 @@ public class CardEffectActivator
                 if(action.isDrawFour()) {
                     nextPlayer.add(deck.draw());
                     nextPlayer.add(deck.draw());
-                }
+                } Objects.requireNonNull(getTurnJumper()).next();
             } if(action.isJolly()) {
                 InterfacePlayer<InterfaceCard> currentPlayer = players.current();
                 if(currentPlayer instanceof InterfaceAi<?, ?> aiPlayer) {

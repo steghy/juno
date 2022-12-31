@@ -64,7 +64,6 @@ public class Mover<T>
     // Builds the Mover instance.
     private Mover() {
         timer = new Timer(1500, this);
-        timer.setInitialDelay(0);
         observerList = new ArrayList<>();
     }
 
@@ -100,8 +99,8 @@ public class Mover<T>
     @Override
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceCardDispenser || object instanceof PassTurnAction) {
-            Objects.requireNonNull(getTurnMover()).next();
+        if(object instanceof InterfaceCardDispenser ||
+                object instanceof PassTurnAction) {
             timer.start();
         } else if(object instanceof InterfaceProvider<?> provider) {
             players = (Donut<InterfacePlayer<T>>) provider.provide();

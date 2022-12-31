@@ -166,17 +166,15 @@ public class Initializer
         // Discarded card setter.
         discardedCardSetter.setDiscardedPile(discardedPile);
 
-        // Players provider.
-        playersProvider.addObserver(oneCardDispenser);
-
         // Game initializer.
         gameInitializer.setAiGenerator(aiPlayerFactory);
         gameInitializer.setDeckGenerator(deckFactory);
-        gameInitializer.addObserver(oneCardDispenser);
 
         // One card dispenser.
         oneCardDispenser.setDeck(deck);
-        oneCardDispenser.addObserver(cardController);
+        playersProvider.addObserver(oneCardDispenser);
+        cardController.addObserver(oneCardDispenser);
+        gameInitializer.addObserver(oneCardDispenser);
 
         // Card dispenser.
         cardDispenser.setProvider(playersProvider);
@@ -187,8 +185,8 @@ public class Initializer
         firstDiscardedCardManager.setDeck(deck);
 
         // Card controller.
-        cardController.addObserver(oneCardDispenser);
         cardController.setDeck(deck);
+        oneCardDispenser.addObserver(cardController);
 
         // Game starter.
         gameStarter.setDispenser(cardDispenser);

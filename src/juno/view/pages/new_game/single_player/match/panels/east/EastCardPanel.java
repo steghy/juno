@@ -39,6 +39,8 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -94,8 +96,10 @@ public class EastCardPanel
     }
 
     public void removeComponent() {
-        Component c = getComponents()[0];
-        super.remove(c);
+        super.remove(0);
+        List<Component> components = new ArrayList<>(List.of(getComponents()));
+        super.removeAll();
+        components.forEach(this::addComponent);
     }
 
     @Override
@@ -133,7 +137,6 @@ public class EastCardPanel
     @Override
     public void restore() {
         setOpaque(false);
-        gbc.insets = new Insets(0, 0, 0, 0);
         removeAll();
         showCard = true;
         revalidate();
