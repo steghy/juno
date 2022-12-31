@@ -33,6 +33,7 @@ import juno.model.util.Observer;
 import juno.view.button.Button;
 import juno.view.button.ButtonCreator;
 import juno.view.gobject.cards.GCardCreator;
+import juno.view.panels.AbstractFirstComponent;
 import juno.view.util.ImageResizer;
 import juno.view.util.RotatedIcon;
 import org.jetbrains.annotations.NotNull;
@@ -47,7 +48,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class EastCardPanel
-        extends JPanel
+        extends AbstractFirstComponent
         implements Observer, Restorable {
 
     // 'Bottom' insects value parameter.
@@ -90,15 +91,15 @@ public class EastCardPanel
     public void addComponent(@NotNull Component c) {
         if(getComponents().length == 0) gbc.insets = new Insets(0, 0, 0, 0);
         else gbc.insets = new Insets(0, 0, gbc.insets.bottom + bottomInsectsParameter, 0);
-        super.add(c, gbc);
+        add(c, gbc);
         revalidate();
         repaint();
     }
 
     public void removeComponent() {
-        super.remove(0);
+        remove(0);
         List<Component> components = new ArrayList<>(List.of(getComponents()));
-        super.removeAll();
+        removeAll();
         components.forEach(this::addComponent);
     }
 
@@ -136,7 +137,6 @@ public class EastCardPanel
 
     @Override
     public void restore() {
-        setOpaque(false);
         removeAll();
         showCard = true;
         revalidate();

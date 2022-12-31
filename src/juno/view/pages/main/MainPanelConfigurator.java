@@ -47,6 +47,7 @@ public class MainPanelConfigurator {
     // Builds a MainPanelConfigurator instance.
     private MainPanelConfigurator() {}
 
+    /** Configures the MainPanel instance. */
     public static void configure() {
         // Main component.
         MainPanel mainPanel = MainPanel.getInstance();

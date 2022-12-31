@@ -101,9 +101,9 @@ public abstract class AbstractCounter
         return map;
     }
 
-    @Override
     public void restore() {
         count = 0;
+        updateAll();
     }
 
     /**

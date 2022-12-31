@@ -45,8 +45,8 @@ public class FrameInitializer {
                 ImageComponentInitializer.getInstance()
                         .initialize(
                                 background,
-                                PathProviderAssembler.getInstance().assemble(ProgramDirectory.BACKGROUNDS, "background.jpg"),
-                                RotatedIcon.Rotate.ABOUT_CENTER);
+                                PathProviderAssembler.getInstance().assemble(ProgramDirectory.BACKGROUNDS, "background.gif"),
+                                null);
         frame.setBackground(background);
         frame.setPanel(topCardPanel);
         frame.init();

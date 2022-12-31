@@ -75,19 +75,17 @@ public class AvatarPanel
     /** Initialize this AvatarPanel object */
     public void init() {
         setOpaque(false);
-        JPanel panel = new JPanel();
-        panel.setOpaque(false);
-        panel.setLayout(new GridBagLayout());
-        setLayout(new BorderLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-
+        setLayout(new GridBagLayout());
         avatarImage.setOpaque(false);
         avatarFrame.setOpaque(false);
         avatarName.setOpaque(false);
+        avatarFrame.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
 
-        avatarFrame.setLayout(new BorderLayout());
+        // Avatar image in avatar frame.
+        avatarFrame.add(avatarImage, gbc);
 
-        // Avatar image.
+        // Avatar frame
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.weightx = 0.0;
@@ -96,23 +94,20 @@ public class AvatarPanel
         gbc.insets = new Insets(0,0,0,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        panel.add(avatarImage, gbc);
+        add(avatarFrame, gbc);
 
         // Avatar name.
-        avatarName.setFont(new Font(Font.DIALOG, Font.ITALIC, 12));
+        avatarName.setFont(new Font(Font.DIALOG, Font.ITALIC, 15));
         avatarName.setForeground(Color.WHITE);
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
         gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,0,0);
+        gbc.insets = new Insets(5,0,0,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        panel.add(avatarName, gbc);
-
-        avatarFrame.add(panel, BorderLayout.CENTER);
-        add(avatarFrame, BorderLayout.CENTER);
+        add(avatarName, gbc);
     }
 
     /**
