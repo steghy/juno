@@ -25,12 +25,13 @@
 
 package juno.controller.new_game.penalty;
 
+import juno.controller.util.Stoppable;
+
 /**
  * @author Simone Gentili
  */
-@FunctionalInterface
-public interface InterfacePenaltyExecutor<T> {
+public interface InterfacePenaltyExecutor extends Stoppable {
 
-    void execute(T player);
+    void execute();
 
 }

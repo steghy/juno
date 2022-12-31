@@ -25,79 +25,64 @@
 
 package juno.controller.new_game.human;
 
-import juno.model.deck.AbstractDeckUser;
-import juno.model.subjects.InterfacePlayer;
+import juno.model.deck.AbstractDiscardedPileUser;
+import juno.model.util.InterfaceSetter;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
+import juno.view.pages.new_game.single_player.match.panels.center.discarded_pile.DiscardedPilePanel;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the cards.
+ * @param <T> The type of the card.
  */
-public class DrawAction<T>
-        extends AbstractDeckUser<T>
-        implements ActionListener, Observable {
+public class DiscardedCardSetter<T>
+        extends AbstractDiscardedPileUser<T>
+        implements InterfaceSetter<T>, Observable {
 
     // The Observers list.
-    private final List<Observer> observerList;
+    private final List<Observer> observableList;
 
-    // The human player.
-    @Nullable
-    private InterfacePlayer<T> player;
+    // The DiscardedCardSetter instance.
+    private static DiscardedCardSetter<?> instance;
 
-    // The DrawAction instance.
-    private static DrawAction<?> instance;
-
-    // Builds the DrawAction instance.
-    private DrawAction() {
-        observerList = new ArrayList<>();
+    // Builds the DiscardedCardSetter instance.
+    private DiscardedCardSetter() {
+        observableList = new ArrayList<>();
     }
 
     /**
-     * Returns the DrawAction instance.
-     * @return The DrawAction instance.
+     * Returns the DiscardedCardSetter instance.
+     * @return The DiscardedCardSetter instance.
      */
-    public static DrawAction<?> getInstance() {
-        if(instance == null) instance = new DrawAction<>();
+    public static DiscardedCardSetter<?> getInstance() {
+        if(instance == null) instance = new DiscardedCardSetter<>();
         return instance;
     }
 
-    /**
-     * Sets the human player of this object.
-     * @param player An InterfacePlayer object.
-     */
-    public void setPlayer(@NotNull InterfacePlayer<T> player) {
-        this.player = player;
-    }
-
     @Override
-    public void actionPerformed(ActionEvent e) {
-        Objects.requireNonNull(player)
-                .add(Objects.requireNonNull(getDeck()).draw());
+    public void set(@NotNull T object) {
+        Objects.requireNonNull(getDiscardedPile()).discard(object);
         updateAll();
     }
 
     @Override
     public void addObserver(@NotNull Observer observer) {
-        observerList.add(observer);
+        observableList.add(observer);
     }
 
     @Override
     public void removeObserver(@NotNull Observer observer) {
-        observerList.remove(observer);
+        observableList.remove(observer);
     }
 
     @Override
     public void updateAll() {
-        observerList.forEach(observer -> observer.update(this));
+        observableList.forEach(observer -> observer.update(this));
     }
 
 }

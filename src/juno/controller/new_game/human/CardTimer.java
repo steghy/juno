@@ -23,40 +23,56 @@
  * SOFTWARE.
  */
 
-package juno.controller.new_game;
+package juno.controller.new_game.human;
 
-import juno.model.deck.AbstractDiscardedPileUser;
-import juno.model.util.InterfaceSetter;
-import org.jetbrains.annotations.NotNull;
+import juno.model.util.AbstractObservable;
+import juno.model.util.Observer;
 
-import java.util.Objects;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the card.
  */
-public class DiscardedCardSetter<T>
-        extends AbstractDiscardedPileUser<T>
-        implements InterfaceSetter<T> {
+public class CardTimer
+        extends AbstractObservable
+        implements ActionListener, Observer {
 
-    // The DiscardedCardSetter instance.
-    private static DiscardedCardSetter<?> instance;
+    // The timer
+    private final Timer timer;
 
-    // Builds the DiscardedCardSetter instance.
-    private DiscardedCardSetter() {}
+    // The CardTimer instance.
+    private static CardTimer instance;
+
+    // Builds the CardTimer instance.
+    private CardTimer() {
+        timer = new Timer(0, this);
+        timer.setInitialDelay(2000);
+    }
 
     /**
-     * Returns the DiscardedCardSetter instance.
-     * @return The DiscardedCardSetter instance.
+     * Returns the CardTimer instance.
+     * @return The CardTimer instance.
      */
-    public static DiscardedCardSetter<?> getInstance() {
-        if(instance == null) instance = new DiscardedCardSetter<>();
+    public static CardTimer getInstance() {
+        if(instance == null) instance = new CardTimer();
         return instance;
     }
 
     @Override
-    public void set(@NotNull T object) {
-        Objects.requireNonNull(getDiscardedPile()).discard(object);
+    public void actionPerformed(ActionEvent e) {
+        timer.stop();
+        updateAll();
+    }
+
+    @Override
+    public void update(Object object) {
+        if(object instanceof DrawAction<?>)
+            timer.start();
+        else throw new IllegalArgumentException(
+                "Invalid object type: " + object.getClass() +
+                        ". DrawAction expected.");
     }
 
 }

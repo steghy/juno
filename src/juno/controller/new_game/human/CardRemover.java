@@ -70,7 +70,9 @@ public class CardRemover<T>
     public void actionPerformed(@NotNull ActionEvent e) {
         if(e.getSource() instanceof InterfaceGObject<?> gObject) {
             player.remove((T) gObject.object());
-        }
+        } else throw new IllegalArgumentException(
+                "Invalid object type: " + e.getClass() +
+                        ". InterfaceGObject type expected.");
     }
 
 }

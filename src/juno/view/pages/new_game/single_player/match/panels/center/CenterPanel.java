@@ -25,7 +25,7 @@
 
 package juno.view.pages.new_game.single_player.match.panels.center;
 
-import juno.view.panels.AbstractFifthComponent;
+import juno.view.panels.AbstractSeventhComponent;
 
 import java.awt.*;
 import java.util.Objects;
@@ -34,7 +34,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class CenterPanel
-        extends AbstractFifthComponent {
+        extends AbstractSeventhComponent {
 
     // The CenterPanel instance.
     private static CenterPanel instance;
@@ -111,6 +111,28 @@ public class CenterPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
         this.add(Objects.requireNonNull(getFifthComponent()), gbc);
+
+        // Exit button.
+        gbc.gridx = 1;
+        gbc.gridy = 3;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(0,0,0,0);
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
+        this.add(Objects.requireNonNull(getSixthComponent()), gbc);
+
+        // Uno button
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(0,0,0,0);
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
+        this.add(Objects.requireNonNull(getSeventhComponent()), gbc);
     }
 
 }

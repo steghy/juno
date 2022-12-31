@@ -27,6 +27,10 @@ package juno.view.pages.new_game.single_player.match.panels.center.deck;
 
 import juno.controller.log_out.Restorable;
 import juno.controller.new_game.Mover;
+import juno.controller.new_game.human.DrawAction;
+import juno.model.subjects.human.HumanPlayer;
+import juno.model.subjects.shift.PlayersProvider;
+import juno.model.subjects.shift.TurnMover;
 import juno.model.util.Observer;
 import juno.view.panels.AbstractFirstComponent;
 import org.jetbrains.annotations.NotNull;
@@ -68,8 +72,11 @@ public class DeckPanel
 
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof Mover) {
-            Objects.requireNonNull(getFirstComponent()).setEnabled(true);
+        if(object instanceof TurnMover<?>) {
+            if(Objects.requireNonNull(PlayersProvider.getInstance().provide()).current() == HumanPlayer.getInstance())
+                Objects.requireNonNull(getFirstComponent()).setEnabled(true);
+        } else if(object instanceof DrawAction<?>) {
+            Objects.requireNonNull(getFirstComponent()).setEnabled(false);
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + getInstance() +
                         ". InterfaceInitializer type expected.");

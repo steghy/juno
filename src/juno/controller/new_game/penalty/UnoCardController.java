@@ -27,9 +27,8 @@ package juno.controller.new_game.penalty;
 
 import juno.model.deck.InterfaceDiscardedPile;
 import juno.model.subjects.InterfacePlayer;
-import juno.model.subjects.InterfaceRemover;
-import juno.model.subjects.ai.AI;
 import juno.model.subjects.ai.InterfaceAi;
+import juno.model.util.AbstractObservable;
 import juno.model.util.InterfaceProvider;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
@@ -40,19 +39,20 @@ import java.util.Objects;
 /**
  * @author Simone Gentili
  */
-public class UnoCardController
+public class UnoCardController<T>
+        extends AbstractObservable
         implements Observer {
 
     // The current player provider.
     @Nullable
-    private InterfaceProvider<InterfacePlayer<?>> provider;
+    private InterfaceProvider<InterfacePlayer<T>> provider;
 
     // The penalty executor.
     @Nullable
-    private InterfacePenaltyExecutor<InterfacePlayer<?>> penaltyExecutor;
+    private InterfacePenaltyExecutor penaltyExecutor;
 
     // The UnoCardController instance.
-    private static UnoCardController instance;
+    private static UnoCardController<?> instance;
 
     // Builds the UnoCardController instance.
     private UnoCardController() {}
@@ -61,8 +61,8 @@ public class UnoCardController
      * Returns the UnoCardController instance.
      * @return The UnoCardController instance.
      */
-    public static UnoCardController UnoCardController() {
-        if(instance == null) instance = new UnoCardController();
+    public static UnoCardController<?> getInstance() {
+        if(instance == null) instance = new UnoCardController<>();
         return instance;
     }
 
@@ -70,7 +70,7 @@ public class UnoCardController
      * Sets the current player provider of this object.
      * @param provider An InterfaceProvider object.
      */
-    public void setProvider(@NotNull InterfaceProvider<InterfacePlayer<?>> provider) {
+    public void setProvider(@NotNull InterfaceProvider<InterfacePlayer<T>> provider) {
         this.provider = provider;
     }
 
@@ -78,24 +78,32 @@ public class UnoCardController
      * Sets the penalty executor of this objet.
      * @param penaltyExecutor An InterfacePenaltyExecutor object.
      */
-    public void setPenaltyExecutor(@NotNull InterfacePenaltyExecutor<InterfacePlayer<?>> penaltyExecutor) {
+    public void setPenaltyExecutor(@NotNull InterfacePenaltyExecutor penaltyExecutor) {
         this.penaltyExecutor = penaltyExecutor;
     }
 
+    /**
+     * Returns the current player provider of this object.
+     * @return An InterfaceProvider object.
+     */
+    @Nullable
+    public InterfaceProvider<InterfacePlayer<T>> getProvider() {
+        return provider;
+    }
+
     @Override
-    public void update(Object object) {
-        // Viene notificato dai player ai.
-        if(object instanceof InterfacePlayer<?> player) {
-            if (player.cards().size() == 1) {
-                if (player instanceof InterfaceAi<?, ?> ai) {
-                    if (!ai.uno()) {
-                        Objects.requireNonNull(penaltyExecutor).execute(player);
-                    }
-                } else {
-                    // è human player.
-                }
+    public void update(@NotNull Object object) {
+        if(object instanceof InterfaceDiscardedPile<?>) {
+            InterfacePlayer<?> player = Objects.requireNonNull(provider).provide();
+            if(player.cards().size() == 1) {
+                Objects.requireNonNull(penaltyExecutor).execute();
+                if(player instanceof InterfaceAi<?,?> ai) {
+                    if(ai.uno()) penaltyExecutor.stop();
+                } else updateAll();
             }
-        }
+        } else throw new IllegalArgumentException(
+                "Invalid object type: " + object.getClass() +
+                        ". InterfaceDiscardedPile type expected.");
     }
 
 }

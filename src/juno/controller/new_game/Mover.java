@@ -26,6 +26,7 @@
 package juno.controller.new_game;
 
 import juno.controller.new_game.dispenser.InterfaceCardDispenser;
+import juno.controller.new_game.human.PassTurnAction;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.ai.InterfaceAi;
 import juno.model.util.Donut;
@@ -63,6 +64,7 @@ public class Mover<T>
     // Builds the Mover instance.
     private Mover() {
         timer = new Timer(1500, this);
+        timer.setInitialDelay(0);
         observerList = new ArrayList<>();
     }
 
@@ -98,7 +100,7 @@ public class Mover<T>
     @Override
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceCardDispenser) {
+        if(object instanceof InterfaceCardDispenser || object instanceof PassTurnAction) {
             Objects.requireNonNull(getTurnMover()).next();
             timer.start();
         } else if(object instanceof InterfaceProvider<?> provider) {

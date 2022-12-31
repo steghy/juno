@@ -23,24 +23,34 @@
  * SOFTWARE.
  */
 
-package juno.init.initializer;
+package juno.controller.util;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * @author Simone Gentili
  */
-public class ControllerInitializer {
+public class StopAction
+        implements ActionListener {
 
-    // Builds the ControllerInitializer.
-    private ControllerInitializer() {}
+    // The stoppable object.
+    private final Stoppable stoppable;
 
-    /** Initialize the juno.controller package. */
-    public static void initialize() {
-        juno.controller.pre_access.Initializer.initialize();
-        juno.controller.log_out.Initializer.getInstance().initialize();
-        juno.controller.pre_access.loggers.Initializer.initialize();
-        juno.controller.pre_access.registration.Initializer.initialize();
-        juno.controller.pre_access.log_in.Initializer.initialize();
-        juno.controller.new_game.Initializer.getInstance().initialize();
+    /**
+     * Builds a StopAction with the specified
+     * stoppable object.
+     * @param stoppable A Stoppable object.
+     */
+    public StopAction(@NotNull Stoppable stoppable) {
+        this.stoppable = stoppable;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        stoppable.stop();
     }
 
 }

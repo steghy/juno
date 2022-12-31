@@ -25,13 +25,13 @@
 
 package juno.view.pages.new_game.single_player.match.panels.north;
 
-import juno.view.panels.AbstractSecondComponent;
+import juno.view.panels.AbstractFirstComponent;
 
 import java.awt.*;
 import java.util.Objects;
 
 public class NorthPanel
-        extends AbstractSecondComponent {
+        extends AbstractFirstComponent {
 
     // The NorthPanel instance.
     private static NorthPanel instance;
@@ -64,17 +64,6 @@ public class NorthPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
         this.add(Objects.requireNonNull(getFirstComponent()), gbc);
-
-        // Exit button.
-        gbc.gridx = 1;
-        gbc.gridy = 0;
-        gbc.weightx = 0.0;
-        gbc.weighty = 0.0;
-        gbc.anchor = GridBagConstraints.FIRST_LINE_END;
-        gbc.insets = new Insets(0,0,0,0);
-        gbc.ipadx = 0;
-        gbc.ipady = 0;
-        this.add(Objects.requireNonNull(getSecondComponent()), gbc);
     }
 
 }

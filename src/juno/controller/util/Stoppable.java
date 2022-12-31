@@ -23,8 +23,14 @@
  * SOFTWARE.
  */
 
-package juno.controller.new_game.penalty;
+package juno.controller.util;
 
-public class PenaltyTimer
-        {
+/**
+ * @author Simone Gentili
+ */
+@FunctionalInterface
+public interface Stoppable {
+
+    void stop();
+
 }

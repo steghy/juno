@@ -25,15 +25,12 @@
 
 package juno.view.pages.new_game.single_player.match.panels.south;
 
-import juno.controller.new_game.DiscardedCardSetter;
+import juno.controller.new_game.human.DiscardedCardSetter;
 import juno.controller.new_game.Mover;
+import juno.controller.new_game.human.PassTurnAction;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.CompatibilityChecker;
 import juno.model.util.InterfaceSetter;
-import juno.view.button.Button;
-import juno.view.button.ButtonCreator;
-import juno.view.util.ImageResizer;
-import juno.view.util.RotatedIcon;
 
 import javax.swing.*;
 import java.awt.*;
@@ -66,14 +63,9 @@ public class SouthPanelConfigurator {
         southCardScrollPanel.getViewport().setOpaque(false);
         southCardScrollPanel.setOpaque(false);
 
-        // Uno button. (Temporary)
-        AbstractButton unoButton = ButtonCreator.getInstance().create(Button.JUNO, RotatedIcon.Rotate.ABOUT_CENTER);
-
-        // Image resizing.
-        ImageResizer.resize(unoButton, 4.0);
-
         // Observer / Observable.
         Mover.getInstance().addObserver(southCardPanel);
+        PassTurnAction.getInstance().addObserver(southCardPanel);
 
         // Component setting.
         southCardPanel.setDiscardedCardSetter((InterfaceSetter<InterfaceCard>) DiscardedCardSetter.getInstance());
@@ -82,7 +74,6 @@ public class SouthPanelConfigurator {
 
         // Setting components.
         southPanel.setFirstComponent(southCardScrollPanel);  // Avatar panel.
-        southPanel.setSecondComponent(unoButton);            // Uno button.
 
         // Main component initialization.
         southPanel.init();

@@ -23,50 +23,59 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.new_game.single_player.match.panels.south;
+package juno.view.pages.new_game.single_player.match.panels.center.uno_button;
 
+import juno.controller.log_out.Restorable;
+import juno.controller.new_game.penalty.UnoCardController;
+import juno.model.util.Observer;
 import juno.view.panels.AbstractFirstComponent;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.util.Objects;
 
+
 /**
  * @author Simone Gentili
  */
-public class SouthPanel
-        extends AbstractFirstComponent {
+public class UnoButtonPanel
+        extends AbstractFirstComponent
+        implements Observer, Restorable {
 
-    // The SouthPanel instance.
-    private static SouthPanel instance;
+    // The UnoButton instance.
+    private static UnoButtonPanel instance;
 
-    // Builds the SouthPanel instance.
-    private SouthPanel() {}
+    // Builds the UnoButton instance.
+    private UnoButtonPanel() {}
 
     /**
-     * Returns the SouthPanel instance.
-     * @return The SouthPanel instance.
+     * Returns the UnoButton instance.
+     * @return The UnoButton instance.
      */
-    public static SouthPanel getInstance() {
-        if(instance == null) instance = new SouthPanel();
+    public static UnoButtonPanel getInstance() {
+        if(instance == null) instance = new UnoButtonPanel();
         return instance;
     }
 
-    /** Initialize the SouthPanel instance. */
     public void init() {
         setOpaque(false);
-        setLayout(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
+        setLayout(new BorderLayout());
+        add(Objects.requireNonNull(getFirstComponent()), BorderLayout.CENTER);
+        getFirstComponent().setEnabled(false);
+    }
 
-        // Cards panel.
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 0.0;
-        gbc.weighty = 0.0;
-        gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,20,25);
-        gbc.ipadx = 0;
-        gbc.ipady = 0;
-        this.add(Objects.requireNonNull(getFirstComponent()), gbc);
+    @Override
+    public void update(@NotNull Object object) {
+        if(object instanceof UnoCardController<?>) {
+            Objects.requireNonNull(getFirstComponent()).setEnabled(true);
+        } else throw new IllegalArgumentException(
+                "Invalid object type: " + object.getClass() +
+                        ". UnoCardController type expected.");
+    }
+
+    @Override
+    public void restore() {
+        Objects.requireNonNull(getFirstComponent()).setEnabled(false);
     }
 
 }

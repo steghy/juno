@@ -27,10 +27,10 @@ package juno.view.pages.new_game.single_player.match.panels.center.deck;
 
 import juno.controller.new_game.human.DrawAction;
 import juno.controller.new_game.Mover;
+import juno.model.subjects.shift.TurnMover;
 import juno.view.button.Button;
 import juno.view.button.ButtonCreator;
 import juno.view.util.ImageResizer;
-import juno.view.util.RotatedIcon;
 
 import javax.swing.*;
 
@@ -48,7 +48,7 @@ public class DeckPanelConfigurator {
         DeckPanel deckPanel = DeckPanel.getInstance();
 
         // Component.
-        AbstractButton deckButton = ButtonCreator.getInstance().create(Button.COVER, RotatedIcon.Rotate.ABOUT_CENTER);
+        AbstractButton deckButton = ButtonCreator.getInstance().create(Button.COVER, null);
 
         // Image resizing.
         ImageResizer.resize(deckButton, 3.0);
@@ -57,7 +57,8 @@ public class DeckPanelConfigurator {
         deckButton.addActionListener(DrawAction.getInstance());
 
         // Observer / Observable.
-        Mover.getInstance().addObserver(deckPanel);
+        TurnMover.getInstance().addObserver(deckPanel);
+        DrawAction.getInstance().addObserver(deckPanel);
 
         // Main component setting.
         deckPanel.setFirstComponent(deckButton);

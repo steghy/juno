@@ -28,8 +28,10 @@ package juno.view.pages.new_game.single_player.match.panels.south;
 import juno.controller.log_out.Restorable;
 import juno.controller.new_game.human.CardRemover;
 import juno.controller.new_game.Mover;
+import juno.controller.new_game.human.PassTurnAction;
 import juno.controller.util.SetterAction;
 import juno.model.card.InterfaceCard;
+import juno.model.deck.CompatibilityChecker;
 import juno.model.subjects.human.HumanPlayer;
 import juno.model.util.InterfaceSetter;
 import juno.model.util.Observer;
@@ -143,7 +145,8 @@ public class SouthCardPanel
             if(humanPlayer.isRemoved())
                 if(componentMap.containsKey(card)) {
                     removeComponent((Component) componentMap.get(card));
-                } else throw new IllegalArgumentException();
+                } else throw new IllegalArgumentException(
+                        card + " is not in: " + componentMap);
             else {
                 GCard<InterfaceCard> gCard = (GCard<InterfaceCard>)
                         GCardCreator.getInstance().create(card, RotatedIcon.Rotate.ABOUT_CENTER);
@@ -152,7 +155,9 @@ public class SouthCardPanel
                 gCard.addActionListener(setterAction);
                 gCard.addActionListener(CardRemover.getInstance());
                 setterAction.addObserver(this);
-                gCard.setEnabled(false);
+                for(Component c : getComponents()) c.setEnabled(false);
+                if(!componentMap.isEmpty())
+                    gCard.setEnabled(CompatibilityChecker.getInstance().isCompatible(card));
                 addComponent(gCard);
             }
         } else if(object instanceof Mover) {
@@ -160,6 +165,8 @@ public class SouthCardPanel
                     Arrays.stream(getComponents())
                             .map(component -> (GCard<InterfaceCard>) component).toList()
             );
+        } else if(object instanceof PassTurnAction) {
+            for(Component c : getComponents()) c.setEnabled(false);
         } else throw new IllegalArgumentException(
                     "Invalid object type: " + object.getClass() +
                             ". InterfaceAdder, InterfaceRemover " +

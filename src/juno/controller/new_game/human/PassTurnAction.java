@@ -23,9 +23,11 @@
  * SOFTWARE.
  */
 
-package juno.controller.new_game;
+package juno.controller.new_game.human;
 
 import juno.model.subjects.shift.InterfaceTurnMover;
+import juno.model.util.AbstractObservable;
+import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.event.ActionEvent;
@@ -34,24 +36,48 @@ import java.awt.event.ActionListener;
 /**
  * @author Simone Gentili
  */
-public class NextTurnAction
-        implements ActionListener {
+public class PassTurnAction
+        extends AbstractObservable
+        implements ActionListener, Observer {
 
     // The turn mover.
-    private final InterfaceTurnMover turnMover;
+    private InterfaceTurnMover turnMover;
+
+    // The PassTurnAction instance.
+    private static PassTurnAction instance;
+
+    // Builds the PassTurnAction instance.
+    private PassTurnAction() {}
 
     /**
-     * Builds a NextTurnAction with the
-     * specified turn mover object.
-     * @param turnMover An InterfaceTurnMover object.
+     * Returns the PassTurnAction instance.
+     * @return The PassTurnAction instance.
      */
-    public NextTurnAction(@NotNull InterfaceTurnMover turnMover) {
+    public static PassTurnAction getInstance() {
+        if(instance == null) instance = new PassTurnAction();
+        return instance;
+    }
+
+    /**
+     * Sets the turn mover of this object.
+     * @param turnMover An InterfaceTurnMover instance.
+     */
+    public void setTurnMover(@NotNull InterfaceTurnMover turnMover) {
         this.turnMover = turnMover;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         turnMover.next();
+        updateAll();
+    }
+
+    @Override
+    public void update(Object object) {
+        if(object instanceof CardTimer ||
+                object instanceof DiscardedCardSetter<?>) {
+            actionPerformed(null);
+        }
     }
 
 }

@@ -28,6 +28,7 @@ package juno.controller.new_game;
 import juno.controller.new_game.dispenser.InterfaceCardDispenser;
 import juno.model.card.InterfaceCard;
 import juno.model.subjects.InterfacePlayer;
+import juno.model.subjects.shift.TurnMover;
 import juno.model.util.AbstractObservable;
 import juno.model.util.Donut;
 import juno.model.util.InterfaceProvider;
@@ -103,6 +104,7 @@ public class GameStarter
         Donut<InterfacePlayer<?>> players =
                 (Donut<InterfacePlayer<?>>) Objects.requireNonNull(Objects.requireNonNull(provider).provide());
         players.initialize(player);
+        // TurnMover.getInstance().next();
         Objects.requireNonNull(dispenser).dispense();
     }
 

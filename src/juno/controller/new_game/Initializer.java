@@ -28,31 +28,53 @@ package juno.controller.new_game;
 import juno.controller.new_game.dispenser.CardController;
 import juno.controller.new_game.dispenser.CardDispenser;
 import juno.controller.new_game.dispenser.OneCardDispenser;
-import juno.controller.new_game.human.CardRemover;
-import juno.controller.new_game.human.DrawAction;
+import juno.controller.new_game.human.*;
+import juno.controller.new_game.penalty.PenaltyExecutor;
+import juno.controller.new_game.penalty.UnoCardController;
+import juno.controller.util.InterfaceInitializer;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.*;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.ai.InterfaceDifficulty;
 import juno.model.subjects.factory.AiPlayerFactory;
-import juno.model.subjects.factory.InterfaceAiPlayerGenerator;
 import juno.model.subjects.human.HumanPlayer;
+import juno.model.subjects.shift.CurrentPlayerProvider;
 import juno.model.subjects.shift.PlayersProvider;
 import juno.model.subjects.shift.TurnMover;
 
 /**
  * @author Simone Gentili
  */
-public class Initializer {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // Builds an Initializer object.
+    // The Initializer instance.
+    private static Initializer instance;
+
+    // Builds the Initializer instance.
     private Initializer() {}
 
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
     @SuppressWarnings("unchecked")
-    public static void initialize() {
-        // Components.
+    public void initialize() {
         // Game initializer.
         GameInitializer gameInitializer = GameInitializer.getInstance();
+
+        // Deck factory.
+        DeckFactory deckFactory = DeckFactory.getInstance();
+
+        // Ai player factory.
+        AiPlayerFactory<?, InterfaceDifficulty> aiPlayerFactory =
+                (AiPlayerFactory<?, InterfaceDifficulty>) AiPlayerFactory.getInstance();
 
         // Draw action.
         DrawAction<InterfaceCard> drawAction = (DrawAction<InterfaceCard>) DrawAction.getInstance();
@@ -102,12 +124,41 @@ public class Initializer {
         // Human player.
         HumanPlayer<InterfaceCard> humanPlayer = (HumanPlayer<InterfaceCard>) HumanPlayer.getInstance();
 
+        // Penalty executor.
+        PenaltyExecutor<InterfaceCard> penaltyExecutor =
+                (PenaltyExecutor<InterfaceCard>) PenaltyExecutor.getInstance();
+
+        // Current player provider.
+        CurrentPlayerProvider<InterfacePlayer<InterfaceCard>> currentPlayerProvider =
+                (CurrentPlayerProvider<InterfacePlayer<InterfaceCard>>) CurrentPlayerProvider.getInstance();
+
+        // Uno card controller.
+        UnoCardController<InterfaceCard> unoCardController =
+                (UnoCardController<InterfaceCard>) UnoCardController.getInstance();
+
+        // Pass turn action.
+        PassTurnAction passTurnAction = PassTurnAction.getInstance();
+
+        // Card timer.
+        CardTimer cardTimer = CardTimer.getInstance();
+
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        // Card timer.
+        drawAction.addObserver(cardTimer);
+
+        // Pass turn action.
+        passTurnAction.setTurnMover(turnMover);
+        cardTimer.addObserver(passTurnAction);
+        discardedCardSetter.addObserver(passTurnAction);
 
         // Mover.
         mover.setTurnMover(turnMover);
         mover.setDeck(deck);
         mover.setDiscardedPile(discardedPile);
+        passTurnAction.addObserver(mover);
+        playersProvider.addObserver(mover);
+        cardDispenser.addObserver(mover);
 
         // Card remover.
         cardRemover.setPlayer(humanPlayer);
@@ -117,11 +168,10 @@ public class Initializer {
 
         // Players provider.
         playersProvider.addObserver(oneCardDispenser);
-        playersProvider.addObserver(mover);
 
         // Game initializer.
-        gameInitializer.setAiGenerator((InterfaceAiPlayerGenerator<InterfaceDifficulty>) AiPlayerFactory.getInstance());
-        gameInitializer.setDeckGenerator(DeckFactory.getInstance());
+        gameInitializer.setAiGenerator(aiPlayerFactory);
+        gameInitializer.setDeckGenerator(deckFactory);
         gameInitializer.addObserver(oneCardDispenser);
 
         // One card dispenser.
@@ -131,7 +181,6 @@ public class Initializer {
         // Card dispenser.
         cardDispenser.setProvider(playersProvider);
         cardDispenser.setDeck(deck);
-        cardDispenser.addObserver(mover);
 
         // First discarded card.
         firstDiscardedCardManager.setDiscardedPile(discardedPile);
@@ -146,6 +195,14 @@ public class Initializer {
         gameStarter.setProvider(playersProvider);
         gameStarter.setDiscardedCardManager(firstDiscardedCardManager);
         cardController.addObserver(gameStarter);
+
+        // Penalty executor.
+        penaltyExecutor.setDeck(deck);
+        penaltyExecutor.setProvider(currentPlayerProvider);
+
+        // Uno card controller.
+        unoCardController.setProvider(currentPlayerProvider);
+        unoCardController.setPenaltyExecutor(penaltyExecutor);
 
         // Draw action.
         drawAction.setDeck(deck);
