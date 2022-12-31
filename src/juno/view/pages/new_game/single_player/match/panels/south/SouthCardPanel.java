@@ -26,6 +26,8 @@
 package juno.view.pages.new_game.single_player.match.panels.south;
 
 import juno.controller.log_out.Restorable;
+import juno.controller.new_game.GameStarter;
+import juno.controller.new_game.dispenser.InterfaceCardDispenser;
 import juno.controller.new_game.human.CardRemover;
 import juno.controller.new_game.Mover;
 import juno.controller.new_game.human.PassTurnAction;
@@ -54,6 +56,12 @@ public class SouthCardPanel
         extends JPanel
         implements Observer, Restorable {
 
+    // The 'Game is started' boolean value.
+    private boolean gameStarted;
+
+    // The dispenser boolean value.
+    private boolean dispenser;
+
     // 'Left' insects value parameter.
     private final int leftInsectsParameter;
 
@@ -74,6 +82,8 @@ public class SouthCardPanel
 
     // Builds the SouthCardPanel instance.
     private SouthCardPanel() {
+        gameStarted = false;
+        dispenser = false;
         componentMap = new HashMap<>();
         leftInsectsParameter = 50;
         setOpaque(false);
@@ -153,16 +163,17 @@ public class SouthCardPanel
                         GCardCreator.getInstance().create(card, RotatedIcon.Rotate.ABOUT_CENTER);
                 ImageResizer.resize(gCard, 2.5);
 
-                // GCard action listeners.
-                SetterAction<InterfaceCard> setterAction =
-                        new SetterAction<>(gCard.object(), discardedCardSetter);
-                gCard.addActionListener(setterAction);
-                gCard.addActionListener(CardRemover.getInstance());
+                if(gameStarted) {
+                    SetterAction<InterfaceCard> setterAction =
+                            new SetterAction<>(gCard.object(), discardedCardSetter);
+                    gCard.addActionListener(setterAction);
+                    gCard.addActionListener(CardRemover.getInstance());
+                }
 
-                // Case of the drawn card
-                for(Component c : getComponents()) c.setEnabled(false);
-                if(!componentMap.isEmpty())
+                if(dispenser) {
+                    for (Component c : getComponents()) c.setEnabled(false);
                     gCard.setEnabled(CompatibilityChecker.getInstance().isCompatible(card));
+                }
 
                 // Adding the card.
                 addComponent(gCard);
@@ -174,6 +185,10 @@ public class SouthCardPanel
             );
         } else if(object instanceof PassTurnAction) {
             for(Component c : getComponents()) c.setEnabled(false);
+        } else if(object instanceof InterfaceCardDispenser) {
+            dispenser = true;
+        } else if(object instanceof GameStarter) {
+            gameStarted = true;
         } else throw new IllegalArgumentException(
                     "Invalid object type: " + object.getClass() +
                             ". InterfaceAdder, InterfaceRemover " +
@@ -184,9 +199,9 @@ public class SouthCardPanel
 
     @Override
     public void restore() {
-        HumanPlayer.getInstance().removeObserver(this);
         setOpaque(false);
-        gbc.insets = new Insets(0,0,0,0);
+        gameStarted = false;
+        dispenser = false;
         componentMap.clear();
         removeAll();
         revalidate();

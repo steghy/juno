@@ -23,62 +23,62 @@
  * SOFTWARE.
  */
 
-package juno.controller.new_game.human;
+package juno.controller.new_game.restorer;
 
-import juno.model.subjects.shift.InterfaceTurnMover;
-import juno.model.util.AbstractObservable;
+import juno.controller.log_out.Restorable;
+import juno.controller.util.Stoppable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Simone Gentili
  */
-public class PassTurnAction
-        extends AbstractObservable
-        implements ActionListener, Observer {
+public class Restorer
+        implements Restorable, Observer {
 
-    // The turn mover.
-    private InterfaceTurnMover turnMover;
+    // The restorable objects list
+    private final List<Restorable> restorableList;
 
-    // The PassTurnAction instance.
-    private static PassTurnAction instance;
+    // The Restorer instance.
+    private static Restorer instance;
 
-    // Builds the PassTurnAction instance.
-    private PassTurnAction() {}
+    // Builds the Restorer instance.
+    private Restorer() {
+        restorableList = new ArrayList<>();
+    }
 
     /**
-     * Returns the PassTurnAction instance.
-     * @return The PassTurnAction instance.
+     * Returns the Restorer instance.
+     * @return The Restorer instance.
      */
-    public static PassTurnAction getInstance() {
-        if(instance == null) instance = new PassTurnAction();
+    public static Restorer getInstance() {
+        if(instance == null) instance = new Restorer();
         return instance;
     }
 
     /**
-     * Sets the turn mover of this object.
-     * @param turnMover An InterfaceTurnMover instance.
+     * Returns the restorable objects list of this object.
+     * @return A List object.
      */
-    public void setTurnMover(@NotNull InterfaceTurnMover turnMover) {
-        this.turnMover = turnMover;
+    public List<Restorable> getRestorableList() {
+        return restorableList;
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        turnMover.next();
-        updateAll();
+    public void restore() {
+        restorableList.forEach(Restorable::restore);
     }
 
     @Override
-    public void update(Object object) {
-        if(object instanceof CardTimer)
-            actionPerformed(null);
-        else if(object instanceof DiscardedCardSetter<?>) {
-            actionPerformed(null);
-        }
+    public void update(@NotNull Object object) {
+        if(object instanceof Stoppable) {
+            restore();
+        } else throw new IllegalArgumentException(
+                "Invalid object type: " + object.getClass() +
+                        ". Stoppable type expected");
     }
 
 }

@@ -26,9 +26,10 @@
 package juno.controller.new_game;
 
 import juno.controller.new_game.dispenser.InterfaceCardDispenser;
-import juno.controller.new_game.human.PassTurnAction;
+import juno.controller.util.Stoppable;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.ai.InterfaceAi;
+import juno.model.subjects.shift.InterfaceTurnMover;
 import juno.model.util.Donut;
 import juno.model.util.InterfaceProvider;
 import juno.model.util.Observable;
@@ -47,7 +48,7 @@ import java.util.Objects;
  */
 public class Mover<T>
         extends AbstractMover<T>
-        implements ActionListener, Observer, Observable {
+        implements ActionListener, Observer, Observable, Stoppable {
 
     // The players.
     private Donut<InterfacePlayer<T>> players;
@@ -85,11 +86,11 @@ public class Mover<T>
             if(card == null) {
                 current.add(Objects.requireNonNull(getDeck()).draw());
                 card = (T) ai.move();
-            }
-            if(card != null) {
-                Objects.requireNonNull(getDiscardedPile()).discard(card);
+            } if(card != null) {
                 current.remove(card);
-            } Objects.requireNonNull(getTurnMover()).next();
+                Objects.requireNonNull(getDiscardedPile()).discard(card);
+            } else
+                Objects.requireNonNull(getTurnMover()).next();
         } else {
             timer.stop();
             updateAll();
@@ -99,8 +100,10 @@ public class Mover<T>
     @Override
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceCardDispenser ||
-                object instanceof PassTurnAction) {
+        if(object instanceof InterfaceCardDispenser) {
+            Objects.requireNonNull(getTurnMover()).next();
+            timer.start();
+        } else if(object instanceof InterfaceTurnMover) {
             timer.start();
         } else if(object instanceof InterfaceProvider<?> provider) {
             players = (Donut<InterfacePlayer<T>>) provider.provide();
@@ -122,6 +125,11 @@ public class Mover<T>
     @Override
     public void updateAll() {
         observerList.forEach(observer -> observer.update(this));
+    }
+
+    @Override
+    public void stop() {
+        timer.stop();
     }
 
 }

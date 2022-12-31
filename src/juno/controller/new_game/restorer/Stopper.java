@@ -23,26 +23,53 @@
  * SOFTWARE.
  */
 
-package juno.init.initializer;
+package juno.controller.new_game.restorer;
+
+import juno.controller.util.Stoppable;
+import juno.model.util.AbstractObservable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Simone Gentili
  */
-public class ControllerInitializer {
+public class Stopper
+        extends AbstractObservable
+        implements Stoppable {
 
-    // Builds the ControllerInitializer.
-    private ControllerInitializer() {}
+    // The stoppable objects list.
+    private final List<Stoppable> stoppableList;
 
-    /** Initialize the juno.controller package. */
-    public static void initialize() {
-        juno.controller.pre_access.Initializer.initialize();
-        juno.controller.log_out.Initializer.getInstance().initialize();
-        juno.controller.pre_access.loggers.Initializer.initialize();
-        juno.controller.pre_access.registration.Initializer.initialize();
-        juno.controller.pre_access.log_in.Initializer.initialize();
-        juno.controller.new_game.Initializer.getInstance().initialize();
-        juno.controller.new_game.connector.Initializer.getInstance().initialize();
-        juno.controller.new_game.restorer.Initializer.getInstance().initialize();
+    // The Stopper instance.
+    private static Stopper instance;
+
+    // Builds the Stopper instance.
+    private Stopper() {
+        stoppableList = new ArrayList<>();
+    }
+
+    /**
+     * Returns the Stopper instance.
+     * @return The Stopper instance.
+     */
+    public static Stopper getInstance() {
+        if(instance == null) instance = new Stopper();
+        return instance;
+    }
+
+    /**
+     * Returns the stoppable objects list of this object.
+     * @return A List object.
+     */
+    public List<Stoppable> getStoppableList() {
+        return stoppableList;
+    }
+
+    @Override
+    public void stop() {
+        stoppableList.forEach(Stoppable::stop);
+        updateAll();
     }
 
 }

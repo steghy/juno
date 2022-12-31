@@ -25,6 +25,7 @@
 
 package juno.controller.new_game.human;
 
+import juno.controller.util.Stoppable;
 import juno.model.util.AbstractObservable;
 import juno.model.util.Observer;
 
@@ -37,7 +38,7 @@ import java.awt.event.ActionListener;
  */
 public class CardTimer
         extends AbstractObservable
-        implements ActionListener, Observer {
+        implements ActionListener, Observer, Stoppable {
 
     // The timer
     private final Timer timer;
@@ -73,6 +74,11 @@ public class CardTimer
         else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". DrawAction expected.");
+    }
+
+    @Override
+    public void stop() {
+        timer.stop();
     }
 
 }

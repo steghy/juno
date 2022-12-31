@@ -70,7 +70,6 @@ public class ColorsPanelInitializer
             ImageResizer.resize(gColor, 4.5);
         });
         // Observer / Observable.
-        Mover.getInstance().addObserver(colorsPanel);
         colorsPanel.init();
     }
 

@@ -30,7 +30,6 @@ import juno.model.util.InterfaceProvider;
 import juno.model.util.InterfaceSetter;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
-import juno.view.pages.new_game.single_player.match.panels.center.discarded_pile.DiscardedPilePanel;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

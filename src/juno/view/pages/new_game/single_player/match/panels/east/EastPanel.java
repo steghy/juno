@@ -58,7 +58,7 @@ public class EastPanel
         GridBagConstraints gbc = new GridBagConstraints();
 
         // East cards panel.
-        gbc.gridx = 0;
+        gbc.gridx = 1;
         gbc.gridy = 0;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;

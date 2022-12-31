@@ -27,14 +27,10 @@ package juno.view.pages.new_game.single_player.match.panels.center;
 
 import juno.controller.new_game.penalty.PenaltyExecutor;
 import juno.controller.new_game.penalty.UnoCardController;
+import juno.controller.new_game.restorer.Stopper;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.PanelChanger;
-import juno.controller.util.RestoreAction;
 import juno.controller.util.StopAction;
-import juno.model.deck.ActualColorManager;
-import juno.model.deck.Deck;
-import juno.model.deck.DiscardedPile;
-import juno.model.subjects.human.HumanPlayer;
 import juno.view.button.Button;
 import juno.view.button.ButtonCreator;
 import juno.view.pages.new_game.single_player.card.SinglePlayerCardPanel;
@@ -44,10 +40,6 @@ import juno.view.pages.new_game.single_player.match.panels.center.colors.ColorsP
 import juno.view.pages.new_game.single_player.match.panels.center.deck.DeckPanel;
 import juno.view.pages.new_game.single_player.match.panels.center.discarded_pile.DiscardedPilePanel;
 import juno.view.pages.new_game.single_player.match.panels.center.uno_button.UnoButtonPanel;
-import juno.view.pages.new_game.single_player.match.panels.east.EastCardPanel;
-import juno.view.pages.new_game.single_player.match.panels.north.NorthCardPanel;
-import juno.view.pages.new_game.single_player.match.panels.south.SouthCardPanel;
-import juno.view.pages.new_game.single_player.match.panels.west.WestCardPanel;
 import juno.view.util.ImageResizer;
 
 import javax.swing.*;
@@ -81,24 +73,10 @@ public class CenterPanelConfigurator {
         // Exit button.
         exitButton.addActionListener(new ChangePanelAction(
                 new PanelChanger(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MODE_PANEL)));
-        exitButton.addActionListener(new RestoreAction(
-                HumanPlayer.getInstance(),
-                Deck.getInstance(),
-                DiscardedPile.getInstance(),
-                ActualColorManager.getInstance(),
-                ActualColorPanel.getInstance(),
-                CirclePanel.getInstance(),
-                ColorsPanel.getInstance(),
-                DeckPanel.getInstance(),
-                DiscardedPilePanel.getInstance(),
-                NorthCardPanel.getInstance(),
-                SouthCardPanel.getInstance(),
-                EastCardPanel.getInstance(),
-                WestCardPanel.getInstance(),
-                unoButtonPanel));
+        exitButton.addActionListener(new StopAction(Stopper.getInstance(), null));
 
         // Uno button.
-        unoButton.addActionListener(new StopAction(PenaltyExecutor.getInstance()));
+        unoButton.addActionListener(new StopAction(PenaltyExecutor.getInstance(), unoButton));
 
         // Observer / Observable.
         UnoCardController.getInstance().addObserver(unoButtonPanel);

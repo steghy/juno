@@ -74,15 +74,14 @@ public class Connector
     @Override
     public void connect(@NotNull List<Observable> players) {
         map.clear();
+        // Optimize !.
         if(players.size() == 2) {
             players.get(0).addObserver(north);
-            players.get(1).addObserver(south);
             map.put(players.get(0), north);
             map.put(players.get(1), south);
         } else if(players.size() == 3) {
             players.get(0).addObserver(west);
             players.get(1).addObserver(north);
-            players.get(2).addObserver(south);
             map.put(players.get(0), west);
             map.put(players.get(1), north);
             map.put(players.get(2), south);
@@ -90,7 +89,6 @@ public class Connector
             players.get(0).addObserver(west);
             players.get(1).addObserver(north);
             players.get(2).addObserver(east);
-            players.get(3).addObserver(south);
             map.put(players.get(0), west);
             map.put(players.get(1), north);
             map.put(players.get(2), east);

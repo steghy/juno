@@ -28,7 +28,6 @@ package juno.controller.new_game;
 import juno.controller.new_game.dispenser.InterfaceCardDispenser;
 import juno.model.card.InterfaceCard;
 import juno.model.subjects.InterfacePlayer;
-import juno.model.subjects.shift.TurnMover;
 import juno.model.util.AbstractObservable;
 import juno.model.util.Donut;
 import juno.model.util.InterfaceProvider;
@@ -53,10 +52,6 @@ public class GameStarter
     // The Players provider.
     @Nullable
     private InterfaceProvider<?> provider;
-
-    // The first discarded card manager.
-    @Nullable
-    private InterfaceFirstDiscardedCardManager discardedCardManager;
 
     // The GameStarter instance.
     private static GameStarter instance;
@@ -89,23 +84,13 @@ public class GameStarter
         this.provider = provider;
     }
 
-    /**
-     * Sets the first discarded card manager of this object.
-     * @param discardedCardManager An InterfaceFirstDiscardedCardManager object.
-     */
-    public void setDiscardedCardManager(@NotNull InterfaceFirstDiscardedCardManager discardedCardManager) {
-        this.discardedCardManager = discardedCardManager;
-    }
-
     @SuppressWarnings("unchecked")
     public void start(@NotNull InterfacePlayer<InterfaceCard> player) {
         updateAll();
-        Objects.requireNonNull(discardedCardManager).discardFirstCard();
         Donut<InterfacePlayer<?>> players =
                 (Donut<InterfacePlayer<?>>) Objects.requireNonNull(Objects.requireNonNull(provider).provide());
         players.initialize(player);
         Objects.requireNonNull(dispenser).dispense();
-        TurnMover.getInstance().next();
     }
 
     @Override

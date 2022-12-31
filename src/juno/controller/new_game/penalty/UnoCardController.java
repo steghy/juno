@@ -28,6 +28,7 @@ package juno.controller.new_game.penalty;
 import juno.model.deck.InterfaceDiscardedPile;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.ai.InterfaceAi;
+import juno.model.subjects.shift.TurnMover;
 import juno.model.util.AbstractObservable;
 import juno.model.util.InterfaceProvider;
 import juno.model.util.Observer;
@@ -35,6 +36,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
+import java.util.Random;
 
 /**
  * @author Simone Gentili
@@ -93,13 +95,18 @@ public class UnoCardController<T>
 
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceDiscardedPile<?>) {
-            InterfacePlayer<?> player = Objects.requireNonNull(provider).provide();
-            if(player.cards().size() == 1) {
-                Objects.requireNonNull(penaltyExecutor).execute();
-                if(player instanceof InterfaceAi<?,?> ai) {
-                    if(ai.uno()) penaltyExecutor.stop();
-                } else updateAll();
+        if(object instanceof InterfaceDiscardedPile<?> discardedPile) {
+            if(discardedPile.size() != 1) {
+                if((new Random().nextInt(3) == 0)) {
+                    InterfacePlayer<?> player = Objects.requireNonNull(provider).provide();
+                    if (player.cards().size() == 1) {
+                        Objects.requireNonNull(penaltyExecutor).execute();
+                        if (player instanceof InterfaceAi<?, ?> ai) {
+                            if (ai.uno())
+                                penaltyExecutor.stop();
+                        } else updateAll();
+                    }
+                } TurnMover.getInstance().next();
             }
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +

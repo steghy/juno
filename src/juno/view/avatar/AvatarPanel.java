@@ -37,6 +37,9 @@ import java.awt.*;
 public class AvatarPanel
         extends JPanel {
 
+    // The dimension parameter.
+    private final double dimensionParameter;
+
     // The avatar image label.
     private final ImageLabel avatarImage;
 
@@ -49,7 +52,8 @@ public class AvatarPanel
     /**
      * Builds an AvatarPanel.
      */
-    public AvatarPanel() {
+    public AvatarPanel(double dimensionParameter) {
+        this.dimensionParameter = dimensionParameter;
         avatarFrame = new ImageLabel();
         avatarImage = new ImageLabel();
         avatarName = new JLabel();
@@ -66,7 +70,9 @@ public class AvatarPanel
      */
     public AvatarPanel(@NotNull ImageLabel avatarImage,
                        @NotNull ImageLabel avatarFrame,
-                       @NotNull JLabel avatarName) {
+                       @NotNull JLabel avatarName,
+                       double dimensionParameter) {
+        this.dimensionParameter = dimensionParameter;
         this.avatarFrame = avatarFrame;
         this.avatarImage = avatarImage;
         this.avatarName = avatarName;
@@ -134,6 +140,12 @@ public class AvatarPanel
         return avatarImage;
     }
 
-
+    /**
+     * Returns the dimension parameter of this object.
+     * @return A double value.
+     */
+    public double getDimensionParameter() {
+        return dimensionParameter;
+    }
 
 }

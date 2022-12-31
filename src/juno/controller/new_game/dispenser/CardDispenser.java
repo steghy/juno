@@ -25,6 +25,7 @@
 
 package juno.controller.new_game.dispenser;
 
+import juno.controller.util.Stoppable;
 import juno.model.deck.InterfaceDeck;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.util.AbstractObservable;
@@ -40,11 +41,8 @@ import java.awt.event.ActionListener;
  * @author Simone Gentili
  */
 public class CardDispenser<T>
-        extends
-        AbstractObservable
-        implements
-        ActionListener,
-        InterfaceCardDispenser {
+        extends AbstractObservable
+        implements ActionListener, InterfaceCardDispenser, Stoppable {
 
     // The deck.
     private InterfaceDeck<T> deck;
@@ -106,6 +104,11 @@ public class CardDispenser<T>
     public void dispense() {
         size = provider.provide().size();
         timer.start();
+    }
+
+    @Override
+    public void stop() {
+        timer.stop();
     }
 
 }

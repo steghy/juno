@@ -25,8 +25,10 @@
 
 package juno.controller.new_game;
 
+import juno.controller.new_game.dispenser.InterfaceCardDispenser;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.*;
+import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -36,7 +38,7 @@ import java.util.Objects;
  */
 public class FirstDiscardedCardManager
         extends AbstractDeckUser<InterfaceCard>
-        implements InterfaceFirstDiscardedCardManager {
+        implements InterfaceFirstDiscardedCardManager, Observer {
 
     // The discarded pile
     private InterfaceDiscardedPile<InterfaceCard> discardedPile;
@@ -72,6 +74,15 @@ public class FirstDiscardedCardManager
             deck.add(0, card);
             card = deck.draw();
         } discardedPile.discard(card);
+    }
+
+    @Override
+    public void update(@NotNull Object object) {
+        if(object instanceof InterfaceCardDispenser) {
+            discardFirstCard();
+        } else throw new IllegalArgumentException(
+                "Invalid object type: " + object.getClass() +
+                        ". InterfaceCardDispenser type expected.");
     }
 
 }

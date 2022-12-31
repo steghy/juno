@@ -30,6 +30,7 @@ import juno.model.card.InterfaceCard;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.shift.Inverter;
 import juno.model.subjects.shift.PlayersProvider;
+import juno.model.subjects.shift.TurnJumper;
 import juno.model.subjects.shift.TurnMover;
 
 /**
@@ -92,7 +93,7 @@ public class Initializer {
         // Card effect activator settings.
         cardEffectActivator.setDeck(deck);
         cardEffectActivator.setInverter(Inverter.getInstance());
-        cardEffectActivator.setTurnMover(TurnMover.getInstance());
+        cardEffectActivator.setTurnJumper(TurnJumper.getInstance());
         cardEffectActivator.setPlayersProvider(playersProvider);
         cardEffectActivator.setActualColor(actualColor);
 

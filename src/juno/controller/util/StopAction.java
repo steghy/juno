@@ -27,6 +27,7 @@ package juno.controller.util;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -39,17 +40,22 @@ public class StopAction
     // The stoppable object.
     private final Stoppable stoppable;
 
+    // The component to disable.
+    private final Component c;
+
     /**
      * Builds a StopAction with the specified
      * stoppable object.
      * @param stoppable A Stoppable object.
      */
-    public StopAction(@NotNull Stoppable stoppable) {
+    public StopAction(@NotNull Stoppable stoppable, Component c) {
         this.stoppable = stoppable;
+        this.c = c;
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(@NotNull ActionEvent e) {
+        if(c != null) c.setEnabled(false);
         stoppable.stop();
     }
 

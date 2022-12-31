@@ -26,6 +26,7 @@
 package juno.controller.new_game.dispenser;
 
 import juno.controller.new_game.GameInitializer;
+import juno.controller.util.Stoppable;
 import juno.model.deck.InterfaceDeck;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.util.AbstractObservable;
@@ -46,11 +47,7 @@ import java.util.List;
 public class OneCardDispenser<T>
         extends
         AbstractObservable
-        implements
-        ActionListener,
-        Observer,
-        InterfaceCardDispenser,
-        InterfaceProvider<List<InterfacePlayer<T>>> {
+        implements ActionListener, Observer, InterfaceCardDispenser, InterfaceProvider<List<InterfacePlayer<T>>>, Stoppable {
 
     // The deck.
     private InterfaceDeck<T> deck;
@@ -132,6 +129,11 @@ public class OneCardDispenser<T>
         } else if(object instanceof GameInitializer) {
             dispense();
         }
+    }
+
+    @Override
+    public void stop() {
+        timer.stop();
     }
 
 }

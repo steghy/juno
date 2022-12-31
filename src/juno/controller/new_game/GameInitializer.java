@@ -76,7 +76,6 @@ public class GameInitializer
 
     @Override
     public void initialize() {
-        // Generates the players and the deck.
         aiGenerator.generate(GameData.getPlayers() - 1,
                 GameData.getDifficulty());
         deckGenerator.generate();

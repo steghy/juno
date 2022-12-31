@@ -25,12 +25,16 @@
 
 package juno.view.pages.new_game.single_player.match.panels.south;
 
+import juno.controller.new_game.GameStarter;
+import juno.controller.new_game.dispenser.CardDispenser;
 import juno.controller.new_game.human.DiscardedCardSetter;
 import juno.controller.new_game.Mover;
 import juno.controller.new_game.human.PassTurnAction;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.CompatibilityChecker;
+import juno.model.subjects.human.HumanPlayer;
 import juno.model.util.InterfaceSetter;
+import juno.view.avatar.UserAvatarPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -49,6 +53,9 @@ public class SouthPanelConfigurator {
         // Main component.
         SouthPanel southPanel = SouthPanel.getInstance();
 
+        // Avatar panel.
+        UserAvatarPanel avatarPanel = new UserAvatarPanel(4.5);
+
         // Component.
         SouthCardPanel southCardPanel = SouthCardPanel.getInstance();
         CompatibleGCardEnabler compatibleGCardEnabler = CompatibleGCardEnabler.getInstance();
@@ -65,7 +72,10 @@ public class SouthPanelConfigurator {
 
         // Observer / Observable.
         Mover.getInstance().addObserver(southCardPanel);
+        HumanPlayer.getInstance().addObserver(southCardPanel);
         PassTurnAction.getInstance().addObserver(southCardPanel);
+        GameStarter.getInstance().addObserver(southCardPanel);
+        CardDispenser.getInstance().addObserver(southCardPanel);
 
         // Component setting.
         southCardPanel.setDiscardedCardSetter((InterfaceSetter<InterfaceCard>) DiscardedCardSetter.getInstance());
@@ -73,7 +83,8 @@ public class SouthPanelConfigurator {
         compatibleGCardEnabler.setCompatibilityChecker(CompatibilityChecker.getInstance());
 
         // Setting components.
-        southPanel.setFirstComponent(southCardScrollPanel);  // Avatar panel.
+        southPanel.setFirstComponent(southCardScrollPanel);  // Card scroll panel.
+        southPanel.setSecondComponent(avatarPanel);          // Avatar pane.
 
         // Main component initialization.
         southPanel.init();

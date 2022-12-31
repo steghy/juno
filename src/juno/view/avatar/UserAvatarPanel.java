@@ -37,15 +37,11 @@ import juno.view.gobject.avatars.GAvatarImageCreator;
 import juno.view.gobject.frames.GAvatarFrame;
 import juno.view.gobject.frames.GAvatarFrameCreator;
 import juno.view.util.ImageResizer;
-import juno.view.util.RotatedIcon;
 
 import java.util.Objects;
 
 public class UserAvatarPanel
         extends AvatarPanel implements Observer {
-
-    // The dimensionParameter.
-    private final double dimensionParameter;
 
     /**
      * Builds an AvatarPanel with the specified
@@ -54,8 +50,7 @@ public class UserAvatarPanel
      * @param dimensionParameter A double value.
      */
     public UserAvatarPanel(double dimensionParameter) {
-        super();
-        this.dimensionParameter = dimensionParameter;
+        super(dimensionParameter);
         AvatarNameSetter.getInstance().addObserver(this);
         AvatarImageSetter.getInstance().addObserver(this);
         AvatarFrameSetter.getInstance().addObserver(this);
@@ -69,8 +64,8 @@ public class UserAvatarPanel
         if(object instanceof AvatarImageSetter) {
             GAvatarImage<InterfaceAvatarImage> avatarImage =
                     (GAvatarImage<InterfaceAvatarImage>) GAvatarImageCreator.getInstance()
-                            .create(avatar.getAvatarImage(), RotatedIcon.Rotate.ABOUT_CENTER);
-            ImageResizer.resize(avatarImage, dimensionParameter * 2);
+                            .create(avatar.getAvatarImage(), null);
+            ImageResizer.resize(avatarImage, getDimensionParameter() * 2);
             Objects.requireNonNull(getAvatarImage()).setIcon(avatarImage.getIcon());
         }
 
@@ -78,8 +73,8 @@ public class UserAvatarPanel
         else if(object instanceof AvatarFrameSetter) {
             GAvatarFrame<InterfaceAvatarFrame> avatarFrame =
                     (GAvatarFrame<InterfaceAvatarFrame>) GAvatarFrameCreator.getInstance()
-                            .create(avatar.getAvatarFrame(), RotatedIcon.Rotate.ABOUT_CENTER);
-            ImageResizer.resize(avatarFrame, dimensionParameter);
+                            .create(avatar.getAvatarFrame(), null);
+            ImageResizer.resize(avatarFrame, getDimensionParameter());
             Objects.requireNonNull(getAvatarFrame()).setIcon(avatarFrame.getIcon());
         }
 

@@ -54,7 +54,7 @@ public abstract class AbstractCardEffectActivator<T, E, C>
      * Sets the turn mover of this object.
      * @param turnJumper An InterfaceTurnJumper object.
      */
-    public void setTurnMover(@NotNull InterfaceTurnMover turnJumper) {
+    public void setTurnJumper(@NotNull InterfaceTurnMover turnJumper) {
         this.turnJumper = turnJumper;
     }
 

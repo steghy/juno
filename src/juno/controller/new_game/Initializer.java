@@ -150,15 +150,14 @@ public class Initializer
         // Pass turn action.
         passTurnAction.setTurnMover(turnMover);
         cardTimer.addObserver(passTurnAction);
-        discardedCardSetter.addObserver(passTurnAction);
 
         // Mover.
         mover.setTurnMover(turnMover);
         mover.setDeck(deck);
         mover.setDiscardedPile(discardedPile);
-        passTurnAction.addObserver(mover);
         playersProvider.addObserver(mover);
         cardDispenser.addObserver(mover);
+        turnMover.addObserver(mover);
 
         // Card remover.
         cardRemover.setPlayer(humanPlayer);
@@ -191,8 +190,11 @@ public class Initializer
         // Game starter.
         gameStarter.setDispenser(cardDispenser);
         gameStarter.setProvider(playersProvider);
-        gameStarter.setDiscardedCardManager(firstDiscardedCardManager);
+        // gameStarter.setDiscardedCardManager(firstDiscardedCardManager);
         cardController.addObserver(gameStarter);
+
+        // First discarded card manager.
+        cardDispenser.addObserver(firstDiscardedCardManager);
 
         // Penalty executor.
         penaltyExecutor.setDeck(deck);
@@ -201,13 +203,11 @@ public class Initializer
         // Uno card controller.
         unoCardController.setProvider(currentPlayerProvider);
         unoCardController.setPenaltyExecutor(penaltyExecutor);
+        discardedPile.addObserver(unoCardController);
 
         // Draw action.
         drawAction.setDeck(deck);
         drawAction.setPlayer(humanPlayer);
-
-        // Connector initialization.
-        juno.controller.new_game.connector.Initializer.getInstance().initialize();
     }
 
 }
