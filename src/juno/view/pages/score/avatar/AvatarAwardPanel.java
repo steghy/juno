@@ -23,55 +23,50 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.score.avatar_frames_panel;
+package juno.view.pages.score.avatar;
 
-import juno.model.data.awards.frame.InterfaceAvatarFrame;
-import juno.view.gobject.frames.GAvatarFrame;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 
 /**
  * @author Simone Gentili
  */
-public class AvatarFramesPanel
+public class AvatarAwardPanel
         extends JPanel {
 
-    // The List of GFrame objects.
-    private final java.util.List<GAvatarFrame<InterfaceAvatarFrame>> gAvatarFrames;
+    // The 'left' insects parameter.
+    private final int leftInsectsParameter;
 
-    // The AvatarFramesPanel instance.
-    private static AvatarFramesPanel instance;
+    // The grid bag constraints.
+    private final GridBagConstraints gbc;
 
-    // Builds the AvatarFramesPanel instance.
-    private AvatarFramesPanel() {
-        gAvatarFrames = new ArrayList<>();
-    }
-
-    /**
-     * Returns the AvatarFramesPanel instance.
-     * @return The AvatarFramesPanel instance.
-     */
-    public static AvatarFramesPanel getInstance() {
-        if(instance == null) instance = new AvatarFramesPanel();
-        return instance;
-    }
-
-    /** Initialize the AvatarFramesPanel instance. */
-    public void init() {
+    /** Builds an AvatarAwardPanel instance. */
+    public AvatarAwardPanel() {
+        gbc = new GridBagConstraints();
+        leftInsectsParameter = 70;
         setOpaque(false);
-        setLayout(new GridLayout(1, 1));
-        gAvatarFrames.forEach(this::add);
+        setLayout(new GridBagLayout());
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.LINE_START;
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
     }
 
     /**
-     * Returns the graphic avatar frame list of this object.
-     * @return A List object.
+     * Adds a Component object to this object.
+     * @param c A Component.
      */
-    public java.util.List<GAvatarFrame<InterfaceAvatarFrame>> gAvatarFrames() {
-        return gAvatarFrames;
+    public void addComponent(@NotNull Component c) {
+        if(getComponents().length == 0) gbc.insets = new Insets(0,  0, 0, 0);
+        else gbc.insets = new Insets(0, gbc.insets.left + leftInsectsParameter, 0, 0);
+        super.add(c, gbc);
+        revalidate();
+        repaint();
     }
 
 }

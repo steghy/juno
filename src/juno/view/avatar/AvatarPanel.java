@@ -46,7 +46,6 @@ public class AvatarPanel
     // The avatar name label.
     private final JLabel avatarName;
 
-
     /**
      * Builds an AvatarPanel.
      */

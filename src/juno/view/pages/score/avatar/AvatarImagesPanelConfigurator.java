@@ -23,56 +23,39 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.score.avatar_images_panel;
+package juno.view.pages.score.avatar;
 
+import juno.controller.util.GSetterAction;
+import juno.model.data.avatar.AvatarImageSetter;
+import juno.model.data.awards.avatar.AvatarImage;
 import juno.model.data.awards.avatar.InterfaceAvatarImage;
 import juno.view.gobject.avatars.GAvatarImage;
+import juno.view.gobject.avatars.GAvatarImageCreator;
 import juno.view.util.ImageResizer;
-import org.jetbrains.annotations.NotNull;
 
-import javax.swing.*;
-import java.awt.*;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Simone Gentili
  */
-public class AvatarImagesPanel
-        extends JPanel {
+public class AvatarImagesPanelConfigurator {
 
-    // List of GAvatarImage objects.
-    private final java.util.List<GAvatarImage<InterfaceAvatarImage>> gAvatarImages;
+    // Builds a AvatarFramesPanelConfigurator object.
+    private AvatarImagesPanelConfigurator() {}
 
-    // The AvatarImagesPanel instance.
-    private static AvatarImagesPanel instance;
-
-    // Builds the AvatarImagesPanel instance.
-    private AvatarImagesPanel() {
-        gAvatarImages = new ArrayList<>();
-    }
-
-    /**
-     * Returns the AvatarImagesPanel instance.
-     * @return The AvatarImagesPanel instance.
-     */
-    public static AvatarImagesPanel getInstance() {
-        if(instance == null) instance = new AvatarImagesPanel();
-        return instance;
-    }
-
-    /** Initialize the AvatarImagesPanel instance. */
-    public void init() {
-        setOpaque(false);
-        setLayout(new GridLayout(1, 1));
-        gAvatarImages.forEach(this::add);
-    }
-
-    /**
-     * Returns the graphic avatar images List of this object.
-     * @return A List object.
-     */
-    public java.util.List<GAvatarImage<InterfaceAvatarImage>> gAvatarImages() {
-        return gAvatarImages;
+    public static void configure(AvatarAwardPanel panel) {
+        // Creator.
+        GAvatarImageCreator creator = GAvatarImageCreator.getInstance();
+        AvatarImageSetter avatarImageSetter = AvatarImageSetter.getInstance();
+        List.of(AvatarImage.values()).forEach(avatarImage -> {
+                    GAvatarImage<InterfaceAvatarImage> gAvatarImage =
+                            (GAvatarImage<InterfaceAvatarImage>) creator.create(avatarImage, null);
+                    gAvatarImage.addActionListener(new GSetterAction<>(gAvatarImage, avatarImageSetter));
+                    gAvatarImage.setEnabled(false);
+                    ImageResizer.resize(gAvatarImage, 4.5);
+                    avatarImage.addObserver(gAvatarImage);
+                    panel.add(gAvatarImage);
+                });
     }
 
 }

@@ -26,13 +26,9 @@
 package juno.view.gobject.color;
 
 import juno.controller.util.InterfaceInitializer;
-import juno.model.card.colors.Color;
 import juno.model.requester.PathProviderAssembler;
 import juno.model.requester.ProgramDirectory;
 import juno.view.img_initializer.ImageComponentInitializer;
-import juno.view.util.RotatedIcon;
-
-import java.util.List;
 
 /**
  * @author Simone Gentili
@@ -58,15 +54,9 @@ public class Initializer
     @Override
     public void initialize() {
         GColorCreator gColorCreator = GColorCreator.getInstance();
-        GColorFactory gColorFactory = GColorFactory.getInstance();
-        GColorMapFactory gColorMapFactory = GColorMapFactory.getInstance();
         gColorCreator.setProvider(ProgramDirectory.COLORS);
         gColorCreator.setInitializer(ImageComponentInitializer.getInstance());
         gColorCreator.setAssembler(PathProviderAssembler.getInstance());
-        gColorFactory.setCreator(gColorCreator);
-        gColorMapFactory.setFactory(gColorFactory);
-        gColorFactory.addObserver(gColorMapFactory);
-        gColorFactory.generate(List.of(Color.values()), RotatedIcon.Rotate.ABOUT_CENTER);
     }
 
 }

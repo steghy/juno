@@ -34,7 +34,8 @@ import juno.model.deck.ActualColorManager;
 import juno.view.gobject.GObjectButton;
 import juno.view.gobject.color.GColorCreator;
 import juno.view.util.ImageResizer;
-import juno.view.util.RotatedIcon;
+
+import java.util.List;
 
 /**
  * @author Simone Gentili
@@ -61,23 +62,13 @@ public class ColorsPanelInitializer
     public void initialize() {
         ColorsPanel colorsPanel = ColorsPanel.getInstance();
         GColorCreator gColorCreator = GColorCreator.getInstance();
-        GObjectButton<InterfaceColor> redButton = (GObjectButton<InterfaceColor>) gColorCreator.create(Color.RED, RotatedIcon.Rotate.ABOUT_CENTER);
-        GObjectButton<InterfaceColor> blueButton = (GObjectButton<InterfaceColor>) gColorCreator.create(Color.BLUE, RotatedIcon.Rotate.ABOUT_CENTER);
-        GObjectButton<InterfaceColor> greenButton = (GObjectButton<InterfaceColor>) gColorCreator.create(Color.GREEN, RotatedIcon.Rotate.ABOUT_CENTER);
-        GObjectButton<InterfaceColor> yellowButton = (GObjectButton<InterfaceColor>) gColorCreator.create(Color.YELLOW, RotatedIcon.Rotate.ABOUT_CENTER);
         ActualColorManager actualColorManager = ActualColorManager.getInstance();
-        redButton.addActionListener(new GSetterAction<>(redButton, actualColorManager));
-        blueButton.addActionListener(new GSetterAction<>(blueButton, actualColorManager));
-        greenButton.addActionListener(new GSetterAction<>(greenButton, actualColorManager));
-        yellowButton.addActionListener(new GSetterAction<>(yellowButton, actualColorManager));
-        ImageResizer.resize(redButton, 4.0);
-        ImageResizer.resize(blueButton, 4.0);
-        ImageResizer.resize(greenButton, 4.0);
-        ImageResizer.resize(yellowButton, 4.0);
-        colorsPanel.setFirstComponent(redButton);
-        colorsPanel.setSecondComponent(blueButton);
-        colorsPanel.setThirdComponent(yellowButton);
-        colorsPanel.setFourthComponent(greenButton);
+        List.of(Color.values()).forEach(color -> {
+            GObjectButton<InterfaceColor> gColor =
+                    (GObjectButton<InterfaceColor>) gColorCreator.create(color, null);
+            gColor.addActionListener(new GSetterAction<>(gColor, actualColorManager));
+            ImageResizer.resize(gColor, 4.5);
+        });
         // Observer / Observable.
         Mover.getInstance().addObserver(colorsPanel);
         colorsPanel.init();

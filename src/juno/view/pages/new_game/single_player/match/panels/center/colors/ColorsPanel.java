@@ -28,27 +28,32 @@ package juno.view.pages.new_game.single_player.match.panels.center.colors;
 import juno.controller.log_out.Restorable;
 import juno.controller.new_game.Mover;
 import juno.model.util.Observer;
-import juno.view.panels.AbstractFourthComponent;
 import org.jetbrains.annotations.NotNull;
 
+import javax.swing.*;
 import java.awt.*;
-import java.util.Objects;
 
 /**
  * @author Simone Gentili
  */
 public class ColorsPanel
-        extends
-        AbstractFourthComponent
-        implements
-        Observer,
-        Restorable {
+        extends JPanel
+        implements Observer, Restorable {
+
+    // The 'left' insects parameter.
+    private final int leftInsectsParameter;
+
+    // The grid bag constraints.
+    private final GridBagConstraints gbc;
 
     // The ColorsPanel instance.
     private static ColorsPanel instance;
 
     // Builds the ColorsPanel instance.
-    private ColorsPanel() {}
+    private ColorsPanel() {
+        leftInsectsParameter = 45;
+        this.gbc = new GridBagConstraints();
+    }
 
     /**
      * Returns the ColorsPanel instance.
@@ -63,9 +68,6 @@ public class ColorsPanel
     public void init() {
         setOpaque(false);
         setLayout(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-
-        // Red color.
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.weightx = 0.0;
@@ -74,45 +76,14 @@ public class ColorsPanel
         gbc.insets = new Insets(0,0,0,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        add(Objects.requireNonNull(getFirstComponent()), gbc);
-        getFirstComponent().setEnabled(false);
+    }
 
-        // Blue color.
-        gbc.gridx = 1;
-        gbc.gridy = 0;
-        gbc.weightx = 0.0;
-        gbc.weighty = 0.0;
-        gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,0,0);
-        gbc.ipadx = 0;
-        gbc.ipady = 0;
-        add(Objects.requireNonNull(getSecondComponent()), gbc);
-        getSecondComponent().setEnabled(false);
-
-        // Yellow color.
-        gbc.gridx = 2;
-        gbc.gridy = 0;
-        gbc.weightx = 0.0;
-        gbc.weighty = 0.0;
-        gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,0,0);
-        gbc.ipadx = 0;
-        gbc.ipady = 0;
-        add(Objects.requireNonNull(getThirdComponent()), gbc);
-        getThirdComponent().setEnabled(false);
-
-        // Green color.
-        gbc.gridx = 3;
-        gbc.gridy = 0;
-        gbc.weightx = 0.0;
-        gbc.weighty = 0.0;
-        gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,0,0);
-        gbc.ipadx = 0;
-        gbc.ipady = 0;
-        add(Objects.requireNonNull(getFourthComponent()), gbc);
-        getFourthComponent().setEnabled(false);
-
+    private void addComponent(@NotNull Component c) {
+        if(getComponents().length == 0) gbc.insets = new Insets(0,  0, 0, 0);
+        else gbc.insets = new Insets(0, gbc.insets.left + leftInsectsParameter, 0, 0);
+        super.add(c, gbc);
+        revalidate();
+        repaint();
     }
 
     @Override
@@ -126,7 +97,7 @@ public class ColorsPanel
 
     @Override
     public void restore() {
-        java.util.List.of(getComponents()).forEach(c -> setEnabled(false));
+        for(Component c : getComponents()) c.setEnabled(false);
     }
 
 }

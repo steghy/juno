@@ -56,11 +56,7 @@ public class TopCardPanel
         return instance;
     }
 
-    /**
-     * Initialize the TopCardPanel instance.
-     * @throws IllegalArgumentException if one of the components
-     *         of this instance has not been set.
-     */
+    /** Initialize the TopCardPanel instance. */
     public void init() {
         setOpaque(false);
         setLayout(new CardLayout());

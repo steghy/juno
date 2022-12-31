@@ -23,19 +23,17 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.score.avatar_frames_panel;
+package juno.view.pages.score.avatar;
 
 import juno.controller.util.GSetterAction;
 import juno.model.data.avatar.AvatarFrameSetter;
 import juno.model.data.awards.frame.AvatarFrame;
 import juno.model.data.awards.frame.InterfaceAvatarFrame;
 import juno.view.gobject.frames.GAvatarFrame;
-import juno.view.gobject.frames.GAvatarFrameFactory;
+import juno.view.gobject.frames.GAvatarFrameCreator;
 import juno.view.util.ImageResizer;
-import juno.view.util.RotatedIcon;
 
 import java.util.List;
-import java.util.Objects;
 
 /**
  * @author Simone Gentili
@@ -45,32 +43,19 @@ public class AvatarFramesPanelConfigurator {
     // Builds a AvatarFramesPanelConfigurator object.
     private AvatarFramesPanelConfigurator() {}
 
-    public static void configure() {
-        // Main Component.
-        AvatarFramesPanel avatarFramesPanel = AvatarFramesPanel.getInstance();
-
-        // Component.
-        GAvatarFrameFactory gAvatarFramesFactory = GAvatarFrameFactory.getInstance();
-
-        // Adding graphic avatar frames.
-        // Generation.
-        gAvatarFramesFactory.generate(List.of(AvatarFrame.values()), RotatedIcon.Rotate.ABOUT_CENTER);
-        List<GAvatarFrame<InterfaceAvatarFrame>> gAvatarFrames = avatarFramesPanel.gAvatarFrames();
-        // Getting.
-        Objects.requireNonNull(gAvatarFramesFactory.getGObjects())
-                .forEach(temp -> {
-                    GAvatarFrame<InterfaceAvatarFrame> gAvatarFrame = (GAvatarFrame<InterfaceAvatarFrame>) temp;
-                    gAvatarFrame.addActionListener(new GSetterAction<>(gAvatarFrame, AvatarFrameSetter.getInstance()));
+    public static void configure(AvatarAwardPanel panel) {
+        // Creator.
+        GAvatarFrameCreator creator = GAvatarFrameCreator.getInstance();
+        AvatarFrameSetter avatarFrameSetter = AvatarFrameSetter.getInstance();
+        List.of(AvatarFrame.values()).forEach(frame -> {
+                    GAvatarFrame<InterfaceAvatarFrame> gAvatarFrame =
+                            (GAvatarFrame<InterfaceAvatarFrame>) creator.create(frame, null);
+                    gAvatarFrame.addActionListener(new GSetterAction<>(gAvatarFrame, avatarFrameSetter));
                     gAvatarFrame.setEnabled(false);
-                    AvatarFrame.valueOf(gAvatarFrame.object().name()).addObserver(gAvatarFrame);
-                    gAvatarFrames.add(gAvatarFrame);
+                    frame.addObserver(gAvatarFrame);
+                    ImageResizer.resize(gAvatarFrame, 6.5);
+                    panel.addComponent(gAvatarFrame);
                 });
-
-        // ImageResizing.
-        gAvatarFrames.forEach(gAvatarFrame -> ImageResizer.resize(gAvatarFrame, 6.5));
-
-        // Main component initialization.
-        avatarFramesPanel.init();
     }
 
 }

@@ -27,15 +27,15 @@ package juno.view.pages.score.menu;
 
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.PanelChanger;
+import juno.model.data.score.GamesWonCounter;
+import juno.model.data.score.LostGamesCounter;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
 import juno.view.pages.main.card.MainCardPanel;
-import juno.view.pages.score.avatar_frames_panel.AvatarFramesPanel;
-import juno.view.pages.score.avatar_frames_panel.AvatarFramesPanelConfigurator;
-import juno.view.pages.score.avatar_images_panel.AvatarImagesPanel;
-import juno.view.pages.score.avatar_images_panel.AvatarImagesPanelConfigurator;
+import juno.view.pages.score.avatar.AvatarAwardPanel;
+import juno.view.pages.score.avatar.AvatarFramesPanelConfigurator;
+import juno.view.pages.score.avatar.AvatarImagesPanelConfigurator;
 import juno.view.util.ImageResizer;
-import juno.view.util.RotatedIcon;
 import juno.view.util.RoundedBorder;
 
 import javax.swing.*;
@@ -55,10 +55,16 @@ public class MenuPanelConfigurator {
         MenuPanel menuPanel = MenuPanel.getInstance();
 
         // Components.
+        GamesWonPanel gamesWonPanel = GamesWonPanel.getInstance();
+        LostGamesPanel lostGamesPanel = LostGamesPanel.getInstance();
         ButtonCreator creator = ButtonCreator.getInstance();
-        AbstractButton backButton = creator.create(Button.BACK, RotatedIcon.Rotate.ABOUT_CENTER);
+        AbstractButton backButton = creator.create(Button.BACK, null);
         JLabel avatarFramesLabel = new JLabel();
         JLabel avatarImagesLabel  = new JLabel();
+
+        // Points panel Observer-Observable connection.
+        GamesWonCounter.getInstance().addObserver(gamesWonPanel);
+        LostGamesCounter.getInstance().addObserver(lostGamesPanel);
 
         // Labels setting.
         // Avatar frames label.
@@ -77,33 +83,40 @@ public class MenuPanelConfigurator {
 
         // Components settings.
         // AvatarFramesPanel.
-        JScrollPane avatarFramesPanel = new JScrollPane(AvatarFramesPanel.getInstance() ,
+        AvatarAwardPanel avatarFramesPanel = new AvatarAwardPanel();
+        AvatarFramesPanelConfigurator.configure(avatarFramesPanel);
+        JScrollPane avatarFramesScrollPanel = new JScrollPane(avatarFramesPanel,
                 JScrollPane.VERTICAL_SCROLLBAR_NEVER,
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        avatarFramesPanel.setPreferredSize(new Dimension(550, 110));
-        avatarFramesPanel.setIgnoreRepaint(true);
-        avatarFramesPanel.setMinimumSize(new Dimension(550, 110));
-        avatarFramesPanel.getViewport().setOpaque(false);
-        avatarFramesPanel.setOpaque(false);
+        avatarFramesScrollPanel.setPreferredSize(new Dimension(650, 120));
+        avatarFramesScrollPanel.setIgnoreRepaint(false);
+        avatarFramesScrollPanel.setMinimumSize(new Dimension(650, 120));
+        avatarFramesScrollPanel.getViewport().setOpaque(false);
+        avatarFramesScrollPanel.setOpaque(false);
 
         // AvatarImagePanel.
-        JScrollPane avatarImagesPanel = new JScrollPane(AvatarImagesPanel.getInstance(),
+        AvatarAwardPanel avatarImagesPanel = new AvatarAwardPanel();
+        AvatarImagesPanelConfigurator.configure(avatarImagesPanel);
+        JScrollPane avatarImagesScrollPanel = new JScrollPane(avatarImagesPanel,
                 JScrollPane.VERTICAL_SCROLLBAR_NEVER,
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        avatarImagesPanel.setPreferredSize(new Dimension(450, 100));
-        avatarImagesPanel.setIgnoreRepaint(true);
-        avatarImagesPanel.setMinimumSize(new Dimension(450, 100));
-        avatarImagesPanel.getViewport().setOpaque(false);
-        avatarImagesPanel.setOpaque(false);
+        avatarImagesScrollPanel.setPreferredSize(new Dimension(650, 120));
+        avatarImagesScrollPanel.setIgnoreRepaint(true);
+        avatarImagesScrollPanel.setMinimumSize(new Dimension(650, 120));
+        avatarImagesScrollPanel.getViewport().setOpaque(false);
+        avatarImagesScrollPanel.setOpaque(false);
 
         menuPanel.setFirstComponent(avatarFramesLabel);        // Avatar frames label.
-        menuPanel.setSecondComponent(avatarFramesPanel);       // Avatar frames panel.
+        menuPanel.setSecondComponent(avatarFramesScrollPanel); // Avatar frames panel.
         menuPanel.setThirdComponent(avatarImagesLabel);        // Avatar images label.
-        menuPanel.setFourthComponent(avatarImagesPanel);       // Avatar images panel.
+        menuPanel.setFourthComponent(avatarImagesScrollPanel); // Avatar images panel.
         menuPanel.setFifthComponent(backButton);               // Back button.
+        menuPanel.setSixthComponent(gamesWonPanel);            // Games won.
+        menuPanel.setSeventhComponent(lostGamesPanel);         // Lost games.
 
         // Action listeners.
-        backButton.addActionListener(new ChangePanelAction(new PanelChanger(MainCardPanel.getInstance(), MainCardPanel.MAIN_PANEL)));
+        backButton.addActionListener(new ChangePanelAction(
+                new PanelChanger(MainCardPanel.getInstance(), MainCardPanel.MAIN_PANEL)));
 
         // Border settings
         RoundedBorder insideBorder = new RoundedBorder(
@@ -111,13 +124,9 @@ public class MenuPanelConfigurator {
         RoundedBorder outsideBorder = new RoundedBorder(
                 25, 1, null, Color.RED);
         Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
+        gamesWonPanel.setBorder(insideBorder);
+        lostGamesPanel.setBorder(insideBorder);
         menuPanel.setBorder(border);
-
-        // AvatarFramesPanel configuration.
-        AvatarFramesPanelConfigurator.configure();
-
-        // AvatarImagesPanel configuration.
-        AvatarImagesPanelConfigurator.configure();
 
         // Main component initialization.
         menuPanel.init();

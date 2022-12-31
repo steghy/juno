@@ -55,13 +55,11 @@ public class Initializer
     @Override
     public void initialize() {
         GAvatarFrameCreator gFrameCreator = GAvatarFrameCreator.getInstance();
-        GAvatarFrameFactory gFramesFactory = GAvatarFrameFactory.getInstance();
         PathProviderAssembler pathObjectAssembler = PathProviderAssembler.getInstance();
         ImageComponentInitializer imageComponentInitializer = ImageComponentInitializer.getInstance();
         gFrameCreator.setProvider(ProgramDirectory.FRAMES);
         gFrameCreator.setInitializer(imageComponentInitializer);
         gFrameCreator.setAssembler(pathObjectAssembler);
-        gFramesFactory.setCreator(gFrameCreator);
     }
 
 }

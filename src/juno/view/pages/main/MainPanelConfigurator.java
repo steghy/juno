@@ -35,7 +35,6 @@ import juno.view.pages.card.TopCardPanel;
 import juno.view.pages.main.menu.MenuPanel;
 import juno.view.pages.main.title.TitlePanel;
 import juno.view.util.ImageResizer;
-import juno.view.util.RotatedIcon;
 
 import javax.swing.*;
 import java.awt.*;
@@ -55,10 +54,10 @@ public class MainPanelConfigurator {
         // Components.
         TitlePanel titlePanel = TitlePanel.getInstance();
         MenuPanel menuPanel = MenuPanel.getInstance();
-        UserAvatarPanel avatarPanel = new UserAvatarPanel(4.5);
+        UserAvatarPanel avatarPanel = new UserAvatarPanel(3.5);
 
         // Log out button.
-        AbstractButton logOutButton = ButtonCreator.getInstance().create(juno.view.button.Button.LOG_OUT, RotatedIcon.Rotate.ABOUT_CENTER);
+        AbstractButton logOutButton = ButtonCreator.getInstance().create(juno.view.button.Button.LOG_OUT, null);
 
         // Image resizing.
         ImageResizer.resize(logOutButton, 7.0);
@@ -68,7 +67,7 @@ public class MainPanelConfigurator {
         label.setText("Logged as: ");
         label.setOpaque(false);
         label.setForeground(Color.WHITE);
-        label.setFont(new Font(Font.DIALOG, Font.ITALIC, 10));
+        label.setFont(new Font(Font.DIALOG, Font.ITALIC, 15));
 
         // Action listener.
         logOutButton.addActionListener(new LogOutAction(AccountExiter.getInstance()));

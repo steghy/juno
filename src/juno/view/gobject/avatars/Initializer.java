@@ -54,13 +54,11 @@ public class Initializer
     @Override
     public void initialize() {
         GAvatarImageCreator gAvatarCreator = GAvatarImageCreator.getInstance();
-        GAvatarImageFactory gAvatarsFactory = GAvatarImageFactory.getInstance();
         PathProviderAssembler pathObjectAssembler = PathProviderAssembler.getInstance();
         ImageComponentInitializer imageComponentInitializer = ImageComponentInitializer.getInstance();
         gAvatarCreator.setProvider(ProgramDirectory.AVATARS);
         gAvatarCreator.setInitializer(imageComponentInitializer);
         gAvatarCreator.setAssembler(pathObjectAssembler);
-        gAvatarsFactory.setCreator(gAvatarCreator);
     }
 
 }

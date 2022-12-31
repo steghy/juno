@@ -62,7 +62,7 @@ public class CompatibilityChecker
         // Top card of the discarded pile.
         InterfaceDiscardedPile<InterfaceCard> discardedPile = getDiscardedPile();
         Objects.requireNonNull(discardedPile);
-        InterfaceCard topCard = discardedPile.get(discardedPile.size() - 1);
+        InterfaceCard topCard = discardedPile.provide();
         InterfaceColor  topCardColor  = topCard.color();
         InterfaceAction topCardAction = topCard.action();
         Integer         topCardValue  = topCard.value();

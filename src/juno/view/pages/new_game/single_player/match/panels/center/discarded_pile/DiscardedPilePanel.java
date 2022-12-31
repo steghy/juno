@@ -30,8 +30,8 @@ import juno.model.card.InterfaceCard;
 import juno.model.deck.InterfaceDiscardedPile;
 import juno.model.util.InterfaceProvider;
 import juno.model.util.Observer;
+import juno.view.gobject.GObjectButton;
 import juno.view.gobject.InterfaceGObjectCreator;
-import juno.view.gobject.cards.GCard;
 import juno.view.util.ImageResizer;
 import juno.view.util.RotatedIcon;
 import org.jetbrains.annotations.NotNull;
@@ -94,7 +94,7 @@ public class DiscardedPilePanel
     @Override
     public void update(@NotNull Object object) {
         if(object instanceof InterfaceDiscardedPile<?>) {
-            GCard<InterfaceCard> gCard = (GCard<InterfaceCard>)
+            GObjectButton<InterfaceCard> gCard = (GObjectButton<InterfaceCard>)
                     creator.create(provider.provide(), RotatedIcon.Rotate.ABOUT_CENTER);
             ImageResizer.resize(gCard, 1.8);
             removeAll();

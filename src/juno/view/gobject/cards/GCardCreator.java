@@ -27,15 +27,11 @@ package juno.view.gobject.cards;
 
 import juno.model.requester.InterfacePathProvider;
 import juno.model.card.InterfaceCard;
-import juno.view.gobject.AbstractGObjectCreator;
-import juno.view.gobject.InterfaceGObject;
-import juno.view.gobject.InterfaceGObjectCreator;
-import juno.view.gobject.InterfacePathObjectProvider;
+import juno.view.gobject.*;
 import juno.model.requester.InterfacePathProviderAssembler;
 import juno.view.util.RotatedIcon;
 import org.jetbrains.annotations.NotNull;
 
-import java.awt.*;
 import java.util.Objects;
 
 /**
@@ -73,7 +69,7 @@ public class GCardCreator
 
     @Override
     public InterfaceGObject<InterfaceCard> create(@NotNull InterfaceCard card, RotatedIcon.Rotate rotate) {
-        GCard<InterfaceCard> graphicCard = new GCard<>(card);
+        GObjectButton<InterfaceCard> graphicCard = new GObjectButton<>(card);
         String file, rolloverFile;
         if(card.value() != null) {
             file = card.value().toString();
@@ -89,8 +85,6 @@ public class GCardCreator
                 assembler.assemble(pathObject, file + ".png"),
                 assembler.assemble(pathObject, rolloverFile + "_ROLLOVER" + ".png"),
                 rotate);
-        graphicCard.setDisabledIcon(graphicCard.getIcon());
-        graphicCard.setPreferredSize(new Dimension(graphicCard.getIcon().getIconWidth(), graphicCard.getIcon().getIconHeight()));
         return graphicCard;
     }
 

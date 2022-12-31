@@ -87,7 +87,6 @@ public abstract class AbstractCounter
             Object object = map.get(COUNT_KEY);
             if(object instanceof Integer value) {
                 setCount(value);
-                updateAll();
             } else throw new IllegalArgumentException(
                     "Invalid object type: " + object.getClass() +
                             ". Integer type expected.");
@@ -115,7 +114,7 @@ public abstract class AbstractCounter
         if(count < 0) throw new IllegalArgumentException(
                 "Invalid count: " + count);
         this.count = 0;
-        for(int i = 0; i < count; i++) increase();
+        for(int i = 1; i < count + 1; i++) increase();
     }
 
 }

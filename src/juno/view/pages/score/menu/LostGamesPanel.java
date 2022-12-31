@@ -23,72 +23,79 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.score;
+package juno.view.pages.score.menu;
 
-import juno.view.panels.AbstractThirdComponent;
+import juno.model.data.score.InterfaceLostGamesCounter;
+import juno.model.util.Observer;
+import org.jetbrains.annotations.NotNull;
 
+import javax.swing.*;
 import java.awt.*;
-import java.util.Objects;
 
 /**
  * @author Simone Gentili
  */
-public class ScorePanel
-        extends AbstractThirdComponent {
+public class LostGamesPanel
+        extends JPanel
+        implements Observer {
 
-    // The ScorePanel instance.
-    private static ScorePanel instance;
+    // The lost games points.
+    private final JLabel lostGamesPoints;
 
-    // Builds the ScorePanel instance.
-    private ScorePanel() {}
+    // The LostGamesPanel instance.
+    private static LostGamesPanel instance;
 
     /**
-     * Returns the ScorePanel instance.
-     * @return The ScorePanel instance.
+     * Returns the LostGamesPanel instance.
+     * @return The LostGamesPanel instance.
      */
-    public static ScorePanel getInstance() {
-        if(instance == null) instance = new ScorePanel();
+    public static LostGamesPanel getInstance() {
+        if(instance == null) instance = new LostGamesPanel();
         return instance;
     }
 
-    /** Initialize the ScorePanel instance. */
-    public void init() {
+    // Builds the LostGamesPanel instance.
+    private LostGamesPanel() {
         setOpaque(false);
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
 
-        // Title panel.
+        // Lost games label.
+        JLabel lostGamesLabel = new JLabel("Lost games");
+        lostGamesLabel.setFont(new Font(Font.DIALOG, Font.ITALIC, 15));
+        lostGamesLabel.setForeground(Color.WHITE);
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
         gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(30,0,0,0);
+        gbc.insets = new Insets(0,0,5,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        this.add(Objects.requireNonNull(getFirstComponent()), gbc);
+        add(lostGamesLabel, gbc);
 
-        // Menu panel.
+        // Lost games points.
+        lostGamesPoints = new JLabel("0");
+        lostGamesPoints.setFont(new Font(Font.DIALOG, Font.ITALIC, 15));
+        lostGamesPoints.setForeground(Color.WHITE);
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
         gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(30,0,0,0);
+        gbc.insets = new Insets(0,0,0,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        this.add(Objects.requireNonNull(getSecondComponent()), gbc);
+        add(lostGamesPoints, gbc);
+    }
 
-        // Avatar panel.
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        gbc.weightx = 0.0;
-        gbc.weighty = 0.0;
-        gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(30,0,30,0);
-        gbc.ipadx = 0;
-        gbc.ipady = 0;
-        this.add(Objects.requireNonNull(getThirdComponent()), gbc);
+    @Override
+    public void update(@NotNull Object object) {
+        if(object instanceof InterfaceLostGamesCounter lostGamesCounter)
+            lostGamesPoints.setText(String.valueOf(lostGamesCounter.getCount()));
+        else throw new IllegalArgumentException(
+                "Invalid object type: " + object.getClass() +
+                        ". InterfaceLostGamesCounter type expected.");
     }
 
 }

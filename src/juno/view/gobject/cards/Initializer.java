@@ -26,7 +26,6 @@
 package juno.view.gobject.cards;
 
 import juno.controller.util.InterfaceInitializer;
-import juno.model.deck.DeckFactory;
 import juno.view.img_initializer.ImageComponentInitializer;
 import juno.model.requester.PathProviderAssembler;
 
@@ -54,18 +53,12 @@ public class Initializer
     @Override
     public void initialize() {
         GCardCreator gCardCreator = GCardCreator.getInstance();
-        GCardFactory gCardFactory = GCardFactory.getInstance();
-        GCardMapFactory gCardMapFactory = GCardMapFactory.getInstance();
         PathProviderAssembler pathObjectAssembler = PathProviderAssembler.getInstance();
         ImageComponentInitializer imageComponentInitializer = ImageComponentInitializer.getInstance();
         CardPathProvider cardPathProvider = CardPathProvider.getInstance();
         gCardCreator.setProvider(cardPathProvider);
         gCardCreator.setInitializer(imageComponentInitializer);
         gCardCreator.setAssembler(pathObjectAssembler);
-        gCardFactory.setCreator(gCardCreator);
-        gCardMapFactory.setFactory(gCardFactory);
-        gCardFactory.addObserver(gCardMapFactory);
-        DeckFactory.getInstance().addObserver(gCardFactory);
     }
 
 }

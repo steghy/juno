@@ -35,7 +35,7 @@ import juno.model.deck.CompatibilityChecker;
 import juno.model.subjects.human.HumanPlayer;
 import juno.model.util.InterfaceSetter;
 import juno.model.util.Observer;
-import juno.view.gobject.cards.GCard;
+import juno.view.gobject.GObjectButton;
 import juno.view.gobject.cards.GCardCreator;
 import juno.view.util.ImageResizer;
 import juno.view.util.RotatedIcon;
@@ -58,13 +58,13 @@ public class SouthCardPanel
     private final int leftInsectsParameter;
 
     // The card -> graphic card map.
-    private final Map<InterfaceCard, GCard<InterfaceCard>> componentMap;
+    private final Map<InterfaceCard, GObjectButton<InterfaceCard>> componentMap;
 
     // The grid bag constraints.
     private final GridBagConstraints gbc;
 
     // The playable card setter.
-    private InterfaceSetter<java.util.List<GCard<InterfaceCard>>> playableCardSetter;
+    private InterfaceSetter<java.util.List<GObjectButton<InterfaceCard>>> playableCardSetter;
 
     // The discarded card setter.
     private InterfaceSetter<InterfaceCard> discardedCardSetter;
@@ -110,11 +110,11 @@ public class SouthCardPanel
      * Sets the playable card setter of this object.
      * @param playableCardSetter An InterfaceSetter object.
      */
-    public void setPlayableCardSetter(@NotNull InterfaceSetter<java.util.List<GCard<InterfaceCard>>> playableCardSetter) {
+    public void setPlayableCardSetter(@NotNull InterfaceSetter<java.util.List<GObjectButton<InterfaceCard>>> playableCardSetter) {
         this.playableCardSetter = playableCardSetter;
     }
 
-    public void addComponent(@NotNull GCard<InterfaceCard> gCard) {
+    public void addComponent(@NotNull GObjectButton<InterfaceCard> gCard) {
         if(componentMap.isEmpty())
             gbc.insets = new Insets(0, 0, 0, 0);
         else
@@ -126,10 +126,10 @@ public class SouthCardPanel
     }
 
     @SuppressWarnings("unchecked")
-    public void removeComponent(@NotNull GCard<InterfaceCard> gCard) {
-        ArrayList<GCard<InterfaceCard>> components =
+    public void removeComponent(@NotNull GObjectButton<InterfaceCard> gCard) {
+        ArrayList<GObjectButton<InterfaceCard>> components =
                 new ArrayList<>(Arrays.stream(getComponents())
-                        .map(c -> (GCard<InterfaceCard>) c).toList());
+                        .map(c -> (GObjectButton<InterfaceCard>) c).toList());
         if (components.contains(gCard)) {
             super.remove(gCard);
             components.remove(gCard);
@@ -149,7 +149,7 @@ public class SouthCardPanel
                 } else throw new IllegalArgumentException(
                         card + " is not in: " + componentMap);
             else {
-                GCard<InterfaceCard> gCard = (GCard<InterfaceCard>)
+                GObjectButton<InterfaceCard> gCard = (GObjectButton<InterfaceCard>)
                         GCardCreator.getInstance().create(card, RotatedIcon.Rotate.ABOUT_CENTER);
                 ImageResizer.resize(gCard, 2.5);
 
@@ -170,7 +170,7 @@ public class SouthCardPanel
         } else if(object instanceof Mover) {
             playableCardSetter.set(
                     Arrays.stream(getComponents())
-                            .map(component -> (GCard<InterfaceCard>) component).toList()
+                            .map(component -> (GObjectButton<InterfaceCard>) component).toList()
             );
         } else if(object instanceof PassTurnAction) {
             for(Component c : getComponents()) c.setEnabled(false);

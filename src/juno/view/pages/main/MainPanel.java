@@ -64,8 +64,8 @@ public class MainPanel
         gbc.weighty = 0.0;
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        gbc.anchor = GridBagConstraints.PAGE_END;
-        gbc.insets = new Insets(0,0,30,0);
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(0,0,0,0);
         this.add(Objects.requireNonNull(getFirstComponent()), gbc);
 
         // Menu panel.
@@ -76,7 +76,7 @@ public class MainPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,30,0);
+        gbc.insets = new Insets(30,0,0,0);
         this.add(Objects.requireNonNull(getSecondComponent()), gbc);
 
         // Label avatar panel.
@@ -87,7 +87,7 @@ public class MainPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.PAGE_END;
-        gbc.insets = new Insets(0,0,0,0);
+        gbc.insets = new Insets(30,0,0,0);
         this.add(Objects.requireNonNull(getThirdComponent()), gbc);
 
         // Avatar panel.
@@ -103,13 +103,13 @@ public class MainPanel
 
         // Log out button.
         gbc.gridx = 0;
-        gbc.gridy = 3;
+        gbc.gridy = 4;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        gbc.anchor = GridBagConstraints.LAST_LINE_END;
-        gbc.insets = new Insets(0,0,0,0);
+        gbc.anchor = GridBagConstraints.PAGE_END;
+        gbc.insets = new Insets(30,0,0,0);
         this.add(Objects.requireNonNull(getFifthComponent()), gbc);
 
     }

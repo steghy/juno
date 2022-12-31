@@ -32,7 +32,7 @@ import juno.model.subjects.ai.AI;
 import juno.model.util.Observer;
 import juno.view.button.Button;
 import juno.view.button.ButtonCreator;
-import juno.view.gobject.cards.GCard;
+import juno.view.gobject.GObjectButton;
 import juno.view.gobject.cards.GCardCreator;
 import juno.view.util.ImageResizer;
 import juno.view.util.RotatedIcon;
@@ -118,7 +118,7 @@ public class WestCardPanel
                 AbstractButton gCard;
                 if(showCard) {
                     InterfaceCard card = (InterfaceCard) ai.provide();
-                    gCard = (GCard<InterfaceCard>)
+                    gCard = (GObjectButton<InterfaceCard>)
                             GCardCreator.getInstance().create(Objects.requireNonNull(card), RotatedIcon.Rotate.DOWN);
                     ImageResizer.resize(gCard, 2.5);
                     add(gCard);
