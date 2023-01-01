@@ -31,41 +31,72 @@ import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
 import javax.sound.sampled.*;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * @author Simone Gentili
+ */
 public class AudioPlayer
-		implements InterfaceAdvancedAudioPlayer, Observable {
+		implements InterfaceAdvancedAudioPlayer, Observable, ActionListener {
 
+	// The Observers List.
 	private final List<Observer> observerList;
-	private Clip clip;
+
+	// The clip.
+	Clip clip;
+
+	// The tracks.
 	private Donut<File> tracks;
+
+	// The Audio player status.
 	private boolean status;
+
+	// The clip float control.
 	private FloatControl floatControl;
+
+	// The mute boolean value.
 	private boolean mute;
+
+	// The loop boolean value.
 	private boolean loop;
+
+	// The AudioPlayer instance.
 	private static AudioPlayer instance;
 
+	// Builds the AudioPlayer instance.
 	private AudioPlayer() {
 		observerList = new ArrayList<>();
 	}
 
+	/**
+	 * Returns the AudioPlayer instance.
+	 * @return The AudioPlayer instance.
+	 */
 	public static AudioPlayer getInstance() {
 		if(instance == null) instance = new AudioPlayer();
 		return instance;
 	}
 
+	/**
+	 * Plays the current track.
+	 */
 	public void play() {
 		if(clip != null) {
 			status = true;
 			clip.start();
-			updateAll();
 		}
 	}
 
+	/**
+	 * Rewinds the clip of this object.
+	 */
 	public void rewind() {
 		if(clip != null) {
 			clip.setMicrosecondPosition(0L);
@@ -73,30 +104,31 @@ public class AudioPlayer
 		}
 	}
 
+	/**
+	 * Interrupts the clip of this object.
+	 */
 	public void pause() {
-		if(status) {
-			if(clip != null) {
-				status = false;
-				clip.stop();
-				updateAll();
-			}
+		if(status && clip != null) {
+			status = false;
+			clip.stop();
 		}
 	}
 
+	/**
+	 * Plays the next track.
+	 */
 	public void next() {
 		if(tracks != null) {
 			if(tracks.getCurrentIndex() == tracks.size() - 1) {
-				if(loop) {
-					nextTrack();
-				} else {
-					pause();
-				}
-			} else {
-				nextTrack();
-			}
+				if(loop) nextTrack();
+				else pause();
+			} else nextTrack();
 		}
 	}
 
+	/**
+	 * Plays the next track.
+	 */
 	private void nextTrack() {
 		pause();
 		tracks.next();
@@ -104,6 +136,9 @@ public class AudioPlayer
 		play();
 	}
 
+	/**
+	 * Plays the previous track.
+	 */
 	public void back() {
 		if(tracks != null) {
 			stop();
@@ -112,6 +147,9 @@ public class AudioPlayer
 		}
 	}
 
+	/**
+	 * Stops the clip of this object.
+	 */
 	public void stop() {
 		if(status) {
 			pause();
@@ -119,38 +157,10 @@ public class AudioPlayer
 		}
 	}
 
-	public void move(long position) {
-		if(position < 0 || position > clip.getMicrosecondLength()) {
-			throw new IllegalArgumentException("Invalid input (" + position
-			+ ") for length (" + clip.getMicrosecondLength() + ")");
-		} else {
-			clip.stop();
-			clip.close();
-			load(this.tracks.current());
-			clip.setMicrosecondPosition(position);
-			clip.start();
-			status = true;
-			updateAll();
-		}
-	}
-
-
-	public void setLoop(boolean value) {
-		loop = value;
-	}
-
-	public Clip getClip() {
-		return clip;
-	}
-
-	public boolean isRunning() {
-		return status;
-	}
-
-	public boolean isLooped() {
-		return loop;
-	}
-
+	/**
+	 * Sets the Float control of this
+	 * object to the value -80.
+	 */
 	public void mute() {
 		if(!mute) {
 			mute = true;
@@ -158,6 +168,10 @@ public class AudioPlayer
 		}
 	}
 
+	/**
+	 * Sets the Float control of this
+	 * object to the value 0.
+	 */
 	public void unmute() {
 		if(mute) {
 			mute = false;
@@ -165,15 +179,37 @@ public class AudioPlayer
 		}
 	}
 
+	/**
+	 * Sets the loop of the clip.
+	 * @param loop A boolean value.
+	 */
+	public void setLoop(boolean loop) {
+		this.loop = loop;
+	}
+
+	/**
+	 * Returns true if, and only if, the clip
+	 * of this object is muted.
+	 * @return A boolean value.
+	 */
 	public boolean isMuted() {
 		return mute;
 	}
 
+	/**
+	 * Plays the specified file audio.
+	 * @param path A String object.
+	 */
 	public void playEffect(@NotNull final String path) {
 		load(new File(path));
 		play();
 	}
 
+	/**
+	 * Sets the tracks of this object with the
+	 * specified array of File objects.
+	 * @param tracks An array of File objects.
+	 */
 	public void setTracks(@NotNull File[] tracks) {
 		if(tracks.length > 0) {
 			this.tracks = new Donut<>();
@@ -185,15 +221,20 @@ public class AudioPlayer
 		}
 	}
 
+	/**
+	 * Loads the specified audio track represented by
+	 * the specified File object.
+	 * @param track A File object.
+	 */
 	private void load(@NotNull File track) {
 		try {
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(track);
 			clip = AudioSystem.getClip();
 			clip.open(audioInputStream);
 			floatControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-			if(mute) {
-				floatControl.setValue(-80);
-			}
+			if(mute) floatControl.setValue(-80);
+			// The timer.
+			Timer timer = new Timer((int) clip.getMicrosecondLength() / 1000, this);
 		} catch (LineUnavailableException e) {
 			throw new RuntimeException("Line not available: " + e);
 		} catch (IOException e) {
@@ -216,6 +257,11 @@ public class AudioPlayer
 	@Override
 	public void updateAll() {
 		observerList.forEach(observer -> observer.update(this));
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		next();
 	}
 
 }
