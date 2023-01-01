@@ -68,9 +68,8 @@ public class UnoButtonPanel
     @Override
     public void update(@NotNull Object object) {
         if(object instanceof PenaltyTimer penaltyTimer) {
-            if(penaltyTimer.getTimer().isRunning()) {
-                Objects.requireNonNull(getFirstComponent()).setEnabled(true);
-            } else restore();
+            Objects.requireNonNull(getFirstComponent())
+                    .setEnabled(penaltyTimer.getTimer().isRunning());
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". UnoCardController type expected.");

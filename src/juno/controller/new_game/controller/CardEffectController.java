@@ -37,6 +37,7 @@ import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.awt.event.ActionListener;
 import java.util.Objects;
 
 /**
@@ -102,12 +103,16 @@ public class CardEffectController
         InterfacePlayer<InterfaceCard> current = Objects.requireNonNull(provider).provide();
         InterfaceCard card = current.provide();
         Objects.requireNonNull(activator).activate(card);
+        // Human player case.
         if(!(current instanceof InterfaceAi<?,?>)) {
-            if (card.action() != null && card.action().isJolly())
+            if (card.action() != null && card.action().isJolly()) {
                 updateAll();
-            else Objects.requireNonNull(turnMover).next();
-        } else
+            } else  {
+                Objects.requireNonNull(turnMover).next();
+            }
+        } else {
             Objects.requireNonNull(turnMover).next();
+        }
     }
 
     @Override
@@ -115,9 +120,13 @@ public class CardEffectController
         // If there was a penalty, the update
         // came from the PenaltyExecutor class,
         // otherwise from the OneCardController.
+        // If the penalty timer has been interrupted,
+        // this class is updated.
         if(object instanceof Controller) {
             control();
         } else if(object instanceof PenaltyExecutor<?>) {
+            control();
+        } else if(object instanceof ActionListener) {
             control();
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +

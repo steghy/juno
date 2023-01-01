@@ -65,7 +65,7 @@ public class PenaltyExecutor<T>
 
     // Builds the PenaltyExecutor instance.
     private PenaltyExecutor() {
-        timer = new Timer(1000, this);
+        timer = new Timer(500, this);
         cardToDraw = 2;
         observabelList = new ArrayList<>();
     }

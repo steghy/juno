@@ -23,7 +23,7 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.ai.examiner;
+package juno.model.subjects.ai.examiner.card_examiner;
 
 import juno.model.subjects.ai.examiner.filter.AbstractFilterUser;
 import juno.model.subjects.ai.examiner.filter.InterfaceFilter;
@@ -37,22 +37,22 @@ import java.util.Random;
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
-public class EasyExaminer<T>
+public class MediumExaminer<T>
         extends AbstractFilterUser<T>
-        implements InterfaceEasyExaminer<T> {
+        implements InterfaceMediumExaminer<T> {
 
-    // The EasyExaminer instance.
-    private static EasyExaminer<?> instance;
+    // The MediumExaminer instance.
+    private static MediumExaminer<?> instance;
 
-    // Builds the EasyExaminer instance.
-    private EasyExaminer() {}
+    // Builds the MediumExaminer instance.
+    private MediumExaminer() {}
 
     /**
-     * Returns the EasyExaminer instance.
-     * @return The EasyExaminer instance.
+     * Returns the MediumExaminer instance.
+     * @return The MediumExaminer instance.
      */
-    public static EasyExaminer<?> getInstance() {
-        if(instance == null) instance = new EasyExaminer<>();
+    public static MediumExaminer<?> getInstance() {
+        if(instance == null) instance = new MediumExaminer<>();
         return instance;
     }
 
@@ -61,16 +61,16 @@ public class EasyExaminer<T>
         Random r = new Random();
         InterfaceFilter<T> filter = getFilter();
 
-        // Number cards case.
-        List<T> temp = Objects.requireNonNull(filter).number(cards);
-        if(temp.size() != 0) return temp.get(r.nextInt(temp.size()));
-
         // Action cards case.
-        temp = filter.action(cards);
+        List<T> temp = Objects.requireNonNull(filter).action(cards);
         if(temp.size() != 0) return temp.get(r.nextInt(temp.size()));
 
         // Jolly cards case.
         temp = filter.jolly(cards);
+        if(temp.size() != 0) return temp.get(r.nextInt(temp.size()));
+
+        // Number cards case.
+        temp = filter.number(cards);
         if(temp.size() != 0) return temp.get(r.nextInt(temp.size()));
 
         // It can't happen.

@@ -23,7 +23,7 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.ai.examiner;
+package juno.model.subjects.ai.examiner.card_examiner;
 
 import java.util.List;
 

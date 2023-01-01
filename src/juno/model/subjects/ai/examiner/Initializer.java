@@ -29,6 +29,9 @@ import juno.controller.util.InterfaceInitializer;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.CompatibleCardsProvider;
 import juno.model.subjects.ai.examiner.card_examiner.CardExaminer;
+import juno.model.subjects.ai.examiner.card_examiner.EasyExaminer;
+import juno.model.subjects.ai.examiner.card_examiner.HardExaminer;
+import juno.model.subjects.ai.examiner.card_examiner.MediumExaminer;
 import juno.model.subjects.ai.examiner.color_examiner.ColorExaminer;
 import juno.model.subjects.ai.examiner.filter.Filter;
 

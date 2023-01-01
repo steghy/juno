@@ -98,7 +98,7 @@ public class WestCardPanel
 
     public void removeComponent() {
         super.remove(0);
-        java.util.List<Component> components = new ArrayList<>(List.of(getComponents()));
+        List<Component> components = new ArrayList<>(List.of(getComponents()));
         super.removeAll();
         components.forEach(this::addComponent);
     }

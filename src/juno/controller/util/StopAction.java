@@ -25,6 +25,7 @@
 
 package juno.controller.util;
 
+import juno.model.util.AbstractObservable;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
@@ -35,6 +36,7 @@ import java.awt.event.ActionListener;
  * @author Simone Gentili
  */
 public class StopAction
+        extends AbstractObservable
         implements ActionListener {
 
     // The stoppable object.
@@ -57,6 +59,7 @@ public class StopAction
     public void actionPerformed(@NotNull ActionEvent e) {
         if(c != null) c.setEnabled(false);
         stoppable.stop();
+        updateAll();
     }
 
 }

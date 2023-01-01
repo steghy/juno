@@ -106,7 +106,8 @@ public class NorthCardPanel
 
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof GameStarter) showCard = false;
+        if(object instanceof GameStarter)
+            showCard = false;
         else if(object instanceof AI<?, ?> ai) {
             if(ai.getRemoved()) {
                 int count = getComponentCount();
@@ -121,7 +122,7 @@ public class NorthCardPanel
                     gCard = (GObjectButton<InterfaceCard>)
                             GCardCreator.getInstance().create(Objects.requireNonNull(card), RotatedIcon.Rotate.UPSIDE_DOWN);
                     ImageResizer.resize(gCard, 2.5);
-                    add(gCard, gbc);
+                    add(gCard);
                 } else {
                     gCard = ButtonCreator.getInstance().create(Button.COVER, RotatedIcon.Rotate.UPSIDE_DOWN);
                     ImageResizer.resize(gCard, 4.0);

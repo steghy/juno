@@ -62,7 +62,6 @@ public class DiscardedPilePanel
     private DiscardedPilePanel() {
         setOpaque(false);
         setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(150, 300));
     }
 
     /**

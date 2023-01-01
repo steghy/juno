@@ -44,7 +44,7 @@ public class PenaltyTimer
 
     // Builds the PenaltyTimer instance.
     private PenaltyTimer() {
-        timer = new Timer(2000, this);
+        timer = new Timer(1750, this);
         timer.setRepeats(false);
     }
 

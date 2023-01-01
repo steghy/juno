@@ -23,7 +23,7 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.ai.examiner;
+package juno.model.subjects.ai.examiner.card_examiner;
 
 import juno.model.subjects.ai.examiner.filter.AbstractFilterUser;
 import juno.model.subjects.ai.examiner.filter.InterfaceFilter;

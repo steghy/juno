@@ -68,7 +68,6 @@ public class ColorsPanel
             for(Component c : getComponents()) c.setEnabled(true);
         } else if(object instanceof GSetterAction<?>) {
             restore();
-            TurnMover.getInstance().next();
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". Controller type expected.");

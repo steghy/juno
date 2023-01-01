@@ -99,6 +99,7 @@ public class Initializer
         TurnMover<InterfacePlayer<InterfaceCard>> turnMover =
                 (TurnMover<InterfacePlayer<InterfaceCard>>) TurnMover.getInstance();
 
+        // Deck.
         Deck<InterfaceCard> deck = (Deck<InterfaceCard>) Deck.getInstance();
 
         //////////////////////////////////////////////////////////////////////////////////////
@@ -119,6 +120,7 @@ public class Initializer
         // Penalty executor.
         penaltyExecutor.setDeck(deck);
         penaltyExecutor.setProvider(currentPlayerProvider);
+        penaltyTimer.addObserver(penaltyExecutor);
 
         // Card effect activator.
         penaltyExecutor.addObserver(cardEffectController);

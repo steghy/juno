@@ -109,8 +109,12 @@ public class OneCardController<T>
         InterfacePlayer<T> current = Objects.requireNonNull(getProvider()).provide();
         if(current.cards().size() == 1) {
             if(current instanceof InterfaceAi<?,?> ai) {
-                if(!ai.uno()) Objects.requireNonNull(penaltyExecutor).execute();
-                else updateAll();
+                if(!ai.uno()) {
+                    Objects.requireNonNull(penaltyExecutor).execute();
+                }
+                else {
+                    updateAll();
+                }
             } else Objects.requireNonNull(penaltyTimer).startTimer();
         } else updateAll();
     }

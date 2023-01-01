@@ -25,6 +25,7 @@
 
 package juno.view.pages.new_game.single_player.match.panels.center;
 
+import juno.controller.new_game.controller.CardEffectController;
 import juno.controller.new_game.penalty.PenaltyTimer;
 import juno.controller.new_game.restorer.Stopper;
 import juno.controller.util.ChangePanelAction;
@@ -74,7 +75,9 @@ public class CenterPanelConfigurator {
         exitButton.addActionListener(new StopAction(Stopper.getInstance(), null));
 
         // Uno button.
-        unoButton.addActionListener(new StopAction(PenaltyTimer.getInstance(), unoButton));
+        StopAction stopAction = new StopAction(PenaltyTimer.getInstance(), unoButton);
+        stopAction.addObserver(CardEffectController.getInstance());
+        unoButton.addActionListener(stopAction);
 
         // Observer / Observable.
         PenaltyTimer.getInstance().addObserver(unoButtonPanel);

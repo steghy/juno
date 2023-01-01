@@ -26,7 +26,6 @@
 package juno.view.pages.new_game.single_player.match.panels.center.deck;
 
 import juno.controller.log_out.Restorable;
-import juno.controller.new_game.human.DiscardedCardSetter;
 import juno.controller.new_game.human.DrawAction;
 import juno.model.subjects.shift.InterfaceTurnMover;
 import juno.model.util.InterfaceProvider;
@@ -95,13 +94,10 @@ public class DeckPanel<T>
     @Override
     public void update(@NotNull Object object) {
         if(object instanceof InterfaceTurnMover) {
-            if(provider.provide() == humanPlayer)
-                Objects.requireNonNull(getFirstComponent()).setEnabled(true);
+            Objects.requireNonNull(getFirstComponent())
+                    .setEnabled(provider.provide() == humanPlayer);
         } else if(object instanceof DrawAction<?>) {
             Objects.requireNonNull(getFirstComponent()).setEnabled(false);
-        } else if(object instanceof DiscardedCardSetter<?>) {
-            if(!(provider.provide() == humanPlayer))
-                Objects.requireNonNull(getFirstComponent()).setEnabled(false);
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceTurnMover or DrawAction type expected.");

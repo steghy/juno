@@ -66,6 +66,7 @@ public class CirclePanel
 
     /** Initialize the CircleLabel instance. */
     public void init() {
+        inverted = false;
         setOpaque(false);
         setLayout(new BorderLayout());
         Objects.requireNonNull(getFirstComponent());
@@ -91,6 +92,7 @@ public class CirclePanel
 
     @Override
     public void restore() {
+        inverted = false;
         removeAll();
         add(Objects.requireNonNull(getFirstComponent()), BorderLayout.CENTER);
         revalidate();

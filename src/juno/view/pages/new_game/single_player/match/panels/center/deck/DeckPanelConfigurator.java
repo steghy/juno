@@ -65,7 +65,6 @@ public class DeckPanelConfigurator {
         // Observer / Observable.
         TurnMover.getInstance().addObserver(deckPanel);
         DrawAction.getInstance().addObserver(deckPanel);
-        DiscardedCardSetter.getInstance().addObserver(deckPanel);
 
         // Settings.
         deckPanel.setProvider((InterfaceProvider<InterfacePlayer<?>>) CurrentPlayerProvider.getInstance());
