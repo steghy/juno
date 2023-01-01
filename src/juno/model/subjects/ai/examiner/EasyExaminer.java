@@ -25,6 +25,8 @@
 
 package juno.model.subjects.ai.examiner;
 
+import juno.model.subjects.ai.examiner.filter.AbstractFilterUser;
+import juno.model.subjects.ai.examiner.filter.InterfaceFilter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;

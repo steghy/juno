@@ -138,6 +138,7 @@ public class EastCardPanel
     @Override
     public void restore() {
         removeAll();
+        setOpaque(false);
         showCard = true;
         revalidate();
         repaint();

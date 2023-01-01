@@ -23,22 +23,35 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.ai.examiner;
+package juno.model.subjects.ai.examiner.filter;
 
-import java.util.List;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
-@FunctionalInterface
-public interface InterfaceActionFilter<T> {
+public abstract class AbstractFilterUser<T> {
+
+    // The filter.
+    InterfaceFilter<T> filter;
 
     /**
-     *
-     * @param cards
-     * @return
+     * Sets the filter of this object.
+     * @param filter An InterfaceFilter object.
      */
-    List<T> action(List<T> cards);
+    public void setFilter(@NotNull InterfaceFilter<T> filter) {
+        this.filter = filter;
+    }
+
+    /**
+     * Sets the filter of this object.
+     * @return An InterfaceFilter object.
+     */
+    @Nullable
+    public InterfaceFilter<T> getFilter() {
+        return filter;
+    }
 
 }

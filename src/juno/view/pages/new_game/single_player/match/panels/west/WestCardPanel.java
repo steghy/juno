@@ -139,7 +139,6 @@ public class WestCardPanel
     @Override
     public void restore() {
         setOpaque(false);
-        gbc.insets = new Insets(0, 0, 0, 0);
         removeAll();
         showCard = true;
         revalidate();

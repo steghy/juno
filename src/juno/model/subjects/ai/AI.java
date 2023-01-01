@@ -26,8 +26,8 @@
 package juno.model.subjects.ai;
 
 import juno.model.subjects.AbstractPlayer;
-import juno.model.subjects.ai.examiner.InterfaceCardExaminer;
-import juno.model.subjects.ai.examiner.InterfaceColorExaminer;
+import juno.model.subjects.ai.examiner.card_examiner.InterfaceCardExaminer;
+import juno.model.subjects.ai.examiner.color_examiner.InterfaceColorExaminer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

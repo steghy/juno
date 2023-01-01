@@ -25,20 +25,36 @@
 
 package juno.model.subjects.ai.examiner;
 
+import juno.controller.util.InterfaceInitializer;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.CompatibleCardsProvider;
+import juno.model.subjects.ai.examiner.card_examiner.CardExaminer;
+import juno.model.subjects.ai.examiner.filter.Filter;
 
 /**
  * @author Simone Gentili
  */
-public class Initializer {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // Builds an Initializer instance.
+    // The Initializer instance.
+    private static Initializer instance;
+
+    // Builds the Initializer instance.
     private Initializer() {}
 
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
     @SuppressWarnings("ALL")
-    public static void initialize() {
-        // Components.
+    public void initialize() {
         // EasyExaminer.
         EasyExaminer<InterfaceCard> easyExaminer = (EasyExaminer<InterfaceCard>) EasyExaminer.getInstance();
 

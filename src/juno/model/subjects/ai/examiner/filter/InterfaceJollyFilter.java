@@ -23,38 +23,22 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.ai.examiner;
+package juno.model.subjects.ai.examiner.filter;
 
-import juno.model.deck.InterfaceCompatibleCardsProvider;
-import juno.model.subjects.ai.examiner.card_examiner.InterfaceCardExaminer;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import java.util.List;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the items.
+ * @param <T> The type of the cards.
  */
-public abstract class AbstractExaminer<T>
-        implements InterfaceCardExaminer<T> {
-
-    // The item's provider.
-    private InterfaceCompatibleCardsProvider<T> itemsProvider;
+@FunctionalInterface
+public interface InterfaceJollyFilter<T> {
 
     /**
-     * Sets the items provider of this object.
-     * @param itemsProvider An InterfaceCompatibleItemsProvider object.
+     *
+     * @param cards
+     * @return
      */
-    public void setItemsProvider(@NotNull InterfaceCompatibleCardsProvider<T> itemsProvider) {
-        this.itemsProvider = itemsProvider;
-    }
-
-    /**
-     * Returns the items provider of this object.
-     * @return An InterfaceCompatibleItemsProvider object.
-     */
-    @Nullable
-    public InterfaceCompatibleCardsProvider<T> getItemsProvider() {
-        return itemsProvider;
-    }
+    List<T> jolly(List<T> cards);
 
 }

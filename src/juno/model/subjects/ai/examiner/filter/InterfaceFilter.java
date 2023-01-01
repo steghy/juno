@@ -23,22 +23,19 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.ai.examiner;
-
-import java.util.List;
+package juno.model.subjects.ai.examiner.filter;
 
 /**
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
-@FunctionalInterface
-public interface InterfaceJollyFilter<T> {
-
-    /**
-     *
-     * @param cards
-     * @return
-     */
-    List<T> jolly(List<T> cards);
-
-}
+public interface InterfaceFilter<T>
+        extends
+        InterfaceActionFilter<T>,
+        InterfaceNumberFilter<T>,
+        InterfaceJollyFilter<T>,
+        InterfaceColorFilter<T>,
+        InterfaceRedFilter<T>,
+        InterfaceBlueFilter<T>,
+        InterfaceYellowFilter<T>,
+        InterfaceGreenFilter<T> {}

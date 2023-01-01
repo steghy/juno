@@ -23,26 +23,18 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.ai.examiner;
-
-import juno.model.subjects.ai.InterfaceDifficulty;
+package juno.model.subjects.ai.examiner.color_examiner;
 
 import java.util.List;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the cards.
+ * @param <T> The type of the color.
+ * @param <E> The type of the cards.
  */
 @FunctionalInterface
-public interface InterfaceCardExaminer<T> {
+public interface InterfaceColorExaminer<T, E> {
 
-    /**
-     *
-     * @param items
-     * @param difficulty
-     * @return
-     */
-    T responseRelativeTo(List<T> items,
-                         InterfaceDifficulty difficulty);
+    T responseRelativeTo(List<E> cards);
 
 }

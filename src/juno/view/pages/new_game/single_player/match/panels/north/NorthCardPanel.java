@@ -99,7 +99,7 @@ public class NorthCardPanel
 
     public void removeComponent() {
         super.remove(0);
-        java.util.List<Component> components = new ArrayList<>(List.of(getComponents()));
+        List<Component> components = new ArrayList<>(List.of(getComponents()));
         super.removeAll();
         components.forEach(this::addComponent);
     }
@@ -139,7 +139,6 @@ public class NorthCardPanel
     @Override
     public void restore() {
         setOpaque(false);
-        gbc.insets = new Insets(0, 0, 0, 0);
         removeAll();
         showCard = true;
         revalidate();

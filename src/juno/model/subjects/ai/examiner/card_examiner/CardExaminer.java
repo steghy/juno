@@ -23,9 +23,10 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.ai.examiner;
+package juno.model.subjects.ai.examiner.card_examiner;
 
 import juno.model.subjects.ai.InterfaceDifficulty;
+import juno.model.subjects.ai.examiner.AbstractMultiExaminer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

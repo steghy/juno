@@ -23,40 +23,17 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.ai.examiner;
+package juno.model.subjects.ai.examiner.filter;
 
-import juno.model.card.InterfaceCard;
-import juno.model.card.colors.Color;
-import juno.model.card.colors.InterfaceColor;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.*;
+import java.util.List;
 
 /**
  * @author Simone Gentili
+ * @param <T> The type of the cards.
  */
-public class ColorExaminer
-        extends AbstractFilterUser<InterfaceCard>
-        implements InterfaceColorExaminer<InterfaceColor, InterfaceCard>{
+@FunctionalInterface
+public interface InterfaceGreenFilter<T> {
 
-    // The ColorExaminer instance.
-    private static ColorExaminer instance;
-
-    // Builds the ColorExaminer instance.
-    private ColorExaminer() {}
-
-    /**
-     * Returns the ColorExaminer instance.
-     * @return The ColorExaminer instance.
-     */
-    public static ColorExaminer getInstance() {
-        if(instance == null) instance = new ColorExaminer();
-        return instance;
-    }
-
-    @Override
-    public InterfaceColor responseRelativeTo(@NotNull List<InterfaceCard> cards) {
-        return Color.RED;
-    }
+    List<T> green(List<T> cards);
 
 }

@@ -29,9 +29,9 @@ import juno.controller.util.InterfaceInitializer;
 import juno.model.card.InterfaceCard;
 import juno.model.card.colors.InterfaceColor;
 import juno.model.subjects.ai.InterfaceDifficulty;
-import juno.model.subjects.ai.examiner.CardExaminer;
-import juno.model.subjects.ai.examiner.ColorExaminer;
-import juno.model.subjects.ai.examiner.InterfaceCardExaminer;
+import juno.model.subjects.ai.examiner.card_examiner.CardExaminer;
+import juno.model.subjects.ai.examiner.color_examiner.ColorExaminer;
+import juno.model.subjects.ai.examiner.card_examiner.InterfaceCardExaminer;
 
 /**
  * @author Simone Gentili

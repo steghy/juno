@@ -44,7 +44,7 @@ public class ModelInitializer {
         juno.model.data.awards.Initializer.initialize();
         juno.model.deck.Initializer.initialize();
         juno.model.subjects.factory.Initializer.getInstance().initialize();
-        juno.model.subjects.ai.examiner.Initializer.initialize();
+        juno.model.subjects.ai.examiner.Initializer.getInstance().initialize();
         juno.model.subjects.shift.Initializer.getInstance().initialize();
         juno.model.subjects.human.Initializer.getInstance().initialize();
     }

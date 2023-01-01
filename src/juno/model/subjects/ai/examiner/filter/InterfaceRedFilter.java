@@ -23,18 +23,16 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.ai.examiner;
+package juno.model.subjects.ai.examiner.filter;
 
 import java.util.List;
 
+/**
+ * @author Simone Gentili
+ */
 @FunctionalInterface
-public interface InterfaceNumberFilter<T> {
+public interface InterfaceRedFilter<T> {
 
-    /**
-     *
-     * @param cards
-     * @return
-     */
-    List<T> number(List<T> cards);
+    List<T> red(List<T> cards);
 
 }

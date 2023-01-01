@@ -23,60 +23,47 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.ai.examiner;
+package juno.model.subjects.ai.examiner.color_examiner;
 
 import juno.model.card.InterfaceCard;
+import juno.model.card.colors.Color;
+import juno.model.card.colors.InterfaceColor;
+import juno.model.subjects.ai.examiner.filter.AbstractFilterUser;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * @author Simone Gentili
  */
-public class Filter
-        implements InterfaceFilter<InterfaceCard> {
+public class ColorExaminer
+        extends AbstractFilterUser<InterfaceCard>
+        implements InterfaceColorExaminer<InterfaceColor, InterfaceCard> {
 
-    // The Filter instance.
-    private static Filter instance;
+    // The ColorExaminer instance.
+    private static ColorExaminer instance;
 
-    // Builds the Filter instance.
-    private Filter() {}
+    // Builds the ColorExaminer instance.
+    private ColorExaminer() {}
 
     /**
-     * Returns the Filter instance.
-     * @return The Filter instance.
+     * Returns the ColorExaminer instance.
+     * @return The ColorExaminer instance.
      */
-    public static Filter getInstance() {
-        if(instance == null) instance = new Filter();
+    public static ColorExaminer getInstance() {
+        if(instance == null) instance = new ColorExaminer();
         return instance;
     }
 
     @Override
-    public List<InterfaceCard> action(@NotNull List<InterfaceCard> cards) {
-        return cards.stream()
-                .filter(card -> card.action() != null && !(card.action().isJolly()))
-                .toList();
-    }
-
-    @Override
-    public List<InterfaceCard> jolly(@NotNull List<InterfaceCard> cards) {
-        return cards.stream()
-                .filter(card -> card.action() != null && card.action().isJolly())
-                .toList();
-    }
-
-    @Override
-    public List<InterfaceCard> number(@NotNull List<InterfaceCard> cards) {
-        return cards.stream()
-                .filter(card -> card.value() != null)
-                .toList();
-    }
-
-    @Override
-    public List<InterfaceCard> colored(@NotNull List<InterfaceCard> cards) {
-        return cards.stream()
-                .filter(card -> card.color() != null)
-                .toList();
+    public InterfaceColor responseRelativeTo(@NotNull List<InterfaceCard> cards) {
+        Objects.requireNonNull(getFilter());
+        Map<Integer, InterfaceColor> map = new HashMap<>();
+        map.put(getFilter().red(cards).size(), Color.RED);
+        map.put(getFilter().blue(cards).size(), Color.BLUE);
+        map.put(getFilter().green(cards).size(), Color.GREEN);
+        map.put(getFilter().yellow(cards).size(), Color.YELLOW);
+        return map.get(Collections.max(map.keySet()));
     }
 
 }

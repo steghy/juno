@@ -29,8 +29,8 @@ package juno.model.subjects.factory;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.ai.AI;
 import juno.model.subjects.ai.InterfaceDifficulty;
-import juno.model.subjects.ai.examiner.InterfaceCardExaminer;
-import juno.model.subjects.ai.examiner.InterfaceColorExaminer;
+import juno.model.subjects.ai.examiner.card_examiner.InterfaceCardExaminer;
+import juno.model.subjects.ai.examiner.color_examiner.InterfaceColorExaminer;
 import org.jetbrains.annotations.NotNull;
 
 /**
