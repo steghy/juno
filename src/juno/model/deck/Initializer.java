@@ -103,7 +103,6 @@ public class Initializer {
 
         // Discarded pile
         discardedPile.addObserver(actualColor);
-        discardedPile.addObserver(cardEffectActivator);
     }
 
 }

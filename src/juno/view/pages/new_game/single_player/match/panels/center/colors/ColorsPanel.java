@@ -26,7 +26,8 @@
 package juno.view.pages.new_game.single_player.match.panels.center.colors;
 
 import juno.controller.log_out.Restorable;
-import juno.controller.new_game.Mover;
+import juno.controller.new_game.controller.Controller;
+import juno.controller.util.GSetterAction;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
@@ -40,19 +41,13 @@ public class ColorsPanel
         extends JPanel
         implements Observer, Restorable {
 
-    // The 'left' insects parameter.
-    private final int leftInsectsParameter;
-
-    // The grid bag constraints.
-    private final GridBagConstraints gbc;
-
     // The ColorsPanel instance.
     private static ColorsPanel instance;
 
     // Builds the ColorsPanel instance.
     private ColorsPanel() {
-        leftInsectsParameter = 45;
-        this.gbc = new GridBagConstraints();
+        setOpaque(false);
+        setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
     }
 
     /**
@@ -64,35 +59,15 @@ public class ColorsPanel
         return instance;
     }
 
-    /** Initialize the ColorsPanel instance. */
-    public void init() {
-        setOpaque(false);
-        setLayout(new GridBagLayout());
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 0.0;
-        gbc.weighty = 0.0;
-        gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,0,0);
-        gbc.ipadx = 0;
-        gbc.ipady = 0;
-    }
-
-    private void addComponent(@NotNull Component c) {
-        if(getComponents().length == 0) gbc.insets = new Insets(0,  0, 0, 0);
-        else gbc.insets = new Insets(0, gbc.insets.left + leftInsectsParameter, 0, 0);
-        super.add(c, gbc);
-        revalidate();
-        repaint();
-    }
-
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof Mover) {
-
+        if(object instanceof Controller) {
+            for(Component c : getComponents()) c.setEnabled(true);
+        } else if(object instanceof GSetterAction<?>) {
+            restore();
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
-                        ". Mover type expected.");
+                        ". Controller type expected.");
     }
 
     @Override

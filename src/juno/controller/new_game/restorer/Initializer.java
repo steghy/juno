@@ -25,7 +25,7 @@
 
 package juno.controller.new_game.restorer;
 
-import juno.controller.new_game.Mover;
+import juno.controller.new_game.controller.Mover;
 import juno.controller.new_game.dispenser.CardDispenser;
 import juno.controller.new_game.dispenser.OneCardDispenser;
 import juno.controller.new_game.human.CardTimer;

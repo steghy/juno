@@ -26,7 +26,7 @@
 package juno.view.pages.new_game.single_player.match.panels.center;
 
 import juno.controller.new_game.penalty.PenaltyExecutor;
-import juno.controller.new_game.penalty.UnoCardController;
+import juno.controller.new_game.controller.UnoCardController;
 import juno.controller.new_game.restorer.Stopper;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.PanelChanger;

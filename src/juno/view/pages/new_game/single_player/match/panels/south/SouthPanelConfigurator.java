@@ -28,7 +28,7 @@ package juno.view.pages.new_game.single_player.match.panels.south;
 import juno.controller.new_game.GameStarter;
 import juno.controller.new_game.dispenser.CardDispenser;
 import juno.controller.new_game.human.DiscardedCardSetter;
-import juno.controller.new_game.Mover;
+import juno.controller.new_game.controller.Mover;
 import juno.controller.new_game.human.PassTurnAction;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.CompatibilityChecker;

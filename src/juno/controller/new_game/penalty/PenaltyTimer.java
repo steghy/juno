@@ -23,56 +23,53 @@
  * SOFTWARE.
  */
 
-package juno.controller.new_game.human;
+package juno.controller.new_game.penalty;
 
 import juno.controller.util.Stoppable;
 import juno.model.util.AbstractObservable;
-import juno.model.util.Observer;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- * @author Simone Gentili
- */
-public class CardTimer
+public class PenaltyTimer
         extends AbstractObservable
-        implements ActionListener, Observer, Stoppable {
+        implements ActionListener, Stoppable {
 
-    // The timer
+    // The timer.
     private final Timer timer;
 
-    // The CardTimer instance.
-    private static CardTimer instance;
+    // The PenaltyTimer instance.
+    private static PenaltyTimer instance;
 
-    // Builds the CardTimer instance.
-    private CardTimer() {
-        timer = new Timer(1750, this);
+    // Builds the PenaltyTimer instance.
+    private PenaltyTimer() {
+        timer = new Timer(2000, this);
         timer.setRepeats(false);
     }
 
+    public void startTimer() {
+        timer.start();
+        updateAll();
+    }
+
+    public Timer getTimer() {
+        return timer;
+    }
+
     /**
-     * Returns the CardTimer instance.
-     * @return The CardTimer instance.
+     * Returns the PenaltyTimer instance.
+     * @return The PenaltyTimer instance.
      */
-    public static CardTimer getInstance() {
-        if(instance == null) instance = new CardTimer();
+    public static PenaltyTimer getInstance() {
+        if(instance == null) instance = new PenaltyTimer();
         return instance;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        timer.stop();
         updateAll();
-    }
-
-    @Override
-    public void update(Object object) {
-        if(object instanceof DrawAction<?>)
-            timer.start();
-        else throw new IllegalArgumentException(
-                "Invalid object type: " + object.getClass() +
-                        ". DrawAction expected.");
     }
 
     @Override

@@ -25,12 +25,14 @@
 
 package juno.controller.new_game;
 
+import juno.controller.new_game.controller.FirstDiscardedCardManager;
+import juno.controller.new_game.controller.Mover;
 import juno.controller.new_game.dispenser.CardController;
 import juno.controller.new_game.dispenser.CardDispenser;
 import juno.controller.new_game.dispenser.OneCardDispenser;
 import juno.controller.new_game.human.*;
 import juno.controller.new_game.penalty.PenaltyExecutor;
-import juno.controller.new_game.penalty.UnoCardController;
+import juno.controller.new_game.controller.UnoCardController;
 import juno.controller.util.InterfaceInitializer;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.*;
@@ -190,7 +192,6 @@ public class Initializer
         // Game starter.
         gameStarter.setDispenser(cardDispenser);
         gameStarter.setProvider(playersProvider);
-        // gameStarter.setDiscardedCardManager(firstDiscardedCardManager);
         cardController.addObserver(gameStarter);
 
         // First discarded card manager.

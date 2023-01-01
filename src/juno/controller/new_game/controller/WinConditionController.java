@@ -23,48 +23,55 @@
  * SOFTWARE.
  */
 
-package juno.controller.new_game.penalty;
+package juno.controller.new_game.controller;
 
+import juno.controller.new_game.restorer.Stopper;
+import juno.controller.util.InterfacePanelChanger;
+import juno.controller.util.Stoppable;
 import juno.model.deck.InterfaceDiscardedPile;
 import juno.model.subjects.InterfacePlayer;
-import juno.model.subjects.ai.InterfaceAi;
-import juno.model.subjects.shift.TurnMover;
 import juno.model.util.AbstractObservable;
 import juno.model.util.InterfaceProvider;
 import juno.model.util.Observer;
+import juno.view.frame.Frame;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import javax.swing.*;
 import java.util.Objects;
-import java.util.Random;
 
 /**
  * @author Simone Gentili
+ * @param <T> The type of the cards.
  */
-public class UnoCardController<T>
+public class WinConditionController<T>
         extends AbstractObservable
-        implements Observer {
+        implements Observer, Controller {
 
     // The current player provider.
     @Nullable
     private InterfaceProvider<InterfacePlayer<T>> provider;
 
-    // The penalty executor.
+    // The stopper.
     @Nullable
-    private InterfacePenaltyExecutor penaltyExecutor;
+    private Stoppable stopper;
 
-    // The UnoCardController instance.
-    private static UnoCardController<?> instance;
+    // The panel changer.
+    @Nullable
+    private InterfacePanelChanger panelChanger;
 
-    // Builds the UnoCardController instance.
-    private UnoCardController() {}
+    // The WinConditionController instance.
+    private static WinConditionController<?> instance;
+
+    // Builds the WinConditionController instance.
+    private WinConditionController() {}
 
     /**
-     * Returns the UnoCardController instance.
-     * @return The UnoCardController instance.
+     * Returns the WinConditionController instance.
+     * @return The WinConditionController instance.
      */
-    public static UnoCardController<?> getInstance() {
-        if(instance == null) instance = new UnoCardController<>();
+    public static WinConditionController<?> getInstance() {
+        if(instance == null) instance = new WinConditionController<>();
         return instance;
     }
 
@@ -77,40 +84,38 @@ public class UnoCardController<T>
     }
 
     /**
-     * Sets the penalty executor of this objet.
-     * @param penaltyExecutor An InterfacePenaltyExecutor object.
+     * Sets the timers stopper of this object.
+     * @param stopper A Stoppable object.
      */
-    public void setPenaltyExecutor(@NotNull InterfacePenaltyExecutor penaltyExecutor) {
-        this.penaltyExecutor = penaltyExecutor;
+    public void setStopper(@NotNull Stoppable stopper) {
+        this.stopper = stopper;
     }
 
     /**
-     * Returns the current player provider of this object.
-     * @return An InterfaceProvider object.
+     * Sets the panel changer of this object.
+     * @param panelChanger An InterfacePanelChanger object.
      */
-    @Nullable
-    public InterfaceProvider<InterfacePlayer<T>> getProvider() {
-        return provider;
+    public void setPanelChanger(@NotNull InterfacePanelChanger panelChanger) {
+        this.panelChanger = panelChanger;
+    }
+
+    @Override
+    public void control() {
+        InterfacePlayer<T> current = Objects.requireNonNull(provider).provide();
+        if(current.cards().isEmpty()) {
+            JOptionPane.showMessageDialog(Frame.getInstance(), current.name() + " has won!");
+            Stopper.getInstance().stop();
+            Objects.requireNonNull(panelChanger).changePanel();
+        } else updateAll();
     }
 
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceDiscardedPile<?> discardedPile) {
-            if(discardedPile.size() != 1) {
-                if((new Random().nextInt(3) == 0)) {
-                    InterfacePlayer<?> player = Objects.requireNonNull(provider).provide();
-                    if (player.cards().size() == 1) {
-                        Objects.requireNonNull(penaltyExecutor).execute();
-                        if (player instanceof InterfaceAi<?, ?> ai) {
-                            if (ai.uno())
-                                penaltyExecutor.stop();
-                        } else updateAll();
-                    }
-                } TurnMover.getInstance().next();
-            }
+        if(object instanceof InterfaceDiscardedPile<?>) {
+            control();
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
-                        ". InterfaceDiscardedPile type expected.");
+                        ". InterfaceDiscardedPile type expected");
     }
 
 }

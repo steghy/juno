@@ -23,7 +23,7 @@
  * SOFTWARE.
  */
 
-package juno.controller.new_game;
+package juno.controller.new_game.controller;
 
 import juno.model.deck.AbstractDeckUser;
 import juno.model.deck.InterfaceDiscardedPile;

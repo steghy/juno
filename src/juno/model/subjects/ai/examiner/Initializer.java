@@ -29,6 +29,7 @@ import juno.controller.util.InterfaceInitializer;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.CompatibleCardsProvider;
 import juno.model.subjects.ai.examiner.card_examiner.CardExaminer;
+import juno.model.subjects.ai.examiner.color_examiner.ColorExaminer;
 import juno.model.subjects.ai.examiner.filter.Filter;
 
 /**
@@ -55,20 +56,23 @@ public class Initializer
     @Override
     @SuppressWarnings("ALL")
     public void initialize() {
-        // EasyExaminer.
+        // Easy examiner.
         EasyExaminer<InterfaceCard> easyExaminer = (EasyExaminer<InterfaceCard>) EasyExaminer.getInstance();
 
-        // MediumExaminer.
+        // Medium examiner.
         MediumExaminer<InterfaceCard> mediumExaminer = (MediumExaminer<InterfaceCard>) MediumExaminer.getInstance();
 
-        // HardExaminer.
+        // Hard examiner.
         HardExaminer<InterfaceCard> hardExaminer = (HardExaminer<InterfaceCard>) HardExaminer.getInstance();
 
-        // CompatibleCardProvider.
+        // Compatible card provider.
         CompatibleCardsProvider compatibleCardsProvider = CompatibleCardsProvider.getInstance();
 
-        // Examiner.
+        // Card examiner.
         CardExaminer<InterfaceCard> examiner = (CardExaminer<InterfaceCard>) CardExaminer.getInstance();
+
+        // Color examiner.
+        ColorExaminer colorExaminer = ColorExaminer.getInstance();
 
         // Filter.
         Filter filter = Filter.getInstance();
@@ -76,13 +80,16 @@ public class Initializer
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // Connections.
-        // Examiner.
+        // Card examiner.
         examiner.setEasy(easyExaminer);
         examiner.setMedium(mediumExaminer);
         examiner.setHard(hardExaminer);
         examiner.setItemsProvider(compatibleCardsProvider);
 
-        // EasyExaminer.
+        // Color examiner.
+        colorExaminer.setFilter(filter);
+
+        // Sub examiners.
         easyExaminer.setFilter(filter);
         mediumExaminer.setFilter(filter);
         hardExaminer.setFilter(filter);

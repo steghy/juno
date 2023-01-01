@@ -46,16 +46,16 @@ import java.util.Objects;
  */
 public class PenaltyExecutor<T>
         extends AbstractDeckUser<T>
-        implements ActionListener, InterfacePenaltyExecutor, Stoppable, Observable {
+        implements ActionListener, InterfacePenaltyExecutor, Stoppable, Observable, Observer {
 
     // The observer list.
     private final List<Observer> observabelList;
 
+    // The penalty value.
+    private boolean penaltyIsRunning;
+
     // Card to draw (penalty).
     private int cardToDraw;
-    
-    // Auxiliary variable.
-    private final int aux;
 
     // The current player provider.
     private InterfaceProvider<InterfacePlayer<T>> provider;
@@ -68,10 +68,8 @@ public class PenaltyExecutor<T>
 
     // Builds the PenaltyExecutor instance.
     private PenaltyExecutor() {
-        timer = new Timer(500, this);
-        timer.setInitialDelay(2000);
+        timer = new Timer(1000, this);
         cardToDraw = 2;
-        aux = cardToDraw;
         observabelList = new ArrayList<>();
     }
 
@@ -99,11 +97,10 @@ public class PenaltyExecutor<T>
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(cardToDraw == aux)
-            updateAll();
         if(cardToDraw == 0) {
             timer.stop();
             cardToDraw = 2;
+            updateAll();
         } else {
             provider.provide().add(Objects.requireNonNull(getDeck()).draw());
             cardToDraw--;
@@ -113,6 +110,10 @@ public class PenaltyExecutor<T>
     @Override
     public void stop() {
         timer.stop();
+    }
+
+    public Timer getTimer() {
+        return timer;
     }
 
     @Override
@@ -129,5 +130,15 @@ public class PenaltyExecutor<T>
     public void updateAll() {
         observabelList.forEach(observer -> observer.update(this));
     }
-    
+
+    @Override
+    public void update(@NotNull Object object) {
+        if(object instanceof PenaltyTimer penaltyTimer) {
+            if(!penaltyTimer.getTimer().isRunning())
+                execute();
+        } else throw new IllegalArgumentException(
+                "Invalid object type: " + object.getClass() +
+                        ". PenaltyTimer type expected");
+    }
+
 }

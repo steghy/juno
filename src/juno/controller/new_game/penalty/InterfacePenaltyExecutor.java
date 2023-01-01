@@ -30,7 +30,8 @@ import juno.controller.util.Stoppable;
 /**
  * @author Simone Gentili
  */
-public interface InterfacePenaltyExecutor extends Stoppable {
+public interface InterfacePenaltyExecutor
+        extends Stoppable {
 
     void execute();
 

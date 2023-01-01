@@ -26,7 +26,11 @@
 package juno.view.pages.new_game.single_player.match.panels.center.uno_button;
 
 import juno.controller.log_out.Restorable;
-import juno.controller.new_game.penalty.UnoCardController;
+import juno.controller.new_game.penalty.PenaltyExecutor;
+import juno.controller.new_game.penalty.PenaltyTimer;
+import juno.model.subjects.InterfacePlayer;
+import juno.model.subjects.ai.InterfaceAi;
+import juno.model.util.InterfaceProvider;
 import juno.model.util.Observer;
 import juno.view.panels.AbstractFirstComponent;
 import org.jetbrains.annotations.NotNull;
@@ -38,12 +42,15 @@ import java.util.Objects;
 /**
  * @author Simone Gentili
  */
-public class UnoButtonPanel
+public class UnoButtonPanel<T>
         extends AbstractFirstComponent
         implements Observer, Restorable {
 
+    // The current player provider.
+    private InterfaceProvider<InterfacePlayer<T>> provider;
+
     // The UnoButton instance.
-    private static UnoButtonPanel instance;
+    private static UnoButtonPanel<?> instance;
 
     // Builds the UnoButton instance.
     private UnoButtonPanel() {}
@@ -52,11 +59,12 @@ public class UnoButtonPanel
      * Returns the UnoButton instance.
      * @return The UnoButton instance.
      */
-    public static UnoButtonPanel getInstance() {
-        if(instance == null) instance = new UnoButtonPanel();
+    public static UnoButtonPanel<?> getInstance() {
+        if(instance == null) instance = new UnoButtonPanel<>();
         return instance;
     }
 
+    /** Initialize the UnoButtonPanel instance. */
     public void init() {
         setOpaque(false);
         setLayout(new BorderLayout());
@@ -64,10 +72,20 @@ public class UnoButtonPanel
         getFirstComponent().setEnabled(false);
     }
 
+    /**
+     * Sets the current player provider of this object.
+     * @param provider An InterfaceProvider object.
+     */
+    public void setProvider(@NotNull InterfaceProvider<InterfacePlayer<T>> provider) {
+        this.provider = provider;
+    }
+
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof UnoCardController<?>) {
-            Objects.requireNonNull(getFirstComponent()).setEnabled(true);
+        if(object instanceof PenaltyTimer penaltyTimer) {
+            if(penaltyTimer.getTimer().isRunning()) {
+                Objects.requireNonNull(getFirstComponent()).setEnabled(true);
+            } else restore();
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". UnoCardController type expected.");

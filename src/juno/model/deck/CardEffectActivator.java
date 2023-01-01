@@ -31,7 +31,6 @@ import juno.model.card.colors.InterfaceColor;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.ai.InterfaceAi;
 import juno.model.util.Donut;
-import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -40,21 +39,22 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class CardEffectActivator
-        extends AbstractCardEffectActivator<InterfaceCard, Donut<InterfacePlayer<InterfaceCard>>, InterfaceColor>
-        implements Observer {
+        extends AbstractCardEffectActivator<InterfaceCard, Donut<InterfacePlayer<InterfaceCard>>, InterfaceColor>  {
 
     // The CardEffectActivator instance.
     private static CardEffectActivator instance;
 
     // Builds the CardEffectActivator instance.
-    private CardEffectActivator() {}
+    private CardEffectActivator() {
+    }
 
     /**
      * Returns the CardEffectActivator instance.
+     *
      * @return The CardEffectActivator instance.
      */
     public static CardEffectActivator getInstance() {
-        if(instance == null) instance = new CardEffectActivator();
+        if (instance == null) instance = new CardEffectActivator();
         return instance;
     }
 
@@ -63,24 +63,25 @@ public class CardEffectActivator
         InterfaceAction action = card.action();
         Donut<InterfacePlayer<InterfaceCard>> players =
                 Objects.requireNonNull(getPlayersProvider()).provide();
-        if(action != null) {
-            if(action.isInvert()) Objects.requireNonNull(getInverter()).invert();
-            else if(action.isSkip()) Objects.requireNonNull(getTurnJumper()).next();
-            else if(action.isDrawTwo() || action.isDrawFour()) {
+        if (action != null) {
+            if (action.isInvert()) Objects.requireNonNull(getInverter()).invert();
+            else if (action.isSkip()) Objects.requireNonNull(getTurnJumper()).next();
+            else if (action.isDrawTwo() || action.isDrawFour()) {
                 InterfacePlayer<InterfaceCard> nextPlayer = players.peek();
                 Deck<InterfaceCard> deck = (Deck<InterfaceCard>)
                         Objects.requireNonNull(getDeck());
                 nextPlayer.add(deck.draw());
                 nextPlayer.add(deck.draw());
-                if(action.isDrawFour()) {
+                if (action.isDrawFour()) {
                     nextPlayer.add(deck.draw());
                     nextPlayer.add(deck.draw());
                 } Objects.requireNonNull(getTurnJumper()).next();
-            } if(action.isJolly()) {
+            }
+            if (action.isJolly()) {
                 InterfacePlayer<InterfaceCard> currentPlayer = players.current();
-                if(currentPlayer instanceof InterfaceAi<?, ?> aiPlayer) {
+                if (currentPlayer instanceof InterfaceAi<?, ?> aiPlayer) {
                     Object temp = aiPlayer.color();
-                    if(temp instanceof InterfaceColor color) {
+                    if (temp instanceof InterfaceColor color) {
                         Objects.requireNonNull(getActualColor()).set(color);
                     } else throw new IllegalArgumentException(
                             "Invalid object type: " + temp.getClass() +
@@ -88,16 +89,6 @@ public class CardEffectActivator
                 }
             }
         }
-    }
-
-    @Override
-    public void update(@NotNull Object object) {
-        if(object instanceof InterfaceDiscardedPile<?> discardedPile) {
-            if(discardedPile.size() > 1)
-                activate((InterfaceCard) discardedPile.provide());
-        } else throw new IllegalArgumentException(
-                "Invalid object type: " + object.getClass() +
-                        ". InterfaceDiscardedPile type expected");
     }
 
 }

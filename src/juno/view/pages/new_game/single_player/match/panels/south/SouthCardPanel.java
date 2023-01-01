@@ -29,7 +29,7 @@ import juno.controller.log_out.Restorable;
 import juno.controller.new_game.GameStarter;
 import juno.controller.new_game.dispenser.InterfaceCardDispenser;
 import juno.controller.new_game.human.CardRemover;
-import juno.controller.new_game.Mover;
+import juno.controller.new_game.controller.Mover;
 import juno.controller.new_game.human.PassTurnAction;
 import juno.controller.util.SetterAction;
 import juno.model.card.InterfaceCard;

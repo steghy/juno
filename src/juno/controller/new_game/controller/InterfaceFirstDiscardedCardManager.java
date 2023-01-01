@@ -23,7 +23,7 @@
  * SOFTWARE.
  */
 
-package juno.controller.new_game;
+package juno.controller.new_game.controller;
 
 /**
  * @author Simone Gentili
