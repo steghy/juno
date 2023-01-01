@@ -89,8 +89,7 @@ public class Mover<T>
             } if(card != null) {
                 current.remove(card);
                 Objects.requireNonNull(getDiscardedPile()).discard(card);
-            } else
-                Objects.requireNonNull(getTurnMover()).next();
+            } else Objects.requireNonNull(getTurnMover()).next();
         } else {
             timer.stop();
             updateAll();

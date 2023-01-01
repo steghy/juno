@@ -29,6 +29,7 @@ import juno.controller.new_game.penalty.PenaltyExecutor;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.InterfaceCardEffectActivator;
 import juno.model.subjects.InterfacePlayer;
+import juno.model.subjects.ai.InterfaceAi;
 import juno.model.subjects.shift.InterfaceTurnMover;
 import juno.model.util.AbstractObservable;
 import juno.model.util.InterfaceProvider;
@@ -88,24 +89,36 @@ public class CardEffectController
         this.activator = activator;
     }
 
+    /**
+     * Sets the turn mover of this object.
+     * @param turnMover An InterfaceTurnMover object.
+     */
+    public void setTurnMover(@NotNull InterfaceTurnMover turnMover) {
+        this.turnMover = turnMover;
+    }
+
     @Override
     public void control() {
         InterfacePlayer<InterfaceCard> current = Objects.requireNonNull(provider).provide();
         InterfaceCard card = current.provide();
         Objects.requireNonNull(activator).activate(card);
-        if(card.action() != null && card.action().isJolly()) {
-            updateAll();
-        } else Objects.requireNonNull(turnMover).next();
+        if(!(current instanceof InterfaceAi<?,?>)) {
+            if (card.action() != null && card.action().isJolly())
+                updateAll();
+            else Objects.requireNonNull(turnMover).next();
+        } else
+            Objects.requireNonNull(turnMover).next();
     }
 
     @Override
     public void update(@NotNull Object object) {
-        // Update from OneCardController.
+        // If there was a penalty, the update
+        // came from the PenaltyExecutor class,
+        // otherwise from the OneCardController.
         if(object instanceof Controller) {
             control();
-        } else if(object instanceof PenaltyExecutor<?> penaltyExecutor) {
-            if(!penaltyExecutor.getTimer().isRunning())
-                control();
+        } else if(object instanceof PenaltyExecutor<?>) {
+            control();
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". Controller type expected.");

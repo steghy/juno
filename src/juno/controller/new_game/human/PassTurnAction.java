@@ -25,6 +25,7 @@
 
 package juno.controller.new_game.human;
 
+import juno.controller.util.GSetterAction;
 import juno.model.subjects.shift.InterfaceTurnMover;
 import juno.model.util.AbstractObservable;
 import juno.model.util.Observer;
@@ -74,11 +75,12 @@ public class PassTurnAction
 
     @Override
     public void update(Object object) {
-        if(object instanceof CardTimer)
+        if(object instanceof CardTimer ||
+                object instanceof GSetterAction<?>) {
             actionPerformed(null);
-        else if(object instanceof DiscardedCardSetter<?>) {
-            actionPerformed(null);
-        }
+        } else throw new IllegalArgumentException(
+                "Invalid object type: " + object.getClass() +
+                        ". CardTimer or GSetterAction type expected.");
     }
 
 }

@@ -25,7 +25,6 @@
 
 package juno.controller.util;
 
-import juno.model.util.AbstractObservable;
 import juno.model.util.InterfaceSetter;
 import org.jetbrains.annotations.NotNull;
 
@@ -33,30 +32,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
+ * @param <T>    The type of the object.
+ * @param object The graphic object.
+ * @param setter The setter.
  * @author Simone Gentili
- * @param <T> The type of the object.
  */
-public class SetterAction<T>
-        extends AbstractObservable
+public record SetterAction<T>(@NotNull T object, @NotNull InterfaceSetter<T> setter)
         implements ActionListener {
-
-    // The graphic object.
-    private final T object;
-
-    // The setter.
-    private final InterfaceSetter<T> setter;
-
-    /**
-     * Builds a SetterAction with the
-     * specified object and setter.
-     * @param object An Object.
-     * @param setter An InterfaceSetter object.
-     */
-    public SetterAction(@NotNull T object,
-                        @NotNull InterfaceSetter<T> setter) {
-        this.object = object;
-        this.setter = setter;
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -65,18 +47,12 @@ public class SetterAction<T>
 
     /**
      * Returns the object to set.
+     *
      * @return An Object.
      */
-    public T getObject() {
+    @Override
+    public T object() {
         return object;
-    }
-
-    /**
-     * Returns the setter of this object.
-     * @return An InterfaceSetter.
-     */
-    public InterfaceSetter<T> getSetter() {
-        return setter;
     }
 
 }

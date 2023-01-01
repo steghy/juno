@@ -51,9 +51,6 @@ public class PenaltyExecutor<T>
     // The observer list.
     private final List<Observer> observabelList;
 
-    // The penalty value.
-    private boolean penaltyIsRunning;
-
     // Card to draw (penalty).
     private int cardToDraw;
 
@@ -110,10 +107,6 @@ public class PenaltyExecutor<T>
     @Override
     public void stop() {
         timer.stop();
-    }
-
-    public Timer getTimer() {
-        return timer;
     }
 
     @Override

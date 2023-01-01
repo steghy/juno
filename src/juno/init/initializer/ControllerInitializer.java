@@ -43,6 +43,7 @@ public class ControllerInitializer {
         juno.controller.new_game.Initializer.getInstance().initialize();
         juno.controller.new_game.connector.Initializer.getInstance().initialize();
         juno.controller.new_game.restorer.Initializer.getInstance().initialize();
+        juno.controller.new_game.controller.Initializer.getInstance().initialize();
     }
 
 }

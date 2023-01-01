@@ -31,8 +31,6 @@ import juno.controller.new_game.dispenser.CardController;
 import juno.controller.new_game.dispenser.CardDispenser;
 import juno.controller.new_game.dispenser.OneCardDispenser;
 import juno.controller.new_game.human.*;
-import juno.controller.new_game.penalty.PenaltyExecutor;
-import juno.controller.new_game.controller.UnoCardController;
 import juno.controller.util.InterfaceInitializer;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.*;
@@ -40,7 +38,6 @@ import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.ai.InterfaceDifficulty;
 import juno.model.subjects.factory.AiPlayerFactory;
 import juno.model.subjects.human.HumanPlayer;
-import juno.model.subjects.shift.CurrentPlayerProvider;
 import juno.model.subjects.shift.PlayersProvider;
 import juno.model.subjects.shift.TurnMover;
 
@@ -121,22 +118,12 @@ public class Initializer
         Deck<InterfaceCard> deck = (Deck<InterfaceCard>) Deck.getInstance();
 
         // Turn mover
-        TurnMover<InterfaceCard> turnMover = (TurnMover<InterfaceCard>) TurnMover.getInstance();
+        TurnMover<InterfacePlayer<InterfaceCard>> turnMover =
+                (TurnMover<InterfacePlayer<InterfaceCard>>) TurnMover.getInstance();
 
         // Human player.
-        HumanPlayer<InterfaceCard> humanPlayer = (HumanPlayer<InterfaceCard>) HumanPlayer.getInstance();
-
-        // Penalty executor.
-        PenaltyExecutor<InterfaceCard> penaltyExecutor =
-                (PenaltyExecutor<InterfaceCard>) PenaltyExecutor.getInstance();
-
-        // Current player provider.
-        CurrentPlayerProvider<InterfacePlayer<InterfaceCard>> currentPlayerProvider =
-                (CurrentPlayerProvider<InterfacePlayer<InterfaceCard>>) CurrentPlayerProvider.getInstance();
-
-        // Uno card controller.
-        UnoCardController<InterfaceCard> unoCardController =
-                (UnoCardController<InterfaceCard>) UnoCardController.getInstance();
+        HumanPlayer<InterfaceCard> humanPlayer =
+                (HumanPlayer<InterfaceCard>) HumanPlayer.getInstance();
 
         // Pass turn action.
         PassTurnAction passTurnAction = PassTurnAction.getInstance();
@@ -148,6 +135,7 @@ public class Initializer
 
         // Card timer.
         drawAction.addObserver(cardTimer);
+        discardedCardSetter.addObserver(cardTimer);
 
         // Pass turn action.
         passTurnAction.setTurnMover(turnMover);
@@ -196,15 +184,6 @@ public class Initializer
 
         // First discarded card manager.
         cardDispenser.addObserver(firstDiscardedCardManager);
-
-        // Penalty executor.
-        penaltyExecutor.setDeck(deck);
-        penaltyExecutor.setProvider(currentPlayerProvider);
-
-        // Uno card controller.
-        unoCardController.setProvider(currentPlayerProvider);
-        unoCardController.setPenaltyExecutor(penaltyExecutor);
-        discardedPile.addObserver(unoCardController);
 
         // Draw action.
         drawAction.setDeck(deck);

@@ -61,6 +61,7 @@ public class GSetterAction<T>
     @Override
     public void actionPerformed(ActionEvent e) {
         setter.set(gObject.object());
+        updateAll();
     }
 
 }

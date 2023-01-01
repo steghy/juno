@@ -26,6 +26,7 @@
 package juno.view.pages.new_game.single_player.match.panels.center.colors;
 
 import juno.controller.new_game.controller.CardEffectController;
+import juno.controller.new_game.human.PassTurnAction;
 import juno.controller.util.GSetterAction;
 import juno.controller.util.InterfaceInitializer;
 import juno.model.card.colors.Color;
@@ -69,13 +70,17 @@ public class ColorsPanelInitializer
         // Actual color manager.
         ActualColorManager actualColorManager = ActualColorManager.getInstance();
 
+        // Turn mover action.
+        PassTurnAction passTurnAction = PassTurnAction.getInstance();
+
         // Colors settings.
         List.of(Color.values()).forEach(color -> {
             GObjectButton<InterfaceColor> gColor =
                     (GObjectButton<InterfaceColor>) gColorCreator.create(color, null);
             GSetterAction<InterfaceColor> gSetterAction = new GSetterAction<>(gColor, actualColorManager);
             gSetterAction.addObserver(colorsPanel);
-            gColor.addActionListener(new GSetterAction<>(gColor, actualColorManager));
+            gSetterAction.addObserver(passTurnAction);
+            gColor.addActionListener(gSetterAction);
             ImageResizer.resize(gColor, 4.5);
             gColor.setEnabled(false);
             colorsPanel.add(gColor);

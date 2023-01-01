@@ -25,7 +25,6 @@
 
 package juno.controller.new_game.controller;
 
-import juno.controller.new_game.restorer.Stopper;
 import juno.controller.util.InterfacePanelChanger;
 import juno.controller.util.Stoppable;
 import juno.model.deck.InterfaceDiscardedPile;
@@ -104,15 +103,16 @@ public class WinConditionController<T>
         InterfacePlayer<T> current = Objects.requireNonNull(provider).provide();
         if(current.cards().isEmpty()) {
             JOptionPane.showMessageDialog(Frame.getInstance(), current.name() + " has won!");
-            Stopper.getInstance().stop();
+            Objects.requireNonNull(stopper).stop();
             Objects.requireNonNull(panelChanger).changePanel();
         } else updateAll();
     }
 
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceDiscardedPile<?>) {
-            control();
+        if(object instanceof InterfaceDiscardedPile<?> discardedPile) {
+            if(discardedPile.size() != 1)
+                control();
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceDiscardedPile type expected");

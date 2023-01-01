@@ -40,7 +40,7 @@ import java.util.Objects;
 /**
  * @author Simone Gentili
  */
-public class UnoCardController<T>
+public class OneCardController<T>
         extends AbstractObservable
         implements Observer, Controller {
 
@@ -52,18 +52,22 @@ public class UnoCardController<T>
     @Nullable
     private InterfacePenaltyExecutor penaltyExecutor;
 
+    // The penalty timer.
+    @Nullable
+    private PenaltyTimer penaltyTimer;
+
     // The UnoCardController instance.
-    private static UnoCardController<?> instance;
+    private static OneCardController<?> instance;
 
     // Builds the UnoCardController instance.
-    private UnoCardController() {}
+    private OneCardController() {}
 
     /**
      * Returns the UnoCardController instance.
      * @return The UnoCardController instance.
      */
-    public static UnoCardController<?> getInstance() {
-        if(instance == null) instance = new UnoCardController<>();
+    public static OneCardController<?> getInstance() {
+        if(instance == null) instance = new OneCardController<>();
         return instance;
     }
 
@@ -84,6 +88,14 @@ public class UnoCardController<T>
     }
 
     /**
+     * Sets the penalty timer of this object.
+     * @param penaltyTimer A PenaltyTimer object.
+     */
+    public void setPenaltyTimer(@NotNull PenaltyTimer penaltyTimer) {
+        this.penaltyTimer = penaltyTimer;
+    }
+
+    /**
      * Returns the current player provider of this object.
      * @return An InterfaceProvider object.
      */
@@ -99,13 +111,14 @@ public class UnoCardController<T>
             if(current instanceof InterfaceAi<?,?> ai) {
                 if(!ai.uno()) Objects.requireNonNull(penaltyExecutor).execute();
                 else updateAll();
-            } else PenaltyTimer.getInstance().startTimer();
+            } else Objects.requireNonNull(penaltyTimer).startTimer();
         } else updateAll();
     }
 
     @Override
     public void update(@NotNull Object object) {
-        // Update from WinConditionController
+        // The update comes from the
+        // WinConditionController class.
         if (object instanceof Controller) {
             control();
         } else throw new IllegalArgumentException(

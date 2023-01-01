@@ -70,7 +70,9 @@ public class CardTimer
     public void update(Object object) {
         if(object instanceof DrawAction<?>)
             timer.start();
-        else throw new IllegalArgumentException(
+        else if(object instanceof DiscardedCardSetter<?>) {
+            stop();
+        } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". DrawAction expected.");
     }

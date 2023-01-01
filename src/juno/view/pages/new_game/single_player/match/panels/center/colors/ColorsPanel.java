@@ -28,6 +28,7 @@ package juno.view.pages.new_game.single_player.match.panels.center.colors;
 import juno.controller.log_out.Restorable;
 import juno.controller.new_game.controller.Controller;
 import juno.controller.util.GSetterAction;
+import juno.model.subjects.shift.TurnMover;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
@@ -61,10 +62,13 @@ public class ColorsPanel
 
     @Override
     public void update(@NotNull Object object) {
+        // The update comes from the
+        // CardEffectController class.
         if(object instanceof Controller) {
             for(Component c : getComponents()) c.setEnabled(true);
         } else if(object instanceof GSetterAction<?>) {
             restore();
+            TurnMover.getInstance().next();
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". Controller type expected.");

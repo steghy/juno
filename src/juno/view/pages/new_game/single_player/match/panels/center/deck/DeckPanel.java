@@ -97,8 +97,11 @@ public class DeckPanel<T>
         if(object instanceof InterfaceTurnMover) {
             if(provider.provide() == humanPlayer)
                 Objects.requireNonNull(getFirstComponent()).setEnabled(true);
-        } else if(object instanceof DrawAction<?> || object instanceof DiscardedCardSetter<?>) {
+        } else if(object instanceof DrawAction<?>) {
             Objects.requireNonNull(getFirstComponent()).setEnabled(false);
+        } else if(object instanceof DiscardedCardSetter<?>) {
+            if(!(provider.provide() == humanPlayer))
+                Objects.requireNonNull(getFirstComponent()).setEnabled(false);
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceTurnMover or DrawAction type expected.");
