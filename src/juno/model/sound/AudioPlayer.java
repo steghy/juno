@@ -52,6 +52,8 @@ public class AudioPlayer
 	// The clip.
 	Clip clip;
 
+	Timer timer;
+
 	// The tracks.
 	private Donut<File> tracks;
 
@@ -120,9 +122,12 @@ public class AudioPlayer
 	public void next() {
 		if(tracks != null) {
 			if(tracks.getCurrentIndex() == tracks.size() - 1) {
-				if(loop) nextTrack();
-				else pause();
-			} else nextTrack();
+				if(loop)
+					nextTrack();
+				else
+					pause();
+			} else
+				nextTrack();
 		}
 	}
 
@@ -132,7 +137,8 @@ public class AudioPlayer
 	private void nextTrack() {
 		pause();
 		tracks.next();
-		load(tracks.current());
+		File track = tracks.current();
+		load(track);
 		play();
 	}
 
@@ -233,8 +239,10 @@ public class AudioPlayer
 			clip.open(audioInputStream);
 			floatControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
 			if(mute) floatControl.setValue(-80);
-			// The timer.
-			Timer timer = new Timer((int) clip.getMicrosecondLength() / 1000, this);
+			this.timer = new Timer(0, this);
+			timer.setInitialDelay((int) clip.getMicrosecondLength() / 1000);
+			timer.setRepeats(false);
+			timer.start();
 		} catch (LineUnavailableException e) {
 			throw new RuntimeException("Line not available: " + e);
 		} catch (IOException e) {

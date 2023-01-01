@@ -5,11 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/data/audio/music-1/track-1.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/audio/music-1/track-3.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/audio/track-0.wav" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/audio/music-1/track-0.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/audio/track-1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/audio/track-3.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/config/avatar/ToninoVendetta-avatar.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/config/avatar/ToninoVendetta-avatar.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/sound/AudioPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/sound/AudioPlayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/sound/mantainer/AudioTracksMaintainer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/sound/mantainer/InterfaceTracksGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/sound/mantainer/InterfaceTracksMaintainer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/init/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/init/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/model/sound/AudioPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/sound/AudioPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/sound/mantainer/AudioTracksMaintainer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/sound/mantainer/InterfaceTracksGenerator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/sound/mantainer/InterfaceTracksMaintainer.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,22 +196,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/juno/controller/new_game/controller/CardEffectController.java</url>
-          <line>127</line>
-          <option name="timeStamp" value="71" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/juno/controller/new_game/controller/OneCardController.java</url>
-          <line>112</line>
-          <option name="timeStamp" value="72" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
