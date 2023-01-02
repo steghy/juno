@@ -23,18 +23,33 @@
  * SOFTWARE.
  */
 
-package juno.init.initializer;
+package juno.controller;
+
+import juno.controller.util.InterfaceInitializer;
 
 /**
  * @author Simone Gentili
  */
-public class ControllerInitializer {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // Builds the ControllerInitializer.
-    private ControllerInitializer() {}
+    // The Initializer instance.
+    private static Initializer instance;
 
-    /** Initialize the juno.controller package. */
-    public static void initialize() {
+    // Builds the Initializer instance.
+    private Initializer() {}
+
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
+    public void initialize() {
         juno.controller.pre_access.Initializer.initialize();
         juno.controller.log_out.Initializer.getInstance().initialize();
         juno.controller.pre_access.loggers.Initializer.initialize();

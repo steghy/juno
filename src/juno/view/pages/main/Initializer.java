@@ -25,6 +25,7 @@
 
 package juno.view.pages.main;
 
+import juno.controller.util.InterfaceInitializer;
 import juno.view.pages.main.card.MainCardPanelConfigurator;
 import juno.view.pages.main.menu.MenuPanelConfigurator;
 import juno.view.pages.main.title.TitlePanelConfigurator;
@@ -32,12 +33,26 @@ import juno.view.pages.main.title.TitlePanelConfigurator;
 /**
  * @author Simone Gentili
  */
-public class MainPanelInitializer {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // Builds a MainPanelInitializer object.
-    private MainPanelInitializer() {}
+    // The Initializer instance.
+    private static Initializer instance;
 
-    public static void initialize() {
+    // Builds the Initializer object.
+    private Initializer() {}
+
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
+    public void initialize() {
         // Main component configuration.
         MainPanelConfigurator.configure();
 

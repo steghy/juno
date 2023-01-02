@@ -25,19 +25,33 @@
 
 package juno.view.pages.card;
 
+import juno.controller.util.InterfaceInitializer;
 import juno.view.pages.main.card.MainCardPanel;
 import juno.view.pages.pre_access.card.PreAccessCardPanel;
 
 /**
  * @author Simone Gentili
  */
-public class TopCardPanelConfigurator {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // Builds a TopCardPanelConfigurator object.
-    private TopCardPanelConfigurator() {}
+    // The Initializer instance.
+    private static Initializer instance;
 
-    /** Configure juno.view.pages.card.TopCardPanel instance. */
-    public static void configure() {
+    // Builds the Initializer instance.
+    private Initializer() {}
+
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
+    public void initialize() {
         // Main component.
         TopCardPanel topCardPanel = TopCardPanel.getInstance();
 

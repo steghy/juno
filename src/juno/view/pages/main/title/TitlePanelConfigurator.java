@@ -49,10 +49,10 @@ public class TitlePanelConfigurator {
 
         // Components.
         ButtonCreator creator = ButtonCreator.getInstance();
-        AbstractButton title = creator.create(Button.JUNO, RotatedIcon.Rotate.ABOUT_CENTER);
+        AbstractButton title = creator.create(Button.JUNO, null);
 
         // Image resizing.
-        ImageResizer.resize(title, 3.0);
+        ImageResizer.resize(title, 1.0);
 
         // Border setting.
         RoundedBorder insideBorder = new RoundedBorder(10, 1, null, Color.WHITE);

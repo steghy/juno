@@ -25,16 +25,27 @@
 
 package juno.model.requester;
 
+import juno.controller.util.InterfaceInitializer;
+
 /**
  * @author Simone Gentili
  */
-public class Initializer {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // Builds an Initializer object.
+    // The Initializer instance.
+    private static Initializer instance;
+
+    // Builds the Initializer instance.
     public Initializer() {}
 
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
     /** Initialize the juno.model.requester package. */
-    public static void initialize() {
+    public void initialize() {
         // Components.
         // Requester.
         Requester requester = Requester.getInstance();

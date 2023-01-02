@@ -25,6 +25,7 @@
 
 package juno.view.pages.pre_access;
 
+import juno.controller.util.InterfaceInitializer;
 import juno.view.pages.pre_access.access.AccessPanelInitializer;
 import juno.view.pages.pre_access.card.PreAccessCardPanelConfigurator;
 import juno.view.pages.pre_access.login.LogInPanelInitializer;
@@ -34,12 +35,26 @@ import juno.view.pages.pre_access.welcome.WelcomePanelInitialize;
 /**
  * @author Simone Gentili
  */
-public class PreAccessInitializer {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // Builds a PreAccessInitializer object.
-    private PreAccessInitializer() {}
+    // The Initializer instance.
+    private static Initializer instance;
 
-    public static void initialize() {
+    // Builds the Initializer instance..
+    private Initializer() {}
+
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
+    public void initialize() {
         // Components configurations.
         WelcomePanelInitialize.initialize();
         AccessPanelInitializer.initialize();

@@ -23,24 +23,34 @@
  * SOFTWARE.
  */
 
-package juno.init.initializer;
+package juno.view;
 
-import juno.view.frame.FrameInitializer;
-import juno.view.pages.card.TopCardPanelConfigurator;
-import juno.view.pages.main.MainPanelInitializer;
-import juno.view.pages.options.OptionsInitializer;
-import juno.view.pages.pre_access.PreAccessInitializer;
+
+import juno.controller.util.InterfaceInitializer;
 
 /**
  * @author Simone Gentili
  */
-public class ViewInitializer {
+public class Initializer
+            implements InterfaceInitializer {
 
-    // Builds a ViewInitializer object.
-    private ViewInitializer() {}
+    // The Initializer instance.
+    private static Initializer instance;
 
-    /** Initialize the juno.view package. */
-    public static void initialize() {
+    // Builds the Initializer instance.
+    private Initializer() {}
+
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
+    public void initialize() {
         juno.view.img_initializer.Initializer.getInstance().initialize();
         juno.view.button.Initializer.initialize();
         juno.view.gobject.profiles.Initializer.getInstance().initialize();
@@ -50,11 +60,11 @@ public class ViewInitializer {
         juno.view.gobject.color.Initializer.getInstance().initialize();
         juno.view.pages.new_game.NewGameInitializer.initialize();
         juno.view.pages.score.ScorePanelInitializer.initialize();
-        OptionsInitializer.initialize();
-        PreAccessInitializer.initialize();
-        TopCardPanelConfigurator.configure();
-        MainPanelInitializer.initialize();
-        FrameInitializer.initializer();
+        juno.view.pages.pre_access.Initializer.getInstance();
+        juno.view.pages.main.Initializer.getInstance();
+        juno.view.pages.options.Initializer.getInstance();
+        juno.view.pages.card.Initializer.getInstance();
+        juno.view.frame.Initializer.getInstance().initialize();
     }
 
 }

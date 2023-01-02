@@ -23,18 +23,33 @@
  * SOFTWARE.
  */
 
-package juno.init.initializer;
+package juno.model;
+
+import juno.controller.util.InterfaceInitializer;
 
 /**
  * @author Simone Gentili
  */
-public class ModelInitializer {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // Builds a ModelInitializer object.
-    private ModelInitializer() {}
+    // The Initializer instance.
+    private static Initializer instance;
 
-    /** Initialize the juno.model package. */
-    public static void initialize() {
+    // Builds the Initializer instance.
+    private Initializer() {}
+
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
+    public void initialize() {
         juno.model.requester.Initializer.initialize();
         juno.model.data.io.input.Initializer.initialize();
         juno.model.data.profile.Initializer.initialize();

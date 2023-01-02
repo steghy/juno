@@ -25,19 +25,34 @@
 
 package juno.view.frame;
 
+import juno.controller.util.InterfaceInitializer;
 import juno.model.requester.ProgramDirectory;
 import juno.view.pages.card.TopCardPanel;
 import juno.view.img_initializer.ImageComponentInitializer;
 import juno.model.requester.PathProviderAssembler;
-import juno.view.util.RotatedIcon;
 
 import javax.swing.*;
 
-public class FrameInitializer {
+public class Initializer
+        implements InterfaceInitializer {
 
-    private FrameInitializer() {}
+    // The Initializer instance.
+    private static Initializer instance;
 
-    public static void initializer() {
+    // Builds the Initializer instance.
+    private Initializer() {}
+
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
+    public void initialize() {
         Frame frame = Frame.getInstance();
 
         JLabel background = new JLabel();
@@ -45,7 +60,7 @@ public class FrameInitializer {
                 ImageComponentInitializer.getInstance()
                         .initialize(
                                 background,
-                                PathProviderAssembler.getInstance().assemble(ProgramDirectory.BACKGROUNDS, "background.gif"),
+                                PathProviderAssembler.getInstance().assemble(ProgramDirectory.BACKGROUNDS, "Background.png"),
                                 null);
         frame.setBackground(background);
         frame.setPanel(topCardPanel);

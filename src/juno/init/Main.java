@@ -27,9 +27,6 @@ package juno.init;
 
 import juno.controller.avatar.Subscriptions;
 import juno.controller.pre_access.ConfigurationFilesFactory;
-import juno.init.initializer.ControllerInitializer;
-import juno.init.initializer.ModelInitializer;
-import juno.init.initializer.ViewInitializer;
 import juno.model.requester.ProgramDirectory;
 import juno.model.requester.GitHubRepositorySetter;
 import juno.model.sound.AudioPlayer;
@@ -40,20 +37,32 @@ import javax.swing.*;
 import java.io.File;
 import java.util.Objects;
 
+/**
+ * @author Simone Gentili
+ */
 public class Main {
 
+    // Builds a Main object.
+    private Main() {}
+
+    /**
+     * Starts the J-UNO applications with the
+     * specified arguments.
+     * @param args An array of String object.
+     */
     public static void main(String[] args) {
         try {
             // Setting GitHub repository.
             GitHubRepositorySetter.setRepository();
 
             // Subscriptions.
+            // Rewrite.
             Subscriptions.make();
 
-            // Pre initialization.
-            ModelInitializer.initialize();
-            ControllerInitializer.initialize();
-            ViewInitializer.initialize();
+            // Model -> Controller -> View: Initialization.
+            juno.model.Initializer.getInstance().initialize();
+            juno.controller.Initializer.getInstance().initialize();
+            juno.view.Initializer.getInstance().initialize();
 
             // Getting profiles.
             ConfigurationFilesFactory.getInstance().generate();
@@ -65,6 +74,7 @@ public class Main {
             audioPlayer.play();
             audioPlayer.setLoop(true);
 
+            // Fullscreen mode.
             ((JToggleButton) Objects.requireNonNull(MenuPanel.getInstance().getSecondComponent())).doClick();
 
             // Frame.
@@ -77,4 +87,5 @@ public class Main {
             System.exit(1);
         }
     }
+
 }

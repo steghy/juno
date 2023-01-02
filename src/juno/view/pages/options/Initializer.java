@@ -25,18 +25,33 @@
 
 package juno.view.pages.options;
 
+import juno.controller.util.InterfaceInitializer;
 import juno.view.pages.options.menu.MenuPanelConfigurator;
 import juno.view.pages.options.title.TitlePanelConfigurator;
 
 /**
  * @author Simone Gentili
  */
-public class OptionsInitializer {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // Builds a OptionsInitializer object.
-    private OptionsInitializer() {}
+    // The Initializer instance.
+    private static Initializer instance;
 
-    public static void initialize() {
+    // Builds the Initializer instance.
+    private Initializer() {}
+
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
+    public void initialize() {
         // Components.
         MenuPanelConfigurator.configure();
         TitlePanelConfigurator.configure();
