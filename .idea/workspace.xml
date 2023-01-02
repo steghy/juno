@@ -5,41 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/data/config/avatar/Giovanni-avatar.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/config/profiles/Giovanni-profile.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/config/scores/Giovanni-games-won.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/config/scores/Giovanni-lost-games.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/images/awards/avatars/AVATAR_IMAGE_10.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/avatar/ToninoVendetta-avatar.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/config/avatar/ToninoVendetta-avatar.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/images/awards/avatars/AVATAR_IMAGE_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/images/awards/avatars/AVATAR_IMAGE_1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/images/awards/avatars/AVATAR_IMAGE_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/images/awards/avatars/AVATAR_IMAGE_2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/images/awards/avatars/AVATAR_IMAGE_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/images/awards/avatars/AVATAR_IMAGE_3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/images/awards/avatars/AVATAR_IMAGE_4.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/images/awards/avatars/AVATAR_IMAGE_4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/images/awards/avatars/AVATAR_IMAGE_5.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/images/awards/avatars/AVATAR_IMAGE_5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/images/awards/avatars/AVATAR_IMAGE_6.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/images/awards/avatars/AVATAR_IMAGE_6.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/images/awards/avatars/AVATAR_IMAGE_7.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/images/awards/avatars/AVATAR_IMAGE_7.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/images/awards/avatars/AVATAR_IMAGE_8.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/images/awards/avatars/AVATAR_IMAGE_8.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/images/awards/avatars/AVATAR_IMAGE_9.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/images/awards/avatars/AVATAR_IMAGE_9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/images/buttons/JUNO.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/images/buttons/JUNO.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/images/buttons/JUNO_ROLLOVER.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/images/buttons/JUNO_ROLLOVER.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/init/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/init/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/init/initializer/ViewInitializer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/frame/FrameInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/frame/FrameInitializer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/main/MainPanelInitializer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/main/title/TitlePanelConfigurator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/main/title/TitlePanelConfigurator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/score/title/TitlePanelConfigurator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/init/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/init/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/init/initializer/ControllerInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/Initializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/init/initializer/ModelInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/Initializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/init/initializer/ViewInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/Initializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/frame/FrameInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/frame/Initializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/card/TopCardPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/card/Initializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/main/MainPanelInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/main/Initializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/main/title/TitlePanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/main/title/TitlePanelConfigurator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/options/OptionsInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/options/Initializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/pre_access/PreAccessInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/pre_access/Initializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/score/title/TitlePanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/score/title/TitlePanelConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/avatar/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/avatar/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/awards/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/awards/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/goals/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/goals/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/input/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/output/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/output/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/profile/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/profile/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/deck/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/deck/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/requester/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/requester/Initializer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

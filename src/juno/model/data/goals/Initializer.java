@@ -25,19 +25,33 @@
 
 package juno.model.data.goals;
 
+import juno.controller.util.InterfaceInitializer;
 import juno.model.data.score.GamesWonCounter;
 import juno.model.data.score.LostGamesCounter;
 
 /**
  * @author Simone Gentili
  */
-public class Initializer {
+public class Initializer
+        implements InterfaceInitializer {
+
+    // The Initializer instance.
+    private static Initializer instance;
 
     // Builds an Initializer object.
     private Initializer() {}
 
-    /** Initialize the goals and they relative awards. */
-    public static void initialize() {
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
+    public void initialize() {
         // Components.
         // GamesWonCounter.
         GamesWonCounter gamesWonCounter = GamesWonCounter.getInstance();

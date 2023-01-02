@@ -25,6 +25,7 @@
 
 package juno.model.data.awards;
 
+import juno.controller.util.InterfaceInitializer;
 import juno.model.data.awards.avatar.AvatarImage;
 import juno.model.data.awards.frame.AvatarFrame;
 import juno.model.data.goals.Goal;
@@ -33,13 +34,26 @@ import juno.model.data.goals.RegistrationGoal;
 /**
  * @author Simone Gentili
  */
-public class Initializer {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // Builds an Initializer object.
+    // The Initializer instance.
+    private static Initializer instance;
+
+    // Builds the Initializer instance.
     private Initializer() {}
 
-    /** Initialize the juno.model.data.awards package. */
-    public static void initialize() {
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
+    public void initialize() {
         // Registration.
         RegistrationGoal.getInstance().addObserver(AvatarImage.AVATAR_IMAGE_1);
         RegistrationGoal.getInstance().addObserver(AvatarFrame.GREY_FRAME);

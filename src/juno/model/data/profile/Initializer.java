@@ -25,17 +25,32 @@
 
 package juno.model.data.profile;
 
+import juno.controller.util.InterfaceInitializer;
 import juno.model.data.profile.profile.Profile;
 
 /**
  * @author Simone Gentili
  */
-public class Initializer {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // Builds an Initializer object.
+    // The Initializer instance.
+    private static Initializer instance;
+
+    // Builds the Initializer instance.
     private Initializer() {}
 
-    public static void initialize() {
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
+    public void initialize() {
         // Components.
         // Profile.
         Profile profile = Profile.getInstance();
@@ -43,7 +58,7 @@ public class Initializer {
         // Profile error provider.
         ErrorProvider errorProvider = new ErrorProvider();
 
-        //////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////
 
         // Connections.
         profile.setProvider(errorProvider);

@@ -25,18 +25,32 @@
 
 package juno.model.data.avatar;
 
+import juno.controller.util.InterfaceInitializer;
 import juno.model.data.profile.profile.ProfileNameProvider;
 
 /**
  * @author Simone Gentili
  */
-public class Initializer {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // Builds an Initializer object.
+    // The Initializer instance.
+    private static Initializer instance;
+
+    // Builds the Initializer instance.
     private Initializer() {}
 
-    /** Initializer the juno.model.data.avatar package. */
-    public static void initialize() {
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
+    public void initialize() {
         // Components.
         // AvatarNameSetter.
         AvatarNameSetter avatarNameSetter = AvatarNameSetter.getInstance();

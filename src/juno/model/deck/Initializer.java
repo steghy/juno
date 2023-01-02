@@ -26,23 +26,37 @@
 package juno.model.deck;
 
 
+import juno.controller.util.InterfaceInitializer;
 import juno.model.card.InterfaceCard;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.shift.Inverter;
 import juno.model.subjects.shift.PlayersProvider;
 import juno.model.subjects.shift.TurnJumper;
-import juno.model.subjects.shift.TurnMover;
 
 /**
  * @author Simone Gentili
  */
-public class Initializer {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // Builds an Initializer object.
+    // The Initializer instance.
+    private static Initializer instance;
+
+    // Builds the Initializer instance.
     private Initializer() {}
 
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
     @SuppressWarnings("unchecked")
-    public static void initialize() {
+    public void initialize() {
         // Compatible card provider.
         CompatibleCardsProvider compatibleCardsProvider = CompatibleCardsProvider.getInstance();
 
@@ -76,32 +90,29 @@ public class Initializer {
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        // Compatible cards provider settings.
+        // Compatible card provider.
         compatibleCardsProvider.setCompatibilityChecker(compatibilityChecker);
 
-        // Compatibility checker settings.
+        // Compatibility checker.
         compatibilityChecker.setDiscardedPile(discardedPile);
         compatibilityChecker.setProvider(actualColor);
 
-        // Deck filler settings.
+        // Deck filler.
         filler.setDiscardedPile(discardedPile);
 
-        // Deck settings.
+        // Deck.
         deck.setDeckFiller(filler);
         deck.setMixer(mixer);
+        deckFactory.addObserver(deck);
 
-        // Card effect activator settings.
+        // Card effect activator.
         cardEffectActivator.setDeck(deck);
         cardEffectActivator.setInverter(Inverter.getInstance());
         cardEffectActivator.setTurnJumper(TurnJumper.getInstance());
         cardEffectActivator.setPlayersProvider(playersProvider);
         cardEffectActivator.setActualColor(actualColor);
 
-        // Observer / Observable.
-        // Deck factory.
-        deckFactory.addObserver(deck);
-
-        // Discarded pile
+        // Actual color.
         discardedPile.addObserver(actualColor);
     }
 

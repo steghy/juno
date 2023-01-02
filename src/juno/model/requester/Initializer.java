@@ -39,14 +39,17 @@ public class Initializer
     // Builds the Initializer instance.
     public Initializer() {}
 
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
     public static Initializer getInstance() {
         if(instance == null) instance = new Initializer();
         return instance;
     }
 
-    /** Initialize the juno.model.requester package. */
+    @Override
     public void initialize() {
-        // Components.
         // Requester.
         Requester requester = Requester.getInstance();
 
@@ -61,7 +64,6 @@ public class Initializer
 
         ///////////////////////////////////////////////////////////////////
 
-        // Connections.
         // Requester.
         requester.setDownloader(downloader);
         requester.setConnectivityChecker(internetConnectivityChecker);

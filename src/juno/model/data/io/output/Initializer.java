@@ -28,6 +28,7 @@ package juno.model.data.io.output;
 import juno.controller.pre_access.log_in.InterfacePathBuilder;
 import juno.controller.pre_access.log_in.PathMapBuilder;
 import juno.controller.pre_access.log_in.PathBuilder;
+import juno.controller.util.InterfaceInitializer;
 import juno.model.data.avatar.Avatar;
 import juno.model.data.profile.profile.Profile;
 import juno.model.data.profile.profile.ProfileNameProvider;
@@ -41,14 +42,27 @@ import java.util.Map;
 /**
  * @author Simone Gentili
  */
-public class Initializer {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // Builds an Initializer object.
+    // The Initializer instance.
+    private static Initializer instance;
+
+    // Builds the Initializer instance.
     private Initializer() {}
 
-    /** Initialize the juno.model.data.io.output package. */
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
     @SuppressWarnings("unchecked")
-    public static void initialize() {
+    public void initialize() {
         // Components.
         // ExporterManager.
         ExporterManager exporterManager = ExporterManager.getInstance();
@@ -69,10 +83,12 @@ public class Initializer {
         map.put(LostGamesCounter.getInstance(), new PathBuilder("-lost-games.json", ProgramDirectory.SCORE.absolutePath()));
         map.put(Avatar.getInstance(), new PathBuilder("-avatar.json", ProgramDirectory.AVATAR.absolutePath()));
         PathMapBuilder<Exportable> mapSetter = new PathMapBuilder<>(map);
+
+        // Exporter manager.
         exporterManager.setMapBuilder(mapSetter);
         exporterManager.setDataExporter(jsonDataExporter);
 
-        // ExitManager.
+        // Exit manager.
         exitManager.setExporter(exporterManager);
         exitManager.setProvider(ProfileNameProvider.getInstance());
     }
