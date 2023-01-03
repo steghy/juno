@@ -29,7 +29,6 @@ package juno.model.subjects.factory;
 /**
  * @author Simone Gentili
  * @param <T> The type of the difficulty objects.
- * @param <E> The type of the cards.
  */
 @FunctionalInterface
 public interface InterfaceAiPlayerGenerator<T> {

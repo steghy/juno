@@ -44,15 +44,13 @@ import java.util.List;
  * @author Simone Gentili
  */
 public class AudioPlayer
-		implements InterfaceAdvancedAudioPlayer, Observable, ActionListener {
+		implements MuteableAudioPlayer, RepeatableAudioPlayer, Playable, Observable, ActionListener {
 
 	// The Observers List.
 	private final List<Observer> observerList;
 
 	// The clip.
-	Clip clip;
-
-	Timer timer;
+	private Clip clip;
 
 	// The tracks.
 	private Donut<File> tracks;
@@ -86,9 +84,7 @@ public class AudioPlayer
 		return instance;
 	}
 
-	/**
-	 * Plays the current track.
-	 */
+	@Override
 	public void play() {
 		if(clip != null) {
 			status = true;
@@ -163,10 +159,7 @@ public class AudioPlayer
 		}
 	}
 
-	/**
-	 * Sets the Float control of this
-	 * object to the value -80.
-	 */
+	@Override
 	public void mute() {
 		if(!mute) {
 			mute = true;
@@ -174,10 +167,7 @@ public class AudioPlayer
 		}
 	}
 
-	/**
-	 * Sets the Float control of this
-	 * object to the value 0.
-	 */
+	@Override
 	public void unmute() {
 		if(mute) {
 			mute = false;
@@ -185,30 +175,19 @@ public class AudioPlayer
 		}
 	}
 
-	/**
-	 * Sets the loop of the clip.
-	 * @param loop A boolean value.
-	 */
-	public void setLoop(boolean loop) {
-		this.loop = loop;
-	}
-
-	/**
-	 * Returns true if, and only if, the clip
-	 * of this object is muted.
-	 * @return A boolean value.
-	 */
+	@Override
 	public boolean isMuted() {
 		return mute;
 	}
 
-	/**
-	 * Plays the specified file audio.
-	 * @param path A String object.
-	 */
-	public void playEffect(@NotNull final String path) {
-		load(new File(path));
-		play();
+	@Override
+	public void setLoop(boolean loop) {
+		this.loop = loop;
+	}
+
+	@Override
+	public boolean isLooped() {
+		return loop;
 	}
 
 	/**
@@ -232,17 +211,23 @@ public class AudioPlayer
 	 * the specified File object.
 	 * @param track A File object.
 	 */
-	private void load(@NotNull File track) {
+	public void load(@NotNull File track) {
 		try {
+			// Opening audio track.
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(track);
 			clip = AudioSystem.getClip();
 			clip.open(audioInputStream);
+
+			// Volume control.
 			floatControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
 			if(mute) floatControl.setValue(-80);
-			this.timer = new Timer(0, this);
+
+			// The timer.
+			Timer timer = new Timer(0, this);
 			timer.setInitialDelay((int) clip.getMicrosecondLength() / 1000);
 			timer.setRepeats(false);
 			timer.start();
+
 		} catch (LineUnavailableException e) {
 			throw new RuntimeException("Line not available: " + e);
 		} catch (IOException e) {
@@ -253,13 +238,13 @@ public class AudioPlayer
 	}
 
 	@Override
-	public void addObserver(@NotNull Observer observer) {
-		observerList.add(observer);
+	public boolean addObserver(@NotNull Observer observer) {
+		return observerList.add(observer);
 	}
 
 	@Override
-	public void removeObserver(@NotNull Observer observer) {
-		observerList.remove(observer);
+	public boolean removeObserver(@NotNull Observer observer) {
+		return observerList.remove(observer);
 	}
 
 	@Override

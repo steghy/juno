@@ -26,7 +26,7 @@
 package juno.model.subjects.shift;
 
 import juno.model.util.Donut;
-import juno.model.util.InterfaceProvider;
+import juno.model.util.Provider;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
@@ -38,7 +38,7 @@ import java.util.Objects;
  */
 public class CurrentPlayerProvider<T>
     extends AbstractPlayersMaintainer<T>
-        implements InterfaceProvider<T>, Observer {
+        implements Provider<T>, Observer {
 
     // The CurrentPlayerProvider instance.
     private static CurrentPlayerProvider<?> instance;
@@ -63,7 +63,7 @@ public class CurrentPlayerProvider<T>
     @Override
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceProvider<?> provider) {
+        if(object instanceof Provider<?> provider) {
             players = (Donut<T>) provider.provide();
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +

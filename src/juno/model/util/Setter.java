@@ -23,27 +23,11 @@
  * SOFTWARE.
  */
 
-package juno.controller.audio;
+package juno.model.util;
 
-import juno.model.sound.MutableAudioPlayer;
+@FunctionalInterface
+public interface Setter<T> {
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
+    void set(T object);
 
-public class AudioToggleAction extends AbstractAction {
-
-    private MutableAudioPlayer audioPlayer;
-
-    public AudioToggleAction(MutableAudioPlayer audioPlayer) {
-        this.audioPlayer = audioPlayer;
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if(audioPlayer.isMuted()) {
-            audioPlayer.unmute();
-        } else {
-            audioPlayer.mute();
-        }
-    }
 }

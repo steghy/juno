@@ -25,13 +25,13 @@
 
 package juno.model.data.profile.profile;
 
-import juno.model.util.InterfaceProvider;
+import juno.model.util.Provider;
 
 /**
  * @author Simone Gentili
  */
 public class ProfileNameProvider
-        implements InterfaceProvider<String> {
+        implements Provider<String> {
 
     // The ProfileNameProvider instance.
     private static ProfileNameProvider instance;

@@ -28,8 +28,8 @@ package juno.controller.pre_access;
 import juno.model.data.io.input.configurable.Configurable;
 import juno.model.data.io.input.configurable.InterfaceCConfigurationFileResearcher;
 import juno.model.util.AbstractObservable;
-import juno.model.util.InterfaceFactory;
-import juno.model.util.InterfaceGenerator;
+import juno.model.util.Factory;
+import juno.model.util.Generator;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -39,7 +39,7 @@ import org.jetbrains.annotations.Nullable;
  */
 public abstract class AbstractConfigurationFilesFactory<T>
         extends AbstractObservable
-        implements InterfaceFactory<T>, InterfaceGenerator {
+        implements Factory<T>, Generator {
 
     // The configuration file researcher.
     private InterfaceCConfigurationFileResearcher researcher;

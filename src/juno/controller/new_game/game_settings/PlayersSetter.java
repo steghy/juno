@@ -25,14 +25,14 @@
 
 package juno.controller.new_game.game_settings;
 
-import juno.model.util.InterfaceSetter;
+import juno.model.util.Setter;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Simone Gentili
  */
 public class PlayersSetter
-        implements InterfaceSetter<Integer> {
+        implements Setter<Integer> {
 
     // The PlayersSetter instance.
     private static PlayersSetter instance;

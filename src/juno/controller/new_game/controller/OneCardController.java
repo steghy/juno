@@ -30,7 +30,7 @@ import juno.controller.new_game.penalty.PenaltyTimer;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.ai.InterfaceAi;
 import juno.model.util.AbstractObservable;
-import juno.model.util.InterfaceProvider;
+import juno.model.util.Provider;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -46,7 +46,7 @@ public class OneCardController<T>
 
     // The current player provider.
     @Nullable
-    private InterfaceProvider<InterfacePlayer<T>> provider;
+    private Provider<InterfacePlayer<T>> provider;
 
     // The penalty executor.
     @Nullable
@@ -75,7 +75,7 @@ public class OneCardController<T>
      * Sets the current player provider of this object.
      * @param provider An InterfaceProvider object.
      */
-    public void setProvider(@NotNull InterfaceProvider<InterfacePlayer<T>> provider) {
+    public void setProvider(@NotNull Provider<InterfacePlayer<T>> provider) {
         this.provider = provider;
     }
 
@@ -100,7 +100,7 @@ public class OneCardController<T>
      * @return An InterfaceProvider object.
      */
     @Nullable
-    public InterfaceProvider<InterfacePlayer<T>> getProvider() {
+    public Provider<InterfacePlayer<T>> getProvider() {
         return provider;
     }
 

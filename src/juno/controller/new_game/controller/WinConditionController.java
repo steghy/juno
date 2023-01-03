@@ -30,7 +30,7 @@ import juno.controller.util.Stoppable;
 import juno.model.deck.InterfaceDiscardedPile;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.util.AbstractObservable;
-import juno.model.util.InterfaceProvider;
+import juno.model.util.Provider;
 import juno.model.util.Observer;
 import juno.view.frame.Frame;
 import org.jetbrains.annotations.NotNull;
@@ -49,7 +49,7 @@ public class WinConditionController<T>
 
     // The current player provider.
     @Nullable
-    private InterfaceProvider<InterfacePlayer<T>> provider;
+    private Provider<InterfacePlayer<T>> provider;
 
     // The stopper.
     @Nullable
@@ -78,7 +78,7 @@ public class WinConditionController<T>
      * Sets the current player provider of this object.
      * @param provider An InterfaceProvider object.
      */
-    public void setProvider(@NotNull InterfaceProvider<InterfacePlayer<T>> provider) {
+    public void setProvider(@NotNull Provider<InterfacePlayer<T>> provider) {
         this.provider = provider;
     }
 

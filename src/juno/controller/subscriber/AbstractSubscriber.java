@@ -23,15 +23,59 @@
  * SOFTWARE.
  */
 
-package juno.model.util;
+package juno.controller.subscriber;
+
+import juno.model.util.Observable;
+import juno.model.util.Observer;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the object.
  */
-@FunctionalInterface
-public interface InterfaceProvider<T> {
+public abstract class AbstractSubscriber {
 
-    T provide();
+    // The Observer object.
+    private Observer observer;
+
+    // The Observable object.
+    private Observable observable;
+
+    /**
+     * Sets the Observer object of this
+     * object.
+     * @param observer An Observer object.
+     */
+    public void setObserver(@NotNull Observer observer) {
+        this.observer = observer;
+    }
+
+    /**
+     * Sets the Observable object of this
+     * object.
+     * @param observable An Observable object.
+     */
+    public void setObservable(@NotNull Observable observable) {
+        this.observable = observable;
+    }
+
+    /**
+     * Returns the Observer object of
+     * this object.
+     * @return An Observer object.
+     */
+    @Nullable
+    public Observer getObserver() {
+        return observer;
+    }
+
+    /**
+     * Returns the Observable object.
+     * @return An Observable object.
+     */
+    @Nullable
+    public Observable getObservable() {
+        return observable;
+    }
 
 }

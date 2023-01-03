@@ -25,7 +25,7 @@
 
 package juno.controller.util;
 
-import juno.model.util.InterfaceSetter;
+import juno.model.util.Setter;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.event.ActionEvent;
@@ -37,7 +37,7 @@ import java.awt.event.ActionListener;
  * @param setter The setter.
  * @author Simone Gentili
  */
-public record SetterAction<T>(@NotNull T object, @NotNull InterfaceSetter<T> setter)
+public record SetterAction<T>(@NotNull T object, @NotNull Setter<T> setter)
         implements ActionListener {
 
     @Override

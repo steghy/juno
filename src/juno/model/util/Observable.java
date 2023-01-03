@@ -35,14 +35,14 @@ public interface Observable {
      * into the observers List object.
      * @param observer An Observer object.
      */
-    void addObserver(Observer observer);
+    boolean addObserver(Observer observer);
 
     /**
      * Remove the specified Observer object
      * from the observers List object.
      * @param observer An Observer object.
      */
-    void removeObserver(Observer observer);
+    boolean removeObserver(Observer observer);
 
     /** Update the observers. */
     void updateAll();

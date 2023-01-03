@@ -31,8 +31,8 @@ import juno.model.deck.InterfaceDeck;
 import juno.model.deck.Mixer;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.util.AbstractObservable;
-import juno.model.util.InterfaceGenerator;
-import juno.model.util.InterfaceProvider;
+import juno.model.util.Generator;
+import juno.model.util.Provider;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
@@ -44,7 +44,7 @@ import java.util.stream.Collectors;
  */
 public class CardController
         extends AbstractObservable
-        implements Observer, InterfaceProvider<List<InterfacePlayer<InterfaceCard>>>, InterfaceGenerator {
+        implements Observer, Provider<List<InterfacePlayer<InterfaceCard>>>, Generator {
 
     // The deck.
     private InterfaceDeck<InterfaceCard> deck;
@@ -79,7 +79,7 @@ public class CardController
     public void generate() {
         Map<InterfaceCard, InterfacePlayer<InterfaceCard>> map =
                 players.stream()
-                        .collect(Collectors.toMap(InterfaceProvider::provide, value -> value));
+                        .collect(Collectors.toMap(Provider::provide, value -> value));
         List<Card> cards = new ArrayList<>(players.stream().map(player -> (Card) player.provide()).toList());
         players.forEach(p ->
                 p.remove(p.provide()));
@@ -102,7 +102,7 @@ public class CardController
 
     @Override @SuppressWarnings("unchecked")
     public void update(Object object) {
-        if(object instanceof InterfaceProvider<?> provider) {
+        if(object instanceof Provider<?> provider) {
             players.clear();
             players.addAll((List<InterfacePlayer<InterfaceCard>>) provider.provide());
             generate();

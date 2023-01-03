@@ -25,13 +25,12 @@
 
 package juno.view.pages.new_game.single_player.match.panels.center.deck;
 
-import juno.controller.new_game.human.DiscardedCardSetter;
 import juno.controller.new_game.human.DrawAction;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.human.HumanPlayer;
 import juno.model.subjects.shift.CurrentPlayerProvider;
 import juno.model.subjects.shift.TurnMover;
-import juno.model.util.InterfaceProvider;
+import juno.model.util.Provider;
 import juno.view.button.Button;
 import juno.view.button.ButtonCreator;
 import juno.view.util.ImageResizer;
@@ -67,7 +66,7 @@ public class DeckPanelConfigurator {
         DrawAction.getInstance().addObserver(deckPanel);
 
         // Settings.
-        deckPanel.setProvider((InterfaceProvider<InterfacePlayer<?>>) CurrentPlayerProvider.getInstance());
+        deckPanel.setProvider((Provider<InterfacePlayer<?>>) CurrentPlayerProvider.getInstance());
         deckPanel.setHumanPlayer(HumanPlayer.getInstance());
         deckPanel.setFirstComponent(deckButton);
 

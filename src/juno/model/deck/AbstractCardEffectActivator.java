@@ -27,7 +27,7 @@ package juno.model.deck;
 
 import juno.model.subjects.shift.InterfaceInverter;
 import juno.model.subjects.shift.InterfaceTurnMover;
-import juno.model.util.InterfaceProvider;
+import juno.model.util.Provider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -45,7 +45,7 @@ public abstract class AbstractCardEffectActivator<T, E, C>
     private InterfaceInverter inverter;
 
     // The player provider.
-    private InterfaceProvider<E> playersProvider;
+    private Provider<E> playersProvider;
 
     // The actual color.
     private InterfaceActualColor<C> actualColor;
@@ -70,7 +70,7 @@ public abstract class AbstractCardEffectActivator<T, E, C>
      * Sets the players provider of this object.
      * @param playersProvider An InterfaceProvider object.
      */
-    public void setPlayersProvider(@NotNull InterfaceProvider<E> playersProvider) {
+    public void setPlayersProvider(@NotNull Provider<E> playersProvider) {
         this.playersProvider = playersProvider;
     }
 
@@ -105,7 +105,7 @@ public abstract class AbstractCardEffectActivator<T, E, C>
      * @return An InterfaceProvider object.
      */
     @Nullable
-    public InterfaceProvider<E> getPlayersProvider() {
+    public Provider<E> getPlayersProvider() {
         return playersProvider;
     }
 

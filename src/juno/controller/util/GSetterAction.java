@@ -26,7 +26,7 @@
 package juno.controller.util;
 
 import juno.model.util.AbstractObservable;
-import juno.model.util.InterfaceSetter;
+import juno.model.util.Setter;
 import juno.view.gobject.InterfaceGObject;
 import org.jetbrains.annotations.NotNull;
 
@@ -44,7 +44,7 @@ public class GSetterAction<T>
     private final InterfaceGObject<T> gObject;
 
     // The setter.
-    private final InterfaceSetter<T> setter;
+    private final Setter<T> setter;
 
     /**
      * Builds a SetterAction object with the specified
@@ -53,7 +53,7 @@ public class GSetterAction<T>
      * @param setter An InterfaceSetter object.
      */
     public GSetterAction(@NotNull InterfaceGObject<T> gObject,
-                         @NotNull InterfaceSetter<T> setter) {
+                         @NotNull Setter<T> setter) {
         this.gObject = gObject;
         this.setter = setter;
     }

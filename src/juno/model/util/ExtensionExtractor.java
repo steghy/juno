@@ -25,7 +25,6 @@
 
 package juno.model.util;
 
-import juno.model.util.InterfaceExtensionExtractor;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -33,11 +32,6 @@ import org.jetbrains.annotations.NotNull;
  */
 public class ExtensionExtractor {
 
-    /**
-     *
-     * @param sequence
-     * @return
-     */
     public static String extract(@NotNull String sequence) {
         if(sequence.length() == 0) return "";
         String[] s = sequence.split("[.]");

@@ -26,7 +26,7 @@
 package juno.controller.pre_access;
 
 import juno.controller.util.AbstractChangePanelUser;
-import juno.model.util.InterfaceFactory;
+import juno.model.util.Factory;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
@@ -61,7 +61,7 @@ public class PreAccessManager
 
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceFactory<?> factory) {
+        if(object instanceof Factory<?> factory) {
             if(factory.getObjects().size() != 0)
                 showWelcomeBackPanel();
         }

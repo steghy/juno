@@ -50,18 +50,28 @@ public class Initializer
 
     @Override
     public void initialize() {
+        // juno.model.requester package.
         juno.model.requester.Initializer.getInstance().initialize();
+
+        // juno.model.deck package.
+        juno.model.deck.Initializer.getInstance().initialize();
+
+        // juno.model.data package.
         juno.model.data.io.input.Initializer.getInstance().initialize();
         juno.model.data.profile.Initializer.getInstance().initialize();
         juno.model.data.io.output.Initializer.getInstance().initialize();
         juno.model.data.avatar.Initializer.getInstance().initialize();
         juno.model.data.goals.Initializer.getInstance().initialize();
         juno.model.data.awards.Initializer.getInstance().initialize();
-        juno.model.deck.Initializer.getInstance().initialize();
+
+        // juno.model.subjects package.
         juno.model.subjects.factory.Initializer.getInstance().initialize();
         juno.model.subjects.ai.examiner.Initializer.getInstance().initialize();
         juno.model.subjects.shift.Initializer.getInstance().initialize();
         juno.model.subjects.human.Initializer.getInstance().initialize();
+
+        // juno.model.sound package.
+        juno.model.sound.Initializer.getInstance().initialize();
     }
 
 }

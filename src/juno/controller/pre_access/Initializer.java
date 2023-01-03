@@ -25,6 +25,7 @@
 
 package juno.controller.pre_access;
 
+import juno.controller.util.InterfaceInitializer;
 import juno.controller.util.PanelChanger;
 import juno.model.data.io.input.configurable.CConfigurationFileResearcher;
 import juno.model.data.profile.profile.Profile;
@@ -34,30 +35,42 @@ import juno.view.pages.pre_access.card.PreAccessCardPanel;
 /**
  * @author Simone Gentili
  */
-public class Initializer {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // Builds an Initializer object.
+    // The Initializer instance.
+    private static Initializer instance;
+
+    // Builds the Initializer instance.
     private Initializer() {}
 
-    /** Initialize the juno.controller.pre_access package. */
-    public static void initialize() {
-        // Components.
-        // PreAccessManager.
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
+    public void initialize() {
+        // Pre access manager.
         PreAccessManager preAccessManager = PreAccessManager.getInstance();
 
-        // ConfigurationFilesFactory.
+        // Configuration files factory.
         ConfigurationFilesFactory configurationFilesFactory = ConfigurationFilesFactory.getInstance();
 
         //////////////////////////////////////////////////////////////////
 
         // Connections.
-        // PreAccessManager.
+        // Pre access manager.
         preAccessManager.setPanelChanger(new PanelChanger(
                 PreAccessCardPanel.getInstance(),
                 PreAccessCardPanel.ACCESS_PANEL));
         ConfigurationFilesFactory.getInstance().addObserver(preAccessManager);
 
-        // ConfigurationFilesFactory.
+        // Configuration files factory.
         configurationFilesFactory.setConfigurable(Profile.getInstance());
         configurationFilesFactory.setPath(ProgramDirectory.PROFILES.absolutePath());
         configurationFilesFactory.setResearcher(CConfigurationFileResearcher.getInstance());

@@ -27,8 +27,7 @@ package juno.controller.pre_access.loggers;
 
 import juno.model.data.awards.avatar.InterfaceAvatarImage;
 import juno.model.data.awards.frame.InterfaceAvatarFrame;
-import juno.model.data.goals.InterfaceGoal;
-import juno.model.util.InterfaceSetter;
+import juno.model.util.Setter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -39,13 +38,13 @@ public abstract class AbstractAvatarSetter
         implements InterfaceAvatarSetter {
 
     // The avatar frame setter.
-    private InterfaceSetter<InterfaceAvatarFrame> avatarFrameSetter;
+    private Setter<InterfaceAvatarFrame> avatarFrameSetter;
 
     // The avatar frame.
     private InterfaceAvatarFrame avatarFrame;
 
     // The avatar image setter.
-    private InterfaceSetter<InterfaceAvatarImage> avatarImageSetter;
+    private Setter<InterfaceAvatarImage> avatarImageSetter;
 
     // The avatar image.
     private InterfaceAvatarImage avatarImage;
@@ -54,7 +53,7 @@ public abstract class AbstractAvatarSetter
      * Sets the avatar frame setter of this object.
      * @param avatarFrameSetter An InterfaceSetter object.
      */
-    public void setAvatarFrameSetter(@NotNull InterfaceSetter<InterfaceAvatarFrame> avatarFrameSetter) {
+    public void setAvatarFrameSetter(@NotNull Setter<InterfaceAvatarFrame> avatarFrameSetter) {
         this.avatarFrameSetter =  avatarFrameSetter;
     }
 
@@ -70,7 +69,7 @@ public abstract class AbstractAvatarSetter
      * Sets the avatar image setter of this object.
      * @param avatarImageSetter An InterfaceSetter object.
      */
-    public void setAvatarImageSetter(@NotNull InterfaceSetter<InterfaceAvatarImage> avatarImageSetter) {
+    public void setAvatarImageSetter(@NotNull Setter<InterfaceAvatarImage> avatarImageSetter) {
         this.avatarImageSetter = avatarImageSetter;
     }
 
@@ -87,7 +86,7 @@ public abstract class AbstractAvatarSetter
      * @return An InterfaceSetter object.
      */
     @Nullable
-    public InterfaceSetter<InterfaceAvatarFrame> getAvatarFrameSetter() {
+    public Setter<InterfaceAvatarFrame> getAvatarFrameSetter() {
         return avatarFrameSetter;
     }
 
@@ -105,7 +104,7 @@ public abstract class AbstractAvatarSetter
      * @return An InterfaceSetter object.
      */
     @Nullable
-    public InterfaceSetter<InterfaceAvatarImage> getAvatarImageSetter() {
+    public Setter<InterfaceAvatarImage> getAvatarImageSetter() {
         return avatarImageSetter;
     }
 

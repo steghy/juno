@@ -27,7 +27,7 @@ package juno.model.deck;
 
 
 import juno.controller.log_out.Restorable;
-import juno.model.util.InterfaceFactory;
+import juno.model.util.Factory;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
@@ -83,13 +83,13 @@ public class Deck<T>
     }
 
     @Override
-    public void addObserver(@NotNull Observer observer) {
-        observerList.add(observer);
+    public boolean addObserver(@NotNull Observer observer) {
+        return observerList.add(observer);
     }
 
     @Override
-    public void removeObserver(@NotNull Observer observer) {
-        observerList.remove(observer);
+    public boolean removeObserver(@NotNull Observer observer) {
+        return observerList.remove(observer);
     }
 
     @Override
@@ -99,7 +99,7 @@ public class Deck<T>
 
     @Override @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceFactory<?> factory) {
+        if(object instanceof Factory<?> factory) {
             clear();
             addAll((Collection<? extends T>) factory.getObjects());
             Objects.requireNonNull(getMixer()).shuffle(this);

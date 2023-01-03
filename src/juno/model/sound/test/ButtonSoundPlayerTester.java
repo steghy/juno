@@ -26,66 +26,20 @@
 package juno.model.sound.test;
 
 import juno.model.requester.ProgramDirectory;
-import juno.model.sound.AudioPlayer;
+import juno.model.sound.ButtonSoundPlayer;
+import juno.model.util.PathGenerator;
 
 import java.io.File;
-import java.util.Scanner;
 
-public class AudioPlayerTester {
-	
-	public static void main(String[] args) {
+public class ButtonSoundPlayerTester {
 
-		// MUSIC PATH
-		String musicDirectory = ProgramDirectory.MUSIC.absolutePath();
-		File directory = new File(musicDirectory);
+    public static void main(String[] args) {
+        ButtonSoundPlayer buttonSoundPlayer = ButtonSoundPlayer.getInstance();
+        buttonSoundPlayer.load(
+                new File(PathGenerator.generate(
+                        ProgramDirectory.MUSIC.absolutePath(), "tr"
+                ))
+        );
+    }
 
-		// AUDIO PLAYER INITIALIZATION
-		AudioPlayer audioPlayer = AudioPlayer.getInstance();
-		audioPlayer.setTracks(directory.listFiles());
-		// audioPlayer.setLoop(true);
-
-		// GETS INPUTS
-		Scanner scanner = new Scanner(System.in);
-		while(true) {
-
-			if(scanner.hasNextInt()) {
-				int value = scanner.nextInt();
-
-
-				// PREVIOUS
-				if(value == 1) {
-					audioPlayer.back();
-				}
-
-				// PAUSE
-				else if(value == 2) {
-					audioPlayer.pause();
-				}
-
-				// PLAY
-				else if(value == 3) {
-					audioPlayer.play();
-				}
-
-				// REWIND
-				else if(value == 4) {
-					audioPlayer.rewind();
-				}
-
-				// NEXT
-				else if(value == 5) {
-					audioPlayer.next();
-				}
-
-				// STOP
-				else if(value == 6) {
-					audioPlayer.stop();
-				}
-
-				else {
-					System.out.println("invalid input");
-				}
-			}
-		}
-	}
 }

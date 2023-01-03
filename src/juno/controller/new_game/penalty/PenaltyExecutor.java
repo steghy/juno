@@ -28,7 +28,7 @@ package juno.controller.new_game.penalty;
 import juno.controller.util.Stoppable;
 import juno.model.deck.AbstractDeckUser;
 import juno.model.subjects.InterfacePlayer;
-import juno.model.util.InterfaceProvider;
+import juno.model.util.Provider;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
@@ -55,7 +55,7 @@ public class PenaltyExecutor<T>
     private int cardToDraw;
 
     // The current player provider.
-    private InterfaceProvider<InterfacePlayer<T>> provider;
+    private Provider<InterfacePlayer<T>> provider;
 
     // The timer.
     private final Timer timer;
@@ -83,7 +83,7 @@ public class PenaltyExecutor<T>
      * Sets the current player provider of this object.
      * @param provider An InterfaceProvider object.
      */
-    public void setProvider(@NotNull InterfaceProvider<InterfacePlayer<T>> provider) {
+    public void setProvider(@NotNull Provider<InterfacePlayer<T>> provider) {
         this.provider = provider;
     }
 
@@ -110,13 +110,13 @@ public class PenaltyExecutor<T>
     }
 
     @Override
-    public void addObserver(@NotNull Observer observer) {
-        observabelList.add(observer);
+    public boolean addObserver(@NotNull Observer observer) {
+        return observabelList.add(observer);
     }
 
     @Override
-    public void removeObserver(@NotNull Observer observer) {
-        observabelList.remove(observer);
+    public boolean removeObserver(@NotNull Observer observer) {
+        return observabelList.remove(observer);
     }
 
     @Override

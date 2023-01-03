@@ -26,6 +26,7 @@
 package juno.controller.pre_access.loggers;
 
 import juno.controller.pre_access.registration.RegistrationDataSelector;
+import juno.controller.util.InterfaceInitializer;
 import juno.controller.util.PanelChanger;
 import juno.model.data.avatar.AvatarFrameSetter;
 import juno.model.data.avatar.AvatarImageSetter;
@@ -39,40 +40,61 @@ import juno.view.pages.card.TopCardPanel;
 /**
  * @author Simone Gentili
  */
-public class Initializer {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // Builds an Initializer object.
+    // The Initializer instance.
+    private static Initializer instance;
+
+    // Builds the Initializer instance.
     private Initializer() {}
 
-    public static void initialize() {
-        // Components.
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
+    public void initialize() {
         // Logger.
         Logger logger = Logger.getInstance();
-        // GuestLogger.
+
+        // Guest logger.
         GuestLogger guestLogger = GuestLogger.getInstance();
-        // AvatarSetter.
+
+        // Avatar setter.
         AvatarSetter avatarSetter = AvatarSetter.getInstance();
-        // GuestProfileNameSetter.
+
+        // Guest profile name setter.
         GuestProfileNameSetter guestProfileNameSetter = GuestProfileNameSetter.getInstance();
+
         /////////////////////////////////////////////////////////////////////////////////
-        // Connections.
-        // AvatarSetter.
+
+        // Avatar setter.
         avatarSetter.setAvatarFrame(AvatarFrame.GREY_FRAME);
         avatarSetter.setAvatarImage(AvatarImage.AVATAR_IMAGE_1);
         avatarSetter.setAvatarFrameSetter(AvatarFrameSetter.getInstance());
         avatarSetter.setAvatarImageSetter(AvatarImageSetter.getInstance());
-        // GuestProfileNameSetter.
+
+        // Guest profile name setter.
         guestProfileNameSetter.setGuestName(Profile.GUEST_NAME);
         guestProfileNameSetter.setNameSetter(ProfileNameSetter.getInstance());
+
         // Logger.
         logger.setPanelChanger(new PanelChanger(TopCardPanel.getInstance(), TopCardPanel.MAIN_PANEL));
         logger.setAvatarSetter(avatarSetter);
         logger.setRegistrationGoal(RegistrationGoal.getInstance());
-        // GuestLogger.
+
+        // Guest logger..
         guestLogger.setPanelChanger(new PanelChanger(TopCardPanel.getInstance(), TopCardPanel.MAIN_PANEL));
         guestLogger.setAvatarSetter(avatarSetter);
         guestLogger.setRegistrationGoal(RegistrationGoal.getInstance());
         guestLogger.setGuestNameSetter(guestProfileNameSetter);
+
         // Registration message notifier.
         RegistrationDataSelector.getInstance().addObserver(RegistrationNotifier.getInstance());
     }

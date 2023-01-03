@@ -23,21 +23,14 @@
  * SOFTWARE.
  */
 
-package juno.controller.avatar;
+package juno.model.util;
 
-import juno.controller.pre_access.ConfigurationFilesFactory;
-import juno.model.data.avatar.AvatarNameSetter;
-import juno.model.data.profile.profile.ProfileNameSetter;
+/**
+ * @author Simone Gentili
+ */
+@FunctionalInterface
+public interface Generator {
 
-public class Subscriptions {
-
-    private static Subscriber avatarNameSetter;
-
-    public static void make() {
-        avatarNameSetter = new Subscriber(
-                AvatarNameSetter.getInstance(),
-                ProfileNameSetter.getInstance(),
-                ConfigurationFilesFactory.getInstance());
-    }
+    void generate();
 
 }

@@ -26,14 +26,14 @@
 package juno.controller.new_game.game_settings;
 
 import juno.model.subjects.ai.InterfaceDifficulty;
-import juno.model.util.InterfaceSetter;
+import juno.model.util.Setter;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Simone Gentili
  */
 public class DifficultySetter
-        implements InterfaceSetter<InterfaceDifficulty> {
+        implements Setter<InterfaceDifficulty> {
 
     // The DifficultySetter instance.
     private static DifficultySetter instance;

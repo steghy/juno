@@ -87,19 +87,20 @@ public class AiPlayerFactory<T, E>
         this.builder = builder;
     }
 
-    @Override @Nullable
+    @Override
+    @Nullable
     public List<InterfacePlayer<T>> getObjects() {
         return players;
     }
 
     @Override
-    public void addObserver(@NotNull Observer observer) {
-        observerList.add(observer);
+    public boolean addObserver(@NotNull Observer observer) {
+        return observerList.add(observer);
     }
 
     @Override
-    public void removeObserver(@NotNull Observer observer) {
-        observerList.remove(observer);
+    public boolean removeObserver(@NotNull Observer observer) {
+        return observerList.remove(observer);
     }
 
     @Override

@@ -28,7 +28,7 @@ package juno.view.pages.new_game.single_player.match.panels.center.discarded_pil
 import juno.controller.log_out.Restorable;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.InterfaceDiscardedPile;
-import juno.model.util.InterfaceProvider;
+import juno.model.util.Provider;
 import juno.model.util.Observer;
 import juno.view.gobject.GObjectButton;
 import juno.view.gobject.InterfaceGObjectCreator;
@@ -53,7 +53,7 @@ public class DiscardedPilePanel
     private InterfaceGObjectCreator<InterfaceCard> creator;
 
     // The top discarded pile card provider.
-    private InterfaceProvider<InterfaceCard> provider;
+    private Provider<InterfaceCard> provider;
 
     // The DiscardedPilePanel instance.
     private static DiscardedPilePanel instance;
@@ -78,7 +78,7 @@ public class DiscardedPilePanel
      * of this object.
      * @param provider An InterfaceProvider object.
      */
-    public void setProvider(@NotNull InterfaceProvider<InterfaceCard> provider) {
+    public void setProvider(@NotNull Provider<InterfaceCard> provider) {
         this.provider = provider;
     }
 

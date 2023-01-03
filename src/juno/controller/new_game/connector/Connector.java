@@ -38,7 +38,7 @@ import java.util.Map;
  */
 public class Connector
         extends AbstractObservable
-        implements InterfaceConnector<Observable>, InterfaceProvider<Map<Observable, Observer>>, Observer{
+        implements InterfaceConnector<Observable>, Provider<Map<Observable, Observer>>, Observer{
 
     // South card panel observer.
     Observer south;
@@ -99,7 +99,7 @@ public class Connector
     @Override
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceProvider<?> provider) {
+        if(object instanceof Provider<?> provider) {
             connect((List<Observable>) provider.provide());
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +

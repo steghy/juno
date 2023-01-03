@@ -26,30 +26,43 @@
 package juno.controller.pre_access.registration;
 
 import juno.controller.pre_access.loggers.Logger;
+import juno.controller.util.InterfaceInitializer;
 import juno.model.data.io.input.configurable.CCompatibilityChecker;
 import juno.view.pages.pre_access.registration.menu.MenuPanel;
 
 /**
  * @author Simone Gentili
  */
-public class Initializer {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // Builds a PreAccessControllerInitializer object.
+    // The Initializer instance.
+    private static Initializer instance;
+
+    // Builds the Initializer instance.
     private Initializer() {}
 
-    /** Initialize the juno.controller.pre_access.controller package. */
-    public static void initialize() {
-        // Components.
-        // RegistrationDataSelector.
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
+    public void initialize() {
+        // Registration data selector.
         RegistrationDataSelector registrationDataSelector = RegistrationDataSelector.getInstance();
 
-        // ErrorNotifier.
+        // Error notifier.
         ErrorNotifier errorNotifier = ErrorNotifier.getInstance();
 
         // Logger.
         Logger logger = Logger.getInstance();
 
-        // CCompatibilityChecker.
+        // CCompatibility checker.
         CCompatibilityChecker checker = CCompatibilityChecker.getInstance();
 
         // MenuPanel (Data line provider).
@@ -57,13 +70,12 @@ public class Initializer {
 
         /////////////////////////////////////////////////////////////////////////
 
-        // Connections.
-        // RegistrationDataSelector.
+        // Registration data selector.
         registrationDataSelector.setNotifier(errorNotifier);
         registrationDataSelector.setLogger(logger);
         registrationDataSelector.setChecker(checker);
 
-        // ErrorNotifier.
+        // Error notifier.
         errorNotifier.setDataLineProvider(menuPanel);
     }
 

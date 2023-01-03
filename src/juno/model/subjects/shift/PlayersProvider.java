@@ -40,7 +40,7 @@ import java.util.Objects;
  */
 public class PlayersProvider<T>
         extends AbstractPlayersProvider<T>
-        implements InterfaceProvider<Donut<T>>, Observable, Observer {
+        implements Provider<Donut<T>>, Observable, Observer {
 
     // The Observers List.
     private final List<Observer> observerList;
@@ -68,13 +68,13 @@ public class PlayersProvider<T>
     }
 
     @Override
-    public void addObserver(@NotNull Observer observer) {
-       observerList.add(observer);
+    public boolean addObserver(@NotNull Observer observer) {
+       return observerList.add(observer);
     }
 
     @Override
-    public void removeObserver(@NotNull Observer observer) {
-        observerList.remove(observer);
+    public boolean removeObserver(@NotNull Observer observer) {
+        return observerList.remove(observer);
     }
 
     @Override
@@ -85,7 +85,7 @@ public class PlayersProvider<T>
     @Override
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceFactory<?> factory) {
+        if(object instanceof Factory<?> factory) {
             players = new Donut<>();
             players.addAll((Collection<? extends T>) factory.getObjects());
             players.add(Objects.requireNonNull(getPlayer()));

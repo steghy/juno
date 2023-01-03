@@ -27,7 +27,7 @@ package juno.view.pages.new_game.single_player.match.panels.center.discarded_pil
 
 import juno.model.card.InterfaceCard;
 import juno.model.deck.DiscardedPile;
-import juno.model.util.InterfaceProvider;
+import juno.model.util.Provider;
 import juno.view.gobject.cards.GCardCreator;
 
 /**
@@ -45,7 +45,7 @@ public class DiscardedPilePanelConfigurator {
         DiscardedPilePanel discardedPilePanel = DiscardedPilePanel.getInstance();
 
         // Main component setting.
-        discardedPilePanel.setProvider((InterfaceProvider<InterfaceCard>) DiscardedPile.getInstance());
+        discardedPilePanel.setProvider((Provider<InterfaceCard>) DiscardedPile.getInstance());
         discardedPilePanel.setCreator(GCardCreator.getInstance());
 
         // Observer / Observable.

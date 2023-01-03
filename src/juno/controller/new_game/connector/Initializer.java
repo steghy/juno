@@ -30,7 +30,7 @@ import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.shift.PlayersProvider;
 import juno.model.subjects.shift.TurnMover;
 import juno.model.util.Donut;
-import juno.model.util.InterfaceProvider;
+import juno.model.util.Provider;
 import juno.view.pages.new_game.single_player.match.panels.east.EastCardPanel;
 import juno.view.pages.new_game.single_player.match.panels.north.NorthCardPanel;
 import juno.view.pages.new_game.single_player.match.panels.south.SouthCardPanel;
@@ -61,11 +61,11 @@ public class Initializer
     @SuppressWarnings("unchecked")
     public void initialize() {
         // Players provider.
-        InterfaceProvider<?> provider = PlayersProvider.getInstance();
+        Provider<?> provider = PlayersProvider.getInstance();
 
         // Panel illuminator.
         PanelIlluminator panelIlluminator = PanelIlluminator.getInstance();
-        panelIlluminator.setPlayersProvider((InterfaceProvider<Donut<InterfacePlayer<?>>>) provider);
+        panelIlluminator.setPlayersProvider((Provider<Donut<InterfacePlayer<?>>>) provider);
 
         // Connector.
         Connector connector = Connector.getInstance();

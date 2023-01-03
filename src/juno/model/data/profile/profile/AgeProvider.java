@@ -25,13 +25,13 @@
 
 package juno.model.data.profile.profile;
 
-import juno.model.util.InterfaceProvider;
+import juno.model.util.Provider;
 
 /**
  * @author Simone Gentili
  */
 public class AgeProvider
-        implements InterfaceProvider<Integer> {
+        implements Provider<Integer> {
 
     // The AgeProvider instance.
     private static AgeProvider instance;

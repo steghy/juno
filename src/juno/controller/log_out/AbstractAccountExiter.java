@@ -26,8 +26,8 @@
 package juno.controller.log_out;
 
 import juno.model.data.io.output.AbstractExporterManagerUser;
-import juno.model.util.InterfaceGenerator;
-import juno.model.util.InterfaceProvider;
+import juno.model.util.Generator;
+import juno.model.util.Provider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -45,16 +45,16 @@ public abstract class AbstractAccountExiter<T>
     private final List<Restorable> restorableList = new ArrayList<>();
 
     // The object provider.
-    private InterfaceProvider<T> provider;
+    private Provider<T> provider;
 
     // The profile files refresher.
-    private InterfaceGenerator generator;
+    private Generator generator;
 
     /**
      * Sets the provider of this object.
      * @param provider An InterfaceProvider object.
      */
-    public void setProvider(@NotNull InterfaceProvider<T> provider) {
+    public void setProvider(@NotNull Provider<T> provider) {
         this.provider = provider;
     }
 
@@ -62,7 +62,7 @@ public abstract class AbstractAccountExiter<T>
      * Sets the generator of this object.
      * @param generator An InterfaceGenerator object.
      */
-    public void setGenerator(@NotNull InterfaceGenerator generator) {
+    public void setGenerator(@NotNull Generator generator) {
         this.generator = generator;
     }
 
@@ -79,7 +79,7 @@ public abstract class AbstractAccountExiter<T>
      * @return An InterfaceProvider object.
      */
     @Nullable
-    public InterfaceProvider<T> getProvider() {
+    public Provider<T> getProvider() {
         return provider;
     }
 
@@ -88,7 +88,7 @@ public abstract class AbstractAccountExiter<T>
      * @return An InterfaceGenerator object.
      */
     @Nullable
-    public InterfaceGenerator getGenerator() {
+    public Generator getGenerator() {
         return generator;
     }
 

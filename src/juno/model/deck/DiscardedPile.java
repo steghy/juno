@@ -26,7 +26,7 @@
 package juno.model.deck;
 
 import juno.controller.log_out.Restorable;
-import juno.model.util.InterfaceProvider;
+import juno.model.util.Provider;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
@@ -48,13 +48,8 @@ import java.util.Stack;
  * @param <T> The type of the cards.
  */
 public class DiscardedPile<T>
-        extends
-        Stack<T>
-        implements
-        InterfaceDiscardedPile<T>,
-        InterfaceProvider<T>,
-        Observable,
-        Restorable {
+        extends Stack<T>
+        implements InterfaceDiscardedPile<T>, Provider<T>, Observable, Restorable {
 
     // The last inserted card.
     private T card;
@@ -92,13 +87,13 @@ public class DiscardedPile<T>
     }
 
     @Override
-    public void addObserver(@NotNull Observer observer) {
-        observerList.add(observer);
+    public boolean addObserver(@NotNull Observer observer) {
+        return observerList.add(observer);
     }
 
     @Override
-    public void removeObserver(@NotNull Observer observer) {
-        observerList.remove(observer);
+    public boolean removeObserver(@NotNull Observer observer) {
+        return observerList.remove(observer);
     }
 
     @Override

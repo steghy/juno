@@ -64,6 +64,7 @@ public class RegistrationDataSelector
         return instance;
     }
 
+    @Override
     public void elaborate(@NotNull Configurable configurable,
                           @NotNull Exportable exportable,
                           @NotNull InterfaceErrorProvider errorProvider) {
@@ -83,13 +84,13 @@ public class RegistrationDataSelector
     }
 
     @Override
-    public void addObserver(@NotNull Observer observer) {
-        observerList.add(observer);
+    public boolean addObserver(@NotNull Observer observer) {
+        return observerList.add(observer);
     }
 
     @Override
-    public void removeObserver(@NotNull Observer observer) {
-        observerList.remove(observer);
+    public boolean removeObserver(@NotNull Observer observer) {
+        return observerList.remove(observer);
     }
 
     @Override

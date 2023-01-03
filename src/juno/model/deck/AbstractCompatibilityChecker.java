@@ -25,7 +25,7 @@
 
 package juno.model.deck;
 
-import juno.model.util.InterfaceProvider;
+import juno.model.util.Provider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -39,13 +39,13 @@ public abstract class AbstractCompatibilityChecker<T, E>
         implements InterfaceCompatibilityChecker<T> {
 
     // The color provider.
-    private InterfaceProvider<E> provider;
+    private Provider<E> provider;
 
     /**
      * Sets the color provider of this object.
      * @param provider An InterfaceProvider object.
      */
-    public void setProvider(@NotNull InterfaceProvider<E> provider) {
+    public void setProvider(@NotNull Provider<E> provider) {
         this.provider = provider;
     }
 
@@ -54,7 +54,7 @@ public abstract class AbstractCompatibilityChecker<T, E>
      * @return An InterfaceProvider object.
      */
     @Nullable
-    public InterfaceProvider<E> getProvider() {
+    public Provider<E> getProvider() {
         return provider;
     }
 

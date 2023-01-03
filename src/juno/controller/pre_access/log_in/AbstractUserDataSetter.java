@@ -26,7 +26,7 @@
 package juno.controller.pre_access.log_in;
 
 import juno.model.data.io.input.AbstractDataImporterUser;
-import juno.model.util.InterfaceSetter;
+import juno.model.util.Setter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -37,7 +37,7 @@ import org.jetbrains.annotations.Nullable;
  */
 public abstract class AbstractUserDataSetter<T, E>
         extends AbstractDataImporterUser
-        implements InterfaceSetter<T> {
+        implements Setter<T> {
 
     // The map builder.
     private InterfacePathMapBuilder<E> mapBuilder;

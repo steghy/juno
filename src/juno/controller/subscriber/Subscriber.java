@@ -23,27 +23,14 @@
  * SOFTWARE.
  */
 
-package juno.model.util;
-
-import java.util.Random;
+package juno.controller.subscriber;
 
 /**
  * @author Simone Gentili
  */
-public class MyRandom extends Random {
+@FunctionalInterface
+public interface Subscriber {
 
-    /* The MyRandom instance */
-    private static MyRandom instance;
+    void subscribe();
 
-    /* Builds the MyRandom instance */
-    private MyRandom() {}
-
-    /**
-     * Returns the MyRandom instance.
-     * @return The MyRandom instance.
-     */
-    public static MyRandom getInstance() {
-        if(instance == null) instance = new MyRandom();
-        return instance;
-    }
 }

@@ -51,19 +51,28 @@ public class Initializer
 
     @Override
     public void initialize() {
+        // juno.view.img_initializer package.
         juno.view.img_initializer.Initializer.getInstance().initialize();
+
+        // juno.view.button package.
         juno.view.button.Initializer.initialize();
+
+        // juno.view.gobject package.
         juno.view.gobject.profiles.Initializer.getInstance().initialize();
         juno.view.gobject.avatars.Initializer.getInstance().initialize();
         juno.view.gobject.frames.Initializer.getInstance().initialize();
         juno.view.gobject.cards.Initializer.getInstance().initialize();
         juno.view.gobject.color.Initializer.getInstance().initialize();
+
+        // juno.view.pages package.
         juno.view.pages.new_game.NewGameInitializer.initialize();
         juno.view.pages.score.ScorePanelInitializer.initialize();
         juno.view.pages.pre_access.Initializer.getInstance().initialize();
         juno.view.pages.main.Initializer.getInstance().initialize();
         juno.view.pages.options.Initializer.getInstance().initialize();
         juno.view.pages.card.Initializer.getInstance().initialize();
+
+        // juno.view.frame package.
         juno.view.frame.Initializer.getInstance().initialize();
     }
 

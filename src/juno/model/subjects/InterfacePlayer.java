@@ -25,8 +25,7 @@
 
 package juno.model.subjects;
 
-import juno.model.util.InterfaceProvider;
-import org.jetbrains.annotations.Nullable;
+import juno.model.util.Provider;
 
 /**
  * @author Simone Gentili
@@ -38,4 +37,4 @@ public interface InterfacePlayer<T>
         InterfaceSubject,
         InterfaceAdder<T>,
         InterfaceRemover<T>,
-        InterfaceProvider<T> {}
+        Provider<T> {}

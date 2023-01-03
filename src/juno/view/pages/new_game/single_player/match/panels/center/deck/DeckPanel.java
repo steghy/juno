@@ -28,7 +28,7 @@ package juno.view.pages.new_game.single_player.match.panels.center.deck;
 import juno.controller.log_out.Restorable;
 import juno.controller.new_game.human.DrawAction;
 import juno.model.subjects.shift.InterfaceTurnMover;
-import juno.model.util.InterfaceProvider;
+import juno.model.util.Provider;
 import juno.model.util.Observer;
 import juno.view.panels.AbstractFirstComponent;
 import org.jetbrains.annotations.NotNull;
@@ -46,7 +46,7 @@ public class DeckPanel<T>
         Restorable {
 
     // The current player provider.
-    private InterfaceProvider<T> provider;
+    private Provider<T> provider;
 
     // The human player.
     private T humanPlayer;
@@ -79,7 +79,7 @@ public class DeckPanel<T>
      * Sets the current player provider of this object.
      * @param provider An InterfaceProvider object.
      */
-    public void setProvider(@NotNull InterfaceProvider<T> provider) {
+    public void setProvider(@NotNull Provider<T> provider) {
         this.provider = provider;
     }
 

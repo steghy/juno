@@ -25,6 +25,7 @@
 
 package juno.controller.pre_access.log_in;
 
+import juno.controller.util.InterfaceInitializer;
 import juno.model.data.avatar.Avatar;
 import juno.model.data.goals.RegistrationGoal;
 import juno.model.data.io.input.JSONDataImporter;
@@ -40,18 +41,38 @@ import java.util.Map;
 /**
  * @author Simone Gentili
  */
-public class Initializer {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // Builds an Initializer object.
+    // The Initializer instance.
+    private static Initializer instance;
+
+    // Builds the initializer instance.
     private Initializer() {}
 
-    public static void initialize() {
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
+    public void initialize() {
+        // User data setter.
         UserDataSetter userDataSetter = new UserDataSetter();
+
+        // Avatar user data setter.
         UserDataSetter avatarUserDataSetter = new UserDataSetter();
+
+        // Account setter.
         AccountSetter accountSetter = AccountSetter.getInstance();
+
         /////////////////////////////////////////////////////////////
 
-        // UserDataSetter setting.
+        // User data setter
         Map<Configurable, InterfacePathBuilder> userData = new HashMap<>();
         userData.put(Profile.getInstance(), new PathBuilder("-profile.json", ProgramDirectory.PROFILES.absolutePath()));
         userData.put(GamesWonCounter.getInstance(), new PathBuilder("-games-won.json", ProgramDirectory.SCORE.absolutePath()));
@@ -60,14 +81,14 @@ public class Initializer {
         userDataSetter.setMapBuilder(mapSetter);
         userDataSetter.setImporter(JSONDataImporter.getInstance());
 
-        // AvatarUserDataSetter setting.
+        // Avatar user data setter.
         Map<Configurable, InterfacePathBuilder> avatarUserData = new HashMap<>();
         avatarUserData.put(Avatar.getInstance(), new PathBuilder("-avatar.json", ProgramDirectory.AVATAR.absolutePath()));
         PathMapBuilder<Configurable> mapSetter1 = new PathMapBuilder<>(avatarUserData);
         avatarUserDataSetter.setMapBuilder(mapSetter1);
         avatarUserDataSetter.setImporter(JSONDataImporter.getInstance());
 
-        // AccountLoader setting.
+        // Account loader.
         accountSetter.setters().add(userDataSetter);
         accountSetter.setters().add(avatarUserDataSetter);
         accountSetter.setRegistrationGoal(RegistrationGoal.getInstance());

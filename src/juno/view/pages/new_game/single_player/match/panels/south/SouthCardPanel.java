@@ -35,7 +35,7 @@ import juno.controller.util.SetterAction;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.CompatibilityChecker;
 import juno.model.subjects.human.HumanPlayer;
-import juno.model.util.InterfaceSetter;
+import juno.model.util.Setter;
 import juno.model.util.Observer;
 import juno.view.gobject.GObjectButton;
 import juno.view.gobject.cards.GCardCreator;
@@ -47,6 +47,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -72,10 +73,10 @@ public class SouthCardPanel
     private final GridBagConstraints gbc;
 
     // The playable card setter.
-    private InterfaceSetter<java.util.List<GObjectButton<InterfaceCard>>> playableCardSetter;
+    private Setter<List<GObjectButton<InterfaceCard>>> playableCardSetter;
 
     // The discarded card setter.
-    private InterfaceSetter<InterfaceCard> discardedCardSetter;
+    private Setter<InterfaceCard> discardedCardSetter;
 
     // The SouthCardPanel instance.
     private static SouthCardPanel instance;
@@ -112,7 +113,7 @@ public class SouthCardPanel
      * Sets the discarded card setter of this object.
      * @param discardedCardSetter An InterfaceSetter object.
      */
-    public void setDiscardedCardSetter(@NotNull InterfaceSetter<InterfaceCard> discardedCardSetter) {
+    public void setDiscardedCardSetter(@NotNull Setter<InterfaceCard> discardedCardSetter) {
         this.discardedCardSetter = discardedCardSetter;
     }
 
@@ -120,7 +121,7 @@ public class SouthCardPanel
      * Sets the playable card setter of this object.
      * @param playableCardSetter An InterfaceSetter object.
      */
-    public void setPlayableCardSetter(@NotNull InterfaceSetter<java.util.List<GObjectButton<InterfaceCard>>> playableCardSetter) {
+    public void setPlayableCardSetter(@NotNull Setter<List<GObjectButton<InterfaceCard>>> playableCardSetter) {
         this.playableCardSetter = playableCardSetter;
     }
 

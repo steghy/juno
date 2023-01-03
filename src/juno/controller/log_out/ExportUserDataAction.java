@@ -26,7 +26,7 @@
 package juno.controller.log_out;
 
 import juno.model.data.io.output.InterfaceExporterManager;
-import juno.model.util.InterfaceProvider;
+import juno.model.util.Provider;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.event.ActionEvent;
@@ -42,14 +42,14 @@ public class ExportUserDataAction<T>
     private final InterfaceExporterManager<T> exporterManager;
 
     // The object.
-    private final InterfaceProvider<T> provider;
+    private final Provider<T> provider;
 
     /**
      * Builds a ExportUserDataAction with the specified exporter manager.
      * @param exporterManager An InterfaceExporterManager object.
      */
     public ExportUserDataAction(@NotNull InterfaceExporterManager<T> exporterManager,
-                                @NotNull InterfaceProvider<T> provider) {
+                                @NotNull Provider<T> provider) {
         this.exporterManager = exporterManager;
         this.provider = provider;
     }

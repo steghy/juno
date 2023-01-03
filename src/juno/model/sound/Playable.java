@@ -25,6 +25,14 @@
 
 package juno.model.sound;
 
-public interface InterfaceAudioPlayer {
+/**
+ * This interface represents objects
+ * that can play an audio track.
+ */
+@FunctionalInterface
+public interface Playable {
+
+    /** Plays an audio track. */
     void play();
+
 }

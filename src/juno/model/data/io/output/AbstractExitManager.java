@@ -25,7 +25,7 @@
 
 package juno.model.data.io.output;
 
-import juno.model.util.InterfaceProvider;
+import juno.model.util.Provider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -39,7 +39,7 @@ public abstract class AbstractExitManager<T>
     private InterfaceExporterManager<T> exporter;
 
     // The object to export provider.
-    private InterfaceProvider<T> provider;
+    private Provider<T> provider;
 
     /**
      * Sets the exporter manager of this object.
@@ -53,7 +53,7 @@ public abstract class AbstractExitManager<T>
      * Sets the provider of this object.
      * @param provider An InterfaceProvider object.
      */
-    public void setProvider(@NotNull InterfaceProvider<T> provider) {
+    public void setProvider(@NotNull Provider<T> provider) {
         this.provider = provider;
     }
 
@@ -71,7 +71,7 @@ public abstract class AbstractExitManager<T>
      * @return An InterfaceProvider object.
      */
     @Nullable
-    public InterfaceProvider<T> getProvider() {
+    public Provider<T> getProvider() {
         return provider;
     }
 

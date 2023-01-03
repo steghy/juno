@@ -23,25 +23,39 @@
  * SOFTWARE.
  */
 
-package juno.model.util;
+package juno.controller.audio;
 
-import java.util.Collection;
+import juno.model.sound.MuteableAudioPlayer;
+import org.jetbrains.annotations.NotNull;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
- * This interface defines a factory that supplies
- * cards for the game 'Uno'. The cards that are
- * provided must all be different and in a single copy.
  * @author Simone Gentili
- * @param <T> The type of the cards.
  */
-@FunctionalInterface
-public interface InterfaceFactory<T> {
+public class AudioSwitchAction
+        implements ActionListener {
+
+    // The muteable audio player.
+    private final MuteableAudioPlayer audioPlayer;
 
     /**
-     * Returns all the different types of cards
-     * of the 'Uno' card game.
-     * @return A Collection object.
+     * Builds an AudioSwitchAction with the specified
+     * MuteableAudioPlayer object.
+     * @param audioPlayer A MuteableAudioPlayer object.
      */
-    Collection<T> getObjects();
+    public AudioSwitchAction(@NotNull MuteableAudioPlayer audioPlayer) {
+        this.audioPlayer = audioPlayer;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(audioPlayer.isMuted()) {
+            audioPlayer.unmute();
+        } else {
+            audioPlayer.mute();
+        }
+    }
 
 }

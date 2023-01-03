@@ -27,7 +27,7 @@ package juno.view.pages.new_game.single_player.match.panels.south;
 
 import juno.model.card.InterfaceCard;
 import juno.model.deck.AbstractCompatibilityCheckerUser;
-import juno.model.util.InterfaceSetter;
+import juno.model.util.Setter;
 import juno.view.gobject.GObjectButton;
 import org.jetbrains.annotations.NotNull;
 
@@ -39,7 +39,7 @@ import java.util.Objects;
  */
 public class CompatibleGCardEnabler
         extends AbstractCompatibilityCheckerUser<InterfaceCard>
-        implements InterfaceSetter<List<GObjectButton<InterfaceCard>>> {
+        implements Setter<List<GObjectButton<InterfaceCard>>> {
 
     // The CompatibleGCardEnabler.
     private static CompatibleGCardEnabler instance;

@@ -26,7 +26,7 @@
 package juno.controller.util;
 
 import juno.model.util.AbstractObservable;
-import juno.model.util.InterfaceSetter;
+import juno.model.util.Setter;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -34,7 +34,7 @@ import java.awt.*;
 
 public class FullScreenSetter
         extends AbstractObservable
-        implements InterfaceSetter<JFrame> {
+        implements Setter<JFrame> {
 
     // The Graphics device.
     private final GraphicsDevice device;

@@ -76,13 +76,13 @@ public class Mixer<T>
     }
 
     @Override
-    public void addObserver(@NotNull Observer observer) {
-        observerList.add(observer);
+    public boolean addObserver(@NotNull Observer observer) {
+        return observerList.add(observer);
     }
 
     @Override
-    public void removeObserver(@NotNull Observer observer) {
-        observerList.add(observer);
+    public boolean removeObserver(@NotNull Observer observer) {
+        return observerList.add(observer);
     }
 
     @Override

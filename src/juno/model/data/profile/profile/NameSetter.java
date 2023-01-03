@@ -27,7 +27,7 @@ package juno.model.data.profile.profile;
 
 import juno.model.data.profile.Characters;
 import juno.model.util.AbstractObservable;
-import juno.model.util.InterfaceSetter;
+import juno.model.util.Setter;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -35,7 +35,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public class NameSetter
         extends AbstractObservable
-        implements InterfaceSetter<String> {
+        implements Setter<String> {
 
     // The NameSetter instance.
     private static NameSetter instance;

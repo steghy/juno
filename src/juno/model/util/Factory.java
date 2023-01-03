@@ -23,14 +23,25 @@
  * SOFTWARE.
  */
 
-package juno.model.sound;
+package juno.model.util;
 
-public interface MutableAudioPlayer
-        extends InterfaceAudioPlayer {
+import java.util.Collection;
 
-    void mute();
+/**
+ * This interface defines a factory that supplies
+ * cards for the game 'Uno'. The cards that are
+ * provided must all be different and in a single copy.
+ * @author Simone Gentili
+ * @param <T> The type of the cards.
+ */
+@FunctionalInterface
+public interface Factory<T> {
 
-    void unmute();
+    /**
+     * Returns all the different types of cards
+     * of the 'Uno' card game.
+     * @return A Collection object.
+     */
+    Collection<T> getObjects();
 
-    boolean isMuted();
 }

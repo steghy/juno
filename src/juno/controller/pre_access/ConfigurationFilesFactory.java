@@ -57,7 +57,8 @@ public class ConfigurationFilesFactory
         return instance;
     }
 
-    @Override @Nullable
+    @Override
+    @Nullable
     public Collection<File> getObjects() {
         return configurationFiles;
     }
@@ -68,7 +69,6 @@ public class ConfigurationFilesFactory
             configurationFiles = Objects.requireNonNull(getResearcher())
                     .getConfigurationFiles(getConfigurable(), getPath());
         } catch (FileNotFoundException e) {
-            // Creates the profile directory.
             boolean r = (new File(Objects.requireNonNull(getPath()))).mkdir();
             if (r) throw new IllegalArgumentException(
                     "Fatal Error: Cannot create directory in the " +

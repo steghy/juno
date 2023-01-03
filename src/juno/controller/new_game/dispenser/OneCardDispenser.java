@@ -30,7 +30,7 @@ import juno.controller.util.Stoppable;
 import juno.model.deck.InterfaceDeck;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.util.AbstractObservable;
-import juno.model.util.InterfaceProvider;
+import juno.model.util.Provider;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
@@ -47,7 +47,7 @@ import java.util.List;
 public class OneCardDispenser<T>
         extends
         AbstractObservable
-        implements ActionListener, Observer, InterfaceCardDispenser, InterfaceProvider<List<InterfacePlayer<T>>>, Stoppable {
+        implements ActionListener, Observer, InterfaceCardDispenser, Provider<List<InterfacePlayer<T>>>, Stoppable {
 
     // The deck.
     private InterfaceDeck<T> deck;
@@ -119,7 +119,7 @@ public class OneCardDispenser<T>
     @Override
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceProvider<?> provider) {
+        if(object instanceof Provider<?> provider) {
             players.clear();
             players.addAll((Collection<? extends InterfacePlayer<T>>)
                     provider.provide());

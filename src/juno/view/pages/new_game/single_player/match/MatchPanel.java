@@ -25,7 +25,7 @@
 
 package juno.view.pages.new_game.single_player.match;
 
-import juno.model.util.InterfaceFactory;
+import juno.model.util.Factory;
 import juno.model.util.Observer;
 import juno.view.panels.AbstractFifthComponent;
 
@@ -62,7 +62,7 @@ public class MatchPanel
 
     @Override
     public void update(Object object) {
-        if(object instanceof InterfaceFactory<?> factory) {
+        if(object instanceof Factory<?> factory) {
             removeAll();
             add(Objects.requireNonNull(getFirstComponent()), BorderLayout.SOUTH);
             add(Objects.requireNonNull(getFifthComponent()), BorderLayout.CENTER);

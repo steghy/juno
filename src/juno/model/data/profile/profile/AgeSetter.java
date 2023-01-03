@@ -26,14 +26,14 @@
 package juno.model.data.profile.profile;
 
 import juno.model.util.AbstractObservable;
-import juno.model.util.InterfaceSetter;
+import juno.model.util.Setter;
 
 /**
  * @author Simone Gentili
  */
 public class AgeSetter
         extends AbstractObservable
-        implements InterfaceSetter<Integer> {
+        implements Setter<Integer> {
 
     // The AgeSetter instance.
     private static AgeSetter instance;

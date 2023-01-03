@@ -26,8 +26,8 @@
 package juno.controller.new_game.human;
 
 import juno.model.deck.AbstractDiscardedPileUser;
-import juno.model.util.InterfaceProvider;
-import juno.model.util.InterfaceSetter;
+import juno.model.util.Provider;
+import juno.model.util.Setter;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
@@ -43,7 +43,7 @@ import java.util.Objects;
  */
 public class DiscardedCardSetter<T>
         extends AbstractDiscardedPileUser<T>
-        implements InterfaceSetter<T>, InterfaceProvider<T>, Observable {
+        implements Setter<T>, Provider<T>, Observable {
 
     // The last object involved.
     private T object;
@@ -82,13 +82,13 @@ public class DiscardedCardSetter<T>
     }
 
     @Override
-    public void addObserver(@NotNull Observer observer) {
-        observableList.add(observer);
+    public boolean addObserver(@NotNull Observer observer) {
+        return observableList.add(observer);
     }
 
     @Override
-    public void removeObserver(@NotNull Observer observer) {
-        observableList.remove(observer);
+    public boolean removeObserver(@NotNull Observer observer) {
+        return observableList.remove(observer);
     }
 
     @Override

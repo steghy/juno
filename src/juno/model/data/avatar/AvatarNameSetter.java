@@ -26,8 +26,8 @@
 package juno.model.data.avatar;
 
 import juno.model.util.AbstractObservable;
-import juno.model.util.InterfaceProvider;
-import juno.model.util.InterfaceSetter;
+import juno.model.util.Provider;
+import juno.model.util.Setter;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
@@ -36,10 +36,10 @@ import org.jetbrains.annotations.NotNull;
  */
 public class AvatarNameSetter
         extends AbstractObservable
-        implements InterfaceSetter<String>, Observer {
+        implements Setter<String>, Observer {
 
     // The profile name provider.
-    private InterfaceProvider<String> provider;
+    private Provider<String> provider;
 
     // The AvatarNameSetter instance.
     private static AvatarNameSetter instance;
@@ -66,13 +66,13 @@ public class AvatarNameSetter
      * Sets the name provider of this object.
      * @param provider An InterfaceNameProvider object.
      */
-    public void setNameProvider(@NotNull InterfaceProvider<String> provider) {
+    public void setNameProvider(@NotNull Provider<String> provider) {
         this.provider = provider;
     }
 
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceSetter<?>) {
+        if(object instanceof Setter<?>) {
             set(provider.provide());
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +

@@ -50,11 +50,18 @@ public class Initializer
 
     @Override
     public void initialize() {
-        juno.controller.pre_access.Initializer.initialize();
+        // juno.controller.pre_access package.
+        juno.controller.pre_access.Initializer.getInstance().initialize();
+
+        // juno.controller.log_out package.
         juno.controller.log_out.Initializer.getInstance().initialize();
-        juno.controller.pre_access.loggers.Initializer.initialize();
-        juno.controller.pre_access.registration.Initializer.initialize();
-        juno.controller.pre_access.log_in.Initializer.initialize();
+
+        // juno.controller.pre_access package.
+        juno.controller.pre_access.loggers.Initializer.getInstance().initialize();
+        juno.controller.pre_access.registration.Initializer.getInstance().initialize();
+        juno.controller.pre_access.log_in.Initializer.getInstance().initialize();
+
+        // juno.controller.new_game package.
         juno.controller.new_game.Initializer.getInstance().initialize();
         juno.controller.new_game.connector.Initializer.getInstance().initialize();
         juno.controller.new_game.restorer.Initializer.getInstance().initialize();

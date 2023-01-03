@@ -25,16 +25,13 @@
 
 package juno.init;
 
-import juno.controller.avatar.Subscriptions;
 import juno.controller.pre_access.ConfigurationFilesFactory;
-import juno.model.requester.ProgramDirectory;
 import juno.model.requester.GitHubRepositorySetter;
 import juno.model.sound.AudioPlayer;
 import juno.view.frame.Frame;
 import juno.view.pages.options.menu.MenuPanel;
 
 import javax.swing.*;
-import java.io.File;
 import java.util.Objects;
 
 /**
@@ -55,11 +52,7 @@ public class Main {
             // Setting GitHub repository.
             GitHubRepositorySetter.setRepository();
 
-            // Subscriptions.
-            // Rewrite.
-            Subscriptions.make();
-
-            // Model -> Controller -> View: Initialization.
+            // Model -> View -> Controller initialization.
             juno.model.Initializer.getInstance().initialize();
             juno.view.Initializer.getInstance().initialize();
             juno.controller.Initializer.getInstance().initialize();
@@ -68,11 +61,7 @@ public class Main {
             ConfigurationFilesFactory.getInstance().generate();
 
             // Audio player.
-            AudioPlayer audioPlayer = AudioPlayer.getInstance();
-            audioPlayer.setTracks(Objects
-                    .requireNonNull(new File(ProgramDirectory.MUSIC.absolutePath()).listFiles()));
-            audioPlayer.play();
-            audioPlayer.setLoop(true);
+            AudioPlayer.getInstance().play();
 
             // Fullscreen mode.
             ((JToggleButton) Objects.requireNonNull(MenuPanel.getInstance().getSecondComponent())).doClick();
@@ -80,6 +69,7 @@ public class Main {
             // Frame.
             Frame frame = Frame.getInstance();
             frame.setVisible(true);
+
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "An unknown error has occurred. " +

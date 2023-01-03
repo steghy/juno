@@ -23,11 +23,30 @@
  * SOFTWARE.
  */
 
-package juno.model.util;
+package juno.model.sound;
 
-@FunctionalInterface
-public interface InterfaceSetter<T> {
+/**
+ * This class represents repeatable audio players.
+ * A repeatable audio player plays all the audio
+ * tracks that have been set all over again when
+ * they have already been played.
+ * @author Simone Gentili
+ */
+public interface RepeatableAudioPlayer {
 
-    void set(T object);
+    /**
+     * Sets the repeatability of this
+     * audio player.
+     * @param value A boolean value.
+     */
+    void setLoop(boolean value);
+
+    /**
+     * Returns the value true if, and
+     * only if, the repeat value of this
+     * audio player is true.
+     * @return A boolean value.
+     */
+    boolean isLooped();
 
 }

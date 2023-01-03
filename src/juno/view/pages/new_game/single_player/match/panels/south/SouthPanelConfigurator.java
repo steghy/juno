@@ -33,7 +33,7 @@ import juno.controller.new_game.human.PassTurnAction;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.CompatibilityChecker;
 import juno.model.subjects.human.HumanPlayer;
-import juno.model.util.InterfaceSetter;
+import juno.model.util.Setter;
 import juno.view.avatar.UserAvatarPanel;
 
 import javax.swing.*;
@@ -78,7 +78,7 @@ public class SouthPanelConfigurator {
         CardDispenser.getInstance().addObserver(southCardPanel);
 
         // Component setting.
-        southCardPanel.setDiscardedCardSetter((InterfaceSetter<InterfaceCard>) DiscardedCardSetter.getInstance());
+        southCardPanel.setDiscardedCardSetter((Setter<InterfaceCard>) DiscardedCardSetter.getInstance());
         southCardPanel.setPlayableCardSetter(CompatibleGCardEnabler.getInstance());
         compatibleGCardEnabler.setCompatibilityChecker(CompatibilityChecker.getInstance());
 

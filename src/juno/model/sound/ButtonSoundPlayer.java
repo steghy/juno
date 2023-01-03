@@ -23,30 +23,27 @@
  * SOFTWARE.
  */
 
-package juno.controller.avatar;
+package juno.model.sound;
 
-import juno.model.util.Observable;
-import juno.model.util.Observer;
-import org.jetbrains.annotations.NotNull;
+/**
+ * @author Simone Gentili
+ */
+public class ButtonSoundPlayer
+        extends GenericAudioPlayer {
 
-public class Subscriber
-        implements Observer {
+    // The ButtonSoundPlayer instance.
+    private static ButtonSoundPlayer instance;
 
-    private final Observer observer;
+    // Builds a ButtonSoundPlayer instance.
+    private ButtonSoundPlayer() {}
 
-    private final Observable observable;
-
-    public Subscriber(@NotNull Observer observer,
-                      @NotNull Observable observable,
-                      @NotNull Observable o) {
-        this.observer = observer;
-        this.observable = observable;
-        o.addObserver(this);
-    }
-
-    @Override
-    public void update(@NotNull Object object) {
-        observable.addObserver(observer);
+    /**
+     * Returns the ButtonSoundPlayer instance.
+     * @return The ButtonSoundPlayer instance.
+     */
+    public static ButtonSoundPlayer getInstance() {
+        if(instance == null) instance = new ButtonSoundPlayer();
+        return instance;
     }
 
 }

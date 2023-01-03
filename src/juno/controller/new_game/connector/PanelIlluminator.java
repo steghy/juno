@@ -28,7 +28,7 @@ package juno.controller.new_game.connector;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.shift.InterfaceTurnMover;
 import juno.model.util.Donut;
-import juno.model.util.InterfaceProvider;
+import juno.model.util.Provider;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
@@ -42,7 +42,7 @@ public class PanelIlluminator
         implements Observer {
 
     // The players donut provider.
-    private InterfaceProvider<Donut<InterfacePlayer<?>>> playersProvider;
+    private Provider<Donut<InterfacePlayer<?>>> playersProvider;
 
     // The last panel involved.
     private JPanel lastPanel;
@@ -69,14 +69,14 @@ public class PanelIlluminator
      * Sets the players list provider of this object.
      * @param playersProvider An InterfaceProvider object.
      */
-    public void setPlayersProvider(@NotNull InterfaceProvider<Donut<InterfacePlayer<?>>> playersProvider) {
+    public void setPlayersProvider(@NotNull Provider<Donut<InterfacePlayer<?>>> playersProvider) {
         this.playersProvider = playersProvider;
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void update(Object object) {
-        if(object instanceof InterfaceProvider<?> provider) {
+        if(object instanceof Provider<?> provider) {
             map = (Map<InterfacePlayer<?>, JPanel>) provider.provide();
         } else if(object instanceof InterfaceTurnMover) {
             InterfacePlayer<?> player = playersProvider.provide().current();

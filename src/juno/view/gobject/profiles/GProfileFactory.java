@@ -25,7 +25,7 @@
 
 package juno.view.gobject.profiles;
 
-import juno.model.util.InterfaceFactory;
+import juno.model.util.Factory;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import juno.view.gobject.InterfaceGObject;
@@ -80,13 +80,13 @@ public class GProfileFactory
     }
 
     @Override
-    public void addObserver(@NotNull Observer observer) {
-        observerList.add(observer);
+    public boolean addObserver(@NotNull Observer observer) {
+        return observerList.add(observer);
     }
 
     @Override
-    public void removeObserver(@NotNull Observer observer) {
-        observerList.remove(observer);
+    public boolean removeObserver(@NotNull Observer observer) {
+        return observerList.remove(observer);
     }
 
     @Override
@@ -96,7 +96,7 @@ public class GProfileFactory
 
     @Override @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceFactory<?> factory) {
+        if(object instanceof Factory<?> factory) {
             List<File> files = (List<File>) factory.getObjects();
             generate(files.stream().map(file -> {
                 try {

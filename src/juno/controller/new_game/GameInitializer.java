@@ -30,7 +30,7 @@ import juno.controller.util.InterfaceInitializer;
 import juno.model.subjects.ai.InterfaceDifficulty;
 import juno.model.subjects.factory.InterfaceAiPlayerGenerator;
 import juno.model.util.AbstractObservable;
-import juno.model.util.InterfaceGenerator;
+import juno.model.util.Generator;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -44,7 +44,7 @@ public class GameInitializer
     private InterfaceAiPlayerGenerator<InterfaceDifficulty> aiGenerator;
 
     // The deck generator.
-    private InterfaceGenerator deckGenerator;
+    private Generator deckGenerator;
 
     // The StartGameAction instance.
     private static GameInitializer instance;
@@ -61,7 +61,7 @@ public class GameInitializer
      * Sets the deck generator of this object.
      * @param deckGenerator An InterfaceGenerator object.
      */
-    public void setDeckGenerator(@NotNull InterfaceGenerator deckGenerator) {
+    public void setDeckGenerator(@NotNull Generator deckGenerator) {
         this.deckGenerator = deckGenerator;
     }
 

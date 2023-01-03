@@ -23,15 +23,15 @@
  * SOFTWARE.
  */
 
-package juno.model.sound;
+package juno.model.util;
 
-public interface InterfaceAdvancedAudioPlayer extends MutableAudioPlayer {
+/**
+ * @author Simone Gentili
+ * @param <T> The type of the object.
+ */
+@FunctionalInterface
+public interface Provider<T> {
 
-    void next();
+    T provide();
 
-    void back();
-
-    void stop();
-
-    void pause();
 }

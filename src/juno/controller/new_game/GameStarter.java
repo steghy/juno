@@ -30,7 +30,7 @@ import juno.model.card.InterfaceCard;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.util.AbstractObservable;
 import juno.model.util.Donut;
-import juno.model.util.InterfaceProvider;
+import juno.model.util.Provider;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -51,7 +51,7 @@ public class GameStarter
 
     // The Players provider.
     @Nullable
-    private InterfaceProvider<?> provider;
+    private Provider<?> provider;
 
     // The GameStarter instance.
     private static GameStarter instance;
@@ -80,7 +80,7 @@ public class GameStarter
      * Sets the players provider of this object.
      * @param provider An InterfaceProvider object.
      */
-    public void setProvider(@NotNull InterfaceProvider<?> provider) {
+    public void setProvider(@NotNull Provider<?> provider) {
         this.provider = provider;
     }
 
@@ -96,7 +96,7 @@ public class GameStarter
     @Override
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceProvider<?> cardController) {
+        if(object instanceof Provider<?> cardController) {
             List<InterfacePlayer<InterfaceCard>> players = (List<InterfacePlayer<InterfaceCard>>) cardController.provide();
             if(players.size() == 1)
                 start(players.get(0));

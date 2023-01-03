@@ -23,14 +23,14 @@
  * SOFTWARE.
  */
 
-package juno.model.util;
+package juno.controller.subscriber;
 
 /**
  * @author Simone Gentili
  */
 @FunctionalInterface
-public interface InterfaceGenerator {
+public interface Unsubscriber {
 
-    void generate();
+    void unsubscribe();
 
 }

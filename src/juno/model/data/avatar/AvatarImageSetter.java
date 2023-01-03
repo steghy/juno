@@ -27,7 +27,7 @@ package juno.model.data.avatar;
 
 import juno.model.data.awards.avatar.InterfaceAvatarImage;
 import juno.model.util.AbstractObservable;
-import juno.model.util.InterfaceSetter;
+import juno.model.util.Setter;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -35,7 +35,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public class AvatarImageSetter
         extends AbstractObservable
-        implements InterfaceSetter<InterfaceAvatarImage> {
+        implements Setter<InterfaceAvatarImage> {
 
     // The AvatarImageSetter instance.
     private static AvatarImageSetter instance;

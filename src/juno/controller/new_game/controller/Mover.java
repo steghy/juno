@@ -31,7 +31,7 @@ import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.ai.InterfaceAi;
 import juno.model.subjects.shift.InterfaceTurnMover;
 import juno.model.util.Donut;
-import juno.model.util.InterfaceProvider;
+import juno.model.util.Provider;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
@@ -104,7 +104,7 @@ public class Mover<T>
             timer.start();
         } else if(object instanceof InterfaceTurnMover) {
             timer.start();
-        } else if(object instanceof InterfaceProvider<?> provider) {
+        } else if(object instanceof Provider<?> provider) {
             players = (Donut<InterfacePlayer<T>>) provider.provide();
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
@@ -112,13 +112,13 @@ public class Mover<T>
     }
 
     @Override
-    public void addObserver(@NotNull Observer observer) {
-        observerList.add(observer);
+    public boolean addObserver(@NotNull Observer observer) {
+        return observerList.add(observer);
     }
 
     @Override
-    public void removeObserver(@NotNull Observer observer) {
-        observerList.remove(observer);
+    public boolean removeObserver(@NotNull Observer observer) {
+        return observerList.remove(observer);
     }
 
     @Override

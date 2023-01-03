@@ -25,7 +25,7 @@
 
 package juno.view.pages.options.menu;
 
-import juno.controller.audio.AudioToggleAction;
+import juno.controller.audio.AudioSwitchAction;
 import juno.controller.util.*;
 import juno.model.sound.AudioPlayer;
 import juno.view.button.ButtonCreator;
@@ -69,7 +69,7 @@ public class MenuPanelConfigurator {
         menuPanel.setThirdComponent(backButton);        // Back button.
 
         // Action listeners.
-        audioToggle.addActionListener(new AudioToggleAction(AudioPlayer.getInstance()));
+        audioToggle.addActionListener(new AudioSwitchAction(AudioPlayer.getInstance()));
         fullscreenToggle.addActionListener(new SetterAction<>(Frame.getInstance(), FullScreenSetter.getInstance()));
         backButton.addActionListener(new ChangePanelAction(new PanelChanger(MainCardPanel.getInstance(), MainCardPanel.MAIN_PANEL)));
 

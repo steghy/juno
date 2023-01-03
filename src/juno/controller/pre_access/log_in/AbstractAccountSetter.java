@@ -26,7 +26,7 @@
 package juno.controller.pre_access.log_in;
 
 import juno.model.data.goals.InterfaceGoal;
-import juno.model.util.InterfaceSetter;
+import juno.model.util.Setter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -37,15 +37,15 @@ import java.util.List;
  * @author Simone Gentili
  */
 public abstract class AbstractAccountSetter<T>
-        implements InterfaceSetter<T> {
+        implements Setter<T> {
 
     // The setters list.
-    private final List<InterfaceSetter<T>> setters = new ArrayList<>();
+    private final List<Setter<T>> setters = new ArrayList<>();
 
     // The Registration goal.
     private InterfaceGoal registrationGoal;
 
-    public List<InterfaceSetter<T>> setters() {
+    public List<Setter<T>> setters() {
         return setters;
     }
 

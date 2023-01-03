@@ -30,7 +30,7 @@ import juno.model.deck.InterfaceDeck;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.util.AbstractObservable;
 import juno.model.util.Donut;
-import juno.model.util.InterfaceProvider;
+import juno.model.util.Provider;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -48,7 +48,7 @@ public class CardDispenser<T>
     private InterfaceDeck<T> deck;
 
     // The provider.
-    private InterfaceProvider<Donut<InterfacePlayer<T>>> provider;
+    private Provider<Donut<InterfacePlayer<T>>> provider;
 
     // The players size.
     private int size;
@@ -85,7 +85,7 @@ public class CardDispenser<T>
      * Sets the players provider of this object.
      * @param provider An InterfaceProvider object.
      */
-    public void setProvider(@NotNull InterfaceProvider<Donut<InterfacePlayer<T>>> provider) {
+    public void setProvider(@NotNull Provider<Donut<InterfacePlayer<T>>> provider) {
         this.provider = provider;
     }
 
