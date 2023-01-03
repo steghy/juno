@@ -60,7 +60,7 @@ public class Initializer
                 ImageComponentInitializer.getInstance()
                         .initialize(
                                 background,
-                                PathProviderAssembler.getInstance().assemble(ProgramDirectory.BACKGROUNDS, "Background.png"),
+                                PathProviderAssembler.getInstance().assemble(ProgramDirectory.BACKGROUNDS, "background.jpg"),
                                 null);
         frame.setBackground(background);
         frame.setPanel(topCardPanel);
