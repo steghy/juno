@@ -30,6 +30,8 @@ import juno.model.util.InterfaceFactory;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 /**
  * @author Simone Gentili
  */
@@ -52,14 +54,9 @@ public class PreAccessManager
         return instance;
     }
 
-    /**
-     * Sets the first panel to show.
-     * @param path A String object.
-     * @param configurable A Configurable object.
-     */
-    @SuppressWarnings("ALL")
+    @Override
     public void showWelcomeBackPanel() {
-        getPanelChanger().changePanel();
+        Objects.requireNonNull(getPanelChanger()).changePanel();
     }
 
     @Override

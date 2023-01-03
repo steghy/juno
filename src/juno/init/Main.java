@@ -61,8 +61,8 @@ public class Main {
 
             // Model -> Controller -> View: Initialization.
             juno.model.Initializer.getInstance().initialize();
-            juno.controller.Initializer.getInstance().initialize();
             juno.view.Initializer.getInstance().initialize();
+            juno.controller.Initializer.getInstance().initialize();
 
             // Getting profiles.
             ConfigurationFilesFactory.getInstance().generate();

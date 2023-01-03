@@ -25,7 +25,6 @@
 
 package juno.view.pages.pre_access.card;
 
-import juno.controller.pre_access.ConfigurationFilesFactory;
 import juno.view.pages.pre_access.access.AccessPanel;
 import juno.view.pages.pre_access.login.LogInPanel;
 import juno.view.pages.pre_access.registration.RegistrationPanel;

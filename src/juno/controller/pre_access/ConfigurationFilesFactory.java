@@ -62,7 +62,6 @@ public class ConfigurationFilesFactory
         return configurationFiles;
     }
 
-    @SuppressWarnings("ResultOfMethodCallIgnored")
     @Override
     public void generate() {
         try {
@@ -70,7 +69,10 @@ public class ConfigurationFilesFactory
                     .getConfigurationFiles(getConfigurable(), getPath());
         } catch (FileNotFoundException e) {
             // Creates the profile directory.
-            (new File(Objects.requireNonNull(getPath()))).mkdir();
+            boolean r = (new File(Objects.requireNonNull(getPath()))).mkdir();
+            if (r) throw new IllegalArgumentException(
+                    "Fatal Error: Cannot create directory in the " +
+                            "following path: " + getPath());
         } updateAll();
     }
 
