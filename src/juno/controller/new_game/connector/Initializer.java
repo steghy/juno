@@ -25,8 +25,12 @@
 
 package juno.controller.new_game.connector;
 
+import juno.controller.subscriber.AiPanelSubscriber;
 import juno.controller.util.InterfaceInitializer;
 import juno.model.subjects.InterfacePlayer;
+import juno.model.subjects.factory.AiPlayerFactory;
+import juno.model.subjects.human.HumanPlayer;
+import juno.model.subjects.shift.CurrentPlayerProvider;
 import juno.model.subjects.shift.PlayersProvider;
 import juno.model.subjects.shift.TurnMover;
 import juno.model.util.Donut;
@@ -35,6 +39,8 @@ import juno.view.pages.new_game.single_player.match.panels.east.EastCardPanel;
 import juno.view.pages.new_game.single_player.match.panels.north.NorthCardPanel;
 import juno.view.pages.new_game.single_player.match.panels.south.SouthCardPanel;
 import juno.view.pages.new_game.single_player.match.panels.west.WestCardPanel;
+
+import java.util.Map;
 
 /**
  * @author Simone Gentili
@@ -65,21 +71,20 @@ public class Initializer
 
         // Panel illuminator.
         PanelIlluminator panelIlluminator = PanelIlluminator.getInstance();
-        panelIlluminator.setPlayersProvider((Provider<Donut<InterfacePlayer<?>>>) provider);
 
         // Connector.
         Connector connector = Connector.getInstance();
-        connector.south = SouthCardPanel.getInstance();
-        connector.north = NorthCardPanel.getInstance();
-        connector.west = WestCardPanel.getInstance();
-        connector.east = EastCardPanel.getInstance();
-        connector.addObserver(panelIlluminator);
 
-        // Player factory.
-        PlayersProvider.getInstance().addObserver(connector);
+        ///////////////////////////////////////////////////////////////////
 
-        // Turn mover.
+        // Connector.
+        AiPlayerFactory.getInstance().addObserver(connector);
+
+        // Panel illuminator.
+        panelIlluminator.setPlayersProvider((Provider<InterfacePlayer<?>>) CurrentPlayerProvider.getInstance());
+        panelIlluminator.addEntry(Map.entry(HumanPlayer.getInstance(), SouthCardPanel.getInstance()));
         TurnMover.getInstance().addObserver(panelIlluminator);
+        connector.addObserver(panelIlluminator);
     }
 
 }

@@ -27,7 +27,6 @@ package juno.controller.new_game.connector;
 
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.shift.InterfaceTurnMover;
-import juno.model.util.Donut;
 import juno.model.util.Provider;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
@@ -41,13 +40,16 @@ import java.util.Map;
 public class PanelIlluminator
         implements Observer {
 
-    // The players donut provider.
-    private Provider<Donut<InterfacePlayer<?>>> playersProvider;
+    // The current player provider.
+    private Provider<InterfacePlayer<?>> playerProvider;
 
     // The last panel involved.
     private JPanel lastPanel;
 
-    // Map players panel.
+    // The Map.Entry of Human player -> South card panel.
+    private Map.Entry<InterfacePlayer<?>, JPanel> entry;
+
+    // Map players - panel.
     private Map<InterfacePlayer<?>, JPanel> map;
 
     // The PanelIlluminator instance.
@@ -67,19 +69,29 @@ public class PanelIlluminator
 
     /**
      * Sets the players list provider of this object.
-     * @param playersProvider An InterfaceProvider object.
+     * @param playerProvider A Provider object.
      */
-    public void setPlayersProvider(@NotNull Provider<Donut<InterfacePlayer<?>>> playersProvider) {
-        this.playersProvider = playersProvider;
+    public void setPlayersProvider(@NotNull Provider<InterfacePlayer<?>> playerProvider) {
+        this.playerProvider = playerProvider;
+    }
+
+    /**
+     * Adds the following entry to the map of this object.
+     * @param entry A Map.Entry object.
+     */
+    public void addEntry(Map.Entry<InterfacePlayer<?>, JPanel> entry) {
+        this.entry = entry;
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void update(Object object) {
+        // The update comes from the Connector.
         if(object instanceof Provider<?> provider) {
             map = (Map<InterfacePlayer<?>, JPanel>) provider.provide();
+            map.put(entry.getKey(), entry.getValue());
         } else if(object instanceof InterfaceTurnMover) {
-            InterfacePlayer<?> player = playersProvider.provide().current();
+            InterfacePlayer<?> player = playerProvider.provide();
             if(lastPanel != null) {
                 lastPanel.setOpaque(false);
                 lastPanel.revalidate();

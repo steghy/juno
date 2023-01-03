@@ -26,6 +26,7 @@
 package juno.controller.subscriber;
 
 import juno.controller.log_out.ProfilesRefresher;
+import juno.controller.new_game.connector.Connector;
 import juno.controller.pre_access.ConfigurationFilesFactory;
 import juno.controller.util.InterfaceInitializer;
 import juno.model.data.avatar.AvatarNameSetter;
@@ -57,6 +58,9 @@ public class Initializer
         // Avatar subscriber.
         AvatarSubscriber avatarSubscriber = AvatarSubscriber.getInstance();
 
+        // Ai Panel subscriber.
+        AiPanelSubscriber aiPanelSubscriber = AiPanelSubscriber.getInstance();
+
         ///////////////////////////////////////////////////////////////////
 
         // Avatar subscriber.
@@ -64,6 +68,9 @@ public class Initializer
         avatarSubscriber.setObserver(AvatarNameSetter.getInstance());
         ConfigurationFilesFactory.getInstance().addObserver(avatarSubscriber);
         ProfilesRefresher.getInstance().addObserver(avatarSubscriber);
+
+        // AI panel subscriber.
+        Connector.getInstance().addObserver(aiPanelSubscriber);
     }
 
 }

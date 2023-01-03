@@ -25,10 +25,15 @@
 
 package juno.controller.new_game.connector;
 
-import juno.model.util.*;
+import juno.model.subjects.InterfacePlayer;
+import juno.model.subjects.factory.AiPlayerFactory;
+import juno.model.subjects.factory.InterfaceAiPlayerGenerator;
+import juno.model.util.AbstractObservable;
+import juno.model.util.Observer;
+import juno.model.util.Provider;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
+import java.awt.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,21 +43,19 @@ import java.util.Map;
  */
 public class Connector
         extends AbstractObservable
-        implements InterfaceConnector<Observable>, Provider<Map<Observable, Observer>>, Observer{
+        implements InterfaceConnector<InterfacePlayer<?>>, Observer, Provider<Map<InterfacePlayer<?>, Component>> {
 
-    // South card panel observer.
-    Observer south;
+    // The north component.
+    Component north;
 
-    // North card panel observer.
-    Observer north;
+    // The west component.
+    Component west;
 
-    // East card panel observer.
-    Observer east;
+    // The east component.
+    Component east;
 
-    // West card panel observer.
-    Observer west;
-
-    final Map<Observable, Observer> map;
+    // The map InterfacePlayer -> Component.
+    private final Map<InterfacePlayer<?>, Component> map;
 
     // The Connector instance.
     private static Connector instance;
@@ -71,44 +74,38 @@ public class Connector
         return instance;
     }
 
-    @Override
-    public void connect(@NotNull List<Observable> players) {
+    public void connect(@NotNull List<InterfacePlayer<?>> list) {
         map.clear();
-        // Optimize !.
-        if(players.size() == 2) {
-            players.get(0).addObserver(north);
-            map.put(players.get(0), north);
-            map.put(players.get(1), south);
-        } else if(players.size() == 3) {
-            players.get(0).addObserver(west);
-            players.get(1).addObserver(north);
-            map.put(players.get(0), west);
-            map.put(players.get(1), north);
-            map.put(players.get(2), south);
-        } else if(players.size() == 4) {
-            players.get(0).addObserver(west);
-            players.get(1).addObserver(north);
-            players.get(2).addObserver(east);
-            map.put(players.get(0), west);
-            map.put(players.get(1), north);
-            map.put(players.get(2), east);
-            map.put(players.get(3), south);
-        } updateAll();
+        // One AI player case.
+        if(list.size() == 1) map.put(list.get(0), north);
+        // Two AI player case.
+        else if(list.size() == 2) {
+            map.put(list.get(0), west);
+            map.put(list.get(1), north);
+        }
+        // Three AI player case.
+        else if(list.size() == 3) {
+            map.put(list.get(0), west);
+            map.put(list.get(1), north);
+            map.put(list.get(2), east);
+        } else throw new IllegalArgumentException(
+                "Invalid number of players.");
+        updateAll();
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof Provider<?> provider) {
-            connect((List<Observable>) provider.provide());
-        } else throw new IllegalArgumentException(
+        // The update comes from the AI players factory.
+        if(object instanceof InterfaceAiPlayerGenerator<?>)
+            connect(factory.getObjects());
+        else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
-                        ". InterfaceProvider type expected.");
+                        ". Provider type expected.");
     }
 
     @Override
-    @Nullable
-    public Map<Observable, Observer> provide() {
+    public Map<InterfacePlayer<?>, Component> provide() {
         return map;
     }
 
