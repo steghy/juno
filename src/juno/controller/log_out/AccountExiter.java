@@ -53,7 +53,7 @@ public class AccountExiter
         String object = Objects.requireNonNull(getProvider()).provide();
         Objects.requireNonNull(getExporterManager()).export(object);
         Objects.requireNonNull(getRestorableList()).forEach(Restorable::restore);
-        Objects.requireNonNull(getGenerator()).generate();
+        Objects.requireNonNull(getRefresher()).refresh();
     }
 
 }

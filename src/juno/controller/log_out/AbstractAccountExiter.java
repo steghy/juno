@@ -26,7 +26,6 @@
 package juno.controller.log_out;
 
 import juno.model.data.io.output.AbstractExporterManagerUser;
-import juno.model.util.Generator;
 import juno.model.util.Provider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -48,7 +47,7 @@ public abstract class AbstractAccountExiter<T>
     private Provider<T> provider;
 
     // The profile files refresher.
-    private Generator generator;
+    private Refresher refresher;
 
     /**
      * Sets the provider of this object.
@@ -59,11 +58,11 @@ public abstract class AbstractAccountExiter<T>
     }
 
     /**
-     * Sets the generator of this object.
-     * @param generator An InterfaceGenerator object.
+     * Sets the profiles file refresher of this object.
+     * @param refresher A Refresher object.
      */
-    public void setGenerator(@NotNull Generator generator) {
-        this.generator = generator;
+    public void setRefresher(@NotNull Refresher refresher) {
+        this.refresher = refresher;
     }
 
     /**
@@ -84,12 +83,12 @@ public abstract class AbstractAccountExiter<T>
     }
 
     /**
-     * Returns the generator of this object.
-     * @return An InterfaceGenerator object.
+     * Returns the profiles file refresher of this object.
+     * @return A Refresher object.
      */
     @Nullable
-    public Generator getGenerator() {
-        return generator;
+    public Refresher getRefresher() {
+        return refresher;
     }
 
 }

@@ -23,47 +23,53 @@
  * SOFTWARE.
  */
 
-package juno.controller.subscriber;
+package juno.controller.log_out;
 
-import juno.controller.log_out.ProfilesRefresher;
-import juno.controller.pre_access.ConfigurationFilesFactory;
-import juno.controller.util.InterfaceInitializer;
-import juno.model.data.avatar.AvatarNameSetter;
-import juno.model.data.profile.profile.ProfileNameSetter;
+import juno.model.util.AbstractObservable;
+import juno.model.util.Generator;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.Objects;
 
 /**
  * @author Simone Gentili
  */
-public class Initializer
-        implements InterfaceInitializer {
+public class ProfilesRefresher
+        extends AbstractObservable
+        implements Refresher {
 
-    // The Initializer instance.
-    private static Initializer instance;
+    // The generator.
+    @Nullable
+    private Generator generator;
 
-    // Builds the Initializer instance.
-    private Initializer() {}
+    // The ProfilesRefresher instance.
+    private static ProfilesRefresher instance;
+
+    // Builds the ProfilesRefresher instance.
+    private ProfilesRefresher() {}
 
     /**
-     * Returns the Initializer instance.
-     * @return The Initializer instance.
+     * Returns the ProfilesRefresher instance.
+     * @return The ProfilesRefresher instance.
      */
-    public static Initializer getInstance() {
-        if(instance == null) instance = new Initializer();
+    public static ProfilesRefresher getInstance() {
+        if(instance == null) instance = new ProfilesRefresher();
         return instance;
     }
 
+    /**
+     * Sets the generator of this object.
+     * @param generator A Generator object.
+     */
+    public void setGenerator(@NotNull Generator generator) {
+        this.generator = generator;
+    }
+
     @Override
-    public void initialize() {
-        // Avatar subscriber.
-        AvatarSubscriber avatarSubscriber = AvatarSubscriber.getInstance();
-
-        ///////////////////////////////////////////////////////////////////
-
-        // Avatar subscriber.
-        avatarSubscriber.setObservable(ProfileNameSetter.getInstance());
-        avatarSubscriber.setObserver(AvatarNameSetter.getInstance());
-        ConfigurationFilesFactory.getInstance().addObserver(avatarSubscriber);
-        ProfilesRefresher.getInstance().addObserver(avatarSubscriber);
+    public void refresh() {
+        updateAll();
+        Objects.requireNonNull(generator).generate();
     }
 
 }

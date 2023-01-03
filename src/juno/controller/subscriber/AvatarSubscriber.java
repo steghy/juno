@@ -25,6 +25,7 @@
 
 package juno.controller.subscriber;
 
+import juno.controller.log_out.Refresher;
 import juno.model.util.Factory;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
@@ -55,9 +56,11 @@ public class AvatarSubscriber
     public void update(@NotNull Object object) {
         if(object instanceof Factory<?>)
             subscribe();
+        else if(object instanceof Refresher)
+            unsubscribe();
         else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
-                        ". InterfaceFactory expected.");
+                        ". Factory or Refresher type expected.");
     }
 
 }

@@ -63,7 +63,6 @@ public class Initializer
 
         //////////////////////////////////////////////////////////////////
 
-        // Connections.
         // Pre access manager.
         preAccessManager.setPanelChanger(new PanelChanger(
                 PreAccessCardPanel.getInstance(),

@@ -60,16 +60,27 @@ public class Initializer
 
     @Override
     public void initialize() {
+        // Account exiter.
         AccountExiter accountExiter = AccountExiter.getInstance();
+
+        // Profiles refresher.
+        ProfilesRefresher profilesRefresher = ProfilesRefresher.getInstance();
+
+        ///////////////////////////////////////////////////////////////////////
+
+        // Account exiter.
         List<Restorable> restorableList = accountExiter.getRestorableList();
         restorableList.add(Profile.getInstance());
         restorableList.add(LostGamesCounter.getInstance());
         restorableList.add(GamesWonCounter.getInstance());
         restorableList.add(RegistrationGoal.getInstance());
         restorableList.add(GoalsRestorer.getInstance());
-        accountExiter.setGenerator(ConfigurationFilesFactory.getInstance());
+        accountExiter.setRefresher(profilesRefresher);
         accountExiter.setProvider(ProfileNameProvider.getInstance());
         accountExiter.setExporterManager(ExporterManager.getInstance());
+
+        // Profiles refresher.
+        profilesRefresher.setGenerator(ConfigurationFilesFactory.getInstance());
     }
 
 }

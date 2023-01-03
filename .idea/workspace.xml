@@ -8,65 +8,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/data/config/avatar/Simoncino-avatar.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/config/profiles/Simoncino-profile.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/config/scores/Simoncino-games-won.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/config/scores/Simoncino-lost-games.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/juno/controller/subscriber/Initializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/controller/log_out/ProfilesRefresher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/avatar/Antonellina-avatar.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/avatar/Calciatori-avatar.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/avatar/Giovanni-avatar.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/avatar/Guest-avatar.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/config/avatar/Guest-avatar.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/avatar/Tonino-avatar.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/avatar/ToninoVendetta-avatar.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/avatar/ciccio-avatar.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/avatar/tonino-avatar.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/profiles/Antonellina-profile.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/profiles/Calciatori-profile.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/profiles/Giovanni-profile.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/profiles/Tonino-profile.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/profiles/ToninoVendetta-profile.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/profiles/ciccio-profile.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/profiles/tonino-profile.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/scores/Antonellina-games-won.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/scores/Antonellina-lost-games.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/scores/Calciatori-games-won.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/scores/Calciatori-lost-games.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/scores/Giovanni-games-won.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/scores/Giovanni-lost-games.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/scores/Tonino-games-won.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/scores/Tonino-lost-games.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/scores/ToninoVendetta-games-won.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/scores/ToninoVendetta-lost-games.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/scores/ciccio-games-won.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/scores/ciccio-lost-games.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/scores/tonino-games-won.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/scores/tonino-lost-games.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/controller/Initializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/controller/Initializer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/pre_access/Initializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/pre_access/Initializer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/pre_access/access/AccessPanelInitializer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/pre_access/login/LogInPanelInitializer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/pre_access/registration/RegistrationPanelInitializer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/pre_access/welcome/WelcomePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/pre_access/welcome/WelcomePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/pre_access/welcome/WelcomePanelConfigurator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/pre_access/welcome/WelcomePanelConfigurator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/pre_access/welcome/WelcomePanelInitialize.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/pre_access/welcome/menu/MenuPanelConfigurator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/pre_access/welcome/menu/MenuPanelConfigurator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/pre_access/welcome/title/TitlePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/pre_access/welcome/title/TitlePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/pre_access/welcome/title/TitlePanelConfigurator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/pre_access/welcome/title/TitlePanelConfigurator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/controller/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/Initializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/controller/subscriber/AbstractSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/subscriber/AbstractSubscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/controller/log_out/AbstractAccountExiter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/controller/log_out/AbstractAccountExiter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/controller/log_out/AccountExiter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/controller/log_out/AccountExiter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/controller/log_out/Initializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/controller/log_out/Initializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/controller/pre_access/Initializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/controller/pre_access/Initializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/controller/subscriber/AvatarSubscriber.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/controller/subscriber/AvatarSubscriber.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/log_out/AbstractAccountExiter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/log_out/AbstractAccountExiter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/log_out/AccountExiter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/log_out/AccountExiter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/log_out/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/log_out/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/pre_access/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/pre_access/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/pre_access/ProfilesRefresher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/log_out/Refresher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/controller/subscriber/AvatarSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/subscriber/AvatarSubscriber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/pre_access/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/pre_access/Initializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/pre_access/access/AccessPanelInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/pre_access/access/Initializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/pre_access/login/LogInPanelInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/pre_access/login/Initializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/pre_access/registration/RegistrationPanelInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/pre_access/registration/Initializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/pre_access/welcome/WelcomePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/pre_access/welcome/WelcomePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/pre_access/welcome/WelcomePanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/pre_access/welcome/WelcomePanelConfigurator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/pre_access/welcome/WelcomePanelInitialize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/pre_access/welcome/Initializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/pre_access/welcome/menu/MenuPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/pre_access/welcome/menu/MenuPanelConfigurator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/pre_access/welcome/title/TitlePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/pre_access/welcome/title/TitlePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/pre_access/welcome/title/TitlePanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/pre_access/welcome/title/TitlePanelConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/subscriber/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/subscriber/Initializer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,8 +36,8 @@
         <option value="AnnotationType" />
         <option value="Record" />
         <option value="Enum" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>

@@ -23,7 +23,14 @@
  * SOFTWARE.
  */
 
-package juno.controller.pre_access;
+package juno.controller.log_out;
 
-public class ProfilesRefresher {
+/**
+ * @author Simone Gentili
+ */
+@FunctionalInterface
+public interface Refresher {
+
+    void refresh();
+
 }
