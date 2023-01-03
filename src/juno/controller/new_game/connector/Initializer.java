@@ -25,22 +25,30 @@
 
 package juno.controller.new_game.connector;
 
-import juno.controller.subscriber.AiPanelSubscriber;
 import juno.controller.util.InterfaceInitializer;
+import juno.model.card.InterfaceCard;
+import juno.model.data.awards.avatar.AvatarImage;
+import juno.model.data.awards.frame.AvatarFrame;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.factory.AiPlayerFactory;
 import juno.model.subjects.human.HumanPlayer;
 import juno.model.subjects.shift.CurrentPlayerProvider;
-import juno.model.subjects.shift.PlayersProvider;
 import juno.model.subjects.shift.TurnMover;
-import juno.model.util.Donut;
 import juno.model.util.Provider;
+import juno.view.avatar.AvatarPanel;
+import juno.view.gobject.avatars.GAvatarImageCreator;
+import juno.view.gobject.frames.GAvatarFrameCreator;
 import juno.view.pages.new_game.single_player.match.panels.east.EastCardPanel;
+import juno.view.pages.new_game.single_player.match.panels.east.EastPanel;
 import juno.view.pages.new_game.single_player.match.panels.north.NorthCardPanel;
+import juno.view.pages.new_game.single_player.match.panels.north.NorthPanel;
 import juno.view.pages.new_game.single_player.match.panels.south.SouthCardPanel;
 import juno.view.pages.new_game.single_player.match.panels.west.WestCardPanel;
+import juno.view.pages.new_game.single_player.match.panels.west.WestPanel;
 
+import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author Simone Gentili
@@ -66,25 +74,42 @@ public class Initializer
     @Override
     @SuppressWarnings("unchecked")
     public void initialize() {
-        // Players provider.
-        Provider<?> provider = PlayersProvider.getInstance();
-
         // Panel illuminator.
         PanelIlluminator panelIlluminator = PanelIlluminator.getInstance();
 
         // Connector.
-        Connector connector = Connector.getInstance();
+        Connector<InterfaceCard> connector = (Connector<InterfaceCard>) Connector.getInstance();
+
+        // Ai avatar setter.
+        AiAvatarSetter aiAvatarSetter = AiAvatarSetter.getInstance();
+
+        // Ai player factory.
+        AiPlayerFactory<?, ?> aiPlayerFactory = AiPlayerFactory.getInstance();
 
         ///////////////////////////////////////////////////////////////////
 
         // Connector.
-        AiPlayerFactory.getInstance().addObserver(connector);
+        connector.setEast(EastCardPanel.getInstance());
+        connector.setNorth(NorthCardPanel.getInstance());
+        connector.setWest(WestCardPanel.getInstance());
+        aiPlayerFactory.addObserver(connector);
 
         // Panel illuminator.
-        panelIlluminator.setPlayersProvider((Provider<InterfacePlayer<?>>) CurrentPlayerProvider.getInstance());
+        panelIlluminator.setPlayerProvider((Provider<InterfacePlayer<?>>) CurrentPlayerProvider.getInstance());
         panelIlluminator.addEntry(Map.entry(HumanPlayer.getInstance(), SouthCardPanel.getInstance()));
         TurnMover.getInstance().addObserver(panelIlluminator);
         connector.addObserver(panelIlluminator);
+
+        // Ai avatar setter.
+        aiAvatarSetter.setNorth((AvatarPanel) Objects.requireNonNull(NorthPanel.getInstance().getSecondComponent()));
+        aiAvatarSetter.setEast((AvatarPanel) Objects.requireNonNull(EastPanel.getInstance().getSecondComponent()));
+        aiAvatarSetter.setWest((AvatarPanel) Objects.requireNonNull(WestPanel.getInstance().getSecondComponent()));
+        aiAvatarSetter.setAvatarFrameProvider(new RandomObjectProvider<>(List.of(AvatarFrame.values())));
+        aiAvatarSetter.setAvatarImageProvider(new RandomObjectProvider<>(List.of(AvatarImage.values())));
+        aiAvatarSetter.setAvatarFrameCreator(GAvatarFrameCreator.getInstance());
+        aiAvatarSetter.setAvatarImageCreator(GAvatarImageCreator.getInstance());
+        aiPlayerFactory.addObserver(aiAvatarSetter);
+
     }
 
 }

@@ -26,6 +26,7 @@
 package juno.view.avatar;
 
 import juno.view.util.ImageButton;
+import juno.view.util.ImageResizer;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -123,6 +124,7 @@ public class AvatarPanel
      * @param avatarFrame An ImageButton object.
      */
     public void setAvatarFrame(@NotNull ImageButton avatarFrame) {
+        ImageResizer.resize(avatarFrame, dimensionParameter);
         this.avatarFrame = avatarFrame;
     }
 
@@ -131,6 +133,7 @@ public class AvatarPanel
      * @param avatarImage An ImageButton object.
      */
     public void setAvatarImage(@NotNull ImageButton avatarImage) {
+        ImageResizer.resize(avatarImage, dimensionParameter * 2);
         this.avatarImage = avatarImage;
     }
 
@@ -140,14 +143,6 @@ public class AvatarPanel
      */
     public void setAvatarName(@NotNull JLabel avatarName) {
         this.avatarName = avatarName;
-    }
-
-    /**
-     * Returns the dimension parameter of this object.
-     * @return A double value.
-     */
-    public double getDimensionParameter() {
-        return dimensionParameter;
     }
 
 }

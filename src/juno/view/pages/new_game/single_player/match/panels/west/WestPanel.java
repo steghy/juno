@@ -25,7 +25,7 @@
 
 package juno.view.pages.new_game.single_player.match.panels.west;
 
-import juno.view.panels.AbstractFirstComponent;
+import juno.view.panels.AbstractSecondComponent;
 
 import java.awt.*;
 import java.util.Objects;
@@ -34,7 +34,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class WestPanel
-        extends AbstractFirstComponent {
+        extends AbstractSecondComponent {
 
     // The WestPanel instance.
     private static WestPanel instance;
@@ -62,11 +62,22 @@ public class WestPanel
         gbc.gridy = 0;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-        gbc.anchor = GridBagConstraints.LINE_START;
+        gbc.anchor = GridBagConstraints.CENTER;
         gbc.insets = new Insets(0,0,0,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
         this.add(Objects.requireNonNull(getFirstComponent()), gbc);
+
+        // Avatar panel.
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(15,0,0,0);
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
+        this.add(Objects.requireNonNull(getSecondComponent()), gbc);
     }
 
 }

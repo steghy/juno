@@ -68,10 +68,10 @@ public class PanelIlluminator
     }
 
     /**
-     * Sets the players list provider of this object.
+     * Sets the player provider of this object.
      * @param playerProvider A Provider object.
      */
-    public void setPlayersProvider(@NotNull Provider<InterfacePlayer<?>> playerProvider) {
+    public void setPlayerProvider(@NotNull Provider<InterfacePlayer<?>> playerProvider) {
         this.playerProvider = playerProvider;
     }
 

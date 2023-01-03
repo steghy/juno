@@ -85,9 +85,9 @@ public class PlayersProvider<T>
     @Override
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof Factory<?> factory) {
+        if(object instanceof Provider<?> provider) {
             players = new Donut<>();
-            players.addAll((Collection<? extends T>) factory.getObjects());
+            players.addAll((Collection<? extends T>) provider.provide());
             players.add(Objects.requireNonNull(getPlayer()));
             updateAll();
         } else throw new IllegalArgumentException(

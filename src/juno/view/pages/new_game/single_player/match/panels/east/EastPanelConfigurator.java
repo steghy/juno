@@ -26,6 +26,8 @@
 package juno.view.pages.new_game.single_player.match.panels.east;
 
 import juno.controller.new_game.GameStarter;
+import juno.view.avatar.AvatarPanel;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -44,6 +46,7 @@ public class EastPanelConfigurator {
 
         // Component.
         EastCardPanel eastCardPanel = EastCardPanel.getInstance();
+        AvatarPanel avatarPanel = new AvatarPanel(4.5);
 
         // East card panel.
         JScrollPane eastCardScrollPanel = new JScrollPane(eastCardPanel,
@@ -59,7 +62,8 @@ public class EastPanelConfigurator {
         GameStarter.getInstance().addObserver(eastCardPanel);
 
         // Setting components.
-        eastPanel.setFirstComponent(eastCardScrollPanel);
+        eastPanel.setFirstComponent(eastCardScrollPanel); // Cards panel.
+        eastPanel.setSecondComponent(avatarPanel);        // Avatar panel.
 
         // Main component initialization.
         eastPanel.init();

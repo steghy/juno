@@ -36,7 +36,6 @@ import juno.view.gobject.avatars.GAvatarImage;
 import juno.view.gobject.avatars.GAvatarImageCreator;
 import juno.view.gobject.frames.GAvatarFrame;
 import juno.view.gobject.frames.GAvatarFrameCreator;
-import juno.view.util.ImageResizer;
 
 import javax.swing.*;
 
@@ -65,7 +64,6 @@ public class UserAvatarPanel
             GAvatarImage<InterfaceAvatarImage> gAvatarImage =
                     (GAvatarImage<InterfaceAvatarImage>) GAvatarImageCreator.getInstance()
                             .create(avatar.getAvatarImage(), null);
-            ImageResizer.resize(gAvatarImage, getDimensionParameter() * 2);
             setAvatarImage(gAvatarImage);
         }
 
@@ -74,7 +72,6 @@ public class UserAvatarPanel
             GAvatarFrame<InterfaceAvatarFrame> avatarFrame =
                     (GAvatarFrame<InterfaceAvatarFrame>) GAvatarFrameCreator.getInstance()
                             .create(avatar.getAvatarFrame(), null);
-            ImageResizer.resize(avatarFrame, getDimensionParameter());
             setAvatarFrame(avatarFrame);
         }
 

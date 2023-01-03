@@ -26,8 +26,6 @@
 package juno.controller.new_game.connector;
 
 import juno.model.subjects.InterfacePlayer;
-import juno.model.subjects.factory.AiPlayerFactory;
-import juno.model.subjects.factory.InterfaceAiPlayerGenerator;
 import juno.model.util.AbstractObservable;
 import juno.model.util.Observer;
 import juno.model.util.Provider;
@@ -41,24 +39,25 @@ import java.util.Map;
 /**
  * @author Simone Gentili
  */
-public class Connector
+public class Connector<T>
         extends AbstractObservable
-        implements InterfaceConnector<InterfacePlayer<?>>, Observer, Provider<Map<InterfacePlayer<?>, Component>> {
+        implements InterfaceConnector<InterfacePlayer<T>>,
+        Observer, Provider<Map<InterfacePlayer<?>, Component>> {
 
     // The north component.
-    Component north;
+    private Component north;
 
     // The west component.
-    Component west;
+    private Component west;
 
     // The east component.
-    Component east;
+    private Component east;
 
     // The map InterfacePlayer -> Component.
     private final Map<InterfacePlayer<?>, Component> map;
 
     // The Connector instance.
-    private static Connector instance;
+    private static Connector<?> instance;
 
     // Builds the Connector instance.
     private Connector() {
@@ -69,12 +68,13 @@ public class Connector
      * Returns the Connector instance.
      * @return The Connector instance.
      */
-    public static Connector getInstance() {
-        if(instance == null) instance = new Connector();
+    public static Connector<?> getInstance() {
+        if(instance == null) instance = new Connector<>();
         return instance;
     }
 
-    public void connect(@NotNull List<InterfacePlayer<?>> list) {
+    @Override
+    public void connect(@NotNull List<InterfacePlayer<T>> list) {
         map.clear();
         // One AI player case.
         if(list.size() == 1) map.put(list.get(0), north);
@@ -97,8 +97,8 @@ public class Connector
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
         // The update comes from the AI players factory.
-        if(object instanceof InterfaceAiPlayerGenerator<?>)
-            connect(factory.getObjects());
+        if(object instanceof Provider<?> provider)
+            connect((List<InterfacePlayer<T>>) provider.provide());
         else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". Provider type expected.");
@@ -107,6 +107,30 @@ public class Connector
     @Override
     public Map<InterfacePlayer<?>, Component> provide() {
         return map;
+    }
+
+    /**
+     * Sets the north component of this object.
+     * @param north A Component object.
+     */
+    public void setNorth(@NotNull Component north) {
+        this.north = north;
+    }
+
+    /**
+     * Sets the west component of this object.
+     * @param west A Component object.
+     */
+    public void setWest(@NotNull Component west) {
+        this.west = west;
+    }
+
+    /**
+     * Sets the east component of this object.
+     * @param east A Component object.
+     */
+    public void setEast(@NotNull Component east) {
+        this.east = east;
     }
 
 }

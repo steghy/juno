@@ -25,13 +25,16 @@
 
 package juno.view.pages.new_game.single_player.match.panels.north;
 
-import juno.view.panels.AbstractFirstComponent;
+import juno.view.panels.AbstractSecondComponent;
 
 import java.awt.*;
 import java.util.Objects;
 
+/**
+ * @author Simone Gentili
+ */
 public class NorthPanel
-        extends AbstractFirstComponent {
+        extends AbstractSecondComponent {
 
     // The NorthPanel instance.
     private static NorthPanel instance;
@@ -55,15 +58,26 @@ public class NorthPanel
         GridBagConstraints gbc = new GridBagConstraints();
 
         // Cards panel.
-        gbc.gridx = 0;
+        gbc.gridx = 1;
         gbc.gridy = 0;
-        gbc.weightx = 1.0;
-        gbc.weighty = 1.0;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.insets = new Insets(0,0,0,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
         this.add(Objects.requireNonNull(getFirstComponent()), gbc);
+
+        // Avatar panel
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(0,0,0,15);
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
+        this.add(Objects.requireNonNull(getSecondComponent()), gbc);
     }
 
 }

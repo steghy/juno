@@ -23,36 +23,51 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.factory;
+package juno.controller.new_game.connector;
 
 import juno.model.util.Provider;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 /**
  * @author Simone Gentili
  */
-public abstract class AbstractAiPlayerFactory<T>
+public class RandomObjectProvider<T>
         implements Provider<T> {
 
-    // The name factory.
-    private InterfaceNameFactory nameFactory;
+    // The original list.
+    private final List<T> original;
+
+    // The copy list.
+    private final List<T> copy;
 
     /**
-     * Sets the name factory of this object.
-     * @param nameFactory An InterfaceNameFactory object.
+     * Builds a RandomObjectProvider with the
+     * specified List object.
+     * @param original A List object.
      */
-    public void setNameFactory(@NotNull InterfaceNameFactory nameFactory) {
-        this.nameFactory = nameFactory;
+    public RandomObjectProvider(@NotNull List<T> original) {
+        this.original = original;
+        copy = new ArrayList<>();
+        copy.addAll(original);
     }
 
-    /**
-     * Returns the name factory of this object.
-     * @return An InterfaceNameFactory object.
-     */
-    @Nullable
-    public InterfaceNameFactory getNameFactory() {
-        return nameFactory;
+    /** Reset the random object provider. */
+    public void reset() {
+        copy.clear();
+        copy.addAll(original);
+    }
+
+    @Override
+    public T provide() {
+        Random r = new Random();
+        int index = r.nextInt(copy.size());
+        T o = copy.get(index);
+        copy.remove(o);
+        return o;
     }
 
 }

@@ -25,11 +25,12 @@
 
 package juno.view.pages.new_game.single_player.match;
 
-import juno.model.util.Factory;
 import juno.model.util.Observer;
+import juno.model.util.Provider;
 import juno.view.panels.AbstractFifthComponent;
 
 import java.awt.*;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -62,11 +63,11 @@ public class MatchPanel
 
     @Override
     public void update(Object object) {
-        if(object instanceof Factory<?> factory) {
+        if(object instanceof Provider<?> provider) {
             removeAll();
             add(Objects.requireNonNull(getFirstComponent()), BorderLayout.SOUTH);
             add(Objects.requireNonNull(getFifthComponent()), BorderLayout.CENTER);
-            int size = factory.getObjects().size();
+            int size = ((List<?>) provider.provide()).size();
             if(size > 3) throw new IllegalArgumentException(
                     "Unsupported number of players.");
             if(size >= 1)

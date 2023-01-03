@@ -26,6 +26,7 @@
 package juno.view.pages.new_game.single_player.match.panels.north;
 
 import juno.controller.new_game.GameStarter;
+import juno.view.avatar.AvatarPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -42,8 +43,9 @@ public class NorthPanelConfigurator {
         // Main component.
         NorthPanel northPanel = NorthPanel.getInstance();
 
-        // Component.
+        // Components.
         NorthCardPanel northCardPanel = NorthCardPanel.getInstance();
+        AvatarPanel avatarPanel = new AvatarPanel(4.5);
 
         // East card panel.
         JScrollPane northCardScrollPanel = new JScrollPane(northCardPanel,
@@ -59,7 +61,8 @@ public class NorthPanelConfigurator {
         GameStarter.getInstance().addObserver(northCardPanel);
 
         // Setting components.
-        northPanel.setFirstComponent(northCardScrollPanel); // Cards scrollable panel.
+        northPanel.setFirstComponent(northCardScrollPanel); // Cards panel.
+        northPanel.setSecondComponent(avatarPanel);         // Avatar panel.
 
         // Main component initialization.
         northPanel.init();

@@ -41,7 +41,7 @@ import java.util.Objects;
  * @param <E> The type of the difficulty.
  */
 public class AiPlayerFactory<T, E>
-        extends AbstractAiPlayerFactory<InterfacePlayer<T>>
+        extends AbstractAiPlayerFactory<List<InterfacePlayer<T>>>
         implements InterfaceAiPlayerGenerator<E>, Observable {
 
     // The Ai builder
@@ -89,7 +89,7 @@ public class AiPlayerFactory<T, E>
 
     @Override
     @Nullable
-    public List<InterfacePlayer<T>> getObjects() {
+    public List<InterfacePlayer<T>> provide() {
         return players;
     }
 

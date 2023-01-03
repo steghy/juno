@@ -8,12 +8,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/juno/controller/subscriber/AiPanelSubscriber.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/controller/new_game/connector/AiAvatarSetter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/juno/controller/new_game/connector/RandomObjectProvider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/controller/new_game/connector/Connector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/controller/new_game/connector/Connector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/controller/new_game/connector/Initializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/controller/new_game/connector/Initializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/controller/new_game/connector/PanelIlluminator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/controller/new_game/connector/PanelIlluminator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/subjects/factory/AbstractAiPlayerFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/subjects/factory/AbstractAiPlayerFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/subjects/factory/AiPlayerFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/subjects/factory/AiPlayerFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/subjects/shift/PlayersProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/subjects/shift/PlayersProvider.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/AvatarPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/AvatarPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/UserAvatarPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/avatar/UserAvatarPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/MatchPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/MatchPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/east/EastPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/east/EastPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/east/EastPanelConfigurator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/east/EastPanelConfigurator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/north/NorthPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/north/NorthPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/north/NorthPanelConfigurator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/north/NorthPanelConfigurator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/west/WestPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/west/WestPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/west/WestPanelConfigurator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/west/WestPanelConfigurator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/controller/new_game/connector/Connector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/new_game/connector/Connector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/controller/new_game/connector/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/new_game/connector/Initializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/controller/new_game/connector/PanelIlluminator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/new_game/connector/PanelIlluminator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/controller/subscriber/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/subscriber/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/factory/AbstractAiPlayerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/factory/AbstractAiPlayerFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/factory/AiPlayerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/factory/AiPlayerFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/subjects/shift/PlayersProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/subjects/shift/PlayersProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/avatar/AvatarPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/avatar/AvatarPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/avatar/UserAvatarPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/avatar/UserAvatarPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/MatchPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/MatchPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/east/EastPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/east/EastPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/east/EastPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/east/EastPanelConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/north/NorthPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/north/NorthPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/north/NorthPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/north/NorthPanelConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/south/SouthPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/south/SouthPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/west/WestPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/west/WestPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/west/WestPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/west/WestPanelConfigurator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,32 +219,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/juno/controller/new_game/connector/Connector.java</url>
-          <line>79</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/juno/controller/new_game/connector/Connector.java</url>
-          <line>81</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/juno/controller/new_game/connector/Connector.java</url>
-          <line>86</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/juno/controller/new_game/connector/Connector.java</url>
-          <line>92</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

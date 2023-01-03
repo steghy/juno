@@ -26,6 +26,7 @@
 package juno.view.pages.new_game.single_player.match.panels.west;
 
 import juno.controller.new_game.GameStarter;
+import juno.view.avatar.AvatarPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -45,6 +46,7 @@ public class WestPanelConfigurator {
 
         // Component.
         WestCardPanel westCardPanel = WestCardPanel.getInstance();
+        AvatarPanel avatarPanel = new AvatarPanel(4.5);
 
         // East card panel.
         JScrollPane westCardScrollPanel = new JScrollPane(westCardPanel,
@@ -60,7 +62,8 @@ public class WestPanelConfigurator {
         GameStarter.getInstance().addObserver(westCardPanel);
 
         // Setting components.
-        westPanel.setFirstComponent(westCardScrollPanel); // Avatar panel.
+        westPanel.setFirstComponent(westCardScrollPanel); // Cards panel.
+        westPanel.setSecondComponent(avatarPanel);        // Avatar panel.
 
         // Main component initialization.
         westPanel.init();
