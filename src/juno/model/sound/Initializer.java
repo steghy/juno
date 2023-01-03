@@ -62,6 +62,9 @@ public class Initializer
         // Welcome back sound player.
         WelcomeBackSoundPlayer welcomeBackSoundPlayer = WelcomeBackSoundPlayer.getInstance();
 
+        // Uno sound player.
+        UnoSoundPlayer unoSoundPlayer = UnoSoundPlayer.getInstance();
+
         //////////////////////////////////////////////////////////////////////////////
 
         // Audio player.
@@ -77,6 +80,11 @@ public class Initializer
         // Welcome back sound player.
         welcomeBackSoundPlayer.load(new File(
                 ProgramDirectory.EFFECTS.absolutePath(), "welcome-back.wav"
+        ));
+
+        // Uno sound player.
+        unoSoundPlayer.load(new File(
+                ProgramDirectory.EFFECTS.absolutePath(), "uno.wav"
         ));
     }
 

@@ -25,12 +25,15 @@
 
 package juno.view.pages.new_game.single_player.match.panels.center;
 
+import juno.controller.audio.SoundAction;
 import juno.controller.new_game.controller.CardEffectController;
 import juno.controller.new_game.penalty.PenaltyTimer;
 import juno.controller.new_game.restorer.Stopper;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.PanelChanger;
 import juno.controller.util.StopAction;
+import juno.model.sound.ButtonSoundPlayer;
+import juno.model.sound.UnoSoundPlayer;
 import juno.view.button.Button;
 import juno.view.button.ButtonCreator;
 import juno.view.pages.new_game.single_player.card.SinglePlayerCardPanel;
@@ -69,15 +72,15 @@ public class CenterPanelConfigurator {
         ImageResizer.resize(exitButton, 4.0);
         ImageResizer.resize(unoButton, 4.0);
 
+        // Action listeners.
         // Exit button.
-        exitButton.addActionListener(new ChangePanelAction(
-                new PanelChanger(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MODE_PANEL)));
+        exitButton.addActionListener(new SoundAction(ButtonSoundPlayer.getInstance(), new ChangePanelAction(
+                new PanelChanger(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MODE_PANEL))));
         exitButton.addActionListener(new StopAction(Stopper.getInstance(), null));
-
         // Uno button.
         StopAction stopAction = new StopAction(PenaltyTimer.getInstance(), unoButton);
         stopAction.addObserver(CardEffectController.getInstance());
-        unoButton.addActionListener(stopAction);
+        unoButton.addActionListener(new SoundAction(UnoSoundPlayer.getInstance(), stopAction));
 
         // Observer / Observable.
         PenaltyTimer.getInstance().addObserver(unoButtonPanel);

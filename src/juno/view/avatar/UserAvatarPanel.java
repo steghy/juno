@@ -38,7 +38,7 @@ import juno.view.gobject.frames.GAvatarFrame;
 import juno.view.gobject.frames.GAvatarFrameCreator;
 import juno.view.util.ImageResizer;
 
-import java.util.Objects;
+import javax.swing.*;
 
 public class UserAvatarPanel
         extends AvatarPanel implements Observer {
@@ -62,11 +62,11 @@ public class UserAvatarPanel
         Avatar avatar = Avatar.getInstance();
         // Avatar image case.
         if(object instanceof AvatarImageSetter) {
-            GAvatarImage<InterfaceAvatarImage> avatarImage =
+            GAvatarImage<InterfaceAvatarImage> gAvatarImage =
                     (GAvatarImage<InterfaceAvatarImage>) GAvatarImageCreator.getInstance()
                             .create(avatar.getAvatarImage(), null);
-            ImageResizer.resize(avatarImage, getDimensionParameter() * 2);
-            Objects.requireNonNull(getAvatarImage()).setIcon(avatarImage.getIcon());
+            ImageResizer.resize(gAvatarImage, getDimensionParameter() * 2);
+            setAvatarImage(gAvatarImage);
         }
 
         // Avatar frame case.
@@ -75,13 +75,19 @@ public class UserAvatarPanel
                     (GAvatarFrame<InterfaceAvatarFrame>) GAvatarFrameCreator.getInstance()
                             .create(avatar.getAvatarFrame(), null);
             ImageResizer.resize(avatarFrame, getDimensionParameter());
-            Objects.requireNonNull(getAvatarFrame()).setIcon(avatarFrame.getIcon());
+            setAvatarFrame(avatarFrame);
         }
 
         // Avatar name case.
         else if(object instanceof AvatarNameSetter) {
-            Objects.requireNonNull(getAvatarName()).setText(avatar.getAvatarName());
-        } else throw new IllegalArgumentException();
+            setAvatarName(new JLabel(avatar.getAvatarName()));
+        } else throw new IllegalArgumentException(
+                "Invalid object type: " + object.getClass() +
+                        ". AvatarImageSetter, AvatarFrameSetter or " +
+                        "AvatarNameSetter type expected.");
+        init();
+        revalidate();
+        repaint();
     }
 
 }

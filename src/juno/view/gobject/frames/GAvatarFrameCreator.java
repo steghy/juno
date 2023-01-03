@@ -43,6 +43,12 @@ public class GAvatarFrameCreator
         extends AbstractGObjectCreator<InterfaceAvatarFrame>
         implements InterfaceGObjectCreator<InterfaceAvatarFrame> {
 
+    /** The ending part of the path to use. */
+    public String ending = "_ROLLOVER";
+
+    /** The extension to use. */
+    public String extension = ".png";
+
     // The directory path provider.
     private InterfacePathProvider pathProvider;
 
@@ -76,8 +82,8 @@ public class GAvatarFrameCreator
         Objects.requireNonNull(assembler);
         Objects.requireNonNull(getInitializer()).initialize(
                 graphicFrame,
-                assembler.assemble(pathProvider, frame.name() + ".png"),
-                assembler.assemble(pathProvider, frame.name() + "_ROLLOVER" + ".png"),
+                assembler.assemble(pathProvider, frame.name() + extension),
+                assembler.assemble(pathProvider, frame.name() + ending + extension),
                 rotate);
         return graphicFrame;
     }

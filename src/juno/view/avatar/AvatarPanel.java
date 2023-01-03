@@ -25,7 +25,7 @@
 
 package juno.view.avatar;
 
-import juno.view.util.ImageLabel;
+import juno.view.util.ImageButton;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -40,22 +40,22 @@ public class AvatarPanel
     // The dimension parameter.
     private final double dimensionParameter;
 
-    // The avatar image label.
-    private final ImageLabel avatarImage;
+    // The avatar image.
+    private ImageButton avatarImage;
 
-    // The avatar frame label.
-    private final ImageLabel avatarFrame;
+    // The avatar frame.
+    private ImageButton avatarFrame;
 
-    // The avatar name label.
-    private final JLabel avatarName;
+    // The avatar name.
+    private JLabel avatarName;
 
     /**
      * Builds an AvatarPanel.
      */
     public AvatarPanel(double dimensionParameter) {
         this.dimensionParameter = dimensionParameter;
-        avatarFrame = new ImageLabel();
-        avatarImage = new ImageLabel();
+        avatarFrame = new ImageButton();
+        avatarImage = new ImageButton();
         avatarName = new JLabel();
         init();
     }
@@ -68,8 +68,8 @@ public class AvatarPanel
      * @param avatarFrame An ImageLabel object.
      * @param avatarName A JLabel object.
      */
-    public AvatarPanel(@NotNull ImageLabel avatarImage,
-                       @NotNull ImageLabel avatarFrame,
+    public AvatarPanel(@NotNull ImageButton avatarImage,
+                       @NotNull ImageButton avatarFrame,
                        @NotNull JLabel avatarName,
                        double dimensionParameter) {
         this.dimensionParameter = dimensionParameter;
@@ -80,6 +80,8 @@ public class AvatarPanel
 
     /** Initialize this AvatarPanel object */
     public void init() {
+        removeAll();
+        avatarFrame.removeAll();
         setOpaque(false);
         setLayout(new GridBagLayout());
         avatarImage.setOpaque(false);
@@ -117,27 +119,27 @@ public class AvatarPanel
     }
 
     /**
-     * Returns the avatar name of this object.
-     * @return A JLabel object.
+     * Sets the avatar frame of this object.
+     * @param avatarFrame An ImageButton object.
      */
-    public JLabel getAvatarName() {
-        return avatarName;
+    public void setAvatarFrame(@NotNull ImageButton avatarFrame) {
+        this.avatarFrame = avatarFrame;
     }
 
     /**
-     * Returns the avatar frame of this object.
-     * @return An ImageLabel object.
+     * Sets the avatar image of this object.
+     * @param avatarImage An ImageButton object.
      */
-    public ImageLabel getAvatarFrame() {
-        return avatarFrame;
+    public void setAvatarImage(@NotNull ImageButton avatarImage) {
+        this.avatarImage = avatarImage;
     }
 
     /**
-     * Returns the avatar image of this object.
-     * @return An ImageLabel object.
+     * Sets the avatar name of this object.
+     * @param avatarName A JLabel object.
      */
-    public ImageLabel getAvatarImage() {
-        return avatarImage;
+    public void setAvatarName(@NotNull JLabel avatarName) {
+        this.avatarName = avatarName;
     }
 
     /**
