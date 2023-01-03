@@ -25,7 +25,7 @@
 
 package juno.view.button;
 
-import juno.model.requester.ProgramDirectory;
+import juno.init.ProgramDirectory;
 import juno.view.img_initializer.ImageComponentInitializer;
 import juno.model.requester.PathProviderAssembler;
 

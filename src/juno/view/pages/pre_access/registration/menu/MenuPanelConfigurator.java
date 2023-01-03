@@ -25,13 +25,15 @@
 
 package juno.view.pages.pre_access.registration.menu;
 
+import juno.controller.audio.SoundAction;
 import juno.controller.pre_access.log_in.PathBuilder;
 import juno.controller.pre_access.registration.RegistrationDataSelector;
 import juno.controller.pre_access.registration.RegistrationDataSender;
 import juno.controller.pre_access.registration.RegistrationPanelRestorer;
 import juno.model.data.profile.ErrorProviderDecorator;
 import juno.model.data.profile.profile.Profile;
-import juno.model.requester.ProgramDirectory;
+import juno.init.ProgramDirectory;
+import juno.model.sound.ButtonSoundPlayer;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
 import juno.view.pages.pre_access.card.PreAccessCardPanel;
@@ -118,7 +120,7 @@ public class MenuPanelConfigurator {
                                 menuPanel),
                         RegistrationDataSelector.getInstance()));
 
-        backButton.addActionListener(listener -> {
+        backButton.addActionListener(new SoundAction(ButtonSoundPlayer.getInstance(), listener -> {
             LayoutManager layoutManager = PreAccessCardPanel.getInstance().getLayout();
             if(layoutManager instanceof CardLayout cardLayout) {
                 if(RegistrationPanel.getInstance().isFromWelcomePanel())
@@ -130,7 +132,7 @@ public class MenuPanelConfigurator {
                         "Invalid object type: " + layoutManager.getClass() +
                         ". CardLayout expected.");
             }
-        });
+        }));
 
         backButton.addActionListener(new RegistrationPanelRestorer(menuPanel));
 

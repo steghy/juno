@@ -33,7 +33,7 @@ import juno.model.data.io.input.configurable.Configurable;
 import juno.model.data.profile.profile.Profile;
 import juno.model.data.score.GamesWonCounter;
 import juno.model.data.score.LostGamesCounter;
-import juno.model.requester.ProgramDirectory;
+import juno.init.ProgramDirectory;
 
 import java.util.HashMap;
 import java.util.Map;

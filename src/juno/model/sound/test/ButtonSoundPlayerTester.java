@@ -25,7 +25,7 @@
 
 package juno.model.sound.test;
 
-import juno.model.requester.ProgramDirectory;
+import juno.init.ProgramDirectory;
 import juno.model.sound.ButtonSoundPlayer;
 import juno.model.util.PathGenerator;
 
@@ -33,13 +33,18 @@ import java.io.File;
 
 public class ButtonSoundPlayerTester {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ButtonSoundPlayer buttonSoundPlayer = ButtonSoundPlayer.getInstance();
         buttonSoundPlayer.load(
                 new File(PathGenerator.generate(
-                        ProgramDirectory.MUSIC.absolutePath(), "tr"
+                        ProgramDirectory.EFFECTS.absolutePath(), "click-effect.wav"
                 ))
         );
+
+        buttonSoundPlayer.play();
+
+
+        while(true) {}
     }
 
 }

@@ -25,8 +25,10 @@
 
 package juno.view.pages.pre_access.login.menu;
 
+import juno.controller.audio.SoundAction;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.PanelChanger;
+import juno.model.sound.ButtonSoundPlayer;
 import juno.view.button.Button;
 import juno.view.button.ButtonCreator;
 import juno.view.pages.pre_access.card.PreAccessCardPanel;
@@ -57,8 +59,8 @@ public class MenuPanelConfigurator {
         ImageResizer.resize(backButton, 3.5);
 
         // Action listener.
-        backButton.addActionListener(new ChangePanelAction(
-                new PanelChanger(PreAccessCardPanel.getInstance(), PreAccessCardPanel.ACCESS_PANEL)));
+        backButton.addActionListener(new SoundAction(ButtonSoundPlayer.getInstance(),
+                new ChangePanelAction(new PanelChanger(PreAccessCardPanel.getInstance(), PreAccessCardPanel.ACCESS_PANEL))));
 
         // Components setting.
         JScrollPane profilesPanel = new JScrollPane(ProfilesPanel.getInstance(),

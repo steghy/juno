@@ -26,12 +26,11 @@
 package juno.view.pages.new_game.single_player.match.panels.center.circle;
 
 import juno.model.requester.PathProviderAssembler;
-import juno.model.requester.ProgramDirectory;
+import juno.init.ProgramDirectory;
 import juno.model.subjects.shift.Inverter;
 import juno.view.img_initializer.ImageComponentInitializer;
 import juno.view.util.ImageLabel;
 import juno.view.util.ImageResizer;
-import juno.view.util.RotatedIcon;
 
 /**
  * @author Simone Gentili

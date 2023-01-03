@@ -26,7 +26,7 @@
 package juno.model.sound;
 
 import juno.controller.util.InterfaceInitializer;
-import juno.model.requester.ProgramDirectory;
+import juno.init.ProgramDirectory;
 
 import java.io.File;
 import java.util.Objects;
@@ -57,12 +57,28 @@ public class Initializer
         // Audio player.
         AudioPlayer audioPlayer = AudioPlayer.getInstance();
 
-        // Tracks settings.
+        // Button audio player.
+        ButtonSoundPlayer buttonSoundPlayer = ButtonSoundPlayer.getInstance();
+
+        // Welcome back sound player.
+        WelcomeBackSoundPlayer welcomeBackSoundPlayer = WelcomeBackSoundPlayer.getInstance();
+
+        //////////////////////////////////////////////////////////////////////////////
+
+        // Audio player.
         audioPlayer.setTracks((Objects.requireNonNull(
                 new File(ProgramDirectory.MUSIC.absolutePath()).listFiles())));
-
-        // Loop setting.
         audioPlayer.setLoop(true);
+
+        // Button sound player.
+        buttonSoundPlayer.load(new File(
+                ProgramDirectory.EFFECTS.absolutePath(), "click.wav"
+        ));
+
+        // Welcome back sound player.
+        welcomeBackSoundPlayer.load(new File(
+                ProgramDirectory.EFFECTS.absolutePath(), "welcome-back.wav"
+        ));
     }
 
 }

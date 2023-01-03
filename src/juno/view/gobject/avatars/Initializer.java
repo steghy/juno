@@ -26,7 +26,7 @@
 package juno.view.gobject.avatars;
 
 import juno.controller.util.InterfaceInitializer;
-import juno.model.requester.ProgramDirectory;
+import juno.init.ProgramDirectory;
 import juno.view.img_initializer.ImageComponentInitializer;
 import juno.model.requester.PathProviderAssembler;
 

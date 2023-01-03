@@ -26,7 +26,7 @@
 package juno.view.gobject.cards;
 
 import juno.model.requester.InterfacePathProvider;
-import juno.model.requester.ProgramDirectory;
+import juno.init.ProgramDirectory;
 import juno.model.card.InterfaceCard;
 import juno.model.card.colors.InterfaceColor;
 import juno.view.gobject.InterfacePathObjectProvider;

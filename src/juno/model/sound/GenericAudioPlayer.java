@@ -29,18 +29,59 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.sound.sampled.*;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
 public abstract class GenericAudioPlayer
-        implements Playable {
+        implements Playable, MuteableAudioPlayer, ActionListener {
+
+    // The timer.
+    private Timer timer;
 
     // The clip object.
     private Clip clip;
 
+    // The clip float control.
+    private FloatControl floatControl;
+
+    // The mute boolean value.
+    private boolean mute = false;
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        clip.setMicrosecondPosition(0);
+    }
+
     @Override
     public void play() {
-        clip.start();
+        if(!mute) {
+            timer.start();
+            clip.start();
+        }
+    }
+
+    @Override
+    public void mute() {
+        if(!mute) {
+            mute = true;
+            floatControl.setValue(-80);
+        }
+    }
+
+    @Override
+    public void unmute() {
+        if(mute) {
+            mute = false;
+            floatControl.setValue(0);
+        }
+    }
+
+    @Override
+    public boolean isMuted() {
+        return mute;
     }
 
     /**
@@ -63,6 +104,15 @@ public abstract class GenericAudioPlayer
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(track);
             clip = AudioSystem.getClip();
             clip.open(audioInputStream);
+
+            // Volume control.
+            floatControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            if(mute) floatControl.setValue(-80);
+
+            // The timer.
+            timer = new Timer(0, this);
+            timer.setInitialDelay((int) clip.getMicrosecondLength() / 1000);
+            timer.setRepeats(false);
         } catch (LineUnavailableException e) {
             throw new RuntimeException("Line not available: " + e);
         } catch (IOException e) {

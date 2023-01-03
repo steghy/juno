@@ -25,10 +25,12 @@
 
 package juno.view.pages.pre_access.access.menu;
 
+import juno.controller.audio.SoundAction;
 import juno.controller.pre_access.loggers.GuestLogger;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.ExitAction;
 import juno.controller.util.PanelChanger;
+import juno.model.sound.ButtonSoundPlayer;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
 import juno.view.pages.pre_access.card.PreAccessCardPanel;
@@ -73,12 +75,13 @@ public class MenuPanelConfigurator {
         menuPanel.setFourthComponent(exitButton);                    // 'Exit' button.
 
         // Action listeners setting.
-        createAnAccountButton.addActionListener(new ChangePanelAction(
-                new PanelChanger(PreAccessCardPanel.getInstance(), PreAccessCardPanel.REGISTRATION_PANEL)));
-        logInButton.addActionListener(new ChangePanelAction(
-                new PanelChanger(PreAccessCardPanel.getInstance(), PreAccessCardPanel.LOG_IN_PANEL)));
-        continueWithoutAnAccountButton.addActionListener(GuestLogger.getInstance());
-        exitButton.addActionListener(new ExitAction(null));
+        ButtonSoundPlayer buttonSoundPlayer = ButtonSoundPlayer.getInstance();
+        createAnAccountButton.addActionListener(new SoundAction(buttonSoundPlayer,
+                new ChangePanelAction(new PanelChanger(PreAccessCardPanel.getInstance(), PreAccessCardPanel.REGISTRATION_PANEL))));
+        logInButton.addActionListener(new SoundAction(buttonSoundPlayer, new ChangePanelAction(
+                new PanelChanger(PreAccessCardPanel.getInstance(), PreAccessCardPanel.LOG_IN_PANEL))));
+        continueWithoutAnAccountButton.addActionListener(new SoundAction(buttonSoundPlayer, GuestLogger.getInstance()));
+        exitButton.addActionListener(new SoundAction(null, new ExitAction(null)));
 
         // Border setting.
         RoundedBorder insideBorder = new RoundedBorder(
