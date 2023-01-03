@@ -25,8 +25,10 @@
 
 package juno.view.pages.new_game.multiplayer.unavailable.menu;
 
+import juno.controller.audio.SoundAction;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.PanelChanger;
+import juno.model.sound.ButtonSoundPlayer;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
 import juno.view.pages.new_game.card.NewGameCardPanel;
@@ -92,8 +94,8 @@ public class MenuPanelConfigurator {
         menuPanel.setBorder(border);
 
         // Action listeners.
-        backButton.addActionListener(new ChangePanelAction(
-                new PanelChanger(NewGameCardPanel.getInstance(), NewGameCardPanel.NEW_GAME_PANEL)));
+        backButton.addActionListener(new SoundAction(ButtonSoundPlayer.getInstance(), new ChangePanelAction(
+                new PanelChanger(NewGameCardPanel.getInstance(), NewGameCardPanel.NEW_GAME_PANEL))));
 
         // Main component initialization.
         menuPanel.init();

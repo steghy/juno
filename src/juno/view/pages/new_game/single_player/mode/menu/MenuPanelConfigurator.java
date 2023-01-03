@@ -25,10 +25,12 @@
 
 package juno.view.pages.new_game.single_player.mode.menu;
 
+import juno.controller.audio.SoundAction;
 import juno.controller.new_game.GameInitializer;
 import juno.controller.util.InitializeAction;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.PanelChanger;
+import juno.model.sound.ButtonSoundPlayer;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
 import juno.view.pages.new_game.single_player.card.SinglePlayerCardPanel;
@@ -62,12 +64,14 @@ public class MenuPanelConfigurator {
         ImageResizer.resize(backButton, 4.0);
 
         // Action listeners.
-        stackingModeButton.addActionListener(new InitializeAction(GameInitializer.getInstance()));
+        ButtonSoundPlayer buttonSoundPlayer = ButtonSoundPlayer.getInstance();
+        stackingModeButton.addActionListener(new SoundAction(buttonSoundPlayer,
+                new InitializeAction(GameInitializer.getInstance())));
         stackingModeButton.addActionListener(new ChangePanelAction(
                 new PanelChanger(SinglePlayerCardPanel.getInstance(),
                         SinglePlayerCardPanel.MATCH_PANEL)));
-        backButton.addActionListener(new ChangePanelAction(
-                new PanelChanger(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.DIFFICULTY_PANEL)));
+        backButton.addActionListener(new SoundAction(buttonSoundPlayer, new ChangePanelAction(
+                new PanelChanger(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.DIFFICULTY_PANEL))));
 
         // Border settings.
         RoundedBorder insideBorder = new RoundedBorder(10, 1, null, Color.WHITE);

@@ -25,10 +25,12 @@
 
 package juno.view.pages.main.menu;
 
+import juno.controller.audio.SoundAction;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.ExitAction;
 import juno.controller.util.PanelChanger;
 import juno.model.data.io.output.ExitManager;
+import juno.model.sound.ButtonSoundPlayer;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
 import juno.view.pages.main.card.MainCardPanel;
@@ -66,15 +68,13 @@ public class MenuPanelConfigurator {
         ImageResizer.resize(exitButton, 4.0);
 
         // Action listeners.
-        newGameButton.addActionListener(
-                new ChangePanelAction(
-                        new PanelChanger(MainCardPanel.getInstance(), MainCardPanel.NEW_GAME_PANEL)));
-        scoreButton.addActionListener(
-                new ChangePanelAction(
-                        new PanelChanger(MainCardPanel.getInstance(), MainCardPanel.SCORE_PANEL)));
-        optionsButton.addActionListener(
-                new ChangePanelAction(
-                        new PanelChanger(MainCardPanel.getInstance(), MainCardPanel.OPTIONS_PANEL)));
+        ButtonSoundPlayer buttonSoundPlayer = ButtonSoundPlayer.getInstance();
+        newGameButton.addActionListener(new SoundAction(buttonSoundPlayer, new ChangePanelAction(
+                        new PanelChanger(MainCardPanel.getInstance(), MainCardPanel.NEW_GAME_PANEL))));
+        scoreButton.addActionListener(new SoundAction(buttonSoundPlayer, new ChangePanelAction(
+                        new PanelChanger(MainCardPanel.getInstance(), MainCardPanel.SCORE_PANEL))));
+        optionsButton.addActionListener(new SoundAction(buttonSoundPlayer, new ChangePanelAction(
+                        new PanelChanger(MainCardPanel.getInstance(), MainCardPanel.OPTIONS_PANEL))));
         exitButton.addActionListener(new ExitAction(ExitManager.getInstance()));
 
         // Border setting.

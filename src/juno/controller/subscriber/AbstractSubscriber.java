@@ -46,13 +46,20 @@ public abstract class AbstractSubscriber
 
     @Override
     public void subscribe() {
-        unsubscribe();
-        Objects.requireNonNull(getObservable()).addObserver(getObserver());
+        if(!Objects.requireNonNull(getObservable()).addObserver(getObserver()))
+            throw new IllegalArgumentException(
+                    "It was not possible to subscribe the following " +
+                            "Observer object (" + observer + ")" +
+                            " to this Observable object + (" + observable + ")");
     }
 
     @Override
     public void unsubscribe() {
-        Objects.requireNonNull(getObservable()).removeObserver(getObserver());
+        if(!Objects.requireNonNull(getObservable()).removeObserver(getObserver()))
+            throw new IllegalArgumentException(
+                    "It was not possible to unsubscribe the following " +
+                            "Observer object (" + observer + ")" +
+                            " to this Observable object (" + observable + ")");
     }
 
     /**

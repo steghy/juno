@@ -36,6 +36,7 @@ public class ModePanelConfigurator {
     // Builds a ModePanelConfiguration object.
     private ModePanelConfigurator() {}
 
+    /** Configures the ModePanel instance. */
     public static void configure() {
         // Main component.
         ModePanel modePanel = ModePanel.getInstance();

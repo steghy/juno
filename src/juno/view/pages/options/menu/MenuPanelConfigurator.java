@@ -26,8 +26,10 @@
 package juno.view.pages.options.menu;
 
 import juno.controller.audio.AudioSwitchAction;
+import juno.controller.audio.SoundAction;
 import juno.controller.util.*;
 import juno.model.sound.AudioPlayer;
+import juno.model.sound.ButtonSoundPlayer;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
 import juno.view.frame.Frame;
@@ -69,9 +71,13 @@ public class MenuPanelConfigurator {
         menuPanel.setThirdComponent(backButton);        // Back button.
 
         // Action listeners.
-        audioToggle.addActionListener(new AudioSwitchAction(AudioPlayer.getInstance()));
-        fullscreenToggle.addActionListener(new SetterAction<>(Frame.getInstance(), FullScreenSetter.getInstance()));
-        backButton.addActionListener(new ChangePanelAction(new PanelChanger(MainCardPanel.getInstance(), MainCardPanel.MAIN_PANEL)));
+        ButtonSoundPlayer buttonSoundPlayer = ButtonSoundPlayer.getInstance();
+        audioToggle.addActionListener(new SoundAction(buttonSoundPlayer,
+                new AudioSwitchAction(AudioPlayer.getInstance())));
+        fullscreenToggle.addActionListener(new SoundAction(buttonSoundPlayer,
+                new SetterAction<>(Frame.getInstance(), FullScreenSetter.getInstance())));
+        backButton.addActionListener(new SoundAction(buttonSoundPlayer,
+                new ChangePanelAction(new PanelChanger(MainCardPanel.getInstance(), MainCardPanel.MAIN_PANEL))));
 
         // Border settings
         RoundedBorder insideBorder = new RoundedBorder(

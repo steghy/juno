@@ -25,10 +25,12 @@
 
 package juno.view.pages.new_game.single_player.difficulty.menu;
 
+import juno.controller.audio.SoundAction;
 import juno.controller.new_game.game_settings.DifficultySetter;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.PanelChanger;
 import juno.controller.util.SetterAction;
+import juno.model.sound.ButtonSoundPlayer;
 import juno.model.subjects.ai.Difficulty;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
@@ -68,14 +70,15 @@ public class MenuPanelConfigurator {
 
         // Action listeners.
         // Change panel actions.
-        easyDifficultyButton.addActionListener(new ChangePanelAction(
-                new PanelChanger(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MODE_PANEL)));
-        mediumDifficultyButton.addActionListener(new ChangePanelAction(
-                new PanelChanger(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MODE_PANEL)));
-        hardDifficultyButton.addActionListener(new ChangePanelAction(
-                new PanelChanger(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MODE_PANEL)));
-        backButton.addActionListener(new ChangePanelAction(
-                new PanelChanger(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.PLAYERS_NUMBER_PANEL)));
+        ButtonSoundPlayer buttonSoundPlayer = ButtonSoundPlayer.getInstance();
+        easyDifficultyButton.addActionListener(new SoundAction(buttonSoundPlayer, new ChangePanelAction(
+                new PanelChanger(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MODE_PANEL))));
+        mediumDifficultyButton.addActionListener(new SoundAction(buttonSoundPlayer, new ChangePanelAction(
+                new PanelChanger(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MODE_PANEL))));
+        hardDifficultyButton.addActionListener(new SoundAction(buttonSoundPlayer, new ChangePanelAction(
+                new PanelChanger(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MODE_PANEL))));
+        backButton.addActionListener(new SoundAction(buttonSoundPlayer, new ChangePanelAction(
+                new PanelChanger(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.PLAYERS_NUMBER_PANEL))));
 
         // Difficulty actions.
         DifficultySetter difficultySetter = DifficultySetter.getInstance();

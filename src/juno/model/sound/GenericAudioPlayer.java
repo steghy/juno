@@ -26,7 +26,6 @@
 package juno.model.sound;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.sound.sampled.*;
 import javax.swing.*;
@@ -52,6 +51,7 @@ public abstract class GenericAudioPlayer
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        clip.stop();
         clip.setMicrosecondPosition(0);
     }
 
@@ -85,11 +85,17 @@ public abstract class GenericAudioPlayer
     }
 
     /**
-     * Returns the Clip object of this
-     * object.
+     * Returns the timer of this object.
+     * @return A Timer object.
+     */
+    public Timer getTimer() {
+        return timer;
+    }
+
+    /**
+     * Returns the clip of this object.
      * @return A Clip object.
      */
-    @Nullable
     public Clip getClip() {
         return clip;
     }

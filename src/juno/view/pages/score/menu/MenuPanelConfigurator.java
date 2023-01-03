@@ -25,10 +25,12 @@
 
 package juno.view.pages.score.menu;
 
+import juno.controller.audio.SoundAction;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.PanelChanger;
 import juno.model.data.score.GamesWonCounter;
 import juno.model.data.score.LostGamesCounter;
+import juno.model.sound.ButtonSoundPlayer;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
 import juno.view.pages.main.card.MainCardPanel;
@@ -115,8 +117,8 @@ public class MenuPanelConfigurator {
         menuPanel.setSeventhComponent(lostGamesPanel);         // Lost games.
 
         // Action listeners.
-        backButton.addActionListener(new ChangePanelAction(
-                new PanelChanger(MainCardPanel.getInstance(), MainCardPanel.MAIN_PANEL)));
+        backButton.addActionListener(new SoundAction(ButtonSoundPlayer.getInstance(),
+                new ChangePanelAction(new PanelChanger(MainCardPanel.getInstance(), MainCardPanel.MAIN_PANEL))));
 
         // Border settings
         RoundedBorder insideBorder = new RoundedBorder(

@@ -25,8 +25,10 @@
 
 package juno.view.pages.new_game.menu;
 
+import juno.controller.audio.SoundAction;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.PanelChanger;
+import juno.model.sound.ButtonSoundPlayer;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
 import juno.view.pages.main.card.MainCardPanel;
@@ -69,12 +71,13 @@ public class MenuPanelConfigurator {
         menuPanel.setBorder(border);
 
         // Action listeners.
-        singlePlayer.addActionListener(new ChangePanelAction(
-                new PanelChanger(NewGameCardPanel.getInstance(), NewGameCardPanel.SINGLE_PLAYER_PANEL)));
-        multiPlayer.addActionListener(new ChangePanelAction(
-                new PanelChanger(NewGameCardPanel.getInstance(), NewGameCardPanel.MULTIPLAYER_PANEL)));
-        backButton.addActionListener(new ChangePanelAction(
-                new PanelChanger(MainCardPanel.getInstance(), MainCardPanel.MAIN_PANEL)));
+        ButtonSoundPlayer buttonSoundPlayer = ButtonSoundPlayer.getInstance();
+        singlePlayer.addActionListener(new SoundAction(buttonSoundPlayer, new ChangePanelAction(
+                new PanelChanger(NewGameCardPanel.getInstance(), NewGameCardPanel.SINGLE_PLAYER_PANEL))));
+        multiPlayer.addActionListener(new SoundAction(buttonSoundPlayer, new ChangePanelAction(
+                new PanelChanger(NewGameCardPanel.getInstance(), NewGameCardPanel.MULTIPLAYER_PANEL))));
+        backButton.addActionListener(new SoundAction(buttonSoundPlayer, new ChangePanelAction(
+                new PanelChanger(MainCardPanel.getInstance(), MainCardPanel.MAIN_PANEL))));
 
         // Components settings.
         menuPanel.setFirstComponent(singlePlayer); // Single-player button.
