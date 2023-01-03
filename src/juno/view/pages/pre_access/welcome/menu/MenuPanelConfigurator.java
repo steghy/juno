@@ -25,9 +25,11 @@
 
 package juno.view.pages.pre_access.welcome.menu;
 
+import juno.controller.audio.SoundAction;
 import juno.controller.util.ExitAction;
 import juno.controller.pre_access.loggers.GuestLogger;
 import juno.model.data.io.output.ExitManager;
+import juno.model.sound.ButtonSoundPlayer;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
 import juno.view.pages.pre_access.card.PreAccessCardPanel;
@@ -59,9 +61,9 @@ public class MenuPanelConfigurator {
         AbstractButton exitButton = creator.create(Button.EXIT, RotatedIcon.Rotate.ABOUT_CENTER);
 
         // Images resizing.
-        ImageResizer.resize(createAnAccountButton, 3.0);
-        ImageResizer.resize(continueWithoutAnAccountButton, 3.0);
-        ImageResizer.resize(exitButton, 3.0);
+        ImageResizer.resize(createAnAccountButton, 4.0);
+        ImageResizer.resize(continueWithoutAnAccountButton, 4.0);
+        ImageResizer.resize(exitButton, 4.0);
 
         // Components settings.
         menuPanel.setFirstComponent(createAnAccountButton);           // 'Create an account' button.
@@ -69,7 +71,8 @@ public class MenuPanelConfigurator {
         menuPanel.setThirdComponent(exitButton);                      // 'Exit' button.
 
         // Action listeners.
-        createAnAccountButton.addActionListener(listener -> {
+        ButtonSoundPlayer buttonSoundPlayer = ButtonSoundPlayer.getInstance();
+        createAnAccountButton.addActionListener(new SoundAction(buttonSoundPlayer, listener -> {
             RegistrationPanel.getInstance().setFromWelcomePanel(true);
             LayoutManager layoutManager = PreAccessCardPanel.getInstance().getLayout();
             if(layoutManager instanceof CardLayout cardLayout) {
@@ -79,15 +82,15 @@ public class MenuPanelConfigurator {
                         "Invalid layout type: " + layoutManager.getClass() +
                                 ". CardLayout expected.");
             }
-        });
-        continueWithoutAnAccountButton.addActionListener(GuestLogger.getInstance());
+        }));
+        continueWithoutAnAccountButton.addActionListener(new SoundAction(buttonSoundPlayer, GuestLogger.getInstance()));
         exitButton.addActionListener(new ExitAction(ExitManager.getInstance()));
 
         // Border settings.
         RoundedBorder insideBorder = new RoundedBorder(
-                50, 1, null, Color.WHITE);
+                10, 1, null, Color.WHITE);
         RoundedBorder outsideBorder = new RoundedBorder(
-                50, 1, null, Color.RED);
+                15, 1, null, Color.RED);
         Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
         menuPanel.setBorder(border);
 

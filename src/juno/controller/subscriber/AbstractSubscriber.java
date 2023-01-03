@@ -30,16 +30,30 @@ import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Objects;
+
 /**
  * @author Simone Gentili
  */
-public abstract class AbstractSubscriber {
+public abstract class AbstractSubscriber
+        implements Subscriber, Unsubscriber {
 
     // The Observer object.
     private Observer observer;
 
     // The Observable object.
     private Observable observable;
+
+    @Override
+    public void subscribe() {
+        unsubscribe();
+        Objects.requireNonNull(getObservable()).addObserver(getObserver());
+    }
+
+    @Override
+    public void unsubscribe() {
+        Objects.requireNonNull(getObservable()).removeObserver(getObserver());
+    }
 
     /**
      * Sets the Observer object of this

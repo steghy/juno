@@ -50,6 +50,9 @@ public class Initializer
 
     @Override
     public void initialize() {
+        // juno.controller.subscriber.
+        juno.controller.subscriber.Initializer.getInstance().initialize();
+
         // juno.controller.pre_access package.
         juno.controller.pre_access.Initializer.getInstance().initialize();
 

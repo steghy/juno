@@ -23,26 +23,45 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.pre_access.access;
+package juno.controller.subscriber;
 
-import juno.view.pages.pre_access.access.menu.MenuPanelConfigurator;
-import juno.view.pages.pre_access.access.title.TitlePanelConfigurator;
+import juno.controller.pre_access.ConfigurationFilesFactory;
+import juno.controller.util.InterfaceInitializer;
+import juno.model.data.avatar.AvatarNameSetter;
+import juno.model.data.profile.profile.ProfileNameSetter;
 
 /**
  * @author Simone Gentili
  */
-public class AccessPanelInitializer {
+public class Initializer
+        implements InterfaceInitializer {
 
-    /* Builds an AccessPanelInitializer object */
-    private AccessPanelInitializer() {}
+    // The Initializer instance.
+    private static Initializer instance;
 
-    public static void initialize() {
-        // Components.
-        TitlePanelConfigurator.configure();
-        MenuPanelConfigurator.configure();
+    // Builds the Initializer instance.
+    private Initializer() {}
 
-        // Main components.
-        AccessPanelConfigurator.configure();
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
+    public void initialize() {
+        // Avatar subscriber.
+        AvatarSubscriber avatarSubscriber = AvatarSubscriber.getInstance();
+
+        ///////////////////////////////////////////////////////////////////
+
+        // Avatar subscriber.
+        avatarSubscriber.setObservable(ProfileNameSetter.getInstance());
+        avatarSubscriber.setObserver(AvatarNameSetter.getInstance());
+        ConfigurationFilesFactory.getInstance().addObserver(avatarSubscriber);
     }
 
 }

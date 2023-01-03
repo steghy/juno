@@ -23,22 +23,44 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.pre_access.registration;
+package juno.view.pages.pre_access.login;
 
-import juno.view.pages.pre_access.registration.menu.MenuPanelConfigurator;
-import juno.view.pages.pre_access.registration.title.TitlePanelConfigurator;
+import juno.controller.util.InterfaceInitializer;
+import juno.view.pages.pre_access.login.menu.MenuPanelConfigurator;
+import juno.view.pages.pre_access.login.profiles_panel.ProfilesPanelConfigurator;
+import juno.view.pages.pre_access.login.title.TitlePanelConfigurator;
 
-public class RegistrationPanelInitializer {
+/**
+ * @author Simone Gentili
+ */
+public class Initializer
+        implements InterfaceInitializer {
 
-    private RegistrationPanelInitializer() {}
+    // The Initializer instance.
+    private static Initializer instance;
 
-    public static void initialize() {
-        // Components configurations.
+    // Builds the Initializer instance.
+    private Initializer() {}
+
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
+    public void initialize() {
+        // Components.
         TitlePanelConfigurator.configure();
+        ProfilesPanelConfigurator.configure();
+        juno.view.pages.pre_access.login.profiles_panel.Initializer.initialize();
         MenuPanelConfigurator.configure();
 
-        // Main component configuration.
-        RegistrationPanelConfigurator.configure();
+        // Main components.
+        LogInPanelConfigurator.configure();
     }
 
 }

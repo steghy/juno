@@ -28,23 +28,29 @@ package juno.view.pages.pre_access.welcome;
 import juno.view.pages.pre_access.welcome.menu.MenuPanel;
 import juno.view.pages.pre_access.welcome.title.TitlePanel;
 
+/**
+ * @author Simone Gentili
+ */
 public class WelcomePanelConfigurator {
 
+    // Builds a WelcomePanelConfigurator object.
     private WelcomePanelConfigurator() {}
 
+    /** Configures the WelcomePanel instance. */
     public static void configure() {
-        // MAIN COMPONENT
+        // Main component.
         WelcomePanel welcomePanel = WelcomePanel.getInstance();
 
-        // SUB-COMPONENTS
+        // Components.
         TitlePanel titlePanel = TitlePanel.getInstance();
         MenuPanel menuPanel = MenuPanel.getInstance();
 
-        // ADDING COMPONENTS
-        welcomePanel.setTitlePanel(titlePanel);
-        welcomePanel.setMenuPanel(menuPanel);
+        // Components settings.
+        welcomePanel.setFirstComponent(titlePanel); // Title panel.
+        welcomePanel.setSecondComponent(menuPanel); // Menu panel.
 
-        // INITIALIZATION
+        // Main component initialization.
         welcomePanel.init();
     }
+
 }

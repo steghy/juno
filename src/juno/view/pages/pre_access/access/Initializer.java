@@ -23,41 +23,41 @@
  * SOFTWARE.
  */
 
-package juno.controller.subscriber;
+package juno.view.pages.pre_access.access;
 
-import juno.model.util.Factory;
-import juno.model.util.Observer;
-import org.jetbrains.annotations.NotNull;
+import juno.controller.util.InterfaceInitializer;
+import juno.view.pages.pre_access.access.menu.MenuPanelConfigurator;
+import juno.view.pages.pre_access.access.title.TitlePanelConfigurator;
 
 /**
  * @author Simone Gentili
  */
-public class AvatarSubscriber
-        extends AbstractSubscriber
-        implements Observer {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // The AvatarSubscriber instance.
-    private static AvatarSubscriber instance;
+    // The Initializer instance.
+    private static Initializer instance;
 
-    // Builds an AvatarSubscriber instance.
-    private AvatarSubscriber() {}
+    // Builds the Initializer instance.
+    private Initializer() {}
 
     /**
-     * Returns the AvatarSubscriber instance.
-     * @return The AvatarSubscriber instance.
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
      */
-    public static AvatarSubscriber getInstance() {
-        if(instance == null) instance = new AvatarSubscriber();
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
         return instance;
     }
 
     @Override
-    public void update(@NotNull Object object) {
-        if(object instanceof Factory<?>)
-            subscribe();
-        else throw new IllegalArgumentException(
-                "Invalid object type: " + object.getClass() +
-                        ". InterfaceFactory expected.");
+    public void initialize() {
+        // Components.
+        TitlePanelConfigurator.configure();
+        MenuPanelConfigurator.configure();
+
+        // Main components.
+        AccessPanelConfigurator.configure();
     }
 
 }
