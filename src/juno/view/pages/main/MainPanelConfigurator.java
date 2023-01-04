@@ -55,7 +55,7 @@ public class MainPanelConfigurator {
         // Components.
         TitlePanel titlePanel = TitlePanel.getInstance();
         MenuPanel menuPanel = MenuPanel.getInstance();
-        UserAvatarPanel avatarPanel = new UserAvatarPanel(4.5);
+        UserAvatarPanel avatarPanel = new UserAvatarPanel(3.0);
 
         // Log out button.
         AbstractButton logOutButton = ButtonCreator.getInstance().create(juno.view.button.Button.LOG_OUT, null);

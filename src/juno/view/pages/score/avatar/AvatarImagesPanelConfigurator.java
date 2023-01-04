@@ -31,7 +31,6 @@ import juno.model.data.awards.avatar.AvatarImage;
 import juno.model.data.awards.avatar.InterfaceAvatarImage;
 import juno.view.gobject.avatars.GAvatarImage;
 import juno.view.gobject.avatars.GAvatarImageCreator;
-import juno.view.util.ImageResizer;
 
 import java.util.List;
 
@@ -52,7 +51,6 @@ public class AvatarImagesPanelConfigurator {
                             (GAvatarImage<InterfaceAvatarImage>) creator.create(avatarImage, null);
                     gAvatarImage.addActionListener(new GSetterAction<>(gAvatarImage, avatarImageSetter));
                     gAvatarImage.setEnabled(false);
-                    ImageResizer.resize(gAvatarImage, 4.5);
                     avatarImage.addObserver(gAvatarImage);
                     panel.add(gAvatarImage);
                 });

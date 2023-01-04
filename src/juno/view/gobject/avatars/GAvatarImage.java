@@ -27,16 +27,21 @@ package juno.view.gobject.avatars;
 
 import juno.model.data.awards.avatar.InterfaceAvatarImage;
 import juno.model.util.Observer;
-import juno.view.gobject.GObjectButton;
+import juno.view.gobject.InterfaceGObject;
 import org.jetbrains.annotations.NotNull;
+
+import javax.swing.*;
 
 /**
  * @author Simone Gentili
  * @param <T> The type of the avatars.
  */
 public class GAvatarImage<T>
-        extends GObjectButton<T>
-        implements Observer {
+        extends JButton
+        implements InterfaceGObject<T>, Observer {
+
+    // The object.
+    private final T avatar;
 
     /**
      * Builds a GAvatarImage object with
@@ -44,7 +49,7 @@ public class GAvatarImage<T>
      * @param avatar An Object.
      */
     public GAvatarImage(@NotNull T avatar) {
-        super(avatar);
+        this.avatar = avatar;
     }
 
     @Override
@@ -52,6 +57,11 @@ public class GAvatarImage<T>
         if(object instanceof InterfaceAvatarImage avatarImage) {
             setEnabled(avatarImage.isUnlock());
         }
+    }
+
+    @Override
+    public T object() {
+        return avatar;
     }
 
 }

@@ -42,7 +42,7 @@ public class AvatarPanel
     private final double dimensionParameter;
 
     // The avatar image.
-    private ImageButton avatarImage;
+    private JButton avatarImage;
 
     // The avatar frame.
     private ImageButton avatarFrame;
@@ -56,7 +56,7 @@ public class AvatarPanel
     public AvatarPanel(double dimensionParameter) {
         this.dimensionParameter = dimensionParameter;
         avatarFrame = new ImageButton();
-        avatarImage = new ImageButton();
+        avatarImage = new JButton ();
         avatarName = new JLabel();
         init();
     }
@@ -132,8 +132,8 @@ public class AvatarPanel
      * Sets the avatar image of this object.
      * @param avatarImage An ImageButton object.
      */
-    public void setAvatarImage(@NotNull ImageButton avatarImage) {
-        ImageResizer.resize(avatarImage, dimensionParameter * 2);
+    public void setAvatarImage(@NotNull JButton avatarImage) {
+        // ImageResizer.resize(avatarImage, dimensionParameter * 2);
         this.avatarImage = avatarImage;
     }
 

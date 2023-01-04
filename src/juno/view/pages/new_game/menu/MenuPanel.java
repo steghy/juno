@@ -25,7 +25,7 @@
 
 package juno.view.pages.new_game.menu;
 
-import juno.view.panels.AbstractFourthComponent;
+import juno.view.panels.AbstractThirdComponent;
 
 import java.awt.*;
 import java.util.Objects;
@@ -34,7 +34,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class MenuPanel
-        extends AbstractFourthComponent {
+        extends AbstractThirdComponent {
 
     // The MenuPanel instance.
     private static MenuPanel instance;
@@ -89,17 +89,6 @@ public class MenuPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
         this.add(Objects.requireNonNull(getThirdComponent()), gbc);
-
-        // New game artwork.
-        gbc.gridx = 0;
-        gbc.gridy = 3;
-        gbc.weightx = 0.0;
-        gbc.weighty = 0.0;
-        gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,30,0);
-        gbc.ipadx = 0;
-        gbc.ipady = 0;
-        this.add(Objects.requireNonNull(getFourthComponent()), gbc);
     }
 
 }

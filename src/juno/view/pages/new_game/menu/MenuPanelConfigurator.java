@@ -28,12 +28,9 @@ package juno.view.pages.new_game.menu;
 import juno.controller.audio.SoundAction;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.PanelChanger;
-import juno.init.ProgramDirectory;
-import juno.model.requester.PathProviderAssembler;
 import juno.model.sound.ButtonSoundPlayer;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
-import juno.view.img_initializer.ImageComponentInitializer;
 import juno.view.pages.main.card.MainCardPanel;
 import juno.view.pages.new_game.card.NewGameCardPanel;
 import juno.view.util.ImageResizer;
@@ -61,12 +58,6 @@ public class MenuPanelConfigurator {
         AbstractButton singlePlayer = creator.create(Button.SINGLE_PLAYER, null);
         AbstractButton multiPlayer = creator.create(Button.MULTIPLAYER, null);
         AbstractButton backButton = creator.create(Button.BACK, null);
-        JLabel newGameArtwork = new JLabel();
-
-        ImageComponentInitializer.getInstance()
-                .initialize(newGameArtwork,
-                        PathProviderAssembler.getInstance().assemble(ProgramDirectory.GIFS, "cat.gif"),
-                        null);
 
         // Images resizing.
         ImageResizer.resize(singlePlayer, 2.5);
@@ -92,7 +83,6 @@ public class MenuPanelConfigurator {
         menuPanel.setFirstComponent(singlePlayer);    // Single-player button.
         menuPanel.setSecondComponent(multiPlayer);    // Multiplayer button.
         menuPanel.setThirdComponent(backButton);      // Back button.
-        menuPanel.setFourthComponent(newGameArtwork); // New game artwork.
 
         // Main component initialization.
         menuPanel.init();
