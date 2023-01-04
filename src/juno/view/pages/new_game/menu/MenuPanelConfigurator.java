@@ -65,7 +65,7 @@ public class MenuPanelConfigurator {
 
         ImageComponentInitializer.getInstance()
                 .initialize(newGameArtwork,
-                        PathProviderAssembler.getInstance().assemble(ProgramDirectory.GIFS, "new-game.gif"),
+                        PathProviderAssembler.getInstance().assemble(ProgramDirectory.GIFS, "cat.gif"),
                         null);
 
         // Images resizing.
