@@ -9,6 +9,15 @@
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/data/images/buttons/AUDIO_TOGGLE_SELECTED_ROLLOVER.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/gifs/AVATAR_IMAGE_4.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/gifs/AVATAR_IMAGE_5.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/gifs/AVATAR_IMAGE_6.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/gifs/AVATAR_IMAGE_7.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/gifs/AVATAR_IMAGE_8.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/gifs/AVATAR_IMAGE_9.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/gifs/cat.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/gifs/mask.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/gifs/sir.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/config/profiles/Guest-profile.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/config/profiles/Guest-profile.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/images/backgrounds/BACKGROUND.gif" beforeDir="false" />
@@ -86,11 +95,14 @@
       <change beforePath="$PROJECT_DIR$/data/images/buttons/WELCOME_BACK.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/images/buttons/WELCOME_BACK.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/images/buttons/WELCOME_BACK_ROLLOVER.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/images/buttons/WELCOME_BACK_ROLLOVER.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/images/buttons/WELCOME_ROLLOVER.png" beforeDir="false" afterPath="$PROJECT_DIR$/data/images/buttons/WELCOME_ROLLOVER.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/gifs/CIRCLE.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/gifs/INVERTED_CIRCLE.gif" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/init/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/init/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/frame/Initializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/frame/Initializer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/score/ScorePanelConfigurator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/score/ScorePanelConfigurator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/init/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/init/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/view/frame/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/frame/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/menu/MenuPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/menu/MenuPanelConfigurator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
