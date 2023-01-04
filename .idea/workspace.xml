@@ -7,7 +7,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="" />
+    <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/data/images/gifs/card-panel.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/gifs/donut-transparent-1.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/gifs/draw_four.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/gifs/new-game.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/images/gifs/uno_card.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/backgrounds/blue-reverse-card-uno.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/backgrounds/card-panel.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/backgrounds/draw_four.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/backgrounds/uno_card.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/gifs/circles-transparent-gif/circle-transparent-1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/gifs/circles-transparent-gif/circle-transparent-2.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/gifs/circles-transparent-gif/circle-transparent-3.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/gifs/circles-transparent-gif/circle-transparent-4.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/gifs/circles-transparent-gif/circle-transparent-5.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/gifs/circles-transparent-gif/circle-transparent-6.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/gifs/donut-transparent-gif/donut-transparent-1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/gifs/loading-transparent-gif/loading-circle-transparent-1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/gifs/loading-transparent-gif/loading-circle-transparent-2.gif.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/gifs/loading-transparent-gif/loading-circle-transparent-3.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/images/gifs/loading-transparent-gif/loading-circle-transparent-4.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/menu/MenuPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/menu/MenuPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/menu/MenuPanelConfigurator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/menu/MenuPanelConfigurator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/main/MainPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/main/MainPanelConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/menu/MenuPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/menu/MenuPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/menu/MenuPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/menu/MenuPanelConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/score/ScorePanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/score/ScorePanelConfigurator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/scroll_panes/AbstractScrollPane.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

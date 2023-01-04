@@ -25,12 +25,10 @@
 
 package juno.view.pages.score;
 
-import juno.view.avatar.AvatarPanel;
 import juno.view.avatar.UserAvatarPanel;
 import juno.view.pages.score.menu.MenuPanel;
 import juno.view.pages.score.title.TitlePanel;
 
-import javax.swing.*;
 
 /**
  * @author Simone Gentili
@@ -47,7 +45,7 @@ public class ScorePanelConfigurator {
         // Components.
         MenuPanel menuPanel = MenuPanel.getInstance();
         TitlePanel titlePanel = TitlePanel.getInstance();
-        UserAvatarPanel avatarPanel = new UserAvatarPanel(3.5);
+        UserAvatarPanel avatarPanel = new UserAvatarPanel(4.5);
 
         // Adding components.
         scorePanel.setFirstComponent(titlePanel);   // Title panel.
