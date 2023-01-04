@@ -64,7 +64,8 @@ public class Mover<T>
 
     // Builds the Mover instance.
     private Mover() {
-        timer = new Timer(2000, this);
+        timer = new Timer(1500, this);
+        timer.setRepeats(false);
         observerList = new ArrayList<>();
     }
 
@@ -90,9 +91,7 @@ public class Mover<T>
                 current.remove(card);
                 timer.stop();
                 Objects.requireNonNull(getDiscardedPile()).discard(card);
-            } else {
-                Objects.requireNonNull(getTurnMover()).next();
-            }
+            } else Objects.requireNonNull(getTurnMover()).next();
         } else {
             timer.stop();
             updateAll();
