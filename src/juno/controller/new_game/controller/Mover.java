@@ -103,6 +103,7 @@ public class Mover<T>
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
         if(object instanceof InterfaceCardDispenser) {
+            FirstDiscardedCardManager.getInstance().discardFirstCard();
             Objects.requireNonNull(getTurnMover()).next();
             timer.start();
         } else if(object instanceof InterfaceTurnMover) {

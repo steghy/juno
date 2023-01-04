@@ -95,9 +95,6 @@ public class Initializer
         // Card controller.
         CardController cardController = CardController.getInstance();
 
-        // First discarded card manager.
-        FirstDiscardedCardManager firstDiscardedCardManager = FirstDiscardedCardManager.getInstance();
-
         // Card remover.
         CardRemover<InterfaceCard> cardRemover =
                 (CardRemover<InterfaceCard>) CardRemover.getInstance();
@@ -169,10 +166,6 @@ public class Initializer
         cardDispenser.setProvider(playersProvider);
         cardDispenser.setDeck(deck);
 
-        // First discarded card.
-        firstDiscardedCardManager.setDiscardedPile(discardedPile);
-        firstDiscardedCardManager.setDeck(deck);
-
         // Card controller.
         cardController.setDeck(deck);
         oneCardDispenser.addObserver(cardController);
@@ -181,9 +174,6 @@ public class Initializer
         gameStarter.setDispenser(cardDispenser);
         gameStarter.setProvider(playersProvider);
         cardController.addObserver(gameStarter);
-
-        // First discarded card manager.
-        cardDispenser.addObserver(firstDiscardedCardManager);
 
         // Draw action.
         drawAction.setDeck(deck);

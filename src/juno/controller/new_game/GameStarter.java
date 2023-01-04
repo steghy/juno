@@ -25,6 +25,7 @@
 
 package juno.controller.new_game;
 
+import juno.controller.new_game.controller.FirstDiscardedCardManager;
 import juno.controller.new_game.dispenser.InterfaceCardDispenser;
 import juno.model.card.InterfaceCard;
 import juno.model.subjects.InterfacePlayer;

@@ -102,6 +102,9 @@ public class Initializer
         // Deck.
         Deck<InterfaceCard> deck = (Deck<InterfaceCard>) Deck.getInstance();
 
+        // First discarded card manager.
+        FirstDiscardedCardManager firstDiscardedCardManager = FirstDiscardedCardManager.getInstance();
+
         //////////////////////////////////////////////////////////////////////////////////////
 
         // Win condition controller.
@@ -128,6 +131,10 @@ public class Initializer
         cardEffectController.setProvider(currentPlayerProvider);
         cardEffectController.setActivator(cardEffectActivator);
         cardEffectController.setTurnMover(turnMover);
+
+        // First discarded card.
+        firstDiscardedCardManager.setDiscardedPile(discardedPile);
+        firstDiscardedCardManager.setDeck(deck);
     }
 
 }
