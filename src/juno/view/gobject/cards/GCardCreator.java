@@ -70,20 +70,19 @@ public class GCardCreator
     @Override
     public InterfaceGObject<InterfaceCard> create(@NotNull InterfaceCard card, RotatedIcon.Rotate rotate) {
         GObjectButton<InterfaceCard> graphicCard = new GObjectButton<>(card);
-        String file, rolloverFile;
+        String file;
         if(card.value() != null) {
             file = card.value().toString();
         } else if (card.action() != null) {
             file = card.action().toString();
         } else throw new IllegalArgumentException("Invalid card attributes.");
-        rolloverFile = file + "_ROLLOVER.png";
         InterfacePathProviderAssembler assembler = getAssembler();
         InterfacePathProvider pathObject = Objects.requireNonNull(provider).getPathObjectOf(card);
         Objects.requireNonNull(assembler);
         Objects.requireNonNull(getInitializer()).initialize(
                 graphicCard,
                 assembler.assemble(pathObject, file + ".png"),
-                assembler.assemble(pathObject, rolloverFile + "_ROLLOVER" + ".png"),
+                assembler.assemble(pathObject, file + "_ROLLOVER" + ".png"),
                 rotate);
         return graphicCard;
     }

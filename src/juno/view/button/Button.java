@@ -71,7 +71,8 @@ public enum Button
 
     // MODE //
     MODE(true),
-    STACKING(true),
+    CLASSIC(true),
+    CLASSIC_ARTWORK(true),
 
     // MATCH //
     COVER(true),

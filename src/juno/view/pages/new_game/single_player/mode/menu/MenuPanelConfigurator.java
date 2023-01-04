@@ -30,9 +30,12 @@ import juno.controller.new_game.GameInitializer;
 import juno.controller.util.InitializeAction;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.PanelChanger;
+import juno.init.ProgramDirectory;
+import juno.model.requester.PathProviderAssembler;
 import juno.model.sound.ButtonSoundPlayer;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
+import juno.view.img_initializer.ImageComponentInitializer;
 import juno.view.pages.new_game.single_player.card.SinglePlayerCardPanel;
 import juno.view.util.ImageResizer;
 import juno.view.util.RotatedIcon;
@@ -50,24 +53,29 @@ public class MenuPanelConfigurator {
     // Builds a MenuPanelConfigurator object.
     private MenuPanelConfigurator() {}
 
+    /** Configures the DifficultyPanel instance. */
     public static void configure() {
         // Main component.
         MenuPanel difficultyPanel = MenuPanel.getInstance();
 
         // Components.
         ButtonCreator creator = ButtonCreator.getInstance();
-        AbstractButton stackingModeButton = creator.create(Button.STACKING, RotatedIcon.Rotate.ABOUT_CENTER);
-        AbstractButton backButton = creator.create(Button.BACK, RotatedIcon.Rotate.ABOUT_CENTER);
+        AbstractButton classicModeButton = creator.create(Button.CLASSIC, null);
+        JLabel classicModeArtwork = new JLabel();
+        ImageComponentInitializer.getInstance().initialize(classicModeArtwork,
+                PathProviderAssembler.getInstance().assemble(ProgramDirectory.GIFS, "reverse.gif"),
+                null);
+        AbstractButton backButton = creator.create(Button.BACK, null);
 
         // Images resizing.
-        ImageResizer.resize(stackingModeButton, 4.0);
-        ImageResizer.resize(backButton, 4.0);
+        ImageResizer.resize(classicModeButton, 2.5);
+        ImageResizer.resize(backButton, 2.5);
 
         // Action listeners.
         ButtonSoundPlayer buttonSoundPlayer = ButtonSoundPlayer.getInstance();
-        stackingModeButton.addActionListener(new SoundAction(buttonSoundPlayer,
+        classicModeButton.addActionListener(new SoundAction(buttonSoundPlayer,
                 new InitializeAction(GameInitializer.getInstance())));
-        stackingModeButton.addActionListener(new ChangePanelAction(
+        classicModeButton.addActionListener(new ChangePanelAction(
                 new PanelChanger(SinglePlayerCardPanel.getInstance(),
                         SinglePlayerCardPanel.MATCH_PANEL)));
         backButton.addActionListener(new SoundAction(buttonSoundPlayer, new ChangePanelAction(
@@ -80,8 +88,9 @@ public class MenuPanelConfigurator {
         difficultyPanel.setBorder(border);
 
         // Components settings.
-        difficultyPanel.setFirstComponent(stackingModeButton); // Stacking mode button.
-        difficultyPanel.setSecondComponent(backButton);
+        difficultyPanel.setFirstComponent(classicModeButton); // Classic mode button.
+        difficultyPanel.setSecondComponent(classicModeArtwork);
+        difficultyPanel.setThirdComponent(backButton);         // Back button.
 
         // Main component initialization.
         difficultyPanel.init();

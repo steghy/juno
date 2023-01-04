@@ -32,8 +32,8 @@ package juno.model.subjects;
 public interface InterfaceSubject {
 
     /**
-     *
-     * @return
+     * Returns the name of this object.
+     * @return A String object.
      */
     String name();
 

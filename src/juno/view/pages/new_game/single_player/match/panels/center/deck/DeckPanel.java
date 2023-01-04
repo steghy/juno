@@ -26,6 +26,7 @@
 package juno.view.pages.new_game.single_player.match.panels.center.deck;
 
 import juno.controller.log_out.Restorable;
+import juno.controller.new_game.human.DiscardedCardSetter;
 import juno.controller.new_game.human.DrawAction;
 import juno.model.subjects.shift.InterfaceTurnMover;
 import juno.model.util.Provider;
@@ -41,9 +42,7 @@ import java.util.Objects;
  */
 public class DeckPanel<T>
         extends AbstractFirstComponent
-        implements
-        Observer,
-        Restorable {
+        implements Observer, Restorable {
 
     // The current player provider.
     private Provider<T> provider;
@@ -96,7 +95,8 @@ public class DeckPanel<T>
         if(object instanceof InterfaceTurnMover) {
             Objects.requireNonNull(getFirstComponent())
                     .setEnabled(provider.provide() == humanPlayer);
-        } else if(object instanceof DrawAction<?>) {
+        } else if(object instanceof DrawAction<?> ||
+                object instanceof DiscardedCardSetter<?>) {
             Objects.requireNonNull(getFirstComponent()).setEnabled(false);
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +

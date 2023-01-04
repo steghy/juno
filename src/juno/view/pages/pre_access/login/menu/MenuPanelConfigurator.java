@@ -34,7 +34,6 @@ import juno.view.button.ButtonCreator;
 import juno.view.pages.pre_access.card.PreAccessCardPanel;
 import juno.view.pages.pre_access.login.profiles_panel.ProfilesPanel;
 import juno.view.util.ImageResizer;
-import juno.view.util.RotatedIcon;
 
 import javax.swing.*;
 import java.awt.*;
@@ -47,16 +46,17 @@ public class MenuPanelConfigurator {
     // Builds a MenuPanelConfigurator object.
     private MenuPanelConfigurator() {}
 
+    /** Configures the MenuPanel instance. */
     public static void configure() {
         // Main component.
         MenuPanel menuPanel = MenuPanel.getInstance();
 
         // Components.
         ButtonCreator creator = ButtonCreator.getInstance();
-        AbstractButton backButton = creator.create(Button.BACK, RotatedIcon.Rotate.ABOUT_CENTER);
+        AbstractButton backButton = creator.create(Button.BACK, null);
 
         // Image resizing.
-        ImageResizer.resize(backButton, 3.5);
+        ImageResizer.resize(backButton, 2.5);
 
         // Action listener.
         backButton.addActionListener(new SoundAction(ButtonSoundPlayer.getInstance(),

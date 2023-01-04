@@ -34,7 +34,6 @@ import juno.view.button.Button;
 import juno.view.pages.main.card.MainCardPanel;
 import juno.view.pages.new_game.card.NewGameCardPanel;
 import juno.view.util.ImageResizer;
-import juno.view.util.RotatedIcon;
 import juno.view.util.RoundedBorder;
 
 import javax.swing.*;
@@ -49,20 +48,21 @@ public class MenuPanelConfigurator {
     // Builds a MenuPanelConfigurator object.
     private MenuPanelConfigurator() {}
 
+    /** Configures the MenuPanel instance. */
     public static void configure() {
         // Main component.
         MenuPanel menuPanel = MenuPanel.getInstance();
 
         // Components.
         ButtonCreator creator = ButtonCreator.getInstance();
-        AbstractButton singlePlayer = creator.create(Button.SINGLE_PLAYER, RotatedIcon.Rotate.ABOUT_CENTER);
-        AbstractButton multiPlayer = creator.create(Button.MULTIPLAYER, RotatedIcon.Rotate.ABOUT_CENTER);
-        AbstractButton backButton = creator.create(Button.BACK, RotatedIcon.Rotate.ABOUT_CENTER);
+        AbstractButton singlePlayer = creator.create(Button.SINGLE_PLAYER, null);
+        AbstractButton multiPlayer = creator.create(Button.MULTIPLAYER, null);
+        AbstractButton backButton = creator.create(Button.BACK, null);
 
         // Images resizing.
-        ImageResizer.resize(singlePlayer, 4.0);
-        ImageResizer.resize(multiPlayer, 4.0);
-        ImageResizer.resize(backButton, 4.0);
+        ImageResizer.resize(singlePlayer, 2.5);
+        ImageResizer.resize(multiPlayer, 2.5);
+        ImageResizer.resize(backButton, 2.5);
 
         // Border settings.
         RoundedBorder insideBorder = new RoundedBorder(10, 1, null, Color.WHITE);

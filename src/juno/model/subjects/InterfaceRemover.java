@@ -32,6 +32,11 @@ package juno.model.subjects;
 @FunctionalInterface
 public interface InterfaceRemover<T> {
 
+    /**
+     * Removes the specified object from
+     * this object.
+     * @param object An Object.
+     */
     void remove(T object);
 
 }

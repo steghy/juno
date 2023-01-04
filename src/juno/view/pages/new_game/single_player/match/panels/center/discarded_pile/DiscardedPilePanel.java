@@ -97,6 +97,7 @@ public class DiscardedPilePanel
                     creator.create(provider.provide(), RotatedIcon.Rotate.ABOUT_CENTER);
             ImageResizer.resize(gCard, 1.8);
             removeAll();
+            gCard.setEnabled(false);
             add(gCard, BorderLayout.CENTER);
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +

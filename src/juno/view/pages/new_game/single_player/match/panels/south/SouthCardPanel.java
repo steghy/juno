@@ -27,20 +27,19 @@ package juno.view.pages.new_game.single_player.match.panels.south;
 
 import juno.controller.log_out.Restorable;
 import juno.controller.new_game.GameStarter;
-import juno.controller.new_game.dispenser.InterfaceCardDispenser;
+import juno.controller.new_game.dispenser.CardDispenser;
 import juno.controller.new_game.human.CardRemover;
-import juno.controller.new_game.controller.Mover;
-import juno.controller.new_game.human.PassTurnAction;
 import juno.controller.util.SetterAction;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.CompatibilityChecker;
-import juno.model.subjects.human.HumanPlayer;
+import juno.model.subjects.InterfacePlayer;
+import juno.model.subjects.shift.InterfaceTurnMover;
+import juno.model.util.Provider;
 import juno.model.util.Setter;
 import juno.model.util.Observer;
 import juno.view.gobject.GObjectButton;
 import juno.view.gobject.cards.GCardCreator;
 import juno.view.util.ImageResizer;
-import juno.view.util.RotatedIcon;
 import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.*;
@@ -60,11 +59,14 @@ public class SouthCardPanel
     // The 'Game is started' boolean value.
     private boolean gameStarted;
 
+    // 'Left' insects value parameter.
+    private final int leftInsectsParameter;
+
     // The dispenser boolean value.
     private boolean dispenser;
 
-    // 'Left' insects value parameter.
-    private final int leftInsectsParameter;
+    // The human player.
+    private InterfacePlayer<InterfaceCard> humanPlayer;
 
     // The card -> graphic card map.
     private final Map<InterfaceCard, GObjectButton<InterfaceCard>> componentMap;
@@ -77,6 +79,9 @@ public class SouthCardPanel
 
     // The discarded card setter.
     private Setter<InterfaceCard> discardedCardSetter;
+
+    // The current player provider.
+    private Provider<InterfacePlayer<InterfaceCard>> currentPlayerProvider;
 
     // The SouthCardPanel instance.
     private static SouthCardPanel instance;
@@ -125,6 +130,26 @@ public class SouthCardPanel
         this.playableCardSetter = playableCardSetter;
     }
 
+    /**
+     * Sets the current player provider of this object.
+     * @param currentPlayerProvider A Provider object.
+     */
+    public void setCurrentPlayerProvider(@NotNull Provider<InterfacePlayer<InterfaceCard>> currentPlayerProvider) {
+        this.currentPlayerProvider = currentPlayerProvider;
+    }
+
+    /**
+     * Sets the human player of this object.
+     * @param humanPlayer An InterfacePlayer object.
+     */
+    public void setHumanPlayer(@NotNull InterfacePlayer<InterfaceCard> humanPlayer) {
+        this.humanPlayer = humanPlayer;
+    }
+
+    /**
+     * Adds the specified graphic card to this panel.
+     * @param gCard A GObjectButton object.
+     */
     public void addComponent(@NotNull GObjectButton<InterfaceCard> gCard) {
         if(componentMap.isEmpty())
             gbc.insets = new Insets(0, 0, 0, 0);
@@ -136,6 +161,10 @@ public class SouthCardPanel
         repaint();
     }
 
+    /**
+     * Removes the specified graphic card from this panel.
+     * @param gCard A GObjectButton object.
+     */
     @SuppressWarnings("unchecked")
     public void removeComponent(@NotNull GObjectButton<InterfaceCard> gCard) {
         ArrayList<GObjectButton<InterfaceCard>> components =
@@ -152,48 +181,80 @@ public class SouthCardPanel
     @Override
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof HumanPlayer<?> humanPlayer) {
-            InterfaceCard card = (InterfaceCard) humanPlayer.provide();
-            if(humanPlayer.isRemoved())
+        // This update comes from the HumanPlayer class.
+        if(object instanceof InterfacePlayer<?>) {
+            InterfaceCard card = humanPlayer.provide();
+
+            // A card has been removed.
+            if(humanPlayer.hasRemoved())
                 if(componentMap.containsKey(card)) {
                     removeComponent(componentMap.get(card));
                 } else throw new IllegalArgumentException(
                         card + " is not in: " + componentMap);
+
+            // A Card has been added.
             else {
                 GObjectButton<InterfaceCard> gCard = (GObjectButton<InterfaceCard>)
-                        GCardCreator.getInstance().create(card, RotatedIcon.Rotate.ABOUT_CENTER);
+                        GCardCreator.getInstance().create(card, null);
                 ImageResizer.resize(gCard, 2.5);
 
+                // If the game has started, add the actions.
                 if(gameStarted) {
-                    SetterAction<InterfaceCard> setterAction =
-                            new SetterAction<>(gCard.object(), discardedCardSetter);
-                    gCard.addActionListener(setterAction);
+                    gCard.addActionListener(new SetterAction<>(gCard.object(), discardedCardSetter));
                     gCard.addActionListener(CardRemover.getInstance());
                 }
 
-                if(dispenser) {
+                // If the added card was drawn on the human player's turn,
+                // it's compatibility is calculated while the remaining
+                // cards cannot be played.
+                if(currentPlayerProvider.provide() == humanPlayer && dispenser) {
                     for (Component c : getComponents()) c.setEnabled(false);
                     gCard.setEnabled(CompatibilityChecker.getInstance().isCompatible(card));
                 }
 
-                // Adding the card.
+                // Otherwise the card was drawn during another
+                // player's turn, so it cannot be played.
+                else
+                    gCard.setEnabled(false);
+
                 addComponent(gCard);
             }
-        } else if(object instanceof Mover) {
-            playableCardSetter.set(
-                    Arrays.stream(getComponents())
-                            .map(component -> (GObjectButton<InterfaceCard>) component).toList()
-            );
-        } else if(object instanceof PassTurnAction) {
-            for(Component c : getComponents()) c.setEnabled(false);
-        } else if(object instanceof InterfaceCardDispenser) {
-            dispenser = true;
-        } else if(object instanceof GameStarter) {
+        }
+
+        // This update comes from the TurnMover class.
+        else if(object instanceof InterfaceTurnMover) {
+            if(currentPlayerProvider.provide() == humanPlayer && gameStarted)
+
+                // Sets the cards playable this turn relative
+                // to the top card of the discarded pile.
+                playableCardSetter.set(Arrays.stream(getComponents())
+                        .map(component -> (GObjectButton<InterfaceCard>) component)
+                        .toList());
+
+            // Disability all cards.
+            else for(Component c : getComponents()) c.setEnabled(false);
+        }
+
+        // GameStarter notifies that the game has started
+        // and therefore the added cards must encapsulate
+        // the appropriate actions.
+        else if(object instanceof GameStarter) {
             gameStarted = true;
-        } else throw new IllegalArgumentException(
-                    "Invalid object type: " + object.getClass() +
-                            ". InterfaceAdder, InterfaceRemover " +
-                            "or InterfaceInitializer type expected.");
+        }
+
+        // Card Dispenser notifies that all cards have
+        // been dealt and therefore from this point on,
+        // when a card is added in the human player's
+        // turn the compatibility check must take place.
+        else if(object instanceof CardDispenser<?>) {
+            dispenser = true;
+        }
+
+        // Unrecognized update case.
+        else throw new IllegalArgumentException(
+                    "Invalid object type: " + object.getClass());
+
+        // Always after editing.
         revalidate();
         repaint();
     }

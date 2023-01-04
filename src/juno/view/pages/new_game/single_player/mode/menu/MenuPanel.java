@@ -24,7 +24,7 @@
  */
 package juno.view.pages.new_game.single_player.mode.menu;
 
-import juno.view.panels.AbstractSecondComponent;
+import juno.view.panels.AbstractThirdComponent;
 
 import java.awt.*;
 import java.util.Objects;
@@ -33,7 +33,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class MenuPanel
-        extends AbstractSecondComponent {
+        extends AbstractThirdComponent {
 
     // The MenuPanel instance.
     private static MenuPanel instance;
@@ -56,7 +56,7 @@ public class MenuPanel
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
 
-        // Stacking mode.
+        // Classic mode button.
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.weightx = 0.0;
@@ -67,16 +67,27 @@ public class MenuPanel
         gbc.anchor = GridBagConstraints.CENTER;
         this.add(Objects.requireNonNull(getFirstComponent()), gbc);
 
-        // Back button.
+        // Classic mode artwork.
         gbc.gridx = 0;
         gbc.gridy = 1;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.insets = new Insets(0,0,20,0);
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
+        gbc.anchor = GridBagConstraints.CENTER;
+        this.add(Objects.requireNonNull(getSecondComponent()), gbc);
+
+        // Back button.
+        gbc.gridx = 0;
+        gbc.gridy = 2;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
         gbc.insets = new Insets(0,0,0,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.CENTER;
-        this.add(Objects.requireNonNull(getSecondComponent()), gbc);
+        this.add(Objects.requireNonNull(getThirdComponent()), gbc);
     }
 
 }

@@ -37,4 +37,13 @@ public interface InterfacePlayer<T>
         InterfaceSubject,
         InterfaceAdder<T>,
         InterfaceRemover<T>,
-        Provider<T> {}
+        Provider<T> {
+
+    /**
+     * Returns true if, and only if, the last
+     * card involved has been removed.
+     * @return A boolean value.
+     */
+    boolean hasRemoved();
+
+}

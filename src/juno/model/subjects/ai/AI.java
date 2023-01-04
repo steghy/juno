@@ -41,8 +41,9 @@ public class AI<T, E>
         extends AbstractPlayer<T>
         implements InterfaceAi<T, E> {
 
-    // The boolean value of the card removed.
-    private boolean cardRemoved;
+    // It's true if the last card involved
+    // has been removed.
+    private boolean hasRemoved;
 
     // The latest card involved.
     private T card;
@@ -107,7 +108,7 @@ public class AI<T, E>
     public void add(@NotNull T card) {
         cards().add(card);
         this.card = card;
-        cardRemoved = false;
+        hasRemoved = false;
         updateAll();
     }
 
@@ -117,7 +118,7 @@ public class AI<T, E>
         if(!result) throw new IllegalArgumentException(
                 "The card " + card + " is not in: " + cards());
         this.card = card;
-        cardRemoved = true;
+        hasRemoved = true;
         updateAll();
     }
 
@@ -126,8 +127,9 @@ public class AI<T, E>
         return card;
     }
 
-    public boolean getRemoved() {
-        return cardRemoved;
+    @Override
+    public boolean hasRemoved() {
+        return hasRemoved;
     }
 
 }

@@ -28,7 +28,6 @@ package juno.view.pages.new_game.single_player.players.title;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
 import juno.view.util.ImageResizer;
-import juno.view.util.RotatedIcon;
 import juno.view.util.RoundedBorder;
 
 import javax.swing.*;
@@ -49,10 +48,10 @@ public class TitlePanelConfigurator {
 
         // Component.
         ButtonCreator creator = ButtonCreator.getInstance();
-        AbstractButton title = creator.create(Button.PLAYERS, RotatedIcon.Rotate.ABOUT_CENTER);
+        AbstractButton title = creator.create(Button.PLAYERS, null);
 
         // Image resizing.
-        ImageResizer.resize(title, 4.0);
+        ImageResizer.resize(title, 2.0);
 
         // Border settings.
         RoundedBorder insideBorder = new RoundedBorder(10, 1, null, Color.WHITE);

@@ -28,11 +28,14 @@ package juno.view.pages.new_game.single_player.match.panels.south;
 import juno.controller.new_game.GameStarter;
 import juno.controller.new_game.dispenser.CardDispenser;
 import juno.controller.new_game.human.DiscardedCardSetter;
-import juno.controller.new_game.controller.Mover;
 import juno.controller.new_game.human.PassTurnAction;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.CompatibilityChecker;
+import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.human.HumanPlayer;
+import juno.model.subjects.shift.CurrentPlayerProvider;
+import juno.model.subjects.shift.TurnMover;
+import juno.model.util.Provider;
 import juno.model.util.Setter;
 import juno.view.avatar.UserAvatarPanel;
 
@@ -56,6 +59,9 @@ public class SouthPanelConfigurator {
         // Avatar panel.
         UserAvatarPanel avatarPanel = new UserAvatarPanel(4.5);
 
+        // Human player.
+        HumanPlayer<InterfaceCard> humanPlayer = (HumanPlayer<InterfaceCard>) HumanPlayer.getInstance();
+
         // Component.
         SouthCardPanel southCardPanel = SouthCardPanel.getInstance();
         CompatibleGCardEnabler compatibleGCardEnabler = CompatibleGCardEnabler.getInstance();
@@ -71,15 +77,17 @@ public class SouthPanelConfigurator {
         southCardScrollPanel.setOpaque(false);
 
         // Observer / Observable.
-        Mover.getInstance().addObserver(southCardPanel);
-        HumanPlayer.getInstance().addObserver(southCardPanel);
-        PassTurnAction.getInstance().addObserver(southCardPanel);
         GameStarter.getInstance().addObserver(southCardPanel);
+        TurnMover.getInstance().addObserver(southCardPanel);
         CardDispenser.getInstance().addObserver(southCardPanel);
+        humanPlayer.addObserver(southCardPanel);
 
         // Component setting.
         southCardPanel.setDiscardedCardSetter((Setter<InterfaceCard>) DiscardedCardSetter.getInstance());
         southCardPanel.setPlayableCardSetter(CompatibleGCardEnabler.getInstance());
+        southCardPanel.setCurrentPlayerProvider((Provider<InterfacePlayer<InterfaceCard>>) CurrentPlayerProvider.getInstance());
+        southCardPanel.setHumanPlayer(humanPlayer);
+
         compatibleGCardEnabler.setCompatibilityChecker(CompatibilityChecker.getInstance());
 
         // Setting components.

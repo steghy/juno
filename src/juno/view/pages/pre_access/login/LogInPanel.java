@@ -65,7 +65,7 @@ public class LogInPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,5,0);
+        gbc.insets = new Insets(0,0,30,0);
         this.add(Objects.requireNonNull(getFirstComponent()), gbc);
 
         // Menu panel.
@@ -76,7 +76,7 @@ public class LogInPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,5,0);
+        gbc.insets = new Insets(0,0,0,0);
         this.add(Objects.requireNonNull(getSecondComponent()), gbc);
     }
 

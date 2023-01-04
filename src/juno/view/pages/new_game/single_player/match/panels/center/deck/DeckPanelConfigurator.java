@@ -25,6 +25,7 @@
 
 package juno.view.pages.new_game.single_player.match.panels.center.deck;
 
+import juno.controller.new_game.human.DiscardedCardSetter;
 import juno.controller.new_game.human.DrawAction;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.human.HumanPlayer;
@@ -64,6 +65,7 @@ public class DeckPanelConfigurator {
         // Observer / Observable.
         TurnMover.getInstance().addObserver(deckPanel);
         DrawAction.getInstance().addObserver(deckPanel);
+        DiscardedCardSetter.getInstance().addObserver(deckPanel);
 
         // Settings.
         deckPanel.setProvider((Provider<InterfacePlayer<?>>) CurrentPlayerProvider.getInstance());

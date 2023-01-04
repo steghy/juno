@@ -35,7 +35,6 @@ import juno.view.button.Button;
 import juno.view.frame.Frame;
 import juno.view.pages.main.card.MainCardPanel;
 import juno.view.util.ImageResizer;
-import juno.view.util.RotatedIcon;
 import juno.view.util.RoundedBorder;
 
 import javax.swing.*;
@@ -50,20 +49,21 @@ public class MenuPanelConfigurator {
     // Builds the MenuPanelConfigurator object.
     private MenuPanelConfigurator() {}
 
+    /** Configures the MenuPanel instance. */
     public static void configure() {
         // Main component.
         MenuPanel menuPanel = MenuPanel.getInstance();
 
         // Components.
         ButtonCreator creator = ButtonCreator.getInstance();
-        AbstractButton audioToggle = creator.create(Button.AUDIO_TOGGLE, RotatedIcon.Rotate.ABOUT_CENTER);
-        AbstractButton fullscreenToggle = creator.create(Button.FULLSCREEN_TOGGLE, RotatedIcon.Rotate.ABOUT_CENTER);
-        AbstractButton backButton = creator.create(Button.BACK, RotatedIcon.Rotate.ABOUT_CENTER);
+        AbstractButton audioToggle = creator.create(Button.AUDIO_TOGGLE, null);
+        AbstractButton fullscreenToggle = creator.create(Button.FULLSCREEN_TOGGLE, null);
+        AbstractButton backButton = creator.create(Button.BACK, null);
 
         // Images resizing.
-        ImageResizer.resize(audioToggle, 4.5);
-        ImageResizer.resize(fullscreenToggle, 4.0);
-        ImageResizer.resize(backButton, 4.0);
+        ImageResizer.resize(audioToggle, 2.5);
+        ImageResizer.resize(fullscreenToggle, 2.5);
+        ImageResizer.resize(backButton, 2.5);
 
         // Components settings.
         menuPanel.setFirstComponent(audioToggle);       // Audio toggle button.

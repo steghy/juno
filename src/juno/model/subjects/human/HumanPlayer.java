@@ -35,13 +35,12 @@ import java.util.Objects;
  * @param <T> The type of the card.
  */
 public class HumanPlayer<T>
-        extends
-        AbstractHumanPlayer<T>
-        implements
-        Restorable {
+        extends AbstractHumanPlayer<T>
+        implements Restorable {
 
-    // The removed value;
-    private boolean removed;
+    // It's true if the last card involved
+    // has been removed.
+    private boolean hasRemoved;
 
     // The last card involved.
     private T card;
@@ -70,7 +69,7 @@ public class HumanPlayer<T>
     public void add(@NotNull T card) {
         cards().add(card);
         this.card = card;
-        removed = false;
+        hasRemoved = false;
         updateAll();
     }
 
@@ -80,7 +79,7 @@ public class HumanPlayer<T>
         if(!result) throw new IllegalArgumentException(
                 "The card " + card + " is not in: " + cards());
         this.card = card;
-        removed = true;
+        hasRemoved = true;
         updateAll();
     }
 
@@ -89,8 +88,9 @@ public class HumanPlayer<T>
         return card;
     }
 
-    public boolean isRemoved() {
-        return removed;
+    @Override
+    public boolean hasRemoved() {
+        return hasRemoved;
     }
 
     @Override

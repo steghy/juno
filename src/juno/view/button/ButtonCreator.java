@@ -43,6 +43,10 @@ public class ButtonCreator
         extends AbstractGObjectCreator<InterfaceButton>
         implements InterfaceGSObjectCreator<AbstractButton, InterfaceButton> {
 
+    public String rollover = "_ROLLOVER";
+    public String selected = "_SELECTED";
+    public String extension = ".png";
+
     // The directory path provider.
     private InterfacePathProvider pathProvider;
 
@@ -73,9 +77,6 @@ public class ButtonCreator
     public AbstractButton create(@NotNull InterfaceButton button,
                                  RotatedIcon.Rotate rotate) {
         AbstractButton temp;
-        String rollover = "_ROLLOVER";
-        String selected = "_SELECTED";
-        String extension = ".png";
         InterfaceImageComponentInitializer initializer = getInitializer();
         InterfacePathProviderAssembler assembler = getAssembler();
         Objects.requireNonNull(assembler);

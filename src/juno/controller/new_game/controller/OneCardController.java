@@ -109,12 +109,8 @@ public class OneCardController<T>
         InterfacePlayer<T> current = Objects.requireNonNull(getProvider()).provide();
         if(current.cards().size() == 1) {
             if(current instanceof InterfaceAi<?,?> ai) {
-                if(!ai.uno()) {
-                    Objects.requireNonNull(penaltyExecutor).execute();
-                }
-                else {
-                    updateAll();
-                }
+                if(!ai.uno()) Objects.requireNonNull(penaltyExecutor).execute();
+                else updateAll();
             } else Objects.requireNonNull(penaltyTimer).startTimer();
         } else updateAll();
     }
@@ -123,9 +119,9 @@ public class OneCardController<T>
     public void update(@NotNull Object object) {
         // The update comes from the
         // WinConditionController class.
-        if (object instanceof Controller) {
+        if (object instanceof Controller)
             control();
-        } else throw new IllegalArgumentException(
+        else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". Controller type expected.");
     }

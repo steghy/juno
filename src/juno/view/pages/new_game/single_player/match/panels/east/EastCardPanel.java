@@ -108,7 +108,7 @@ public class EastCardPanel
         if(object instanceof GameStarter)
             showCard = false;
         else if(object instanceof AI<?, ?> ai) {
-            if(ai.getRemoved()) {
+            if(ai.hasRemoved()) {
                 int count = getComponentCount();
                 if(count == 0) throw new IllegalArgumentException(
                         "There is no components to remove.");
@@ -120,6 +120,7 @@ public class EastCardPanel
                     InterfaceCard card = (InterfaceCard) ai.provide();
                     gCard = (AbstractButton) GCardCreator.getInstance().create(Objects.requireNonNull(card), RotatedIcon.Rotate.UP);
                     ImageResizer.resize(gCard, 2.5);
+                    gCard.setEnabled(false);
                     add(gCard);
                 } else {
                     gCard = ButtonCreator.getInstance().create(Button.COVER, RotatedIcon.Rotate.UP);

@@ -36,7 +36,6 @@ import juno.view.button.Button;
 import juno.view.pages.new_game.card.NewGameCardPanel;
 import juno.view.pages.new_game.single_player.card.SinglePlayerCardPanel;
 import juno.view.util.ImageResizer;
-import juno.view.util.RotatedIcon;
 import juno.view.util.RoundedBorder;
 
 import javax.swing.*;
@@ -50,22 +49,23 @@ public class MenuPanelConfigurator {
     // Builds a MenuPanelConfigurator object.
     private MenuPanelConfigurator() {}
 
+    /** Configures the MenuPanel instance. */
     public static void configure() {
         // Main component.
         MenuPanel menuPanel = MenuPanel.getInstance();
 
         // Components.
         ButtonCreator creator = ButtonCreator.getInstance();
-        AbstractButton twoPlayers = creator.create(Button.TWO_PLAYERS, RotatedIcon.Rotate.ABOUT_CENTER);
-        AbstractButton threePlayers = creator.create(Button.THREE_PLAYERS, RotatedIcon.Rotate.ABOUT_CENTER);
-        AbstractButton fourPlayers = creator.create(Button.FOUR_PLAYERS, RotatedIcon.Rotate.ABOUT_CENTER);
-        AbstractButton backButton = creator.create(Button.BACK, RotatedIcon.Rotate.ABOUT_CENTER);
+        AbstractButton twoPlayers = creator.create(Button.TWO_PLAYERS, null);
+        AbstractButton threePlayers = creator.create(Button.THREE_PLAYERS, null);
+        AbstractButton fourPlayers = creator.create(Button.FOUR_PLAYERS, null);
+        AbstractButton backButton = creator.create(Button.BACK, null);
 
         // Images resizing.
-        ImageResizer.resize(twoPlayers, 4.0);
-        ImageResizer.resize(threePlayers, 4.0);
-        ImageResizer.resize(fourPlayers, 4.0);
-        ImageResizer.resize(backButton, 4.0);
+        ImageResizer.resize(twoPlayers, 2.5);
+        ImageResizer.resize(threePlayers, 2.5);
+        ImageResizer.resize(fourPlayers, 2.5);
+        ImageResizer.resize(backButton, 2.5);
 
         // Action listeners.
         // Change panel actions.
