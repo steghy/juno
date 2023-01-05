@@ -25,23 +25,39 @@
 
 package juno.view.pages.new_game.single_player;
 
+import juno.controller.util.InterfaceInitializer;
 import juno.view.pages.new_game.single_player.card.SinglePlayerCardPanelConfigurator;
 import juno.view.pages.new_game.single_player.difficulty.DifficultyInitializer;
 import juno.view.pages.new_game.single_player.match.MatchInitializer;
-import juno.view.pages.new_game.single_player.match.MatchPanel;
 import juno.view.pages.new_game.single_player.mode.ModeInitializer;
 import juno.view.pages.new_game.single_player.players.PlayersNumberInitializer;
+import juno.view.pages.new_game.single_player.winner.WinnerPanelConfigurator;
 
 /**
  * @author Simone Gentili
  */
-public class SinglePlayerInitializer {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // Builds a SinglePlayerInitializer object.
-    private SinglePlayerInitializer() {}
+    // The Initializer instance.
+    private static Initializer instance;
 
-    public static void initialize() {
+    // Builds the Initializer instance.
+    private Initializer() {}
+
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
+    public void initialize() {
         // Components initialization.
+        WinnerPanelConfigurator.configure();
         MatchInitializer.getInstance().initialize();
         DifficultyInitializer.initialize();
         ModeInitializer.initialize();

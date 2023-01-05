@@ -49,8 +49,8 @@ public class CirclePanelConfigurator {
         ImageLabel circle = new ImageLabel();
         ImageLabel invertedCircle = new ImageLabel();
         ImageComponentInitializer initializer = ImageComponentInitializer.getInstance();
-        initializer.initialize(circle, PathProviderAssembler.getInstance().assemble(ProgramDirectory.GIFS, "CIRCLE.png"), null);
-        initializer.initialize(invertedCircle, PathProviderAssembler.getInstance().assemble(ProgramDirectory.GIFS, "INVERTED_CIRCLE.png"), null);
+        initializer.initialize(circle, PathProviderAssembler.getInstance().assemble(ProgramDirectory.BUTTONS, "CIRCLE.png"), null);
+        initializer.initialize(invertedCircle, PathProviderAssembler.getInstance().assemble(ProgramDirectory.BUTTONS, "INVERTED_CIRCLE.png"), null);
 
         // Image Resizing.
         ImageResizer.resize(circle, 5.5);

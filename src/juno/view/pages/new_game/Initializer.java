@@ -25,23 +25,37 @@
 
 package juno.view.pages.new_game;
 
+import juno.controller.util.InterfaceInitializer;
 import juno.view.pages.new_game.card.NewGameCardPanelConfigurator;
 import juno.view.pages.new_game.menu.MenuPanelConfigurator;
 import juno.view.pages.new_game.multiplayer.card.MultiplayerInitializer;
-import juno.view.pages.new_game.single_player.SinglePlayerInitializer;
 import juno.view.pages.new_game.title.TitlePanelConfigurator;
 
 /**
  * @author Simone Gentili
  */
-public class NewGameInitializer {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // Builds a NewGameInitialization object.
-    private NewGameInitializer() {}
+    // The Initializer instance.
+    private static Initializer instance;
 
-    public static void initialize() {
+    // Builds the Initializer instance.
+    private Initializer() {}
+
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
+    public void initialize() {
         // Components initialization.
-        SinglePlayerInitializer.initialize();
+        juno.view.pages.new_game.single_player.Initializer.getInstance().initialize();
         MultiplayerInitializer.initialize();
 
         // Components configurations.

@@ -28,7 +28,6 @@ package juno.view.pages.pre_access.welcome.menu;
 import juno.controller.audio.SoundAction;
 import juno.controller.util.ExitAction;
 import juno.controller.pre_access.loggers.GuestLogger;
-import juno.model.data.io.output.ExitManager;
 import juno.model.sound.ButtonSoundPlayer;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
@@ -87,10 +86,8 @@ public class MenuPanelConfigurator {
         exitButton.addActionListener(new ExitAction(null));
 
         // Border settings.
-        RoundedBorder insideBorder = new RoundedBorder(
-                10, 1, null, Color.WHITE);
-        RoundedBorder outsideBorder = new RoundedBorder(
-                15, 1, null, Color.RED);
+        RoundedBorder insideBorder = new RoundedBorder(10, 1, null, Color.WHITE);
+        RoundedBorder outsideBorder = new RoundedBorder(15, 1, null, Color.GREEN);
         Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
         menuPanel.setBorder(border);
 

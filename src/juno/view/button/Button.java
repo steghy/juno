@@ -69,6 +69,8 @@ public enum Button
     FOUR_PLAYERS(true),
     PLAYERS(true),
     START(true),
+    RESTART(true),
+    WINNER(true),
 
     // MODE //
     MODE(true),

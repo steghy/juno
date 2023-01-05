@@ -23,11 +23,9 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.new_game.single_player.match.panels.winner;
+package juno.view.pages.new_game.single_player.winner;
 
-import juno.model.util.Observer;
 import juno.view.panels.AbstractFourthComponent;
-import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.util.Objects;
@@ -36,8 +34,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class WinnerPanel
-        extends AbstractFourthComponent
-        implements Observer {
+        extends AbstractFourthComponent {
 
     // The WinnerPanel instance.
     private static WinnerPanel instance;
@@ -60,13 +57,13 @@ public class WinnerPanel
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
 
-        // Winner label.
+        // The winner is button.
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
         gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,30,0);
+        gbc.insets = new Insets(0, 0, 30, 0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
         this.add(Objects.requireNonNull(getFirstComponent()), gbc);
@@ -77,7 +74,7 @@ public class WinnerPanel
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
         gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,0,0);
+        gbc.insets = new Insets(0, 0, 30, 0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
         this.add(Objects.requireNonNull(getSecondComponent()), gbc);
@@ -88,26 +85,21 @@ public class WinnerPanel
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
         gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,0,0);
+        gbc.insets = new Insets(0, 0, 30, 0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
         this.add(Objects.requireNonNull(getThirdComponent()), gbc);
 
-        // Avatar panel.
-        gbc.gridx = 1;
-        gbc.gridy = 2;
+        // Exit button.
+        gbc.gridx = 0;
+        gbc.gridy = 3;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
         gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,0,0);
+        gbc.insets = new Insets(0, 0, 0, 0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
         this.add(Objects.requireNonNull(getFourthComponent()), gbc);
-    }
-
-    @Override
-    public void update(@NotNull Object object) {
-
     }
 
 }

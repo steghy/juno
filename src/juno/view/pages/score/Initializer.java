@@ -23,32 +23,41 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.new_game.single_player.match.panels.winner;
+package juno.view.pages.score;
 
-import juno.view.button.Button;
-import juno.view.button.ButtonCreator;
-
-import javax.swing.*;
+import juno.controller.util.InterfaceInitializer;
+import juno.view.pages.score.menu.MenuPanelConfigurator;
+import juno.view.pages.score.title.TitlePanelConfigurator;
 
 /**
- *
  * @author Simone Gentili
  */
-public class WinnerPanelConfigurator {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // Builds a WinnerPanelConfigurator object.
-    private WinnerPanelConfigurator() {}
+    // The Initializer instance.
+    private static Initializer instance;
 
-    /** Configures the WinnerPanel instance. */
-    public static void configure() {
-        // Component.
-        WinnerPanel winnerPanel = WinnerPanel.getInstance();
+    // Builds the Initializer instance.
+    private Initializer() {}
 
-        // Components.
-        ButtonCreator creator = ButtonCreator.getInstance();
-        AbstractButton exitButton = creator.create(Button.EXIT, null);
-        AbstractButton restartButton = creator.create(Button.BACK, null);
-        AbstractButton winnerButton = creator.create(Button.BACK, null);
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
+    public void initialize() {
+        // Components configurations.
+        MenuPanelConfigurator.configure();
+        TitlePanelConfigurator.configure();
+
+        // Main component configuration.
+        ScorePanelConfigurator.configure();
     }
 
 }

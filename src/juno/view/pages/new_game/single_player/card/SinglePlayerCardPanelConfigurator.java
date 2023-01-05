@@ -27,10 +27,10 @@ package juno.view.pages.new_game.single_player.card;
 
 import juno.view.pages.new_game.single_player.difficulty.DifficultyPanel;
 import juno.view.pages.new_game.single_player.match.MatchPanel;
+import juno.view.pages.new_game.single_player.winner.WinnerPanel;
 import juno.view.pages.new_game.single_player.mode.ModePanel;
 import juno.view.pages.new_game.single_player.players.PlayersNumberPanel;
 
-import javax.swing.*;
 
 /**
  * @author Simone Gentili
@@ -40,6 +40,7 @@ public class SinglePlayerCardPanelConfigurator {
     // Builds a SinglePlayerCardPanelConfigurator object.
     private SinglePlayerCardPanelConfigurator() {}
 
+    /** Configures the SinglePlayerCardPanel instance. */
     public static void configure() {
         // Main component.
         SinglePlayerCardPanel singlePlayerCardPanel = SinglePlayerCardPanel.getInstance();
@@ -49,12 +50,14 @@ public class SinglePlayerCardPanelConfigurator {
         DifficultyPanel difficultyPanel = DifficultyPanel.getInstance();
         ModePanel modePanel = ModePanel.getInstance();
         MatchPanel matchPanel = MatchPanel.getInstance();
+        WinnerPanel winnerPanel = WinnerPanel.getInstance();
 
         // Components settings.
         singlePlayerCardPanel.setFirstComponent(playersNumberPanel); // Players number panel.
         singlePlayerCardPanel.setSecondComponent(difficultyPanel);   // Difficulty panel.
         singlePlayerCardPanel.setThirdComponent(modePanel);          // Mode panel.
         singlePlayerCardPanel.setFourthComponent(matchPanel);        // Match panel.
+        singlePlayerCardPanel.setFifthComponent(winnerPanel);        // Winner panel.
 
         // Main component initialization.
         singlePlayerCardPanel.init();

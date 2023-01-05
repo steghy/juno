@@ -105,14 +105,13 @@ public class Initializer
         // First discarded card manager.
         FirstDiscardedCardManager firstDiscardedCardManager = FirstDiscardedCardManager.getInstance();
 
+        WinnerManager winnerManager = WinnerManager.getInstance();
+
         //////////////////////////////////////////////////////////////////////////////////////
 
         // Win condition controller.
         discardedPile.addObserver(winConditionController);
         winConditionController.setProvider(currentPlayerProvider);
-        winConditionController.setStopper(stopper);
-        winConditionController.setPanelChanger(new PanelChanger(
-                SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MODE_PANEL));
 
         // One card controller.
         winConditionController.addObserver(oneCardController);
@@ -135,6 +134,11 @@ public class Initializer
         // First discarded card.
         firstDiscardedCardManager.setDiscardedPile(discardedPile);
         firstDiscardedCardManager.setDeck(deck);
+
+        // Winner manager.
+        winnerManager.setPanelChanger(new PanelChanger(
+                SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.WINNER_PANEL));
+        winnerManager.setStopper(stopper);
     }
 
 }

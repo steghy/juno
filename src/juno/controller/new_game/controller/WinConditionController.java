@@ -25,18 +25,14 @@
 
 package juno.controller.new_game.controller;
 
-import juno.controller.util.InterfacePanelChanger;
-import juno.controller.util.Stoppable;
 import juno.model.deck.InterfaceDiscardedPile;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.util.AbstractObservable;
 import juno.model.util.Provider;
 import juno.model.util.Observer;
-import juno.view.frame.Frame;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import javax.swing.*;
 import java.util.Objects;
 
 /**
@@ -50,14 +46,6 @@ public class WinConditionController<T>
     // The current player provider.
     @Nullable
     private Provider<InterfacePlayer<T>> provider;
-
-    // The stopper.
-    @Nullable
-    private Stoppable stopper;
-
-    // The panel changer.
-    @Nullable
-    private InterfacePanelChanger panelChanger;
 
     // The WinConditionController instance.
     private static WinConditionController<?> instance;
@@ -82,29 +70,11 @@ public class WinConditionController<T>
         this.provider = provider;
     }
 
-    /**
-     * Sets the timers stopper of this object.
-     * @param stopper A Stoppable object.
-     */
-    public void setStopper(@NotNull Stoppable stopper) {
-        this.stopper = stopper;
-    }
-
-    /**
-     * Sets the panel changer of this object.
-     * @param panelChanger An InterfacePanelChanger object.
-     */
-    public void setPanelChanger(@NotNull InterfacePanelChanger panelChanger) {
-        this.panelChanger = panelChanger;
-    }
-
     @Override
     public void control() {
         InterfacePlayer<T> current = Objects.requireNonNull(provider).provide();
         if(current.cards().isEmpty()) {
-            JOptionPane.showMessageDialog(Frame.getInstance(), current.name() + " has won!");
-            Objects.requireNonNull(stopper).stop();
-            Objects.requireNonNull(panelChanger).changePanel();
+            WinnerManager.getInstance().menage();
         } else updateAll();
     }
 

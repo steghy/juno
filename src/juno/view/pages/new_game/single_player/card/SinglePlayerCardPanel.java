@@ -25,7 +25,7 @@
 
 package juno.view.pages.new_game.single_player.card;
 
-import juno.view.panels.AbstractFourthComponent;
+import juno.view.panels.AbstractFifthComponent;
 
 import java.awt.*;
 import java.util.Objects;
@@ -34,7 +34,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class SinglePlayerCardPanel
-        extends AbstractFourthComponent {
+        extends AbstractFifthComponent {
 
     /** The 'Players number panel' key. */
     public static final String PLAYERS_NUMBER_PANEL = "Players number panel";
@@ -47,6 +47,9 @@ public class SinglePlayerCardPanel
 
     /** The 'Match panel' key. */
     public static final String MATCH_PANEL = "Match panel";
+
+    /** The 'Winner panel' key. */
+    public static final String WINNER_PANEL = "Winner panel";
 
     // The SinglePlayerCardPanel instance.
     private static SinglePlayerCardPanel instance;
@@ -71,6 +74,7 @@ public class SinglePlayerCardPanel
         add(Objects.requireNonNull(getSecondComponent()), DIFFICULTY_PANEL);
         add(Objects.requireNonNull(getThirdComponent()), MODE_PANEL);
         add(Objects.requireNonNull(getFourthComponent()), MATCH_PANEL);
+        add(Objects.requireNonNull(getFifthComponent()), WINNER_PANEL);
     }
 
 }

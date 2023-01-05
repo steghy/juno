@@ -34,8 +34,10 @@ import juno.view.button.ButtonCreator;
 import juno.view.pages.pre_access.card.PreAccessCardPanel;
 import juno.view.pages.pre_access.login.profiles_panel.ProfilesPanel;
 import juno.view.util.ImageResizer;
+import juno.view.util.RoundedBorder;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 /**
@@ -73,6 +75,12 @@ public class MenuPanelConfigurator {
         profilesPanel.setOpaque(false);
         menuPanel.setFirstComponent(profilesPanel); // Profiles panel.
         menuPanel.setSecondComponent(backButton);   // Back button.
+
+        // Border settings.
+        RoundedBorder insideBorder = new RoundedBorder(10, 1, null, Color.WHITE);
+        RoundedBorder outsideBorder = new RoundedBorder(25, 1, null, Color.GREEN);
+        Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
+        menuPanel.setBorder(border);
 
         // Main component initialization.
         menuPanel.init();

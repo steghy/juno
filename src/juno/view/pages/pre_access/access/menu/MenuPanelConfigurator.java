@@ -83,10 +83,8 @@ public class MenuPanelConfigurator {
         exitButton.addActionListener(new SoundAction(null, new ExitAction(null)));
 
         // Border setting.
-        RoundedBorder insideBorder = new RoundedBorder(
-                10, 1, null, Color.WHITE);
-        RoundedBorder outsideBorder = new RoundedBorder(
-                25, 1, null, Color.RED);
+        RoundedBorder insideBorder = new RoundedBorder(10, 1, null, Color.WHITE);
+        RoundedBorder outsideBorder = new RoundedBorder(25, 1, null, Color.GREEN);
         Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
         menuPanel.setBorder(border);
 

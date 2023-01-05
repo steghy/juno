@@ -75,8 +75,8 @@ public class MenuPanel
         gbc.weighty = 0.0;
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        gbc.anchor = GridBagConstraints.LINE_END;
-        gbc.insets = new Insets(0,0,10,0);
+        gbc.anchor = GridBagConstraints.LINE_START;
+        gbc.insets = new Insets(0,0,15,0);
         this.add(Objects.requireNonNull(getFirstComponent()), gbc);
         dataLines.put(Profile.PROFILE_NAME_KEY, (DataLine) getFirstComponent());
 
@@ -88,7 +88,7 @@ public class MenuPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.LINE_END;
-        gbc.insets = new Insets(0,0,10,0);
+        gbc.insets = new Insets(0,0,15,0);
         this.add(Objects.requireNonNull(getSecondComponent()), gbc);
         dataLines.put(Profile.NAME_KEY, (DataLine) getSecondComponent());
 
@@ -99,8 +99,8 @@ public class MenuPanel
         gbc.weighty = 0.0;
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        gbc.anchor = GridBagConstraints.LINE_END;
-        gbc.insets = new Insets(0,0,10,0);
+        gbc.anchor = GridBagConstraints.LINE_START;
+        gbc.insets = new Insets(0,0,30,0);
         this.add(Objects.requireNonNull(getThirdComponent()), gbc);
         dataLines.put(Profile.LAST_NAME_KEY, (DataLine) getThirdComponent());
 
@@ -112,7 +112,7 @@ public class MenuPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.LINE_END;
-        gbc.insets = new Insets(0,0,10,0);
+        gbc.insets = new Insets(0,0,30,0);
         this.add(Objects.requireNonNull(getFourthComponent()), gbc);
         dataLines.put(Profile.AGE_KEY, (DataLine) getFourthComponent());
 
@@ -123,8 +123,8 @@ public class MenuPanel
         gbc.weighty = 0.0;
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        gbc.anchor = GridBagConstraints.LINE_END;
-        gbc.insets = new Insets(0,0,5,0);
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(0,0,0,47);
         this.add(Objects.requireNonNull(getFifthComponent()), gbc);
 
         // Back button.
@@ -134,8 +134,8 @@ public class MenuPanel
         gbc.weighty = 0.0;
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        gbc.anchor = GridBagConstraints.LINE_START;
-        gbc.insets = new Insets(0,0,5,0);
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(0,0,0,0);
         this.add(Objects.requireNonNull(getSixthComponent()), gbc);
     }
 

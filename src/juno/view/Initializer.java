@@ -65,8 +65,8 @@ public class Initializer
         juno.view.gobject.color.Initializer.getInstance().initialize();
 
         // juno.view.pages package.
-        juno.view.pages.new_game.NewGameInitializer.initialize();
-        juno.view.pages.score.ScorePanelInitializer.initialize();
+        juno.view.pages.new_game.Initializer.getInstance().initialize();
+        juno.view.pages.score.Initializer.getInstance().initialize();
         juno.view.pages.pre_access.Initializer.getInstance().initialize();
         juno.view.pages.main.Initializer.getInstance().initialize();
         juno.view.pages.options.Initializer.getInstance().initialize();

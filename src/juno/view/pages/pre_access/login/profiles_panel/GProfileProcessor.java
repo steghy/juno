@@ -68,7 +68,7 @@ public class GProfileProcessor
     public AbstractButton process(@NotNull InterfaceGObject<String> gObject) {
         GObjectLabel<String> gProfile = (GObjectLabel<String>) gObject;
         AbstractButton button = ButtonCreator.getInstance()
-                .create(Button.PROFILE_BUTTON, RotatedIcon.Rotate.ABOUT_CENTER);
+                .create(Button.PROFILE_BUTTON, null);
         button.setLayout(new BorderLayout());
         button.setOpaque(false);
         button.add(gProfile, BorderLayout.CENTER);
