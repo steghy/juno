@@ -67,7 +67,7 @@ public class Main {
             ButtonSoundPlayer.getInstance().mute();
 
             // Fullscreen mode.
-            ((JToggleButton) Objects.requireNonNull(MenuPanel.getInstance().getSecondComponent())).doClick();
+            ((JToggleButton) Objects.requireNonNull(MenuPanel.getInstance().getThirdComponent())).doClick();
 
             ButtonSoundPlayer.getInstance().unmute();
 

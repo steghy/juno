@@ -31,7 +31,6 @@ import juno.view.gobject.InterfaceGObjectFactory;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import java.awt.*;
 
 /**
  * @author Simone Gentili
@@ -49,7 +48,7 @@ public class ProfilesPanel
     // Builds the ProfilesPanel instance.
     private ProfilesPanel() {
         setOpaque(false);
-        setLayout(new GridLayout(15, 1));
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     }
 
     /**

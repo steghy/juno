@@ -33,6 +33,9 @@ import juno.model.requester.PathProviderAssembler;
 
 import javax.swing.*;
 
+/**
+ * @author Simone Gentili
+ */
 public class Initializer
         implements InterfaceInitializer {
 
@@ -59,7 +62,7 @@ public class Initializer
         JPanel topCardPanel = TopCardPanel.getInstance();
         ImageComponentInitializer.getInstance()
                 .initialize(background,
-                        PathProviderAssembler.getInstance().assemble(ProgramDirectory.BACKGROUNDS, "background.gif"),
+                        PathProviderAssembler.getInstance().assemble(ProgramDirectory.BACKGROUNDS, "background.jpg"),
                         null);
         frame.setBackground(background);
         frame.setPanel(topCardPanel);

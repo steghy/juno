@@ -53,7 +53,8 @@ public enum Button
 
     // OPTIONS //
     SETTINGS(true),
-    AUDIO_TOGGLE(false),
+    AUDIO_TOGGLE_MUSIC(false),
+    AUDIO_TOGGLE_EFFECTS(false),
     FULLSCREEN_TOGGLE(false),
     BACK(true),
 

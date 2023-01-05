@@ -25,7 +25,7 @@
 
 package juno.view.pages.options.menu;
 
-import juno.view.panels.AbstractThirdComponent;
+import juno.view.panels.AbstractFourthComponent;
 
 import java.awt.*;
 import java.util.Objects;
@@ -34,7 +34,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class MenuPanel
-        extends AbstractThirdComponent {
+        extends AbstractFourthComponent {
 
     // The MenuPanel instance.
     private static MenuPanel instance;
@@ -62,22 +62,33 @@ public class MenuPanel
         gbc.gridy = 0;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-        gbc.anchor = GridBagConstraints.PAGE_START;
-        gbc.insets = new Insets(0,0,17,0);
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(0,0,30,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
         this.add(Objects.requireNonNull(getFirstComponent()), gbc);
+
+        // Toggle effects button.
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(0,0,30,0);
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
+        this.add(Objects.requireNonNull(getSecondComponent()), gbc);
 
         // Toggle full screen button.
         gbc.gridx = 0;
         gbc.gridy = 2;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-        gbc.anchor = GridBagConstraints.PAGE_START;
-        gbc.insets = new Insets(17,0,17,0);
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(0,0,30,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        this.add(Objects.requireNonNull(getSecondComponent()), gbc);
+        this.add(Objects.requireNonNull(getThirdComponent()), gbc);
 
         // Back button.
         gbc.gridx = 0;
@@ -85,10 +96,10 @@ public class MenuPanel
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
         gbc.anchor = GridBagConstraints.PAGE_START;
-        gbc.insets = new Insets(17,0,17,0);
+        gbc.insets = new Insets(0,0,0,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        this.add(Objects.requireNonNull(getThirdComponent()), gbc);
+        this.add(Objects.requireNonNull(getFourthComponent()), gbc);
     }
 
 }

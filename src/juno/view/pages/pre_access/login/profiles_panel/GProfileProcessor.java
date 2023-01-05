@@ -30,7 +30,7 @@ import juno.controller.pre_access.log_in.AccountSetter;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.GSetterAction;
 import juno.controller.util.PanelChanger;
-import juno.model.sound.WelcomeBackSoundPlayer;
+import juno.model.sound.WelcomeSoundPlayer;
 import juno.view.button.Button;
 import juno.view.button.ButtonCreator;
 import juno.view.gobject.GObjectLabel;
@@ -72,7 +72,7 @@ public class GProfileProcessor
         button.setLayout(new BorderLayout());
         button.setOpaque(false);
         button.add(gProfile, BorderLayout.CENTER);
-        ImageResizer.resize(button, 8.0);
+        ImageResizer.resize(button, 2.0);
         gProfile.setOpaque(false);
         gProfile.setText(gProfile.object());
         gProfile.setForeground(Color.WHITE);
@@ -81,7 +81,7 @@ public class GProfileProcessor
         gProfile.setHorizontalTextPosition(AbstractButton.CENTER);
         gProfile.setHorizontalAlignment(AbstractButton.CENTER);
         button.addActionListener(new GSetterAction<>(gProfile, AccountSetter.getInstance()));
-        button.addActionListener(new SoundAction(WelcomeBackSoundPlayer.getInstance(),
+        button.addActionListener(new SoundAction(WelcomeSoundPlayer.getInstance(),
                 new ChangePanelAction(new PanelChanger(TopCardPanel.getInstance(), TopCardPanel.MAIN_PANEL))));
         return button;
     }

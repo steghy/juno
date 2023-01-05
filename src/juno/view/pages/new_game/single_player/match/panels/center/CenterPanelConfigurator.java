@@ -69,14 +69,15 @@ public class CenterPanelConfigurator {
         unoButtonPanel.setFirstComponent(unoButton);
 
         // Image resizing.
-        ImageResizer.resize(exitButton, 4.0);
-        ImageResizer.resize(unoButton, 4.0);
+        ImageResizer.resize(exitButton, 3.5);
+        ImageResizer.resize(unoButton, 3.5);
 
         // Action listeners.
         // Exit button.
         exitButton.addActionListener(new SoundAction(ButtonSoundPlayer.getInstance(), new ChangePanelAction(
                 new PanelChanger(SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.MODE_PANEL))));
         exitButton.addActionListener(new StopAction(Stopper.getInstance(), null));
+
         // Uno button.
         StopAction stopAction = new StopAction(PenaltyTimer.getInstance(), unoButton);
         stopAction.addObserver(CardEffectController.getInstance());

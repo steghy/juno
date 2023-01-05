@@ -32,6 +32,7 @@ import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.factory.AiPlayerFactory;
 import juno.model.subjects.human.HumanPlayer;
 import juno.model.subjects.shift.CurrentPlayerProvider;
+import juno.model.subjects.shift.PlayersProvider;
 import juno.model.subjects.shift.TurnMover;
 import juno.model.util.Provider;
 import juno.view.avatar.AvatarPanel;
@@ -41,9 +42,11 @@ import juno.view.pages.new_game.single_player.match.panels.east.EastPanel;
 import juno.view.pages.new_game.single_player.match.panels.north.NorthCardPanel;
 import juno.view.pages.new_game.single_player.match.panels.north.NorthPanel;
 import juno.view.pages.new_game.single_player.match.panels.south.SouthCardPanel;
+import juno.view.pages.new_game.single_player.match.panels.south.SouthPanel;
 import juno.view.pages.new_game.single_player.match.panels.west.WestCardPanel;
 import juno.view.pages.new_game.single_player.match.panels.west.WestPanel;
 
+import java.awt.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -84,6 +87,16 @@ public class Initializer
         // Ai player factory.
         AiPlayerFactory<?, ?> aiPlayerFactory = AiPlayerFactory.getInstance();
 
+        // Avatar connector.
+        AvatarConnector<InterfaceCard> avatarConnector =
+                (AvatarConnector<InterfaceCard>) AvatarConnector.getInstance();
+
+        // Avatars.
+        Component northAvatar = NorthPanel.getInstance().getSecondComponent();
+        Component westAvatar  = WestPanel.getInstance().getSecondComponent();
+        Component eastAvatar  = EastPanel.getInstance().getSecondComponent();
+        Component southAvatar = SouthPanel.getInstance().getSecondComponent();
+
         ///////////////////////////////////////////////////////////////////
 
         // Connector.
@@ -99,13 +112,19 @@ public class Initializer
         connector.addObserver(panelIlluminator);
 
         // Ai avatar setter.
-        aiAvatarSetter.setNorth((AvatarPanel) Objects.requireNonNull(NorthPanel.getInstance().getSecondComponent()));
-        aiAvatarSetter.setEast((AvatarPanel) Objects.requireNonNull(EastPanel.getInstance().getSecondComponent()));
-        aiAvatarSetter.setWest((AvatarPanel) Objects.requireNonNull(WestPanel.getInstance().getSecondComponent()));
+        aiAvatarSetter.setNorth((AvatarPanel) Objects.requireNonNull(northAvatar));
+        aiAvatarSetter.setEast((AvatarPanel) Objects.requireNonNull(eastAvatar));
+        aiAvatarSetter.setWest((AvatarPanel) Objects.requireNonNull(westAvatar));
         aiAvatarSetter.setAvatarImageProvider(new RandomObjectProvider<>(List.of(AvatarImage.values())));
         aiAvatarSetter.setAvatarImageCreator(GAvatarImageCreator.getInstance());
         aiPlayerFactory.addObserver(aiAvatarSetter);
 
+        // Avatar connector.
+        avatarConnector.setNorth(northAvatar);
+        avatarConnector.setWest(westAvatar);
+        avatarConnector.setEast(eastAvatar);
+        avatarConnector.setSouth(Objects.requireNonNull(southAvatar));
+        PlayersProvider.getInstance().addObserver(avatarConnector);
     }
 
 }

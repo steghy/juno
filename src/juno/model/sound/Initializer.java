@@ -62,7 +62,7 @@ public class Initializer
         ButtonSoundPlayer buttonSoundPlayer = ButtonSoundPlayer.getInstance();
 
         // Welcome back sound player.
-        WelcomeBackSoundPlayer welcomeBackSoundPlayer = WelcomeBackSoundPlayer.getInstance();
+        WelcomeSoundPlayer welcomeBackSoundPlayer = WelcomeSoundPlayer.getInstance();
 
         // Uno sound player.
         UnoSoundPlayer unoSoundPlayer = UnoSoundPlayer.getInstance();
@@ -80,7 +80,7 @@ public class Initializer
 
         // Welcome back sound player.
         welcomeBackSoundPlayer.load(new File(
-                ProgramDirectory.EFFECTS.absolutePath(), "welcome-back.wav"
+                ProgramDirectory.EFFECTS.absolutePath(), "welcome.wav"
         ));
 
         // Uno sound player.

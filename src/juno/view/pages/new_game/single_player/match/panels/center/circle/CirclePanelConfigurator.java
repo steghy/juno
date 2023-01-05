@@ -53,8 +53,8 @@ public class CirclePanelConfigurator {
         initializer.initialize(invertedCircle, PathProviderAssembler.getInstance().assemble(ProgramDirectory.GIFS, "INVERTED_CIRCLE.png"), null);
 
         // Image Resizing.
-        ImageResizer.resize(circle, 4.5);
-        ImageResizer.resize(invertedCircle, 4.5);
+        ImageResizer.resize(circle, 5.5);
+        ImageResizer.resize(invertedCircle, 5.5);
 
         // Settings.
         circlePanel.setFirstComponent(circle);

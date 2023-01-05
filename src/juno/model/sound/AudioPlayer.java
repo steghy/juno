@@ -74,7 +74,7 @@ public class AudioPlayer
 	public void load(@NotNull List<File> files) {
 		this.files.clear();
 		this.files.addAll(files);
-		this.files.initialize();
+		this.files.initialize(2);
 		super.load(this.files.current());
 	}
 

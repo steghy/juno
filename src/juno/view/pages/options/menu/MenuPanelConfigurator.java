@@ -30,6 +30,8 @@ import juno.controller.audio.SoundAction;
 import juno.controller.util.*;
 import juno.model.sound.AudioPlayer;
 import juno.model.sound.ButtonSoundPlayer;
+import juno.model.sound.UnoSoundPlayer;
+import juno.model.sound.WelcomeSoundPlayer;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
 import juno.view.frame.Frame;
@@ -56,26 +58,38 @@ public class MenuPanelConfigurator {
 
         // Components.
         ButtonCreator creator = ButtonCreator.getInstance();
-        AbstractButton audioToggle = creator.create(Button.AUDIO_TOGGLE, null);
+        AbstractButton audioMusicToggle = creator.create(Button.AUDIO_TOGGLE_MUSIC, null);
+        AbstractButton audioEffectToggle = creator.create(Button.AUDIO_TOGGLE_EFFECTS, null);
         AbstractButton fullscreenToggle = creator.create(Button.FULLSCREEN_TOGGLE, null);
         AbstractButton backButton = creator.create(Button.BACK, null);
 
         // Images resizing.
-        ImageResizer.resize(audioToggle, 2.5);
+        ImageResizer.resize(audioMusicToggle, 2.5);
+        ImageResizer.resize(audioEffectToggle, 2.5);
         ImageResizer.resize(fullscreenToggle, 2.5);
         ImageResizer.resize(backButton, 2.5);
 
         // Components settings.
-        menuPanel.setFirstComponent(audioToggle);       // Audio toggle button.
-        menuPanel.setSecondComponent(fullscreenToggle); // Full screen toggle button.
-        menuPanel.setThirdComponent(backButton);        // Back button.
+        menuPanel.setFirstComponent(audioMusicToggle);  // Audio music toggle button.
+        menuPanel.setSecondComponent(audioEffectToggle);// Audio effects toggle button.
+        menuPanel.setThirdComponent(fullscreenToggle);  // Full screen toggle button.
+        menuPanel.setFourthComponent(backButton);       // Back button.
 
         // Action listeners.
         ButtonSoundPlayer buttonSoundPlayer = ButtonSoundPlayer.getInstance();
-        audioToggle.addActionListener(new SoundAction(buttonSoundPlayer,
+
+        audioMusicToggle.addActionListener(new SoundAction(buttonSoundPlayer,
                 new AudioSwitchAction(AudioPlayer.getInstance())));
+
+        // Audio effect toggle.
+        audioEffectToggle.addActionListener(new SoundAction(buttonSoundPlayer, new AudioSwitchAction(ButtonSoundPlayer.getInstance())));
+        audioEffectToggle.addActionListener(new AudioSwitchAction(UnoSoundPlayer.getInstance()));
+        audioEffectToggle.addActionListener(new AudioSwitchAction(WelcomeSoundPlayer.getInstance()));
+
+
         fullscreenToggle.addActionListener(new SoundAction(buttonSoundPlayer,
                 new SetterAction<>(Frame.getInstance(), FullScreenSetter.getInstance())));
+
         backButton.addActionListener(new SoundAction(buttonSoundPlayer,
                 new ChangePanelAction(new PanelChanger(MainCardPanel.getInstance(), MainCardPanel.MAIN_PANEL))));
 
