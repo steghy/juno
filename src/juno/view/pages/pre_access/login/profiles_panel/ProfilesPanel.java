@@ -48,7 +48,9 @@ public class ProfilesPanel
     // Builds the ProfilesPanel instance.
     private ProfilesPanel() {
         setOpaque(false);
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        BoxLayout boxLayout = new BoxLayout(this, BoxLayout.Y_AXIS);
+        setLayout(boxLayout);
+
     }
 
     /**

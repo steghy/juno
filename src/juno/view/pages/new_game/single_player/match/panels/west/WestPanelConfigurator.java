@@ -56,6 +56,7 @@ public class WestPanelConfigurator {
         westCardScrollPanel.setIgnoreRepaint(false);
         westCardScrollPanel.setMinimumSize(new Dimension(150, 600));
         westCardScrollPanel.getViewport().setOpaque(false);
+        westCardScrollPanel.setBorder(BorderFactory.createEmptyBorder());
         westCardScrollPanel.setOpaque(false);
 
         // Observer / Observable.

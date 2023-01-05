@@ -25,9 +25,6 @@
 
 package juno.view.pages.pre_access.login.profiles_panel;
 
-import juno.view.button.Button;
-import juno.view.button.ButtonCreator;
-
 /**
  * @author Simone Gentili
  */

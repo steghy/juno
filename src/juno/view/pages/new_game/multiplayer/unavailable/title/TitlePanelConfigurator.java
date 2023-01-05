@@ -25,9 +25,9 @@
 
 package juno.view.pages.new_game.multiplayer.unavailable.title;
 
-import juno.view.button.ButtonCreator;
-import juno.view.button.Button;
-import juno.view.util.ImageResizer;
+import juno.init.ProgramDirectory;
+import juno.model.requester.PathProviderAssembler;
+import juno.view.img_initializer.ImageComponentInitializer;
 
 import javax.swing.*;
 
@@ -45,14 +45,15 @@ public class TitlePanelConfigurator {
         TitlePanel titlePanel = TitlePanel.getInstance();
 
         // Component.
-        ButtonCreator creator = ButtonCreator.getInstance();
-        AbstractButton titleButton = creator.create(Button.UNAVAILABLE_SERVICE, null);
+        JLabel ghostGif = new JLabel();
 
-        // Image resizing.
-        ImageResizer.resize(titleButton, 2.0);
+        ImageComponentInitializer.getInstance()
+                .initialize(ghostGif,
+                        PathProviderAssembler.getInstance().assemble(ProgramDirectory.GIFS, "ghost.gif"),
+                        null);
 
         // Component setting.
-        titlePanel.setFirstComponent(titleButton); // Title button.
+        titlePanel.setFirstComponent(ghostGif); // Title button.
 
         // Main component initialization.
         titlePanel.init();

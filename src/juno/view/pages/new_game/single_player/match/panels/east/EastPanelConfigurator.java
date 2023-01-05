@@ -27,8 +27,10 @@ package juno.view.pages.new_game.single_player.match.panels.east;
 
 import juno.controller.new_game.GameStarter;
 import juno.view.avatar.AvatarPanel;
+import juno.view.util.RoundedBorder;
 
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;
 
 /**
@@ -55,8 +57,19 @@ public class EastPanelConfigurator {
         eastCardScrollPanel.setPreferredSize(new Dimension(150, 600));
         eastCardScrollPanel.setIgnoreRepaint(false);
         eastCardScrollPanel.setMinimumSize(new Dimension(150, 600));
+        eastCardScrollPanel.setBorder(BorderFactory.createEmptyBorder());
         eastCardScrollPanel.getViewport().setOpaque(false);
         eastCardScrollPanel.setOpaque(false);
+        JScrollBar bar = eastCardScrollPanel.getVerticalScrollBar();
+        bar.setOpaque(false);
+        bar.setBorder(BorderFactory.createCompoundBorder(bar.getBorder(), new RoundedBorder(10, 1, null, Color.WHITE)));
+        bar.setPreferredSize(new Dimension(5, 9));
+        bar.setUI(new BasicScrollBarUI() {
+            @Override
+            protected void configureScrollBarColors() {
+                this.thumbColor = Color.GREEN;
+            }
+        });
 
         // Observer / Observable.
         GameStarter.getInstance().addObserver(eastCardPanel);

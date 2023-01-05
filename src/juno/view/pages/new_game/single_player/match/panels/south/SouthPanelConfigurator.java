@@ -37,8 +37,10 @@ import juno.model.subjects.shift.TurnMover;
 import juno.model.util.Provider;
 import juno.model.util.Setter;
 import juno.view.avatar.UserAvatarPanel;
+import juno.view.util.RoundedBorder;
 
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;
 
 /**
@@ -74,7 +76,18 @@ public class SouthPanelConfigurator {
         southCardScrollPanel.setIgnoreRepaint(false);
         southCardScrollPanel.setMinimumSize(new Dimension(600, 150));
         southCardScrollPanel.getViewport().setOpaque(false);
+        southCardScrollPanel.setBorder(BorderFactory.createEmptyBorder());
         southCardScrollPanel.setOpaque(false);
+        JScrollBar bar = southCardScrollPanel.getHorizontalScrollBar();
+        bar.setOpaque(false);
+        bar.setBorder(BorderFactory.createCompoundBorder(bar.getBorder(), new RoundedBorder(10, 1, null, Color.WHITE)));
+        bar.setPreferredSize(new Dimension(5, 9));
+        bar.setUI(new BasicScrollBarUI() {
+            @Override
+            protected void configureScrollBarColors() {
+                this.thumbColor = Color.GREEN;
+            }
+        });
 
         // Observer / Observable.
         GameStarter.getInstance().addObserver(southCardPanel);

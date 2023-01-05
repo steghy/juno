@@ -38,6 +38,7 @@ import juno.view.util.RoundedBorder;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;
 
 /**
@@ -65,15 +66,28 @@ public class MenuPanelConfigurator {
                 new ChangePanelAction(new PanelChanger(PreAccessCardPanel.getInstance(), PreAccessCardPanel.ACCESS_PANEL))));
 
         // Components setting.
-        JScrollPane profilesPanel = new JScrollPane(ProfilesPanel.getInstance(),
+        JScrollPane profilesScrollPanel = new JScrollPane(ProfilesPanel.getInstance(),
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        profilesPanel.setPreferredSize(new Dimension(200, 500));
-        profilesPanel.setIgnoreRepaint(true);
-        profilesPanel.setMinimumSize(new Dimension(200, 500));
-        profilesPanel.getViewport().setOpaque(false);
-        profilesPanel.setOpaque(false);
-        menuPanel.setFirstComponent(profilesPanel); // Profiles panel.
+        profilesScrollPanel.setPreferredSize(new Dimension(200, 500));
+        profilesScrollPanel.setIgnoreRepaint(true);
+        profilesScrollPanel.setMinimumSize(new Dimension(200, 500));
+        profilesScrollPanel.setBorder(BorderFactory.createEmptyBorder());
+        profilesScrollPanel.getViewport().setOpaque(false);
+        profilesScrollPanel.setOpaque(false);
+        JScrollBar bar = profilesScrollPanel.getHorizontalScrollBar();
+        bar.setOpaque(false);
+        bar.setBorder(BorderFactory.createCompoundBorder(bar.getBorder(), new RoundedBorder(10, 1, null, Color.WHITE)));
+        bar.setPreferredSize(new Dimension(5, 9));
+        bar.setUI(new BasicScrollBarUI() {
+            @Override
+            protected void configureScrollBarColors() {
+                this.thumbColor = Color.GREEN;
+            }
+        });
+
+        // Menu panel settings.
+        menuPanel.setFirstComponent(profilesScrollPanel); // Profiles panel.
         menuPanel.setSecondComponent(backButton);   // Back button.
 
         // Border settings.

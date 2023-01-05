@@ -56,12 +56,10 @@ public class MenuPanelConfigurator {
         // Components.
         ButtonCreator creator = ButtonCreator.getInstance();
         AbstractButton singlePlayer = creator.create(Button.SINGLE_PLAYER, null);
-        AbstractButton multiPlayer = creator.create(Button.MULTIPLAYER, null);
         AbstractButton backButton = creator.create(Button.BACK, null);
 
         // Images resizing.
         ImageResizer.resize(singlePlayer, 2.5);
-        ImageResizer.resize(multiPlayer, 2.5);
         ImageResizer.resize(backButton, 2.5);
 
         // Border settings.
@@ -74,15 +72,12 @@ public class MenuPanelConfigurator {
         ButtonSoundPlayer buttonSoundPlayer = ButtonSoundPlayer.getInstance();
         singlePlayer.addActionListener(new SoundAction(buttonSoundPlayer, new ChangePanelAction(
                 new PanelChanger(NewGameCardPanel.getInstance(), NewGameCardPanel.SINGLE_PLAYER_PANEL))));
-        multiPlayer.addActionListener(new SoundAction(buttonSoundPlayer, new ChangePanelAction(
-                new PanelChanger(NewGameCardPanel.getInstance(), NewGameCardPanel.MULTIPLAYER_PANEL))));
         backButton.addActionListener(new SoundAction(buttonSoundPlayer, new ChangePanelAction(
                 new PanelChanger(MainCardPanel.getInstance(), MainCardPanel.MAIN_PANEL))));
 
         // Components settings.
-        menuPanel.setFirstComponent(singlePlayer);    // Single-player button.
-        menuPanel.setSecondComponent(multiPlayer);    // Multiplayer button.
-        menuPanel.setThirdComponent(backButton);      // Back button.
+        menuPanel.setFirstComponent(singlePlayer);   // Single-player button.
+        menuPanel.setSecondComponent(backButton);    // Back button.
 
         // Main component initialization.
         menuPanel.init();

@@ -25,9 +25,6 @@
 
 package juno.view.pages.pre_access.login.profiles_panel;
 
-import juno.view.gobject.InterfaceGObject;
-
-import javax.swing.*;
 
 /**
  * @author Simone Gentili
