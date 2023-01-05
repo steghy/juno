@@ -52,7 +52,7 @@ public class AvatarImagesPanelConfigurator {
                     gAvatarImage.addActionListener(new GSetterAction<>(gAvatarImage, avatarImageSetter));
                     gAvatarImage.setEnabled(false);
                     avatarImage.addObserver(gAvatarImage);
-                    panel.add(gAvatarImage);
+                    panel.addComponent(gAvatarImage);
                 });
     }
 

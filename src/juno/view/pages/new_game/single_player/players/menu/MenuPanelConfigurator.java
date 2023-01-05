@@ -86,11 +86,9 @@ public class MenuPanelConfigurator {
         fourPlayers.addActionListener(new SetterAction<>(4, playersSetter));
 
         // Border settings.
-        RoundedBorder insideBorder = new RoundedBorder(
-                10, 1, null, Color.WHITE);
-        RoundedBorder outsideBorder = new RoundedBorder(
-                25, 1, null, Color.RED);
-        Border border = BorderFactory.createCompoundBorder(outsideBorder, insideBorder);
+        RoundedBorder insideBorder = new RoundedBorder(10, 1, null, Color.WHITE);
+        RoundedBorder outsideBorder = new RoundedBorder(25, 1, null, Color.RED);
+        Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
         menuPanel.setBorder(border);
 
         // Components settings.

@@ -38,7 +38,6 @@ import juno.view.button.Button;
 import juno.view.img_initializer.ImageComponentInitializer;
 import juno.view.pages.new_game.single_player.card.SinglePlayerCardPanel;
 import juno.view.util.ImageResizer;
-import juno.view.util.RotatedIcon;
 import juno.view.util.RoundedBorder;
 
 import javax.swing.*;
@@ -63,7 +62,7 @@ public class MenuPanelConfigurator {
         AbstractButton classicModeButton = creator.create(Button.CLASSIC, null);
         JLabel classicModeArtwork = new JLabel();
         ImageComponentInitializer.getInstance().initialize(classicModeArtwork,
-                PathProviderAssembler.getInstance().assemble(ProgramDirectory.GIFS, "reverse.gif"),
+                PathProviderAssembler.getInstance().assemble(ProgramDirectory.GIFS, "skeleton.gif"),
                 null);
         AbstractButton backButton = creator.create(Button.BACK, null);
 
@@ -84,7 +83,7 @@ public class MenuPanelConfigurator {
         // Border settings.
         RoundedBorder insideBorder = new RoundedBorder(10, 1, null, Color.WHITE);
         RoundedBorder outsideBorder = new RoundedBorder(25, 1, null, Color.RED);
-        Border border = BorderFactory.createCompoundBorder(outsideBorder, insideBorder);
+        Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
         difficultyPanel.setBorder(border);
 
         // Components settings.

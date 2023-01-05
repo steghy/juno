@@ -28,7 +28,6 @@ package juno.view.pages.new_game.single_player.match.panels.south;
 import juno.controller.new_game.GameStarter;
 import juno.controller.new_game.dispenser.CardDispenser;
 import juno.controller.new_game.human.DiscardedCardSetter;
-import juno.controller.new_game.human.PassTurnAction;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.CompatibilityChecker;
 import juno.model.subjects.InterfacePlayer;
@@ -57,7 +56,8 @@ public class SouthPanelConfigurator {
         SouthPanel southPanel = SouthPanel.getInstance();
 
         // Avatar panel.
-        UserAvatarPanel avatarPanel = new UserAvatarPanel(4.5);
+        UserAvatarPanel avatarPanel = new UserAvatarPanel();
+        avatarPanel.init();
 
         // Human player.
         HumanPlayer<InterfaceCard> humanPlayer = (HumanPlayer<InterfaceCard>) HumanPlayer.getInstance();

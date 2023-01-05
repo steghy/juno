@@ -46,7 +46,7 @@ public class WestPanelConfigurator {
 
         // Component.
         WestCardPanel westCardPanel = WestCardPanel.getInstance();
-        AvatarPanel avatarPanel = new AvatarPanel(4.5);
+        AvatarPanel avatarPanel = new AvatarPanel();
 
         // East card panel.
         JScrollPane westCardScrollPanel = new JScrollPane(westCardPanel,

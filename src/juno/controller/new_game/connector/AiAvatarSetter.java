@@ -26,13 +26,11 @@
 package juno.controller.new_game.connector;
 
 import juno.model.data.awards.avatar.InterfaceAvatarImage;
-import juno.model.data.awards.frame.InterfaceAvatarFrame;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.util.Observer;
 import juno.model.util.Provider;
 import juno.view.avatar.AvatarPanel;
 import juno.view.gobject.InterfaceGObjectCreator;
-import juno.view.util.ImageButton;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -62,17 +60,9 @@ public class AiAvatarSetter
     @Nullable
     private RandomObjectProvider<InterfaceAvatarImage> avatarImageProvider;
 
-    // The avatar frame provider.
-    @Nullable
-    private RandomObjectProvider<InterfaceAvatarFrame> avatarFrameProvider;
-
     // The avatar image creator.
     @Nullable
     private InterfaceGObjectCreator<InterfaceAvatarImage> avatarImageCreator;
-
-    // The graphic avatar frame creator.
-    @Nullable
-    private InterfaceGObjectCreator<InterfaceAvatarFrame> avatarFrameCreator;
 
     // The AiAvatarSetter instance.
     private static AiAvatarSetter instance;
@@ -98,27 +88,11 @@ public class AiAvatarSetter
     }
 
     /**
-     * Sets the avatar frame provider of this object.
-     * @param avatarFrameProvider A Provider object.
-     */
-    public void setAvatarFrameProvider(@NotNull RandomObjectProvider<InterfaceAvatarFrame> avatarFrameProvider) {
-        this.avatarFrameProvider = avatarFrameProvider;
-    }
-
-    /**
      * Sets the graphic avatar image creator of this object.
      * @param avatarImageCreator An InterfaceGObjectCreator object.
      */
     public void setAvatarImageCreator(@NotNull InterfaceGObjectCreator<InterfaceAvatarImage> avatarImageCreator) {
         this.avatarImageCreator = avatarImageCreator;
-    }
-
-    /**
-     * Sets the graphic avatar frame creator of this object.
-     * @param avatarFrameCreator An InterfaceGObjectCreator object.
-     */
-    public void setAvatarFrameCreator(@NotNull InterfaceGObjectCreator<InterfaceAvatarFrame> avatarFrameCreator) {
-        this.avatarFrameCreator = avatarFrameCreator;
     }
 
     @Override
@@ -136,17 +110,14 @@ public class AiAvatarSetter
 
             // Provider.
             Objects.requireNonNull(avatarImageProvider);
-            Objects.requireNonNull(avatarFrameProvider);
 
             // Creators.
             Objects.requireNonNull(avatarImageCreator);
-            Objects.requireNonNull(avatarFrameCreator);
 
             // One player case.
             if(players.size() == 1) {
                 north.setAvatarName(new JLabel(players.get(0).name()));
-                north.setAvatarImage((ImageButton) avatarImageCreator.create(avatarImageProvider.provide(), null));
-                north.setAvatarFrame((ImageButton) avatarFrameCreator.create(avatarFrameProvider.provide(), null));
+                north.setAvatarImage((JButton) avatarImageCreator.create(avatarImageProvider.provide(), null));
                 north.init();
             }
 
@@ -155,14 +126,12 @@ public class AiAvatarSetter
 
                 // West panel.
                 west.setAvatarName(new JLabel(players.get(0).name()));
-                west.setAvatarImage((ImageButton) avatarImageCreator.create(avatarImageProvider.provide(), null));
-                west.setAvatarFrame((ImageButton) avatarFrameCreator.create(avatarFrameProvider.provide(), null));
+                west.setAvatarImage((JButton) avatarImageCreator.create(avatarImageProvider.provide(), null));
                 west.init();
 
                 // North panel.
                 north.setAvatarName(new JLabel(players.get(1).name()));
-                north.setAvatarImage((ImageButton) avatarImageCreator.create(avatarImageProvider.provide(), null));
-                north.setAvatarFrame((ImageButton) avatarFrameCreator.create(avatarFrameProvider.provide(), null));
+                north.setAvatarImage((JButton) avatarImageCreator.create(avatarImageProvider.provide(), null));
                 north.init();
             }
 
@@ -171,20 +140,17 @@ public class AiAvatarSetter
 
                 // West panel.
                 west.setAvatarName(new JLabel(players.get(0).name()));
-                west.setAvatarImage((ImageButton) avatarImageCreator.create(avatarImageProvider.provide(), null));
-                west.setAvatarFrame((ImageButton) avatarFrameCreator.create(avatarFrameProvider.provide(), null));
+                west.setAvatarImage((JButton) avatarImageCreator.create(avatarImageProvider.provide(), null));
                 west.init();
 
                 // North panel.
                 north.setAvatarName(new JLabel(players.get(1).name()));
-                north.setAvatarImage((ImageButton) avatarImageCreator.create(avatarImageProvider.provide(), null));
-                north.setAvatarFrame((ImageButton) avatarFrameCreator.create(avatarFrameProvider.provide(), null));
+                north.setAvatarImage((JButton) avatarImageCreator.create(avatarImageProvider.provide(), null));
                 north.init();
 
                 // East panel.
                 east.setAvatarName(new JLabel(players.get(2).name()));
-                east.setAvatarImage((ImageButton) avatarImageCreator.create(avatarImageProvider.provide(), null));
-                east.setAvatarFrame((ImageButton) avatarFrameCreator.create(avatarFrameProvider.provide(), null));
+                east.setAvatarImage((JButton) avatarImageCreator.create(avatarImageProvider.provide(), null));
                 east.init();
             }
 
@@ -193,7 +159,6 @@ public class AiAvatarSetter
                     "Invalid number of players.");
 
             // Reset.
-            avatarFrameProvider.reset();
             avatarImageProvider.reset();
 
 

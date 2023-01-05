@@ -46,7 +46,7 @@ public class EastPanelConfigurator {
 
         // Component.
         EastCardPanel eastCardPanel = EastCardPanel.getInstance();
-        AvatarPanel avatarPanel = new AvatarPanel(4.5);
+        AvatarPanel avatarPanel = new AvatarPanel();
 
         // East card panel.
         JScrollPane eastCardScrollPanel = new JScrollPane(eastCardPanel,

@@ -30,12 +30,9 @@ import juno.model.data.avatar.AvatarFrameSetter;
 import juno.model.data.avatar.AvatarImageSetter;
 import juno.model.data.avatar.AvatarNameSetter;
 import juno.model.data.awards.avatar.InterfaceAvatarImage;
-import juno.model.data.awards.frame.InterfaceAvatarFrame;
 import juno.model.util.Observer;
 import juno.view.gobject.avatars.GAvatarImage;
 import juno.view.gobject.avatars.GAvatarImageCreator;
-import juno.view.gobject.frames.GAvatarFrame;
-import juno.view.gobject.frames.GAvatarFrameCreator;
 
 import javax.swing.*;
 
@@ -45,14 +42,11 @@ public class UserAvatarPanel
     /**
      * Builds an AvatarPanel with the specified
      * dimension parameter.
-     *
-     * @param dimensionParameter A double value.
      */
-    public UserAvatarPanel(double dimensionParameter) {
-        super(dimensionParameter);
+    public UserAvatarPanel() {
+        super();
         AvatarNameSetter.getInstance().addObserver(this);
         AvatarImageSetter.getInstance().addObserver(this);
-        AvatarFrameSetter.getInstance().addObserver(this);
         super.init();
     }
 
@@ -67,18 +61,13 @@ public class UserAvatarPanel
             setAvatarImage(gAvatarImage);
         }
 
-        // Avatar frame case.
-        else if(object instanceof AvatarFrameSetter) {
-            GAvatarFrame<InterfaceAvatarFrame> avatarFrame =
-                    (GAvatarFrame<InterfaceAvatarFrame>) GAvatarFrameCreator.getInstance()
-                            .create(avatar.getAvatarFrame(), null);
-            setAvatarFrame(avatarFrame);
-        }
-
         // Avatar name case.
         else if(object instanceof AvatarNameSetter) {
             setAvatarName(new JLabel(avatar.getAvatarName()));
-        } else throw new IllegalArgumentException(
+        }
+
+        // Invalid case.
+        else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". AvatarImageSetter, AvatarFrameSetter or " +
                         "AvatarNameSetter type expected.");

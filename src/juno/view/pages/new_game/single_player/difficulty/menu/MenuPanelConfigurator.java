@@ -85,14 +85,10 @@ public class MenuPanelConfigurator {
         mediumDifficultyButton.addActionListener(new SetterAction<>(Difficulty.MEDIUM, difficultySetter));
         hardDifficultyButton.addActionListener(new SetterAction<>(Difficulty.HARD, difficultySetter));
 
-        // Inside Border.
-        RoundedBorder insideBorder = new RoundedBorder(
-                10, 1, null, Color.WHITE);
-        // Outside Border.
-        RoundedBorder outsideBorder = new RoundedBorder(
-                25, 1, null, Color.RED);
-        // Composed Border.
-        Border border = BorderFactory.createCompoundBorder(outsideBorder, insideBorder);
+        // Border settings.
+        RoundedBorder insideBorder = new RoundedBorder(10, 1, null, Color.WHITE);
+        RoundedBorder outsideBorder = new RoundedBorder(25, 1, null, Color.RED);
+        Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
         menuPanel.setBorder(border);
 
         // Setting components.

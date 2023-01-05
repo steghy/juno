@@ -55,13 +55,13 @@ public class MainPanelConfigurator {
         // Components.
         TitlePanel titlePanel = TitlePanel.getInstance();
         MenuPanel menuPanel = MenuPanel.getInstance();
-        UserAvatarPanel avatarPanel = new UserAvatarPanel(3.0);
+        UserAvatarPanel avatarPanel = new UserAvatarPanel();
 
         // Log out button.
         AbstractButton logOutButton = ButtonCreator.getInstance().create(juno.view.button.Button.LOG_OUT, null);
 
         // Image resizing.
-        ImageResizer.resize(logOutButton, 7.0);
+        ImageResizer.resize(logOutButton, 6.0);
 
         // Avatar label.
         JLabel label = new JLabel();

@@ -28,7 +28,6 @@ package juno.controller.new_game.connector;
 import juno.controller.util.InterfaceInitializer;
 import juno.model.card.InterfaceCard;
 import juno.model.data.awards.avatar.AvatarImage;
-import juno.model.data.awards.frame.AvatarFrame;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.factory.AiPlayerFactory;
 import juno.model.subjects.human.HumanPlayer;
@@ -37,7 +36,6 @@ import juno.model.subjects.shift.TurnMover;
 import juno.model.util.Provider;
 import juno.view.avatar.AvatarPanel;
 import juno.view.gobject.avatars.GAvatarImageCreator;
-import juno.view.gobject.frames.GAvatarFrameCreator;
 import juno.view.pages.new_game.single_player.match.panels.east.EastCardPanel;
 import juno.view.pages.new_game.single_player.match.panels.east.EastPanel;
 import juno.view.pages.new_game.single_player.match.panels.north.NorthCardPanel;
@@ -104,9 +102,7 @@ public class Initializer
         aiAvatarSetter.setNorth((AvatarPanel) Objects.requireNonNull(NorthPanel.getInstance().getSecondComponent()));
         aiAvatarSetter.setEast((AvatarPanel) Objects.requireNonNull(EastPanel.getInstance().getSecondComponent()));
         aiAvatarSetter.setWest((AvatarPanel) Objects.requireNonNull(WestPanel.getInstance().getSecondComponent()));
-        aiAvatarSetter.setAvatarFrameProvider(new RandomObjectProvider<>(List.of(AvatarFrame.values())));
         aiAvatarSetter.setAvatarImageProvider(new RandomObjectProvider<>(List.of(AvatarImage.values())));
-        aiAvatarSetter.setAvatarFrameCreator(GAvatarFrameCreator.getInstance());
         aiAvatarSetter.setAvatarImageCreator(GAvatarImageCreator.getInstance());
         aiPlayerFactory.addObserver(aiAvatarSetter);
 

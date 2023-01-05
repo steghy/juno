@@ -135,11 +135,9 @@ public class MenuPanelConfigurator {
 
         backButton.addActionListener(new RegistrationPanelRestorer(menuPanel));
 
-        // Inside border.
+        // Border settings.
         RoundedBorder insideBorder = new RoundedBorder(10, 1, null, Color.WHITE);
-        // Outside border.
         RoundedBorder outsideBorder = new RoundedBorder(25, 1, null, Color.RED);
-        // Composed border.
         Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
         menuPanel.setBorder(border);
 

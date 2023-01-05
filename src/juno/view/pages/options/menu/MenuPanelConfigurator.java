@@ -80,10 +80,8 @@ public class MenuPanelConfigurator {
                 new ChangePanelAction(new PanelChanger(MainCardPanel.getInstance(), MainCardPanel.MAIN_PANEL))));
 
         // Border settings
-        RoundedBorder insideBorder = new RoundedBorder(
-                15, 1, null, Color.WHITE);
-        RoundedBorder outsideBorder = new RoundedBorder(
-                20, 1, null, Color.RED);
+        RoundedBorder insideBorder = new RoundedBorder(10, 1, null, Color.WHITE);
+        RoundedBorder outsideBorder = new RoundedBorder(25, 1, null, Color.RED);
         Border border = BorderFactory.createCompoundBorder(insideBorder, outsideBorder);
         menuPanel.setBorder(border);
 

@@ -25,8 +25,6 @@
 
 package juno.view.avatar;
 
-import juno.view.util.ImageButton;
-import juno.view.util.ImageResizer;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -38,14 +36,8 @@ import java.awt.*;
 public class AvatarPanel
         extends JPanel {
 
-    // The dimension parameter.
-    private final double dimensionParameter;
-
     // The avatar image.
     private JButton avatarImage;
-
-    // The avatar frame.
-    private ImageButton avatarFrame;
 
     // The avatar name.
     private JLabel avatarName;
@@ -53,46 +45,22 @@ public class AvatarPanel
     /**
      * Builds an AvatarPanel.
      */
-    public AvatarPanel(double dimensionParameter) {
-        this.dimensionParameter = dimensionParameter;
-        avatarFrame = new ImageButton();
+    public AvatarPanel() {
         avatarImage = new JButton ();
         avatarName = new JLabel();
         init();
     }
 
-    /**
-     * Builds an AvatarPanel with the specified
-     * avatar frame, avatar image and avatar name
-     * objects.
-     * @param avatarImage An ImageLabel object.
-     * @param avatarFrame An ImageLabel object.
-     * @param avatarName A JLabel object.
-     */
-    public AvatarPanel(@NotNull ImageButton avatarImage,
-                       @NotNull ImageButton avatarFrame,
-                       @NotNull JLabel avatarName,
-                       double dimensionParameter) {
-        this.dimensionParameter = dimensionParameter;
-        this.avatarFrame = avatarFrame;
-        this.avatarImage = avatarImage;
-        this.avatarName = avatarName;
-    }
-
     /** Initialize this AvatarPanel object */
     public void init() {
         removeAll();
-        avatarFrame.removeAll();
         setOpaque(false);
         setLayout(new GridBagLayout());
-        avatarImage.setOpaque(false);
-        avatarFrame.setOpaque(false);
         avatarName.setOpaque(false);
-        avatarFrame.setLayout(new GridBagLayout());
+        avatarImage.setOpaque(false);
+        avatarImage.setContentAreaFilled(false);
+        avatarImage.setBorderPainted(false);
         GridBagConstraints gbc = new GridBagConstraints();
-
-        // Avatar image in avatar frame.
-        avatarFrame.add(avatarImage, gbc);
 
         // Avatar frame
         gbc.gridx = 0;
@@ -100,10 +68,10 @@ public class AvatarPanel
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
         gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,0,0);
+        gbc.insets = new Insets(0, 0, 0, 0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        add(avatarFrame, gbc);
+        add(avatarImage, gbc);
 
         // Avatar name.
         avatarName.setFont(new Font(Font.DIALOG, Font.ITALIC, 15));
@@ -120,20 +88,10 @@ public class AvatarPanel
     }
 
     /**
-     * Sets the avatar frame of this object.
-     * @param avatarFrame An ImageButton object.
-     */
-    public void setAvatarFrame(@NotNull ImageButton avatarFrame) {
-        ImageResizer.resize(avatarFrame, dimensionParameter);
-        this.avatarFrame = avatarFrame;
-    }
-
-    /**
      * Sets the avatar image of this object.
      * @param avatarImage An ImageButton object.
      */
     public void setAvatarImage(@NotNull JButton avatarImage) {
-        // ImageResizer.resize(avatarImage, dimensionParameter * 2);
         this.avatarImage = avatarImage;
     }
 

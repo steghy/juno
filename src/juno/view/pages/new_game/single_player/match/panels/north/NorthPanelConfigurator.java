@@ -45,7 +45,7 @@ public class NorthPanelConfigurator {
 
         // Components.
         NorthCardPanel northCardPanel = NorthCardPanel.getInstance();
-        AvatarPanel avatarPanel = new AvatarPanel(4.5);
+        AvatarPanel avatarPanel = new AvatarPanel();
 
         // East card panel.
         JScrollPane northCardScrollPanel = new JScrollPane(northCardPanel,

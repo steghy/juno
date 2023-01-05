@@ -62,7 +62,7 @@ public class MenuPanel
         gbc.gridy = 0;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-        gbc.insets = new Insets(0,0,20,0);
+        gbc.insets = new Insets(0,0,30,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.CENTER;
@@ -73,7 +73,7 @@ public class MenuPanel
         gbc.gridy = 1;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-        gbc.insets = new Insets(0,0,20,0);
+        gbc.insets = new Insets(0,0,30,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.CENTER;
@@ -84,7 +84,7 @@ public class MenuPanel
         gbc.gridy = 2;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-        gbc.insets = new Insets(0,0,20,0);
+        gbc.insets = new Insets(0,0,30,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.CENTER;
@@ -95,7 +95,7 @@ public class MenuPanel
         gbc.gridy = 3;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-        gbc.insets = new Insets(0,0,20,0);
+        gbc.insets = new Insets(0,0,30,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.CENTER;

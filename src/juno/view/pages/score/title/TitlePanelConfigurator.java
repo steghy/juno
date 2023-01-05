@@ -52,7 +52,7 @@ public class TitlePanelConfigurator {
         AbstractButton title = creator.create(Button.SCORE, null);
 
         // Image resizing.
-        ImageResizer.resize(title, 2.0);
+        ImageResizer.resize(title, 2.3);
 
         // Border setting.
         RoundedBorder insideBorder = new RoundedBorder(10, 1, null, Color.WHITE);

@@ -35,8 +35,9 @@ import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
 import juno.view.gobject.avatars.GAvatarImageCreator;
 import juno.view.pages.main.card.MainCardPanel;
+import juno.view.pages.score.GamesWonPanel;
+import juno.view.pages.score.LostGamesPanel;
 import juno.view.pages.score.avatar.AvatarAwardPanel;
-import juno.view.pages.score.avatar.AvatarFramesPanelConfigurator;
 import juno.view.pages.score.avatar.AvatarImagesPanelConfigurator;
 import juno.view.util.ImageResizer;
 import juno.view.util.RoundedBorder;
@@ -62,7 +63,6 @@ public class MenuPanelConfigurator {
         LostGamesPanel lostGamesPanel = LostGamesPanel.getInstance();
         ButtonCreator creator = ButtonCreator.getInstance();
         AbstractButton backButton = creator.create(Button.BACK, null);
-        JLabel avatarFramesLabel = new JLabel();
         JLabel avatarImagesLabel  = new JLabel();
 
         // Points panel Observer-Observable connection.
@@ -70,11 +70,6 @@ public class MenuPanelConfigurator {
         LostGamesCounter.getInstance().addObserver(lostGamesPanel);
 
         // Labels setting.
-        // Avatar frames label.
-        avatarFramesLabel.setText("Avatar frames");
-        avatarFramesLabel.setOpaque(false);
-        avatarFramesLabel.setForeground(Color.WHITE);
-        avatarFramesLabel.setFont(new Font(Font.DIALOG, Font.ITALIC, 14));
         // AvatarImagesLabel.
         avatarImagesLabel.setText("Avatar images");
         avatarImagesLabel.setOpaque(false);
@@ -85,18 +80,6 @@ public class MenuPanelConfigurator {
         ImageResizer.resize(backButton, 2.5);
 
         // Components settings.
-        // AvatarFramesPanel.
-        AvatarAwardPanel avatarFramesPanel = new AvatarAwardPanel();
-        AvatarFramesPanelConfigurator.configure(avatarFramesPanel);
-        JScrollPane avatarFramesScrollPanel = new JScrollPane(avatarFramesPanel,
-                JScrollPane.VERTICAL_SCROLLBAR_NEVER,
-                JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        avatarFramesScrollPanel.setPreferredSize(new Dimension(650, 120));
-        avatarFramesScrollPanel.setIgnoreRepaint(false);
-        avatarFramesScrollPanel.setMinimumSize(new Dimension(650, 120));
-        avatarFramesScrollPanel.getViewport().setOpaque(false);
-        avatarFramesScrollPanel.setOpaque(false);
-
         // AvatarImagePanel.
         AvatarAwardPanel avatarImagesPanel = new AvatarAwardPanel();
         GAvatarImageCreator.getInstance().extension = ".gif";
@@ -111,13 +94,9 @@ public class MenuPanelConfigurator {
         avatarImagesScrollPanel.getViewport().setOpaque(false);
         avatarImagesScrollPanel.setOpaque(false);
 
-        menuPanel.setFirstComponent(avatarFramesLabel);        // Avatar frames label.
-        menuPanel.setSecondComponent(avatarFramesScrollPanel); // Avatar frames panel.
-        menuPanel.setThirdComponent(avatarImagesLabel);        // Avatar images label.
-        menuPanel.setFourthComponent(avatarImagesScrollPanel); // Avatar images panel.
-        menuPanel.setFifthComponent(backButton);               // Back button.
-        menuPanel.setSixthComponent(gamesWonPanel);            // Games won.
-        menuPanel.setSeventhComponent(lostGamesPanel);         // Lost games.
+        menuPanel.setFirstComponent(avatarImagesLabel);        // Avatar images label.
+        menuPanel.setSecondComponent(avatarImagesScrollPanel); // Avatar images panel.
+        menuPanel.setThirdComponent(backButton);               // Back button.
 
         // Action listeners.
         backButton.addActionListener(new SoundAction(ButtonSoundPlayer.getInstance(),

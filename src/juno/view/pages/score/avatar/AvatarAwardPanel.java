@@ -45,7 +45,7 @@ public class AvatarAwardPanel
     /** Builds an AvatarAwardPanel instance. */
     public AvatarAwardPanel() {
         gbc = new GridBagConstraints();
-        leftInsectsParameter = 70;
+        leftInsectsParameter = 90;
         setOpaque(false);
         setLayout(new GridBagLayout());
         gbc.weightx = 0.0;
