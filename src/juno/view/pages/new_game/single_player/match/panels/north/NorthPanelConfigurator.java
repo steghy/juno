@@ -26,8 +26,10 @@
 package juno.view.pages.new_game.single_player.match.panels.north;
 
 import juno.controller.new_game.GameStarter;
+import juno.init.ProgramDirectory;
+import juno.model.requester.PathProviderAssembler;
 import juno.view.avatar.AvatarPanel;
-import juno.view.util.RoundedBorder;
+import juno.view.img_initializer.ImageComponentInitializer;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicScrollBarUI;
@@ -49,13 +51,21 @@ public class NorthPanelConfigurator {
         NorthCardPanel northCardPanel = NorthCardPanel.getInstance();
         AvatarPanel avatarPanel = new AvatarPanel();
 
+        // The circle.
+        JLabel circle = new JLabel();
+        ImageComponentInitializer.getInstance()
+                .initialize(circle,
+                        PathProviderAssembler.getInstance().assemble(ProgramDirectory.GIFS, "circle.gif"),
+                        null);
+        circle.setVisible(false);
+
         // East card panel.
         JScrollPane northCardScrollPanel = new JScrollPane(northCardPanel,
                 JScrollPane.VERTICAL_SCROLLBAR_NEVER,
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        northCardScrollPanel.setPreferredSize(new Dimension(600, 150));
+        northCardScrollPanel.setPreferredSize(new Dimension(950, 150));
         northCardScrollPanel.setIgnoreRepaint(false);
-        northCardScrollPanel.setMinimumSize(new Dimension(600, 150));
+        northCardScrollPanel.setMinimumSize(new Dimension(950, 150));
         northCardScrollPanel.getViewport().setOpaque(false);
         northCardScrollPanel.setBorder(BorderFactory.createEmptyBorder());
         northCardScrollPanel.setOpaque(false);
@@ -75,6 +85,7 @@ public class NorthPanelConfigurator {
         // Setting components.
         northPanel.setFirstComponent(northCardScrollPanel); // Cards panel.
         northPanel.setSecondComponent(avatarPanel);         // Avatar panel.
+        northPanel.setThirdComponent(circle);
 
         // Main component initialization.
         northPanel.init();

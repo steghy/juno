@@ -43,14 +43,11 @@ public class PanelIlluminator
     // The current player provider.
     private Provider<InterfacePlayer<?>> playerProvider;
 
-    // The last panel involved.
-    private JPanel lastPanel;
-
-    // The Map.Entry of Human player -> South card panel.
-    private Map.Entry<InterfacePlayer<?>, JPanel> entry;
+    // The last player's circle involved.
+    private JLabel lastCircle;
 
     // Map players - panel.
-    private Map<InterfacePlayer<?>, JPanel> map;
+    private Map<InterfacePlayer<?>, JLabel> map;
 
     // The PanelIlluminator instance.
     private static PanelIlluminator instance;
@@ -75,32 +72,23 @@ public class PanelIlluminator
         this.playerProvider = playerProvider;
     }
 
-    /**
-     * Adds the following entry to the map of this object.
-     * @param entry A Map.Entry object.
-     */
-    public void addEntry(Map.Entry<InterfacePlayer<?>, JPanel> entry) {
-        this.entry = entry;
-    }
-
     @Override
     @SuppressWarnings("unchecked")
     public void update(Object object) {
         // The update comes from the Connector.
         if(object instanceof Provider<?> provider) {
-            map = (Map<InterfacePlayer<?>, JPanel>) provider.provide();
-            map.put(entry.getKey(), entry.getValue());
+            map = (Map<InterfacePlayer<?>, JLabel>) provider.provide();
         } else if(object instanceof InterfaceTurnMover) {
             InterfacePlayer<?> player = playerProvider.provide();
-            if(lastPanel != null) {
-                lastPanel.setOpaque(false);
-                lastPanel.revalidate();
-                lastPanel.repaint();
-            } JPanel panel = map.get(player);
-            panel.setOpaque(true);
-            panel.revalidate();
-            panel.repaint();
-            lastPanel = panel;
+            if(lastCircle != null) {
+                lastCircle.setVisible(false);
+                lastCircle.revalidate();
+                lastCircle.repaint();
+            } JLabel circle = map.get(player);
+            circle.setVisible(true);
+            circle.revalidate();
+            circle.repaint();
+            lastCircle = circle;
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceTurnMover or Connector type expected");

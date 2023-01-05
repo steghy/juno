@@ -26,7 +26,10 @@
 package juno.view.pages.new_game.single_player.match.panels.west;
 
 import juno.controller.new_game.GameStarter;
+import juno.init.ProgramDirectory;
+import juno.model.requester.PathProviderAssembler;
 import juno.view.avatar.AvatarPanel;
+import juno.view.img_initializer.ImageComponentInitializer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -47,14 +50,21 @@ public class WestPanelConfigurator {
         // Component.
         WestCardPanel westCardPanel = WestCardPanel.getInstance();
         AvatarPanel avatarPanel = new AvatarPanel();
+        // The circle.
+        JLabel circle = new JLabel();
+        ImageComponentInitializer.getInstance()
+                .initialize(circle,
+                        PathProviderAssembler.getInstance().assemble(ProgramDirectory.GIFS, "circle.gif"),
+                        null);
+        circle.setVisible(false);
 
         // East card panel.
         JScrollPane westCardScrollPanel = new JScrollPane(westCardPanel,
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        westCardScrollPanel.setPreferredSize(new Dimension(150, 600));
+        westCardScrollPanel.setPreferredSize(new Dimension(180, 550));
         westCardScrollPanel.setIgnoreRepaint(false);
-        westCardScrollPanel.setMinimumSize(new Dimension(150, 600));
+        westCardScrollPanel.setMinimumSize(new Dimension(180, 550));
         westCardScrollPanel.getViewport().setOpaque(false);
         westCardScrollPanel.setBorder(BorderFactory.createEmptyBorder());
         westCardScrollPanel.setOpaque(false);
@@ -65,6 +75,7 @@ public class WestPanelConfigurator {
         // Setting components.
         westPanel.setFirstComponent(westCardScrollPanel); // Cards panel.
         westPanel.setSecondComponent(avatarPanel);        // Avatar panel.
+        westPanel.setThirdComponent(circle);              // Circle gif.
 
         // Main component initialization.
         westPanel.init();

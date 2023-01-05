@@ -26,6 +26,7 @@
 package juno.view.avatar;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -58,11 +59,12 @@ public class AvatarPanel
         setLayout(new GridBagLayout());
         avatarName.setOpaque(false);
         avatarImage.setOpaque(false);
+
         avatarImage.setContentAreaFilled(false);
         avatarImage.setBorderPainted(false);
         GridBagConstraints gbc = new GridBagConstraints();
 
-        // Avatar frame
+        // Avatar image.
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.weightx = 0.0;
@@ -101,6 +103,24 @@ public class AvatarPanel
      */
     public void setAvatarName(@NotNull JLabel avatarName) {
         this.avatarName = avatarName;
+    }
+
+    /**
+     * Returns the avatar image of this object.
+     * @return A JButton instance.
+     */
+    @Nullable
+    public JButton getAvatarImage() {
+        return avatarImage;
+    }
+
+    /**
+     * Returns the avatar name of this object.
+     * @return A JLabel object.
+     */
+    @Nullable
+    public JLabel getAvatarName() {
+        return avatarName;
     }
 
 }

@@ -92,7 +92,7 @@ public class SouthCardPanel
         gameStarted = false;
         dispenser = false;
         componentMap = new HashMap<>();
-        leftInsectsParameter = 50;
+        leftInsectsParameter = 45;
         setOpaque(false);
         setLayout(new GridBagLayout());
         gbc = new GridBagConstraints();

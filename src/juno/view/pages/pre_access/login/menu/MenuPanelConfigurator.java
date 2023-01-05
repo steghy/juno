@@ -69,9 +69,9 @@ public class MenuPanelConfigurator {
         JScrollPane profilesScrollPanel = new JScrollPane(ProfilesPanel.getInstance(),
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        profilesScrollPanel.setPreferredSize(new Dimension(200, 500));
+        profilesScrollPanel.setPreferredSize(new Dimension(150, 350));
         profilesScrollPanel.setIgnoreRepaint(true);
-        profilesScrollPanel.setMinimumSize(new Dimension(200, 500));
+        profilesScrollPanel.setMinimumSize(new Dimension(150, 350));
         profilesScrollPanel.setBorder(BorderFactory.createEmptyBorder());
         profilesScrollPanel.getViewport().setOpaque(false);
         profilesScrollPanel.setOpaque(false);

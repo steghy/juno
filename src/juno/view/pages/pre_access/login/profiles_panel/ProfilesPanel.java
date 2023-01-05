@@ -31,6 +31,7 @@ import juno.view.gobject.InterfaceGObjectFactory;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * @author Simone Gentili
@@ -38,6 +39,12 @@ import javax.swing.*;
 public class ProfilesPanel
         extends JPanel
         implements Observer {
+
+    // 'Top' insects value parameter.
+    private final int topInsectsParameter;
+
+    // The GridBagConstraints.
+    private final GridBagConstraints gbc;
 
     // The ProfilesPanel instance.
     private static ProfilesPanel instance;
@@ -47,10 +54,17 @@ public class ProfilesPanel
 
     // Builds the ProfilesPanel instance.
     private ProfilesPanel() {
+        topInsectsParameter = 60;
         setOpaque(false);
-        BoxLayout boxLayout = new BoxLayout(this, BoxLayout.Y_AXIS);
-        setLayout(boxLayout);
-
+        setLayout(new GridBagLayout());
+        gbc = new GridBagConstraints();
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.PAGE_START;
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
     }
 
     /**
@@ -70,11 +84,20 @@ public class ProfilesPanel
         this.processor = processor;
     }
 
+    public void addComponent(@NotNull Component c) {
+        if(getComponents().length == 0) gbc.insets = new Insets(0, 0, 0, 0);
+        else gbc.insets = new Insets(gbc.insets.top + topInsectsParameter, 0, 0, 0);
+        super.add(c, gbc);
+        revalidate();
+        repaint();
+    }
+
+
     @Override @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
         if(object instanceof InterfaceGObjectFactory<?> factory) {
             this.removeAll();
-            factory.getGObjects().forEach(gObject -> add(processor.process((InterfaceGObject<String>) gObject)));
+            factory.getGObjects().forEach(gObject -> addComponent(processor.process((InterfaceGObject<String>) gObject)));
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceGObjectFactory type expected.");

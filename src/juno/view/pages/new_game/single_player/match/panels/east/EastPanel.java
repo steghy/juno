@@ -25,7 +25,7 @@
 
 package juno.view.pages.new_game.single_player.match.panels.east;
 
-import juno.view.panels.AbstractSecondComponent;
+import juno.view.panels.AbstractThirdComponent;
 
 import java.awt.*;
 import java.util.Objects;
@@ -34,7 +34,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class EastPanel
-        extends AbstractSecondComponent {
+        extends AbstractThirdComponent {
 
     // The EastPanel instance.
     private static EastPanel instance;
@@ -78,6 +78,17 @@ public class EastPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
         this.add(Objects.requireNonNull(getSecondComponent()), gbc);
+
+        // Circle gif.
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(0,0,0,0);
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
+        this.add(Objects.requireNonNull(getThirdComponent()), gbc);
     }
 
 }

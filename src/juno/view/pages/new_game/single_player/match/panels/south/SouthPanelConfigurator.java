@@ -28,8 +28,10 @@ package juno.view.pages.new_game.single_player.match.panels.south;
 import juno.controller.new_game.GameStarter;
 import juno.controller.new_game.dispenser.CardDispenser;
 import juno.controller.new_game.human.DiscardedCardSetter;
+import juno.init.ProgramDirectory;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.CompatibilityChecker;
+import juno.model.requester.PathProviderAssembler;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.human.HumanPlayer;
 import juno.model.subjects.shift.CurrentPlayerProvider;
@@ -37,7 +39,7 @@ import juno.model.subjects.shift.TurnMover;
 import juno.model.util.Provider;
 import juno.model.util.Setter;
 import juno.view.avatar.UserAvatarPanel;
-import juno.view.util.RoundedBorder;
+import juno.view.img_initializer.ImageComponentInitializer;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicScrollBarUI;
@@ -60,6 +62,13 @@ public class SouthPanelConfigurator {
         // Avatar panel.
         UserAvatarPanel avatarPanel = new UserAvatarPanel();
         avatarPanel.init();
+        // The circle.
+        JLabel circle = new JLabel();
+        ImageComponentInitializer.getInstance()
+                .initialize(circle,
+                        PathProviderAssembler.getInstance().assemble(ProgramDirectory.GIFS, "circle.gif"),
+                        null);
+        circle.setVisible(false);
 
         // Human player.
         HumanPlayer<InterfaceCard> humanPlayer = (HumanPlayer<InterfaceCard>) HumanPlayer.getInstance();
@@ -72,9 +81,9 @@ public class SouthPanelConfigurator {
         JScrollPane southCardScrollPanel = new JScrollPane(southCardPanel,
                 JScrollPane.VERTICAL_SCROLLBAR_NEVER,
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        southCardScrollPanel.setPreferredSize(new Dimension(600, 150));
+        southCardScrollPanel.setPreferredSize(new Dimension(950, 150));
         southCardScrollPanel.setIgnoreRepaint(false);
-        southCardScrollPanel.setMinimumSize(new Dimension(600, 150));
+        southCardScrollPanel.setMinimumSize(new Dimension(950, 150));
         southCardScrollPanel.getViewport().setOpaque(false);
         southCardScrollPanel.setBorder(BorderFactory.createEmptyBorder());
         southCardScrollPanel.setOpaque(false);
@@ -104,7 +113,8 @@ public class SouthPanelConfigurator {
 
         // Setting components.
         southPanel.setFirstComponent(southCardScrollPanel);  // Card scroll panel.
-        southPanel.setSecondComponent(avatarPanel);          // Avatar pane.
+        southPanel.setSecondComponent(avatarPanel);          // Avatar panel.
+        southPanel.setThirdComponent(circle);                // Circle panel.
 
         // Main component initialization.
         southPanel.init();

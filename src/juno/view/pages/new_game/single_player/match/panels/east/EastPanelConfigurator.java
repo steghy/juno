@@ -26,8 +26,10 @@
 package juno.view.pages.new_game.single_player.match.panels.east;
 
 import juno.controller.new_game.GameStarter;
+import juno.init.ProgramDirectory;
+import juno.model.requester.PathProviderAssembler;
 import juno.view.avatar.AvatarPanel;
-import juno.view.util.RoundedBorder;
+import juno.view.img_initializer.ImageComponentInitializer;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicScrollBarUI;
@@ -49,14 +51,21 @@ public class EastPanelConfigurator {
         // Component.
         EastCardPanel eastCardPanel = EastCardPanel.getInstance();
         AvatarPanel avatarPanel = new AvatarPanel();
+        // The circle.
+        JLabel circle = new JLabel();
+        ImageComponentInitializer.getInstance()
+                .initialize(circle,
+                        PathProviderAssembler.getInstance().assemble(ProgramDirectory.GIFS, "circle.gif"),
+                        null);
+        circle.setVisible(false);
 
         // East card panel.
         JScrollPane eastCardScrollPanel = new JScrollPane(eastCardPanel,
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        eastCardScrollPanel.setPreferredSize(new Dimension(150, 600));
+        eastCardScrollPanel.setPreferredSize(new Dimension(180, 550));
         eastCardScrollPanel.setIgnoreRepaint(false);
-        eastCardScrollPanel.setMinimumSize(new Dimension(150, 600));
+        eastCardScrollPanel.setMinimumSize(new Dimension(180, 550));
         eastCardScrollPanel.setBorder(BorderFactory.createEmptyBorder());
         eastCardScrollPanel.getViewport().setOpaque(false);
         eastCardScrollPanel.setOpaque(false);
@@ -76,6 +85,7 @@ public class EastPanelConfigurator {
         // Setting components.
         eastPanel.setFirstComponent(eastCardScrollPanel); // Cards panel.
         eastPanel.setSecondComponent(avatarPanel);        // Avatar panel.
+        eastPanel.setThirdComponent(circle);              // Circle gif.
 
         // Main component initialization.
         eastPanel.init();

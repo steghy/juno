@@ -30,10 +30,12 @@ import juno.controller.new_game.controller.WinnerManager;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.shift.CurrentPlayerProvider;
 import juno.model.util.Observer;
+import juno.view.avatar.AvatarPanel;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
 /**
  * @author Simone Gentili
@@ -66,7 +68,12 @@ public class WinnerAvatarPanel
             removeAll();
             InterfacePlayer<?> player =
                     (InterfacePlayer<?>) CurrentPlayerProvider.getInstance().provide();
-            add(AvatarConnector.getInstance().provide().get(player), BorderLayout.CENTER);
+            AvatarPanel avatar = (AvatarPanel) AvatarConnector.getInstance().provide().get(player);
+            AvatarPanel a = new AvatarPanel();
+            a.setAvatarName(Objects.requireNonNull(avatar.getAvatarName()));
+            a.setAvatarImage(Objects.requireNonNull(avatar.getAvatarImage()));
+            a.init();
+            add(a, BorderLayout.CENTER);
             revalidate();
             repaint();
         } else throw new IllegalArgumentException(

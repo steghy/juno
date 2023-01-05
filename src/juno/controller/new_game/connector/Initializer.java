@@ -30,7 +30,6 @@ import juno.model.card.InterfaceCard;
 import juno.model.data.awards.avatar.AvatarImage;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.factory.AiPlayerFactory;
-import juno.model.subjects.human.HumanPlayer;
 import juno.model.subjects.shift.CurrentPlayerProvider;
 import juno.model.subjects.shift.PlayersProvider;
 import juno.model.subjects.shift.TurnMover;
@@ -41,14 +40,12 @@ import juno.view.pages.new_game.single_player.match.panels.east.EastCardPanel;
 import juno.view.pages.new_game.single_player.match.panels.east.EastPanel;
 import juno.view.pages.new_game.single_player.match.panels.north.NorthCardPanel;
 import juno.view.pages.new_game.single_player.match.panels.north.NorthPanel;
-import juno.view.pages.new_game.single_player.match.panels.south.SouthCardPanel;
 import juno.view.pages.new_game.single_player.match.panels.south.SouthPanel;
 import juno.view.pages.new_game.single_player.match.panels.west.WestCardPanel;
 import juno.view.pages.new_game.single_player.match.panels.west.WestPanel;
 
 import java.awt.*;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -91,6 +88,10 @@ public class Initializer
         AvatarConnector<InterfaceCard> avatarConnector =
                 (AvatarConnector<InterfaceCard>) AvatarConnector.getInstance();
 
+        // Circle connector.
+        CircleConnector<InterfaceCard> circleConnector =
+                (CircleConnector<InterfaceCard>) CircleConnector.getInstance();
+
         // Avatars.
         Component northAvatar = NorthPanel.getInstance().getSecondComponent();
         Component westAvatar  = WestPanel.getInstance().getSecondComponent();
@@ -105,11 +106,17 @@ public class Initializer
         connector.setWest(WestCardPanel.getInstance());
         aiPlayerFactory.addObserver(connector);
 
+        // Circle connector.
+        circleConnector.north = NorthPanel.getInstance().getThirdComponent();
+        circleConnector.west = WestPanel.getInstance().getThirdComponent();
+        circleConnector.east  = EastPanel.getInstance().getThirdComponent();
+        circleConnector.south  = SouthPanel.getInstance().getThirdComponent();
+        PlayersProvider.getInstance().addObserver(circleConnector);
+
         // Panel illuminator.
         panelIlluminator.setPlayerProvider((Provider<InterfacePlayer<?>>) CurrentPlayerProvider.getInstance());
-        panelIlluminator.addEntry(Map.entry(HumanPlayer.getInstance(), SouthCardPanel.getInstance()));
         TurnMover.getInstance().addObserver(panelIlluminator);
-        connector.addObserver(panelIlluminator);
+        circleConnector.addObserver(panelIlluminator);
 
         // Ai avatar setter.
         aiAvatarSetter.setNorth((AvatarPanel) Objects.requireNonNull(northAvatar));
