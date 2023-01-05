@@ -84,7 +84,7 @@ public class MenuPanelConfigurator {
             }
         }));
         continueWithoutAnAccountButton.addActionListener(new SoundAction(buttonSoundPlayer, GuestLogger.getInstance()));
-        exitButton.addActionListener(new ExitAction(ExitManager.getInstance()));
+        exitButton.addActionListener(new ExitAction(null));
 
         // Border settings.
         RoundedBorder insideBorder = new RoundedBorder(

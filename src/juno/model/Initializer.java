@@ -57,8 +57,8 @@ public class Initializer
         juno.model.deck.Initializer.getInstance().initialize();
 
         // juno.model.data package.
-        juno.model.data.io.input.Initializer.getInstance().initialize();
         juno.model.data.profile.Initializer.getInstance().initialize();
+        juno.model.data.io.input.Initializer.getInstance().initialize();
         juno.model.data.io.output.Initializer.getInstance().initialize();
         juno.model.data.avatar.Initializer.getInstance().initialize();
         juno.model.data.goals.Initializer.getInstance().initialize();

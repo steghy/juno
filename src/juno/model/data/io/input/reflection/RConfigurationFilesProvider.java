@@ -89,6 +89,7 @@ public class RConfigurationFilesProvider
         } return configurationFiles;
     }
 
+    @NotNull
     private List<File> getFiles(@NotNull Object object,
                                 @NotNull String path) throws FileNotFoundException {
         // Compatible configuration files.
