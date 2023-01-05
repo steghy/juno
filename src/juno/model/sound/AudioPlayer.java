@@ -25,7 +25,12 @@
 
 package juno.model.sound;
 
+import juno.model.util.Donut;
+import org.jetbrains.annotations.NotNull;
+
 import java.awt.event.ActionEvent;
+import java.io.File;
+import java.util.List;
 
 /**
  * @author Simone Gentili
@@ -33,11 +38,16 @@ import java.awt.event.ActionEvent;
 public class AudioPlayer
 		extends GenericAudioPlayer {
 
+	// The files.
+	private final Donut<File> files;
+
 	// The AudioPlayer instance.
 	private static AudioPlayer instance;
 
 	// Builds the AudioPlayer instance.
-	private AudioPlayer() {}
+	private AudioPlayer() {
+		files = new Donut<>();
+	}
 
 	/**
 	 * Returns the AudioPlayer instance.
@@ -51,6 +61,7 @@ public class AudioPlayer
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		super.actionPerformed(e);
+		super.load(files.next());
 		play();
 	}
 
@@ -58,6 +69,13 @@ public class AudioPlayer
 	public void play() {
 		getTimer().start();
 		getClip().start();
+	}
+
+	public void load(@NotNull List<File> files) {
+		this.files.clear();
+		this.files.addAll(files);
+		this.files.initialize();
+		super.load(this.files.current());
 	}
 
 }

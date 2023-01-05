@@ -45,9 +45,7 @@ public enum ProgramDirectory
 
 	// Data -> Audio.
 	AUDIO(DATA, "audio"),
-	MUSIC(AUDIO, "music-1"),
-	MUSIC_2(AUDIO, "music-2"),
-	MUSIC_3(AUDIO, "music-3"),
+	MUSIC(AUDIO, "music"),
 	EFFECTS(AUDIO, "effects"),
 
 	// Data -> Video.

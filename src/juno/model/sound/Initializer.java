@@ -29,6 +29,8 @@ import juno.controller.util.InterfaceInitializer;
 import juno.init.ProgramDirectory;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * @author Simone Gentili
@@ -68,9 +70,8 @@ public class Initializer
         //////////////////////////////////////////////////////////////////////////////
 
         // Audio player.
-        audioPlayer.load(new File(
-                ProgramDirectory.MUSIC.absolutePath(), "main-theme.wav"
-        ));
+        audioPlayer.load(Arrays.asList(Objects.requireNonNull(new File(
+                ProgramDirectory.MUSIC.absolutePath()).listFiles())));
 
         // Button sound player.
         buttonSoundPlayer.load(new File(

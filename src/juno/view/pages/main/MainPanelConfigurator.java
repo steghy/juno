@@ -29,8 +29,11 @@ import juno.controller.log_out.AccountExiter;
 import juno.controller.log_out.LogOutAction;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.PanelChanger;
+import juno.init.ProgramDirectory;
+import juno.model.requester.PathProviderAssembler;
 import juno.view.avatar.UserAvatarPanel;
 import juno.view.button.ButtonCreator;
+import juno.view.img_initializer.ImageComponentInitializer;
 import juno.view.pages.card.TopCardPanel;
 import juno.view.pages.main.menu.MenuPanel;
 import juno.view.pages.main.title.TitlePanel;
@@ -56,6 +59,19 @@ public class MainPanelConfigurator {
         TitlePanel titlePanel = TitlePanel.getInstance();
         MenuPanel menuPanel = MenuPanel.getInstance();
         UserAvatarPanel avatarPanel = new UserAvatarPanel();
+        JLabel skeletonLeft = new JLabel();
+        JLabel skeletonRight = new JLabel();
+
+        ImageComponentInitializer imageComponentInitializer = ImageComponentInitializer.getInstance();
+
+        // Skeleton left
+        imageComponentInitializer.initialize(skeletonLeft,
+                        PathProviderAssembler.getInstance().assemble(ProgramDirectory.GIFS, "skeleton-left.gif"),
+                        null);
+        // Skeleton right
+        imageComponentInitializer.initialize(skeletonRight,
+                PathProviderAssembler.getInstance().assemble(ProgramDirectory.GIFS, "skeleton-right.gif"),
+                null);
 
         // Log out button.
         AbstractButton logOutButton = ButtonCreator.getInstance().create(juno.view.button.Button.LOG_OUT, null);
@@ -81,6 +97,8 @@ public class MainPanelConfigurator {
         mainPanel.setThirdComponent(label);        // label.
         mainPanel.setFourthComponent(avatarPanel); // Avatar panel.
         mainPanel.setFifthComponent(logOutButton); // Log out button.
+        mainPanel.setSixthComponent(skeletonLeft);
+        mainPanel.setSeventhComponent(skeletonRight);
 
         // Main component initialization.
         mainPanel.init();

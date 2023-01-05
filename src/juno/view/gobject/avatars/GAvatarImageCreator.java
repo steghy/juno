@@ -47,7 +47,7 @@ public class GAvatarImageCreator
     public String ending = "_ROLLOVER";
 
     /** The extension to use. */
-    public String extension = ".png";
+    public String extension = ".gif";
 
     // The directory path provider.
     private InterfacePathProvider pathProvider;

@@ -62,7 +62,7 @@ public class Main {
             ConfigurationFilesFactory.getInstance().generate();
 
             // Audio player.
-            // AudioPlayer.getInstance().play();
+            AudioPlayer.getInstance().play();
 
             ButtonSoundPlayer.getInstance().mute();
 

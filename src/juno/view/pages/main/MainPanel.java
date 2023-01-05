@@ -25,7 +25,7 @@
 
 package juno.view.pages.main;
 
-import juno.view.panels.AbstractFifthComponent;
+import juno.view.panels.AbstractSeventhComponent;
 
 import java.awt.*;
 import java.util.Objects;
@@ -34,7 +34,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class MainPanel
-        extends AbstractFifthComponent {
+        extends AbstractSeventhComponent {
 
     // The MainPanel instance.
     private static MainPanel instance;
@@ -79,6 +79,28 @@ public class MainPanel
         gbc.insets = new Insets(0,0,30,0);
         this.add(Objects.requireNonNull(getSecondComponent()), gbc);
 
+        // Skeleton gif left.
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
+        gbc.anchor = GridBagConstraints.LINE_START;
+        gbc.insets = new Insets(0,0,0,0);
+        this.add(Objects.requireNonNull(getSixthComponent()), gbc);
+
+        // Skeleton gif right.
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
+        gbc.anchor = GridBagConstraints.LINE_END;
+        gbc.insets = new Insets(0,800,0,0);
+        this.add(Objects.requireNonNull(getSeventhComponent()), gbc);
+
         // Label avatar panel.
         gbc.gridx = 0;
         gbc.gridy = 2;
@@ -87,7 +109,7 @@ public class MainPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,15,0);
+        gbc.insets = new Insets(0,0,0,0);
         this.add(Objects.requireNonNull(getThirdComponent()), gbc);
 
         // Avatar panel.

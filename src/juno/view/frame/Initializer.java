@@ -59,7 +59,7 @@ public class Initializer
         JPanel topCardPanel = TopCardPanel.getInstance();
         ImageComponentInitializer.getInstance()
                 .initialize(background,
-                        PathProviderAssembler.getInstance().assemble(ProgramDirectory.BACKGROUNDS, "background.jpg"),
+                        PathProviderAssembler.getInstance().assemble(ProgramDirectory.BACKGROUNDS, "background.gif"),
                         null);
         frame.setBackground(background);
         frame.setPanel(topCardPanel);

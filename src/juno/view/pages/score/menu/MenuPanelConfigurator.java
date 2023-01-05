@@ -33,7 +33,6 @@ import juno.model.data.score.LostGamesCounter;
 import juno.model.sound.ButtonSoundPlayer;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
-import juno.view.gobject.avatars.GAvatarImageCreator;
 import juno.view.pages.main.card.MainCardPanel;
 import juno.view.pages.score.GamesWonPanel;
 import juno.view.pages.score.LostGamesPanel;
@@ -82,15 +81,13 @@ public class MenuPanelConfigurator {
         // Components settings.
         // AvatarImagePanel.
         AvatarAwardPanel avatarImagesPanel = new AvatarAwardPanel();
-        GAvatarImageCreator.getInstance().extension = ".gif";
         AvatarImagesPanelConfigurator.configure(avatarImagesPanel);
-        // GAvatarImageCreator.getInstance().extension = ".png";
         JScrollPane avatarImagesScrollPanel = new JScrollPane(avatarImagesPanel,
                 JScrollPane.VERTICAL_SCROLLBAR_NEVER,
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        avatarImagesScrollPanel.setPreferredSize(new Dimension(650, 120));
+        avatarImagesScrollPanel.setPreferredSize(new Dimension(650, 140));
         avatarImagesScrollPanel.setIgnoreRepaint(true);
-        avatarImagesScrollPanel.setMinimumSize(new Dimension(650, 120));
+        avatarImagesScrollPanel.setMinimumSize(new Dimension(650, 1400));
         avatarImagesScrollPanel.getViewport().setOpaque(false);
         avatarImagesScrollPanel.setOpaque(false);
 
