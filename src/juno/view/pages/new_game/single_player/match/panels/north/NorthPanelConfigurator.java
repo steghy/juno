@@ -61,7 +61,6 @@ public class NorthPanelConfigurator {
         northCardScrollPanel.setOpaque(false);
         JScrollBar bar = northCardScrollPanel.getHorizontalScrollBar();
         bar.setOpaque(false);
-        bar.setBorder(BorderFactory.createCompoundBorder(bar.getBorder(), new RoundedBorder(10, 1, null, Color.WHITE)));
         bar.setPreferredSize(new Dimension(5, 9));
         bar.setUI(new BasicScrollBarUI() {
             @Override

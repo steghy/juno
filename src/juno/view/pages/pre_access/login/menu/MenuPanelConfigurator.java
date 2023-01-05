@@ -75,9 +75,8 @@ public class MenuPanelConfigurator {
         profilesScrollPanel.setBorder(BorderFactory.createEmptyBorder());
         profilesScrollPanel.getViewport().setOpaque(false);
         profilesScrollPanel.setOpaque(false);
-        JScrollBar bar = profilesScrollPanel.getHorizontalScrollBar();
+        JScrollBar bar = profilesScrollPanel.getVerticalScrollBar();
         bar.setOpaque(false);
-        bar.setBorder(BorderFactory.createCompoundBorder(bar.getBorder(), new RoundedBorder(10, 1, null, Color.WHITE)));
         bar.setPreferredSize(new Dimension(5, 9));
         bar.setUI(new BasicScrollBarUI() {
             @Override

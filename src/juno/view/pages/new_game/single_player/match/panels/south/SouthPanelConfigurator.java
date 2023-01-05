@@ -80,7 +80,6 @@ public class SouthPanelConfigurator {
         southCardScrollPanel.setOpaque(false);
         JScrollBar bar = southCardScrollPanel.getHorizontalScrollBar();
         bar.setOpaque(false);
-        bar.setBorder(BorderFactory.createCompoundBorder(bar.getBorder(), new RoundedBorder(10, 1, null, Color.WHITE)));
         bar.setPreferredSize(new Dimension(5, 9));
         bar.setUI(new BasicScrollBarUI() {
             @Override
