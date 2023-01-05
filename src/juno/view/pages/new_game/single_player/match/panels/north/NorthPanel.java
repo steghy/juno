@@ -58,8 +58,8 @@ public class NorthPanel
         GridBagConstraints gbc = new GridBagConstraints();
 
         // Cards panel.
-        gbc.gridx = 1;
-        gbc.gridy = 0;
+        gbc.gridx = 0;
+        gbc.gridy = 1;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
         gbc.anchor = GridBagConstraints.CENTER;
@@ -74,7 +74,7 @@ public class NorthPanel
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
         gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,0,15);
+        gbc.insets = new Insets(0,0,10,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
         this.add(Objects.requireNonNull(getSecondComponent()), gbc);

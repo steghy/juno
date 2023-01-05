@@ -58,7 +58,7 @@ public class WestPanel
         GridBagConstraints gbc = new GridBagConstraints();
 
         // West cards panel.
-        gbc.gridx = 0;
+        gbc.gridx = 1;
         gbc.gridy = 0;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
@@ -70,11 +70,11 @@ public class WestPanel
 
         // Avatar panel.
         gbc.gridx = 0;
-        gbc.gridy = 1;
+        gbc.gridy = 0;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
         gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(15,0,0,0);
+        gbc.insets = new Insets(0,0,0,10);
         gbc.ipadx = 0;
         gbc.ipady = 0;
         this.add(Objects.requireNonNull(getSecondComponent()), gbc);
