@@ -42,10 +42,10 @@ public class Profile
         implements InterfaceProfile, Configurable, Exportable, Restorable {
 
     /** The maximum length. */
-    public static final int MAXIMUM_LENGTH = 15;
+    public static final int MAXIMUM_LENGTH = 10;
 
     /** The maximum age. */
-    public static final int MAXIMUM_AGE = 150;
+    public static final int MAXIMUM_AGE = 130;
 
     /** The Profile name key. */
     public static final String PROFILE_NAME_KEY = "profileName";
