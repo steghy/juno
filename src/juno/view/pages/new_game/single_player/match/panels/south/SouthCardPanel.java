@@ -39,7 +39,6 @@ import juno.model.util.Observer;
 import juno.view.gobject.GObjectButton;
 import juno.view.gobject.InterfaceGObjectCreator;
 import juno.view.util.InterfaceImageResizer;
-import juno.view.util.RotatedIcon;
 import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.*;
@@ -228,7 +227,7 @@ public class SouthCardPanel
             // A Card has been added.
             else {
                 GObjectButton<InterfaceCard> gCard = (GObjectButton<InterfaceCard>)
-                        creator.create(card, RotatedIcon.Rotate.ABOUT_CENTER);
+                        creator.create(card, null);
                 resizer.resize(gCard, 2.5);
 
                 // If the game has started, add the actions.
