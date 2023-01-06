@@ -82,24 +82,28 @@ public class ImageButton
         Icon disabledIcon = getDisabledIcon();
 
         // Icon.
+        ImageIcon imageIcon;
         if(icon != null) {
+            imageIcon = new ImageIcon(resizer.resize(this, icon));
             if(icon instanceof RotatedIcon rotatedIcon) {
-                setIcon(new RotatedIcon(icon, rotatedIcon.getRotate()));
-            } else setIcon(new ImageIcon(resizer.resize(this, icon)));
+                setIcon(new RotatedIcon(imageIcon, rotatedIcon.getRotate()));
+            } else setIcon(imageIcon);
         }
 
         // Rollover icon.
         if(rolloverIcon != null) {
+            imageIcon = new ImageIcon(resizer.resize(this, rolloverIcon));
             if(rolloverIcon instanceof RotatedIcon rotatedIcon) {
-                setRolloverIcon(new RotatedIcon(rolloverIcon, rotatedIcon.getRotate()));
-            } else setRolloverIcon(new ImageIcon(resizer.resize(this, rolloverIcon)));
+                setRolloverIcon(new RotatedIcon(imageIcon, rotatedIcon.getRotate()));
+            } else setRolloverIcon(imageIcon);
         }
 
         // Disabled icon.
         if(disabledIcon != null) {
+            imageIcon = new ImageIcon(resizer.resize(this, disabledIcon));
             if(disabledIcon instanceof RotatedIcon rotatedIcon) {
-                setDisabledIcon(new RotatedIcon(disabledIcon, rotatedIcon.getRotate()));
-            } else setDisabledIcon(new ImageIcon(resizer.resize(this, disabledIcon)));
+                setDisabledIcon(new RotatedIcon(imageIcon, rotatedIcon.getRotate()));
+            } else setDisabledIcon(imageIcon);
         }
     }
 

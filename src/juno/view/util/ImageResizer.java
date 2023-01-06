@@ -59,7 +59,8 @@ public class ImageResizer
         // Rotated icon case.
         if (icon instanceof RotatedIcon rotatedIcon) {
             RotatedIcon.Rotate rotate = rotatedIcon.getRotate();
-            if (rotatedIcon.getIcon() instanceof ImageIcon imageIcon) {
+            Icon temp = rotatedIcon.getIcon();
+            if (temp instanceof ImageIcon imageIcon) {
                 // Up and Down rotated value cases.
                 // Width and height in this case must
                 // be reversed. This inversion results
@@ -78,7 +79,9 @@ public class ImageResizer
                         component.getPreferredSize().height,
                         Image.SCALE_SMOOTH);
 
-            } else throw new IllegalArgumentException();
+            } else throw new IllegalArgumentException(
+                    "Invalid object type: " + temp.getClass() +
+                            ". ImageIcon type expected.");
         }
 
         // Image icon type case.

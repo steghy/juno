@@ -25,7 +25,6 @@
 
 package juno.view.pages.new_game.single_player.match.panels.west;
 
-import juno.view.panels.AbstractSecondComponent;
 import juno.view.panels.AbstractThirdComponent;
 
 import java.awt.*;

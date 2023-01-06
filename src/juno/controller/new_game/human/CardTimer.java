@@ -28,6 +28,7 @@ package juno.controller.new_game.human;
 import juno.controller.util.Stoppable;
 import juno.model.util.AbstractObservable;
 import juno.model.util.Observer;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -67,7 +68,7 @@ public class CardTimer
     }
 
     @Override
-    public void update(Object object) {
+    public void update(@NotNull Object object) {
         if(object instanceof DrawAction<?>)
             timer.start();
         else if(object instanceof DiscardedCardSetter<?>) {

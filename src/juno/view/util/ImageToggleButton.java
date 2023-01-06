@@ -84,38 +84,44 @@ public class ImageToggleButton
         Icon rolloverSelectedIcon = getRolloverSelectedIcon();
 
         // Icon.
+        ImageIcon imageIcon;
         if(icon != null) {
+            imageIcon = new ImageIcon(resizer.resize(this, icon));
             if(icon instanceof RotatedIcon rotatedIcon) {
-                setIcon(new RotatedIcon(icon, rotatedIcon.getRotate()));
-            } else setIcon(new ImageIcon(resizer.resize(this, icon)));
+                setIcon(new RotatedIcon(imageIcon, rotatedIcon.getRotate()));
+            } else setIcon(imageIcon);
         }
 
         // Rollover icon.
         if(rolloverIcon != null) {
+            imageIcon = new ImageIcon(resizer.resize(this, rolloverIcon));
             if(rolloverIcon instanceof RotatedIcon rotatedIcon) {
-                setRolloverIcon(new RotatedIcon(rolloverIcon, rotatedIcon.getRotate()));
-            } else setRolloverIcon(new ImageIcon(resizer.resize(this, rolloverIcon)));
+                setRolloverIcon(new RotatedIcon(imageIcon, rotatedIcon.getRotate()));
+            } else setRolloverIcon(imageIcon);
         }
 
         // Disabled icon.
         if(disabledIcon != null) {
+            imageIcon = new ImageIcon(resizer.resize(this, disabledIcon));
             if(disabledIcon instanceof RotatedIcon rotatedIcon) {
-                setDisabledIcon(new RotatedIcon(disabledIcon, rotatedIcon.getRotate()));
-            } else setDisabledIcon(new ImageIcon(resizer.resize(this, disabledIcon)));
+                setDisabledIcon(new RotatedIcon(imageIcon, rotatedIcon.getRotate()));
+            } else setDisabledIcon(imageIcon);
         }
 
         // Selected icon.
         if(selectedIcon != null) {
+            imageIcon = new ImageIcon(resizer.resize(this, selectedIcon));
             if(selectedIcon instanceof RotatedIcon rotatedIcon) {
-                setSelectedIcon(new RotatedIcon(selectedIcon, rotatedIcon.getRotate()));
-            } else setSelectedIcon(new ImageIcon(resizer.resize(this, selectedIcon)));
+                setSelectedIcon(new RotatedIcon(imageIcon, rotatedIcon.getRotate()));
+            } else setSelectedIcon(imageIcon);
         }
 
         // Rollover selected icon.
         if(rolloverSelectedIcon != null) {
+            imageIcon = new ImageIcon(resizer.resize(this, rolloverSelectedIcon));
             if(rolloverSelectedIcon instanceof RotatedIcon rotatedIcon) {
-                setRolloverSelectedIcon(new RotatedIcon(rolloverSelectedIcon, rotatedIcon.getRotate()));
-            } else setRolloverSelectedIcon(new ImageIcon(resizer.resize(this, rolloverSelectedIcon)));
+                setRolloverSelectedIcon(new RotatedIcon(imageIcon, rotatedIcon.getRotate()));
+            } else setRolloverSelectedIcon(imageIcon);
         }
     }
 

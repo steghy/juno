@@ -150,7 +150,7 @@ public class WestCardPanel
                 if(showCard) {
                     InterfaceCard card = (InterfaceCard) ai.provide();
                     gCard = (GObjectButton<InterfaceCard>)
-                            GCardCreator.getInstance().create(Objects.requireNonNull(card), RotatedIcon.Rotate.DOWN);
+                            GCardCreator.getInstance().create(Objects.requireNonNull(card), RotatedIcon.Rotate.UP);
                     resizer.resize(gCard, 2.5);
                     gCard.setEnabled(false);
                     add(gCard);

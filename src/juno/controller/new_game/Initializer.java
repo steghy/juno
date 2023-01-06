@@ -25,7 +25,6 @@
 
 package juno.controller.new_game;
 
-import juno.controller.new_game.controller.FirstDiscardedCardManager;
 import juno.controller.new_game.controller.Mover;
 import juno.controller.new_game.dispenser.CardController;
 import juno.controller.new_game.dispenser.CardDispenser;
@@ -151,6 +150,7 @@ public class Initializer
 
         // Discarded card setter.
         discardedCardSetter.setDiscardedPile(discardedPile);
+        discardedCardSetter.setRemover(cardRemover);
 
         // Game initializer.
         gameInitializer.setAiGenerator(aiPlayerFactory);
