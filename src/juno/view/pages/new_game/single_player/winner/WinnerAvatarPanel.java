@@ -43,12 +43,12 @@ import java.util.Objects;
 /**
  * @author Simone Gentili
  */
-public class WinnerAvatarPanel
+public class WinnerAvatarPanel<T>
         extends JPanel
         implements Observer {
 
     // The WinnerAvatarPanel instance.
-    private static WinnerAvatarPanel instance;
+    private static WinnerAvatarPanel<?> instance;
 
     // Builds the WinnerAvatarPanel instance.
     private WinnerAvatarPanel() {
@@ -60,8 +60,8 @@ public class WinnerAvatarPanel
      * Returns the WinnerAvatarPanel instance.
      * @return The WinnerAvatarPanel instance.
      */
-    public static WinnerAvatarPanel getInstance() {
-        if(instance == null) instance = new WinnerAvatarPanel();
+    public static WinnerAvatarPanel<?> getInstance() {
+        if(instance == null) instance = new WinnerAvatarPanel<>();
         return instance;
     }
 
@@ -70,17 +70,15 @@ public class WinnerAvatarPanel
     public void update(@NotNull Object object) {
         if(object instanceof WinnerManager) {
             removeAll();
-
-            // The current player.
-            InterfacePlayer<?> player =
-                    (InterfacePlayer<?>) CurrentPlayerProvider.getInstance().provide();
+            InterfacePlayer<T> player =
+                    (InterfacePlayer<T>) CurrentPlayerProvider.getInstance().provide();
             AvatarPanel avatar = (AvatarPanel) AvatarConnector.getInstance().provide().get(player);
             GAvatarImage<InterfaceAvatarImage> gObjectButton =
                     (GAvatarImage<InterfaceAvatarImage>) avatar.getAvatarImage();
 
-
             AvatarPanel a = new AvatarPanel();
-            a.setAvatarImage((JButton) GAvatarImageCreator.getInstance().create(Objects.requireNonNull(gObjectButton).object(), null));
+            a.setAvatarImage((JButton) GAvatarImageCreator.getInstance()
+                    .create(Objects.requireNonNull(gObjectButton).object(), null));
             a.setAvatarName(new JLabel(Objects.requireNonNull(avatar.getAvatarName()).getText()));
             a.init();
 
