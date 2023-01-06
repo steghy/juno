@@ -29,6 +29,8 @@ import juno.controller.pre_access.ConfigurationFilesFactory;
 import juno.model.requester.GitHubRepositorySetter;
 import juno.model.sound.AudioPlayer;
 import juno.model.sound.ButtonSoundPlayer;
+import juno.model.sound.UnoSoundPlayer;
+import juno.model.sound.WelcomeSoundPlayer;
 import juno.view.frame.Frame;
 import juno.view.pages.options.menu.MenuPanel;
 
@@ -65,12 +67,19 @@ public class Main {
             // Audio player.
             AudioPlayer.getInstance().play();
 
+
             ButtonSoundPlayer.getInstance().mute();
 
             // Fullscreen mode.
             ((JToggleButton) Objects.requireNonNull(MenuPanel.getInstance().getThirdComponent())).doClick();
 
             ButtonSoundPlayer.getInstance().unmute();
+
+            // Mute.
+            AudioPlayer.getInstance().mute();
+            ButtonSoundPlayer.getInstance().mute();
+            UnoSoundPlayer.getInstance().mute();
+            WelcomeSoundPlayer.getInstance().mute();
 
             // Frame.
             Frame frame = Frame.getInstance();
