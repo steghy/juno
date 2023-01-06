@@ -95,7 +95,7 @@ public class MenuPanelConfigurator {
         avatarImagesScrollPanel.setOpaque(false);
         JScrollBar bar = avatarImagesScrollPanel.getHorizontalScrollBar();
         bar.setOpaque(false);
-        bar.setPreferredSize(new Dimension(5, 9));
+        bar.setPreferredSize(new Dimension(5, 5));
         bar.setUI(new BasicScrollBarUI() {
             @Override
             protected void configureScrollBarColors() {

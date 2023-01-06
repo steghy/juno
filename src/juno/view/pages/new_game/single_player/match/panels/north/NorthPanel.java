@@ -25,7 +25,6 @@
 
 package juno.view.pages.new_game.single_player.match.panels.north;
 
-import juno.view.panels.AbstractFifthComponent;
 import juno.view.panels.AbstractThirdComponent;
 
 import java.awt.*;
@@ -35,7 +34,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class NorthPanel
-        extends AbstractFifthComponent {
+        extends AbstractThirdComponent {
 
     // The NorthPanel instance.
     private static NorthPanel instance;
@@ -86,21 +85,11 @@ public class NorthPanel
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
         gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,0,400);
+        gbc.insets = new Insets(0,0,10,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        this.add(Objects.requireNonNull(getFourthComponent()), gbc);
+        this.add(Objects.requireNonNull(getThirdComponent()), gbc);
 
-        // Light.
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 0.0;
-        gbc.weighty = 0.0;
-        gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,400,0,0);
-        gbc.ipadx = 0;
-        gbc.ipady = 0;
-        this.add(Objects.requireNonNull(getFifthComponent()), gbc);
     }
 
 }

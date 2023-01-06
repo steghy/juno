@@ -70,15 +70,15 @@ public class MenuPanelConfigurator {
         JScrollPane profilesScrollPanel = new JScrollPane(ProfilesPanel.getInstance(),
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        profilesScrollPanel.setPreferredSize(new Dimension(150, 350));
+        profilesScrollPanel.setPreferredSize(new Dimension(150, 200));
         profilesScrollPanel.setIgnoreRepaint(true);
-        profilesScrollPanel.setMinimumSize(new Dimension(150, 350));
+        profilesScrollPanel.setMinimumSize(new Dimension(150, 200));
         profilesScrollPanel.setBorder(BorderFactory.createEmptyBorder());
         profilesScrollPanel.getViewport().setOpaque(false);
         profilesScrollPanel.setOpaque(false);
         JScrollBar bar = profilesScrollPanel.getVerticalScrollBar();
         bar.setOpaque(false);
-        bar.setPreferredSize(new Dimension(5, 9));
+        bar.setPreferredSize(new Dimension(5, 5));
         bar.setUI(new BasicScrollBarUI() {
             @Override
             protected void configureScrollBarColors() {

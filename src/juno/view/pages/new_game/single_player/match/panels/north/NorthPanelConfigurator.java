@@ -54,24 +54,13 @@ public class NorthPanelConfigurator {
         // Components.
         NorthCardPanel northCardPanel = NorthCardPanel.getInstance();
         AvatarPanel avatarPanel = new AvatarPanel();
-
-        JLabel spyderLeft = new JLabel();
-        JLabel spyderRight = new JLabel();
-
+        avatarPanel.init();
         // The circle.
         JLabel circle = new JLabel();
         initializer.initialize(circle,
                         PathProviderAssembler.getInstance().assemble(ProgramDirectory.GIFS, "circle.gif"),
                         null);
         circle.setVisible(false);
-
-        initializer.initialize(spyderLeft,
-                PathProviderAssembler.getInstance().assemble(ProgramDirectory.GIFS, "circle.gif"),
-                null);
-
-        initializer.initialize(spyderRight,
-                PathProviderAssembler.getInstance().assemble(ProgramDirectory.GIFS, "circle.gif"),
-                null);
 
         // East card panel.
         JScrollPane northCardScrollPanel = new JScrollPane(northCardPanel,
