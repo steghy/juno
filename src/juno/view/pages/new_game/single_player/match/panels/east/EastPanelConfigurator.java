@@ -48,13 +48,15 @@ public class EastPanelConfigurator {
         // Main component.
         EastPanel eastPanel = EastPanel.getInstance();
 
+        // Image component initializer.
+        ImageComponentInitializer initializer = ImageComponentInitializer.getInstance();
+
         // Component.
         EastCardPanel eastCardPanel = EastCardPanel.getInstance();
         AvatarPanel avatarPanel = new AvatarPanel();
         // The circle.
         JLabel circle = new JLabel();
-        ImageComponentInitializer.getInstance()
-                .initialize(circle,
+        initializer.initialize(circle,
                         PathProviderAssembler.getInstance().assemble(ProgramDirectory.GIFS, "circle.gif"),
                         null);
         circle.setVisible(false);
@@ -86,6 +88,9 @@ public class EastPanelConfigurator {
         eastPanel.setFirstComponent(eastCardScrollPanel); // Cards panel.
         eastPanel.setSecondComponent(avatarPanel);        // Avatar panel.
         eastPanel.setThirdComponent(circle);              // Circle gif.
+
+        // Initializer settings.
+        eastCardPanel.setInitializer(initializer);
 
         // Main component initialization.
         eastPanel.init();

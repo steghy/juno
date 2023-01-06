@@ -76,20 +76,27 @@ public class Connector<T>
     @Override
     public void connect(@NotNull List<InterfacePlayer<T>> list) {
         map.clear();
+
         // One AI player case.
         if(list.size() == 1) map.put(list.get(0), north);
+
         // Two AI player case.
         else if(list.size() == 2) {
             map.put(list.get(0), west);
             map.put(list.get(1), north);
         }
+
         // Three AI player case.
         else if(list.size() == 3) {
             map.put(list.get(0), west);
             map.put(list.get(1), north);
             map.put(list.get(2), east);
-        } else throw new IllegalArgumentException(
+        }
+
+        // Invalid case.
+        else throw new IllegalArgumentException(
                 "Invalid number of players.");
+
         updateAll();
     }
 
@@ -99,6 +106,7 @@ public class Connector<T>
         // The update comes from the AI players factory.
         if(object instanceof Provider<?> provider)
             connect((List<InterfacePlayer<T>>) provider.provide());
+
         else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". Provider type expected.");

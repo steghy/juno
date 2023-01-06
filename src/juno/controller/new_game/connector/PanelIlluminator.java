@@ -74,22 +74,34 @@ public class PanelIlluminator
 
     @Override
     @SuppressWarnings("unchecked")
-    public void update(Object object) {
-        // The update comes from the Connector.
+    public void update(@NotNull Object object) {
+        // Update from CircleConnector class.
         if(object instanceof Provider<?> provider) {
             map = (Map<InterfacePlayer<?>, JLabel>) provider.provide();
-        } else if(object instanceof InterfaceTurnMover) {
+        }
+
+        // Update from Mover class.
+        else if(object instanceof InterfaceTurnMover) {
+            // Current player.
             InterfacePlayer<?> player = playerProvider.provide();
+
+            // Old circle.
             if(lastCircle != null) {
                 lastCircle.setVisible(false);
                 lastCircle.revalidate();
                 lastCircle.repaint();
-            } JLabel circle = map.get(player);
+            }
+
+            // Current circle.
+            JLabel circle = map.get(player);
             circle.setVisible(true);
             circle.revalidate();
             circle.repaint();
             lastCircle = circle;
-        } else throw new IllegalArgumentException(
+        }
+
+        // Invalid case.
+        else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceTurnMover or Connector type expected");
     }

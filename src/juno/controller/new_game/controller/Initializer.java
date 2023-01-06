@@ -31,6 +31,8 @@ import juno.controller.new_game.restorer.Stopper;
 import juno.controller.util.InterfaceInitializer;
 import juno.controller.util.PanelChanger;
 import juno.model.card.InterfaceCard;
+import juno.model.data.score.GamesWonCounter;
+import juno.model.data.score.LostGamesCounter;
 import juno.model.deck.CardEffectActivator;
 import juno.model.deck.Deck;
 import juno.model.deck.DiscardedPile;
@@ -105,7 +107,12 @@ public class Initializer
         // First discarded card manager.
         FirstDiscardedCardManager firstDiscardedCardManager = FirstDiscardedCardManager.getInstance();
 
+        // Winner manager.
         WinnerManager winnerManager = WinnerManager.getInstance();
+
+        // CountersManager.
+        CountersManager<InterfaceCard> countersManager =
+                (CountersManager<InterfaceCard>) CountersManager.getInstance();
 
         //////////////////////////////////////////////////////////////////////////////////////
 
@@ -139,6 +146,11 @@ public class Initializer
         winnerManager.setPanelChanger(new PanelChanger(
                 SinglePlayerCardPanel.getInstance(), SinglePlayerCardPanel.WINNER_PANEL));
         winnerManager.setStopper(stopper);
+
+        countersManager.setLostGamesCounter(LostGamesCounter.getInstance());
+        countersManager.setGamesWonCounter(GamesWonCounter.getInstance());
+        countersManager.setProvider(currentPlayerProvider);
+        winnerManager.addObserver(countersManager);
     }
 
 }

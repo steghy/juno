@@ -27,13 +27,15 @@ package juno.view.pages.new_game.single_player.match.panels.center.deck;
 
 import juno.controller.new_game.human.DiscardedCardSetter;
 import juno.controller.new_game.human.DrawAction;
+import juno.init.ProgramDirectory;
+import juno.model.requester.PathProviderAssembler;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.human.HumanPlayer;
 import juno.model.subjects.shift.CurrentPlayerProvider;
 import juno.model.subjects.shift.TurnMover;
 import juno.model.util.Provider;
-import juno.view.button.Button;
-import juno.view.button.ButtonCreator;
+import juno.view.img_initializer.ImageComponentInitializer;
+import juno.view.util.ImageButton;
 import juno.view.util.ImageResizer;
 
 import javax.swing.*;
@@ -54,7 +56,12 @@ public class DeckPanelConfigurator {
                 (DeckPanel<InterfacePlayer<?>>) DeckPanel.getInstance();
 
         // Component.
-        AbstractButton deckButton = ButtonCreator.getInstance().create(Button.COVER, null);
+        AbstractButton deckButton = new ImageButton();
+        ImageComponentInitializer.getInstance().initialize(
+                deckButton,
+                PathProviderAssembler.getInstance().assemble(ProgramDirectory.COVER, "COVER.png"),
+                PathProviderAssembler.getInstance().assemble(ProgramDirectory.COVER, "COVER_ROLLOVER.png"),
+                null);
 
         // Image resizing.
         ImageResizer.resize(deckButton, 3.0);

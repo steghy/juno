@@ -27,13 +27,15 @@ package juno.view.pages.new_game.single_player.match.panels.east;
 
 import juno.controller.log_out.Restorable;
 import juno.controller.new_game.GameStarter;
+import juno.init.ProgramDirectory;
 import juno.model.card.InterfaceCard;
+import juno.model.requester.PathProviderAssembler;
 import juno.model.subjects.ai.AI;
 import juno.model.util.Observer;
-import juno.view.button.Button;
-import juno.view.button.ButtonCreator;
 import juno.view.gobject.cards.GCardCreator;
+import juno.view.img_initializer.InterfaceImageComponentInitializer;
 import juno.view.panels.AbstractFirstComponent;
+import juno.view.util.ImageButton;
 import juno.view.util.ImageResizer;
 import juno.view.util.RotatedIcon;
 import org.jetbrains.annotations.NotNull;
@@ -53,6 +55,9 @@ public class EastCardPanel
 
     // 'Bottom' insects value parameter.
     private final int bottomInsectsParameter;
+
+    // The Image component initializer.
+    private InterfaceImageComponentInitializer initializer;
 
     // The grid bag constraints.
     private final GridBagConstraints gbc;
@@ -88,6 +93,10 @@ public class EastCardPanel
         return instance;
     }
 
+    /**
+     * Adds the specified component to this object.
+     * @param c A Component object.
+     */
     public void addComponent(@NotNull Component c) {
         if(getComponents().length == 0) gbc.insets = new Insets(0, 0, 0, 0);
         else gbc.insets = new Insets(0, 0, gbc.insets.bottom + bottomInsectsParameter, 0);
@@ -96,11 +105,22 @@ public class EastCardPanel
         repaint();
     }
 
+    /**
+     * Removes the first component from this object.
+     */
     public void removeComponent() {
         remove(0);
         List<Component> components = new ArrayList<>(List.of(getComponents()));
         removeAll();
         components.forEach(this::addComponent);
+    }
+
+    /**
+     * Sets the image component initializer of this object.
+     * @param initializer An InterfaceImageComponentInitializer object.
+     */
+    public void setInitializer(@NotNull InterfaceImageComponentInitializer initializer) {
+        this.initializer = initializer;
     }
 
     @Override
@@ -115,15 +135,20 @@ public class EastCardPanel
                 if(showCard) removeAll();
                 else removeComponent();
             } else {
-                AbstractButton gCard;
+                AbstractButton gCard = new ImageButton();
                 if(showCard) {
                     InterfaceCard card = (InterfaceCard) ai.provide();
-                    gCard = (AbstractButton) GCardCreator.getInstance().create(Objects.requireNonNull(card), RotatedIcon.Rotate.UP);
+                    gCard = (AbstractButton) GCardCreator.getInstance()
+                            .create(Objects.requireNonNull(card), RotatedIcon.Rotate.UP);
                     ImageResizer.resize(gCard, 2.5);
                     gCard.setEnabled(false);
                     add(gCard);
                 } else {
-                    gCard = ButtonCreator.getInstance().create(Button.COVER, RotatedIcon.Rotate.UP);
+                    initializer.initialize(
+                            gCard,
+                            PathProviderAssembler.getInstance().assemble(ProgramDirectory.COVER, "COVER.png"),
+                            PathProviderAssembler.getInstance().assemble(ProgramDirectory.COVER, "COVER_ROLLOVER.png"),
+                            RotatedIcon.Rotate.UP);
                     ImageResizer.resize(gCard, 4.0);
                     addComponent(gCard);
                 }

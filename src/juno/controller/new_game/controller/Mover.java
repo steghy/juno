@@ -106,6 +106,10 @@ public class Mover<T>
             Objects.requireNonNull(getTurnMover()).next();
             timer.start();
         } else if(object instanceof InterfaceTurnMover) {
+            // timer.stop() permette di evitare il problema della giocata veloce
+            // del giocatore successivo a quello del player umano quando si gioca
+            // una carta molto velocemente. Analizzare e comprondere.
+            timer.stop();
             timer.start();
         } else if(object instanceof Provider<?> provider) {
             players = (Donut<InterfacePlayer<T>>) provider.provide();

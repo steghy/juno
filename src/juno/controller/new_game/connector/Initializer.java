@@ -107,10 +107,10 @@ public class Initializer
         aiPlayerFactory.addObserver(connector);
 
         // Circle connector.
-        circleConnector.north = NorthPanel.getInstance().getThirdComponent();
-        circleConnector.west = WestPanel.getInstance().getThirdComponent();
-        circleConnector.east  = EastPanel.getInstance().getThirdComponent();
-        circleConnector.south  = SouthPanel.getInstance().getThirdComponent();
+        circleConnector.setNorth(Objects.requireNonNull(NorthPanel.getInstance().getThirdComponent()));
+        circleConnector.setWest(Objects.requireNonNull(WestPanel.getInstance().getThirdComponent()));
+        circleConnector.setEast(Objects.requireNonNull(EastPanel.getInstance().getThirdComponent()));
+        circleConnector.setSouth(Objects.requireNonNull(SouthPanel.getInstance().getThirdComponent()));
         PlayersProvider.getInstance().addObserver(circleConnector);
 
         // Panel illuminator.

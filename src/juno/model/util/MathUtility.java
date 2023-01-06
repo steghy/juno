@@ -26,6 +26,9 @@
 
 package juno.model.util;
 
+import juno.model.card.actions.InterfaceAction;
+import juno.model.data.awards.avatar.InterfaceAvatarImage;
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
@@ -46,11 +49,14 @@ public class MathUtility {
      * Checks if the number obtained from the specified
      * string is out of range for the specified Class object.
      * @param stringNumber A String object that represents a number.
-     * @param clazz A Class object.
+     * @param object An Object.
      * @return A boolean value.
      */
-    public static boolean isOutOfRange(String stringNumber, Class<?> clazz) {
+    public static boolean isOutOfRange(String stringNumber, Object object) {
+        Class<?> clazz = object instanceof Class<?> ? (Class<?>) object : object.getClass();
+
         String min, max;
+
         // Integer and int case.
         if (clazz == Integer.class || clazz == int.class) {
             min = String.valueOf(Integer.MIN_VALUE);

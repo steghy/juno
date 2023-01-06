@@ -32,6 +32,7 @@ import juno.view.avatar.AvatarPanel;
 import juno.view.img_initializer.ImageComponentInitializer;
 
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;
 
 /**
@@ -47,13 +48,15 @@ public class WestPanelConfigurator {
         // Main component.
         WestPanel westPanel = WestPanel.getInstance();
 
+        // Image component initializer.
+        ImageComponentInitializer initializer = ImageComponentInitializer.getInstance();
+
         // Component.
         WestCardPanel westCardPanel = WestCardPanel.getInstance();
         AvatarPanel avatarPanel = new AvatarPanel();
         // The circle.
         JLabel circle = new JLabel();
-        ImageComponentInitializer.getInstance()
-                .initialize(circle,
+        initializer.initialize(circle,
                         PathProviderAssembler.getInstance().assemble(ProgramDirectory.GIFS, "circle.gif"),
                         null);
         circle.setVisible(false);
@@ -62,12 +65,22 @@ public class WestPanelConfigurator {
         JScrollPane westCardScrollPanel = new JScrollPane(westCardPanel,
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+
         westCardScrollPanel.setPreferredSize(new Dimension(180, 550));
         westCardScrollPanel.setIgnoreRepaint(false);
         westCardScrollPanel.setMinimumSize(new Dimension(180, 550));
-        westCardScrollPanel.getViewport().setOpaque(false);
         westCardScrollPanel.setBorder(BorderFactory.createEmptyBorder());
+        westCardScrollPanel.getViewport().setOpaque(false);
         westCardScrollPanel.setOpaque(false);
+        JScrollBar bar = westCardScrollPanel.getVerticalScrollBar();
+        bar.setOpaque(false);
+        bar.setPreferredSize(new Dimension(5, 9));
+        bar.setUI(new BasicScrollBarUI() {
+            @Override
+            protected void configureScrollBarColors() {
+                this.thumbColor = Color.GREEN;
+            }
+        });
 
         // Observer / Observable.
         GameStarter.getInstance().addObserver(westCardPanel);
@@ -76,6 +89,9 @@ public class WestPanelConfigurator {
         westPanel.setFirstComponent(westCardScrollPanel); // Cards panel.
         westPanel.setSecondComponent(avatarPanel);        // Avatar panel.
         westPanel.setThirdComponent(circle);              // Circle gif.
+
+        // Initializer setting.
+        westCardPanel.setInitializer(initializer);
 
         // Main component initialization.
         westPanel.init();

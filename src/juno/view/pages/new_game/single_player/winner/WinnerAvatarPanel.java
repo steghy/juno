@@ -27,10 +27,13 @@ package juno.view.pages.new_game.single_player.winner;
 
 import juno.controller.new_game.connector.AvatarConnector;
 import juno.controller.new_game.controller.WinnerManager;
+import juno.model.data.awards.avatar.InterfaceAvatarImage;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.shift.CurrentPlayerProvider;
 import juno.model.util.Observer;
 import juno.view.avatar.AvatarPanel;
+import juno.view.gobject.avatars.GAvatarImage;
+import juno.view.gobject.avatars.GAvatarImageCreator;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -63,19 +66,25 @@ public class WinnerAvatarPanel
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
         if(object instanceof WinnerManager) {
             removeAll();
+
+            // The current player.
             InterfacePlayer<?> player =
                     (InterfacePlayer<?>) CurrentPlayerProvider.getInstance().provide();
             AvatarPanel avatar = (AvatarPanel) AvatarConnector.getInstance().provide().get(player);
+            GAvatarImage<InterfaceAvatarImage> gObjectButton =
+                    (GAvatarImage<InterfaceAvatarImage>) avatar.getAvatarImage();
+
+
             AvatarPanel a = new AvatarPanel();
-            a.setAvatarName(Objects.requireNonNull(avatar.getAvatarName()));
-            a.setAvatarImage(Objects.requireNonNull(avatar.getAvatarImage()));
+            a.setAvatarImage((JButton) GAvatarImageCreator.getInstance().create(Objects.requireNonNull(gObjectButton).object(), null));
+            a.setAvatarName(new JLabel(Objects.requireNonNull(avatar.getAvatarName()).getText()));
             a.init();
+
             add(a, BorderLayout.CENTER);
-            revalidate();
-            repaint();
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". WinnerManager type expected");

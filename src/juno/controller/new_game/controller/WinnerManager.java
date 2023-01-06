@@ -44,10 +44,16 @@ public class WinnerManager
     @Nullable
     private Stoppable stopper;
 
+    // The WinnerManager instance.
     private static WinnerManager instance;
 
+    // Builds the WinnerManager instance.
     private WinnerManager() {}
 
+    /**
+     * Returns the WinnerManager instance.
+     * @return The WinnerManager instance.
+     */
     public static WinnerManager getInstance() {
         if(instance == null) instance = new WinnerManager();
         return instance;
@@ -74,6 +80,5 @@ public class WinnerManager
     public void setStopper(@NotNull Stoppable stopper) {
         this.stopper = stopper;
     }
-
 
 }

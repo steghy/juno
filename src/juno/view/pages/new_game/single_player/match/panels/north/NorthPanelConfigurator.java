@@ -47,14 +47,16 @@ public class NorthPanelConfigurator {
         // Main component.
         NorthPanel northPanel = NorthPanel.getInstance();
 
+        // Image component initializer.
+        ImageComponentInitializer initializer = ImageComponentInitializer.getInstance();
+
         // Components.
         NorthCardPanel northCardPanel = NorthCardPanel.getInstance();
         AvatarPanel avatarPanel = new AvatarPanel();
 
         // The circle.
         JLabel circle = new JLabel();
-        ImageComponentInitializer.getInstance()
-                .initialize(circle,
+        initializer.initialize(circle,
                         PathProviderAssembler.getInstance().assemble(ProgramDirectory.GIFS, "circle.gif"),
                         null);
         circle.setVisible(false);
@@ -86,6 +88,9 @@ public class NorthPanelConfigurator {
         northPanel.setFirstComponent(northCardScrollPanel); // Cards panel.
         northPanel.setSecondComponent(avatarPanel);         // Avatar panel.
         northPanel.setThirdComponent(circle);
+
+        // Initializer settings.
+        northCardPanel.setInitializer(initializer);
 
         // Main component initialization.
         northPanel.init();

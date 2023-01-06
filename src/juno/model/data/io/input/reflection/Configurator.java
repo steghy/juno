@@ -68,9 +68,9 @@ public class Configurator
     @Override
     @SuppressWarnings("unchecked")
     public void configure(@NotNull Object object,
-                          @NotNull Map<String, Object> map) throws NoSuchFieldException,
-                                                         IllegalAccessException,
-                                                         InvocationTargetException {
+                          @NotNull Map<String, Object> map)
+            throws NoSuchFieldException, IllegalAccessException, InvocationTargetException {
+
         // Prevent the error of considering the fields of class 'Class'
         // in case the object passed in input was of type Class.
         Class<?> clazz = object instanceof Class<?> ? (Class<?>) object : object.getClass();

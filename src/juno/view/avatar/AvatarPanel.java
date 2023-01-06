@@ -59,7 +59,6 @@ public class AvatarPanel
         setLayout(new GridBagLayout());
         avatarName.setOpaque(false);
         avatarImage.setOpaque(false);
-
         avatarImage.setContentAreaFilled(false);
         avatarImage.setBorderPainted(false);
         GridBagConstraints gbc = new GridBagConstraints();
@@ -87,6 +86,8 @@ public class AvatarPanel
         gbc.ipadx = 0;
         gbc.ipady = 0;
         add(avatarName, gbc);
+        revalidate();
+        repaint();
     }
 
     /**
