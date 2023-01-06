@@ -64,14 +64,15 @@ public class WestPanelConfigurator {
 
         // East card panel.
         JScrollPane westCardScrollPanel = new JScrollPane(westCardPanel,
-                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        westCardScrollPanel.setPreferredSize(new Dimension(190, 550));
+        westCardScrollPanel.setPreferredSize(new Dimension(190, 400));
         westCardScrollPanel.setIgnoreRepaint(false);
-        westCardScrollPanel.setMinimumSize(new Dimension(190, 550));
+        westCardScrollPanel.setMinimumSize(new Dimension(190, 400));
         westCardScrollPanel.setBorder(BorderFactory.createEmptyBorder());
         westCardScrollPanel.getViewport().setOpaque(false);
         westCardScrollPanel.setOpaque(false);
+        westCardScrollPanel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         JScrollBar bar = westCardScrollPanel.getVerticalScrollBar();
         bar.setOpaque(false);
         bar.setPreferredSize(new Dimension(5, 9));

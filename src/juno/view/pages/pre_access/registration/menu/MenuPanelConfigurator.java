@@ -109,6 +109,9 @@ public class MenuPanelConfigurator {
         resizer.resize(confirmButton, 2.8);
         resizer.resize(backButton, 2.8);
 
+        // Observer - Observable connection.
+        RegistrationDataSelector.getInstance().addObserver(menuPanel);
+
         // Action listeners.
         confirmButton.addActionListener(
                 new RegistrationDataSender(

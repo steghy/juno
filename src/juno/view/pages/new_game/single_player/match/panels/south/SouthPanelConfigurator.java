@@ -84,10 +84,10 @@ public class SouthPanelConfigurator {
         // Card panel.
         JScrollPane southCardScrollPanel = new JScrollPane(southCardPanel,
                 JScrollPane.VERTICAL_SCROLLBAR_NEVER,
-                JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        southCardScrollPanel.setPreferredSize(new Dimension(950, 150));
+                JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        southCardScrollPanel.setPreferredSize(new Dimension(700, 170));
         southCardScrollPanel.setIgnoreRepaint(false);
-        southCardScrollPanel.setMinimumSize(new Dimension(950, 150));
+        southCardScrollPanel.setMinimumSize(new Dimension(700, 170));
         southCardScrollPanel.getViewport().setOpaque(false);
         southCardScrollPanel.setBorder(BorderFactory.createEmptyBorder());
         southCardScrollPanel.setOpaque(false);

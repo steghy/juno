@@ -32,6 +32,7 @@ import juno.model.util.Provider;
 import juno.model.util.Observer;
 import juno.view.gobject.GObjectButton;
 import juno.view.gobject.InterfaceGObjectCreator;
+import juno.view.util.ImageButton;
 import juno.view.util.ImageResizer;
 import juno.view.util.RotatedIcon;
 import org.jetbrains.annotations.NotNull;
@@ -54,6 +55,9 @@ public class DiscardedPilePanel
 
     // The top discarded pile card provider.
     private Provider<InterfaceCard> provider;
+
+    // The default component.
+    private Component c;
 
     // The DiscardedPilePanel instance.
     private static DiscardedPilePanel instance;
@@ -90,12 +94,20 @@ public class DiscardedPilePanel
         this.creator = creator;
     }
 
+    /**
+     * Sets the default component of this object.
+     * @param c A Component.
+     */
+    public void setDefaultComponent(Component c) {
+        this.c =c;
+    }
+
     @Override
     public void update(@NotNull Object object) {
         if(object instanceof InterfaceDiscardedPile<?>) {
             GObjectButton<InterfaceCard> gCard = (GObjectButton<InterfaceCard>)
                     creator.create(provider.provide(), RotatedIcon.Rotate.ABOUT_CENTER);
-            ImageResizer.getInstance().resize(gCard, 1.8);
+            ImageResizer.getInstance().resize(gCard, 2.2);
             removeAll();
             gCard.setEnabled(false);
             add(gCard, BorderLayout.CENTER);
@@ -110,6 +122,7 @@ public class DiscardedPilePanel
     @Override
     public void restore() {
         removeAll();
+        add(c, BorderLayout.CENTER);
         revalidate();
         repaint();
     }

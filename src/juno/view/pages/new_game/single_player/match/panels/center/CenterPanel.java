@@ -63,10 +63,21 @@ public class CenterPanel
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
         gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,15,0);
+        gbc.insets = new Insets(0,0,15,120);
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        this.add(Objects.requireNonNull(getFirstComponent()), gbc);
+        add(Objects.requireNonNull(getFirstComponent()), gbc);
+
+        // Actual color panel.
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(0,120,15,0);
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
+        add(Objects.requireNonNull(getFourthComponent()), gbc);
 
         // Deck.
         gbc.gridx = 0;
@@ -74,32 +85,21 @@ public class CenterPanel
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
         gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,10,0);
+        gbc.insets = new Insets(0,0,15,120);
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        this.add(Objects.requireNonNull(getSecondComponent()), gbc);
+        add(Objects.requireNonNull(getSecondComponent()), gbc);
 
         // Discarded pile
-        gbc.gridx = 1;
+        gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
         gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,10,0);
+        gbc.insets = new Insets(0,120,15,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        this.add(Objects.requireNonNull(getThirdComponent()), gbc);
-
-        // Actual color panel.
-        gbc.gridx = 1;
-        gbc.gridy = 0;
-        gbc.weightx = 0.0;
-        gbc.weighty = 0.0;
-        gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,0,0);
-        gbc.ipadx = 0;
-        gbc.ipady = 0;
-        this.add(Objects.requireNonNull(getFourthComponent()), gbc);
+        add(Objects.requireNonNull(getThirdComponent()), gbc);
 
         // Colors panel.
         gbc.gridx = 0;
@@ -107,32 +107,32 @@ public class CenterPanel
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
         gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(0,0,25,0);
+        gbc.insets = new Insets(0,0,10,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        this.add(Objects.requireNonNull(getFifthComponent()), gbc);
+        add(Objects.requireNonNull(getFifthComponent()), gbc);
 
         // Exit button.
-        gbc.gridx = 1;
+        gbc.gridx = 0;
         gbc.gridy = 3;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-        gbc.anchor = GridBagConstraints.PAGE_END;
-        gbc.insets = new Insets(0,0,0,0);
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(0,100,0,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        this.add(Objects.requireNonNull(getSixthComponent()), gbc);
+        add(Objects.requireNonNull(getSixthComponent()), gbc);
 
         // Uno button
         gbc.gridx = 0;
         gbc.gridy = 3;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-        gbc.anchor = GridBagConstraints.PAGE_START;
-        gbc.insets = new Insets(0,0,0,0);
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.insets = new Insets(0,0,0,100);
         gbc.ipadx = 0;
         gbc.ipady = 0;
-        this.add(Objects.requireNonNull(getSeventhComponent()), gbc);
+        add(Objects.requireNonNull(getSeventhComponent()), gbc);
     }
 
 }

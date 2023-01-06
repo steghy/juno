@@ -26,9 +26,12 @@
 package juno.view.pages.pre_access.registration.menu;
 
 import juno.controller.pre_access.registration.InterfaceDataLineProvider;
+import juno.controller.pre_access.registration.InterfaceRegistrationDataSelector;
 import juno.model.data.io.output.Exportable;
 import juno.model.data.profile.profile.Profile;
+import juno.model.util.Observer;
 import juno.view.panels.AbstractSixthComponent;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -40,7 +43,7 @@ import java.util.Objects;
  */
 public class MenuPanel
         extends AbstractSixthComponent
-        implements Exportable, InterfaceDataLineProvider {
+        implements Exportable, InterfaceDataLineProvider, Observer {
 
     // The data lines map.
     private final Map<String, DataLine> dataLines;
@@ -171,6 +174,17 @@ public class MenuPanel
     @Override
     public Map<String, DataLine> getDataLines() {
         return dataLines;
+    }
+
+    @Override
+    public void update(@NotNull Object object) {
+        if(object instanceof InterfaceRegistrationDataSelector)
+            getDataLines().forEach((k, v) -> {
+                v.setBorder(null); v.getTextField().setText("");
+            });
+        else throw new IllegalArgumentException(
+                "Invalid object type: " + object.getClass() +
+                        ". InterfaceRegistrationDataSelector type expected.");
     }
 
 }

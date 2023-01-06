@@ -101,7 +101,7 @@ public class Profile
                 try {
                     ProfileNameSetter.getInstance().set(temp);
                 } catch (IllegalArgumentException e) {
-                    e.printStackTrace();
+                    // e.printStackTrace();
                     errors.put(PROFILE_NAME_KEY, e.getMessage());
                 }
             } else if (profileNameFromMap == null) profileName = null;
@@ -115,7 +115,7 @@ public class Profile
                 try {
                     NameSetter.getInstance().set(temp);
                 } catch (IllegalArgumentException e) {
-                    e.printStackTrace();
+                    // e.printStackTrace();
                     errors.put(NAME_KEY, e.getMessage());
                 }
             } else if (nameFromMap == null) name = null;
@@ -129,7 +129,7 @@ public class Profile
                 try {
                     LastNameSetter.getInstance().set(temp);
                 } catch (IllegalArgumentException e) {
-                    e.printStackTrace();
+                    // e.printStackTrace();
                     errors.put(LAST_NAME_KEY, e.getMessage());
                 }
             } else if (lastNameFromMap == null) lastName = null;
@@ -143,7 +143,7 @@ public class Profile
                 try {
                     AgeSetter.getInstance().set(temp);
                 } catch (IllegalArgumentException e) {
-                    e.printStackTrace();
+                    // e.printStackTrace();
                     errors.put(AGE_KEY, e.getMessage());
                 }
             } else if (ageFromMap == null) age = null;

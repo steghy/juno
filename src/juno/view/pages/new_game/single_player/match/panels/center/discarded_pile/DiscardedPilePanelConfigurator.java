@@ -25,10 +25,17 @@
 
 package juno.view.pages.new_game.single_player.match.panels.center.discarded_pile;
 
+import juno.init.ProgramDirectory;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.DiscardedPile;
+import juno.model.requester.PathProviderAssembler;
 import juno.model.util.Provider;
 import juno.view.gobject.cards.GCardCreator;
+import juno.view.img_initializer.ImageComponentInitializer;
+import juno.view.util.ImageButton;
+import juno.view.util.ImageResizer;
+
+import java.awt.*;
 
 /**
  * @author Simone Gentili
@@ -50,6 +57,18 @@ public class DiscardedPilePanelConfigurator {
 
         // Observer / Observable.
         DiscardedPile.getInstance().addObserver(discardedPilePanel);
+
+        ImageResizer resizer = ImageResizer.getInstance();
+        ImageButton label = new ImageButton(resizer);
+        ImageComponentInitializer.getInstance()
+                .initialize(
+                        label,
+                        PathProviderAssembler.getInstance().assemble(ProgramDirectory.COVER, "DISCARDED_PILE.png"),
+                        PathProviderAssembler.getInstance().assemble(ProgramDirectory.COVER, "DISCARDED_PILE.png"),
+                        null);
+        discardedPilePanel.setDefaultComponent(label);
+        resizer.resize(label, 2.2);
+        discardedPilePanel.add(label, BorderLayout.CENTER);
     }
 
 }

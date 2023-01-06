@@ -65,7 +65,7 @@ public class DeckPanelConfigurator {
                 null);
 
         // Image resizing.
-        resizer.resize(deckButton, 3.5);
+        resizer.resize(deckButton, 3.6);
 
         // Action listener.
         deckButton.addActionListener(DrawAction.getInstance());

@@ -55,6 +55,9 @@ public class NorthPanelConfigurator {
         NorthCardPanel northCardPanel = NorthCardPanel.getInstance();
         AvatarPanel avatarPanel = new AvatarPanel();
 
+        JLabel spyderLeft = new JLabel();
+        JLabel spyderRight = new JLabel();
+
         // The circle.
         JLabel circle = new JLabel();
         initializer.initialize(circle,
@@ -62,19 +65,28 @@ public class NorthPanelConfigurator {
                         null);
         circle.setVisible(false);
 
+        initializer.initialize(spyderLeft,
+                PathProviderAssembler.getInstance().assemble(ProgramDirectory.GIFS, "circle.gif"),
+                null);
+
+        initializer.initialize(spyderRight,
+                PathProviderAssembler.getInstance().assemble(ProgramDirectory.GIFS, "circle.gif"),
+                null);
+
         // East card panel.
         JScrollPane northCardScrollPanel = new JScrollPane(northCardPanel,
                 JScrollPane.VERTICAL_SCROLLBAR_NEVER,
-                JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        northCardScrollPanel.setPreferredSize(new Dimension(950, 150));
+                JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        northCardScrollPanel.setPreferredSize(new Dimension(700, 170));
         northCardScrollPanel.setIgnoreRepaint(false);
-        northCardScrollPanel.setMinimumSize(new Dimension(950, 150));
+        northCardScrollPanel.setMinimumSize(new Dimension(700, 170));
         northCardScrollPanel.getViewport().setOpaque(false);
         northCardScrollPanel.setBorder(BorderFactory.createEmptyBorder());
         northCardScrollPanel.setOpaque(false);
+        northCardScrollPanel.setColumnHeaderView(northCardScrollPanel.getHorizontalScrollBar());
         JScrollBar bar = northCardScrollPanel.getHorizontalScrollBar();
         bar.setOpaque(false);
-        bar.setPreferredSize(new Dimension(5, 9));
+        bar.setPreferredSize(new Dimension(5, 5));
         bar.setUI(new BasicScrollBarUI() {
             @Override
             protected void configureScrollBarColors() {

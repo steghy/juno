@@ -34,6 +34,7 @@ import juno.model.sound.ButtonSoundPlayer;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
 import juno.view.pages.pre_access.card.PreAccessCardPanel;
+import juno.view.pages.pre_access.registration.RegistrationPanel;
 import juno.view.util.ImageResizer;
 import juno.view.util.RoundedBorder;
 
@@ -76,8 +77,18 @@ public class MenuPanelConfigurator {
 
         // Action listeners setting.
         ButtonSoundPlayer buttonSoundPlayer = ButtonSoundPlayer.getInstance();
-        createAnAccountButton.addActionListener(new SoundAction(buttonSoundPlayer,
-                new ChangePanelAction(new PanelChanger(PreAccessCardPanel.getInstance(), PreAccessCardPanel.REGISTRATION_PANEL))));
+        createAnAccountButton.addActionListener(new SoundAction(buttonSoundPlayer, listener -> {
+            RegistrationPanel.getInstance().setFromWelcomePanel(false);
+            LayoutManager layoutManager = PreAccessCardPanel.getInstance().getLayout();
+            if(layoutManager instanceof CardLayout cardLayout) {
+                cardLayout.show(PreAccessCardPanel.getInstance(), PreAccessCardPanel.REGISTRATION_PANEL);
+            } else {
+                throw new IllegalArgumentException(
+                        "Invalid layout type: " + layoutManager.getClass() +
+                                ". CardLayout expected.");
+            }
+        }));
+
         logInButton.addActionListener(new SoundAction(buttonSoundPlayer, new ChangePanelAction(
                 new PanelChanger(PreAccessCardPanel.getInstance(), PreAccessCardPanel.LOG_IN_PANEL))));
         continueWithoutAnAccountButton.addActionListener(new SoundAction(buttonSoundPlayer, GuestLogger.getInstance()));

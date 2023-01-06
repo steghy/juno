@@ -27,6 +27,7 @@ package juno.controller.new_game.controller;
 
 import juno.controller.new_game.penalty.PenaltyExecutor;
 import juno.model.card.InterfaceCard;
+import juno.model.deck.DiscardedPile;
 import juno.model.deck.InterfaceCardEffectActivator;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.ai.InterfaceAi;
@@ -101,11 +102,11 @@ public class CardEffectController
     @Override
     public void control() {
         InterfacePlayer<InterfaceCard> current = Objects.requireNonNull(provider).provide();
-        InterfaceCard card = current.provide();
+        InterfaceCard card = (InterfaceCard) DiscardedPile.getInstance().provide();
         Objects.requireNonNull(activator).activate(card);
         // Human player case.
         if(!(current instanceof InterfaceAi<?,?>)) {
-            if (card.action() != null && card.action().isJolly())
+            if (Objects.requireNonNull(card).action() != null && card.action().isJolly())
                 updateAll();
             else
                 Objects.requireNonNull(turnMover).next();

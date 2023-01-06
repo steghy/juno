@@ -37,6 +37,7 @@ import juno.view.img_initializer.ImageComponentInitializer;
 import juno.view.pages.card.TopCardPanel;
 import juno.view.pages.main.menu.MenuPanel;
 import juno.view.pages.main.title.TitlePanel;
+import juno.view.pages.pre_access.registration.RegistrationPanel;
 import juno.view.util.ImageResizer;
 
 import javax.swing.*;
@@ -89,8 +90,7 @@ public class MainPanelConfigurator {
 
         // Action listener.
         logOutButton.addActionListener(new LogOutAction(AccountExiter.getInstance()));
-        logOutButton.addActionListener(new ChangePanelAction(
-                new PanelChanger(TopCardPanel.getInstance(), TopCardPanel.PRE_ACCESS_PANEL)));
+        logOutButton.addActionListener(new ChangePanelAction(new PanelChanger(TopCardPanel.getInstance(), TopCardPanel.PRE_ACCESS_PANEL)));
 
         // Components settings.
         mainPanel.setFirstComponent(titlePanel);   // title panel
