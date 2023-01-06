@@ -26,7 +26,6 @@
 package juno.view.avatar;
 
 import juno.model.data.avatar.Avatar;
-import juno.model.data.avatar.AvatarFrameSetter;
 import juno.model.data.avatar.AvatarImageSetter;
 import juno.model.data.avatar.AvatarNameSetter;
 import juno.model.data.awards.avatar.InterfaceAvatarImage;

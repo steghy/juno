@@ -98,6 +98,7 @@ public enum Goal
         updateAll();
     }
 
+    // Lock this goal.
     void lock() {
         unlock = false;
         updateAll();
@@ -153,6 +154,10 @@ public enum Goal
         return goals.stream().filter(goal -> !goal.isReached()).toList();
     }
 
+    /**
+     * Returns the reached Goal objects of the Goal enum class.
+     * @return A List object.
+     */
     public static List<Goal> getReachedGoals() {
         return Stream.of(Goal.values()).filter(Goal::isReached).toList();
     }

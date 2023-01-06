@@ -50,7 +50,6 @@ public class AvatarSetter
 
     @Override
     public void setAvatar() {
-        Objects.requireNonNull(getAvatarFrameSetter()).set(getAvatarFrame());
         Objects.requireNonNull(getAvatarImageSetter()).set(getAvatarImage());
     }
 

@@ -36,6 +36,7 @@ import java.util.List;
 /**
  * @author Simone Gentili
  */
+@Deprecated
 public enum AvatarFrame
         implements InterfaceAvatarFrame, Observer, Observable {
 

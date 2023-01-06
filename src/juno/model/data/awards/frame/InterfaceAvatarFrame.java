@@ -30,6 +30,7 @@ import juno.model.data.awards.InterfaceAward;
 /**
  * @author Simone Gentili
  */
+@Deprecated
 public interface InterfaceAvatarFrame
         extends InterfaceAward {
 

@@ -40,6 +40,7 @@ public class MatchPanelConfigurator {
     // Builds the MatchPanelConfiguration.
     private MatchPanelConfigurator() {}
 
+    /** Configures the MatchPanel instance. */
     public static void configure() {
         // Main component.
         MatchPanel matchPanel = MatchPanel.getInstance();

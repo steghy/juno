@@ -27,7 +27,6 @@ package juno.model.data.awards;
 
 import juno.controller.util.InterfaceInitializer;
 import juno.model.data.awards.avatar.AvatarImage;
-import juno.model.data.awards.frame.AvatarFrame;
 import juno.model.data.goals.Goal;
 import juno.model.data.goals.RegistrationGoal;
 
@@ -56,31 +55,27 @@ public class Initializer
     public void initialize() {
         // Registration.
         RegistrationGoal.getInstance().addObserver(AvatarImage.AVATAR_IMAGE_1);
-        RegistrationGoal.getInstance().addObserver(AvatarFrame.GREY_FRAME);
 
         // First match won.
         Goal.FIRST_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_2);
-        Goal.FIRST_MATCH_WON.addObserver(AvatarFrame.CYAN_GREEN_FRAME);
 
         // First match lose.
         Goal.FIRST_MATCH_LOSE.addObserver(AvatarImage.AVATAR_IMAGE_3);
 
         // Ten match won.
         Goal.TEN_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_4);
-        Goal.TEN_MATCH_WON.addObserver(AvatarFrame.BLUE_FRAME);
 
         // Ten match lose.
         Goal.TEN_MATCH_LOSE.addObserver(AvatarImage.AVATAR_IMAGE_5);
 
         // Fifty match won.
         Goal.FIFTY_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_6);
-        Goal.FIFTY_MATCH_WON.addObserver(AvatarFrame.BLACK_FRAME);
 
         // Fifty match lose.
-        Goal.FIFTY_MATCH_LOSE.addObserver(AvatarImage.AVATAR_IMAGE_8);
+        Goal.FIFTY_MATCH_LOSE.addObserver(AvatarImage.AVATAR_IMAGE_7);
 
         // One hundred match won.
-        Goal.ONE_HUNDRED_MATCH_WON.addObserver(AvatarFrame.GOLD_FRAME);
+        Goal.ONE_HUNDRED_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_8);
 
         // One hundred match lose.
         Goal.ONE_HUNDRED_MATCH_LOSE.addObserver(AvatarImage.AVATAR_IMAGE_9);

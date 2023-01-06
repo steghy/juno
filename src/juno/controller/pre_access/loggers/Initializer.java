@@ -28,10 +28,8 @@ package juno.controller.pre_access.loggers;
 import juno.controller.pre_access.registration.RegistrationDataSelector;
 import juno.controller.util.InterfaceInitializer;
 import juno.controller.util.PanelChanger;
-import juno.model.data.avatar.AvatarFrameSetter;
 import juno.model.data.avatar.AvatarImageSetter;
 import juno.model.data.awards.avatar.AvatarImage;
-import juno.model.data.awards.frame.AvatarFrame;
 import juno.model.data.goals.RegistrationGoal;
 import juno.model.data.profile.profile.Profile;
 import juno.model.data.profile.profile.ProfileNameSetter;
@@ -75,9 +73,7 @@ public class Initializer
         /////////////////////////////////////////////////////////////////////////////////
 
         // Avatar setter.
-        avatarSetter.setAvatarFrame(AvatarFrame.GREY_FRAME);
         avatarSetter.setAvatarImage(AvatarImage.AVATAR_IMAGE_1);
-        avatarSetter.setAvatarFrameSetter(AvatarFrameSetter.getInstance());
         avatarSetter.setAvatarImageSetter(AvatarImageSetter.getInstance());
 
         // Guest profile name setter.

@@ -26,7 +26,6 @@
 package juno.controller.pre_access.loggers;
 
 import juno.model.data.awards.avatar.InterfaceAvatarImage;
-import juno.model.data.awards.frame.InterfaceAvatarFrame;
 import juno.model.util.Setter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -37,33 +36,11 @@ import org.jetbrains.annotations.Nullable;
 public abstract class AbstractAvatarSetter
         implements InterfaceAvatarSetter {
 
-    // The avatar frame setter.
-    private Setter<InterfaceAvatarFrame> avatarFrameSetter;
-
-    // The avatar frame.
-    private InterfaceAvatarFrame avatarFrame;
-
     // The avatar image setter.
     private Setter<InterfaceAvatarImage> avatarImageSetter;
 
     // The avatar image.
     private InterfaceAvatarImage avatarImage;
-
-    /**
-     * Sets the avatar frame setter of this object.
-     * @param avatarFrameSetter An InterfaceSetter object.
-     */
-    public void setAvatarFrameSetter(@NotNull Setter<InterfaceAvatarFrame> avatarFrameSetter) {
-        this.avatarFrameSetter =  avatarFrameSetter;
-    }
-
-    /**
-     * Sets the avatar frame of this object.
-     * @param avatarFrame An InterfaceAvatarFrame object.
-     */
-    public void setAvatarFrame(@NotNull InterfaceAvatarFrame avatarFrame) {
-        this.avatarFrame = avatarFrame;
-    }
 
     /**
      * Sets the avatar image setter of this object.
@@ -79,24 +56,6 @@ public abstract class AbstractAvatarSetter
      */
     public void setAvatarImage(@NotNull InterfaceAvatarImage avatarImage) {
         this.avatarImage = avatarImage;
-    }
-
-    /**
-     * Returns the avatar frame setter of this object.
-     * @return An InterfaceSetter object.
-     */
-    @Nullable
-    public Setter<InterfaceAvatarFrame> getAvatarFrameSetter() {
-        return avatarFrameSetter;
-    }
-
-    /**
-     * Returns the avatar frame of this object.
-     * @return An InterfaceAvatarFrame object.
-     */
-    @Nullable
-    public InterfaceAvatarFrame getAvatarFrame() {
-        return avatarFrame;
     }
 
     /**

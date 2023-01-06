@@ -29,6 +29,7 @@ import juno.model.util.Observer;
 import juno.model.util.Provider;
 import juno.view.panels.AbstractFifthComponent;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 import java.util.Objects;
@@ -65,18 +66,32 @@ public class MatchPanel
     public void update(Object object) {
         if(object instanceof Provider<?> provider) {
             removeAll();
+
+            // The human player side.
             add(Objects.requireNonNull(getFirstComponent()), BorderLayout.SOUTH);
+            // Center side.
             add(Objects.requireNonNull(getFifthComponent()), BorderLayout.CENTER);
+
             int size = ((List<?>) provider.provide()).size();
             if(size > 3) throw new IllegalArgumentException(
                     "Unsupported number of players.");
+
             if(size >= 1)
                 add(Objects.requireNonNull(getThirdComponent()), BorderLayout.NORTH);
+
             if(size >= 2)
                 add(Objects.requireNonNull(getSecondComponent()), BorderLayout.WEST);
+
             if(size == 3) {
                 add(Objects.requireNonNull(getFourthComponent()), BorderLayout.EAST);
             }
+
+            else if(size == 2){
+                Component glue = Box.createGlue();
+                glue.setPreferredSize(new Dimension(348, 600));
+                add(glue, BorderLayout.EAST);
+            }
+
             revalidate();
             repaint();
         } else throw new IllegalArgumentException(

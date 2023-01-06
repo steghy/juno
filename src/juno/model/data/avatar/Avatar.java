@@ -27,8 +27,6 @@ package juno.model.data.avatar;
 
 import juno.model.data.awards.avatar.AvatarImage;
 import juno.model.data.awards.avatar.InterfaceAvatarImage;
-import juno.model.data.awards.frame.AvatarFrame;
-import juno.model.data.awards.frame.InterfaceAvatarFrame;
 import juno.model.data.io.input.configurable.Configurable;
 import juno.model.data.io.output.Exportable;
 import org.jetbrains.annotations.NotNull;
@@ -44,19 +42,15 @@ public class Avatar
 
     /** The avatar name key */
     public static final String AVATAR_NAME_KEY = "name";
+
     /** The avatar image key. */
     public static final String AVATAR_IMAGE_KEY = "avatarImage";
-    /** The avatar frame key. */
-    public static final String AVATAR_FRAME_KEY = "avatarFrame";
 
     // The avatar name.
     String avatarName;
 
     // The avatar image.
     InterfaceAvatarImage avatarImage;
-
-    // The avatar frame.
-    InterfaceAvatarFrame avatarFrame;
 
     // The Avatar instance.
     private static Avatar instance;
@@ -96,36 +90,28 @@ public class Avatar
                             ". InterfaceAvatarImage expected.");
         } else throw new IllegalArgumentException(
                 AVATAR_IMAGE_KEY + " is missing.");
-
-        // Avatar frame case.
-        if(map.containsKey(AVATAR_FRAME_KEY)) {
-            Object object = map.get(AVATAR_FRAME_KEY);
-            if(object instanceof String temp) {
-                AvatarFrameSetter.getInstance().set(AvatarFrame.valueOf(temp));
-            } else throw new IllegalArgumentException(
-                    "Invalid object type: " + object.getClass() +
-                            ". InterfaceAvatarFrame expected.");
-        } else throw new IllegalArgumentException(
-                AVATAR_FRAME_KEY + " is missing.");
     }
 
     @Override
     public Map<String, Object> exportData() {
         Map<String, Object> map = new HashMap<>();
         map.put(AVATAR_NAME_KEY, avatarName);
-        map.put(AVATAR_FRAME_KEY, avatarFrame);
         map.put(AVATAR_IMAGE_KEY, avatarImage);
         return map;
     }
 
+    /**
+     * returns the avatar image of this object.
+     * @return An InterfaceAvatarImage object.
+     */
     public InterfaceAvatarImage getAvatarImage() {
         return avatarImage;
     }
 
-    public InterfaceAvatarFrame getAvatarFrame() {
-        return avatarFrame;
-    }
-
+    /**
+     * Returns the avatar name of this object.
+     * @return A String object.
+     */
     public String getAvatarName() {
         return avatarName;
     }
