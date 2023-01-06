@@ -8,32 +8,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/data/config/avatar/Simo-avatar.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/config/avatar/Simoncino2-avatar.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/config/profiles/Simo-profile.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/config/profiles/Simoncino2-profile.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/config/scores/Simo-games-won.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/config/scores/Simo-lost-games.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/config/scores/Simoncino2-games-won.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/config/scores/Simoncino2-lost-games.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/avatar/Simoncino-avatar.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/config/avatar/Simoncino-avatar.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/scores/Simoncino-lost-games.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/config/scores/Simoncino-lost-games.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/images/gifs/circle.gif" beforeDir="false" afterPath="$PROJECT_DIR$/data/images/gifs/circle.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/controller/pre_access/registration/ErrorNotifier.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/controller/pre_access/registration/ErrorNotifier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/init/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/init/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/east/EastPanelConfigurator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/east/EastPanelConfigurator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/south/SouthCardPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/south/SouthCardPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/south/SouthPanelConfigurator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/south/SouthPanelConfigurator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/west/WestPanelConfigurator$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/west/WestPanelConfigurator$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/west/WestPanelConfigurator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/match/panels/west/WestPanelConfigurator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/pre_access/login/profiles_panel/GProfileProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/pre_access/login/profiles_panel/GProfileProcessor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/controller/pre_access/registration/ErrorNotifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/pre_access/registration/ErrorNotifier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/init/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/init/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/config/avatar/Simoncino-avatar.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/config/profiles/Simoncino-profile.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/config/scores/Simoncino-games-won.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/config/scores/Simoncino-lost-games.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/east/EastPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/east/EastPanelConfigurator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/south/SouthCardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/south/SouthCardPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/west/WestPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/match/panels/west/WestPanelConfigurator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/pre_access/login/profiles_panel/GProfileProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/pre_access/login/profiles_panel/GProfileProcessor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
