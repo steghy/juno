@@ -78,6 +78,7 @@ public class PanelIlluminator
         // Update from CircleConnector class.
         if(object instanceof Provider<?> provider) {
             map = (Map<InterfacePlayer<?>, JLabel>) provider.provide();
+            if(lastCircle != null) lastCircle.setVisible(false);
         }
 
         // Update from Mover class.

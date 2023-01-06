@@ -28,7 +28,7 @@ package juno.view.pages.new_game.single_player.match.panels.south;
 import juno.controller.log_out.Restorable;
 import juno.controller.new_game.GameStarter;
 import juno.controller.new_game.dispenser.CardDispenser;
-import juno.controller.util.SetterAction;
+import juno.controller.util.GSetterAction;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.InterfaceCompatibilityChecker;
 import juno.model.subjects.InterfacePlayer;
@@ -233,7 +233,7 @@ public class SouthCardPanel
 
                 // If the game has started, add the actions.
                 if(gameStarted) {
-                    gCard.addActionListener(new SetterAction<>(gCard.object(), discardedCardSetter));
+                    gCard.addActionListener(new GSetterAction<>(gCard, discardedCardSetter));
                 }
 
                 // If the added card was drawn on the human player's turn,

@@ -105,14 +105,12 @@ public class CardEffectController
         Objects.requireNonNull(activator).activate(card);
         // Human player case.
         if(!(current instanceof InterfaceAi<?,?>)) {
-            if (card.action() != null && card.action().isJolly()) {
+            if (card.action() != null && card.action().isJolly())
                 updateAll();
-            } else  {
+            else
                 Objects.requireNonNull(turnMover).next();
-            }
-        } else {
+        } else
             Objects.requireNonNull(turnMover).next();
-        }
     }
 
     @Override

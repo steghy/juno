@@ -81,8 +81,8 @@ public class DiscardedCardSetter<T>
 
     @Override
     public void set(@NotNull T object) {
-        Objects.requireNonNull(getDiscardedPile()).discard(object);
         remover.remove(object);
+        Objects.requireNonNull(getDiscardedPile()).discard(object);
         this.object = object;
         updateAll();
     }
