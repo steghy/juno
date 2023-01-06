@@ -28,6 +28,8 @@ package juno.view.pages.new_game.single_player.match.panels.south;
 import juno.controller.new_game.GameStarter;
 import juno.controller.new_game.dispenser.CardDispenser;
 import juno.controller.new_game.human.DiscardedCardSetter;
+import juno.controller.new_game.penalty.PenaltyExecutor;
+import juno.controller.new_game.penalty.PenaltyTimer;
 import juno.init.ProgramDirectory;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.CompatibilityChecker;
@@ -104,6 +106,9 @@ public class SouthPanelConfigurator {
         TurnMover.getInstance().addObserver(southCardPanel);
         CardDispenser.getInstance().addObserver(southCardPanel);
         humanPlayer.addObserver(southCardPanel);
+        PenaltyExecutor.getInstance().addObserver(southCardPanel);
+        PenaltyTimer.getInstance().addObserver(southCardPanel);
+        DiscardedCardSetter.getInstance().addObserver(southCardPanel);
 
         // Component setting.
         southCardPanel.setDiscardedCardSetter((Setter<InterfaceCard>) DiscardedCardSetter.getInstance());

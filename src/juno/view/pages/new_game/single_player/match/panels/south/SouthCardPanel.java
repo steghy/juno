@@ -28,6 +28,9 @@ package juno.view.pages.new_game.single_player.match.panels.south;
 import juno.controller.log_out.Restorable;
 import juno.controller.new_game.GameStarter;
 import juno.controller.new_game.dispenser.CardDispenser;
+import juno.controller.new_game.human.DiscardedCardSetter;
+import juno.controller.new_game.penalty.PenaltyExecutor;
+import juno.controller.new_game.penalty.PenaltyTimer;
 import juno.controller.util.GSetterAction;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.InterfaceCompatibilityChecker;
@@ -42,11 +45,8 @@ import juno.view.util.InterfaceImageResizer;
 import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author Simone Gentili
@@ -60,6 +60,9 @@ public class SouthCardPanel
 
     // 'Left' insects value parameter.
     private final int leftInsectsParameter;
+
+    // The penalty boolean value.
+    private boolean penalty;
 
     // The dispenser boolean value.
     private boolean dispenser;
@@ -96,10 +99,13 @@ public class SouthCardPanel
 
     // Builds the SouthCardPanel instance.
     private SouthCardPanel() {
+        // Booleans.
         gameStarted = false;
         dispenser = false;
+        penalty = false;
+
         componentMap = new HashMap<>();
-        leftInsectsParameter = 45;
+        leftInsectsParameter = 48;
         setOpaque(false);
         setLayout(new GridBagLayout());
         gbc = new GridBagConstraints();
@@ -238,7 +244,8 @@ public class SouthCardPanel
                 // If the added card was drawn on the human player's turn,
                 // it's compatibility is calculated while the remaining
                 // cards cannot be played.
-                if(currentPlayerProvider.provide() == humanPlayer && dispenser) {
+                if(currentPlayerProvider.provide() == humanPlayer
+                        && dispenser && !penalty) {
                     for (Component c : getComponents()) c.setEnabled(false);
                     gCard.setEnabled(compatibilityChecker.isCompatible(card));
                 }
@@ -266,6 +273,11 @@ public class SouthCardPanel
             else for(Component c : getComponents()) c.setEnabled(false);
         }
 
+        // Discarded card setter notifies.
+        else if(object instanceof DiscardedCardSetter<?>) {
+            for(Component c : getComponents()) c.setEnabled(false);
+        }
+
         // GameStarter notifies that the game has started
         // and therefore the added cards must encapsulate
         // the appropriate actions.
@@ -281,6 +293,14 @@ public class SouthCardPanel
             dispenser = true;
         }
 
+        // Penalty is started.
+        else if(object instanceof PenaltyTimer penaltyTimer)
+            penalty = !penaltyTimer.getTimer().isRunning();
+
+        // The penalty is over.
+        else if(object instanceof PenaltyExecutor<?>)
+            penalty = false;
+
         // Unrecognized update case.
         else throw new IllegalArgumentException(
                     "Invalid object type: " + object.getClass());
@@ -293,6 +313,7 @@ public class SouthCardPanel
     @Override
     public void restore() {
         setOpaque(false);
+        penalty = false;
         gameStarted = false;
         dispenser = false;
         componentMap.clear();

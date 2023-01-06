@@ -28,7 +28,6 @@ package juno.view.pages.new_game.single_player.match.panels.center.deck;
 import juno.controller.log_out.Restorable;
 import juno.controller.new_game.human.DiscardedCardSetter;
 import juno.controller.new_game.human.DrawAction;
-import juno.model.deck.DiscardedPile;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.shift.InterfaceTurnMover;
 import juno.model.util.Provider;
