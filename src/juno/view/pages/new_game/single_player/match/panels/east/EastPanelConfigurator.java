@@ -66,9 +66,9 @@ public class EastPanelConfigurator {
         JScrollPane eastCardScrollPanel = new JScrollPane(eastCardPanel,
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        eastCardScrollPanel.setPreferredSize(new Dimension(180, 550));
+        eastCardScrollPanel.setPreferredSize(new Dimension(170, 550));
         eastCardScrollPanel.setIgnoreRepaint(false);
-        eastCardScrollPanel.setMinimumSize(new Dimension(180, 550));
+        eastCardScrollPanel.setMinimumSize(new Dimension(170, 550));
         eastCardScrollPanel.setBorder(BorderFactory.createEmptyBorder());
         eastCardScrollPanel.getViewport().setOpaque(false);
         eastCardScrollPanel.setOpaque(false);

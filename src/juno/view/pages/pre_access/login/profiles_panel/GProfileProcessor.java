@@ -76,7 +76,7 @@ public class GProfileProcessor
         gProfile.setOpaque(false);
         gProfile.setText(gProfile.object());
         gProfile.setForeground(Color.WHITE);
-        gProfile.setFont(new Font(Font.DIALOG, Font.ITALIC, 15));
+        gProfile.setFont(new Font(Font.DIALOG, Font.ITALIC, 12));
         gProfile.setVerticalTextPosition(AbstractButton.CENTER);
         gProfile.setHorizontalTextPosition(AbstractButton.CENTER);
         gProfile.setHorizontalAlignment(AbstractButton.CENTER);

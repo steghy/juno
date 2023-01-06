@@ -64,7 +64,7 @@ public class ErrorNotifier
         // Checking for invalid usage.
         if(errors.isEmpty()) throw new IllegalArgumentException("nothing to report");
         if(dataLines.isEmpty()) throw new IllegalArgumentException("Empty data lines map");
-        Border border = BorderFactory.createLineBorder(Color.RED);
+        Border border = BorderFactory.createLineBorder(Color.GREEN);
         dataLines.forEach((k,v) -> v.setBorder(null));
         for(Map.Entry<String, String> entry : errors.entrySet()) {
             String errorKey = entry.getKey();
@@ -78,7 +78,7 @@ public class ErrorNotifier
                                     0,
                                     0,
                                     new Font(Font.MONOSPACED, Font.ITALIC, 13),
-                                    Color.RED
+                                    Color.GREEN
                             )
                     ); dataLines.get(inputKey).getTextField().setText("");
                 }

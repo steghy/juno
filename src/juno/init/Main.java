@@ -75,12 +75,6 @@ public class Main {
 
             ButtonSoundPlayer.getInstance().unmute();
 
-            // Mute.
-            AudioPlayer.getInstance().mute();
-            ButtonSoundPlayer.getInstance().mute();
-            UnoSoundPlayer.getInstance().mute();
-            WelcomeSoundPlayer.getInstance().mute();
-
             // Frame.
             Frame frame = Frame.getInstance();
             frame.setVisible(true);
