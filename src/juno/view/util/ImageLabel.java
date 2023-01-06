@@ -36,17 +36,24 @@ import java.awt.*;
 public class ImageLabel
         extends JLabel {
 
+    // The image resizer.
+    private InterfaceImageResizer resizer;
+
+    /**
+     * Builds an ImageLabel with the
+     * specified image resizer object.
+     * @param resizer An InterfaceImageResizer object.
+     */
+    public ImageLabel(@NotNull InterfaceImageResizer resizer) {
+        this.resizer = resizer;
+    }
+
     @Override
     public void setSize(@NotNull Dimension dimension) {
         if(dimension.getWidth() != 0 &&
                 dimension.getHeight() != 0) {
             super.setSize(dimension);
-            Icon icon = getIcon();
-            Icon disabledIcon = getDisabledIcon();
-            if(icon != null)
-                setIcon(new ImageIcon(ImageResizer.resize(this, icon)));
-            if(disabledIcon != null)
-                setDisabledIcon(new ImageIcon(ImageResizer.resize(this, disabledIcon)));
+            set();
         }
     }
 
@@ -55,12 +62,7 @@ public class ImageLabel
                         int height) {
         if(width != 0 && height != 0) {
             super.setSize(width, height);
-            Icon icon = getIcon();
-            Icon disabledIcon = getIcon();
-            if(icon != null)
-                setIcon(new ImageIcon(ImageResizer.resize(this, icon)));
-            if(disabledIcon != null)
-                setDisabledIcon(new ImageIcon(ImageResizer.resize(this, disabledIcon)));
+            set();
         }
     }
 
@@ -69,14 +71,45 @@ public class ImageLabel
         if(dimension.getWidth() != 0 &&
                 dimension.getHeight() != 0) {
             super.setPreferredSize(dimension);
-            super.setSize(dimension);
-            Icon icon = getIcon();
-            Icon disabledIcon = getDisabledIcon();
-            if(icon != null)
-                setIcon(new ImageIcon(ImageResizer.resize(this, icon)));
-            if(disabledIcon != null)
-                setDisabledIcon(new ImageIcon(ImageResizer.resize(this, disabledIcon)));
+            set();
         }
+    }
+
+    private void set() {
+        // Icons.
+        Icon icon = getIcon();
+        Icon disabledIcon = getDisabledIcon();
+
+        // Icon.
+        if(icon != null) {
+            if(icon instanceof RotatedIcon rotatedIcon) {
+                setIcon(new RotatedIcon(icon, rotatedIcon.getRotate()));
+            } else setIcon(new ImageIcon(resizer.resize(this, icon)));
+        }
+
+        // Disabled icon.
+        if(disabledIcon != null) {
+            if(disabledIcon instanceof RotatedIcon rotatedIcon) {
+                setDisabledIcon(new RotatedIcon(disabledIcon, rotatedIcon.getRotate()));
+            } else setDisabledIcon(new ImageIcon(resizer.resize(this, disabledIcon)));
+        }
+    }
+
+
+    /**
+     * Sets the image resizer of this object.
+     * @param resizer An InterfaceImageResizer object.
+     */
+    public void setResizer(@NotNull InterfaceImageResizer resizer) {
+        this.resizer = resizer;
+    }
+
+    /**
+     * Returns the image resizer of this object.
+     * @return An InterfaceImageResizer object.
+     */
+    public InterfaceImageResizer getResizer() {
+        return resizer;
     }
 
 }

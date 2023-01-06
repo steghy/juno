@@ -67,10 +67,9 @@ public class GColorCreator
         this.pathProvider = pathProvider;
     }
 
-
     @Override
     public InterfaceGObject<InterfaceColor> create(@NotNull InterfaceColor color, RotatedIcon.Rotate rotate) {
-        GObjectButton<InterfaceColor> graphicColor = new GObjectButton<>(color);
+        GObjectButton<InterfaceColor> graphicColor = new GObjectButton<>(color, Objects.requireNonNull(getResizer()));
         InterfacePathProviderAssembler assembler = getAssembler();
         Objects.requireNonNull(assembler);
         Objects.requireNonNull(getInitializer()).initialize(

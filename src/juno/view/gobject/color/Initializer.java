@@ -29,6 +29,7 @@ import juno.controller.util.InterfaceInitializer;
 import juno.model.requester.PathProviderAssembler;
 import juno.init.ProgramDirectory;
 import juno.view.img_initializer.ImageComponentInitializer;
+import juno.view.util.ImageResizer;
 
 /**
  * @author Simone Gentili
@@ -57,6 +58,7 @@ public class Initializer
         gColorCreator.setProvider(ProgramDirectory.COLORS);
         gColorCreator.setInitializer(ImageComponentInitializer.getInstance());
         gColorCreator.setAssembler(PathProviderAssembler.getInstance());
+        gColorCreator.setResizer(ImageResizer.getInstance());
     }
 
 }

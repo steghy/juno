@@ -28,6 +28,7 @@ package juno.view.pages.new_game.single_player.match.panels.center.deck;
 import juno.controller.log_out.Restorable;
 import juno.controller.new_game.human.DiscardedCardSetter;
 import juno.controller.new_game.human.DrawAction;
+import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.shift.InterfaceTurnMover;
 import juno.model.util.Provider;
 import juno.model.util.Observer;
@@ -93,8 +94,9 @@ public class DeckPanel<T>
     @Override
     public void update(@NotNull Object object) {
         if(object instanceof InterfaceTurnMover) {
+            InterfacePlayer<?> current = (InterfacePlayer<?>) provider.provide();
             Objects.requireNonNull(getFirstComponent())
-                    .setEnabled(provider.provide() == humanPlayer);
+                    .setEnabled(current == humanPlayer);
         } else if(object instanceof DrawAction<?> ||
                 object instanceof DiscardedCardSetter<?>) {
             Objects.requireNonNull(getFirstComponent()).setEnabled(false);

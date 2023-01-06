@@ -59,8 +59,9 @@ public class MenuPanelConfigurator {
         AbstractButton backButton = creator.create(Button.BACK, null);
 
         // Images resizing.
-        ImageResizer.resize(singlePlayer, 2.5);
-        ImageResizer.resize(backButton, 2.5);
+        ImageResizer resizer = ImageResizer.getInstance();
+        resizer.resize(singlePlayer, 2.5);
+        resizer.resize(backButton, 2.5);
 
         // Border settings.
         RoundedBorder insideBorder = new RoundedBorder(10, 1, null, Color.WHITE);

@@ -82,7 +82,7 @@ public class ButtonCreator
         Objects.requireNonNull(assembler);
         Objects.requireNonNull(initializer);
         if(button.isToggleButton()) {
-            temp = new ImageToggleButton();
+            temp = new ImageToggleButton(Objects.requireNonNull(getResizer()));
             initializer.initialize(
                     temp,
                     assembler.assemble(pathProvider, button.name() + extension),
@@ -91,7 +91,7 @@ public class ButtonCreator
                     assembler.assemble(pathProvider, button.name() + selected + rollover + extension),
                     rotate);
         } else {
-            temp = new ImageButton();
+            temp = new ImageButton(Objects.requireNonNull(getResizer()));
             initializer.initialize(
                     temp,
                     assembler.assemble(pathProvider, button.name() + extension),

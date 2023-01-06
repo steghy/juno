@@ -72,7 +72,7 @@ public class GProfileProcessor
         button.setLayout(new BorderLayout());
         button.setOpaque(false);
         button.add(gProfile, BorderLayout.CENTER);
-        ImageResizer.resize(button, 7.0);
+        ImageResizer.getInstance().resize(button, 7.0);
         gProfile.setOpaque(false);
         gProfile.setText(gProfile.object());
         gProfile.setForeground(Color.WHITE);

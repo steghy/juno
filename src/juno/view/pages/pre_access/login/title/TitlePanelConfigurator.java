@@ -52,7 +52,8 @@ public class TitlePanelConfigurator {
         AbstractButton titleButton = creator.create(Button.LOG_IN,null);
 
         // Image resizing.
-        ImageResizer.resize(titleButton, 2.0);
+        ImageResizer resizer = ImageResizer.getInstance();
+        resizer.resize(titleButton, 2.0);
 
         // Component setting.
         titlePanel.setFirstComponent(titleButton); // Title button.

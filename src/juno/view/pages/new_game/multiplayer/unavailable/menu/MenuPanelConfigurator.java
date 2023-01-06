@@ -57,7 +57,8 @@ public class MenuPanelConfigurator {
         JLabel unavailableServiceLabel = new JLabel();
 
         // Image resizing.
-        ImageResizer.resize(backButton, 2.5);
+        ImageResizer resizer = ImageResizer.getInstance();
+        resizer.resize(backButton, 2.5);
 
         // Unavailable service text.
         String unavailableServiceText =

@@ -23,27 +23,18 @@
  * SOFTWARE.
  */
 
-package juno.view.gobject;
+package juno.view.util;
 
-import juno.view.util.ImageLabel;
-import juno.view.util.InterfaceImageResizer;
-import org.jetbrains.annotations.NotNull;
+import javax.swing.*;
+import java.awt.*;
 
-public class GObjectLabel<T>
-        extends ImageLabel
-        implements InterfaceGObject<T> {
+/**
+ * @author Simone Gentili
+ */
+public interface InterfaceImageResizer {
 
-    private final T object;
+    Image resize(Component component, Icon icon);
 
-    public GObjectLabel(@NotNull T object,
-                        @NotNull InterfaceImageResizer resizer) {
-        super(resizer);
-        this.object = object;
-    }
-
-    @Override
-    public T object() {
-        return object;
-    }
+    void resize(AbstractButton button, double val);
 
 }

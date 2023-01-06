@@ -30,6 +30,7 @@ import juno.init.ProgramDirectory;
 import juno.model.requester.PathProviderAssembler;
 import juno.view.avatar.AvatarPanel;
 import juno.view.img_initializer.ImageComponentInitializer;
+import juno.view.util.ImageResizer;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicScrollBarUI;
@@ -91,6 +92,7 @@ public class NorthPanelConfigurator {
 
         // Initializer settings.
         northCardPanel.setInitializer(initializer);
+        northCardPanel.setResizer(ImageResizer.getInstance());
 
         // Main component initialization.
         northPanel.init();

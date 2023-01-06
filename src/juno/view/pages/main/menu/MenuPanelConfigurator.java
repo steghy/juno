@@ -61,10 +61,11 @@ public class MenuPanelConfigurator {
         AbstractButton exitButton = creator.create(Button.EXIT, null);
 
         // Images resizing.
-        ImageResizer.resize(newGameButton, 2.5);
-        ImageResizer.resize(optionsButton, 2.5);
-        ImageResizer.resize(scoreButton, 2.5);
-        ImageResizer.resize(exitButton, 2.5);
+        ImageResizer resizer = ImageResizer.getInstance();
+        resizer.resize(newGameButton, 2.5);
+        resizer.resize(optionsButton, 2.5);
+        resizer.resize(scoreButton, 2.5);
+        resizer.resize(exitButton, 2.5);
 
         // Action listeners.
         ButtonSoundPlayer buttonSoundPlayer = ButtonSoundPlayer.getInstance();

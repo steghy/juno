@@ -28,6 +28,7 @@ package juno.view.gobject.cards;
 import juno.controller.util.InterfaceInitializer;
 import juno.view.img_initializer.ImageComponentInitializer;
 import juno.model.requester.PathProviderAssembler;
+import juno.view.util.ImageResizer;
 
 /**
  * @author Simone Gentili
@@ -59,6 +60,7 @@ public class Initializer
         gCardCreator.setProvider(cardPathProvider);
         gCardCreator.setInitializer(imageComponentInitializer);
         gCardCreator.setAssembler(pathObjectAssembler);
+        gCardCreator.setResizer(ImageResizer.getInstance());
     }
 
 }

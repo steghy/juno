@@ -64,10 +64,11 @@ public class MenuPanelConfigurator {
         AbstractButton backButton = creator.create(Button.BACK, null);
 
         // Images resizing.
-        ImageResizer.resize(audioMusicToggle, 2.5);
-        ImageResizer.resize(audioEffectToggle, 2.5);
-        ImageResizer.resize(fullscreenToggle, 2.5);
-        ImageResizer.resize(backButton, 2.5);
+        ImageResizer resizer = ImageResizer.getInstance();
+        resizer.resize(audioMusicToggle, 2.5);
+        resizer.resize(audioEffectToggle, 2.5);
+        resizer.resize(fullscreenToggle, 2.5);
+        resizer.resize(backButton, 2.5);
 
         // Components settings.
         menuPanel.setFirstComponent(audioMusicToggle);  // Audio music toggle button.

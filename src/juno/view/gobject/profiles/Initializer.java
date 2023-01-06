@@ -31,6 +31,7 @@ import juno.model.data.io.input.JSONDataImporter;
 import juno.model.data.profile.profile.Profile;
 import juno.model.requester.PathProviderAssembler;
 import juno.view.img_initializer.ImageComponentInitializer;
+import juno.view.util.ImageResizer;
 
 
 /**
@@ -67,6 +68,7 @@ public class Initializer
         gProfileFactory.setCreator(gProfileCreator);
         gProfileFactory.setImporter(jsonDataImporter);
         gProfileFactory.setKey(Profile.PROFILE_NAME_KEY);
+        gProfileCreator.setResizer(ImageResizer.getInstance());
         ConfigurationFilesFactory.getInstance().addObserver(gProfileFactory);
     }
 

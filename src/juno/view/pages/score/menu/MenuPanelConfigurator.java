@@ -77,7 +77,8 @@ public class MenuPanelConfigurator {
         avatarImagesLabel.setFont(new Font(Font.DIALOG, Font.ITALIC, 14));
 
         // Images resizing.
-        ImageResizer.resize(backButton, 2.5);
+        ImageResizer resizer = ImageResizer.getInstance();
+        resizer.resize(backButton, 2.5);
 
         // Components settings.
         // AvatarImagePanel.

@@ -39,7 +39,9 @@ import juno.model.subjects.shift.TurnMover;
 import juno.model.util.Provider;
 import juno.model.util.Setter;
 import juno.view.avatar.UserAvatarPanel;
+import juno.view.gobject.cards.GCardCreator;
 import juno.view.img_initializer.ImageComponentInitializer;
+import juno.view.util.ImageResizer;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicScrollBarUI;
@@ -108,6 +110,9 @@ public class SouthPanelConfigurator {
         southCardPanel.setPlayableCardSetter(CompatibleGCardEnabler.getInstance());
         southCardPanel.setCurrentPlayerProvider((Provider<InterfacePlayer<InterfaceCard>>) CurrentPlayerProvider.getInstance());
         southCardPanel.setHumanPlayer(humanPlayer);
+        southCardPanel.setCompatibilityChecker(CompatibilityChecker.getInstance());
+        southCardPanel.setResizer(ImageResizer.getInstance());
+        southCardPanel.setCreator(GCardCreator.getInstance());
 
         compatibleGCardEnabler.setCompatibilityChecker(CompatibilityChecker.getInstance());
 

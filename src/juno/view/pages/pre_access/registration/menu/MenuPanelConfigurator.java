@@ -105,8 +105,9 @@ public class MenuPanelConfigurator {
         menuPanel.setSixthComponent(backButton);    // Back button.
 
         // Images resizing.
-        ImageResizer.resize(confirmButton, 2.8);
-        ImageResizer.resize(backButton, 2.8);
+        ImageResizer resizer = ImageResizer.getInstance();
+        resizer.resize(confirmButton, 2.8);
+        resizer.resize(backButton, 2.8);
 
         // Action listeners.
         confirmButton.addActionListener(

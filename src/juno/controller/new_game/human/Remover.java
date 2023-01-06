@@ -23,34 +23,15 @@
  * SOFTWARE.
  */
 
-package juno.view.gobject.frames;
-
-import juno.model.data.awards.frame.InterfaceAvatarFrame;
-import juno.model.util.Observer;
-import juno.view.gobject.GObjectButton;
-import org.jetbrains.annotations.NotNull;
+package juno.controller.new_game.human;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the avatar frames.
+ * @param <T> The type of the object to remove.
  */
-public class GAvatarFrame<T>
-        extends GObjectButton<T>
-        implements Observer {
+@FunctionalInterface
+public interface Remover<T> {
 
-    /**
-     * Builds a GAvatarFrame with the
-     * specified object.
-     * @param object An Object.
-     */
-    public GAvatarFrame(@NotNull T object) {
-        super(object);
-    }
-
-    @Override
-    public void update(@NotNull Object object) {
-        if(object instanceof InterfaceAvatarFrame avatarFrame)
-            setEnabled(avatarFrame.isUnlock());
-    }
+    void remove(T object);
 
 }

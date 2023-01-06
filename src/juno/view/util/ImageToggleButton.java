@@ -30,26 +30,30 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * @author Simone Gentili
+ */
 public class ImageToggleButton
         extends JToggleButton {
+
+    // The image resizer.
+    private InterfaceImageResizer resizer;
+
+    /**
+     * Builds an ImageToggleButton with the
+     * specified image resizer object.
+     * @param resizer An InterfaceImageResizer object.
+     */
+    public ImageToggleButton(@NotNull InterfaceImageResizer resizer) {
+        this.resizer = resizer;
+    }
 
     @Override
     public void setSize(@NotNull Dimension dimension) {
         if(dimension.getWidth() != 0 &&
                 dimension.getHeight() != 0) {
             super.setSize(dimension);
-            Icon icon = getIcon();
-            Icon rolloverIcon = getRolloverIcon();
-            Icon selectedIcon = getSelectedIcon();
-            Icon rolloverSelectedIcon = getRolloverSelectedIcon();
-            if(icon != null)
-                setIcon(new ImageIcon(ImageResizer.resize(this, icon)));
-            if(rolloverIcon != null)
-                setRolloverIcon(new ImageIcon(ImageResizer.resize(this, rolloverIcon)));
-            if(selectedIcon != null)
-                setSelectedIcon(new ImageIcon(ImageResizer.resize(this, selectedIcon)));
-            if(rolloverSelectedIcon != null)
-                setRolloverSelectedIcon(new ImageIcon(ImageResizer.resize(this, rolloverSelectedIcon)));
+            set();
         }
     }
 
@@ -58,18 +62,7 @@ public class ImageToggleButton
                         int height) {
         if(width != 0 && height != 0) {
             super.setSize(width, height);
-            Icon icon = getIcon();
-            Icon rolloverIcon = getRolloverIcon();
-            Icon selectedIcon = getSelectedIcon();
-            Icon rolloverSelectedIcon = getRolloverSelectedIcon();
-            if(icon != null)
-                setIcon(new ImageIcon(ImageResizer.resize(this, icon)));
-            if(rolloverIcon != null)
-                setRolloverIcon(new ImageIcon(ImageResizer.resize(this, rolloverIcon)));
-            if(selectedIcon != null)
-                setSelectedIcon(new ImageIcon(ImageResizer.resize(this, selectedIcon)));
-            if(rolloverSelectedIcon != null)
-                setRolloverSelectedIcon(new ImageIcon(ImageResizer.resize(this, rolloverSelectedIcon)));
+            set();
         }
     }
 
@@ -78,20 +71,68 @@ public class ImageToggleButton
         if(dimension.getWidth() != 0 &&
                 dimension.getHeight() != 0) {
             super.setPreferredSize(dimension);
-            super.setSize(dimension);
-            Icon icon = getIcon();
-            Icon rolloverIcon = getRolloverIcon();
-            Icon selectedIcon = getSelectedIcon();
-            Icon rolloverSelectedIcon = getRolloverSelectedIcon();
-            if(icon != null)
-                setIcon(new ImageIcon(ImageResizer.resize(this, icon)));
-            if(rolloverIcon != null)
-                setRolloverIcon(new ImageIcon(ImageResizer.resize(this, rolloverIcon)));
-            if(selectedIcon != null)
-                setSelectedIcon(new ImageIcon(ImageResizer.resize(this, selectedIcon)));
-            if(rolloverSelectedIcon != null)
-                setRolloverSelectedIcon(new ImageIcon(ImageResizer.resize(this, rolloverSelectedIcon)));
+            set();
         }
+    }
+
+    private void set() {
+        // Icons.
+        Icon icon = getIcon();
+        Icon rolloverIcon = getRolloverIcon();
+        Icon disabledIcon = getDisabledIcon();
+        Icon selectedIcon = getSelectedIcon();
+        Icon rolloverSelectedIcon = getRolloverSelectedIcon();
+
+        // Icon.
+        if(icon != null) {
+            if(icon instanceof RotatedIcon rotatedIcon) {
+                setIcon(new RotatedIcon(icon, rotatedIcon.getRotate()));
+            } else setIcon(new ImageIcon(resizer.resize(this, icon)));
+        }
+
+        // Rollover icon.
+        if(rolloverIcon != null) {
+            if(rolloverIcon instanceof RotatedIcon rotatedIcon) {
+                setRolloverIcon(new RotatedIcon(rolloverIcon, rotatedIcon.getRotate()));
+            } else setRolloverIcon(new ImageIcon(resizer.resize(this, rolloverIcon)));
+        }
+
+        // Disabled icon.
+        if(disabledIcon != null) {
+            if(disabledIcon instanceof RotatedIcon rotatedIcon) {
+                setDisabledIcon(new RotatedIcon(disabledIcon, rotatedIcon.getRotate()));
+            } else setDisabledIcon(new ImageIcon(resizer.resize(this, disabledIcon)));
+        }
+
+        // Selected icon.
+        if(selectedIcon != null) {
+            if(selectedIcon instanceof RotatedIcon rotatedIcon) {
+                setSelectedIcon(new RotatedIcon(selectedIcon, rotatedIcon.getRotate()));
+            } else setSelectedIcon(new ImageIcon(resizer.resize(this, selectedIcon)));
+        }
+
+        // Rollover selected icon.
+        if(rolloverSelectedIcon != null) {
+            if(rolloverSelectedIcon instanceof RotatedIcon rotatedIcon) {
+                setRolloverSelectedIcon(new RotatedIcon(rolloverSelectedIcon, rotatedIcon.getRotate()));
+            } else setRolloverSelectedIcon(new ImageIcon(resizer.resize(this, rolloverSelectedIcon)));
+        }
+    }
+
+    /**
+     * Sets the image resizer of this object.
+     * @param resizer An InterfaceImageResizer object.
+     */
+    public void setResizer(@NotNull InterfaceImageResizer resizer) {
+        this.resizer = resizer;
+    }
+
+    /**
+     * Returns the imager resizer of this object.
+     * @return An InterfaceImageResizer object.
+     */
+    public InterfaceImageResizer getResizer() {
+        return resizer;
     }
 
 }

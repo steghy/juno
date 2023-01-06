@@ -77,7 +77,7 @@ public class Main {
             frame.setVisible(true);
 
         } catch (Exception e) {
-            // e.printStackTrace();
+            e.printStackTrace();
 
             StringBuilder b = new StringBuilder();
             Arrays.stream(e.getStackTrace()).forEach(l -> b.append(l).append("\n"));

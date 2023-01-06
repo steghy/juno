@@ -28,19 +28,17 @@ package juno.view.pages.new_game.single_player.match.panels.south;
 import juno.controller.log_out.Restorable;
 import juno.controller.new_game.GameStarter;
 import juno.controller.new_game.dispenser.CardDispenser;
-import juno.controller.new_game.human.CardRemover;
 import juno.controller.util.SetterAction;
 import juno.model.card.InterfaceCard;
-import juno.model.deck.CompatibilityChecker;
+import juno.model.deck.InterfaceCompatibilityChecker;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.shift.InterfaceTurnMover;
 import juno.model.util.Provider;
 import juno.model.util.Setter;
 import juno.model.util.Observer;
 import juno.view.gobject.GObjectButton;
-import juno.view.gobject.cards.GCardCreator;
-import juno.view.util.ImageResizer;
-import juno.view.util.RotatedIcon;
+import juno.view.gobject.InterfaceGObjectCreator;
+import juno.view.util.InterfaceImageResizer;
 import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.*;
@@ -78,11 +76,20 @@ public class SouthCardPanel
     // The playable card setter.
     private Setter<List<GObjectButton<InterfaceCard>>> playableCardSetter;
 
+    // The graphic object creator.
+    private InterfaceGObjectCreator<InterfaceCard> creator;
+
     // The discarded card setter.
     private Setter<InterfaceCard> discardedCardSetter;
 
     // The current player provider.
     private Provider<InterfacePlayer<InterfaceCard>> currentPlayerProvider;
+
+    // The image resizer.
+    private InterfaceImageResizer resizer;
+
+    // The card compatibility checker.
+    private InterfaceCompatibilityChecker<InterfaceCard> compatibilityChecker;
 
     // The SouthCardPanel instance.
     private static SouthCardPanel instance;
@@ -148,6 +155,30 @@ public class SouthCardPanel
     }
 
     /**
+     * Sets the graphic object creator of this object.
+     * @param creator An InterfaceGObjectCreator object.
+     */
+    public void setCreator(@NotNull InterfaceGObjectCreator<InterfaceCard> creator) {
+        this.creator = creator;
+    }
+
+    /**
+     * Sets the image resizer of this object.
+     * @param resizer An InterfaceImageResizer object.
+     */
+    public void setResizer(@NotNull InterfaceImageResizer resizer) {
+        this.resizer = resizer;
+    }
+
+    /**
+     * Sets the card compatibility checker of this object.
+     * @param compatibilityChecker An InterfaceCompatibilityChecker.
+     */
+    public void setCompatibilityChecker(@NotNull InterfaceCompatibilityChecker<InterfaceCard> compatibilityChecker) {
+        this.compatibilityChecker = compatibilityChecker;
+    }
+
+    /**
      * Adds the specified graphic card to this panel.
      * @param gCard A GObjectButton object.
      */
@@ -196,13 +227,12 @@ public class SouthCardPanel
             // A Card has been added.
             else {
                 GObjectButton<InterfaceCard> gCard = (GObjectButton<InterfaceCard>)
-                        GCardCreator.getInstance().create(card, RotatedIcon.Rotate.ABOUT_CENTER);
-                ImageResizer.resize(gCard, 2.5);
+                        creator.create(card, null);
+                resizer.resize(gCard, 2.5);
 
                 // If the game has started, add the actions.
                 if(gameStarted) {
                     gCard.addActionListener(new SetterAction<>(gCard.object(), discardedCardSetter));
-                    gCard.addActionListener(CardRemover.getInstance());
                 }
 
                 // If the added card was drawn on the human player's turn,
@@ -210,7 +240,7 @@ public class SouthCardPanel
                 // cards cannot be played.
                 if(currentPlayerProvider.provide() == humanPlayer && dispenser) {
                     for (Component c : getComponents()) c.setEnabled(false);
-                    gCard.setEnabled(CompatibilityChecker.getInstance().isCompatible(card));
+                    gCard.setEnabled(compatibilityChecker.isCompatible(card));
                 }
 
                 // Otherwise the card was drawn during another

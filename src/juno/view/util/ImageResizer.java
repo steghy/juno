@@ -33,45 +33,78 @@ import java.awt.*;
 /**
  * @author Simone Gentili
  */
-public class ImageResizer {
+public class ImageResizer
+        implements InterfaceImageResizer {
+
+    // The ImageResizer instance.
+    private static ImageResizer instance;
 
     // Builds an ImageResizer object.
     private ImageResizer() {}
 
+    /**
+     * Returns the ImageResizer instance.
+     * @return The ImageResizer instance.
+     */
+    public static ImageResizer getInstance() {
+        if(instance == null) instance = new ImageResizer();
+        return instance;
+    }
+
+    @Override
     @SuppressWarnings("SuspiciousNameCombination")
-    public static Image resize(@NotNull Component component,
-                               @NotNull Icon icon) {
+    public Image resize(@NotNull Component component,
+                        @NotNull Icon icon) {
+
+        // Rotated icon case.
         if (icon instanceof RotatedIcon rotatedIcon) {
             RotatedIcon.Rotate rotate = rotatedIcon.getRotate();
             if (rotatedIcon.getIcon() instanceof ImageIcon imageIcon) {
+                // Up and Down rotated value cases.
+                // Width and height in this case must
+                // be reversed. This inversion results
+                // in the "SuspiciousNameCombination" warning.
                 if (rotate == RotatedIcon.Rotate.UP ||
                         rotate == RotatedIcon.Rotate.DOWN) {
                     return imageIcon.getImage().getScaledInstance(
                             component.getPreferredSize().height,
-                            component.getPreferredSize().width, Image.SCALE_SMOOTH);
-                } else return imageIcon.getImage().getScaledInstance(
+                            component.getPreferredSize().width,
+                            Image.SCALE_SMOOTH);
+                }
+
+                // About center and Upside down rotated cases.
+                else return imageIcon.getImage().getScaledInstance(
                         component.getPreferredSize().width,
-                        component.getPreferredSize().height, Image.SCALE_SMOOTH);
+                        component.getPreferredSize().height,
+                        Image.SCALE_SMOOTH);
+
             } else throw new IllegalArgumentException();
-        } else if (icon instanceof ImageIcon imageIcon)
+        }
+
+        // Image icon type case.
+        else if (icon instanceof ImageIcon imageIcon)
             return imageIcon.getImage().getScaledInstance(
                     component.getPreferredSize().width,
-                    component.getPreferredSize().height, Image.SCALE_SMOOTH);
+                    component.getPreferredSize().height,
+                    Image.SCALE_SMOOTH);
+
+        // Invalid case.
         else throw new IllegalArgumentException(
                     "Invalid object type: " + icon.getClass() +
                             ". ImageIcon type expected.");
     }
 
-    public static void resize(@NotNull AbstractButton button,
-                              double divisor) {
+    @Override
+    public void resize(@NotNull AbstractButton button,
+                       double divisor) {
         Icon icon = button.getIcon();
         button.setPreferredSize(new Dimension(
                 (int) (icon.getIconWidth()  / divisor),
                 (int) (icon.getIconHeight() / divisor)));
     }
 
-    public static void resize(@NotNull JLabel label,
-                              double divisor) {
+    public void resize(@NotNull JLabel label,
+                       double divisor) {
         Icon icon = label.getIcon();
         label.setPreferredSize(new Dimension(
                 (int) (icon.getIconWidth()  / divisor),

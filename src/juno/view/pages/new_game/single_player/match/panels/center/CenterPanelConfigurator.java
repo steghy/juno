@@ -61,6 +61,7 @@ public class CenterPanelConfigurator {
         CenterPanel centerPanel = CenterPanel.getInstance();
 
         // Components.
+        ImageResizer resizer = ImageResizer.getInstance();
         UnoButtonPanel unoButtonPanel = UnoButtonPanel.getInstance();
         AbstractButton unoButton = ButtonCreator.getInstance().create(Button.JUNO, null);
         AbstractButton exitButton = ButtonCreator.getInstance().create(Button.EXIT, null);
@@ -69,8 +70,8 @@ public class CenterPanelConfigurator {
         unoButtonPanel.setFirstComponent(unoButton);
 
         // Image resizing.
-        ImageResizer.resize(exitButton, 3.5);
-        ImageResizer.resize(unoButton, 3.5);
+        resizer.resize(exitButton, 3.5);
+        resizer.resize(unoButton, 3.5);
 
         // Action listeners.
         // Exit button.

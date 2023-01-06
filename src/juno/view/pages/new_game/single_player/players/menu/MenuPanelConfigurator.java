@@ -62,10 +62,11 @@ public class MenuPanelConfigurator {
         AbstractButton backButton = creator.create(Button.BACK, null);
 
         // Images resizing.
-        ImageResizer.resize(twoPlayers, 2.5);
-        ImageResizer.resize(threePlayers, 2.5);
-        ImageResizer.resize(fourPlayers, 2.5);
-        ImageResizer.resize(backButton, 2.5);
+        ImageResizer resizer = ImageResizer.getInstance();
+        resizer.resize(twoPlayers, 2.5);
+        resizer.resize(threePlayers, 2.5);
+        resizer.resize(fourPlayers, 2.5);
+        resizer.resize(backButton, 2.5);
 
         // Action listeners.
         // Change panel actions.

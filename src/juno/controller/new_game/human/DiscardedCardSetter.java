@@ -48,6 +48,9 @@ public class DiscardedCardSetter<T>
     // The last object involved.
     private T object;
 
+    // The card remover.
+    private Remover<T> remover;
+
     // The Observers list.
     private final List<Observer> observableList;
 
@@ -68,9 +71,18 @@ public class DiscardedCardSetter<T>
         return instance;
     }
 
+    /**
+     * Sets the remover of this object.
+     * @param remover A Remover object.
+     */
+    public void setRemover(@NotNull Remover<T> remover) {
+        this.remover = remover;
+    }
+
     @Override
     public void set(@NotNull T object) {
         Objects.requireNonNull(getDiscardedPile()).discard(object);
+        remover.remove(object);
         this.object = object;
         updateAll();
     }

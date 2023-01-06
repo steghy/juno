@@ -69,7 +69,7 @@ public class GCardCreator
 
     @Override
     public InterfaceGObject<InterfaceCard> create(@NotNull InterfaceCard card, RotatedIcon.Rotate rotate) {
-        GObjectButton<InterfaceCard> graphicCard = new GObjectButton<>(card);
+        GObjectButton<InterfaceCard> graphicCard = new GObjectButton<>(card, Objects.requireNonNull(getResizer()));
         String file;
         if(card.value() != null) {
             file = card.value().toString();

@@ -26,18 +26,14 @@
 package juno.controller.new_game.human;
 
 import juno.model.subjects.InterfacePlayer;
-import juno.view.gobject.InterfaceGObject;
 import org.jetbrains.annotations.NotNull;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
 public class CardRemover<T>
-        implements ActionListener {
+        implements Remover<T> {
 
     // The human player.
     private InterfacePlayer<T> player;
@@ -66,13 +62,8 @@ public class CardRemover<T>
     }
 
     @Override
-    @SuppressWarnings("unchecked")
-    public void actionPerformed(@NotNull ActionEvent e) {
-        if(e.getSource() instanceof InterfaceGObject<?> gObject) {
-            player.remove((T) gObject.object());
-        } else throw new IllegalArgumentException(
-                "Invalid object type: " + e.getClass() +
-                        ". InterfaceGObject type expected.");
+    public void remove(@NotNull T card) {
+        player.remove(card);
     }
 
 }

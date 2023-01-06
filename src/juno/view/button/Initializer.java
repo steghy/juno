@@ -25,14 +25,17 @@
 
 package juno.view.button;
 
+import juno.controller.util.InterfaceInitializer;
 import juno.init.ProgramDirectory;
 import juno.view.img_initializer.ImageComponentInitializer;
 import juno.model.requester.PathProviderAssembler;
+import juno.view.util.ImageResizer;
 
 /**
  * @author Simone Gentili
  */
-public class Initializer {
+public class Initializer
+        implements InterfaceInitializer {
 
     // The Initializer instance.
     private static Initializer instance;
@@ -49,14 +52,15 @@ public class Initializer {
         return instance;
     }
 
-    /** Initialize the juno.view.button package. */
-    public static void initialize() {
+    @Override
+    public void initialize() {
         ButtonCreator buttonCreator = ButtonCreator.getInstance();
         ImageComponentInitializer imageComponentInitializer = ImageComponentInitializer.getInstance();
         PathProviderAssembler pathObjectAssembler = PathProviderAssembler.getInstance();
         buttonCreator.setInitializer(imageComponentInitializer);
         buttonCreator.setAssembler(pathObjectAssembler);
         buttonCreator.setProvider(ProgramDirectory.BUTTONS);
+        buttonCreator.setResizer(ImageResizer.getInstance());
     }
 
 }

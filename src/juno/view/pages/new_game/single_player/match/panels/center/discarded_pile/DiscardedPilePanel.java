@@ -95,7 +95,7 @@ public class DiscardedPilePanel
         if(object instanceof InterfaceDiscardedPile<?>) {
             GObjectButton<InterfaceCard> gCard = (GObjectButton<InterfaceCard>)
                     creator.create(provider.provide(), RotatedIcon.Rotate.ABOUT_CENTER);
-            ImageResizer.resize(gCard, 1.8);
+            ImageResizer.getInstance().resize(gCard, 1.8);
             removeAll();
             gCard.setEnabled(false);
             add(gCard, BorderLayout.CENTER);

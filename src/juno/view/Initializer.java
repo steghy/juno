@@ -55,12 +55,11 @@ public class Initializer
         juno.view.img_initializer.Initializer.getInstance().initialize();
 
         // juno.view.button package.
-        juno.view.button.Initializer.initialize();
+        juno.view.button.Initializer.getInstance().initialize();
 
         // juno.view.gobject package.
         juno.view.gobject.profiles.Initializer.getInstance().initialize();
         juno.view.gobject.avatars.Initializer.getInstance().initialize();
-        juno.view.gobject.frames.Initializer.getInstance().initialize();
         juno.view.gobject.cards.Initializer.getInstance().initialize();
         juno.view.gobject.color.Initializer.getInstance().initialize();
 

@@ -29,6 +29,7 @@ import juno.controller.util.InterfaceInitializer;
 import juno.init.ProgramDirectory;
 import juno.view.img_initializer.ImageComponentInitializer;
 import juno.model.requester.PathProviderAssembler;
+import juno.view.util.ImageResizer;
 
 /**
  * @author Simone Gentili
@@ -59,6 +60,7 @@ public class Initializer
         gAvatarCreator.setProvider(ProgramDirectory.AVATARS);
         gAvatarCreator.setInitializer(imageComponentInitializer);
         gAvatarCreator.setAssembler(pathObjectAssembler);
+        gAvatarCreator.setResizer(ImageResizer.getInstance());
     }
 
 }

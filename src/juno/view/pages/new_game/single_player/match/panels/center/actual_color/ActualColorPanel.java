@@ -74,7 +74,7 @@ public class ActualColorPanel
                 removeAll();
                 GObjectButton<?> gColor = (GObjectButton<?>)
                         GColorCreator.getInstance().create(color, RotatedIcon.Rotate.ABOUT_CENTER);
-                ImageResizer.resize(gColor, 4.5);
+                ImageResizer.getInstance().resize(gColor, 4.5);
                 add(gColor, BorderLayout.CENTER);
             } else throw new IllegalArgumentException(
                     "Invalid object type: " + temp.getClass() +

@@ -60,9 +60,10 @@ public class MenuPanelConfigurator {
         AbstractButton exitButton = creator.create(Button.EXIT, null);
 
         // Images resizing.
-        ImageResizer.resize(createAnAccountButton, 2.5);
-        ImageResizer.resize(continueWithoutAnAccountButton, 2.5);
-        ImageResizer.resize(exitButton, 2.5);
+        ImageResizer resizer = ImageResizer.getInstance();
+        resizer.resize(createAnAccountButton, 2.5);
+        resizer.resize(continueWithoutAnAccountButton, 2.5);
+        resizer.resize(exitButton, 2.5);
 
         // Components settings.
         menuPanel.setFirstComponent(createAnAccountButton);           // 'Create an account' button.

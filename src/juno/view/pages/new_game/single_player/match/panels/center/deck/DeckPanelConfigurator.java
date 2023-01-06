@@ -56,7 +56,8 @@ public class DeckPanelConfigurator {
                 (DeckPanel<InterfacePlayer<?>>) DeckPanel.getInstance();
 
         // Component.
-        AbstractButton deckButton = new ImageButton();
+        ImageResizer resizer = ImageResizer.getInstance();
+        AbstractButton deckButton = new ImageButton(resizer);
         ImageComponentInitializer.getInstance().initialize(
                 deckButton,
                 PathProviderAssembler.getInstance().assemble(ProgramDirectory.COVER, "COVER.png"),
@@ -64,7 +65,7 @@ public class DeckPanelConfigurator {
                 null);
 
         // Image resizing.
-        ImageResizer.resize(deckButton, 3.0);
+        resizer.resize(deckButton, 3.5);
 
         // Action listener.
         deckButton.addActionListener(DrawAction.getInstance());

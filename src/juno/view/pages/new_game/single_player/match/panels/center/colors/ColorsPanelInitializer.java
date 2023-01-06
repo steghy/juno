@@ -81,7 +81,7 @@ public class ColorsPanelInitializer
             gSetterAction.addObserver(colorsPanel);
             gSetterAction.addObserver(passTurnAction);
             gColor.addActionListener(gSetterAction);
-            ImageResizer.resize(gColor, 4.5);
+            ImageResizer.getInstance().resize(gColor, 4.5);
             gColor.setEnabled(false);
             colorsPanel.add(gColor);
         });

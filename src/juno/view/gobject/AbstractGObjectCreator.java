@@ -27,6 +27,7 @@ package juno.view.gobject;
 
 import juno.view.img_initializer.InterfaceImageComponentInitializer;
 import juno.model.requester.InterfacePathProviderAssembler;
+import juno.view.util.InterfaceImageResizer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -38,6 +39,8 @@ public abstract class AbstractGObjectCreator<T> {
     // The image component initializer.
     private InterfaceImageComponentInitializer initializer;
 
+    // The image resizer.
+    private InterfaceImageResizer resizer;
 
     /**
      * Sets the assembler path object of this object.
@@ -56,6 +59,14 @@ public abstract class AbstractGObjectCreator<T> {
     }
 
     /**
+     * Sets the image resizer of this object.
+     * @param resizer An InterfaceImageResizer object.
+     */
+    public void setResizer(@NotNull InterfaceImageResizer resizer) {
+        this.resizer = resizer;
+    }
+
+    /**
      * Returns the assembler path object of this object.
      * @return An InterfacePathObjectAssembler object.
      */
@@ -71,6 +82,15 @@ public abstract class AbstractGObjectCreator<T> {
     @Nullable
     public InterfaceImageComponentInitializer getInitializer() {
         return initializer;
+    }
+
+    /**
+     * Returns the image resizer of this object.
+     * @return An InterfaceImageResizer object.
+     */
+    @Nullable
+    public InterfaceImageResizer getResizer() {
+        return resizer;
     }
 
 }

@@ -36,7 +36,7 @@ import juno.view.gobject.GObjectButton;
 import juno.view.gobject.cards.GCardCreator;
 import juno.view.img_initializer.InterfaceImageComponentInitializer;
 import juno.view.util.ImageButton;
-import juno.view.util.ImageResizer;
+import juno.view.util.InterfaceImageResizer;
 import juno.view.util.RotatedIcon;
 import org.jetbrains.annotations.NotNull;
 
@@ -58,6 +58,9 @@ public class WestCardPanel
 
     // The Image component initializer.
     private InterfaceImageComponentInitializer initializer;
+
+    // The image resizer.
+    private InterfaceImageResizer resizer;
 
     // The grid bag constraints.
     private final GridBagConstraints gbc;
@@ -114,6 +117,14 @@ public class WestCardPanel
     }
 
     /**
+     * Sets the image resizer of this object.
+     * @param resizer An InterfaceImageResizer object.
+     */
+    public void setResizer(@NotNull InterfaceImageResizer resizer) {
+        this.resizer = resizer;
+    }
+
+    /**
      * Removes the first component from this object.
      */
     public void removeComponent() {
@@ -140,17 +151,17 @@ public class WestCardPanel
                     InterfaceCard card = (InterfaceCard) ai.provide();
                     gCard = (GObjectButton<InterfaceCard>)
                             GCardCreator.getInstance().create(Objects.requireNonNull(card), RotatedIcon.Rotate.DOWN);
-                    ImageResizer.resize(gCard, 2.5);
+                    resizer.resize(gCard, 2.5);
                     gCard.setEnabled(false);
                     add(gCard);
                 } else {
-                    gCard = new ImageButton();
+                    gCard = new ImageButton(resizer);
                     initializer.initialize(
                             gCard,
                             PathProviderAssembler.getInstance().assemble(ProgramDirectory.COVER, "COVER.png"),
                             PathProviderAssembler.getInstance().assemble(ProgramDirectory.COVER, "COVER_ROLLOVER.png"),
                             RotatedIcon.Rotate.DOWN);
-                    ImageResizer.resize(gCard, 4.0);
+                    resizer.resize(gCard, 4.0);
                     addComponent(gCard);
                 }
             }

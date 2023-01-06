@@ -36,7 +36,7 @@ import juno.view.gobject.cards.GCardCreator;
 import juno.view.img_initializer.InterfaceImageComponentInitializer;
 import juno.view.panels.AbstractFirstComponent;
 import juno.view.util.ImageButton;
-import juno.view.util.ImageResizer;
+import juno.view.util.InterfaceImageResizer;
 import juno.view.util.RotatedIcon;
 import org.jetbrains.annotations.NotNull;
 
@@ -58,6 +58,9 @@ public class EastCardPanel
 
     // The Image component initializer.
     private InterfaceImageComponentInitializer initializer;
+
+    // The image resizer.
+    private InterfaceImageResizer resizer;
 
     // The grid bag constraints.
     private final GridBagConstraints gbc;
@@ -123,6 +126,14 @@ public class EastCardPanel
         this.initializer = initializer;
     }
 
+    /**
+     * Sets the image resizer of this object.
+     * @param resizer An InterfaceImageResizer object.
+     */
+    public void setResizer(@NotNull InterfaceImageResizer resizer) {
+        this.resizer = resizer;
+    }
+
     @Override
     public void update(@NotNull Object object) {
         if(object instanceof GameStarter)
@@ -135,12 +146,12 @@ public class EastCardPanel
                 if(showCard) removeAll();
                 else removeComponent();
             } else {
-                AbstractButton gCard = new ImageButton();
+                AbstractButton gCard = new ImageButton(resizer);
                 if(showCard) {
                     InterfaceCard card = (InterfaceCard) ai.provide();
                     gCard = (AbstractButton) GCardCreator.getInstance()
                             .create(Objects.requireNonNull(card), RotatedIcon.Rotate.UP);
-                    ImageResizer.resize(gCard, 2.5);
+                    resizer.resize(gCard, 2.5);
                     gCard.setEnabled(false);
                     add(gCard);
                 } else {
@@ -149,7 +160,7 @@ public class EastCardPanel
                             PathProviderAssembler.getInstance().assemble(ProgramDirectory.COVER, "COVER.png"),
                             PathProviderAssembler.getInstance().assemble(ProgramDirectory.COVER, "COVER_ROLLOVER.png"),
                             RotatedIcon.Rotate.UP);
-                    ImageResizer.resize(gCard, 4.0);
+                    resizer.resize(gCard, 4.0);
                     addComponent(gCard);
                 }
             }

@@ -26,6 +26,7 @@
 package juno.view.gobject;
 
 import juno.view.util.ImageButton;
+import juno.view.util.InterfaceImageResizer;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -44,7 +45,9 @@ public class GObjectButton<T>
      * specified object.
      * @param object An object.
      */
-    public GObjectButton(@NotNull T object) {
+    public GObjectButton(@NotNull T object,
+                         @NotNull InterfaceImageResizer resizer) {
+        super(resizer);
         this.object = object;
     }
 

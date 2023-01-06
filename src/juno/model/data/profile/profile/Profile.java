@@ -93,6 +93,7 @@ public class Profile
     public void configure(@NotNull Map<String, Object> map) {
         Map<String, String> errors = Objects.requireNonNull(getProvider()).getErrors();
         errors.clear(); // Cleaning up old errors.
+
         // Profile name case.
         if (map.containsKey(PROFILE_NAME_KEY)) {
             Object profileNameFromMap = map.get(PROFILE_NAME_KEY);
@@ -106,6 +107,7 @@ public class Profile
             } else if (profileNameFromMap == null) profileName = null;
             else errors.put(PROFILE_NAME_KEY, "Profile name must be a String");
         } else errors.put(PROFILE_NAME_KEY, "The profile name is required");
+
         // Name case.
         if (map.containsKey(NAME_KEY)) {
             Object nameFromMap = map.get(NAME_KEY);
@@ -119,6 +121,7 @@ public class Profile
             } else if (nameFromMap == null) name = null;
             else errors.put(NAME_KEY, "Name must be a String");
         }
+
         // Last name.
         if (map.containsKey(LAST_NAME_KEY)) {
             Object lastNameFromMap = map.get(LAST_NAME_KEY);
@@ -132,6 +135,7 @@ public class Profile
             } else if (lastNameFromMap == null) lastName = null;
             else errors.put(LAST_NAME_KEY, "Last name must be a String.");
         }
+
         // Age case.
         if (map.containsKey(AGE_KEY)) {
             Object ageFromMap = map.get(AGE_KEY);

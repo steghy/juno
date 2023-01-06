@@ -31,6 +31,7 @@ import juno.controller.new_game.controller.WinnerManager;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.InitializeAction;
 import juno.controller.util.PanelChanger;
+import juno.model.card.InterfaceCard;
 import juno.model.sound.ButtonSoundPlayer;
 import juno.view.button.Button;
 import juno.view.button.ButtonCreator;
@@ -54,6 +55,7 @@ public class WinnerPanelConfigurator {
     private WinnerPanelConfigurator() {}
 
     /** Configures the WinnerPanel instance. */
+    @SuppressWarnings("unchecked")
     public static void configure() {
         // Component.
         WinnerPanel winnerPanel = WinnerPanel.getInstance();
@@ -63,12 +65,13 @@ public class WinnerPanelConfigurator {
         AbstractButton exitButton = creator.create(Button.EXIT, null);
         AbstractButton restartButton = creator.create(Button.RESTART, null);
         AbstractButton winnerButton = creator.create(Button.WINNER, null);
-        WinnerAvatarPanel winnerAvatarPanel = WinnerAvatarPanel.getInstance();
+        WinnerAvatarPanel<InterfaceCard> winnerAvatarPanel = (WinnerAvatarPanel<InterfaceCard>) WinnerAvatarPanel.getInstance();
 
         // Image resizing.
-        ImageResizer.resize(exitButton, 2.8);
-        ImageResizer.resize(restartButton, 2.8);
-        ImageResizer.resize(winnerButton, 2.8);
+        ImageResizer resizer = ImageResizer.getInstance();
+        resizer.resize(exitButton, 2.8);
+        resizer.resize(restartButton, 2.8);
+        resizer.resize(winnerButton, 2.8);
 
         // Action listeners.
         ButtonSoundPlayer buttonSoundPlayer = ButtonSoundPlayer.getInstance();
