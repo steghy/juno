@@ -116,7 +116,9 @@ public class MenuPanelConfigurator {
                         new ErrorProviderDecorator(
                                 Objects.requireNonNull(Profile.getInstance().getProvider()),
                                 new PathBuilder("-profile.json", ProgramDirectory.PROFILES.absolutePath()),
-                                menuPanel),
+                                menuPanel,
+                                Profile.PROFILE_NAME_KEY,
+                                Profile.GUEST_NAME),
                         RegistrationDataSelector.getInstance()));
 
         backButton.addActionListener(new SoundAction(ButtonSoundPlayer.getInstance(), listener -> {

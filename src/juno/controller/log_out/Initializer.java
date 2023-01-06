@@ -78,6 +78,7 @@ public class Initializer
         accountExiter.setRefresher(profilesRefresher);
         accountExiter.setProvider(ProfileNameProvider.getInstance());
         accountExiter.setExporterManager(ExporterManager.getInstance());
+        accountExiter.setGuest(Profile.GUEST_NAME);
 
         // Profiles refresher.
         profilesRefresher.setGenerator(ConfigurationFilesFactory.getInstance());

@@ -27,7 +27,6 @@ package juno.model.data.profile;
 
 import juno.controller.pre_access.log_in.InterfacePathBuilder;
 import juno.model.data.io.output.Exportable;
-import juno.model.data.profile.profile.Profile;
 import juno.model.util.Os;
 import org.jetbrains.annotations.NotNull;
 
@@ -38,6 +37,12 @@ import java.util.Map;
  */
 public class ErrorProviderDecorator
         implements InterfaceErrorDecorator {
+
+    // The profile name key;
+    private final String key;
+
+    // The guest name;
+    private final String guest;
 
     // The data provider.
     private final Exportable exportable;
@@ -55,25 +60,39 @@ public class ErrorProviderDecorator
      */
     public ErrorProviderDecorator(@NotNull InterfaceErrorProvider errorProvider,
                                   @NotNull InterfacePathBuilder pathBuilder,
-                                  @NotNull Exportable exportable) {
+                                  @NotNull Exportable exportable,
+                                  @NotNull String key,
+                                  @NotNull String guest) {
         this.errorProvider = errorProvider;
         this.exportable = exportable;
         this.pathBuilder = pathBuilder;
+        this.key = key;
+        this.guest = guest;
     }
 
     @Override
     public Map<String, String> getErrors() {
+        // The errors to decorate produced when
+        // configuring the profile class.
         Map<String, String> errors = errorProvider.getErrors();
         Map<String, Object> data = exportable.exportData();
-        if(data.containsKey(Profile.PROFILE_NAME_KEY)) {
-            Object object = data.get(Profile.PROFILE_NAME_KEY);
+
+        // The only data that is considered is the profile name.
+        if(data.containsKey(key)) {
+            Object object = data.get(key);
             if(object instanceof String profileName) {
-                if(Os.exists(pathBuilder.build((profileName)))) {
-                    errors.put(Profile.PROFILE_NAME_KEY, "profile name already used");
-                } else if(profileName.equalsIgnoreCase(Profile.GUEST_NAME)) {
-                    errors.put(Profile.PROFILE_NAME_KEY, "guest name cannot be used");
-                }
-            } else throw new IllegalArgumentException(
+
+                // The profile name has already been used.
+                if(Os.exists(pathBuilder.build((profileName))))
+                    errors.put(key, "profile name already used");
+
+                // The Guest name cannot be used.
+                else if(profileName.equalsIgnoreCase(guest))
+                    errors.put(key, "guest name cannot be used");
+            }
+
+            // Invalid case.
+            else throw new IllegalArgumentException(
                     "Invalid object type: " + object.getClass() +
                             ". String type expected.");
         } return errors;

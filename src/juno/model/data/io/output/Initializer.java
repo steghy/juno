@@ -61,14 +61,13 @@ public class Initializer
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public void initialize() {
         // Components.
         // ExporterManager.
         ExporterManager exporterManager = ExporterManager.getInstance();
 
         // ExitManager.
-        ExitManager<String> exitManager = (ExitManager<String>) ExitManager.getInstance();
+        ExitManager exitManager = ExitManager.getInstance();
 
         // JSONDataExporter.
         JSONDataExporter jsonDataExporter = JSONDataExporter.getInstance();
@@ -91,6 +90,7 @@ public class Initializer
         // Exit manager.
         exitManager.setExporter(exporterManager);
         exitManager.setProvider(ProfileNameProvider.getInstance());
+        exitManager.setGuest(Profile.GUEST_NAME);
     }
 
 }

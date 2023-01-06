@@ -8,17 +8,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb893c3e-934c-4404-9cca-69421574d8c5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/data/config/avatar/profilo-avatar.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/config/profiles/profilo-profile.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/config/scores/profilo-games-won.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/config/scores/profilo-lost-games.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config/scores/Simoncino-lost-games.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/config/scores/Simoncino-lost-games.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/reflection/Configurator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/reflection/Configurator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/data/io/input/reflection/test/RConfiguratorTester.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/model/util/MathUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/model/util/MathUtility.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/winner/WinnerAvatarPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/view/pages/new_game/single_player/winner/WinnerAvatarPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/reflection/test/MyClass.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/reflection/test/MyObject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/reflection/test/PrintStatus.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/input/reflection/test/ProperyCopierTester.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/winner/WinnerAvatarPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/new_game/single_player/winner/WinnerAvatarPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/controller/log_out/AccountExiter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/controller/log_out/AccountExiter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/juno-project/juno/init/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/juno-project/juno/init/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/log_out/AccountExiter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/log_out/AccountExiter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/controller/log_out/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/controller/log_out/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/init/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/init/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/output/ExitManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/output/ExitManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/io/output/Initializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/io/output/Initializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/model/data/profile/ErrorProviderDecorator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/model/data/profile/ErrorProviderDecorator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/juno/view/pages/pre_access/registration/menu/MenuPanelConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/juno/view/pages/pre_access/registration/menu/MenuPanelConfigurator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

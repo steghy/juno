@@ -25,6 +25,8 @@
 
 package juno.controller.log_out;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 /**
@@ -32,6 +34,9 @@ import java.util.Objects;
  */
 public class AccountExiter
         extends AbstractAccountExiter<String> {
+
+    // The guest name.
+    private String guest;
 
     // The Account exiter.
     private static AccountExiter instance;
@@ -48,12 +53,27 @@ public class AccountExiter
         return instance;
     }
 
+    /**
+     * Sets the guest name of this object.
+     * @param guest A String object.
+     */
+    public void setGuest(@NotNull String guest) {
+        this.guest = guest;
+    }
+
     @Override
     public void logOut() {
-        String object = Objects.requireNonNull(getProvider()).provide();
-        Objects.requireNonNull(getExporterManager()).export(object);
+        // Profile name.
+        String profileName = Objects.requireNonNull(getProvider()).provide();
+
+        // Does not export data related to the
+        // Guest account during the log-out phase.
+        if(!profileName.equalsIgnoreCase(guest)) {
+            Objects.requireNonNull(getExporterManager()).export(profileName);
+            Objects.requireNonNull(getRefresher()).refresh();
+        }
+        // Either way the recovery has to happen
         Objects.requireNonNull(getRestorableList()).forEach(Restorable::restore);
-        Objects.requireNonNull(getRefresher()).refresh();
     }
 
 }

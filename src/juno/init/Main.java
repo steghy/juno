@@ -33,6 +33,7 @@ import juno.view.frame.Frame;
 import juno.view.pages.options.menu.MenuPanel;
 
 import javax.swing.*;
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -76,9 +77,16 @@ public class Main {
             frame.setVisible(true);
 
         } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "An unknown error has occurred. " +
-                    "Consult the program logs for more information.");
+            // e.printStackTrace();
+
+            StringBuilder b = new StringBuilder();
+            Arrays.stream(e.getStackTrace()).forEach(l -> b.append(l).append("\n"));
+
+            JOptionPane.showMessageDialog(
+                    null,
+                    "An error has occurred: \n" + b,
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+
             System.exit(1);
         }
     }

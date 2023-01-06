@@ -26,16 +26,21 @@
 package juno.model.data.io.output;
 
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 /**
  * @author Simone Gentili
  */
-public class ExitManager<T>
-        extends AbstractExitManager<T> {
+public class ExitManager
+        extends AbstractExitManager<String> {
+
+    // The guest name.
+    private String guest;
 
     // The ExitManager instance.
-    private static ExitManager<?> instance;
+    private static ExitManager instance;
 
     // Builds the ExitManager instance.
     private ExitManager() {}
@@ -44,15 +49,31 @@ public class ExitManager<T>
      * Returns the ExitManager instance.
      * @return The ExitManager instance.
      */
-    public static ExitManager<?> getInstance() {
-        if(instance == null) instance = new ExitManager<>();
+    public static ExitManager getInstance() {
+        if(instance == null) instance = new ExitManager();
         return instance;
+    }
+
+    /**
+     * Sets the guest name of this object.
+     * @param guest A String object.
+     */
+    public void setGuest(@NotNull String guest) {
+        this.guest = guest;
     }
 
     @Override
     public void exit() {
-        Objects.requireNonNull(getExporter())
-                .export(Objects.requireNonNull(getProvider()).provide());
+        // The profile name.
+        String profileName = Objects.requireNonNull(getProvider()).provide();
+
+        // Does not export data related to the
+        // Guest account during the log-out phase.
+        if(!profileName.equalsIgnoreCase(guest))
+            Objects.requireNonNull(getExporter())
+                    .export(profileName);
+
+        // Exit from j-uno application.
         System.exit(0);
     }
 
