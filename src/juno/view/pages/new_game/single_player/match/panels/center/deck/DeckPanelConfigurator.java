@@ -27,7 +27,7 @@ package juno.view.pages.new_game.single_player.match.panels.center.deck;
 
 import juno.controller.new_game.human.DiscardedCardSetter;
 import juno.controller.new_game.human.DrawAction;
-import juno.init.ProgramDirectory;
+import juno.model.data.io.ProgramDirectory;
 import juno.model.requester.PathProviderAssembler;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.human.HumanPlayer;

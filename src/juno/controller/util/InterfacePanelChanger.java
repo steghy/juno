@@ -27,11 +27,15 @@ package juno.controller.util;
 
 
 /**
+ * This interface describers a panel changer
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface InterfacePanelChanger {
 
+    /**
+     * Change the panel.
+     */
     void changePanel();
 
 }

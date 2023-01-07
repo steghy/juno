@@ -31,6 +31,7 @@ import juno.view.pages.score.title.TitlePanel;
 
 
 /**
+ * This class defines a configurator.
  * @author Simone Gentili
  */
 public class ScorePanelConfigurator {
@@ -38,6 +39,9 @@ public class ScorePanelConfigurator {
     // Builds a ScorePanelConfigurator object.
     private ScorePanelConfigurator() {}
 
+    /**
+     * Configures the ScorePanel instance.
+     */
     public static void configure() {
         // Main component.
         ScorePanel scorePanel = ScorePanel.getInstance();

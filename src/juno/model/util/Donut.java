@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
+ * this class defines a donut.
  * @author Simone Gentili
  * @param <T> The type of the Donut elements.
  */

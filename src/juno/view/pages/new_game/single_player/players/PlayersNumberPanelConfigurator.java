@@ -29,6 +29,7 @@ import juno.view.pages.new_game.single_player.players.menu.MenuPanel;
 import juno.view.pages.new_game.single_player.players.title.TitlePanel;
 
 /**
+ * This class defines a player number panel configurator.
  * @author Simone Gentili
  */
 public class PlayersNumberPanelConfigurator {
@@ -36,6 +37,7 @@ public class PlayersNumberPanelConfigurator {
     // Builds a PlayersNumberPanelConfigurator object.
     private PlayersNumberPanelConfigurator() {}
 
+    /** Configures the PlayerNumberPanel instance. */
     public static void configure() {
         // Main component.
         PlayersNumberPanel playerNumbersPanel = PlayersNumberPanel.getInstance();

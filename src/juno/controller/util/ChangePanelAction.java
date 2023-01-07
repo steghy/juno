@@ -31,6 +31,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
+ * This class defines a Change panel action.
  * @author Simone Gentili
  */
 public class ChangePanelAction
@@ -39,6 +40,11 @@ public class ChangePanelAction
     // The panel changer.
     private final InterfacePanelChanger panelChanger;
 
+    /**
+     * Builds a ChangePanelAction with the specified
+     * panel changer object.
+     * @param panelChanger An InterfacePanelChanger object.
+     */
     public ChangePanelAction(@NotNull InterfacePanelChanger panelChanger) {
         this.panelChanger = panelChanger;
     }

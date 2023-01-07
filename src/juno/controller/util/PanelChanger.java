@@ -31,6 +31,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * This class defines a panel changer.
  * @author Simone Gentili
  */
 public class PanelChanger

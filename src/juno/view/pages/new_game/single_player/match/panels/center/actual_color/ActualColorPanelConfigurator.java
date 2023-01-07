@@ -28,6 +28,7 @@ package juno.view.pages.new_game.single_player.match.panels.center.actual_color;
 import juno.model.deck.ActualColorManager;
 
 /**
+ * This class defines the actual color panel configurator.
  * @author Simone Gentili
  */
 public class ActualColorPanelConfigurator {

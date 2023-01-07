@@ -35,14 +35,12 @@ import java.awt.*;
 import java.util.Objects;
 
 /**
+ * This class defines the circle panel.
  * @author Simone Gentili
  */
 public class CirclePanel
-        extends
-        AbstractSecondComponent
-        implements
-        Observer,
-        Restorable {
+        extends AbstractSecondComponent
+        implements Observer, Restorable {
 
     // The inverted boolean value.
     private boolean inverted;

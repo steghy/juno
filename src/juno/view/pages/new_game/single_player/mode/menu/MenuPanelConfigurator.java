@@ -30,7 +30,7 @@ import juno.controller.new_game.GameInitializer;
 import juno.controller.util.InitializeAction;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.PanelChanger;
-import juno.init.ProgramDirectory;
+import juno.model.data.io.ProgramDirectory;
 import juno.model.requester.PathProviderAssembler;
 import juno.model.sound.ButtonSoundPlayer;
 import juno.view.button.ButtonCreator;

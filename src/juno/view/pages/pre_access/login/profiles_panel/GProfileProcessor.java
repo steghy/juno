@@ -44,6 +44,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * This class defines a graphic profile processor.
  * @author Simone Gentili
  */
 public class GProfileProcessor

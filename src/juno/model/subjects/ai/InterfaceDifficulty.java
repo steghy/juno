@@ -26,6 +26,7 @@
 package juno.model.subjects.ai;
 
 /**
+ * This interface defines a different difficulty
  * @author Simone Gentili
  */
 public interface InterfaceDifficulty

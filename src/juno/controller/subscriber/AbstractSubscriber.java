@@ -33,6 +33,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Objects;
 
 /**
+ * This abstract class defines abstract subscriber.
  * @author Simone Gentili
  */
 public abstract class AbstractSubscriber

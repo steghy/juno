@@ -29,6 +29,7 @@ import juno.view.pages.new_game.single_player.difficulty.menu.MenuPanel;
 import juno.view.pages.new_game.single_player.difficulty.title.TitlePanel;
 
 /**
+ * This class defines a configurator.
  * @author Simone Gentili
  */
 public class DifficultyPanelConfigurator {
@@ -36,6 +37,7 @@ public class DifficultyPanelConfigurator {
     // Builds the DifficultyPanelConfigurator object.
     private DifficultyPanelConfigurator() {}
 
+    /** Configures the DifficultyPanel instance. */
     public static void configure() {
         // Main component.
         DifficultyPanel difficultyPanel = DifficultyPanel.getInstance();

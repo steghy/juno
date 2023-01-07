@@ -31,6 +31,7 @@ import java.awt.*;
 import java.util.Objects;
 
 /**
+ * This class defines a pre access card panel.
  * @author Simone Gentili
  */
 public class PreAccessCardPanel

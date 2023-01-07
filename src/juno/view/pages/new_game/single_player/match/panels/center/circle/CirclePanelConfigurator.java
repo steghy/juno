@@ -26,7 +26,7 @@
 package juno.view.pages.new_game.single_player.match.panels.center.circle;
 
 import juno.model.requester.PathProviderAssembler;
-import juno.init.ProgramDirectory;
+import juno.model.data.io.ProgramDirectory;
 import juno.model.subjects.shift.Inverter;
 import juno.view.img_initializer.ImageComponentInitializer;
 import juno.view.util.ImageLabel;

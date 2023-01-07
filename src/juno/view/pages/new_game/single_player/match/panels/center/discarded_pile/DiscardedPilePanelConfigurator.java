@@ -25,7 +25,7 @@
 
 package juno.view.pages.new_game.single_player.match.panels.center.discarded_pile;
 
-import juno.init.ProgramDirectory;
+import juno.model.data.io.ProgramDirectory;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.DiscardedPile;
 import juno.model.requester.PathProviderAssembler;
@@ -38,6 +38,7 @@ import juno.view.util.ImageResizer;
 import java.awt.*;
 
 /**
+ * This class defines the discarded pile panel configurator.
  * @author Simone Gentili
  */
 public class DiscardedPilePanelConfigurator {

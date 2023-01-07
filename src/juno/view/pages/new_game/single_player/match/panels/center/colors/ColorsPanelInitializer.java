@@ -39,6 +39,7 @@ import juno.view.util.ImageResizer;
 import java.util.List;
 
 /**
+ * This class defines the colors panel initializer.
  * @author Simone Gentili
  */
 public class ColorsPanelInitializer

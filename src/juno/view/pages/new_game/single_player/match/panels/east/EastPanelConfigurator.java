@@ -26,7 +26,7 @@
 package juno.view.pages.new_game.single_player.match.panels.east;
 
 import juno.controller.new_game.GameStarter;
-import juno.init.ProgramDirectory;
+import juno.model.data.io.ProgramDirectory;
 import juno.model.requester.PathProviderAssembler;
 import juno.view.avatar.AvatarPanel;
 import juno.view.img_initializer.ImageComponentInitializer;

@@ -26,11 +26,13 @@
 package juno.controller.pre_access;
 
 /**
+ * This interface defines pre access managers.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface InterfacePreAccessManager {
 
+    /** Shows the welcome back panel. */
     void showWelcomeBackPanel();
 
 }

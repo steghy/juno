@@ -33,6 +33,7 @@ import juno.model.data.avatar.AvatarNameSetter;
 import juno.model.data.profile.profile.ProfileNameSetter;
 
 /**
+ * This class defines an initializer.
  * @author Simone Gentili
  */
 public class Initializer

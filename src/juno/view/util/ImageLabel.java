@@ -31,6 +31,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * This class defines image labels.
  * @author Simone Gentili
  */
 public class ImageLabel

@@ -28,6 +28,7 @@ package juno.model.data.profile.profile;
 import juno.model.util.Provider;
 
 /**
+ * this class defines an age provider.
  * @author Simone Gentili
  */
 public class AgeProvider

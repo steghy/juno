@@ -31,6 +31,7 @@ import juno.view.pages.pre_access.registration.RegistrationPanel;
 import juno.view.pages.pre_access.welcome.WelcomePanel;
 
 /**
+ * This class defines a configurator.
  * @author Simone Gentili
  */
 public class PreAccessCardPanelConfigurator {
@@ -38,6 +39,7 @@ public class PreAccessCardPanelConfigurator {
     // Builds a PreAccessCardPanelConfigurator object.
     private PreAccessCardPanelConfigurator() {}
 
+    /** Configures the PreAccessCardPanel instance. */
     public static void configure() {
         // Main component.
         PreAccessCardPanel preAccessCardPanel = PreAccessCardPanel.getInstance();

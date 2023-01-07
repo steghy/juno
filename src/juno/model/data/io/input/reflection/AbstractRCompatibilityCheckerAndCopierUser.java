@@ -30,6 +30,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * This abstract class defines abstract compatibility checker
+ * and copier user.
  * @author Simone Gentili
  */
 public abstract class AbstractRCompatibilityCheckerAndCopierUser

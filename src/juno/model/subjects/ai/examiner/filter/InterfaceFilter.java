@@ -26,6 +26,7 @@
 package juno.model.subjects.ai.examiner.filter;
 
 /**
+ * This interface defines a multi filter.
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */

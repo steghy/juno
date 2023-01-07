@@ -41,7 +41,9 @@ import juno.view.util.RoundedBorder;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+
 /**
+ * this class defines the MenuPanel configurator.
  * @author Simone Gentili
  */
 public class MenuPanelConfigurator {

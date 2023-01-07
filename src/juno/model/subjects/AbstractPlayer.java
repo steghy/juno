@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * This abstract class defines abstract players.
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */

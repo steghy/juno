@@ -26,14 +26,15 @@
 package juno.model.subjects.ai;
 
 /**
+ * this class defines the hard difficulty
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface InterfaceHard {
 
     /**
-     *
-     * @return
+     * Returs true if this difficulty object is hard.
+     * @return A boolean value.
      */
     boolean isHard();
 

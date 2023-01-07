@@ -31,6 +31,7 @@ import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * this class defines the avatar subscriber.
  * @author Simone Gentili
  */
 public class AvatarSubscriber

@@ -26,6 +26,7 @@
 package juno.model.sound;
 
 /**
+ * This class defines the buttons sound player.
  * @author Simone Gentili
  */
 public class ButtonSoundPlayer

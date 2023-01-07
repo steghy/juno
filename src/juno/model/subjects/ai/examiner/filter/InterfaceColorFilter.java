@@ -28,11 +28,17 @@ package juno.model.subjects.ai.examiner.filter;
 import java.util.List;
 
 /**
+ * This interface defines color filter.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface InterfaceColorFilter<T> {
 
+    /**
+     * Returns a list with only colored cards.
+     * @param cards A List object.
+     * @return A List object.
+     */
     List<T> colored(List<T> cards);
 
 }

@@ -26,11 +26,16 @@
 package juno.controller.subscriber;
 
 /**
+ * This interface defines unsubscriber objects.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface Unsubscriber {
 
+    /**
+     * Unsubscribes the encapsulated Observer object
+     * from a specified Observable object.
+     */
     void unsubscribe();
 
 }

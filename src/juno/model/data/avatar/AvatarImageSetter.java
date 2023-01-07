@@ -31,6 +31,7 @@ import juno.model.util.Setter;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * This class defines the avatar image setter.
  * @author Simone Gentili
  */
 public class AvatarImageSetter

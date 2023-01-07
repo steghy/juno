@@ -29,6 +29,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * This class defines abstract graphic object factory.
  * @author Simone Gentili
  * @param <T> The type of the objects.
  */

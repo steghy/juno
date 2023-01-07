@@ -26,11 +26,13 @@
 package juno.controller.util;
 
 /**
+ * This interface defines object that are stoppable.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface Stoppable {
 
+    /** Stop this object. */
     void stop();
 
 }

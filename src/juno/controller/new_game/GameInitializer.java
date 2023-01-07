@@ -34,6 +34,7 @@ import juno.model.util.Generator;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * This class defines an initializer.
  * @author Simone Gentili
  */
 public class GameInitializer

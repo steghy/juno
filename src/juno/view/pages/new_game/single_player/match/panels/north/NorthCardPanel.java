@@ -27,7 +27,7 @@ package juno.view.pages.new_game.single_player.match.panels.north;
 
 import juno.controller.log_out.Restorable;
 import juno.controller.new_game.GameStarter;
-import juno.init.ProgramDirectory;
+import juno.model.data.io.ProgramDirectory;
 import juno.model.card.InterfaceCard;
 import juno.model.requester.PathProviderAssembler;
 import juno.model.subjects.ai.AI;

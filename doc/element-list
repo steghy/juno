@@ -1,3 +1,4 @@
+juno
 juno.controller
 juno.controller.audio
 juno.controller.log_out
@@ -15,7 +16,6 @@ juno.controller.pre_access.loggers
 juno.controller.pre_access.registration
 juno.controller.subscriber
 juno.controller.util
-juno.init
 juno.model
 juno.model.card
 juno.model.card.actions
@@ -25,6 +25,7 @@ juno.model.data.awards
 juno.model.data.awards.avatar
 juno.model.data.awards.frame
 juno.model.data.goals
+juno.model.data.io
 juno.model.data.io.input
 juno.model.data.io.input.configurable
 juno.model.data.io.input.reflection

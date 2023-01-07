@@ -29,7 +29,7 @@ import juno.controller.log_out.AccountExiter;
 import juno.controller.log_out.LogOutAction;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.PanelChanger;
-import juno.init.ProgramDirectory;
+import juno.model.data.io.ProgramDirectory;
 import juno.model.requester.PathProviderAssembler;
 import juno.view.avatar.UserAvatarPanel;
 import juno.view.button.ButtonCreator;
@@ -37,7 +37,6 @@ import juno.view.img_initializer.ImageComponentInitializer;
 import juno.view.pages.card.TopCardPanel;
 import juno.view.pages.main.menu.MenuPanel;
 import juno.view.pages.main.title.TitlePanel;
-import juno.view.pages.pre_access.registration.RegistrationPanel;
 import juno.view.util.ImageResizer;
 
 import javax.swing.*;

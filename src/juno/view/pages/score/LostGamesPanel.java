@@ -33,6 +33,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * This class defines the lost games panel.
  * @author Simone Gentili
  */
 public class LostGamesPanel

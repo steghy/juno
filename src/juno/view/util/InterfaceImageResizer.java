@@ -29,12 +29,26 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * this interface defines image resizer.
  * @author Simone Gentili
  */
 public interface InterfaceImageResizer {
 
+    /**
+     * Resize the specified component object
+     * with the width and height of the specified
+     * icon object.
+     * @param component A Component object.
+     * @param icon An Icon object.
+     * @return An Image object.
+     */
     Image resize(Component component, Icon icon);
 
+    /**
+     * Resize the specified button.
+     * @param button An AbstractButton object.
+     * @param val A double value.
+     */
     void resize(AbstractButton button, double val);
 
 }

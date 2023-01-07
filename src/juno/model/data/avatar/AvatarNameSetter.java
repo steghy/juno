@@ -32,6 +32,7 @@ import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * This class defines the avatar name setter.
  * @author Simone Gentili
  */
 public class AvatarNameSetter

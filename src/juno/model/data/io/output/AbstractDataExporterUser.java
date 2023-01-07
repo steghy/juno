@@ -29,6 +29,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * This abstract class defines abstract data exporter user.
  * @author Simone Gentili
  */
 public abstract class AbstractDataExporterUser {

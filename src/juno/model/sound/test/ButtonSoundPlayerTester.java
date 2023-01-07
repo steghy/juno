@@ -25,7 +25,7 @@
 
 package juno.model.sound.test;
 
-import juno.init.ProgramDirectory;
+import juno.model.data.io.ProgramDirectory;
 import juno.model.sound.ButtonSoundPlayer;
 import juno.model.util.PathGenerator;
 

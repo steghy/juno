@@ -42,6 +42,7 @@ import javax.swing.border.Border;
 import java.awt.*;
 
 /**
+ * This class defines the menu panel configurator.
  * @author Simone Gentili
  */
 public class MenuPanelConfigurator {

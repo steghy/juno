@@ -34,6 +34,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
+ * This clas defines the ai panel subscriber.
  * @author Simone Gentili
  */
 public class AiPanelSubscriber

@@ -50,6 +50,7 @@ import java.util.*;
 import java.util.List;
 
 /**
+ * This class defines the south card panel.
  * @author Simone Gentili
  */
 public class SouthCardPanel

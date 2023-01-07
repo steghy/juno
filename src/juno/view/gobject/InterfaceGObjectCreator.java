@@ -29,12 +29,20 @@ package juno.view.gobject;
 import juno.view.util.RotatedIcon;
 
 /**
+ * This interface describes a graphic object creator.
  * @author Simone Gentili
  * @param <T> The type of the object.
  */
 @FunctionalInterface
 public interface InterfaceGObjectCreator<T> {
 
+    /**
+     * Creates a graphic object with the specified object and
+     * Rotated object.
+     * @param object An Object.
+     * @param rotate A Rotated object.
+     * @return An InterfaceGObject object.
+     */
     InterfaceGObject<T> create(T object, RotatedIcon.Rotate rotate);
 
 }

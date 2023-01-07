@@ -33,6 +33,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Objects;
 
 /**
+ * This class defines a profiles refresher.
  * @author Simone Gentili
  */
 public class ProfilesRefresher

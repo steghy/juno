@@ -23,7 +23,7 @@
  * SOFTWARE.
  */
 
-package juno.init;
+package juno.model.data.io;
 
 import juno.model.requester.InterfacePathProvider;
 

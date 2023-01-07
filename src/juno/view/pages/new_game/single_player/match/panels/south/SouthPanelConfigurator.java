@@ -30,7 +30,7 @@ import juno.controller.new_game.dispenser.CardDispenser;
 import juno.controller.new_game.human.DiscardedCardSetter;
 import juno.controller.new_game.penalty.PenaltyExecutor;
 import juno.controller.new_game.penalty.PenaltyTimer;
-import juno.init.ProgramDirectory;
+import juno.model.data.io.ProgramDirectory;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.CompatibilityChecker;
 import juno.model.requester.PathProviderAssembler;

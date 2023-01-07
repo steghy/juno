@@ -26,12 +26,13 @@
 package juno.view.button;
 
 import juno.controller.util.InterfaceInitializer;
-import juno.init.ProgramDirectory;
+import juno.model.data.io.ProgramDirectory;
 import juno.view.img_initializer.ImageComponentInitializer;
 import juno.model.requester.PathProviderAssembler;
 import juno.view.util.ImageResizer;
 
 /**
+ * This class defines an initializer
  * @author Simone Gentili
  */
 public class Initializer

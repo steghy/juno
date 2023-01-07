@@ -29,6 +29,7 @@ import juno.controller.util.InterfaceInitializer;
 import juno.view.pages.pre_access.card.PreAccessCardPanelConfigurator;
 
 /**
+ * This class defines an initializer.
  * @author Simone Gentili
  */
 public class Initializer

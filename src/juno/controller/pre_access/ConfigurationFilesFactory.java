@@ -33,6 +33,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
+ * This class defines a configuration files factory.
  * @author Simone Gentili
  */
 public class ConfigurationFilesFactory

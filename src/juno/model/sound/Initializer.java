@@ -26,13 +26,14 @@
 package juno.model.sound;
 
 import juno.controller.util.InterfaceInitializer;
-import juno.init.ProgramDirectory;
+import juno.model.data.io.ProgramDirectory;
 
 import java.io.File;
 import java.util.Arrays;
 import java.util.Objects;
 
 /**
+ * This class defines an initializer
  * @author Simone Gentili
  */
 public class Initializer

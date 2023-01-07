@@ -31,6 +31,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * This class defines an image toggle button.
  * @author Simone Gentili
  */
 public class ImageToggleButton

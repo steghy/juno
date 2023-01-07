@@ -28,6 +28,7 @@ package juno.model.subjects.ai.examiner.filter;
 import java.util.List;
 
 /**
+ * This interface defines action cards filter.
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
@@ -35,9 +36,9 @@ import java.util.List;
 public interface InterfaceActionFilter<T> {
 
     /**
-     *
-     * @param cards
-     * @return
+     * Returns a List with only actions cards.
+     * @param cards A List object.
+     * @return A List object.
      */
     List<T> action(List<T> cards);
 

@@ -31,6 +31,7 @@ import juno.model.data.goals.Goal;
 import juno.model.data.goals.RegistrationGoal;
 
 /**
+ * this class defines an initializer.
  * @author Simone Gentili
  */
 public class Initializer

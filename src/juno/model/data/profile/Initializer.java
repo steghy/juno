@@ -29,6 +29,7 @@ import juno.controller.util.InterfaceInitializer;
 import juno.model.data.profile.profile.Profile;
 
 /**
+ * This class defines an initialzier.
  * @author Simone Gentili
  */
 public class Initializer

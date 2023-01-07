@@ -26,6 +26,7 @@
 package juno.model.subjects.ai;
 
 /**
+ * This interface defines an easy difficulty
  * @author Simone Gentili
  */
 @FunctionalInterface

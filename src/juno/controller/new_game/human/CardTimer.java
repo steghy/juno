@@ -35,6 +35,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
+ * This class defines a card timer.
  * @author Simone Gentili
  */
 public class CardTimer

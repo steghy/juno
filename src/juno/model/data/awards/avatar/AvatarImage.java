@@ -34,6 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * This class defines avatar images.
  * @author Simone Gentili
  */
 public enum AvatarImage

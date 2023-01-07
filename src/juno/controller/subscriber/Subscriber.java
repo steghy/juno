@@ -26,11 +26,16 @@
 package juno.controller.subscriber;
 
 /**
+ * This interface describes subscribers.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface Subscriber {
 
+    /**
+     * Subscribe the encapsulated Observer to
+     * a specified Observable object.
+     */
     void subscribe();
 
 }

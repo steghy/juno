@@ -29,6 +29,7 @@ import juno.view.pages.pre_access.access.menu.MenuPanel;
 import juno.view.pages.pre_access.access.title.TitlePanel;
 
 /**
+ * This class defines a configurator.
  * @author Simone Gentili
  */
 public class AccessPanelConfigurator {
@@ -36,6 +37,7 @@ public class AccessPanelConfigurator {
     // Builds a AccessPanelConfigurator object.
     private AccessPanelConfigurator() {}
 
+    /** Configures the AccessPanel instance. */
     public static void configure() {
         // Main component.
         AccessPanel welcomePanel = AccessPanel.getInstance();

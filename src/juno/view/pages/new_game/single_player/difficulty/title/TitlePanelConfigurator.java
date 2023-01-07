@@ -35,6 +35,7 @@ import javax.swing.border.Border;
 import java.awt.*;
 
 /**
+ * this class defines the TitlePanel configurator.
  * @author Simone Gentili
  */
 public class TitlePanelConfigurator {

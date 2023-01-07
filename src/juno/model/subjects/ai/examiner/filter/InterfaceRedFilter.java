@@ -28,11 +28,17 @@ package juno.model.subjects.ai.examiner.filter;
 import java.util.List;
 
 /**
+ * This interface defines a red cards filter.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface InterfaceRedFilter<T> {
 
+    /**
+     * Returns a List with only red cards.
+     * @param cards A List object.
+     * @return A List object.
+     */
     List<T> red(List<T> cards);
 
 }

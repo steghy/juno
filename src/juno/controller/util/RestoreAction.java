@@ -33,6 +33,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 /**
+ * This class defines a restore action.
  * @author Simone Gentili
  */
 public class RestoreAction
@@ -50,6 +51,10 @@ public class RestoreAction
         this(List.of(restorable));
     }
 
+    /**
+     * Builds a RestorerAction with the specified list object.
+     * @param restorableObjects A List object.
+     */
     public RestoreAction(@NotNull List<Restorable> restorableObjects) {
         this.restorableObjects = restorableObjects;
     }

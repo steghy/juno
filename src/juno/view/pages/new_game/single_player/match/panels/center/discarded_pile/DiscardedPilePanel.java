@@ -32,7 +32,6 @@ import juno.model.util.Provider;
 import juno.model.util.Observer;
 import juno.view.gobject.GObjectButton;
 import juno.view.gobject.InterfaceGObjectCreator;
-import juno.view.util.ImageButton;
 import juno.view.util.ImageResizer;
 import juno.view.util.RotatedIcon;
 import org.jetbrains.annotations.NotNull;
@@ -41,6 +40,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * This class defines the Discarded pile panel
  * @author Simone Gentili
  */
 public class DiscardedPilePanel

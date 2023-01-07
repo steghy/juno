@@ -25,7 +25,7 @@
 
 package juno.model.data.profile.test;
 
-import juno.init.ProgramDirectory;
+import juno.model.data.io.ProgramDirectory;
 import juno.model.data.io.input.JSONDataImporter;
 import juno.model.data.profile.profile.Profile;
 import juno.model.util.PathGenerator;

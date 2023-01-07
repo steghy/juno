@@ -41,6 +41,7 @@ import juno.model.subjects.shift.PlayersProvider;
 import juno.model.subjects.shift.TurnMover;
 
 /**
+ * This class defines an initializer.
  * @author Simone Gentili
  */
 public class Initializer

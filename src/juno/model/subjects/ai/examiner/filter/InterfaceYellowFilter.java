@@ -28,12 +28,18 @@ package juno.model.subjects.ai.examiner.filter;
 import java.util.List;
 
 /**
+ * This interface defines a yellow cards filter.
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
 @FunctionalInterface
 public interface InterfaceYellowFilter<T> {
 
+    /**
+     * Returns a List with only yellow cards.
+     * @param cards A List object.
+     * @return A List object.
+     */
     List<T> yellow(List<T> cards);
 
 }

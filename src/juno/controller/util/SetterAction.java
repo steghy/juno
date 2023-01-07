@@ -32,7 +32,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * @param <T>    The type of the object.
+ * This class defines a setter actions.
+ * @param <T> The type of the object.
  * @param object The graphic object.
  * @param setter The setter.
  * @author Simone Gentili

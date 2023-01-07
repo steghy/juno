@@ -23,14 +23,12 @@
  * SOFTWARE.
  */
 
-package juno.init;
+package juno;
 
 import juno.controller.pre_access.ConfigurationFilesFactory;
 import juno.model.requester.GitHubRepositorySetter;
 import juno.model.sound.AudioPlayer;
 import juno.model.sound.ButtonSoundPlayer;
-import juno.model.sound.UnoSoundPlayer;
-import juno.model.sound.WelcomeSoundPlayer;
 import juno.view.frame.Frame;
 import juno.view.pages.options.menu.MenuPanel;
 
@@ -39,12 +37,14 @@ import java.util.Arrays;
 import java.util.Objects;
 
 /**
+ * This class defines the Main class of
+ * the J-Uno application.
  * @author Simone Gentili
  */
-public class Main {
+public class JUno {
 
     // Builds a Main object.
-    private Main() {}
+    private JUno() {}
 
     /**
      * Starts the J-UNO applications with the

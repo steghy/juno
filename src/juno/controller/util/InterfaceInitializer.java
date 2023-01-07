@@ -26,11 +26,13 @@
 package juno.controller.util;
 
 /**
+ * This interface defines initializer.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface InterfaceInitializer {
 
+    /** Initialize an object or a package. */
     void initialize();
 
 }

@@ -27,7 +27,7 @@ package juno.view.gobject.color;
 
 import juno.controller.util.InterfaceInitializer;
 import juno.model.requester.PathProviderAssembler;
-import juno.init.ProgramDirectory;
+import juno.model.data.io.ProgramDirectory;
 import juno.view.img_initializer.ImageComponentInitializer;
 import juno.view.util.ImageResizer;
 

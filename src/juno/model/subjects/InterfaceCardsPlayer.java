@@ -28,6 +28,7 @@ package juno.model.subjects;
 import java.util.List;
 
 /**
+ * This class defines a player with cards.
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */

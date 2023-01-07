@@ -36,6 +36,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * This class defines the colors panel.
  * @author Simone Gentili
  */
 public class ColorsPanel

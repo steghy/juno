@@ -27,7 +27,7 @@ package juno.view.pages.new_game.single_player.match.panels.west;
 
 import juno.controller.log_out.Restorable;
 import juno.controller.new_game.GameStarter;
-import juno.init.ProgramDirectory;
+import juno.model.data.io.ProgramDirectory;
 import juno.model.card.InterfaceCard;
 import juno.model.requester.PathProviderAssembler;
 import juno.model.subjects.ai.AI;
@@ -47,6 +47,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
+ * This class defines the west card panel.
  * @author Simone Gentili
  */
 public class WestCardPanel

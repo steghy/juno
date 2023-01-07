@@ -29,6 +29,7 @@ import juno.view.pages.new_game.single_player.players.menu.MenuPanelConfigurator
 import juno.view.pages.new_game.single_player.players.title.TitlePanelConfigurator;
 
 /**
+ * This class defines an initializer.
  * @author Simone Gentili
  */
 public class PlayersNumberInitializer {

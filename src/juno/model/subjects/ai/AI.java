@@ -34,8 +34,10 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Random;
 
 /**
+ * This class defines an artificial player.
  * @author Simone Gentili
  * @param <T> The type of the cards.
+ * @param <E> The type of the colors.
  */
 public class AI<T, E>
         extends AbstractPlayer<T>

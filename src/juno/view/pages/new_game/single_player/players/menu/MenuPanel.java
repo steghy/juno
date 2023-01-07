@@ -31,6 +31,7 @@ import java.awt.*;
 import java.util.Objects;
 
 /**
+ * This class defines the menu panel.
  * @author Simone Gentili
  */
 public class MenuPanel

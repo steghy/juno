@@ -31,6 +31,7 @@ import java.awt.*;
 import java.util.Objects;
 
 /**
+ * This class defines a title panel configurator.
  * @author Simone Gentili
  */
 public class TitlePanel

@@ -34,6 +34,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * this abstract class defines abstract configuration
+ * files factory.
  * @author Simone Gentili
  * @param <T> The type of the objects.
  */

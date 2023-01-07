@@ -32,7 +32,7 @@ import juno.controller.pre_access.registration.RegistrationDataSender;
 import juno.controller.pre_access.registration.RegistrationPanelRestorer;
 import juno.model.data.profile.ErrorProviderDecorator;
 import juno.model.data.profile.profile.Profile;
-import juno.init.ProgramDirectory;
+import juno.model.data.io.ProgramDirectory;
 import juno.model.sound.ButtonSoundPlayer;
 import juno.view.button.ButtonCreator;
 import juno.view.button.Button;

@@ -32,7 +32,7 @@ import org.jetbrains.annotations.Nullable;
 /**
  * @author Simone Gentili
  * @param <T> The type of the object to export.
- * @param <E> the the of the object involved.
+ * @param <E> The type of the object involved.
  */
 public abstract class AbstractExporterManager<T, E>
         extends AbstractDataExporterUser

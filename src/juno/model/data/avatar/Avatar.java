@@ -35,6 +35,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * This clas defines the Avatar.
  * @author Simone Gentili
  */
 public class Avatar

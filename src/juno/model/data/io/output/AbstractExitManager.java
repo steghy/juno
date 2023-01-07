@@ -30,7 +30,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * This abstract class defines an exit manager object.
  * @author Simone Gentili
+ * @param <T> The type of the object to provide.
  */
 public abstract class AbstractExitManager<T>
         implements InterfaceExitManager {

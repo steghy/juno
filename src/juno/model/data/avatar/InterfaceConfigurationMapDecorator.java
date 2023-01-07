@@ -28,11 +28,18 @@ package juno.model.data.avatar;
 import java.util.Map;
 
 /**
+ * This interface defines a configuration map decorator.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface InterfaceConfigurationMapDecorator {
 
+    /**
+     * Decorates the specified Map object and returns
+     * the decorated map.
+     * @param map A Map object.
+     * @return A Map object.
+     */
     Map<String, Object> decorate(Map<String, Object> map);
 
 }

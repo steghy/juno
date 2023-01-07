@@ -29,10 +29,11 @@ import juno.controller.util.InterfaceInitializer;
 import juno.controller.util.PanelChanger;
 import juno.model.data.io.input.configurable.CConfigurationFileResearcher;
 import juno.model.data.profile.profile.Profile;
-import juno.init.ProgramDirectory;
+import juno.model.data.io.ProgramDirectory;
 import juno.view.pages.pre_access.card.PreAccessCardPanel;
 
 /**
+ * This class defines an initializer.
  * @author Simone Gentili
  */
 public class Initializer

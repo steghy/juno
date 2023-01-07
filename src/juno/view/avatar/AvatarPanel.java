@@ -32,6 +32,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * This class defines an avatar panel.
  * @author Simone Gentili
  */
 public class AvatarPanel

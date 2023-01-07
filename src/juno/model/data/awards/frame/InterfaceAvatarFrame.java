@@ -28,6 +28,7 @@ package juno.model.data.awards.frame;
 import juno.model.data.awards.InterfaceAward;
 
 /**
+ * This interface defines avatar frames.
  * @author Simone Gentili
  */
 @Deprecated

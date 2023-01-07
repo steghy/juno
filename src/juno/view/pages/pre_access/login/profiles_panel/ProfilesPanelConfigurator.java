@@ -28,6 +28,7 @@ package juno.view.pages.pre_access.login.profiles_panel;
 import juno.view.gobject.profiles.GProfileFactory;
 
 /**
+ * This class defines a profile panel configurator.
  * @author Simone Gentili
  */
 public class ProfilesPanelConfigurator {

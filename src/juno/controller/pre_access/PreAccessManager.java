@@ -34,6 +34,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
+ * This class defines a pre access manager.
  * @author Simone Gentili
  */
 public class PreAccessManager

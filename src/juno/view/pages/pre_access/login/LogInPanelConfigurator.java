@@ -29,6 +29,7 @@ import juno.view.pages.pre_access.login.menu.MenuPanel;
 import juno.view.pages.pre_access.login.title.TitlePanel;
 
 /**
+ * This class defines a configurator.
  * @author Simone Gentili
  */
 public class LogInPanelConfigurator {
@@ -36,6 +37,7 @@ public class LogInPanelConfigurator {
     // Builds a LogInPanelConfiguration object.
     private LogInPanelConfigurator() {}
 
+    /** Configures the LogInPanel instance. */
     public static void configure() {
         // Main component.
         LogInPanel logInPanel = LogInPanel.getInstance();

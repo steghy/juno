@@ -31,6 +31,7 @@ import juno.view.pages.pre_access.login.profiles_panel.ProfilesPanelConfigurator
 import juno.view.pages.pre_access.login.title.TitlePanelConfigurator;
 
 /**
+ * This class defines an initializer.
  * @author Simone Gentili
  */
 public class Initializer

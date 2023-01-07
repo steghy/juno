@@ -31,6 +31,7 @@ import java.awt.*;
 import java.util.Objects;
 
 /**
+ * This class defines the title panel.
  * @author Simone Gentili
  */
 public class TitlePanel
@@ -53,8 +54,6 @@ public class TitlePanel
 
     /**
      * Initialize the TitlePanel instance.
-     * @throws IllegalArgumentException is one of the components
-     *         of this instance has not been set.
      */
     public void init() {
         this.setOpaque(false);

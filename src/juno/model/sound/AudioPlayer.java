@@ -33,6 +33,7 @@ import java.io.File;
 import java.util.List;
 
 /**
+ * This class defines an audio player.
  * @author Simone Gentili
  */
 public class AudioPlayer

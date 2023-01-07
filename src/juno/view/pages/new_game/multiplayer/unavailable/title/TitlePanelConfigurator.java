@@ -25,7 +25,7 @@
 
 package juno.view.pages.new_game.multiplayer.unavailable.title;
 
-import juno.init.ProgramDirectory;
+import juno.model.data.io.ProgramDirectory;
 import juno.model.requester.PathProviderAssembler;
 import juno.view.img_initializer.ImageComponentInitializer;
 

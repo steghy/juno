@@ -29,6 +29,7 @@ import juno.view.pages.new_game.single_player.difficulty.menu.MenuPanelConfigura
 import juno.view.pages.new_game.single_player.difficulty.title.TitlePanelConfigurator;
 
 /**
+ * this class defines an initializer.
  * @author Simone Gentili
  */
 public class DifficultyInitializer {
