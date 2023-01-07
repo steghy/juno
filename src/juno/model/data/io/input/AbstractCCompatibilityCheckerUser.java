@@ -26,14 +26,15 @@
 package juno.model.data.io.input;
 
 import juno.model.data.io.input.configurable.InterfaceCCompatibilityChecker;
-import juno.model.data.io.input.configurable.InterfaceCCompatibilityFileChecker;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * This abstract class describes compatibility checker
+ * user.
  * @author Simone Gentili
  */
-public class AbstractCCompatibilityCheckerUser {
+public abstract class AbstractCCompatibilityCheckerUser {
 
     // The compatibility checker for Configurable object.
     private InterfaceCCompatibilityChecker checker;

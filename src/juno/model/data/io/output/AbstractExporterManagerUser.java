@@ -29,6 +29,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * this class defines abstract exporter manager user.
  * @author Simone Gentili
  * @param <T> The object to export.
  */

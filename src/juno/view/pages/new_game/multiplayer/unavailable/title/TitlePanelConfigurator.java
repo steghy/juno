@@ -32,6 +32,7 @@ import juno.view.img_initializer.ImageComponentInitializer;
 import javax.swing.*;
 
 /**
+ * This class defines a title panel configurator.
  * @author Simone Gentili
  */
 public class TitlePanelConfigurator {

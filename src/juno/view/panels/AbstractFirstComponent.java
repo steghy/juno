@@ -32,6 +32,8 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * This class describes a JPanel with
+ * one component.
  * @author Simone Gentili
  */
 public class AbstractFirstComponent

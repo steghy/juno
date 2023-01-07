@@ -38,10 +38,10 @@ import java.util.Objects;
  * are thrown. Before configuring the object with
  * the specified file, a copy of the object is made.
  * The copy of the object is contained within a
- * Map<String, Object>. Before configuring the
+ * Map object. Before configuring the
  * object with the specified file, a copy of the
  * object is made. The copy of the object is contained
- * within a Map<String, Object> and is obtained
+ * within a Map object and is obtained
  * using the PropertyClass. This copy of the object
  * is used to configure it at the end of the
  * operation in order to restore its state.

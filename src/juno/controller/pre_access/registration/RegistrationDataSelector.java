@@ -38,6 +38,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
+ * This class represents the registration data selector component.
  * @author Simone Gentili
  */
 public class RegistrationDataSelector

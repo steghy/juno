@@ -30,7 +30,7 @@ import java.util.Map;
 /**
  * This interface defines property copier
  * of object. The data copied from a specific
- * object is places inside a Map<String, Object>
+ * object is places inside a Map
  * object in which the keys are the names of the
  * fields of the object and the values the
  * respective values of those fields.

@@ -28,6 +28,8 @@ package juno.view.gobject;
 import java.util.List;
 
 /**
+ * This interface represents generator of
+ * Map object that contains InterfaceGObject.
  * @author Simone Gentili
  * @param <T> The type of the objects.
  */

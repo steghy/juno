@@ -31,6 +31,7 @@ import juno.model.requester.PathProviderAssembler;
 import juno.view.util.ImageResizer;
 
 /**
+ * This class defines an initializer.
  * @author Simone Gentili
  */
 public class Initializer

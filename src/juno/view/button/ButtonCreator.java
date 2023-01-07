@@ -37,6 +37,7 @@ import javax.swing.*;
 import java.util.Objects;
 
 /**
+ * This class defines a Button creator.
  * @author Simone Gentili
  */
 public class ButtonCreator

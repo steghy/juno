@@ -31,6 +31,8 @@ import java.awt.*;
 import java.util.Objects;
 
 /**
+ * This class defines the title panel of
+ * the unavailable service panel.
  * @author Simone Gentili
  */
 public class TitlePanel

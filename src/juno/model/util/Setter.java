@@ -25,9 +25,20 @@
 
 package juno.model.util;
 
+/**
+ * This interface defines objects that
+ * set objects that are provided.
+ * @author Simone Gentili
+ * @param <T> The type of the object to set.
+ */
 @FunctionalInterface
 public interface Setter<T> {
 
+    /**
+     * Sets the specified object to
+     * this object.
+     * @param object An Object.
+     */
     void set(T object);
 
 }

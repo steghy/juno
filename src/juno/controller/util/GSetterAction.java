@@ -34,7 +34,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
+ * This class defines a graphic setter action.
  * @author Simone Gentili
+ * @param <T> The type of the Object to set.
  */
 public class GSetterAction<T>
         extends AbstractObservable

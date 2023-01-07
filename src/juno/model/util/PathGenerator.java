@@ -28,6 +28,8 @@ package juno.model.util;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * This class contains utility methods
+ * for generating file paths.
  * @author Simone Gentili
  */
 public class PathGenerator {
@@ -35,11 +37,24 @@ public class PathGenerator {
 	// Builds a PathGenerator object.
 	private PathGenerator() {}
 
+	/**
+	 * Generates a path with the specified String objects.
+	 * @param parent A String object.
+	 * @param fileName A String object.
+	 * @return A String object.
+	 */
+	@NotNull
 	public static String generate(@NotNull String parent,
 								  @NotNull String fileName) {
 		return parent.concat(System.getProperty("file.separator")).concat(fileName);
 	}
 
+	/**
+	 * Generates a path with the specified String object.
+	 * @param fileName A String object.
+	 * @return A String object.
+	 */
+	@NotNull
 	public static String generate(@NotNull String fileName) {
 		return System.getProperty("user.dir")
 				.concat(System.getProperty("file.separator")

@@ -39,7 +39,9 @@ import java.awt.*;
 import java.util.Objects;
 
 /**
+ * This class defines a Dek panel.
  * @author Simone Gentili
+ * @param <T> The type of the object to provide.
  */
 public class DeckPanel<T>
         extends AbstractFirstComponent

@@ -33,6 +33,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 
 /**
+ * This class defines a graphic avatar image.
  * @author Simone Gentili
  * @param <T> The type of the avatars.
  */

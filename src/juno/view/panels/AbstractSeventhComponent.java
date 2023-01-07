@@ -31,6 +31,7 @@ import org.jetbrains.annotations.Nullable;
 import java.awt.*;
 
 /**
+ * This class describes a JPanel with seven componetns.
  * @author Simone Gentili
  */
 public abstract class AbstractSeventhComponent

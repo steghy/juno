@@ -31,6 +31,7 @@ import java.awt.*;
 import java.util.Objects;
 
 /**
+ * this class defines the West panel
  * @author Simone Gentili
  */
 public class WestPanel

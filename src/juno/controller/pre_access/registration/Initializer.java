@@ -31,6 +31,7 @@ import juno.model.data.io.input.configurable.CCompatibilityChecker;
 import juno.view.pages.pre_access.registration.menu.MenuPanel;
 
 /**
+ * This class initialize the juno.controller.pre_access.registration package.
  * @author Simone Gentili
  */
 public class Initializer

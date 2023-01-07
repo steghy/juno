@@ -26,6 +26,7 @@
 package juno.controller.log_out;
 
 /**
+ * This interface describes restorable objects.
  * @author Simone Gentili
  */
 @FunctionalInterface

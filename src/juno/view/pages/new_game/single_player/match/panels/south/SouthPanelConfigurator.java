@@ -50,6 +50,7 @@ import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;
 
 /**
+ * This class defines the south panel configurator.
  * @author Simone Gentili
  */
 public class SouthPanelConfigurator {

@@ -27,11 +27,19 @@ package juno.view.pages.pre_access.login.profiles_panel;
 
 
 /**
+ * This interface defines graphic processor.
  * @author Simone Gentili
+ * @param <T> The type of the input object.
+ * @param <E> The type of the object to return.
  */
 @FunctionalInterface
 public interface InterfaceGraphicProcessor<T, E> {
 
+    /**
+     * Process the specified object and returns the result.
+     * @param object An Object.
+     * @return An Object.
+     */
     T process(E object);
 
 }

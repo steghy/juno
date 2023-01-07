@@ -34,6 +34,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
+ * This class represents registration data sender.
  * @author Simone Gentili
  */
 public class RegistrationDataSender

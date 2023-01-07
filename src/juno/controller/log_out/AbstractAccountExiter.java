@@ -34,7 +34,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * This class defines abstract account exiter
  * @author Simone Gentili
+ * @param <T> The type of the object to provider
  */
 public abstract class AbstractAccountExiter<T>
         extends AbstractExporterManagerUser<T>

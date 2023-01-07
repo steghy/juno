@@ -26,12 +26,19 @@
 package juno.model.util;
 
 /**
+ * These Interface defines objects
+ * that add elements
  * @author Simone Gentili
- * @param <T> The type of the object.
+ * @param <T> The type of the object to add.
  */
 @FunctionalInterface
 public interface Adder<T> {
 
+    /**
+     * Adds the specified object
+     * to this object.
+     * @param object An object.
+     */
     void add(T object);
 
 }

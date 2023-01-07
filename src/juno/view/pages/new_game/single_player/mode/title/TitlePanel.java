@@ -31,6 +31,7 @@ import java.awt.*;
 import java.util.Objects;
 
 /**
+ * This class defines a title panel.
  * @author Simone Gentili
  */
 public class TitlePanel
@@ -57,13 +58,15 @@ public class TitlePanel
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
 
-        // Title button.
+        // Classic mode button.
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.weightx = 0.5;
-        gbc.weighty = 0.5;
+        gbc.weightx = 0.0;
+        gbc.weighty = 0.0;
+        gbc.insets = new Insets(0,0,30,0);
+        gbc.ipadx = 0;
+        gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.CENTER;
-        gbc.fill = GridBagConstraints.CENTER;
         this.add(Objects.requireNonNull(getFirstComponent()), gbc);
     }
 

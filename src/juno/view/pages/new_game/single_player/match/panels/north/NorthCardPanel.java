@@ -47,7 +47,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- *
+ * This class defines the north card panel.
  * @author Simone Gentili
  */
 public class NorthCardPanel

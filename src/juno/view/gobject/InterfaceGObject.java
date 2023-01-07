@@ -27,6 +27,7 @@ package juno.view.gobject;
 
 
 /**
+ * This interface defines GObject.
  * @author Simone Gentili
  * @param <T> The type of the card.
  */

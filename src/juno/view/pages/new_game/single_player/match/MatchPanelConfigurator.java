@@ -33,6 +33,7 @@ import juno.view.pages.new_game.single_player.match.panels.south.SouthPanel;
 import juno.view.pages.new_game.single_player.match.panels.west.WestPanel;
 
 /**
+ * This class defines the match panel configurator.
  * @author Simone Gentili
  */
 public class MatchPanelConfigurator {

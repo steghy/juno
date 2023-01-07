@@ -31,6 +31,7 @@ import org.jetbrains.annotations.Nullable;
 import java.awt.*;
 
 /**
+ * This class describes a JPanel with six components.
  * @author Simone Gentili
  */
 public abstract class AbstractSixthComponent

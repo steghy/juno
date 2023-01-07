@@ -30,7 +30,7 @@ import java.util.Map;
 
 /**
  * This interface defines a method for configuring
- * an object using a Map<String, Object>.
+ * an object using a Map object.
  * @author Simone Gentili
  */
 public interface InterfaceConfigurator {
@@ -38,7 +38,7 @@ public interface InterfaceConfigurator {
     /**
      * Configure the specified object with
      * the specified map.
-     * @param map A Map<String, Object> object.
+     * @param map A Map object.
      * @param object An Object.
      * @throws IllegalAccessException Occurs when
      *         operations on a field that could result

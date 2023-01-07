@@ -31,6 +31,8 @@ import java.awt.*;
 import java.util.Objects;
 
 /**
+ * This class represents the menu panel
+ * of the unavailable panel.
  * @author Simone Gentili
  */
 public class MenuPanel

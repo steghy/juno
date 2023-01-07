@@ -30,11 +30,19 @@ import juno.model.data.io.output.Exportable;
 import juno.model.data.profile.InterfaceErrorProvider;
 
 /**
+ * This interface represents registration data selector.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface InterfaceRegistrationDataSelector {
 
+    /**
+     * Elaborates the request with the specified
+     * Configurable, Exportable and Error provider objects.
+     * @param configurable A Configurable object.
+     * @param exportable An Exportable object.
+     * @param errorProvider An InterfaceErrorProvider object.
+     */
     void elaborate(Configurable configurable,
                    Exportable exportable,
                    InterfaceErrorProvider errorProvider);

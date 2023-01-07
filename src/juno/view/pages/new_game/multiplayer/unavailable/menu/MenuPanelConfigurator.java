@@ -40,6 +40,8 @@ import javax.swing.border.Border;
 import java.awt.*;
 
 /**
+ * This class configures the MenuPanel of
+ * the unavailable panel.
  * @author Simone Gentili
  */
 public class MenuPanelConfigurator {
@@ -47,6 +49,9 @@ public class MenuPanelConfigurator {
     // Builds a MenuPanelConfigurator object.
     private MenuPanelConfigurator() {}
 
+    /**
+     * Configures the MenuPanel instance.
+     */
     public static void configure() {
         // Main component.
         MenuPanel menuPanel = MenuPanel.getInstance();

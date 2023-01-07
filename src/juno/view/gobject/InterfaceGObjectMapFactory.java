@@ -28,11 +28,18 @@ package juno.view.gobject;
 import java.util.Map;
 
 /**
+ * This interface represents a Map of
+ * GObjects factory.
  * @author Simone Gentili
+ * @param <T> The type of the objects involved.
  */
 @FunctionalInterface
 public interface InterfaceGObjectMapFactory<T> {
 
+    /**
+     * Returns a Map object.
+     * @return A Map object.
+     */
     Map<T, InterfaceGObject<T>> getGObjectsMap();
 
 }

@@ -33,6 +33,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
+ * This class defines a StopAction.
  * @author Simone Gentili
  */
 public class StopAction

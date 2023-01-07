@@ -33,7 +33,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
+ * This class defines export user data action.
  * @author Simone Gentili
+ * @param <T> The type of the object involved.
  */
 public class ExportUserDataAction<T>
         implements ActionListener {

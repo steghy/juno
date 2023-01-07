@@ -29,6 +29,7 @@ import juno.model.util.Enhancer;
 import juno.model.util.Provider;
 
 /**
+ * This interface defines a counter object.
  * @author Simone Gentili
  * @param <T> The type of the object to return.
  */

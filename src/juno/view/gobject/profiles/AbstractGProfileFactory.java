@@ -31,7 +31,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * This abstract class defines abstract graphic profile factory.
  * @author Simone Gentili
+ * @param <T> The type of the objects involved.
  */
 public abstract class AbstractGProfileFactory<T>
         extends AbstractGObjectFactory<T> {

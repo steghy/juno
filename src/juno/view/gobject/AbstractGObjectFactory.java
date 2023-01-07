@@ -29,6 +29,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * This abstract class defines GObject factory.
  * @author Simone Gentili
  * @param <T> The type of the objects.
  */

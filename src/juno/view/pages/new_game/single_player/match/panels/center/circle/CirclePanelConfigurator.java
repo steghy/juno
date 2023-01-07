@@ -33,6 +33,7 @@ import juno.view.util.ImageLabel;
 import juno.view.util.ImageResizer;
 
 /**
+ * This class describes a configurator object.
  * @author Simone Gentili
  */
 public class CirclePanelConfigurator {

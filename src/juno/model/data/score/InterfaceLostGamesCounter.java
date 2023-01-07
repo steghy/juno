@@ -26,6 +26,7 @@
 package juno.model.data.score;
 
 /**
+ * This interface defines a lost games counter object.
  * @author Simone Gentili
  * @param <T> The type of the object to provide.
  */

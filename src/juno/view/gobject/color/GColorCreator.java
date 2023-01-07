@@ -35,6 +35,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 /**
+ * This class defines a graphic color creator.
  * @author Simone Gentili
  */
 public class GColorCreator

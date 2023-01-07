@@ -31,6 +31,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * This abstract class represents abstract registration
+ * data selector.
  * @author Simone Gentili
  */
 public abstract class AbstractRegistrationDataSelector

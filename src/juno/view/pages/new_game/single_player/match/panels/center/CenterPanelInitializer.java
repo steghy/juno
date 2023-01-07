@@ -32,6 +32,7 @@ import juno.view.pages.new_game.single_player.match.panels.center.deck.DeckPanel
 import juno.view.pages.new_game.single_player.match.panels.center.discarded_pile.DiscardedPilePanelConfigurator;
 
 /**
+ * This class defines the center panel initializer.
  * @author Simone Gentili
  */
 public class CenterPanelInitializer {

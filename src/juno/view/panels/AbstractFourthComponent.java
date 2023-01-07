@@ -31,6 +31,7 @@ import org.jetbrains.annotations.Nullable;
 import java.awt.*;
 
 /**
+ * This abstract class defines JPanel with four components.
  * @author Simone Gentili
  */
 public class AbstractFourthComponent

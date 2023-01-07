@@ -38,6 +38,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * This class defines an abstract counter.
  * @author Simone Gentili
  */
 public abstract class AbstractCounter

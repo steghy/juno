@@ -36,6 +36,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 /**
+ * This class defines the Goal objects.
  * @author Simone Gentili
  */
 public enum Goal

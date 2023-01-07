@@ -28,12 +28,19 @@ package juno.view.gobject;
 import juno.model.requester.InterfacePathProvider;
 
 /**
+ * This interface defines a PathObject provider.
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
 @FunctionalInterface
 public interface InterfacePathObjectProvider<T> {
 
+    /**
+     * Provides a PathProvider object obtained from
+     * the specified object.
+     * @param object An Object.
+     * @return An InterfacePathProvider object.
+     */
     InterfacePathProvider getPathObjectOf(T object);
 
 }

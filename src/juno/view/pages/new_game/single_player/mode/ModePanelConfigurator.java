@@ -29,6 +29,7 @@ import juno.view.pages.new_game.single_player.mode.menu.MenuPanel;
 import juno.view.pages.new_game.single_player.mode.title.TitlePanel;
 
 /**
+ * This class defines the mode panel configurator.
  * @author Simone Gentili
  */
 public class ModePanelConfigurator {

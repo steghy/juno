@@ -26,12 +26,18 @@
 package juno.model.util;
 
 /**
+ * This interface defines objects
+ * that provide objects.
  * @author Simone Gentili
  * @param <T> The type of the object.
  */
 @FunctionalInterface
 public interface Provider<T> {
 
+    /**
+     * Provides the encapsulated object.
+     * @return An Object.
+     */
     T provide();
 
 }

@@ -26,6 +26,7 @@
 package juno.model.data.score;
 
 /**
+ * This class defines a games won counter.
  * @author Simone Gentili
  */
 public class GamesWonCounter

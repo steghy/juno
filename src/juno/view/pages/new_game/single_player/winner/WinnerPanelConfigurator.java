@@ -46,7 +46,7 @@ import javax.swing.border.Border;
 import java.awt.*;
 
 /**
- *
+ * This class defines a Winner panel configurator.
  * @author Simone Gentili
  */
 public class WinnerPanelConfigurator {

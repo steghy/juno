@@ -27,8 +27,22 @@ package juno.model.util;
 
 import java.util.Collection;
 
+/**
+ * This interface defines object collection
+ * providers that switch output relative to
+ * the input provided.
+ * @author Simone Gentili
+ * @param <T> The type of the input object.
+ * @param <E> The type of the Collection's objects.
+ */
 public interface RelativeProvider<T, E> {
 
+    /**
+     * Returns a collection of objects
+     * relative to the specified input.
+     * @param object An Object.
+     * @return A Collection object.
+     */
     Collection<T> provide(E object);
 
 }

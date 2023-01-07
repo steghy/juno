@@ -34,6 +34,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * this class defines the profile panel
  * @author Simone Gentili
  */
 public class ProfilesPanel

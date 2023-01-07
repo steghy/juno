@@ -38,6 +38,7 @@ import juno.model.data.score.LostGamesCounter;
 import java.util.List;
 
 /**
+ * This class defines an initializer.
  * @author Simone Gentili
  */
 public class Initializer

@@ -32,7 +32,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 /**
+ * This class defines graphic profile creator.
  * @author Simone Gentili
+ * @param <T> The type of the object involved.
  */
 public class GProfileCreator<T>
         extends AbstractGObjectCreator<T>

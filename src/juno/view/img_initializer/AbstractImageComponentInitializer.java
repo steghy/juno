@@ -30,6 +30,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * This class defines an abstract image component initializer.
  * @author Simone Gentili
  */
 public abstract class AbstractImageComponentInitializer

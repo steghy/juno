@@ -37,6 +37,8 @@ import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;
 
 /**
+ * This class defines a configurator for
+ * the west panel.
  * @author Simone Gentili
  */
 public class WestPanelConfigurator {

@@ -33,4 +33,6 @@ package juno.model.util;
  * @param <T> The type of the cards.
  */
 public interface Factory<T>
-        extends Provider<T>, Generator {}
+        extends
+        Provider<T>,
+        Generator {}

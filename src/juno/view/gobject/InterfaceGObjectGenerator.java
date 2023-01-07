@@ -30,12 +30,19 @@ import juno.view.util.RotatedIcon;
 import java.util.List;
 
 /**
+ * This interface defines a GObject generator.
  * @author Simone Gentili
  * @param <T> The type of the objects.
  */
 @FunctionalInterface
 public interface InterfaceGObjectGenerator<T> {
 
+    /**
+     * Generates a GObject from the specified List and
+     * Rotate objects.
+     * @param objects A List object.
+     * @param rotate A Rotate object.
+     */
     void generate(List<T> objects, RotatedIcon.Rotate rotate);
 
 }

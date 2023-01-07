@@ -48,6 +48,9 @@ public class Donut<T>
         inverted = false;
     }
 
+    /**
+     * sets the current object randomly
+     */
     public void initialize() {
         if(this.isEmpty()) {
             throw new IllegalArgumentException("Empty donut");
@@ -55,6 +58,11 @@ public class Donut<T>
        index = random.nextInt(size());
     }
 
+    /**
+     * sets the current object with
+     * the specified index.
+     * @param index An integer.
+     */
     public void initialize(int index) {
         if(size() <= index || index < 0) {
             throw new IndexOutOfBoundsException("Invalid index: " + index
@@ -63,6 +71,10 @@ public class Donut<T>
         this.index = index;
     }
 
+    /**
+     * Sets the current object to the specified object.
+     * @param object An Object.
+     */
     public void initialize(@NotNull T object) {
         if(!contains(object)) throw new IllegalArgumentException(
                 "The specified object is not contained");
@@ -71,10 +83,19 @@ public class Donut<T>
         }
     }
 
+    /**
+     * Reverses the sense in which
+     * subsequent objects are considered.
+     */
     public void invert() {
         inverted = !inverted;
     }
 
+    /**
+     * Move the index of the current object
+     * to the next object and return it.
+     * @return An Object.
+     */
     public T next() {
         if(inverted) {
             return counterclockwise();
@@ -83,6 +104,11 @@ public class Donut<T>
         }
     }
 
+    /**
+     * Returns the previous object
+     * to the current one.
+     * @return An Object.
+     */
     public T previous() {
         if(inverted) {
             return clockwise();
@@ -91,22 +117,32 @@ public class Donut<T>
         }
     }
 
+    /**
+     * Returns the current object.
+     * @return An Object.
+     */
     public T current() {
         if(size() == 0) {
             throw new IllegalArgumentException("Empty donut");
         } return get(index);
     }
 
-    public int getCurrentIndex() {
-        return index;
-    }
-
+    /**
+     * Return the next object without moving
+     * the current index.
+     * @return An Object.
+     */
     public T peek() {
         T el = next();
         previous();
         return el;
     }
 
+    /**
+     * Set the direction of this donut clockwise.
+     * and returns the next object.
+     * @return An Object.
+     */
     private T clockwise() {
         if(size() == 0) {
             throw new IllegalArgumentException("Empty donut");
@@ -118,6 +154,12 @@ public class Donut<T>
     }
 
 
+    /**
+     * Set the direction of this donut
+     * counterclockwise and returns the
+     * next object.
+     * @return An Object.
+     */
     private T counterclockwise() {
         if(size() == 0) {
             throw new IllegalArgumentException("Empty donut");

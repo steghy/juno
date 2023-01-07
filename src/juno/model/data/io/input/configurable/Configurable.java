@@ -29,7 +29,7 @@ import java.util.Map;
 
 /**
  * This interface defines objects that can
- * be configured using Map<String, Object>
+ * be configured using Map object.
  * objects.
  * @author Simone Gentili
  */

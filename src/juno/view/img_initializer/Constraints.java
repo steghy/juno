@@ -26,6 +26,8 @@
 package juno.view.img_initializer;
 
 /**
+ * This class contains the image component
+ * initializer constraints.
  * @author Simone Gentili
  */
 public enum Constraints {

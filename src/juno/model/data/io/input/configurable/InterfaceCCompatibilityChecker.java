@@ -26,6 +26,7 @@
 package juno.model.data.io.input.configurable;
 
 /**
+ * This interface describers compatibility checker.
  * @author Simone Gentili
  */
 public interface InterfaceCCompatibilityChecker

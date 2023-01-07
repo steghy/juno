@@ -30,6 +30,8 @@ import org.jetbrains.annotations.NotNull;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 /**
+ * This class represents a registration
+ * panel restorer action.
  * @author Simone Gentili
  */
 public class RegistrationPanelRestorer

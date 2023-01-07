@@ -37,6 +37,7 @@ import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;
 
 /**
+ * This class defines the east panel configurator.
  * @author Simone Gentili
  */
 public class EastPanelConfigurator {

@@ -29,6 +29,7 @@ import juno.view.pages.new_game.multiplayer.unavailable.menu.MenuPanel;
 import juno.view.pages.new_game.multiplayer.unavailable.title.TitlePanel;
 
 /**
+ * This class configures the UnavailableServicePanel instance.
  * @author Simone Gentili
  */
 public class UnavailableServicePanelConfigurator {
@@ -36,6 +37,7 @@ public class UnavailableServicePanelConfigurator {
     // Builds a UnavailableServicePanelConfiguration object.
     private UnavailableServicePanelConfigurator() {}
 
+    /** Configures the UnavailableServicePanel instance. */
     public static void configure() {
         // Main component.
         UnavailableServicePanel unavailableServicePanel = UnavailableServicePanel.getInstance();

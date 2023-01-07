@@ -28,10 +28,19 @@ package juno.model.util;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * This class contains a utility method for
+ * extracting extensions within strings
+ * representing filenames.
  * @author Simone Gentili
  */
 public class ExtensionExtractor {
 
+    /**
+     * Extract the extension from the specified
+     * String object.
+     * @param sequence A String object.
+     * @return A String object.
+     */
     public static String extract(@NotNull String sequence) {
         if(sequence.length() == 0) return "";
         String[] s = sequence.split("[.]");

@@ -30,6 +30,7 @@ import java.awt.*;
 import java.util.Objects;
 
 /**
+ * This class defines a menu panel
  * @author Simone Gentili
  */
 public class MenuPanel
@@ -83,7 +84,7 @@ public class MenuPanel
         gbc.gridy = 2;
         gbc.weightx = 0.0;
         gbc.weighty = 0.0;
-        gbc.insets = new Insets(0,0,30,0);
+        gbc.insets = new Insets(0,0,0,0);
         gbc.ipadx = 0;
         gbc.ipady = 0;
         gbc.anchor = GridBagConstraints.CENTER;

@@ -29,6 +29,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 /**
+ * This class defines an exporter manager.
  * @author Simone Gentili
  */
 public class ExporterManager

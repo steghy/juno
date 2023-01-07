@@ -26,6 +26,9 @@
 package juno.model.util;
 
 /**
+ * This interface defines observable
+ * object in the Observable / Observer
+ * design patter.
  * @author Simone Gentili
  */
 public interface Observable {

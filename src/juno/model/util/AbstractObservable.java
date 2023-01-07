@@ -31,6 +31,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * This class implements the Observable interface
+ * by defining methods to encourage code reuse.
  * @author Simone Gentili
  */
 public abstract class AbstractObservable

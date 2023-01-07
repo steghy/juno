@@ -36,6 +36,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 /**
+ * This class defines an image component initializer.
  * @author Simone Gentili
  */
 public class ImageComponentInitializer

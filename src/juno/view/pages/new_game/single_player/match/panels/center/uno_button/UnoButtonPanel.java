@@ -36,6 +36,7 @@ import java.util.Objects;
 
 
 /**
+ * This class defines an uno button panel
  * @author Simone Gentili
  */
 public class UnoButtonPanel

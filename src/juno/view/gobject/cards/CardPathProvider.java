@@ -33,6 +33,7 @@ import juno.view.gobject.InterfacePathObjectProvider;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * This class defines card path provider.
  * @author Simone Gentili
  */
 public class CardPathProvider

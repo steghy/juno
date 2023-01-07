@@ -26,6 +26,7 @@
 package juno.model.data.score;
 
 /**
+ * This class defines the lost games counter..
  * @author Simone Gentili
  */
 public class LostGamesCounter

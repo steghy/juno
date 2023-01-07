@@ -30,11 +30,16 @@ import juno.view.pages.pre_access.registration.menu.DataLine;
 import java.util.Map;
 
 /**
+ * This class defines a data line provider.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface InterfaceDataLineProvider {
 
+    /**
+     * Returns the data lines of this object.
+     * @return A Map object.
+     */
     Map<String, DataLine> getDataLines();
 
 }

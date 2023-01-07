@@ -26,11 +26,16 @@
 package juno.model.util;
 
 /**
+ * This interface defines counter
+ * incrementer.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface Enhancer {
 
+    /**
+     * Increments this counter.
+     */
     void increase();
 
 }

@@ -35,6 +35,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
+ * This class defines the match panel.
  * @author Simone Gentili
  */
 public class MatchPanel

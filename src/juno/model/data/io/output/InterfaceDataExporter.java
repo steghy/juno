@@ -29,11 +29,20 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
+ * This interface defines a data exporter.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface InterfaceDataExporter {
 
+    /**
+     * Export the specified Map object in the
+     * specified path represented by the specified
+     * String object.
+     * @param path A String object.
+     * @param dataMap A Map object.
+     * @throws IOException If the specified path doesn't exist.
+     */
     void exportData(String path,
                     Map<String, Object> dataMap)
             throws IOException;

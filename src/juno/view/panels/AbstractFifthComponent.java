@@ -31,6 +31,7 @@ import org.jetbrains.annotations.Nullable;
 import java.awt.*;
 
 /**
+ * This abstract class defines a JPanel with five components.
  * @author Simone Gentili
  */
 public abstract class AbstractFifthComponent

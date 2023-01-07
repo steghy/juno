@@ -31,6 +31,8 @@ import org.jetbrains.annotations.Nullable;
 import java.awt.*;
 
 /**
+ * This class represents a JPanel with two
+ * components.
  * @author Simone Gentili
  */
 public abstract class AbstractSecondComponent

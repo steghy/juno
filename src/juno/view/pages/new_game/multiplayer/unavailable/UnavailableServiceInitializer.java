@@ -29,6 +29,8 @@ import juno.view.pages.new_game.multiplayer.unavailable.menu.MenuPanelConfigurat
 import juno.view.pages.new_game.multiplayer.unavailable.title.TitlePanelConfigurator;
 
 /**
+ * This class initialize the Unavailable
+ * service package.
  * @author Simone Gentili
  */
 public class UnavailableServiceInitializer {
@@ -36,6 +38,9 @@ public class UnavailableServiceInitializer {
     // Builds a UnavailableServiceInitializer object.
     private UnavailableServiceInitializer() {}
 
+    /**
+     * Initialize the Unavailable service package.
+     */
     public static void initialize() {
         // Components configuration.
         MenuPanelConfigurator.configure();

@@ -26,12 +26,19 @@
 package juno.model.util;
 
 /**
+ * This interface defines objects that
+ * remove objects.
  * @author Simone Gentili
  * @param <T> The type of the object to remove.
  */
 @FunctionalInterface
 public interface Remover<T> {
 
+    /**
+     * Removers the specified object from
+     * this object.
+     * @param object An object.
+     */
     void remove(T object);
 
 }

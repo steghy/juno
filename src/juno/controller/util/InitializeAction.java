@@ -31,6 +31,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
+ * This class defines an initializer action.
  * @author Simone Gentili
  */
 public class InitializeAction

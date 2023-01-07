@@ -28,6 +28,7 @@ package juno.init;
 import juno.model.requester.InterfacePathProvider;
 
 /**
+ * This class contains the directory tree of the project.
  * @author Simone Gentili
  */
 public enum ProgramDirectory

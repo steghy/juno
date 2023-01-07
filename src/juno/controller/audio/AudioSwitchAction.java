@@ -32,6 +32,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
+ * This class defines an audio switch action.
  * @author Simone Gentili
  */
 public class AudioSwitchAction

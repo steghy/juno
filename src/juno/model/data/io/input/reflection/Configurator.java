@@ -40,7 +40,7 @@ import java.util.Map;
  * This class defines a Configurator for objects.
  * The implemented method of the 'InterfaceConfigurator'
  * interface allows to configure an object using
- * a Map<String, Object>. Using reflection the
+ * a Map object. Using reflection the
  * 'configure()' method inserts directly the values
  * from the specified map into the fields of the object.
  * Note: the final fields of the object to be configured

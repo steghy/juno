@@ -26,6 +26,7 @@
 package juno.model.data.score;
 
 /**
+ * This interface defines a games won counter object.
  * @author Simone Gentili
  * @param <T> The type of the object to provide.
  */

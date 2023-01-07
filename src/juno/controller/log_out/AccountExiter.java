@@ -30,6 +30,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 /**
+ * This class defines an account exiter.
  * @author Simone Gentili
  */
 public class AccountExiter

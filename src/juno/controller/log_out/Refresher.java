@@ -26,11 +26,15 @@
 package juno.controller.log_out;
 
 /**
+ * This interface defines a refresher object
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface Refresher {
 
+    /**
+     * Refresh the status.
+     */
     void refresh();
 
 }

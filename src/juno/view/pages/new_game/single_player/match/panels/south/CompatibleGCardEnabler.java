@@ -35,6 +35,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
+ * This class defines a compatible graphic card enabler.
  * @author Simone Gentili
  */
 public class CompatibleGCardEnabler

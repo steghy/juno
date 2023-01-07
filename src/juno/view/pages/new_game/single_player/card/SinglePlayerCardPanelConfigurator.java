@@ -33,6 +33,7 @@ import juno.view.pages.new_game.single_player.players.PlayersNumberPanel;
 
 
 /**
+ * This class defines the single player card panel configurator.
  * @author Simone Gentili
  */
 public class SinglePlayerCardPanelConfigurator {

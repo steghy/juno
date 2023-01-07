@@ -41,6 +41,7 @@ import java.awt.*;
 import java.util.Objects;
 
 /**
+ * This class defines a winner avatar panel.
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */

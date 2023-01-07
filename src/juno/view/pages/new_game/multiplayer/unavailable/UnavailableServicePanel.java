@@ -31,6 +31,9 @@ import java.awt.*;
 import java.util.Objects;
 
 /**
+ * This class represents the
+ * Unavailable service panel of the
+ * multiplayer section.
  * @author Simone Gentili
  */
 public class UnavailableServicePanel

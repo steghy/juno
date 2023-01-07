@@ -26,6 +26,7 @@
 package juno.view.img_initializer;
 
 /**
+ * This interface defines an image component initializer.
  * @author Simone Gentili
  */
 public interface InterfaceImageComponentInitializer

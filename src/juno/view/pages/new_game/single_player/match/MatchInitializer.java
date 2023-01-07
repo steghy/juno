@@ -33,6 +33,7 @@ import juno.view.pages.new_game.single_player.match.panels.south.SouthPanelConfi
 import juno.view.pages.new_game.single_player.match.panels.west.WestPanelConfigurator;
 
 /**
+ * This class defines the match initializer.
  * @author Simone Gentili
  */
 public class MatchInitializer

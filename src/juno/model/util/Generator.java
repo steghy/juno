@@ -26,11 +26,17 @@
 package juno.model.util;
 
 /**
+ * This interface defines generator
+ * objects.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface Generator {
 
+    /**
+     * Generates the product to be
+     * supplied of the Factory pattern.
+     */
     void generate();
 
 }

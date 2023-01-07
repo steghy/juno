@@ -26,6 +26,7 @@
 package juno.view.pages.pre_access.login.profiles_panel;
 
 /**
+ * This class defines an initializer
  * @author Simone Gentili
  */
 public class Initializer {

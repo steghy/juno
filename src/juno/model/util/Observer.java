@@ -26,6 +26,8 @@
 package juno.model.util;
 
 /**
+ * This interface defines observer in
+ * the Observer / Observable pattern.
  * @author Simone Gentili
  */
 @FunctionalInterface

@@ -28,12 +28,17 @@ package juno.view.gobject;
 import java.util.List;
 
 /**
+ * This interface defines a GObject factory.
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
 @FunctionalInterface
 public interface InterfaceGObjectFactory<T> {
 
+    /**
+     * Returns a List of graphic object.
+     * @return A List object.
+     */
     List<InterfaceGObject<T>> getGObjects();
 
 }

@@ -31,11 +31,22 @@ import juno.view.util.RotatedIcon;
 import javax.swing.*;
 
 /**
+ * This interface represents toggle button initializer.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface InterfaceToggleButtonInitializer {
 
+    /**
+     * Initialize the specified toggle button with
+     * the specified objects.
+     * @param toggleButton An AbstractButton object.
+     * @param file An InterfacePathProvider object.
+     * @param rolloverFile An InterfacePathProvider object.
+     * @param selectedFile An InterfacePathProvider object.
+     * @param rolloverSelectedFile An InterfacePathProvider object.
+     * @param rotate A Rotate object.
+     */
     void initialize(AbstractButton toggleButton,
                     InterfacePathProvider file,
                     InterfacePathProvider rolloverFile,

@@ -31,7 +31,7 @@ import java.util.Map;
 /**
  * This interface defines data importers.
  * The imported data is contained within
- * an object of type Map<String, Object>.
+ * an object of type Map.
  * @author Simone Gentili
  */
 @FunctionalInterface

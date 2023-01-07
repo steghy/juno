@@ -40,6 +40,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * this class defines an initializer.
  * @author Simone Gentili
  */
 public class Initializer

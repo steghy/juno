@@ -26,11 +26,17 @@
 package juno.model.data.io.output;
 
 /**
+ * This class defines an exporter manager.
  * @author Simone Gentili
+ * @param <T> The type of the input object.
  */
 @FunctionalInterface
 public interface InterfaceExporterManager<T> {
 
+    /**
+     * Export the specified object.
+     * @param object An Object.
+     */
     void export(T object);
 
 }

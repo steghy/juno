@@ -30,6 +30,7 @@ import juno.view.util.InterfaceImageResizer;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * This class defines a graphic button object.
  * @author Simone Gentili
  * @param <T> The type of the object.
  */

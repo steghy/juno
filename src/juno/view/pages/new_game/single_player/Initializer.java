@@ -34,6 +34,7 @@ import juno.view.pages.new_game.single_player.players.PlayersNumberInitializer;
 import juno.view.pages.new_game.single_player.winner.WinnerPanelConfigurator;
 
 /**
+ * This class defines an initializer.
  * @author Simone Gentili
  */
 public class Initializer

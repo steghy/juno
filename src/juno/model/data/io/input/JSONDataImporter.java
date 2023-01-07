@@ -37,7 +37,7 @@ import java.util.Map;
  * This class defines a JSON file importer.
  * In particular, this importer allows you
  * to convert the content of a JSON file into
- * a Map<String, Object> object.
+ * a Map object.
  * @author Simone Gentili
  */
 public class JSONDataImporter

@@ -41,6 +41,7 @@ import juno.view.util.ImageResizer;
 import javax.swing.*;
 
 /**
+ * This class describes a configurator.
  * @author Simone Gentili
  */
 public class DeckPanelConfigurator {

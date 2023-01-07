@@ -26,9 +26,6 @@
 
 package juno.model.util;
 
-import juno.model.card.actions.InterfaceAction;
-import juno.model.data.awards.avatar.InterfaceAvatarImage;
-
 import java.math.BigDecimal;
 import java.math.BigInteger;
 

@@ -37,6 +37,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 /**
+ * This class defines a graphic avatar image creator.
  * @author Simone Gentili
  */
 public class GAvatarImageCreator

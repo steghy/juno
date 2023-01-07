@@ -30,6 +30,7 @@ import juno.model.data.score.GamesWonCounter;
 import juno.model.data.score.LostGamesCounter;
 
 /**
+ * This class defines an initializer.
  * @author Simone Gentili
  */
 public class Initializer

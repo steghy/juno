@@ -48,6 +48,7 @@ import juno.view.util.ImageResizer;
 import javax.swing.*;
 
 /**
+ * This class defines the center panel configurator.
  * @author Simone Gentili
  */
 public class CenterPanelConfigurator {

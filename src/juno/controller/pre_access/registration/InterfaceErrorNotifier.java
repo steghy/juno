@@ -28,11 +28,17 @@ package juno.controller.pre_access.registration;
 import java.util.Map;
 
 /**
+ * This interface defines error notifier.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface InterfaceErrorNotifier {
 
+    /**
+     * Notifies the error contained within the
+     * specified Map object.
+     * @param errors A Map object.
+     */
     void notifyErrors(Map<String, String> errors);
 
 }
