@@ -25,8 +25,7 @@
 
 package juno.controller.new_game.controller;
 
-import juno.model.data.score.InterfaceGamesWonCounter;
-import juno.model.data.score.InterfaceLostGamesCounter;
+import juno.model.data.score.Counter;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.ai.InterfaceAi;
 import juno.model.util.Observer;
@@ -43,10 +42,10 @@ public class CountersManager<T>
         implements Observer {
 
     // The lost games counter.
-    private InterfaceLostGamesCounter lostGamesCounter;
+    private Counter<Integer> lostGamesCounter;
 
     // The games won counter.
-    private InterfaceGamesWonCounter gamesWonCounter;
+    private Counter<Integer> gamesWonCounter;
 
     // The current player provider.
     @Nullable
@@ -69,17 +68,17 @@ public class CountersManager<T>
 
     /**
      * Sets the lost games counter of this object.
-     * @param lostGamesCounter An InterfaceLostGamesCounter object.
+     * @param lostGamesCounter A Counter object.
      */
-    public void setLostGamesCounter(@NotNull InterfaceLostGamesCounter lostGamesCounter) {
+    public void setLostGamesCounter(@NotNull Counter<Integer> lostGamesCounter) {
         this.lostGamesCounter = lostGamesCounter;
     }
 
     /**
      * Sets the games won counter of this object.
-     * @param gamesWonCounter An InterfaceGamesWonCounter object.
+     * @param gamesWonCounter A Counter object.
      */
-    public void setGamesWonCounter(@NotNull InterfaceGamesWonCounter gamesWonCounter) {
+    public void setGamesWonCounter(@NotNull Counter<Integer> gamesWonCounter) {
         this.gamesWonCounter = gamesWonCounter;
     }
 

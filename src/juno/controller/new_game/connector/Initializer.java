@@ -29,7 +29,7 @@ import juno.controller.util.InterfaceInitializer;
 import juno.model.card.InterfaceCard;
 import juno.model.data.awards.avatar.AvatarImage;
 import juno.model.subjects.InterfacePlayer;
-import juno.model.subjects.factory.AiPlayerFactory;
+import juno.model.subjects.factory.AiFactory;
 import juno.model.subjects.shift.CurrentPlayerProvider;
 import juno.model.subjects.shift.PlayersProvider;
 import juno.model.subjects.shift.TurnMover;
@@ -82,7 +82,7 @@ public class Initializer
         AiAvatarSetter aiAvatarSetter = AiAvatarSetter.getInstance();
 
         // Ai player factory.
-        AiPlayerFactory<?, ?> aiPlayerFactory = AiPlayerFactory.getInstance();
+        AiFactory<?, ?> aiPlayerFactory = AiFactory.getInstance();
 
         // Avatar connector.
         AvatarConnector<InterfaceCard> avatarConnector =

@@ -23,15 +23,14 @@
  * SOFTWARE.
  */
 
-package juno.controller.new_game.human;
+package juno.model.data.score;
+
+import juno.model.util.Enhancer;
+import juno.model.util.Provider;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the object to remove.
+ * @param <T> The type of the object to return.
  */
-@FunctionalInterface
-public interface Remover<T> {
-
-    void remove(T object);
-
-}
+public interface Counter<T>
+        extends Provider<T>, Enhancer {}

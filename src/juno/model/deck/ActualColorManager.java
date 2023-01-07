@@ -37,12 +37,8 @@ import org.jetbrains.annotations.Nullable;
  * @author Simone Gentili
  */
 public class ActualColorManager
-        extends
-        AbstractObservable
-        implements
-        InterfaceActualColor<InterfaceColor>,
-        Observer,
-        Restorable {
+        extends AbstractObservable
+        implements InterfaceActualColorManager<InterfaceColor>, Observer, Restorable {
 
     // The actual color.
     private InterfaceColor color;

@@ -26,10 +26,11 @@
 package juno.controller.pre_access;
 
 import juno.controller.util.AbstractChangePanelUser;
-import juno.model.util.Factory;
 import juno.model.util.Observer;
+import juno.model.util.Provider;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -61,8 +62,8 @@ public class PreAccessManager
 
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof Factory<?> factory) {
-            if(factory.getObjects().size() != 0)
+        if(object instanceof Provider<?> factory) {
+            if(((List<?>)factory.provide()).size() != 0)
                 showWelcomeBackPanel();
         }
     }

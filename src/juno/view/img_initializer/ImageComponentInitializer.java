@@ -78,7 +78,7 @@ public class ImageComponentInitializer
         if (!Os.exists(imageAbsolutePath)) {
             if(download) {
                 try {
-                    Objects.requireNonNull(getRequester()).resolve(file);
+                    Objects.requireNonNull(getRequester()).solve(file);
                 } catch (IOException e) {
                     if(IMAGE_MISSING == Constraints.THROW_EXCEPTION) {
                         throw new RuntimeException(imageAbsolutePath + " is missing.");
@@ -96,7 +96,7 @@ public class ImageComponentInitializer
         if(!Os.exists(rolloverImageAbsolutePath)) {
             if(download) {
                 try {
-                    Objects.requireNonNull(getRequester()).resolve(rolloverFile);
+                    Objects.requireNonNull(getRequester()).solve(rolloverFile);
                 } catch (IOException e) {
                     if(ROLLOVER_IMAGE_MISSING == Constraints.THROW_EXCEPTION) {
                         throw new IllegalArgumentException(rolloverImageAbsolutePath + " is missing");
@@ -186,7 +186,7 @@ public class ImageComponentInitializer
         if (!Os.exists(imageAbsolutePath)) {
             if(download) {
                 try {
-                    Objects.requireNonNull(getRequester()).resolve(file);
+                    Objects.requireNonNull(getRequester()).solve(file);
                 } catch (IOException e) {
                     if(IMAGE_MISSING == Constraints.THROW_EXCEPTION) {
                         throw new RuntimeException(imageAbsolutePath + " is missing.");
@@ -205,7 +205,7 @@ public class ImageComponentInitializer
         if(!Os.exists(rolloverImageAbsolutePath)) {
             if(download) {
                 try {
-                    Objects.requireNonNull(getRequester()).resolve(rolloverFile);
+                    Objects.requireNonNull(getRequester()).solve(rolloverFile);
                 } catch (IOException e) {
                     if(ROLLOVER_IMAGE_MISSING == Constraints.THROW_EXCEPTION) {
                         throw new IllegalArgumentException(rolloverImageAbsolutePath + " is missing");
@@ -221,7 +221,7 @@ public class ImageComponentInitializer
         if (!Os.exists(selectedImageAbsolutePath)) {
             if(download) {
                 try {
-                    Objects.requireNonNull(getRequester()).resolve(selectedFile);
+                    Objects.requireNonNull(getRequester()).solve(selectedFile);
                 } catch (IOException e) {
                     if(SELECTED_IMAGE_MISSING == Constraints.THROW_EXCEPTION) {
                         throw new RuntimeException(selectedImageAbsolutePath + " is missing.");
@@ -237,7 +237,7 @@ public class ImageComponentInitializer
         if(!Os.exists(rolloverSelectedImageAbsolutePath)) {
             if(download) {
                 try {
-                    Objects.requireNonNull(getRequester()).resolve(rolloverSelectedFile);
+                    Objects.requireNonNull(getRequester()).solve(rolloverSelectedFile);
                 } catch (IOException e) {
                     if(ROLLOVER_SELECTED_IMAGE_MISSING == Constraints.THROW_EXCEPTION) {
                         throw new IllegalArgumentException(rolloverImageAbsolutePath + " is missing");
@@ -387,7 +387,7 @@ public class ImageComponentInitializer
         if(!Os.exists(imageAbsolutePath)) {
             if(download) {
                 try {
-                    Objects.requireNonNull(getRequester()).resolve(file);
+                    Objects.requireNonNull(getRequester()).solve(file);
                 } catch (IOException e) {
                     if(IMAGE_MISSING == Constraints.THROW_EXCEPTION) {
                         throw new RuntimeException(imageAbsolutePath + " is missing");

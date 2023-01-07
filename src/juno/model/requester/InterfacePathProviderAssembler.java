@@ -25,7 +25,6 @@
 
 package juno.model.requester;
 
-import juno.model.requester.InterfacePathProvider;
 
 /**
  * @author Simone Gentili

@@ -34,10 +34,10 @@ public class MixerTester {
 
     @SuppressWarnings("unchecked")
     public static void main(String[] args) {
-        Mixer mixer = Mixer.getInstance();
+        Mixer<InterfaceCard> mixer = (Mixer<InterfaceCard>) Mixer.getInstance();
         DeckFactory deckFactory = DeckFactory.getInstance();
         Deck<InterfaceCard> deck = (Deck<InterfaceCard>) Deck.getInstance();
-        deck.addAll(deckFactory.getObjects());
+        deck.addAll(deckFactory.provide());
         mixer.shuffle(deck);
         deck.forEach(System.out::println);
     }

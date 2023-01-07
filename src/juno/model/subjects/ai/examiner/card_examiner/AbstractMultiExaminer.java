@@ -26,6 +26,8 @@
 package juno.model.subjects.ai.examiner.card_examiner;
 
 import juno.model.subjects.ai.examiner.AbstractExaminer;
+import juno.model.subjects.ai.examiner.color_examiner.InterfaceColorExaminer;
+import juno.model.subjects.ai.examiner.color_examiner.InterfaceExaminer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -37,19 +39,19 @@ public abstract class AbstractMultiExaminer<T>
         extends AbstractExaminer<T> {
 
     // Easy.
-    private InterfaceEasyExaminer<T> easy;
+    private InterfaceExaminer<T> easy;
 
     // Medium.
-    private InterfaceMediumExaminer<T> medium;
+    private InterfaceExaminer<T> medium;
 
     // Hard.
-    private InterfaceHardExaminer<T> hard;
+    private InterfaceExaminer<T> hard;
 
     /**
      * Sets the easy examiner of this object.
      * @param easy An InterfaceEasy object.
      */
-    public void setEasy(@NotNull InterfaceEasyExaminer<T> easy) {
+    public void setEasy(@NotNull InterfaceExaminer<T> easy) {
         this.easy = easy;
     }
 
@@ -57,7 +59,7 @@ public abstract class AbstractMultiExaminer<T>
      * Sets the medium examiner of this object.
      * @param medium An InterfaceMedium object.
      */
-    public void setMedium(@NotNull InterfaceMediumExaminer<T> medium) {
+    public void setMedium(@NotNull InterfaceExaminer<T> medium) {
         this.medium = medium;
     }
 
@@ -65,7 +67,7 @@ public abstract class AbstractMultiExaminer<T>
      * Sets the hard examiner of this object.
      * @param hard An InterfaceHard object.
      */
-    public void setHard(@NotNull InterfaceHardExaminer<T> hard) {
+    public void setHard(@NotNull InterfaceExaminer<T> hard) {
         this.hard = hard;
     }
 
@@ -74,7 +76,7 @@ public abstract class AbstractMultiExaminer<T>
      * @return An InterfaceEasy object.
      */
     @Nullable
-    public InterfaceEasyExaminer<T> getEasyExaminer() {
+    public InterfaceExaminer<T> getEasyExaminer() {
         return easy;
     }
 
@@ -83,7 +85,7 @@ public abstract class AbstractMultiExaminer<T>
      * @return An InterfaceMedium object.
      */
     @Nullable
-    public InterfaceMediumExaminer<T> getMediumExaminer() {
+    public InterfaceExaminer<T> getMediumExaminer() {
         return medium;
     }
 
@@ -92,7 +94,7 @@ public abstract class AbstractMultiExaminer<T>
      * @return An InterfaceHard object.
      */
     @Nullable
-    public InterfaceHardExaminer<T> getHardExaminer() {
+    public InterfaceExaminer<T> getHardExaminer() {
         return hard;
     }
 

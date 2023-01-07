@@ -25,9 +25,9 @@
 
 package juno.view.gobject.profiles;
 
-import juno.model.util.Factory;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
+import juno.model.util.Provider;
 import juno.view.gobject.InterfaceGObject;
 import juno.view.util.RotatedIcon;
 import org.jetbrains.annotations.NotNull;
@@ -96,8 +96,8 @@ public class GProfileFactory
 
     @Override @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof Factory<?> factory) {
-            List<File> files = (List<File>) factory.getObjects();
+        if(object instanceof Provider<?> provider) {
+            List<File> files = (List<File>) provider.provide();
             generate(files.stream().map(file -> {
                 try {
                     return (String) Objects.requireNonNull(getImporter())

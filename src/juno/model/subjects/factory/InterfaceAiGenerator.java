@@ -25,19 +25,15 @@
 
 package juno.model.subjects.factory;
 
-import java.util.Collection;
 
 /**
  * @author Simone Gentili
+ * @param <T> The type of the difficulty objects.
  */
 @FunctionalInterface
-public interface InterfaceNameFactory {
+public interface InterfaceAiGenerator<T> {
 
-    /**
-     *
-     * @param num
-     * @return
-     */
-    Collection<String> getNames(int num);
+    void generate(int num,
+                  T difficulty);
 
 }

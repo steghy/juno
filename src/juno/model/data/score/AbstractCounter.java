@@ -41,7 +41,7 @@ import java.util.Map;
  * @author Simone Gentili
  */
 public abstract class AbstractCounter
-        implements Observable, Configurable, Exportable, Restorable {
+        implements Counter<Integer>, Observable, Configurable, Exportable, Restorable {
 
     /** The count key. */
     public static final String COUNT_KEY = "count";
@@ -52,17 +52,14 @@ public abstract class AbstractCounter
     // The Observers List.
     private final List<Observer> observerList = new ArrayList<>();
 
-    /** Increase the counter. */
+    @Override
     public void increase() {
         count++;
         updateAll();
     }
 
-    /**
-     * Returns the value of the counter.
-     * @return An integer value.
-     */
-    public int getCount() {
+    @Override
+    public Integer provide() {
         return count;
     }
 

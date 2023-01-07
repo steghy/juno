@@ -51,6 +51,7 @@ public class AI<T, E>
     // The examiner.
     private final InterfaceCardExaminer<T> cardExaminer;
 
+    // The color examiner.
     private final InterfaceColorExaminer<E, T> colorExaminer;
 
     // The name.
@@ -82,7 +83,7 @@ public class AI<T, E>
 
     @Override
     public E color() {
-        return colorExaminer.responseRelativeTo(cards());
+        return colorExaminer.response(cards());
     }
 
     @Override

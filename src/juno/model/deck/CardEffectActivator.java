@@ -45,8 +45,7 @@ public class CardEffectActivator
     private static CardEffectActivator instance;
 
     // Builds the CardEffectActivator instance.
-    private CardEffectActivator() {
-    }
+    private CardEffectActivator() {}
 
     /**
      * Returns the CardEffectActivator instance.

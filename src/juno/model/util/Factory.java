@@ -25,8 +25,6 @@
 
 package juno.model.util;
 
-import java.util.Collection;
-
 /**
  * This interface defines a factory that supplies
  * cards for the game 'Uno'. The cards that are
@@ -34,14 +32,5 @@ import java.util.Collection;
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
-@FunctionalInterface
-public interface Factory<T> {
-
-    /**
-     * Returns all the different types of cards
-     * of the 'Uno' card game.
-     * @return A Collection object.
-     */
-    Collection<T> getObjects();
-
-}
+public interface Factory<T>
+        extends Provider<T>, Generator {}

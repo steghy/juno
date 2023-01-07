@@ -25,6 +25,8 @@
 
 package juno.model.subjects.factory;
 
+import juno.model.util.RelativeProvider;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -33,17 +35,17 @@ import java.util.Random;
 /**
  * @author Simone Gentili
  */
-public class NameFactory
-        implements InterfaceNameFactory {
+public class NameProvider
+        implements RelativeProvider<String, Integer> {
 
     // The names.
     private final List<String> names;
 
     // The NameFactory instance.
-    private static NameFactory instance;
+    private static NameProvider instance;
 
     // Builds the NameFactory instance.
-    private NameFactory() {
+    private NameProvider() {
         names = new ArrayList<>();
         init();
     }
@@ -52,13 +54,13 @@ public class NameFactory
      * Returns the NameFactory instance.
      * @return The NameFactory instance.
      */
-    public static NameFactory getInstance() {
-        if(instance == null) instance = new NameFactory();
+    public static NameProvider getInstance() {
+        if(instance == null) instance = new NameProvider();
         return instance;
     }
 
     @Override
-    public List<String> getNames(int num) {
+    public List<String> provide(Integer num) {
         if(num > names.size()) throw new IllegalArgumentException("Only up to twenty");
         List<String> outputNames = new ArrayList<>();
         List<String> namesClone = new ArrayList<>(names);

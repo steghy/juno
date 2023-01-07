@@ -23,20 +23,14 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects;
+package juno.model.deck;
+
+import juno.model.util.Provider;
+import juno.model.util.Setter;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the object.
+ * @param <T> The type of the color.
  */
-@FunctionalInterface
-public interface InterfaceRemover<T> {
-
-    /**
-     * Removes the specified object from
-     * this object.
-     * @param object An Object.
-     */
-    void remove(T object);
-
-}
+public interface InterfaceActualColorManager<T>
+        extends Setter<T>, Provider<T> {}

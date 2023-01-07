@@ -35,7 +35,7 @@ import juno.model.card.InterfaceCard;
 import juno.model.deck.*;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.ai.InterfaceDifficulty;
-import juno.model.subjects.factory.AiPlayerFactory;
+import juno.model.subjects.factory.AiFactory;
 import juno.model.subjects.human.HumanPlayer;
 import juno.model.subjects.shift.PlayersProvider;
 import juno.model.subjects.shift.TurnMover;
@@ -71,8 +71,8 @@ public class Initializer
         DeckFactory deckFactory = DeckFactory.getInstance();
 
         // Ai player factory.
-        AiPlayerFactory<?, InterfaceDifficulty> aiPlayerFactory =
-                (AiPlayerFactory<?, InterfaceDifficulty>) AiPlayerFactory.getInstance();
+        AiFactory<?, InterfaceDifficulty> aiPlayerFactory =
+                (AiFactory<?, InterfaceDifficulty>) AiFactory.getInstance();
 
         // Draw action.
         DrawAction<InterfaceCard> drawAction = (DrawAction<InterfaceCard>) DrawAction.getInstance();

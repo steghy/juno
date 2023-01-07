@@ -27,9 +27,9 @@ package juno.model.deck;
 
 
 import juno.controller.log_out.Restorable;
-import juno.model.util.Factory;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
+import juno.model.util.Provider;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -99,9 +99,9 @@ public class Deck<T>
 
     @Override @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof Factory<?> factory) {
+        if(object instanceof Provider<?> provider) {
             clear();
-            addAll((Collection<? extends T>) factory.getObjects());
+            addAll((Collection<? extends T>) provider.provide());
             Objects.requireNonNull(getMixer()).shuffle(this);
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +

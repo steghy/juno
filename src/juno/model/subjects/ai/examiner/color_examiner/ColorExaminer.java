@@ -56,7 +56,7 @@ public class ColorExaminer
     }
 
     @Override
-    public InterfaceColor responseRelativeTo(@NotNull List<InterfaceCard> cards) {
+    public InterfaceColor response(@NotNull List<InterfaceCard> cards) {
         Objects.requireNonNull(getFilter());
         Map<Integer, InterfaceColor> map = new HashMap<>();
         map.put(getFilter().red(cards).size(), Color.RED);

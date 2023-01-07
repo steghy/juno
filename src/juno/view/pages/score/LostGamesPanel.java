@@ -25,7 +25,7 @@
 
 package juno.view.pages.score;
 
-import juno.model.data.score.InterfaceLostGamesCounter;
+import juno.model.data.score.Counter;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
@@ -91,8 +91,8 @@ public class LostGamesPanel
 
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceLostGamesCounter lostGamesCounter)
-            lostGamesPoints.setText(String.valueOf(lostGamesCounter.getCount()));
+        if(object instanceof Counter<?> counter)
+            lostGamesPoints.setText(String.valueOf(counter.provide()));
         else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceLostGamesCounter type expected.");

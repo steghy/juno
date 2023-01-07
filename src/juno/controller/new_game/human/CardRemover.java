@@ -26,6 +26,7 @@
 package juno.controller.new_game.human;
 
 import juno.model.subjects.InterfacePlayer;
+import juno.model.util.Remover;
 import org.jetbrains.annotations.NotNull;
 
 /**

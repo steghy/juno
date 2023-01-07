@@ -33,6 +33,6 @@ import java.io.IOException;
 @FunctionalInterface
 public interface InterfaceRequester {
 
-    void resolve(InterfacePathProvider pathProvider) throws IOException;
+    void solve(InterfacePathProvider pathProvider) throws IOException;
 
 }

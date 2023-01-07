@@ -55,7 +55,7 @@ public class Requester
     }
 
     @Override
-    public void resolve(@NotNull InterfacePathProvider pathProvider) throws IOException {
+    public void solve(@NotNull InterfacePathProvider pathProvider) throws IOException {
         if(Objects.requireNonNull(getConnectivityChecker()).isConnected()) {
             Objects.requireNonNull(getUrlBuilderList());
             Objects.requireNonNull(getDownloader());

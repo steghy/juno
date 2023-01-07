@@ -23,22 +23,15 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.ai.examiner.card_examiner;
-
-import java.util.List;
+package juno.model.util;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the cards.
+ * @param <T> The type of the object to remove.
  */
 @FunctionalInterface
-public interface InterfaceHardExaminer<T> {
+public interface Remover<T> {
 
-    /**
-     *
-     * @param cards
-     * @return
-     */
-    T response(List<T> cards);
+    void remove(T object);
 
 }

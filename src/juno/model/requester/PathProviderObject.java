@@ -25,7 +25,6 @@
 
 package juno.model.requester;
 
-import juno.model.requester.InterfacePathProvider;
 import org.jetbrains.annotations.NotNull;
 
 /**

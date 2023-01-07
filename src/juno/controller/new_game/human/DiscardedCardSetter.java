@@ -26,10 +26,7 @@
 package juno.controller.new_game.human;
 
 import juno.model.deck.AbstractDiscardedPileUser;
-import juno.model.util.Provider;
-import juno.model.util.Setter;
-import juno.model.util.Observable;
-import juno.model.util.Observer;
+import juno.model.util.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

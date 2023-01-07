@@ -48,7 +48,7 @@ public abstract class AbstractCardEffectActivator<T, E, C>
     private Provider<E> playersProvider;
 
     // The actual color.
-    private InterfaceActualColor<C> actualColor;
+    private InterfaceActualColorManager<C> actualColor;
 
     /**
      * Sets the turn mover of this object.
@@ -78,7 +78,7 @@ public abstract class AbstractCardEffectActivator<T, E, C>
      * Sets the actual color manager of this object.
      * @param actualColor An InterfaceActualColor object.
      */
-    public void setActualColor(@NotNull InterfaceActualColor<C> actualColor) {
+    public void setActualColor(@NotNull InterfaceActualColorManager<C> actualColor) {
         this.actualColor = actualColor;
     }
 
@@ -114,7 +114,7 @@ public abstract class AbstractCardEffectActivator<T, E, C>
      * @return An InterfaceActualColor object.
      */
     @Nullable
-    public InterfaceActualColor<C> getActualColor() {
+    public InterfaceActualColorManager<C> getActualColor() {
         return actualColor;
     }
 

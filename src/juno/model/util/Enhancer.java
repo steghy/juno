@@ -23,22 +23,14 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.ai.examiner.card_examiner;
-
-import java.util.List;
+package juno.model.util;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the cards.
  */
 @FunctionalInterface
-public interface InterfaceEasyExaminer<T> {
+public interface Enhancer {
 
-    /**
-     *
-     * @param cards
-     * @return
-     */
-    T response(List<T> cards);
+    void increase();
 
 }

@@ -39,7 +39,7 @@ import org.jetbrains.annotations.Nullable;
  */
 public abstract class AbstractConfigurationFilesFactory<T>
         extends AbstractObservable
-        implements Factory<T>, Generator {
+        implements Factory<T> {
 
     // The configuration file researcher.
     private InterfaceCConfigurationFileResearcher researcher;

@@ -28,7 +28,7 @@ package juno.model.subjects.shift;
 import juno.controller.util.InterfaceInitializer;
 import juno.model.card.InterfaceCard;
 import juno.model.subjects.InterfacePlayer;
-import juno.model.subjects.factory.AiPlayerFactory;
+import juno.model.subjects.factory.AiFactory;
 import juno.model.subjects.human.HumanPlayer;
 
 /**
@@ -61,7 +61,7 @@ public class Initializer
                 (PlayersProvider<InterfacePlayer<InterfaceCard>>) PlayersProvider.getInstance();
 
         // The ai players factory.
-        AiPlayerFactory<?, ?> aiPlayerFactory = AiPlayerFactory.getInstance();
+        AiFactory<?, ?> aiPlayerFactory = AiFactory.getInstance();
 
         // Players provider.
         playersProvider.setPlayer((InterfacePlayer<InterfaceCard>) HumanPlayer.getInstance());

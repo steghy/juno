@@ -127,14 +127,14 @@ public enum Goal
     @Override
     public void update(@NotNull Object object) {
         // Games won counter.
-        if(object instanceof InterfaceGamesWonCounter gamesWonCounter) {
-            int gamesWon = gamesWonCounter.getCount();
+        if(object instanceof InterfaceGamesWonCounter<?> gamesWonCounter) {
+            int gamesWon = (int) gamesWonCounter.provide();
             getUnreachedGoals(getGamesWonGoals()).forEach(goal -> goal.unlockIf(gamesWon));
         }
 
         // Lost games counter.
-        else if(object instanceof InterfaceLostGamesCounter lostGamesCounter) {
-            int lostGames = lostGamesCounter.getCount();
+        else if(object instanceof InterfaceLostGamesCounter<?> lostGamesCounter) {
+            int lostGames = (int) lostGamesCounter.provide();
             getUnreachedGoals(getLostGamesGoals()).forEach(goal -> goal.unlockIf(lostGames));
         }
 

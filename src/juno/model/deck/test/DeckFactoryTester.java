@@ -35,7 +35,7 @@ public class DeckFactoryTester {
     public static void main(String[] args) {
         DeckFactory deckFactory = DeckFactory.getInstance();
         Deck<InterfaceCard> deck = (Deck<InterfaceCard>) Deck.getInstance();
-        deck.addAll(deckFactory.getObjects());
+        deck.addAll(deckFactory.provide());
         Deck.getInstance().forEach(System.out::println);
     }
 

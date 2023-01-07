@@ -30,7 +30,7 @@ package juno.model.data.score;
  */
 public class LostGamesCounter
     extends AbstractCounter
-    implements InterfaceLostGamesCounter {
+        implements InterfaceLostGamesCounter<Integer> {
 
     // The LostGamesCounter instance.
     private static LostGamesCounter instance;

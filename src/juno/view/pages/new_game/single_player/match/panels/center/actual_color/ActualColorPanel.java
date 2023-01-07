@@ -27,7 +27,7 @@ package juno.view.pages.new_game.single_player.match.panels.center.actual_color;
 
 import juno.controller.log_out.Restorable;
 import juno.model.card.colors.InterfaceColor;
-import juno.model.deck.InterfaceActualColor;
+import juno.model.deck.InterfaceActualColorManager;
 import juno.model.util.Observer;
 import juno.view.gobject.GObjectButton;
 import juno.view.gobject.color.GColorCreator;
@@ -68,7 +68,7 @@ public class ActualColorPanel
 
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceActualColor<?> actualColor) {
+        if(object instanceof InterfaceActualColorManager<?> actualColor) {
             Object temp = actualColor.provide();
             if(temp instanceof InterfaceColor color) {
                 removeAll();

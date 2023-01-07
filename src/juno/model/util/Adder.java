@@ -23,49 +23,15 @@
  * SOFTWARE.
  */
 
-package juno.model.data.settings;
-
-import juno.model.data.io.input.configurable.Configurable;
-import juno.model.data.io.output.Exportable;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.Map;
+package juno.model.util;
 
 /**
  * @author Simone Gentili
+ * @param <T> The type of the object.
  */
-public class UserSettings
-        implements Configurable, Exportable {
+@FunctionalInterface
+public interface Adder<T> {
 
-    /** The mute key. */
-    public static final String MUTE_KEY = "mute";
-
-    /** The fullscreen key. */
-    public static final String FULLSCREEN = "fullscreen";
-
-    // The UserSettings instance.
-    private static UserSettings instance;
-
-    // Builds the UserSettings instance.
-    private UserSettings() {}
-
-    /**
-     * Returns the UserSettings instance.
-     * @return The UserSettings instance.
-     */
-    public static UserSettings getInstance() {
-        if(instance == null) instance = new UserSettings();
-        return instance;
-    }
-
-    @Override
-    public void configure(@NotNull Map<String, Object> map) {
-
-    }
-
-    @Override
-    public Map<String, Object> exportData() {
-        return null;
-    }
+    void add(T object);
 
 }

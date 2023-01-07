@@ -25,6 +25,7 @@
 
 package juno.model.subjects.ai.examiner.card_examiner;
 
+import juno.model.subjects.ai.examiner.color_examiner.InterfaceExaminer;
 import juno.model.subjects.ai.examiner.filter.AbstractFilterUser;
 import juno.model.subjects.ai.examiner.filter.InterfaceFilter;
 import org.jetbrains.annotations.NotNull;
@@ -39,7 +40,7 @@ import java.util.Random;
  */
 public class EasyExaminer<T>
         extends AbstractFilterUser<T>
-        implements InterfaceEasyExaminer<T> {
+        implements InterfaceExaminer<T> {
 
     // The EasyExaminer instance.
     private static EasyExaminer<?> instance;
@@ -77,5 +78,4 @@ public class EasyExaminer<T>
         else
             throw new IllegalArgumentException("Unavailable cards to play");
     }
-
 }

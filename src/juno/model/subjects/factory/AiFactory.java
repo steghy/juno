@@ -40,9 +40,9 @@ import java.util.Objects;
  * @param <T> The type of the cards.
  * @param <E> The type of the difficulty.
  */
-public class AiPlayerFactory<T, E>
-        extends AbstractAiPlayerFactory<List<InterfacePlayer<T>>>
-        implements InterfaceAiPlayerGenerator<E>, Observable {
+public class AiFactory<T, E>
+        extends AbstractAiFactory<List<InterfacePlayer<T>>, String, Integer>
+        implements InterfaceAiGenerator<E>, Observable {
 
     // The Ai builder
     private InterfaceAiBuilder<T, E> builder;
@@ -54,10 +54,10 @@ public class AiPlayerFactory<T, E>
     private List<InterfacePlayer<T>> players;
 
     // The AiPlayerFactory instance.
-    private static AiPlayerFactory<?, ?> instance;
+    private static AiFactory<?, ?> instance;
 
     // Builds the AiPlayerFactory instance.
-    private AiPlayerFactory() {
+    private AiFactory() {
         observerList = new ArrayList<>();
     }
 
@@ -65,8 +65,8 @@ public class AiPlayerFactory<T, E>
      * Returns the AiPlayerFactory instance.
      * @return The AiPlayerFactory instance.
      */
-    public static AiPlayerFactory<?, ?> getInstance() {
-        if(instance == null) instance = new AiPlayerFactory<>();
+    public static AiFactory<?, ?> getInstance() {
+        if(instance == null) instance = new AiFactory<>();
         return instance;
     }
 
@@ -74,8 +74,8 @@ public class AiPlayerFactory<T, E>
     public void generate(int num,
                          @NotNull E difficulty) {
         if(num < 1) throw new IllegalArgumentException("Invalid players number");
-        players = Objects.requireNonNull(getNameFactory())
-                .getNames(num).stream().map(name -> builder.build(name, difficulty)).toList();
+        players = Objects.requireNonNull(getRelativeProvider())
+                .provide(num).stream().map(name -> builder.build(name, difficulty)).toList();
         updateAll();
     }
 

@@ -25,7 +25,7 @@
 
 package juno.view.pages.score;
 
-import juno.model.data.score.InterfaceGamesWonCounter;
+import juno.model.data.score.Counter;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
 
@@ -91,8 +91,8 @@ public class GamesWonPanel
 
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceGamesWonCounter gamesWonCounter)
-            gamesWonPoints.setText(String.valueOf(gamesWonCounter.getCount()));
+        if(object instanceof Counter<?> counter)
+            gamesWonPoints.setText(String.valueOf(counter.provide()));
         else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". InterfaceGamesWonCounter type expected.");

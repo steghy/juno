@@ -25,12 +25,12 @@
 
 package juno.model.subjects.test;
 
-import juno.model.subjects.factory.NameFactory;
+import juno.model.subjects.factory.NameProvider;
 
 public class NameFactoryTester {
 
     public static void main(String[] args) {
-        NameFactory randomNameProvider = NameFactory.getInstance();
-        randomNameProvider.getNames(3).forEach(System.out::println);
+        NameProvider randomNameProvider = NameProvider.getInstance();
+        randomNameProvider.provide(3).forEach(System.out::println);
     }
 }

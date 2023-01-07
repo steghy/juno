@@ -23,15 +23,37 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects;
+package juno.model.subjects.factory;
+
+import juno.model.util.Provider;
+import juno.model.util.RelativeProvider;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Simone Gentili
- * @param <T> The type of the object.
  */
-@FunctionalInterface
-public interface InterfaceAdder<T> {
+public abstract class AbstractAiFactory<T, E, C>
+        implements Provider<T> {
 
-    void add(T object);
+    // The name relative provider.
+    private RelativeProvider<E, C> relativeProvider;
+
+    /**
+     * Sets the name relative provider of this object.
+     * @param relativeProvider A RelativeProvider object.
+     */
+    public void setRelativeProvider(@NotNull RelativeProvider<E, C> relativeProvider) {
+        this.relativeProvider = relativeProvider;
+    }
+
+    /**
+     * Returns the name relative provider of this object.
+     * @return An RelativeProvider object.
+     */
+    @Nullable
+    public RelativeProvider<E, C> getRelativeProvider() {
+        return relativeProvider;
+    }
 
 }

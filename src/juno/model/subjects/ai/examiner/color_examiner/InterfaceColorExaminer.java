@@ -35,6 +35,6 @@ import java.util.List;
 @FunctionalInterface
 public interface InterfaceColorExaminer<T, E> {
 
-    T responseRelativeTo(List<E> cards);
+    T response(List<E> cards);
 
 }

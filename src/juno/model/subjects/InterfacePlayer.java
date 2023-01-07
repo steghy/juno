@@ -25,7 +25,9 @@
 
 package juno.model.subjects;
 
+import juno.model.util.Adder;
 import juno.model.util.Provider;
+import juno.model.util.Remover;
 
 /**
  * @author Simone Gentili
@@ -35,8 +37,8 @@ public interface InterfacePlayer<T>
         extends
         InterfaceCardsPlayer<T>,
         InterfaceSubject,
-        InterfaceAdder<T>,
-        InterfaceRemover<T>,
+        Adder<T>,
+        Remover<T>,
         Provider<T> {
 
     /**

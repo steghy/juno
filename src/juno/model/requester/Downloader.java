@@ -31,8 +31,6 @@ import java.io.BufferedInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
 
 /**
  * @author Simone Gentili
@@ -67,15 +65,6 @@ public class Downloader
         }
         fileOutputStream.close();
         bufferedInputStream.close();
-    }
-
-    public static void downloadUsingNIO(@NotNull URL url,
-                                        @NotNull String file) throws IOException {
-        ReadableByteChannel rbc = Channels.newChannel(url.openStream());
-        FileOutputStream fos = new FileOutputStream(file);
-        fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
-        fos.close();
-        rbc.close();
     }
 
 }

@@ -23,14 +23,12 @@
  * SOFTWARE.
  */
 
-package juno.model.data.score;
+package juno.model.util;
 
-/**
- * @author Simone Gentii
- */
-@FunctionalInterface
-public interface InterfaceCountProvider {
+import java.util.Collection;
 
-    int getCount();
+public interface RelativeProvider<T, E> {
+
+    Collection<T> provide(E object);
 
 }

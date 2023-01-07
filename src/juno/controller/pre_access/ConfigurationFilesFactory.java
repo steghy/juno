@@ -29,7 +29,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
@@ -37,7 +36,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class ConfigurationFilesFactory
-        extends AbstractConfigurationFilesFactory<File> {
+        extends AbstractConfigurationFilesFactory<List<File>> {
 
     // The configuration files.
     private List<File> configurationFiles;
@@ -59,7 +58,7 @@ public class ConfigurationFilesFactory
 
     @Override
     @Nullable
-    public Collection<File> getObjects() {
+    public List<File> provide() {
         return configurationFiles;
     }
 

@@ -23,17 +23,12 @@
  * SOFTWARE.
  */
 
-package juno.model.subjects.factory;
+package juno.model.subjects.ai.examiner.color_examiner;
 
+import java.util.List;
 
-/**
- * @author Simone Gentili
- * @param <T> The type of the difficulty objects.
- */
 @FunctionalInterface
-public interface InterfaceAiPlayerGenerator<T> {
+public interface InterfaceExaminer<T> {
 
-    void generate(int num,
-                  T difficulty);
-
+    T response(List<T> cards);
 }

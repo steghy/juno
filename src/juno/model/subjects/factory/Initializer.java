@@ -57,13 +57,13 @@ public class Initializer
     @Override
     @SuppressWarnings("unchecked")
     public void initialize() {
-        AiPlayerFactory<InterfaceCard, InterfaceDifficulty> aiPlayerFactory =
-                (AiPlayerFactory<InterfaceCard, InterfaceDifficulty>) AiPlayerFactory.getInstance();
-        NameFactory nameFactory = NameFactory.getInstance();
+        AiFactory<InterfaceCard, InterfaceDifficulty> aiPlayerFactory =
+                (AiFactory<InterfaceCard, InterfaceDifficulty>) AiFactory.getInstance();
+        NameProvider nameFactory = NameProvider.getInstance();
         AiBuilder<InterfaceCard, InterfaceColor> aiBuilder =
                 (AiBuilder<InterfaceCard, InterfaceColor>) AiBuilder.getInstance();
         aiPlayerFactory.setBuilder(aiBuilder);
-        aiPlayerFactory.setNameFactory(nameFactory);
+        aiPlayerFactory.setRelativeProvider(nameFactory);
         aiBuilder.setCardExaminer((InterfaceCardExaminer<InterfaceCard>) CardExaminer.getInstance());
         aiBuilder.setColorExaminer(ColorExaminer.getInstance());
     }

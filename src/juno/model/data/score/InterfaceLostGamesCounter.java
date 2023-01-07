@@ -25,9 +25,9 @@
 
 package juno.model.data.score;
 
-public interface InterfaceLostGamesCounter
-        extends InterfaceCountProvider {
-
-    void increase();
-
-}
+/**
+ * @author Simone Gentili
+ * @param <T> The type of the object to provide.
+ */
+public interface InterfaceLostGamesCounter<T>
+        extends Counter<T> {}
