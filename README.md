@@ -11,18 +11,4 @@ for the creation of the graphics.
 
 Contents
 --------
-
-- [Intro](#intro)
-- [Installation](#installation)
-    - [Requirements](#requirements)
-    - [Linux](#linux)
-    - [macOS](#macos)
-    - [Windows](#windows)
-    - [FreeBSD/OpenBSD](#freebsdopenbsd)
-
-
-Intro
------
-
-Installation
-------------
+![Screenshot from 2023-01-08 11-32-48](https://user-images.githubusercontent.com/101086867/211192586-a1adb9dc-deff-4a59-9aa3-e6eb50478b71.png)
