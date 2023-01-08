@@ -32,7 +32,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * This abstract class defines abstract card effect activator.
  * @author Simone Gentili
+ * @param <T> The type of the object to provide.
+ * @param <E> the type of the cards.
+ * @param <C> the type of the color.
  */
 public abstract class AbstractCardEffectActivator<T, E, C>
         extends AbstractDeckUser<T>

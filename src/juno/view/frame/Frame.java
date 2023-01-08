@@ -31,6 +31,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * this class defines the main frame.
  * @author Simone Gentili
  */
 public class Frame

@@ -31,6 +31,7 @@ import java.awt.*;
 import java.util.Objects;
 
 /**
+ * This class defines the score panel
  * @author Simone Gentili
  */
 public class ScorePanel

@@ -30,6 +30,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * this abstract class defines abstract exporter manager.
  * @author Simone Gentili
  * @param <T> The type of the object to export.
  * @param <E> The type of the object involved.

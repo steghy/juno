@@ -30,6 +30,7 @@ import juno.view.pages.main.card.MainCardPanel;
 import juno.view.pages.pre_access.card.PreAccessCardPanel;
 
 /**
+ * this class defines an initializer
  * @author Simone Gentili
  */
 public class Initializer

@@ -28,6 +28,7 @@ package juno.model.deck;
 import java.util.List;
 
 /**
+ * This interface defines compatible card provider.
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
@@ -35,9 +36,10 @@ import java.util.List;
 public interface InterfaceCompatibleCardsProvider<T> {
 
     /**
-     *
-     * @param cards
-     * @return
+     * Returns the compatible cards from the specified
+     * List object.
+     * @param cards A List object.
+     * @return A List object.
      */
     List<T> getCompatibleCards(List<T> cards);
 

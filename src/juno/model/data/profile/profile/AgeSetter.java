@@ -29,6 +29,7 @@ import juno.model.util.AbstractObservable;
 import juno.model.util.Setter;
 
 /**
+ * This class defines an age setter.
  * @author Simone Gentili
  */
 public class AgeSetter

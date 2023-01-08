@@ -31,6 +31,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Stack;
 
 /**
+ * This class defines an abstract deck.
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */

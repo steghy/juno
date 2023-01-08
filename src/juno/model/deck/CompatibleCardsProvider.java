@@ -32,6 +32,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
+ * This class defines a compatible cards provider.
  * @author Simone Gentili
  */
 public class CompatibleCardsProvider

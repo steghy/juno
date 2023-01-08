@@ -26,6 +26,7 @@
 package juno.view.button;
 
 /**
+ * This class contains all the graphic button.
  * @author Simone Gentili
  */
 public enum Button

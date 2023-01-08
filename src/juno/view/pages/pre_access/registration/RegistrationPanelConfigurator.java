@@ -29,6 +29,7 @@ import juno.view.pages.pre_access.registration.menu.MenuPanel;
 import juno.view.pages.pre_access.registration.title.TitlePanel;
 
 /**
+ * This class defines the registration panel configurator.
  * @author Simone Gentili
  */
 public class RegistrationPanelConfigurator {
@@ -36,6 +37,7 @@ public class RegistrationPanelConfigurator {
     // Builds a RegistrationPanelConfigurator object.
     private RegistrationPanelConfigurator() {}
 
+    /** Configures the RegistrationPanel instance. */
     public static void configure() {
         // Main component.
         RegistrationPanel registrationPanel = RegistrationPanel.getInstance();

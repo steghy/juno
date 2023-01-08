@@ -27,11 +27,17 @@ package juno.model.deck;
 
 
 /**
+ * This interface defines card effect activator.
  * @author Simone Gentili
+ * @param <T> The type of the card.
  */
 @FunctionalInterface
 public interface InterfaceCardEffectActivator<T> {
 
+    /**
+     * Activate the effect of the specified card.
+     * @param card An object.
+     */
     void activate(T card);
 
 }

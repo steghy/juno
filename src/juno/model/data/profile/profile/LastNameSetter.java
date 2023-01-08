@@ -31,6 +31,7 @@ import juno.model.util.Setter;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * This class defines a last name setter.
  * @author Simone Gentili
  */
 public class LastNameSetter

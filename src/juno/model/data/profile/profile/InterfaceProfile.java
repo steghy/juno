@@ -26,6 +26,7 @@
 package juno.model.data.profile.profile;
 
 /**
+ * This interface defines profiles object.
  * @author Simone Gentili
  */
 @FunctionalInterface

@@ -26,12 +26,17 @@
 package juno.view.button;
 
 /**
+ * This interface defines buttons.
  * @author Simone Gentili
  */
 public interface InterfaceButton
         extends InterfaceSimpleButton,
                 InterfaceToggleButton {
 
+    /**
+     * Returns the name of this button.
+     * @return A String object.
+     */
     String name();
 
 }

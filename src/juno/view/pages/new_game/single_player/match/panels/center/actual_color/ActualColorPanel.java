@@ -39,13 +39,12 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * This class defines the actual color panel.
  * @author Simone Gentili
  */
 public class ActualColorPanel
         extends JPanel
-        implements
-        Observer,
-        Restorable {
+        implements Observer, Restorable {
 
     // The ActualColorPanel instance.
     private static ActualColorPanel instance;

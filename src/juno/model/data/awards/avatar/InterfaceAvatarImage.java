@@ -28,6 +28,7 @@ package juno.model.data.awards.avatar;
 import juno.model.data.awards.InterfaceAward;
 
 /**
+ * This interface avatar image defines
  * @author Simone Gentili
  */
 public interface InterfaceAvatarImage

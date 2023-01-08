@@ -28,6 +28,7 @@ package juno.model.data.profile.profile;
 import juno.model.util.Provider;
 
 /**
+ * This class defines a profile name provider.
  * @author Simone Gentili
  */
 public class ProfileNameProvider

@@ -47,6 +47,7 @@ import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;
 
 /**
+ * This class defines a configurator.
  * @author Simone Gentili
  */
 public class MenuPanelConfigurator {
@@ -54,6 +55,7 @@ public class MenuPanelConfigurator {
     // Builds the MenuPanelConfigurator object.
     private MenuPanelConfigurator() {}
 
+    /** Configures the MenuPanel instance. */
     public static void configure() {
         // Main component.
         MenuPanel menuPanel = MenuPanel.getInstance();

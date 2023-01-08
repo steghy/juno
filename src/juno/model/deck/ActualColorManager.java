@@ -34,6 +34,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * This class defines an acutal color manager
  * @author Simone Gentili
  */
 public class ActualColorManager

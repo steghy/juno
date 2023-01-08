@@ -29,7 +29,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * This class defines abstract deck user.
  * @author Simone Gentili
+ * @param <T> the type of the card.
  */
 public abstract class AbstractDeckUser<T> {
 

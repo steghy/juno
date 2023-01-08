@@ -29,6 +29,7 @@ import juno.view.pages.pre_access.welcome.menu.MenuPanel;
 import juno.view.pages.pre_access.welcome.title.TitlePanel;
 
 /**
+ * This class defines a configurator.
  * @author Simone Gentili
  */
 public class WelcomePanelConfigurator {

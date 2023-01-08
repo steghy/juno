@@ -26,11 +26,16 @@
 package juno.view.button;
 
 /**
+ * This interface defines simple button.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface InterfaceSimpleButton {
 
+    /**
+     * Returns true if this button is simple.
+     * @return A boolean value.
+     */
     boolean isSimpleButton();
 
 }

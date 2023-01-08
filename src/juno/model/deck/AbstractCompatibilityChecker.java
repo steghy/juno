@@ -30,6 +30,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * This abstract class defines abstract compatibility checker.
  * @author Simone Gentili
  * @param <T> The type of the cards.
  * @param <E> The type of the colors.
