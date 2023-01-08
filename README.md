@@ -1,6 +1,42 @@
-# juno
+J-UNO
+=======================================
+
+Introduction
+------------
+
+Some intruductions here
 
 
-Repository not ready.
-Just testing.
-![Screenshot from 2023-01-08 11-32-48](https://user-images.githubusercontent.com/101086867/211191727-97c73902-8d19-43df-b497-42c0382c42cc.png)
+Contents
+--------
+
+- [Intro](#intro)
+- [Installation](#installation)
+    - [Requirements](#requirements)
+    - [Linux](#linux)
+    - [macOS](#macos)
+    - [Windows](#windows)
+    - [FreeBSD/OpenBSD](#freebsdopenbsd)
+
+
+Intro
+-----
+
+This repository contains the university project of the Programming methodologies course.
+
+Installation
+------------
+#### Requirements
+Requirements stuff 
+
+#### Linux
+Installation stuff
+
+##### macOS 
+Installation stuff
+
+##### Windows
+Installation stuff
+
+#### FreeBSD/OpenBSD
+Installation stuff 
