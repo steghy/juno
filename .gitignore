@@ -1,12 +1,8 @@
 # dirs
 
 bin
-# videos
 relations
 logs/
-
-# eclipse stuff
-.settings
 
 # bkp from drawio
 *xml.bkp
@@ -15,3 +11,4 @@ logs/
 
 .classpath
 .project
+.idea
