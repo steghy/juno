@@ -3,6 +3,7 @@
 bin
 relations
 logs/
+ignore
 
 # bkp from drawio
 *xml.bkp
