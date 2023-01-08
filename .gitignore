@@ -4,6 +4,7 @@ bin
 relations
 logs/
 ignore
+out
 
 # bkp from drawio
 *xml.bkp
@@ -13,3 +14,4 @@ ignore
 .classpath
 .project
 .idea
+.gitignore
