@@ -1,17 +1,7 @@
-# dirs
-
 bin
-relations
-logs/
-ignore
+logs
 out
-
-# bkp from drawio
-*xml.bkp
-
-# files
-
+.jar
 .classpath
 .project
 .idea
-.gitignore
