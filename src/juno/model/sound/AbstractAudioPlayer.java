@@ -34,8 +34,8 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
-public abstract class GenericAudioPlayer
-        implements Playable, MuteableAudioPlayer, ActionListener {
+public abstract class AbstractAudioPlayer
+        implements MuteableAudioPlayer, ActionListener {
 
     // The timer.
     private Timer timer;

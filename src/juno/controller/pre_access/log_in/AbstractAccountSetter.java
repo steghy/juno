@@ -25,7 +25,7 @@
 
 package juno.controller.pre_access.log_in;
 
-import juno.model.data.goals.UnlockableAchievement;
+import juno.model.data.achievements.UnlockableAchievement;
 import juno.model.util.Setter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -34,6 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * This class defines abstract account setters.
  * @author Simone Gentili
  */
 public abstract class AbstractAccountSetter<T>
@@ -60,7 +61,7 @@ public abstract class AbstractAccountSetter<T>
      * Sets the achievement of this object.
      * @param achievement An UnlockableAchievement object.
      */
-    public void setRegistrationGoal(@NotNull UnlockableAchievement achievement) {
+    public void setAchievement(@NotNull UnlockableAchievement achievement) {
         this.achievement = achievement;
     }
 

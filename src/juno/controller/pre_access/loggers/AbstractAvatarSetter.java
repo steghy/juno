@@ -25,7 +25,7 @@
 
 package juno.controller.pre_access.loggers;
 
-import juno.model.data.awards.avatar.InterfaceAvatarImage;
+import juno.model.data.achievements.InterfaceAvatarImage;
 import juno.model.util.Setter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

@@ -23,22 +23,12 @@
  * SOFTWARE.
  */
 
-package juno.model.data.awards.avatar;
-
-import juno.model.data.goals.UnlockableAchievement;
+package juno.model.data.achievements;
 
 /**
- * This interface avatar image defines
+ * This interface defines unlockable awards.
  * @author Simone Gentili
  */
-public interface InterfaceAvatarImage
-        extends UnlockableAchievement {
-
-    /**
-     * Returns the name of this
-     * avatar object.
-     * @return A String object.
-     */
-    String name();
-
-}
+public interface UnlockableAchievement
+        extends Unlockable,
+        Achievement {}

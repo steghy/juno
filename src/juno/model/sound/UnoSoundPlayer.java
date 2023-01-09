@@ -30,7 +30,7 @@ package juno.model.sound;
  * @author Simone Gentili
  */
 public class UnoSoundPlayer
-        extends GenericAudioPlayer {
+        extends AbstractAudioPlayer {
 
     // The UnoSoundPlayer instance.
     private static UnoSoundPlayer instance;

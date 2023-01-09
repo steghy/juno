@@ -23,15 +23,14 @@
  * SOFTWARE.
  */
 
-package juno.model.data.awards;
+package juno.model.data.achievements;
 
 import juno.controller.util.InterfaceInitializer;
-import juno.model.data.awards.avatar.AvatarImage;
-import juno.model.data.goals.Objective;
-import juno.model.data.goals.RegistrationObjective;
+import juno.model.data.score.GamesWonCounter;
+import juno.model.data.score.LostGamesCounter;
 
 /**
- * this class defines an initializer.
+ * This class defines an initializer.
  * @author Simone Gentili
  */
 public class Initializer
@@ -40,7 +39,7 @@ public class Initializer
     // The Initializer instance.
     private static Initializer instance;
 
-    // Builds the Initializer instance.
+    // Builds an Initializer object.
     private Initializer() {}
 
     /**
@@ -54,8 +53,24 @@ public class Initializer
 
     @Override
     public void initialize() {
-        // Registration.
-        RegistrationObjective.getInstance().addObserver(AvatarImage.AVATAR_IMAGE_1);
+        // Components.
+        // GamesWonCounter.
+        GamesWonCounter gamesWonCounter = GamesWonCounter.getInstance();
+
+        // LostGamesCounter.
+        LostGamesCounter lostGamesCounter = LostGamesCounter.getInstance();
+
+        ////////////////////////////////////////////////////////////////////
+
+        // Observer / Observable connections.
+        // Games won goals case.
+        Objective.getGamesWonObjective().forEach(gamesWonCounter::addObserver);
+
+        // Lost games goals case.
+        Objective.getLostGamesObjective().forEach(lostGamesCounter::addObserver);
+
+        // Registration objective.
+        Objective.REGISTRATION.addObserver(AvatarImage.AVATAR_IMAGE_1);
 
         // First match won.
         Objective.FIRST_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_2);

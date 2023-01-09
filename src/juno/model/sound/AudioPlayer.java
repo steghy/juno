@@ -37,7 +37,7 @@ import java.util.List;
  * @author Simone Gentili
  */
 public class AudioPlayer
-		extends GenericAudioPlayer {
+		extends AbstractAudioPlayer {
 
 	// The files.
 	private final Donut<File> files;

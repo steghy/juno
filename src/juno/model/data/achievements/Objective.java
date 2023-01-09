@@ -23,7 +23,7 @@
  * SOFTWARE.
  */
 
-package juno.model.data.goals;
+package juno.model.data.achievements;
 
 import juno.model.data.score.InterfaceGamesWonCounter;
 import juno.model.data.score.InterfaceLostGamesCounter;
@@ -41,6 +41,9 @@ import java.util.stream.Stream;
  */
 public enum Objective
         implements UnlockableAchievement, Observable, Observer {
+
+    /** Registration objective. */
+    REGISTRATION(0),
 
     /** First match won. */
     FIRST_MATCH_WON(1),

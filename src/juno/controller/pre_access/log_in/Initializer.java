@@ -26,14 +26,14 @@
 package juno.controller.pre_access.log_in;
 
 import juno.controller.util.InterfaceInitializer;
+import juno.model.data.achievements.Objective;
 import juno.model.data.avatar.Avatar;
-import juno.model.data.goals.RegistrationObjective;
+import juno.model.data.io.ProgramDirectory;
 import juno.model.data.io.input.JSONDataImporter;
 import juno.model.data.io.input.configurable.Configurable;
 import juno.model.data.profile.profile.Profile;
 import juno.model.data.score.GamesWonCounter;
 import juno.model.data.score.LostGamesCounter;
-import juno.model.data.io.ProgramDirectory;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -92,7 +92,7 @@ public class Initializer
         // Account loader.
         accountSetter.setters().add(userDataSetter);
         accountSetter.setters().add(avatarUserDataSetter);
-        accountSetter.setRegistrationGoal(RegistrationObjective.getInstance());
+        accountSetter.setAchievement(Objective.REGISTRATION);
     }
 
 }

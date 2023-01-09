@@ -28,9 +28,9 @@ package juno.controller.pre_access.loggers;
 import juno.controller.pre_access.registration.RegistrationDataSelector;
 import juno.controller.util.InterfaceInitializer;
 import juno.controller.util.PanelChanger;
+import juno.model.data.achievements.AvatarImage;
+import juno.model.data.achievements.Objective;
 import juno.model.data.avatar.AvatarImageSetter;
-import juno.model.data.awards.avatar.AvatarImage;
-import juno.model.data.goals.RegistrationObjective;
 import juno.model.data.profile.profile.Profile;
 import juno.model.data.profile.profile.ProfileNameSetter;
 import juno.view.pages.card.TopCardPanel;
@@ -84,12 +84,12 @@ public class Initializer
         // Logger.
         logger.setPanelChanger(new PanelChanger(TopCardPanel.getInstance(), TopCardPanel.MAIN_PANEL));
         logger.setAvatarSetter(avatarSetter);
-        logger.setAchievement(RegistrationObjective.getInstance());
+        logger.setAchievement(Objective.REGISTRATION);
 
         // Guest logger..
         guestLogger.setPanelChanger(new PanelChanger(TopCardPanel.getInstance(), TopCardPanel.MAIN_PANEL));
         guestLogger.setAvatarSetter(avatarSetter);
-        guestLogger.setAchievement(RegistrationObjective.getInstance());
+        guestLogger.setAchievement(Objective.REGISTRATION);
         guestLogger.setGuestNameSetter(guestProfileNameSetter);
 
         // Registration message notifier.

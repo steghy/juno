@@ -26,9 +26,9 @@
 package juno.view.pages.score.avatar;
 
 import juno.controller.util.GSetterAction;
+import juno.model.data.achievements.AvatarImage;
+import juno.model.data.achievements.InterfaceAvatarImage;
 import juno.model.data.avatar.AvatarImageSetter;
-import juno.model.data.awards.avatar.AvatarImage;
-import juno.model.data.awards.avatar.InterfaceAvatarImage;
 import juno.view.gobject.avatars.GAvatarImage;
 import juno.view.gobject.avatars.GAvatarImageCreator;
 

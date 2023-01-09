@@ -25,12 +25,12 @@
 
 package juno.view.gobject.avatars;
 
+import juno.model.data.achievements.InterfaceAvatarImage;
 import juno.model.requester.InterfacePathProvider;
-import juno.model.data.awards.avatar.InterfaceAvatarImage;
+import juno.model.requester.InterfacePathProviderAssembler;
 import juno.view.gobject.AbstractGObjectCreator;
 import juno.view.gobject.InterfaceGObject;
 import juno.view.gobject.InterfaceGObjectCreator;
-import juno.model.requester.InterfacePathProviderAssembler;
 import juno.view.util.RotatedIcon;
 import org.jetbrains.annotations.NotNull;
 

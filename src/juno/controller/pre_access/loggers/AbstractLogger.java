@@ -26,13 +26,20 @@
 package juno.controller.pre_access.loggers;
 
 import juno.controller.util.AbstractChangePanelUser;
-import juno.model.data.goals.UnlockableAchievement;
+import juno.model.data.achievements.UnlockableAchievement;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * This class defines abstract loggers.
+ * @author Simone Gentili
+ */
 public abstract class AbstractLogger
         extends AbstractChangePanelUser
         implements InterfaceLogger {
+
+    /** Constructor. */
+    public AbstractLogger() {}
 
     // The registration goal.
     private UnlockableAchievement achievement;

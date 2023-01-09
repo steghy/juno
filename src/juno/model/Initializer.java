@@ -62,8 +62,7 @@ public class Initializer
         juno.model.data.io.input.Initializer.getInstance().initialize();
         juno.model.data.io.output.Initializer.getInstance().initialize();
         juno.model.data.avatar.Initializer.getInstance().initialize();
-        juno.model.data.goals.Initializer.getInstance().initialize();
-        juno.model.data.awards.Initializer.getInstance().initialize();
+        juno.model.data.achievements.Initializer.getInstance().initialize();
 
         // juno.model.subjects package.
         juno.model.subjects.factory.Initializer.getInstance().initialize();

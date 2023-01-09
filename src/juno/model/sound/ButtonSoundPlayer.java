@@ -30,7 +30,7 @@ package juno.model.sound;
  * @author Simone Gentili
  */
 public class ButtonSoundPlayer
-        extends GenericAudioPlayer {
+        extends AbstractAudioPlayer {
 
     // The ButtonSoundPlayer instance.
     private static ButtonSoundPlayer instance;

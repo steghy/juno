@@ -25,7 +25,7 @@
 
 package juno.view.gobject.avatars;
 
-import juno.model.data.awards.avatar.InterfaceAvatarImage;
+import juno.model.data.achievements.InterfaceAvatarImage;
 import juno.model.util.Observer;
 import juno.view.gobject.InterfaceGObject;
 import org.jetbrains.annotations.NotNull;

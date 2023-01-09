@@ -31,7 +31,7 @@ package juno.model.sound;
  * @author Simone Gentili
  */
 public class WelcomeSoundPlayer
-        extends GenericAudioPlayer {
+        extends AbstractAudioPlayer {
 
     // The WelcomeBackSoundPlayer instance.
     private static WelcomeSoundPlayer instance;

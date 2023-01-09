@@ -25,9 +25,16 @@
 
 package juno.controller.log_out;
 
+/**
+ * This interface defines account exiter.
+ * @author Simone Gentili
+ */
 @FunctionalInterface
 public interface InterfaceAccountExiter {
 
+    /**
+     * Log out of the currently logged in account.
+     */
     void logOut();
 
 }

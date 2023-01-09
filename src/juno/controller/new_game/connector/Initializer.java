@@ -27,7 +27,7 @@ package juno.controller.new_game.connector;
 
 import juno.controller.util.InterfaceInitializer;
 import juno.model.card.InterfaceCard;
-import juno.model.data.awards.avatar.AvatarImage;
+import juno.model.data.achievements.AvatarImage;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.factory.AiFactory;
 import juno.model.subjects.shift.CurrentPlayerProvider;

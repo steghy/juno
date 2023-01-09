@@ -23,18 +23,35 @@
  * SOFTWARE.
  */
 
-package juno.model.data.goals;
+package juno.model.data.achievements;
+
+import juno.controller.log_out.Restorable;
 
 /**
- * This interface defines unlockable objects.
+ * This class defines the ObjectiveRestorer.
  * @author Simone Gentili
  */
-@FunctionalInterface
-public interface Unlockable {
+public class ObjectiveRestorer
+        implements Restorable {
+
+    // The ObjectiveRestorer instance.
+    private static ObjectiveRestorer instance;
+
+    // Builds the ObjectiveRestorer instance.
+    private ObjectiveRestorer() {}
 
     /**
-     * Unlock this object.
+     * Returns the ObjectiveRestorer instance.
+     * @return The ObjectiveRestorer instance.
      */
-    void unlock();
+    public static ObjectiveRestorer getInstance() {
+        if(instance == null) instance = new ObjectiveRestorer();
+        return instance;
+    }
+
+    @Override
+    public void restore() {
+        Objective.getReachedObjective().forEach(Objective::lock);
+    }
 
 }

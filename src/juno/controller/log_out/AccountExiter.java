@@ -72,11 +72,17 @@ public class AccountExiter
         // Does not export data related to the
         // Guest account during the log-out phase.
         if(!profileName.equalsIgnoreCase(guest)) {
+
+            // Exporting user configuration data.
             Objects.requireNonNull(getExporterManager()).export(profileName);
+
+            // Updating user configuration data.
             Objects.requireNonNull(getRefresher()).refresh();
         }
+
         // Either way the recovery has to happen
-        Objects.requireNonNull(getRestorableList()).forEach(Restorable::restore);
+        Objects.requireNonNull(getRestorableList())
+                .forEach(Restorable::restore);
     }
 
 }

@@ -1,4 +1,4 @@
-package juno.model.data.goals;
+package juno.model.data.achievements;
 
 /**
  * This interface describes achievement.

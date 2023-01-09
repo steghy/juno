@@ -23,9 +23,8 @@
  * SOFTWARE.
  */
 
-package juno.model.data.awards.avatar;
+package juno.model.data.achievements;
 
-import juno.model.data.goals.UnlockableAchievement;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
@@ -91,6 +90,7 @@ public enum AvatarImage
         updateAll();
     }
 
+    // Lock this object.
     void lock() {
         unlock = false;
         updateAll();
@@ -113,8 +113,9 @@ public enum AvatarImage
 
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof UnlockableAchievement goal) {
-            if(goal.isUnlocked()) unlock();
+        // The update comes from Objective class.
+        if(object instanceof UnlockableAchievement achievement) {
+            if(achievement.isUnlocked()) unlock();
             else lock();
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +

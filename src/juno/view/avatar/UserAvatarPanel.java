@@ -25,10 +25,10 @@
 
 package juno.view.avatar;
 
+import juno.model.data.achievements.InterfaceAvatarImage;
 import juno.model.data.avatar.Avatar;
 import juno.model.data.avatar.AvatarImageSetter;
 import juno.model.data.avatar.AvatarNameSetter;
-import juno.model.data.awards.avatar.InterfaceAvatarImage;
 import juno.model.util.Observer;
 import juno.view.gobject.avatars.GAvatarImage;
 import juno.view.gobject.avatars.GAvatarImageCreator;

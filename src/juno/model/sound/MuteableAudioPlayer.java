@@ -30,7 +30,8 @@ package juno.model.sound;
  * that can be muted.
  * @author Simone Gentili
  */
-public interface MuteableAudioPlayer {
+public interface MuteableAudioPlayer
+        extends Playable{
 
     /** Mute this audio player. */
     void mute();

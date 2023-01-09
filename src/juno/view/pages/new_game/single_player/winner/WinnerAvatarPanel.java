@@ -27,7 +27,7 @@ package juno.view.pages.new_game.single_player.winner;
 
 import juno.controller.new_game.connector.AvatarConnector;
 import juno.controller.new_game.controller.WinnerManager;
-import juno.model.data.awards.avatar.InterfaceAvatarImage;
+import juno.model.data.achievements.InterfaceAvatarImage;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.shift.CurrentPlayerProvider;
 import juno.model.util.Observer;
