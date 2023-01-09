@@ -74,14 +74,17 @@ public class RConfigurationFilesProvider
 
     @Override
     public List<File> getConfigurationFiles(@NotNull Object object,
-                                            @NotNull String path) throws FileNotFoundException {
+                                            @NotNull String path)
+            throws FileNotFoundException {
         // Taking a copy of the object's data.
-        Map<String, Object> properties = Objects.requireNonNull(getCopier()).copy(object);
+        Map<String, Object> properties = Objects.requireNonNull(getCopier())
+                .copy(object);
         // Getting configurations files.
         List<File> configurationFiles = getFiles(object, path);
         // Attempt to restore the initial state of the object.
         try {
-            if(!properties.isEmpty()) Objects.requireNonNull(getConfigurator()).configure(object, properties);
+            if(!properties.isEmpty()) Objects.requireNonNull(getConfigurator())
+                    .configure(object, properties);
         } catch (IllegalAccessException |
                  NoSuchFieldException |
                  InvocationTargetException e) {
@@ -105,11 +108,14 @@ public class RConfigurationFilesProvider
             for(File file : Objects.requireNonNull(inputFile.listFiles())) {
                 if(file.isFile()) {
                     if(preliminaries(file) &&
-                            Objects.requireNonNull(getChecker()).areCompatible(object, file.getAbsolutePath()))
+                            Objects.requireNonNull(getChecker())
+                                    .areCompatible(object, file.getAbsolutePath()))
                         configurationFiles.add(file);
                 } else {
                     if(isRecursive()) {
-                        configurationFiles.addAll(getConfigurationFiles(object, file.getAbsolutePath()));
+                        configurationFiles.addAll(
+                                getConfigurationFiles(object,
+                                        file.getAbsolutePath()));
                     }
                 }
             }

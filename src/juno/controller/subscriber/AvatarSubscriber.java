@@ -55,10 +55,15 @@ public class AvatarSubscriber
 
     @Override
     public void update(@NotNull Object object) {
+        // The process of calculating the configuration
+        // files is finished.
         if(object instanceof Factory<?>)
             subscribe();
+        // The process of calculating the configuration
+        // files is about to start
         else if(object instanceof Refresher)
             unsubscribe();
+        // Invalid case.
         else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
                         ". Factory or Refresher type expected.");

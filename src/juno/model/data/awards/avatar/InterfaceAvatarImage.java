@@ -25,14 +25,14 @@
 
 package juno.model.data.awards.avatar;
 
-import juno.model.data.awards.InterfaceAward;
+import juno.model.data.goals.UnlockableAchievement;
 
 /**
  * This interface avatar image defines
  * @author Simone Gentili
  */
 public interface InterfaceAvatarImage
-        extends InterfaceAward {
+        extends UnlockableAchievement {
 
     /**
      * Returns the name of this

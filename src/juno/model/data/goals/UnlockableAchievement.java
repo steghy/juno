@@ -23,20 +23,12 @@
  * SOFTWARE.
  */
 
-package juno.model.data.awards;
+package juno.model.data.goals;
 
 /**
  * This interface defines unlockable awards.
  * @author Simone Gentili
  */
-public interface InterfaceAward
-        extends Unlockable {
-
-    /**
-     * Returns true if, and only if, this
-     * award is unlocked.
-     * @return A boolean value.
-     */
-    boolean isUnlock();
-
-}
+public interface UnlockableAchievement
+        extends Unlockable,
+        Achievement {}

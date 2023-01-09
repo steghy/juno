@@ -27,8 +27,8 @@ package juno.model.data.awards;
 
 import juno.controller.util.InterfaceInitializer;
 import juno.model.data.awards.avatar.AvatarImage;
-import juno.model.data.goals.Goal;
-import juno.model.data.goals.RegistrationGoal;
+import juno.model.data.goals.Objective;
+import juno.model.data.goals.RegistrationObjective;
 
 /**
  * this class defines an initializer.
@@ -55,31 +55,31 @@ public class Initializer
     @Override
     public void initialize() {
         // Registration.
-        RegistrationGoal.getInstance().addObserver(AvatarImage.AVATAR_IMAGE_1);
+        RegistrationObjective.getInstance().addObserver(AvatarImage.AVATAR_IMAGE_1);
 
         // First match won.
-        Goal.FIRST_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_2);
+        Objective.FIRST_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_2);
 
         // First match lose.
-        Goal.FIRST_MATCH_LOSE.addObserver(AvatarImage.AVATAR_IMAGE_3);
+        Objective.FIRST_MATCH_LOSE.addObserver(AvatarImage.AVATAR_IMAGE_3);
 
         // Ten match won.
-        Goal.TEN_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_4);
+        Objective.TEN_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_4);
 
         // Ten match lose.
-        Goal.TEN_MATCH_LOSE.addObserver(AvatarImage.AVATAR_IMAGE_5);
+        Objective.TEN_MATCH_LOSE.addObserver(AvatarImage.AVATAR_IMAGE_5);
 
         // Fifty match won.
-        Goal.FIFTY_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_6);
+        Objective.FIFTY_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_6);
 
         // Fifty match lose.
-        Goal.FIFTY_MATCH_LOSE.addObserver(AvatarImage.AVATAR_IMAGE_7);
+        Objective.FIFTY_MATCH_LOSE.addObserver(AvatarImage.AVATAR_IMAGE_7);
 
         // One hundred match won.
-        Goal.ONE_HUNDRED_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_8);
+        Objective.ONE_HUNDRED_MATCH_WON.addObserver(AvatarImage.AVATAR_IMAGE_8);
 
         // One hundred match lose.
-        Goal.ONE_HUNDRED_MATCH_LOSE.addObserver(AvatarImage.AVATAR_IMAGE_9);
+        Objective.ONE_HUNDRED_MATCH_LOSE.addObserver(AvatarImage.AVATAR_IMAGE_9);
     }
 
 }

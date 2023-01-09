@@ -25,13 +25,16 @@
 
 package juno.model.data.goals;
 
-import juno.model.data.awards.Unlockable;
+/**
+ * This interface defines unlockable objects.
+ * @author Simone Gentili
+ */
+@FunctionalInterface
+public interface Unlockable {
 
-public interface InterfaceGoal
-        extends Unlockable {
-
-    String name();
-
-    boolean isReached();
+    /**
+     * Unlock this object.
+     */
+    void unlock();
 
 }

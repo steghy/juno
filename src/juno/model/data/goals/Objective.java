@@ -36,11 +36,11 @@ import java.util.List;
 import java.util.stream.Stream;
 
 /**
- * This class defines the Goal objects.
+ * This class defines objectives objects.
  * @author Simone Gentili
  */
-public enum Goal
-        implements InterfaceGoal, Observable, Observer {
+public enum Objective
+        implements UnlockableAchievement, Observable, Observer {
 
     /** First match won. */
     FIRST_MATCH_WON(1),
@@ -82,11 +82,11 @@ public enum Goal
     private boolean unlock = false;
 
     /**
-     * Builds a Goal object with the
+     * Builds an Objective object with the
      * specified point limit.
      * @param points An integer value.
      */
-    Goal(int points) {
+    Objective(int points) {
         this.points = points;
         observerList = new ArrayList<>();
     }
@@ -106,7 +106,7 @@ public enum Goal
     }
 
     @Override
-    public boolean isReached() {
+    public boolean isUnlocked() {
         return unlock;
     }
 
@@ -130,13 +130,13 @@ public enum Goal
         // Games won counter.
         if(object instanceof InterfaceGamesWonCounter<?> gamesWonCounter) {
             int gamesWon = (int) gamesWonCounter.provide();
-            getUnreachedGoals(getGamesWonGoals()).forEach(goal -> goal.unlockIf(gamesWon));
+            getUnreachedObjective(getGamesWonObjective()).forEach(award -> award.unlockIf(gamesWon));
         }
 
         // Lost games counter.
         else if(object instanceof InterfaceLostGamesCounter<?> lostGamesCounter) {
             int lostGames = (int) lostGamesCounter.provide();
-            getUnreachedGoals(getLostGamesGoals()).forEach(goal -> goal.unlockIf(lostGames));
+            getUnreachedObjective(getLostGamesObjective()).forEach(award -> award.unlockIf(lostGames));
         }
 
         // Invalid case.
@@ -146,42 +146,42 @@ public enum Goal
     }
 
     /**
-     * Returns the unreached Goal objects within the specified
-     * List of Goal objects.
-     * @param goals A List object.
+     * Returns the unreached objective objects within the specified
+     * List of objective objects.
+     * @param objectives A List object.
      * @return A List object.
      */
-    public static List<Goal> getUnreachedGoals(@NotNull List<Goal> goals) {
-        return goals.stream().filter(goal -> !goal.isReached()).toList();
+    public static List<Objective> getUnreachedObjective(@NotNull List<Objective> objectives) {
+        return objectives.stream().filter(goal -> !goal.isUnlocked()).toList();
     }
 
     /**
-     * Returns the reached Goal objects of the Goal enum class.
+     * Returns the reached objective objects.
      * @return A List object.
      */
-    public static List<Goal> getReachedGoals() {
-        return Stream.of(Goal.values()).filter(Goal::isReached).toList();
+    public static List<Objective> getReachedObjective() {
+        return Stream.of(Objective.values()).filter(Objective::isUnlocked).toList();
     }
 
     /**
-     * Returns Goal objects that refer to games won.
+     * Returns the objective objects that refer to games won.
      * @return A List object.
      */
-    public static List<Goal> getGamesWonGoals() {
-        return Stream.of(Goal.values()).filter(goal -> goal.name().endsWith("WON")).toList();
+    public static List<Objective> getGamesWonObjective() {
+        return Stream.of(Objective.values()).filter(objective -> objective.name().endsWith("WON")).toList();
     }
 
     /**
-     * Returns Goal objects that refer to lost games.
+     * Returns the objective objects that refer to lost games.
      * @return A List object.
      */
-    public static List<Goal> getLostGamesGoals() {
-        return Stream.of(Goal.values()).filter(goal -> goal.name().endsWith("LOSE")).toList();
+    public static List<Objective> getLostGamesObjective() {
+        return Stream.of(Objective.values()).filter(objective -> objective.name().endsWith("LOSE")).toList();
     }
 
-     // Unlock this Goal object if the specified
+     // Unlock this objective object if the specified
      // integer is greater than or equals to the
-     // points of this Goal object.
+     // points of this objective object.
      // @param points An integer value.
     private void unlockIf(int points) {
         if(this.points == points) unlock();

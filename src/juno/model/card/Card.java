@@ -47,16 +47,6 @@ import org.jetbrains.annotations.Nullable;
 public record Card(InterfaceColor color, Integer value, InterfaceAction action)
         implements InterfaceCard, Comparable<InterfaceCard> {
 
-    /**
-     * Builds a Card object with the specified
-     * parameters.
-     *
-     * @param color  An InterfaceColor object.
-     * @param value  An Integer object.
-     * @param action An InterfaceAction object.
-     */
-    public Card {}
-
     @Override
     @Nullable
     public InterfaceAction action() {

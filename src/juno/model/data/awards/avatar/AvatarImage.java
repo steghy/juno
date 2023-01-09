@@ -25,7 +25,7 @@
 
 package juno.model.data.awards.avatar;
 
-import juno.model.data.goals.InterfaceGoal;
+import juno.model.data.goals.UnlockableAchievement;
 import juno.model.util.Observable;
 import juno.model.util.Observer;
 import org.jetbrains.annotations.NotNull;
@@ -79,7 +79,7 @@ public enum AvatarImage
     }
 
     @Override
-    public boolean isUnlock() {
+    public boolean isUnlocked() {
         return unlock;
     }
 
@@ -113,13 +113,12 @@ public enum AvatarImage
 
     @Override
     public void update(@NotNull Object object) {
-        if(object instanceof InterfaceGoal goal) {
-            if(goal.isReached()) unlock();
+        if(object instanceof UnlockableAchievement goal) {
+            if(goal.isUnlocked()) unlock();
             else lock();
-        }
-        else throw new IllegalArgumentException(
+        } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
-                        ". InterfaceGoal type expected.");
+                        ". UnlockableAchievement type expected.");
     }
 
 }

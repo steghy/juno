@@ -26,7 +26,7 @@
 package juno.controller.pre_access.loggers;
 
 import juno.controller.util.AbstractChangePanelUser;
-import juno.model.data.goals.InterfaceGoal;
+import juno.model.data.goals.UnlockableAchievement;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -35,17 +35,17 @@ public abstract class AbstractLogger
         implements InterfaceLogger {
 
     // The registration goal.
-    private InterfaceGoal registrationGoal;
+    private UnlockableAchievement achievement;
 
     // The avatar setter.
     private InterfaceAvatarSetter avatarSetter;
 
     /**
-     * Sets the registration goal of this object.
-     * @param registrationGoal An InterfaceGoal object.
+     * Sets the achievement of this object.
+     * @param achievement An UnlockableAchievement object.
      */
-    public void setRegistrationGoal(@NotNull InterfaceGoal registrationGoal) {
-        this.registrationGoal = registrationGoal;
+    public void setAchievement(@NotNull UnlockableAchievement achievement) {
+        this.achievement = achievement;
     }
 
     /**
@@ -57,12 +57,12 @@ public abstract class AbstractLogger
     }
 
     /**
-     * Returns the registration goal of this object.
-     * @return An InterfaceGoal object.
+     * Returns the achievement of this object.
+     * @return An UnlockableAchievement object.
      */
     @Nullable
-    public InterfaceGoal getRegistrationGoal() {
-        return registrationGoal;
+    public UnlockableAchievement getAchievement() {
+        return achievement;
     }
 
     /**

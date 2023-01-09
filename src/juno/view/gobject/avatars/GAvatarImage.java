@@ -56,7 +56,7 @@ public class GAvatarImage<T>
     @Override
     public void update(Object object) {
         if(object instanceof InterfaceAvatarImage avatarImage) {
-            setEnabled(avatarImage.isUnlock());
+            setEnabled(avatarImage.isUnlocked());
         }
     }
 

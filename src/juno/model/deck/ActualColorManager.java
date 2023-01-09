@@ -75,8 +75,7 @@ public class ActualColorManager
         if(object instanceof InterfaceDiscardedPile<?> provider) {
             Object temp = provider.provide();
             if(temp instanceof InterfaceCard card) {
-                if(card.color() != null)
-                    set(card.color());
+                if(card.color() != null) set(card.color());
             } else throw new IllegalArgumentException(
                     "Invalid object type: " + temp.getClass() +
                             ". InterfaceCard type expected.");

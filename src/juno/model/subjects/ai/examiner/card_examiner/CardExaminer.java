@@ -63,7 +63,7 @@ public class CardExaminer<T>
                 .getCompatibleCards(cards);
 
         // Empty compatible cards case.
-        if(compatibleCards.size() == 0) return null;
+        if(compatibleCards.isEmpty()) return null;
 
         // Easy difficulty case.
         if(difficulty.isEasy()) return Objects.requireNonNull(getEasyExaminer())

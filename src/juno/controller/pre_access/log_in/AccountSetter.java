@@ -53,7 +53,7 @@ public class AccountSetter
 
     @Override
     public void set(@NotNull String name) {
-        Objects.requireNonNull(getRegistrationGoal()).unlock();
+        Objects.requireNonNull(getAchievement()).unlock();
         for(int i = 0; i < setters().size(); i++)
             setters().get(i).set(name);
     }

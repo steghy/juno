@@ -26,48 +26,32 @@
 package juno.model.data.goals;
 
 import juno.controller.log_out.Restorable;
-import juno.model.util.AbstractObservable;
-import juno.model.util.Observable;
 
-public class RegistrationGoal
-        extends AbstractObservable
-        implements InterfaceGoal, Observable, Restorable {
+/**
+ * This class defines the Goal class restorer.
+ * @author Simone Gentili
+ */
+public class GoalRestorer
+        implements Restorable {
 
-    private boolean unlock;
+    // The GaolRestorer instance.
+    private static GoalRestorer instance;
 
-    private static RegistrationGoal instance;
+    // Builds the GoalRestorer instance.
+    private GoalRestorer() {}
 
-    private RegistrationGoal() {
-        unlock = false;
-    }
-
-    public static RegistrationGoal getInstance() {
-        if(instance == null) instance = new RegistrationGoal();
+    /**
+     * Returns the GoalRestorer instance.
+     * @return The GoalRestorer instance.
+     */
+    public static GoalRestorer getInstance() {
+        if(instance == null) instance = new GoalRestorer();
         return instance;
     }
 
     @Override
-    public void unlock() {
-        if(unlock) throw new IllegalArgumentException(
-                "Registration goal is already unlocked.");
-        unlock = true;
-        updateAll();
-    }
-
-    @Override
-    public String name() {
-        return "REGISTRATION_GOAL";
-    }
-
-    @Override
-    public boolean isReached() {
-        return unlock;
-    }
-
-    @Override
     public void restore() {
-        unlock = false;
-        updateAll();
+        Objective.getReachedObjective().forEach(Objective::lock);
     }
 
 }

@@ -23,18 +23,49 @@
  * SOFTWARE.
  */
 
-package juno.model.data.awards;
+package juno.model.data.goals;
+
+import juno.controller.log_out.Restorable;
+import juno.model.util.AbstractObservable;
+import juno.model.util.Observable;
 
 /**
- * This interface defines unlockable objects.
  * @author Simone Gentili
  */
-@FunctionalInterface
-public interface Unlockable {
+public class RegistrationObjective
+        extends AbstractObservable
+        implements UnlockableAchievement, Observable, Restorable {
 
-    /**
-     * Unlock this object.
-     */
-    void unlock();
+    private boolean unlock;
+
+    private static RegistrationObjective instance;
+
+    private RegistrationObjective() {
+        unlock = false;
+    }
+
+    public static RegistrationObjective getInstance() {
+        if(instance == null) instance = new RegistrationObjective();
+        return instance;
+    }
+
+    @Override
+    public void unlock() {
+        if(unlock) throw new IllegalArgumentException(
+                "Registration goal is already unlocked.");
+        unlock = true;
+        updateAll();
+    }
+
+    @Override
+    public boolean isUnlocked() {
+        return unlock;
+    }
+
+    @Override
+    public void restore() {
+        unlock = false;
+        updateAll();
+    }
 
 }

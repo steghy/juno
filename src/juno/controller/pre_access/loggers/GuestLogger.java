@@ -60,7 +60,7 @@ public class GuestLogger
     @Override
     public void logIn() {
         Objects.requireNonNull(getGuestNameSetter()).setGuestProfileName();
-        Objects.requireNonNull(getRegistrationGoal()).unlock();
+        Objects.requireNonNull(getAchievement()).unlock();
         Objects.requireNonNull(getAvatarSetter()).setAvatar();
         Objects.requireNonNull(getPanelChanger()).changePanel();
     }

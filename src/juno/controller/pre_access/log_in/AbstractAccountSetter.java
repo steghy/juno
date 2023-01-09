@@ -25,7 +25,7 @@
 
 package juno.controller.pre_access.log_in;
 
-import juno.model.data.goals.InterfaceGoal;
+import juno.model.data.goals.UnlockableAchievement;
 import juno.model.util.Setter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -45,8 +45,8 @@ public abstract class AbstractAccountSetter<T>
     // The setters list.
     private final List<Setter<T>> setters = new ArrayList<>();
 
-    // The Registration goal.
-    private InterfaceGoal registrationGoal;
+    // The achievement.
+    private UnlockableAchievement achievement;
 
     /**
      * Returns a list of setter objects.
@@ -57,20 +57,20 @@ public abstract class AbstractAccountSetter<T>
     }
 
     /**
-     * Sets the registration goal of this object.
-     * @param registrationGoal An InterfaceGoal object.
+     * Sets the achievement of this object.
+     * @param achievement An UnlockableAchievement object.
      */
-    public void setRegistrationGoal(@NotNull InterfaceGoal registrationGoal) {
-        this.registrationGoal = registrationGoal;
+    public void setRegistrationGoal(@NotNull UnlockableAchievement achievement) {
+        this.achievement = achievement;
     }
 
     /**
-     * Returns the registration goals of this object.
-     * @return An InterfaceGoal object.
+     * Returns the achievement of this object.
+     * @return An UnlockableAchievement object.
      */
     @Nullable
-    public InterfaceGoal getRegistrationGoal() {
-        return registrationGoal;
+    public UnlockableAchievement getAchievement() {
+        return achievement;
     }
 
 }

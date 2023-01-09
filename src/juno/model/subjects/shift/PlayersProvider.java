@@ -86,14 +86,15 @@ public class PlayersProvider<T>
     @Override
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
+        // The update comes from the AiFactory
         if(object instanceof Provider<?> provider) {
             players = new Donut<>();
             players.addAll((Collection<? extends T>) provider.provide());
-            players.add(Objects.requireNonNull(getPlayer()));
+            players.add(Objects.requireNonNull(getPlayer())); // Human player.
             updateAll();
         } else throw new IllegalArgumentException(
                 "Invalid Subject type: " + object.getClass() +
-                    ". InterfaceAiPlayerFactory expected.");
+                    ". Provider type expected.");
     }
 
 }

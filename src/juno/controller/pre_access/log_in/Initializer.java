@@ -27,7 +27,7 @@ package juno.controller.pre_access.log_in;
 
 import juno.controller.util.InterfaceInitializer;
 import juno.model.data.avatar.Avatar;
-import juno.model.data.goals.RegistrationGoal;
+import juno.model.data.goals.RegistrationObjective;
 import juno.model.data.io.input.JSONDataImporter;
 import juno.model.data.io.input.configurable.Configurable;
 import juno.model.data.profile.profile.Profile;
@@ -92,7 +92,7 @@ public class Initializer
         // Account loader.
         accountSetter.setters().add(userDataSetter);
         accountSetter.setters().add(avatarUserDataSetter);
-        accountSetter.setRegistrationGoal(RegistrationGoal.getInstance());
+        accountSetter.setRegistrationGoal(RegistrationObjective.getInstance());
     }
 
 }

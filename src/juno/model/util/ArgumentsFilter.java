@@ -61,8 +61,9 @@ public class ArgumentsFilter {
 	 * @return A Map object.
 	 * @param <T> The type of the values.
 	 */
-	public static <T> Map<String, Optional<Object>> filter(@NotNull Map<String, T> from,
-														   @NotNull Map<String, Optional<Object>> source) {
+	public static <T> Map<String, Optional<Object>> filter(
+			@NotNull Map<String, T> from,
+			@NotNull Map<String, Optional<Object>> source) {
 		return source.keySet()
 					.stream()
 					.filter(from::containsKey)

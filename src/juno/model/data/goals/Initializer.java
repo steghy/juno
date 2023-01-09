@@ -64,10 +64,10 @@ public class Initializer
 
         // Observer / Observable connections.
         // Games won goals case.
-        Goal.getGamesWonGoals().forEach(gamesWonCounter::addObserver);
+        Objective.getGamesWonObjective().forEach(gamesWonCounter::addObserver);
 
         // Lost games goals case.
-        Goal.getLostGamesGoals().forEach(lostGamesCounter::addObserver);
+        Objective.getLostGamesObjective().forEach(lostGamesCounter::addObserver);
 
     }
 
