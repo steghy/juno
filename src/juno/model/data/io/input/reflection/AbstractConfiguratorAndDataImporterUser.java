@@ -38,7 +38,7 @@ import org.jetbrains.annotations.Nullable;
 public abstract class AbstractConfiguratorAndDataImporterUser
         extends AbstractDataImporterUser {
     
-    private AbstractConfiguratorAndDataImporterUser() {}
+    public AbstractConfiguratorAndDataImporterUser() {}
     
     /* The configurator. */
     private InterfaceConfigurator configurator;

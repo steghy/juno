@@ -39,6 +39,9 @@ public abstract class AbstractExporterManager<T, E>
         extends AbstractDataExporterUser
         implements InterfaceExporterManager<T> {
 
+    /** Constructor. */
+    public AbstractExporterManager() {}
+
     // The path map builder.
     private InterfacePathMapBuilder<E> mapBuilder;
 

@@ -60,6 +60,7 @@ public class Deck<T>
 
     /* Builds the Deck instance. */
     private Deck() {
+        super();
         observerList = new ArrayList<>();
     }
 

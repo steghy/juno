@@ -37,7 +37,9 @@ public class GamesWonCounter
     private static GamesWonCounter instance;
 
     // Builds the GamesWonCounter instance.
-    private GamesWonCounter() {}
+    private GamesWonCounter() {
+        super();
+    }
 
     /**
      * Returns the GamesWonCounter instance.

@@ -38,7 +38,7 @@ public abstract class AbstractEighthComponent
         extends AbstractSeventhComponent {
 
     /** Constructor. */
-    private AbstractEighthComponent() {}
+    public AbstractEighthComponent() {}
 
     // The eighth component.
     private Component eighthComponent;

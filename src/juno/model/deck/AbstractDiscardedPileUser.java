@@ -36,7 +36,7 @@ import org.jetbrains.annotations.Nullable;
 public abstract class AbstractDiscardedPileUser<T> {
 
     /** Constructor. */
-    private AbstractDiscardedPileUser() {}
+    public AbstractDiscardedPileUser() {}
 
     // The Discarded pile.
     private InterfaceDiscardedPile<T> discardedPile;

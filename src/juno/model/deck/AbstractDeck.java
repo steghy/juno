@@ -39,7 +39,7 @@ public abstract class AbstractDeck<T>
         extends Stack<T> implements InterfaceDeck<T> {
 
     /** Constructor. */
-    private AbstractDeck() {}
+    public AbstractDeck() {}
 
     // The Deck filler.
     private InterfaceDeckFiller<T> filler;

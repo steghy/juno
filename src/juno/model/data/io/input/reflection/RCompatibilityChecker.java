@@ -57,7 +57,9 @@ public class RCompatibilityChecker
     private static RCompatibilityChecker instance;
 
     /** Builds the CompatibilityChecker instance. */
-    private RCompatibilityChecker() {}
+    private RCompatibilityChecker() {
+        super();
+    }
 
     /**
      * Returns the CompatibilityChecker instance.

@@ -35,7 +35,7 @@ import org.jetbrains.annotations.Nullable;
 public abstract class AbstractErrorNotifier {
 
     /** Constructor. */
-    private AbstractErrorNotifier() {}
+    public AbstractErrorNotifier() {}
 
     // The data line provider.
     private InterfaceDataLineProvider dataLineProvider;

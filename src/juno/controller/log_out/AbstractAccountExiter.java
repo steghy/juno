@@ -43,7 +43,7 @@ public abstract class AbstractAccountExiter<T>
         implements InterfaceAccountExiter {
 
     /** Constructor */
-    private AbstractAccountExiter() {}
+    public AbstractAccountExiter() {}
 
     // The restorable.
     private final List<Restorable> restorableList = new ArrayList<>();

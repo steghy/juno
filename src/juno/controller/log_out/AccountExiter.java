@@ -43,7 +43,9 @@ public class AccountExiter
     private static AccountExiter instance;
 
     // Builds the account exiter.
-    private AccountExiter() {}
+    private AccountExiter() {
+        super();
+    }
 
     /**
      * Returns the AccountExiter instance.
