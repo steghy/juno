@@ -47,6 +47,7 @@ import java.awt.*;
 import java.util.Objects;
 
 /**
+ * This class defines a configurator.
  * @author Simone Gentili
  */
 public class MenuPanelConfigurator {

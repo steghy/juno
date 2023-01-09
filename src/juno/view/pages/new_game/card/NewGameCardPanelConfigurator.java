@@ -30,6 +30,7 @@ import juno.view.pages.new_game.multiplayer.card.MultiplayerCardPanel;
 import juno.view.pages.new_game.single_player.card.SinglePlayerCardPanel;
 
 /**
+ * This class defines a configurator.
  * @author Simone Gentili
  */
 public class NewGameCardPanelConfigurator {

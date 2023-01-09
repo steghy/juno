@@ -34,6 +34,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
+ * This class defines a requester.
  * @author Simone Gentili
  */
 public class Requester

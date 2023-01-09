@@ -49,6 +49,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
+ * This class defines an initializer.
  * @author Simone Gentili
  */
 public class Initializer

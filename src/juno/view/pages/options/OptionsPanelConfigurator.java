@@ -31,6 +31,7 @@ import juno.view.pages.options.title.TitlePanel;
 import javax.swing.*;
 
 /**
+ * This class defines a configurator.
  * @author Simone Gentili
  */
 public class OptionsPanelConfigurator {
@@ -38,6 +39,7 @@ public class OptionsPanelConfigurator {
     // Builds the OptionsPanelConfigurator object.
     private OptionsPanelConfigurator() {}
 
+    /** Configures the OptionsPanel instance. */
     public static void configure() {
         // Main component.
         OptionsPanel optionsPanel = OptionsPanel.getInstance();

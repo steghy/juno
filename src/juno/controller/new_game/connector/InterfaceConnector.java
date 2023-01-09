@@ -27,8 +27,18 @@ package juno.controller.new_game.connector;
 
 import java.util.List;
 
+/**
+ * This interface defines connectors.
+ * @param <T> The type of the involved objects.
+ */
 public interface InterfaceConnector<T> {
 
+    /**
+     * Connects the encapsulated objects
+     * with the specified objects contained
+     * within the List object.
+     * @param list A List object.
+     */
     void connect(List<T> list);
 
 }

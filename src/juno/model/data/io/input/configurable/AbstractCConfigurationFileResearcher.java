@@ -39,6 +39,9 @@ import java.util.List;
 public abstract class AbstractCConfigurationFileResearcher
         extends AbstractCCompatibilityCheckerAndCopierUser {
 
+    /** Constructor. */
+    public AbstractCConfigurationFileResearcher() {}
+
     // The recursive value.
     private boolean recursive;
 

@@ -29,6 +29,7 @@ import juno.view.pages.new_game.menu.MenuPanel;
 import juno.view.pages.new_game.title.TitlePanel;
 
 /**
+ * This class defines a configurator.
  * @author Simone Gentili
  */
 public class NewGamePanelConfigurator {

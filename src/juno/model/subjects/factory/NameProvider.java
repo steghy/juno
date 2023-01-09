@@ -33,6 +33,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
+ * This class defines a name provider.
  * @author Simone Gentili
  */
 public class NameProvider

@@ -29,13 +29,20 @@ import java.io.IOException;
 import java.net.URL;
 
 /**
+ * This interface defines downloader.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface InterfaceDownloader {
 
+    /**
+     * Download the file specified by the URL object
+     * and memorized it within the specified path.
+     * @param url A URL Object.
+     * @param path A String object.
+     * @throws IOException
+     */
     void download(URL url,
-                  String path)
-            throws IOException;
+                  String path) throws IOException;
 
 }

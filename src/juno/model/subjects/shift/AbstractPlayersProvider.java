@@ -29,6 +29,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * This abstract class defines an
+ * abstract player provider.
  * @author Simone Gentili
  * @param <T> The type of the player
  */

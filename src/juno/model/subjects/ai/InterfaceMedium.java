@@ -26,6 +26,7 @@
 package juno.model.subjects.ai;
 
 /**
+ * This interface defines the medium difficulty
  * @author Simone Gentili
  */
 @FunctionalInterface

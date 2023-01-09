@@ -29,6 +29,7 @@ import java.io.IOException;
 import java.net.URL;
 
 /**
+ * This class defines an internet connectivity checker.
  * @author Simone Gentili
  */
 public class InternetConnectivityChecker

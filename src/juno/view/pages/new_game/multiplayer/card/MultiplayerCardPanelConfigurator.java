@@ -29,6 +29,7 @@ import juno.view.pages.new_game.multiplayer.available.AvailableServicePanel;
 import juno.view.pages.new_game.multiplayer.unavailable.UnavailableServicePanel;
 
 /**
+ * This class defines a configurator.
  * @author Simone Gentili
  */
 public class MultiplayerCardPanelConfigurator {

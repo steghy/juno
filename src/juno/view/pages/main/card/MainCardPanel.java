@@ -30,6 +30,7 @@ import java.awt.*;
 import java.util.Objects;
 
 /**
+ * This class defines the main card panel.
  * @author Simone Gentili
  */
 public class MainCardPanel

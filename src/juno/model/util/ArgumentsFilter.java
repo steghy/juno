@@ -32,8 +32,18 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * This class defines an arguments filter.
+ * @author Simone Gentili
+ */
 public class ArgumentsFilter {
-	
+
+	/**
+	 * Filter the specified Collection.
+	 * @param from A Collection object.
+	 * @param source A Map object.
+	 * @return A Map object.
+	 */
 	public static Map<String, Optional<Object>> filter(@NotNull Collection<String> from,
 													   @NotNull Map<String, Optional<Object>> source) {
 		return source.keySet()
@@ -43,7 +53,14 @@ public class ArgumentsFilter {
 							k -> k,
 							source::get));
 	}
-	
+
+	/**
+	 * Returns a Map object.
+	 * @param from A Map object.
+	 * @param source A Map object.
+	 * @return A Map object.
+	 * @param <T> The type of the values.
+	 */
 	public static <T> Map<String, Optional<Object>> filter(@NotNull Map<String, T> from,
 														   @NotNull Map<String, Optional<Object>> source) {
 		return source.keySet()

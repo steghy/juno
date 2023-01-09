@@ -26,7 +26,6 @@
 package juno.model.data.io.input.reflection;
 
 import juno.model.data.io.input.AbstractDataImporterUser;
-import juno.model.data.io.input.AbstractImporterAndCopierUser;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -38,7 +37,9 @@ import org.jetbrains.annotations.Nullable;
  */
 public abstract class AbstractConfiguratorAndDataImporterUser
         extends AbstractDataImporterUser {
-
+    
+    private AbstractConfiguratorAndDataImporterUser() {}
+    
     /* The configurator. */
     private InterfaceConfigurator configurator;
 

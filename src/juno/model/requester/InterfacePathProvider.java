@@ -26,6 +26,7 @@
 package juno.model.requester;
 
 /**
+ * This class defines path providers.
  * @author Simone Gentili
  */
 public interface InterfacePathProvider

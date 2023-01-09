@@ -26,6 +26,7 @@
 package juno.model.data.profile;
 
 /**
+ * This interface defines errors decorators.
  * @author Simone Gentili
  */
 public interface InterfaceErrorDecorator

@@ -25,9 +25,16 @@
 
 package juno.model.data.awards;
 
+/**
+ * This interface defines unlockable objects.
+ * @author Simone Gentili
+ */
 @FunctionalInterface
 public interface Unlockable {
 
+    /**
+     * Unlock this object.
+     */
     void unlock();
 
 }

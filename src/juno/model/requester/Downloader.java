@@ -33,6 +33,7 @@ import java.io.IOException;
 import java.net.URL;
 
 /**
+ * This class defines  a downloader.
  * @author Simone Gentili
  */
 public class Downloader

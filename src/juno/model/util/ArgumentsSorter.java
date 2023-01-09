@@ -32,16 +32,25 @@ import java.util.Map;
 import java.util.Optional;
 
 /**
+ * This class defines an argument sorter.
  * @author Simone Gentili
  */
 public class ArgumentsSorter {
-	
+
+	/** The extended option char. */
 	public static final String EXTENDED_OPT = "--";
+
+	/** The contracted option char. */
 	public static final String CONTRACTED_OPT = "-";
 
 	// Builds an ArgumentsSorter object.
 	private ArgumentsSorter() {}
 
+	/**
+	 * Returns the arguments ordered within the specified array of String objects.
+	 * @param args An array object.
+	 * @return A Map object.
+	 */
 	@NotNull
 	public static Map<String, Optional<Object>> getArguments(@NotNull String[] args) {
 		Map<String, Optional<Object>> optionArguments = new HashMap<>();
@@ -67,4 +76,5 @@ public class ArgumentsSorter {
 			}
 		} return optionArguments;
 	}
+
 }

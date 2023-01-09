@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * This class defines a stopper
  * @author Simone Gentili
  */
 public class Stopper

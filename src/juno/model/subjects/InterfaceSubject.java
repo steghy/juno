@@ -26,6 +26,7 @@
 package juno.model.subjects;
 
 /**
+ * This interface defines a subject.
  * @author Simone Gentili
  */
 @FunctionalInterface

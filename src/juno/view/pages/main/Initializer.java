@@ -31,6 +31,7 @@ import juno.view.pages.main.menu.MenuPanelConfigurator;
 import juno.view.pages.main.title.TitlePanelConfigurator;
 
 /**
+ * This class defines an initializer.
  * @author Simone Gentili
  */
 public class Initializer

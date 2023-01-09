@@ -67,7 +67,6 @@ public class JUno {
             // Audio player.
             AudioPlayer.getInstance().play();
 
-
             ButtonSoundPlayer.getInstance().mute();
 
             // Fullscreen mode.
@@ -83,6 +82,7 @@ public class JUno {
             e.printStackTrace();
 
             StringBuilder b = new StringBuilder();
+
             Arrays.stream(e.getStackTrace()).forEach(l -> b.append(l).append("\n"));
 
             JOptionPane.showMessageDialog(

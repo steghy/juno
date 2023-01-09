@@ -26,11 +26,17 @@
 package juno.model.requester;
 
 /**
+ * This interface defines internet connectivity checkers.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface InterfaceInternetConnectivityChecker {
 
+    /**
+     * Returns true if it's possibly established
+     * an internet connection.
+     * @return A boolean value.
+     */
     boolean isConnected();
 
 }

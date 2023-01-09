@@ -33,6 +33,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 /**
+ * This class defines the current player provider.
  * @author Simone Gentili
  * @param <T> The type of the players.
  */

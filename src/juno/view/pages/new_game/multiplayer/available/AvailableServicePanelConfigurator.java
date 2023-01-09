@@ -26,6 +26,7 @@
 package juno.view.pages.new_game.multiplayer.available;
 
 /**
+ * This class defines a configurator.
  * @author Simone Gentili
  */
 public class AvailableServicePanelConfigurator {
@@ -33,6 +34,9 @@ public class AvailableServicePanelConfigurator {
     // Builds a AvailableServicePanelConfigurator object.
     private AvailableServicePanelConfigurator() {}
 
+    /**
+     * Configures the AvailableServicePanel instance.
+     */
     public static void configure() {}
 
 }

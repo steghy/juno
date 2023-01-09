@@ -30,6 +30,8 @@ import org.jetbrains.annotations.Nullable;
 import java.awt.*;
 
 /**
+ * This abstract class defines a panel with
+ * nine components.
  * @author Simone Gentili
  */
 public abstract class AbstractNinthComponent

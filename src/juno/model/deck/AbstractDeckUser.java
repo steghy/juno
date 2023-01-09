@@ -35,6 +35,9 @@ import org.jetbrains.annotations.Nullable;
  */
 public abstract class AbstractDeckUser<T> {
 
+    /** Constructor */
+    public AbstractDeckUser() {}
+
     // The deck.
     private InterfaceDeck<T> deck;
 

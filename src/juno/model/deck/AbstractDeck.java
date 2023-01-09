@@ -38,6 +38,9 @@ import java.util.Stack;
 public abstract class AbstractDeck<T>
         extends Stack<T> implements InterfaceDeck<T> {
 
+    /** Constructor. */
+    private AbstractDeck() {}
+
     // The Deck filler.
     private InterfaceDeckFiller<T> filler;
 

@@ -35,6 +35,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
+ * This class defines a players provider.
  * @author Simone Gentili
  * @param <T> The type of the players.
  */

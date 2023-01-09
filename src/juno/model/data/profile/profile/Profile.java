@@ -35,6 +35,7 @@ import java.util.*;
 
 
 /**
+ * This class defines a profile
  * @author Simone Gentili
  */
 public class Profile

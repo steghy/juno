@@ -39,6 +39,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
+ * This class defines a menu panel.
  * @author Simone Gentili
  */
 public class MenuPanel

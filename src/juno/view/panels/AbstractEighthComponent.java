@@ -25,16 +25,20 @@
 
 package juno.view.panels;
 
-import juno.view.panels.AbstractSeventhComponent;
 import org.jetbrains.annotations.Nullable;
 
 import java.awt.*;
 
 /**
+ * This abstract class defines an abstract panel
+ * with eight components.
  * @author Simone Gentili
  */
 public abstract class AbstractEighthComponent
         extends AbstractSeventhComponent {
+
+    /** Constructor. */
+    private AbstractEighthComponent() {}
 
     // The eighth component.
     private Component eighthComponent;

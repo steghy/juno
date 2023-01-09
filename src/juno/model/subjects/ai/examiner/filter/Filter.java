@@ -31,6 +31,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 /**
+ * This class defines a filter.
  * @author Simone Gentili
  */
 public class Filter

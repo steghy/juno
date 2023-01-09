@@ -26,11 +26,13 @@
 package juno.controller.pre_access.loggers;
 
 /**
+ * This interface defines avatar setters.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface InterfaceAvatarSetter {
 
+    /** Sets the avatar. */
     void setAvatar();
 
 }

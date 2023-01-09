@@ -31,6 +31,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * This abstract class defines abstract user data
+ * setter.
  * @author Simone Gentili
  * @param <T> The type of the object to set.
  * @param <E> The type of the map keys.
@@ -38,6 +40,9 @@ import org.jetbrains.annotations.Nullable;
 public abstract class AbstractUserDataSetter<T, E>
         extends AbstractDataImporterUser
         implements Setter<T> {
+
+    /** Constructor. */
+    public AbstractUserDataSetter() {}
 
     // The map builder.
     private InterfacePathMapBuilder<E> mapBuilder;

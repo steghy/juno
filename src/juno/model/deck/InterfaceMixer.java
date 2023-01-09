@@ -33,6 +33,7 @@ import java.util.List;
  * any data structure that implements the List
  * interface.
  * @author Simone Gentili
+ * @param <T> The type of the object to shuffle.
  */
 @FunctionalInterface
 public interface InterfaceMixer<T> {

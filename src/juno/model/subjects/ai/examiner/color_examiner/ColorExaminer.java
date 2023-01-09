@@ -34,6 +34,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.*;
 
 /**
+ * This class defines a color examiner.
  * @author Simone Gentili
  */
 public class ColorExaminer

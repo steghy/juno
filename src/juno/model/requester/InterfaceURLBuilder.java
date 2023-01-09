@@ -29,11 +29,20 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
+ * This interface defines URL builders.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface InterfaceURLBuilder {
 
+    /**
+     * Returns a URL object obtained
+     * from the specified String object.
+     * @param path A String object.
+     * @return A URL object.
+     * @throws MalformedURLException If the obtained URL object
+     *          with the specified String object is malformed.
+     */
     URL getURL(String path)
             throws MalformedURLException;
 

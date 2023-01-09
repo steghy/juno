@@ -42,6 +42,9 @@ public abstract class AbstractCardEffectActivator<T, E, C>
         extends AbstractDeckUser<T>
         implements InterfaceCardEffectActivator<T> {
 
+    /** Constructor. */
+    public AbstractCardEffectActivator() {}
+
     // The turn jumper.
     private InterfaceTurnMover turnJumper;
 

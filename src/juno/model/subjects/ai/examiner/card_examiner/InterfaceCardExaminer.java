@@ -30,6 +30,7 @@ import juno.model.subjects.ai.InterfaceDifficulty;
 import java.util.List;
 
 /**
+ * This interface defines a card examiner.
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
@@ -37,10 +38,10 @@ import java.util.List;
 public interface InterfaceCardExaminer<T> {
 
     /**
-     *
-     * @param items
-     * @param difficulty
-     * @return
+     * Returns the chosen card object.
+     * @param items A List object.
+     * @param difficulty An InterfaceDifficulty object.
+     * @return An Object.
      */
     T responseRelativeTo(List<T> items,
                          InterfaceDifficulty difficulty);

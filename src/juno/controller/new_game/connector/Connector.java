@@ -37,7 +37,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * This class defines a connector.
  * @author Simone Gentili
+ * @param <T> The type of the cards.
  */
 public class Connector<T>
         extends AbstractObservable

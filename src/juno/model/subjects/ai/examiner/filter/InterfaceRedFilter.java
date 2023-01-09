@@ -30,6 +30,7 @@ import java.util.List;
 /**
  * This interface defines a red cards filter.
  * @author Simone Gentili
+ * @param <T> The type of the cards.
  */
 @FunctionalInterface
 public interface InterfaceRedFilter<T> {

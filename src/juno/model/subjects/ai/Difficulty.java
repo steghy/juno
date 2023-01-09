@@ -26,6 +26,9 @@
 package juno.model.subjects.ai;
 
 /**
+ * This enum class contains
+ * three objects, one for each
+ * difficulty type.
  * @author Simone Gentili
  */
 public enum Difficulty

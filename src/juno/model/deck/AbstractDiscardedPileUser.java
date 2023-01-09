@@ -28,11 +28,15 @@ package juno.model.deck;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-/*
+/**
+ * This abstract class defines an abstract discarded pile user.
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
 public abstract class AbstractDiscardedPileUser<T> {
+
+    /** Constructor. */
+    private AbstractDiscardedPileUser() {}
 
     // The Discarded pile.
     private InterfaceDiscardedPile<T> discardedPile;

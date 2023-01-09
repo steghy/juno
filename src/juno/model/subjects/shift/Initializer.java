@@ -32,6 +32,7 @@ import juno.model.subjects.factory.AiFactory;
 import juno.model.subjects.human.HumanPlayer;
 
 /**
+ * This class defines an initializer.
  * @author Simone Gentili
  */
 public class Initializer

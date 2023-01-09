@@ -44,6 +44,9 @@ import java.util.Map;
 public abstract class AbstractCounter
         implements Counter<Integer>, Observable, Configurable, Exportable, Restorable {
 
+    /** Constructor. */
+    private AbstractCounter() {}
+
     /** The count key. */
     public static final String COUNT_KEY = "count";
 

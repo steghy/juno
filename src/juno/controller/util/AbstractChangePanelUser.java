@@ -34,6 +34,9 @@ import org.jetbrains.annotations.Nullable;
  */
 public abstract class AbstractChangePanelUser {
 
+    /** Constructor */
+    public AbstractChangePanelUser() {}
+
     // The panel changer.
     private InterfacePanelChanger panelChanger;
 

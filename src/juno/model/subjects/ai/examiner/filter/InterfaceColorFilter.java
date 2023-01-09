@@ -30,6 +30,7 @@ import java.util.List;
 /**
  * This interface defines color filter.
  * @author Simone Gentili
+ * @param <T> The type of the cards.
  */
 @FunctionalInterface
 public interface InterfaceColorFilter<T> {

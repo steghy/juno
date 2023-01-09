@@ -35,6 +35,7 @@ import juno.view.gobject.avatars.GAvatarImageCreator;
 import java.util.List;
 
 /**
+ * This class defines a configurator.
  * @author Simone Gentili
  */
 public class AvatarImagesPanelConfigurator {
@@ -42,6 +43,10 @@ public class AvatarImagesPanelConfigurator {
     // Builds a AvatarFramesPanelConfigurator object.
     private AvatarImagesPanelConfigurator() {}
 
+    /**
+     * Configures the specified avatar award panel.
+     * @param panel An AvatarAwardPanel object.
+     */
     public static void configure(AvatarAwardPanel panel) {
         // Creator.
         GAvatarImageCreator creator = GAvatarImageCreator.getInstance();

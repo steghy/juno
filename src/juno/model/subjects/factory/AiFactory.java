@@ -36,6 +36,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
+ * This class defines an ai factory.
  * @author Simone Gentili
  * @param <T> The type of the cards.
  * @param <E> The type of the difficulty.

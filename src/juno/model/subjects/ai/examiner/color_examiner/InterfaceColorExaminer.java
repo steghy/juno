@@ -28,6 +28,7 @@ package juno.model.subjects.ai.examiner.color_examiner;
 import java.util.List;
 
 /**
+ * This interface defines a color examiner.
  * @author Simone Gentili
  * @param <T> The type of the color.
  * @param <E> The type of the cards.
@@ -35,6 +36,11 @@ import java.util.List;
 @FunctionalInterface
 public interface InterfaceColorExaminer<T, E> {
 
+    /**
+     * Returns the chosen color.
+     * @param cards A List object.
+     * @return An Object.
+     */
     T response(List<E> cards);
 
 }

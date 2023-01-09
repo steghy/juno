@@ -29,6 +29,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * This class defines filter users.
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */

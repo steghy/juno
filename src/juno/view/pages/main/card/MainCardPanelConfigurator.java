@@ -31,6 +31,7 @@ import juno.view.pages.options.OptionsPanel;
 import juno.view.pages.score.ScorePanel;
 
 /**
+ * This class defines a configurator.
  * @author Simone Gentili
  */
 public class MainCardPanelConfigurator {
@@ -38,6 +39,7 @@ public class MainCardPanelConfigurator {
     // Builds a MainCardPanelConfigurator object.
     private MainCardPanelConfigurator() {}
 
+    /** Configures the MainCardPanel instance. */
     public static void configure() {
         // Main component.
         MainCardPanel cardPanel = MainCardPanel.getInstance();

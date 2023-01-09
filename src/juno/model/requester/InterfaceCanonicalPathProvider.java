@@ -26,6 +26,7 @@
 package juno.model.requester;
 
 /**
+ * This interface defines canonical path providers.
  * @author Simone Gentili
  */
 @FunctionalInterface

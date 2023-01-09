@@ -28,6 +28,7 @@ package juno.controller.pre_access.loggers;
 import java.util.Objects;
 
 /**
+ * This class defines an avatar setter.
  * @author Simone Gentili
  */
 public class AvatarSetter

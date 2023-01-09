@@ -28,6 +28,7 @@ package juno.model.requester;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * This record defines a path provider object.
  * @param canonicalPath The canonical path.
  * @param absolutePath  The absolute path.
  * @author Simone Gentili

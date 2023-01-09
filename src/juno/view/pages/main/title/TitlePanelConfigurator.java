@@ -35,6 +35,7 @@ import javax.swing.border.Border;
 import java.awt.*;
 
 /**
+ * This class defines a title panel.
  * @author Simone Gentili
  */
 public class TitlePanelConfigurator {
@@ -42,7 +43,7 @@ public class TitlePanelConfigurator {
     // Builds a TitlePanelConfigurator object.
     private TitlePanelConfigurator() {}
 
-    // Configures the TitlePanel instance. */
+    /** Configures the TitlePanel instance. */
     public static void configure() {
         // Main component
         TitlePanel titlePanel = TitlePanel.getInstance();

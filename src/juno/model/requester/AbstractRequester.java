@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * This abstract class defines an abstract requester.
  * @author Simone Gentili
  */
 public abstract class AbstractRequester

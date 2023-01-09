@@ -36,6 +36,7 @@ import juno.model.subjects.ai.examiner.color_examiner.ColorExaminer;
 import juno.model.subjects.ai.examiner.filter.Filter;
 
 /**
+ * This class defines an initializer.
  * @author Simone Gentili
  */
 public class Initializer

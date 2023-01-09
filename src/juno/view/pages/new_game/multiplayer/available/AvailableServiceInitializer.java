@@ -28,6 +28,7 @@ package juno.view.pages.new_game.multiplayer.available;
 import juno.view.pages.new_game.multiplayer.card.MultiplayerCardPanelConfigurator;
 
 /**
+ * This class defines an initializer.
  * @author Simone Gentili
  */
 public class AvailableServiceInitializer {
@@ -35,6 +36,7 @@ public class AvailableServiceInitializer {
     // Builds a availableServiceInitializer object.
     private AvailableServiceInitializer() {}
 
+    /** Initialize the MultiplayerCardPanel instance. */
     public static void initialize() {
         MultiplayerCardPanelConfigurator.configure();
     }

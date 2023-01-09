@@ -28,6 +28,7 @@ package juno.model.requester;
 import juno.controller.util.InterfaceInitializer;
 
 /**
+ * This class defines an initializer.
  * @author Simone Gentili
  */
 public class Initializer

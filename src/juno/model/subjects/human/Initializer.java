@@ -30,6 +30,7 @@ import juno.model.card.InterfaceCard;
 import juno.model.data.profile.profile.ProfileNameProvider;
 
 /**
+ * This class defines an initializer.
  * @author Simone Gentili
  */
 public class Initializer

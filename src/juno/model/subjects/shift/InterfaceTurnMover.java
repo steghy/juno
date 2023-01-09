@@ -26,13 +26,14 @@
 package juno.model.subjects.shift;
 
 /**
+ * This interface defines turn movers.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface InterfaceTurnMover {
 
     /**
-     *
+     * Moves the turn
      */
     void next();
 

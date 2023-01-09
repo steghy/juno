@@ -39,12 +39,19 @@ import java.util.List;
 public abstract class AbstractAccountSetter<T>
         implements Setter<T> {
 
+    /** Constructor. */
+    public AbstractAccountSetter() {}
+
     // The setters list.
     private final List<Setter<T>> setters = new ArrayList<>();
 
     // The Registration goal.
     private InterfaceGoal registrationGoal;
 
+    /**
+     * Returns a list of setter objects.
+     * @return A List object.
+     */
     public List<Setter<T>> setters() {
         return setters;
     }

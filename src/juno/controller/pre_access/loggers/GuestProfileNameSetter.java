@@ -3,6 +3,7 @@ package juno.controller.pre_access.loggers;
 import java.util.Objects;
 
 /**
+ * This class defines a guest profile name setter.
  * @author Simone Gentili
  */
 public class GuestProfileNameSetter

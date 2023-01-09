@@ -31,10 +31,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * This abstract class defines an abstract avatar setter.
  * @author Simone Gentili
  */
 public abstract class AbstractAvatarSetter
         implements InterfaceAvatarSetter {
+
+    /** Constructor. */
+    public AbstractAvatarSetter() {}
 
     // The avatar image setter.
     private Setter<InterfaceAvatarImage> avatarImageSetter;

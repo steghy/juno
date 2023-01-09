@@ -28,6 +28,7 @@ package juno.model.data.profile;
 import java.util.Map;
 
 /**
+ * This interface defines error providers.
  * @author Simone Gentili
  */
 @FunctionalInterface

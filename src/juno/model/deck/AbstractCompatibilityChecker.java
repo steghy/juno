@@ -39,6 +39,9 @@ public abstract class AbstractCompatibilityChecker<T, E>
         extends AbstractDiscardedPileUser<T>
         implements InterfaceCompatibilityChecker<T> {
 
+    /** Constructor. */
+    public AbstractCompatibilityChecker() {}
+
     // The color provider.
     private Provider<E> provider;
 

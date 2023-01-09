@@ -36,6 +36,7 @@ import juno.model.data.profile.profile.ProfileNameSetter;
 import juno.view.pages.card.TopCardPanel;
 
 /**
+ * This class defines an initializer.
  * @author Simone Gentili
  */
 public class Initializer

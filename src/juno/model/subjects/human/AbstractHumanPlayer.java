@@ -31,6 +31,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * This abstract class defines an
+ * abstract human player.
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */

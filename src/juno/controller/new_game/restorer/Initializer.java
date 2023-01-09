@@ -49,6 +49,7 @@ import juno.view.pages.new_game.single_player.match.panels.west.WestCardPanel;
 import java.util.List;
 
 /**
+ * This class defines an initializer.
  * @author Simone Gentili
  */
 public class Initializer

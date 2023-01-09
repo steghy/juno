@@ -72,6 +72,11 @@ public class AudioPlayer
 		getClip().start();
 	}
 
+	/**
+	 * Loads the tracks contained within the
+	 * specified List object into this audio player.
+	 * @param files A List object.
+	 */
 	public void load(@NotNull List<File> files) {
 		this.files.clear();
 		this.files.addAll(files);

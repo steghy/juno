@@ -30,6 +30,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * This abstract class defines an abstract profile.
  * @author Simone Gentili
  */
 public abstract class AbstractProfile {

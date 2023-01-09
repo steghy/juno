@@ -32,6 +32,8 @@ import java.awt.*;
 import java.util.Objects;
 
 /**
+ * This class defines a data line
+ * composed by a label and text field
  * @author Simone Gentili
  */
 public class DataLine

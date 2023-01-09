@@ -30,6 +30,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * This abstract class defines abstract guest
+ * profile name setter.
  * @author Simone Gentili
  */
 public abstract class AbstractGuestProfileNameSetter

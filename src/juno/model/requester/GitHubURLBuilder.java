@@ -31,6 +31,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
+ * This class defines a GitHub URL builder.
  * @author Simone Gentili
  */
 public class GitHubURLBuilder

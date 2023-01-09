@@ -31,6 +31,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * This class defines the avatar awards panel.
  * @author Simone Gentili
  */
 public class AvatarAwardPanel

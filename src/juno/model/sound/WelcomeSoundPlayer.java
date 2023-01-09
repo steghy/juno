@@ -26,6 +26,8 @@
 package juno.model.sound;
 
 /**
+ * This class defines a
+ * welcome sound player.
  * @author Simone Gentili
  */
 public class WelcomeSoundPlayer

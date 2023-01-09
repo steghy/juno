@@ -36,6 +36,9 @@ import org.jetbrains.annotations.Nullable;
  */
 public abstract class AbstractCCompatibilityCheckerUser {
 
+    /** Constructor. */
+    public AbstractCCompatibilityCheckerUser() {}
+
     // The compatibility checker for Configurable object.
     private InterfaceCCompatibilityChecker checker;
 

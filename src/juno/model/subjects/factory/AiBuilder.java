@@ -34,8 +34,10 @@ import juno.model.subjects.ai.examiner.color_examiner.InterfaceColorExaminer;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * This class defines an ai builder.
  * @author Simone Gentili
  * @param <T> The type of the cards.
+ * @param <E> The type of the object involved.
  */
 public class AiBuilder<T, E>
         implements InterfaceAiBuilder<T, InterfaceDifficulty> {

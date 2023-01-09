@@ -34,6 +34,9 @@ import org.jetbrains.annotations.Nullable;
  */
 public abstract class AbstractDataImporterUser {
 
+    /** Constructor. */
+    public AbstractDataImporterUser() {}
+
     // The data importer.
     private InterfaceDataImporter importer;
 

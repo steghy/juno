@@ -26,11 +26,18 @@
 package juno.controller.pre_access.log_in;
 
 /**
+ * This interface defines path builders.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface InterfacePathBuilder {
 
+    /**
+     * Builds a new path from the
+     * specified String object.
+     * @param name A String object.
+     * @return A String object.
+     */
     String build(String name);
 
 }

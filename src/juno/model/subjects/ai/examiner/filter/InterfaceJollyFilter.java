@@ -28,6 +28,7 @@ package juno.model.subjects.ai.examiner.filter;
 import java.util.List;
 
 /**
+ * This interface defines jolly filters.
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
@@ -35,9 +36,10 @@ import java.util.List;
 public interface InterfaceJollyFilter<T> {
 
     /**
-     *
-     * @param cards
-     * @return
+     * Returns the jolly cards contained
+     * within the specified List object.
+     * @param cards A List object.
+     * @return A List object.
      */
     List<T> jolly(List<T> cards);
 

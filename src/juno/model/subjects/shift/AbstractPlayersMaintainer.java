@@ -29,6 +29,7 @@ import juno.model.util.Donut;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * This abstract class defines an abstract player maintainer.
  * @author Simone Gentili
  * @param <T> The type of the players.
  */

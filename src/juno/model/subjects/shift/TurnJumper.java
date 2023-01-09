@@ -36,6 +36,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
+ * This class defines a turn jumper.
  * @author Simone Gentili
  * @param <T> The type of the players.
  */

@@ -29,7 +29,6 @@ import juno.model.data.io.input.configurable.Configurable;
 import juno.model.data.io.input.configurable.InterfaceCConfigurationFileResearcher;
 import juno.model.util.AbstractObservable;
 import juno.model.util.Factory;
-import juno.model.util.Generator;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -42,6 +41,9 @@ import org.jetbrains.annotations.Nullable;
 public abstract class AbstractConfigurationFilesFactory<T>
         extends AbstractObservable
         implements Factory<T> {
+
+    /** Constructor. */
+    public AbstractConfigurationFilesFactory() {}
 
     // The configuration file researcher.
     private InterfaceCConfigurationFileResearcher researcher;

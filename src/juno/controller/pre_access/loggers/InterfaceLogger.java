@@ -26,11 +26,13 @@
 package juno.controller.pre_access.loggers;
 
 /**
+ * This interface defines loggers.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface InterfaceLogger {
 
+    /** Log in. */
     void logIn();
 
 }

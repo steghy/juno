@@ -28,6 +28,7 @@ package juno.model.data.profile.profile;
 import juno.model.util.Provider;
 
 /**
+ * This class defines the last name provider.
  * @author Simone Gentili
  */
 public class LastNameProvider

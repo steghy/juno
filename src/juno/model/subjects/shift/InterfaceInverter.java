@@ -26,6 +26,7 @@
 package juno.model.subjects.shift;
 
 /**
+ * This interface defines an inverter.
  * @author Simone Gentili
  */
 @FunctionalInterface

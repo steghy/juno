@@ -30,6 +30,7 @@ import juno.model.util.Provider;
 import juno.model.util.Remover;
 
 /**
+ * This interface defines a player.
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */

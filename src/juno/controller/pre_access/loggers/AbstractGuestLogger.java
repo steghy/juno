@@ -30,10 +30,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * This abstract class defines abstract guest loggers.
  * @author Simone Gentili
  */
 public abstract class AbstractGuestLogger
         extends AbstractLogger {
+
+    /** Constructor. */
+    public AbstractGuestLogger() {}
 
     // The guest profile name setter.
     private InterfaceGuestProfileNameSetter guestNameSetter;

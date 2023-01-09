@@ -35,6 +35,7 @@ import java.util.Objects;
 import java.util.Random;
 
 /**
+ * This class defines a medium examiner.
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */

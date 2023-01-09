@@ -30,6 +30,7 @@ import juno.model.util.Remover;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * This class defines a card remover.
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */

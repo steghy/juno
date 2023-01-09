@@ -28,7 +28,10 @@ package juno.model.subjects.factory;
 import juno.model.subjects.InterfacePlayer;
 
 /**
+ * This interface defines ai builders.
  * @author Simone Gentili
+ * @param <T> The type of the object involved.
+ * @param <E> The type of the object involved.
  */
 @FunctionalInterface
 public interface InterfaceAiBuilder<T, E> {

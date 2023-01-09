@@ -42,6 +42,9 @@ public abstract class AbstractAccountExiter<T>
         extends AbstractExporterManagerUser<T>
         implements InterfaceAccountExiter {
 
+    /** Constructor */
+    private AbstractAccountExiter() {}
+
     // The restorable.
     private final List<Restorable> restorableList = new ArrayList<>();
 

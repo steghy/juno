@@ -26,11 +26,17 @@
 package juno.view.button;
 
 /**
+ * This interface defines toggle buttons.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface InterfaceToggleButton {
 
+    /**
+     * Returns true if, and only if, this
+     * button is a toggle button.
+     * @return A boolean value.
+     */
     boolean isToggleButton();
 
 }

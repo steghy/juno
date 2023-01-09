@@ -32,6 +32,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 /**
+ * This class defines a user data setter.
  * @author Simone Gentili
  */
 public class UserDataSetter

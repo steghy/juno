@@ -33,6 +33,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Map;
 
 /**
+ * This class defines an error provider decorator.
  * @author Simone Gentili
  */
 public class ErrorProviderDecorator

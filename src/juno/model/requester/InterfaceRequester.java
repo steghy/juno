@@ -28,11 +28,19 @@ package juno.model.requester;
 import java.io.IOException;
 
 /**
+ * This interface defines requesters.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface InterfaceRequester {
 
+    /**
+     * Solves the request specified by the path provider
+     * object passed.
+     * @param pathProvider An InterfacePathProvider.
+     * @throws IOException If the canonical path or the absolute path
+     *          obtained from the path provider doesn't exist.
+     */
     void solve(InterfacePathProvider pathProvider) throws IOException;
 
 }

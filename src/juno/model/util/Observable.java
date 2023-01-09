@@ -37,6 +37,7 @@ public interface Observable {
      * Adds the specified Observer object
      * into the observers List object.
      * @param observer An Observer object.
+     * @return A Boolean value.
      */
     boolean addObserver(Observer observer);
 
@@ -44,6 +45,7 @@ public interface Observable {
      * Remove the specified Observer object
      * from the observers List object.
      * @param observer An Observer object.
+     * @return A Boolean value.
      */
     boolean removeObserver(Observer observer);
 

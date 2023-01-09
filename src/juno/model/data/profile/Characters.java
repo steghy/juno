@@ -31,6 +31,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+ * This class defines a utility class.
  * @author Simone Gentili
  */
 public class Characters {

@@ -30,6 +30,7 @@ import java.awt.event.ActionListener;
 import java.util.Objects;
 
 /**
+ * This class defines a guest logger.
  * @author Simone Gentili
  */
 public class GuestLogger

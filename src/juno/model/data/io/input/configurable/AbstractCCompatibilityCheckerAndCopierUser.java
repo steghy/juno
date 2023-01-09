@@ -36,6 +36,9 @@ import org.jetbrains.annotations.Nullable;
 public abstract class AbstractCCompatibilityCheckerAndCopierUser
         extends AbstractPropertyCopierUser {
 
+    /** Constructor. */
+    public AbstractCCompatibilityCheckerAndCopierUser() {}
+
     // The compatibility checker for Configurable objects.
     private InterfaceCCompatibilityChecker checker;
 

@@ -27,11 +27,21 @@ package juno.model.requester;
 
 
 /**
+ * This interface defines path provider assemblers.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface InterfacePathProviderAssembler {
 
-    InterfacePathProvider assemble(InterfacePathProvider provider, String path);
+    /**
+     * Assemble and returns a path provider object
+     * obtained from the specified path provider and
+     * String object.
+     * @param provider An InterfacePathProvider object.
+     * @param path A String object.
+     * @return A InterfacePathProvider object.
+     */
+    InterfacePathProvider assemble(InterfacePathProvider provider,
+                                   String path);
 
 }

@@ -27,9 +27,18 @@ package juno.model.data.io.output;
 
 import java.util.Map;
 
+/**
+ * This interface defines exportable objects.
+ * @author Simone Gentili
+ */
 @FunctionalInterface
 public interface Exportable{
 
+    /**
+     * Returns a Map object with the
+     * data of this object.
+     * @return A Map object.
+     */
     Map<String, Object> exportData();
 
 }

@@ -27,6 +27,7 @@ package juno.model.subjects.factory;
 
 
 /**
+ * This interface defines an ai generator.
  * @author Simone Gentili
  * @param <T> The type of the difficulty objects.
  */

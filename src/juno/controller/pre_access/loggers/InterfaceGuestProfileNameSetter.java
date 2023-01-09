@@ -26,11 +26,15 @@
 package juno.controller.pre_access.loggers;
 
 /**
+ * This interface defines a guest profile name setter.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface InterfaceGuestProfileNameSetter {
 
+    /**
+     * Sets the guest profile name.
+     */
     void setGuestProfileName();
 
 }

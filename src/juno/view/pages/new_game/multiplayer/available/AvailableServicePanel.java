@@ -28,6 +28,7 @@ package juno.view.pages.new_game.multiplayer.available;
 import javax.swing.*;
 
 /**
+ * This class defines the available service panel.
  * @author Simone Gentili
  */
 public class AvailableServicePanel

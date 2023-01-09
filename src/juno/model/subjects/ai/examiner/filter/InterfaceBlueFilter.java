@@ -28,12 +28,19 @@ package juno.model.subjects.ai.examiner.filter;
 import java.util.List;
 
 /**
+ * This interface defines blue filters.
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
 @FunctionalInterface
 public interface InterfaceBlueFilter<T> {
 
+    /**
+     * Returns the blue cards contained within the
+     * specified List object.
+     * @param cards A List object.
+     * @return  A List object.
+     */
     List<T> blue(List<T> cards);
 
 }

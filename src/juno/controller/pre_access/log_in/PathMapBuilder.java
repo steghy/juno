@@ -31,6 +31,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
+ * This class defines a path map builder.
  * @author Simone Gentili
  * @param <T> The type of the Map keys.
  */

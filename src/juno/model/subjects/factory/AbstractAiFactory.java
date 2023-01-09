@@ -31,10 +31,17 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * This abstract class defines an abstract ai factory.
  * @author Simone Gentili
+ * @param <T> The type of the object to provide.
+ * @param <E>  The type of the object involved.
+ * @param <C> The type of the object involved.
  */
 public abstract class AbstractAiFactory<T, E, C>
         implements Provider<T> {
+
+    /** Constructor. */
+    public AbstractAiFactory() {}
 
     // The name relative provider.
     private RelativeProvider<E, C> relativeProvider;

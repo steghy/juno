@@ -26,12 +26,12 @@
 package juno.model.subjects.ai.examiner.card_examiner;
 
 import juno.model.subjects.ai.examiner.AbstractExaminer;
-import juno.model.subjects.ai.examiner.color_examiner.InterfaceColorExaminer;
 import juno.model.subjects.ai.examiner.color_examiner.InterfaceExaminer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * This class defines a multi examiners.
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */

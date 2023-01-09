@@ -30,6 +30,7 @@ import java.util.Map;
 
 
 /**
+ * This class defines an error provider.
  * @author Simone Gentili
  */
 public class ErrorProvider

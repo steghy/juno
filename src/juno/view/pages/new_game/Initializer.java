@@ -32,6 +32,7 @@ import juno.view.pages.new_game.multiplayer.card.MultiplayerInitializer;
 import juno.view.pages.new_game.title.TitlePanelConfigurator;
 
 /**
+ * This class defines an initializer.
  * @author Simone Gentili
  */
 public class Initializer

@@ -31,6 +31,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * This class defines an abstract examiner
  * @author Simone Gentili
  * @param <T> The type of the items.
  */

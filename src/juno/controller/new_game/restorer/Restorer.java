@@ -34,6 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * This class defines a restorer.
  * @author Simone Gentili
  */
 public class Restorer

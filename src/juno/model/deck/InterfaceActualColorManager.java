@@ -29,6 +29,7 @@ import juno.model.util.Provider;
 import juno.model.util.Setter;
 
 /**
+ * This interface defines an actual color manager.
  * @author Simone Gentili
  * @param <T> The type of the color.
  */
