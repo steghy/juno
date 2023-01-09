@@ -12,4 +12,8 @@ to unlock fearsome avatars and remember, win or lose, there is always a reward :
 
 # Features 
 
+- possibility to register an account or to access as a guest.
+- avatar customization.
+- three levels of difficulty of the AI.
+- automatic download of missing files.
 
