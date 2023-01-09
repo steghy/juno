@@ -23,4 +23,9 @@ to unlock fearsome avatars and remember, w in or lose, there is always a reward 
 - automatic download of missing files.
 
 # Images
-
+![score-menu.png](.github%2Fscore-menu.png)
+![difficulty-menu.png](.github%2Fdifficulty-menu.png)
+![registration.png](.github%2Fregistration.png)
+# Acknowledgments
+- [Colin Raff](https://www.instagram.com/colinraff/) for the fantastic transparent monochrome animated GIF.
+- [Maketext.io](https://maketext.io/) for creating button images in a simple way.
