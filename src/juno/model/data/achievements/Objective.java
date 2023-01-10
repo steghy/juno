@@ -133,13 +133,13 @@ public enum Objective
         // Games won counter.
         if(object instanceof InterfaceGamesWonCounter<?> gamesWonCounter) {
             int gamesWon = (int) gamesWonCounter.provide();
-            getUnreachedObjective(getGamesWonObjective()).forEach(award -> award.unlockIf(gamesWon));
+            getUnreachedObjective(getGamesWonObjective()).forEach(objective -> objective.unlockIf(gamesWon));
         }
 
         // Lost games counter.
         else if(object instanceof InterfaceLostGamesCounter<?> lostGamesCounter) {
             int lostGames = (int) lostGamesCounter.provide();
-            getUnreachedObjective(getLostGamesObjective()).forEach(award -> award.unlockIf(lostGames));
+            getUnreachedObjective(getLostGamesObjective()).forEach(objective -> objective.unlockIf(lostGames));
         }
 
         // Invalid case.

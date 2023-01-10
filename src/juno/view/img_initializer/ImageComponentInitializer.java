@@ -72,8 +72,9 @@ public class ImageComponentInitializer
                            @NotNull InterfacePathProvider file,
                            @NotNull InterfacePathProvider rolloverFile,
                            RotatedIcon.Rotate rotate) {
-        // Image section.
+        // Image.
         button.setName(file.canonicalPath());
+
         String imageAbsolutePath = file.absolutePath();
         boolean imageExists = true;
         if (!Os.exists(imageAbsolutePath)) {
@@ -81,14 +82,12 @@ public class ImageComponentInitializer
                 try {
                     Objects.requireNonNull(getRequester()).solve(file);
                 } catch (IOException e) {
-                    if(IMAGE_MISSING == Constraints.THROW_EXCEPTION) {
+                    if(IMAGE_MISSING == Constraints.THROW_EXCEPTION)
                         throw new RuntimeException(imageAbsolutePath + " is missing.");
-                    } e.printStackTrace();
+                    e.printStackTrace();
                     imageExists = false;
                 }
-            } else {
-                imageExists = false;
-            }
+            } else imageExists = false;
         }
 
         // Rollover image.

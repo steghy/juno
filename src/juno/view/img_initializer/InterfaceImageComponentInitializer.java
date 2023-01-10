@@ -31,5 +31,5 @@ package juno.view.img_initializer;
  */
 public interface InterfaceImageComponentInitializer
         extends InterfaceAbstractButtonInitializer,
-        InterfaceToggleButtonInitializer,
-        InterfaceLabelInitializer {}
+                InterfaceToggleButtonInitializer,
+                InterfaceLabelInitializer {}

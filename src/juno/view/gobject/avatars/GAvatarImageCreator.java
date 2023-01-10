@@ -41,7 +41,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class GAvatarImageCreator
-        extends AbstractGObjectCreator<InterfaceAvatarImage>
+        extends AbstractGObjectCreator
         implements InterfaceGObjectCreator<InterfaceAvatarImage> {
 
     /** The ending part of the path to use. */

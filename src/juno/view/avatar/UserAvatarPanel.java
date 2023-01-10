@@ -26,43 +26,78 @@
 package juno.view.avatar;
 
 import juno.model.data.achievements.InterfaceAvatarImage;
-import juno.model.data.avatar.Avatar;
-import juno.model.data.avatar.AvatarImageSetter;
-import juno.model.data.avatar.AvatarNameSetter;
+import juno.model.util.Observable;
 import juno.model.util.Observer;
+import juno.model.util.Provider;
+import juno.view.gobject.InterfaceGObjectCreator;
 import juno.view.gobject.avatars.GAvatarImage;
-import juno.view.gobject.avatars.GAvatarImageCreator;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 
-public class UserAvatarPanel
-        extends AvatarPanel implements Observer {
+/**
+ * This class defines the user avatar panel.
+ * @author Simone Gentili
+ */
+public class UserAvatarPanel<T>
+        extends AvatarPanel
+        implements Observer {
+
+    // The avatar image setter.
+    private final Observable avatarImageSetter;
+
+    // The avatar name setter.
+    private final Observable avatarNameSetter;
+
+    // The graphic avatar image creator.
+    private final InterfaceGObjectCreator<T> creator;
+
+    // The avatar image provider.
+    private final Provider<T> imageProvider;
+
+    // The avatar name provider.
+    private final Provider<String> nameProvider;
 
     /**
-     * Builds an AvatarPanel with the specified
-     * dimension parameter.
+     * Builds a UserAvatarPanel with the specified parameters.
+     * @param avatarNameSetter An Observable object.
+     * @param avatarImageSetter An Observable object.
+     * @param creator An InterfaceGObjectCreator object.
+     * @param imageProvider A Provider object.
+     * @param nameProvider A Provider object.
      */
-    public UserAvatarPanel() {
+    public UserAvatarPanel(@NotNull Observable avatarNameSetter,
+                           @NotNull Observable avatarImageSetter,
+                           @NotNull InterfaceGObjectCreator<T> creator,
+                           @NotNull Provider<T> imageProvider,
+                           @NotNull Provider<String> nameProvider) {
         super();
-        AvatarNameSetter.getInstance().addObserver(this);
-        AvatarImageSetter.getInstance().addObserver(this);
+        // Avatar setters.
+        this.avatarNameSetter = avatarNameSetter;
+        this.avatarImageSetter = avatarImageSetter;
+        this.avatarNameSetter.addObserver(this);
+        this.avatarImageSetter.addObserver(this);
+        // Creator.
+        this.creator = creator;
+        // Providers.
+        this.imageProvider = imageProvider;
+        this.nameProvider = nameProvider;
         super.init();
     }
 
     @Override
     public void update(Object object) {
-        Avatar avatar = Avatar.getInstance();
         // Avatar image case.
-        if(object instanceof AvatarImageSetter) {
+        if(object == avatarImageSetter) {
             GAvatarImage<InterfaceAvatarImage> gAvatarImage =
-                    (GAvatarImage<InterfaceAvatarImage>) GAvatarImageCreator.getInstance()
-                            .create(avatar.getAvatarImage(), null);
+                    (GAvatarImage<InterfaceAvatarImage>)
+                    creator.create(imageProvider.provide(), null);
             setAvatarImage(gAvatarImage);
         }
 
         // Avatar name case.
-        else if(object instanceof AvatarNameSetter) {
-            setAvatarName(new JLabel(avatar.getAvatarName()));
+        else if(object == avatarNameSetter) {
+            setAvatarName(new JLabel(nameProvider.provide()));
         }
 
         // Invalid case.

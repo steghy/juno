@@ -25,7 +25,6 @@
 
 package juno.model.data.io.input.reflection;
 
-import juno.model.data.io.input.AbstractPropertyCopierUser;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -45,7 +44,6 @@ public abstract class AbstractRConfigurationFilesProvider
 
     // The extensions.
     private List<String> extensions;
-
 
     // The configurator.
     private InterfaceConfigurator configurator;

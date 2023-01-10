@@ -45,8 +45,7 @@ import java.util.List;
  * @author Simone Gentili
  */
 public class OneCardDispenser<T>
-        extends
-        AbstractObservable
+        extends AbstractObservable
         implements ActionListener, Observer, InterfaceCardDispenser, Provider<List<InterfacePlayer<T>>>, Stoppable {
 
     // The deck.
@@ -57,9 +56,6 @@ public class OneCardDispenser<T>
 
     // The players size.
     private int size;
-
-    // The players size copy.
-    private int copy;
 
     // The timer.
     private final Timer timer;
@@ -100,7 +96,6 @@ public class OneCardDispenser<T>
     public void actionPerformed(ActionEvent e) {
         if(size == 0) {
             timer.stop();
-            size = copy;
             updateAll();
         } else {
             size--;
@@ -112,13 +107,14 @@ public class OneCardDispenser<T>
     @Override
     public void dispense() {
         size = players.size();
-        copy = size;
         timer.start();
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
+        // The update comes from PlayersProvider
+        // and the CardController class.
         if(object instanceof Provider<?> provider) {
             players.clear();
             players.addAll((Collection<? extends InterfacePlayer<T>>)

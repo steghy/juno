@@ -30,6 +30,10 @@ import juno.controller.new_game.dispenser.CardDispenser;
 import juno.controller.new_game.human.DiscardedCardSetter;
 import juno.controller.new_game.penalty.PenaltyExecutor;
 import juno.controller.new_game.penalty.PenaltyTimer;
+import juno.model.data.avatar.AvatarImageProvider;
+import juno.model.data.avatar.AvatarImageSetter;
+import juno.model.data.avatar.AvatarNameProvider;
+import juno.model.data.avatar.AvatarNameSetter;
 import juno.model.data.io.ProgramDirectory;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.CompatibilityChecker;
@@ -41,6 +45,7 @@ import juno.model.subjects.shift.TurnMover;
 import juno.model.util.Provider;
 import juno.model.util.Setter;
 import juno.view.avatar.UserAvatarPanel;
+import juno.view.gobject.avatars.GAvatarImageCreator;
 import juno.view.gobject.cards.GCardCreator;
 import juno.view.img_initializer.ImageComponentInitializer;
 import juno.view.util.ImageResizer;
@@ -65,7 +70,12 @@ public class SouthPanelConfigurator {
         SouthPanel southPanel = SouthPanel.getInstance();
 
         // Avatar panel.
-        UserAvatarPanel avatarPanel = new UserAvatarPanel();
+        UserAvatarPanel avatarPanel = new UserAvatarPanel(
+                AvatarNameSetter.getInstance(),
+                AvatarImageSetter.getInstance(),
+                GAvatarImageCreator.getInstance(),
+                AvatarImageProvider.getInstance(),
+                AvatarNameProvider.getInstance());
         avatarPanel.init();
         // The circle.
         JLabel circle = new JLabel();

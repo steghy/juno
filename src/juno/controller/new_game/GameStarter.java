@@ -97,13 +97,15 @@ public class GameStarter
     @Override
     @SuppressWarnings("unchecked")
     public void update(@NotNull Object object) {
-        if(object instanceof Provider<?> cardController) {
-            List<InterfacePlayer<InterfaceCard>> players = (List<InterfacePlayer<InterfaceCard>>) cardController.provide();
+        // The update comes from the CardController.
+        if(object instanceof Provider<?> provider) {
+            List<InterfacePlayer<InterfaceCard>> players =
+                    (List<InterfacePlayer<InterfaceCard>>) provider.provide();
             if(players.size() == 1)
                 start(players.get(0));
         } else throw new IllegalArgumentException(
                 "Invalid object type: " + object.getClass() +
-                        ". InterfaceInitializer type expected.");
+                        ". Provider type expected.");
     }
 
 }

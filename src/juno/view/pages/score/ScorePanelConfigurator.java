@@ -25,7 +25,12 @@
 
 package juno.view.pages.score;
 
+import juno.model.data.avatar.AvatarImageProvider;
+import juno.model.data.avatar.AvatarImageSetter;
+import juno.model.data.avatar.AvatarNameProvider;
+import juno.model.data.avatar.AvatarNameSetter;
 import juno.view.avatar.UserAvatarPanel;
+import juno.view.gobject.avatars.GAvatarImageCreator;
 import juno.view.pages.score.menu.MenuPanel;
 import juno.view.pages.score.title.TitlePanel;
 
@@ -49,7 +54,12 @@ public class ScorePanelConfigurator {
         // Components.
         MenuPanel menuPanel = MenuPanel.getInstance();
         TitlePanel titlePanel = TitlePanel.getInstance();
-        UserAvatarPanel avatarPanel = new UserAvatarPanel();
+        UserAvatarPanel avatarPanel = new UserAvatarPanel(
+                AvatarNameSetter.getInstance(),
+                AvatarImageSetter.getInstance(),
+                GAvatarImageCreator.getInstance(),
+                AvatarImageProvider.getInstance(),
+                AvatarNameProvider.getInstance());
 
         // Adding components.
         scorePanel.setFirstComponent(titlePanel);   // Title panel.

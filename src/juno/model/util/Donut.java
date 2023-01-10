@@ -78,10 +78,8 @@ public class Donut<T>
      */
     public void initialize(@NotNull T object) {
         if(!contains(object)) throw new IllegalArgumentException(
-                "The specified object is not contained");
-        for(int i = 0; i < size(); i++) {
-            if(get(i) == object) index = i;
-        }
+                "The specified object is not in " + this);
+        index = indexOf(object);
     }
 
     /**
@@ -169,15 +167,6 @@ public class Donut<T>
         } else {
             index--;
         } return get(index);
-    }
-
-    /**
-     * Returns true if, and only if, this
-     * Donut object is inverted.
-     * @return A boolean value.
-     */
-    public boolean isInverted() {
-        return inverted;
     }
 
 }

@@ -101,20 +101,4 @@ public class Avatar
         return map;
     }
 
-    /**
-     * returns the avatar image of this object.
-     * @return An InterfaceAvatarImage object.
-     */
-    public InterfaceAvatarImage getAvatarImage() {
-        return avatarImage;
-    }
-
-    /**
-     * Returns the avatar name of this object.
-     * @return A String object.
-     */
-    public String getAvatarName() {
-        return avatarName;
-    }
-
 }

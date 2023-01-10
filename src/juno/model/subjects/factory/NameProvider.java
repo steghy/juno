@@ -62,7 +62,8 @@ public class NameProvider
 
     @Override
     public List<String> provide(Integer num) {
-        if(num > names.size()) throw new IllegalArgumentException("Only up to twenty");
+        if(num > names.size()) throw new IllegalArgumentException(
+                "Only up to twenty");
         List<String> outputNames = new ArrayList<>();
         List<String> namesClone = new ArrayList<>(names);
         Random random = new Random();

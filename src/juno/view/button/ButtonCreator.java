@@ -41,7 +41,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class ButtonCreator
-        extends AbstractGObjectCreator<InterfaceButton>
+        extends AbstractGObjectCreator
         implements InterfaceGSObjectCreator<AbstractButton, InterfaceButton> {
 
     public String rollover = "_ROLLOVER";

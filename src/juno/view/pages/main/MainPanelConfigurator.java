@@ -29,10 +29,16 @@ import juno.controller.log_out.AccountExiter;
 import juno.controller.log_out.LogOutAction;
 import juno.controller.util.ChangePanelAction;
 import juno.controller.util.PanelChanger;
+import juno.model.data.achievements.InterfaceAvatarImage;
+import juno.model.data.avatar.AvatarImageProvider;
+import juno.model.data.avatar.AvatarImageSetter;
+import juno.model.data.avatar.AvatarNameProvider;
+import juno.model.data.avatar.AvatarNameSetter;
 import juno.model.data.io.ProgramDirectory;
 import juno.model.requester.PathProviderAssembler;
 import juno.view.avatar.UserAvatarPanel;
 import juno.view.button.ButtonCreator;
+import juno.view.gobject.avatars.GAvatarImageCreator;
 import juno.view.img_initializer.ImageComponentInitializer;
 import juno.view.pages.card.TopCardPanel;
 import juno.view.pages.main.menu.MenuPanel;
@@ -59,7 +65,13 @@ public class MainPanelConfigurator {
         ImageResizer resizer = ImageResizer.getInstance();
         TitlePanel titlePanel = TitlePanel.getInstance();
         MenuPanel menuPanel = MenuPanel.getInstance();
-        UserAvatarPanel avatarPanel = new UserAvatarPanel();
+        UserAvatarPanel<InterfaceAvatarImage> avatarPanel = new UserAvatarPanel<>(
+                AvatarNameSetter.getInstance(),
+                AvatarImageSetter.getInstance(),
+                GAvatarImageCreator.getInstance(),
+                AvatarImageProvider.getInstance(),
+                AvatarNameProvider.getInstance());
+
         JLabel skeletonLeft = new JLabel();
         JLabel skeletonRight = new JLabel();
 

@@ -79,6 +79,7 @@ public class ErrorProviderDecorator
         Map<String, Object> data = exportable.exportData();
 
         // The only data that is considered is the profile name.
+        // key = Profile.PROFILE_NAME_KEY
         if(data.containsKey(key)) {
             Object object = data.get(key);
             if(object instanceof String profileName) {

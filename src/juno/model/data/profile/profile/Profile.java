@@ -25,13 +25,15 @@
 
 package juno.model.data.profile.profile;
 
+import juno.controller.log_out.Restorable;
 import juno.model.data.io.input.configurable.Configurable;
 import juno.model.data.io.output.Exportable;
-import juno.controller.log_out.Restorable;
+import juno.model.data.profile.AbstractProfile;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 
 /**
@@ -40,7 +42,7 @@ import java.util.*;
  */
 public class Profile
         extends AbstractProfile
-        implements InterfaceProfile, Configurable, Exportable, Restorable {
+        implements Configurable, Exportable, Restorable {
 
     /** The maximum length. */
     public static final int MAXIMUM_LENGTH = 10;
@@ -166,24 +168,6 @@ public class Profile
         map.put(LAST_NAME_KEY, lastName);
         map.put(AGE_KEY, age);
         return map;
-    }
-
-    /**
-     * Returns the profile name of this object.
-     * @return A String object.
-     */
-    @Nullable
-    public String profileName() {
-        return profileName;
-    }
-
-    /**
-     * Returns the name of this object.
-     * @return A String object.
-     */
-    @Nullable
-    public String getName() {
-        return name;
     }
 
     @Override

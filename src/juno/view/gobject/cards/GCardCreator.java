@@ -39,7 +39,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class GCardCreator
-        extends AbstractGObjectCreator<InterfaceCard>
+        extends AbstractGObjectCreator
         implements InterfaceGObjectCreator<InterfaceCard> {
 
     // The path object provider.

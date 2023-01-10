@@ -74,7 +74,7 @@ public class Filter
     }
 
     @Override
-    public List<InterfaceCard> colored(@NotNull List<InterfaceCard> cards) {
+    public List<InterfaceCard> color(@NotNull List<InterfaceCard> cards) {
         return cards.stream()
                 .filter(card -> card.color() != null)
                 .toList();

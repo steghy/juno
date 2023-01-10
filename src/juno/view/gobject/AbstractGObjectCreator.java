@@ -31,7 +31,7 @@ import juno.view.util.InterfaceImageResizer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public abstract class AbstractGObjectCreator<T> {
+public abstract class AbstractGObjectCreator {
 
     // The path object assembler.
     private InterfacePathProviderAssembler assembler;

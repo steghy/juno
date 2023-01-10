@@ -74,8 +74,8 @@ public class RConfigurationFilesProvider
 
     @Override
     public List<File> getConfigurationFiles(@NotNull Object object,
-                                            @NotNull String path)
-            throws FileNotFoundException {
+                                            @NotNull String path) throws FileNotFoundException {
+        Objects.requireNonNull(getChecker());
         // Taking a copy of the object's data.
         Map<String, Object> properties = Objects.requireNonNull(getCopier())
                 .copy(object);
@@ -93,6 +93,7 @@ public class RConfigurationFilesProvider
     }
 
     @NotNull
+    @SuppressWarnings("ConstantConditions")
     private List<File> getFiles(@NotNull Object object,
                                 @NotNull String path) throws FileNotFoundException {
         // Compatible configuration files.
@@ -101,15 +102,14 @@ public class RConfigurationFilesProvider
         if(!inputFile.exists()) throw new FileNotFoundException(path);
         if(inputFile.isFile()) {
             if(preliminaries(inputFile) &&
-                    Objects.requireNonNull(getChecker()).areCompatible(object, path))
+                    getChecker().areCompatible(object, path))
                 configurationFiles.add(inputFile);
         } else if(inputFile.listFiles() != null) {
-            // Objects.requireNonNull suppress the Nullable warning.
-            for(File file : Objects.requireNonNull(inputFile.listFiles())) {
+            File[] files = inputFile.listFiles();
+            for(File file : files) {
                 if(file.isFile()) {
                     if(preliminaries(file) &&
-                            Objects.requireNonNull(getChecker())
-                                    .areCompatible(object, file.getAbsolutePath()))
+                            getChecker().areCompatible(object, file.getAbsolutePath()))
                         configurationFiles.add(file);
                 } else {
                     if(isRecursive()) {

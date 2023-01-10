@@ -39,7 +39,7 @@ import java.util.Objects;
  * @author Simone Gentili
  */
 public class GColorCreator
-        extends AbstractGObjectCreator<InterfaceColor>
+        extends AbstractGObjectCreator
         implements InterfaceGObjectCreator<InterfaceColor> {
 
     // The directory path provider.

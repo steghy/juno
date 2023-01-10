@@ -23,19 +23,36 @@
  * SOFTWARE.
  */
 
-package juno.model.data.profile.profile;
+package juno.model.data.profile;
+
+import juno.model.data.profile.InterfaceErrorProvider;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
- * This interface defines profiles object.
+ * This abstract class defines an abstract profile.
  * @author Simone Gentili
  */
-@FunctionalInterface
-public interface InterfaceProfile {
+public abstract class AbstractProfile {
+
+    // The error provider.
+    private InterfaceErrorProvider provider;
 
     /**
-     * Returns the name of this profile.
-     * @return A String object.
+     * Sets the error provider of this object.
+     * @param provider An interfaceErrorProvider object.
      */
-    String profileName();
+    public void setProvider(@NotNull InterfaceErrorProvider provider) {
+        this.provider = provider;
+    }
+
+    /**
+     * Returns the error provider of this object.
+     * @return An InterfaceErrorProvider object.
+     */
+    @Nullable
+    public InterfaceErrorProvider getProvider() {
+        return provider;
+    }
 
 }

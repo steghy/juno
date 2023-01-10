@@ -37,7 +37,7 @@ import java.util.Objects;
  * @param <T> The type of the object involved.
  */
 public class GProfileCreator<T>
-        extends AbstractGObjectCreator<T>
+        extends AbstractGObjectCreator
         implements InterfaceGObjectCreator<T> {
 
     // The GProfileCreator instance.

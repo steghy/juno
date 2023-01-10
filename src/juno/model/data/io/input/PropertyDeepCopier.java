@@ -109,7 +109,16 @@ public class PropertyDeepCopier
                                 -> map.put(field.getName(), ((BigInteger)field.get(object)).intValue());
 
                         // Recursive call to fetch the values from the object.
-                        // Possible InaccessibleObjectException
+                        // Possible InaccessibleObjectException.
+                        // Object o = field.get(object);
+                        // try {
+                        //         Map<String, Object> temp = deepCopy(o);
+                        //         map.put(field.getName(), temp);
+                        // catch (InaccessibleObjectException e) {
+                        //         map.put(field.getName(), o);
+                        //
+                        //
+                        //
                         default -> map.put(field.getName(), deepCopy(field.get(object)));
                     }
                 }

@@ -169,6 +169,7 @@ public class Initializer
 
         // Card controller.
         cardController.setDeck(deck);
+        cardController.setMixer((InterfaceMixer<InterfaceCard>) Mixer.getInstance());
         oneCardDispenser.addObserver(cardController);
 
         // Game starter.

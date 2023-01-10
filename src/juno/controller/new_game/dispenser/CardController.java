@@ -28,13 +28,14 @@ package juno.controller.new_game.dispenser;
 import juno.model.card.Card;
 import juno.model.card.InterfaceCard;
 import juno.model.deck.InterfaceDeck;
-import juno.model.deck.Mixer;
+import juno.model.deck.InterfaceMixer;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.util.AbstractObservable;
 import juno.model.util.Generator;
-import juno.model.util.Provider;
 import juno.model.util.Observer;
+import juno.model.util.Provider;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -46,10 +47,16 @@ public class CardController
         extends AbstractObservable
         implements Observer, Provider<List<InterfacePlayer<InterfaceCard>>>, Generator {
 
+    // The mixer.
+    @Nullable
+    private InterfaceMixer<InterfaceCard> mixer;
+
     // The deck.
+    @Nullable
     private InterfaceDeck<InterfaceCard> deck;
 
     // The players.
+    @Nullable
     private final List<InterfacePlayer<InterfaceCard>> players;
 
     // The CardController instance.
@@ -75,35 +82,42 @@ public class CardController
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public void generate() {
+        Objects.requireNonNull(players);
+        Objects.requireNonNull(deck);
+        Objects.requireNonNull(mixer);
+        // Obtaining player cards and mapping cards
+        // to their respective players.
+        List<Card> cards = new ArrayList<>();
         Map<InterfaceCard, InterfacePlayer<InterfaceCard>> map =
                 players.stream()
-                        .collect(Collectors.toMap(Provider::provide, value -> value));
-        List<Card> cards = new ArrayList<>(players.stream().map(player -> (Card) player.provide()).toList());
-        players.forEach(p ->
-                p.remove(p.provide()));
-        players.clear();
+                        .collect(Collectors.toMap(key -> {
+                            Card card = (Card) key.provide();
+                            cards.add(card);
+                            key.remove(card);
+                            return card;
+                        }, value -> value));
+        players.clear(); // Cleaning old players.
+        // Ascending order.
         Collections.sort(cards);
         Collections.reverse(cards);
-        Card b = cards.get(0); // The biggest card.
+        Card b = cards.get(0);
         deck.addAll(cards);
         players.add(map.get(b));
         cards.remove(b);
+        // Check other cards.
         for(Card card : cards) {
             if(b.compareTo(card) == 0)
                 players.add(map.get(card));
             else break;
-        }
-        Mixer<InterfaceCard> mixer = (Mixer<InterfaceCard>) Mixer.getInstance();
-        mixer.shuffle(deck);
+        } mixer.shuffle(deck);
         updateAll();
     }
 
     @Override @SuppressWarnings("unchecked")
     public void update(Object object) {
         if(object instanceof Provider<?> provider) {
-            players.clear();
+            Objects.requireNonNull(players).clear();
             players.addAll((List<InterfacePlayer<InterfaceCard>>) provider.provide());
             generate();
         } else throw new IllegalArgumentException();
@@ -115,6 +129,14 @@ public class CardController
      */
     public void setDeck(@NotNull InterfaceDeck<InterfaceCard> deck) {
         this.deck = deck;
+    }
+
+    /**
+     * Sets the mixer of this object.
+     * @param mixer An InterfaceMixer object.
+     */
+    public void setMixer(@NotNull InterfaceMixer<InterfaceCard> mixer) {
+        this.mixer = mixer;
     }
 
 }

@@ -40,6 +40,6 @@ public interface InterfaceColorFilter<T> {
      * @param cards A List object.
      * @return A List object.
      */
-    List<T> colored(List<T> cards);
+    List<T> color(List<T> cards);
 
 }
