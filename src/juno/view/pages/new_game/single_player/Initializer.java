@@ -27,7 +27,6 @@ package juno.view.pages.new_game.single_player;
 
 import juno.controller.util.InterfaceInitializer;
 import juno.view.pages.new_game.single_player.card.SinglePlayerCardPanelConfigurator;
-import juno.view.pages.new_game.single_player.match.MatchInitializer;
 import juno.view.pages.new_game.single_player.winner.WinnerPanelConfigurator;
 
 /**
@@ -56,7 +55,7 @@ public class Initializer
     public void initialize() {
         // Components initialization.
         WinnerPanelConfigurator.configure();
-        MatchInitializer.getInstance().initialize();
+        juno.view.pages.new_game.single_player.match.Initializer.getInstance().initialize();
         juno.view.pages.new_game.single_player.difficulty.Initializer.getInstance().initialize();
         juno.view.pages.new_game.single_player.mode.Initializer.getInstance().initialize();
         juno.view.pages.new_game.single_player.players.Initializer.getInstance().initialize();

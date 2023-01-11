@@ -33,24 +33,24 @@ import juno.view.pages.new_game.single_player.match.panels.south.SouthPanelConfi
 import juno.view.pages.new_game.single_player.match.panels.west.WestPanelConfigurator;
 
 /**
- * This class defines the match initializer.
+ * This class defines an initializer.
  * @author Simone Gentili
  */
-public class MatchInitializer
+public class Initializer
         implements InterfaceInitializer {
 
-    // The MatchInitializer instance.
-    private static MatchInitializer instance;
+    // The Initializer instance.
+    private static Initializer instance;
 
-    // Builds the MatchInitializer instance.
-    private MatchInitializer() {}
+    // Builds the Initializer instance.
+    private Initializer() {}
 
     /**
-     * Returns the MatchInitializer instance.
-     * @return The MatchInitializer instance.
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
      */
-    public static MatchInitializer getInstance() {
-        if(instance == null) instance = new MatchInitializer();
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
         return instance;
     }
 
