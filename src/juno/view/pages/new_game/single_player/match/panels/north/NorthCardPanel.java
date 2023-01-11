@@ -54,19 +54,19 @@ public class NorthCardPanel
         extends JPanel
         implements Observer, Restorable {
 
-    // 'Left' insects value parameter.
+    /** The left insects' parameter. */
     private final int rightInsectsParameter;
 
-    // The Image component initializer.
+    /** The image component initializer. */
     private InterfaceImageComponentInitializer initializer;
 
-    // The image resizer.
+    /** The image resizer. */
     private InterfaceImageResizer resizer;
 
-    // The grid bag constraints.
+    /** The grid bag constraints. */
     private final GridBagConstraints gbc;
 
-    // The show card boolean value.
+    /** The show card boolean value. */
     private boolean showCard = true;
 
     // The NorthCardPanel instance.

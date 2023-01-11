@@ -41,7 +41,7 @@ public class GAvatarImage<T>
         extends JButton
         implements InterfaceGObject<T>, Observer {
 
-    // The object.
+    /** The encapsulated avatar. */
     private final T avatar;
 
     /**

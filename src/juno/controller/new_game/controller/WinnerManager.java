@@ -63,6 +63,12 @@ public class WinnerManager
         return instance;
     }
 
+    /**
+     * This method executes the following operation:
+     * - Update the observers of this object.
+     * - Stop the timers.
+     * - Show the winner panel.
+     */
     public void menage() {
         updateAll();
         Objects.requireNonNull(stopper).stop();

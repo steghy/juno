@@ -57,43 +57,43 @@ public class SouthCardPanel
         extends JPanel
         implements Observer, Restorable {
 
-    // The 'Game is started' boolean value.
+    /** The game started boolean value. */
     private boolean gameStarted;
 
-    // 'Left' insects value parameter.
+    /** Left insects parameter. */
     private final int leftInsectsParameter;
 
-    // The penalty boolean value.
+    /** The penalty boolean value. */
     private boolean penalty;
 
-    // The dispenser boolean value.
+    /** The dispenser boolean value. */
     private boolean dispenser;
 
-    // The human player.
+    /** The human player. */
     private InterfacePlayer<InterfaceCard> humanPlayer;
 
-    // The card -> graphic card map.
+    /** The map card -> graphic object */
     private final Map<InterfaceCard, GObjectButton<InterfaceCard>> componentMap;
 
-    // The grid bag constraints.
+    /** The grid bag constrains. */
     private final GridBagConstraints gbc;
 
-    // The playable card setter.
+    /** The playable card setter. */
     private Setter<List<GObjectButton<InterfaceCard>>> playableCardSetter;
 
-    // The graphic object creator.
+    /** The graphic object creator. */
     private InterfaceGObjectCreator<InterfaceCard> creator;
 
-    // The discarded card setter.
+    /** The discarded card setter. */
     private Setter<InterfaceCard> discardedCardSetter;
 
-    // The current player provider.
+    /** The current player provider. */
     private Provider<InterfacePlayer<InterfaceCard>> currentPlayerProvider;
 
-    // The image resizer.
+    /** The image resizer. */
     private InterfaceImageResizer resizer;
 
-    // The card compatibility checker.
+    /** The compatibility checker. */
     private InterfaceCompatibilityChecker<InterfaceCard> compatibilityChecker;
 
     // The SouthCardPanel instance.

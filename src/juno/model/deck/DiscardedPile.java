@@ -54,7 +54,7 @@ public class DiscardedPile<T>
     /** The card. */
     private T card;
 
-    // The Observers List.
+    /** The Observers List. */
     private final List<Observer> observerList;
 
     // The DiscardedPile instance.

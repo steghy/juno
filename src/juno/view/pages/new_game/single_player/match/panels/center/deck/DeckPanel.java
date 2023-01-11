@@ -47,10 +47,10 @@ public class DeckPanel<T>
         extends AbstractFirstComponent
         implements Observer, Restorable {
 
-    // The current player provider.
+    /** The current player provider. */
     private Provider<T> provider;
 
-    // The human player.
+    /** The human player. */
     private T humanPlayer;
 
     // The DeckPanel instance.

@@ -38,13 +38,14 @@ public class GObjectButton<T>
         extends ImageButton
         implements InterfaceGObject<T> {
 
-    // The Object.
+    /** The encapsulated object. */
     private final T object;
 
     /**
      * Builds a GObjectButton with the
-     * specified object.
+     * specified parameters.
      * @param object An object.
+     * @param resizer An InterfaceImageResizer object.
      */
     public GObjectButton(@NotNull T object,
                          @NotNull InterfaceImageResizer resizer) {

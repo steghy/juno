@@ -52,7 +52,7 @@ public class Deck<T>
         extends AbstractDeck<T>
         implements Observable, Observer, Restorable {
 
-    /* The Observers List */
+    /** The Observers List. */
     private final List<Observer> observerList;
 
     /* The Deck instance. */

@@ -50,13 +50,13 @@ public class DiscardedPilePanel
         Observer,
         Restorable {
 
-    // The graphic card creator.
+    /** The graphic card creator. */
     private InterfaceGObjectCreator<InterfaceCard> creator;
 
-    // The top discarded pile card provider.
+    /** The provider. */
     private Provider<InterfaceCard> provider;
 
-    // The default component.
+    /** The default component. */
     private Component c;
 
     // The DiscardedPilePanel instance.

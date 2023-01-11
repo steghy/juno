@@ -41,16 +41,16 @@ public class ProfilesPanel
         extends JPanel
         implements Observer {
 
-    // 'Top' insects value parameter.
+    /** Top insects parameter. */
     private final int topInsectsParameter;
 
-    // The GridBagConstraints.
+    /** The grid bag constraints. */
     private final GridBagConstraints gbc;
 
     // The ProfilesPanel instance.
     private static ProfilesPanel instance;
 
-    // The GProfile processor.
+    /** The graphic processor. */
     private InterfaceGraphicProcessor<AbstractButton, InterfaceGObject<String>> processor;
 
     // Builds the ProfilesPanel instance.

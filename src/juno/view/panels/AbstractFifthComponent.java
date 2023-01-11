@@ -40,7 +40,7 @@ public abstract class AbstractFifthComponent
     /** Constructor. */
     public AbstractFifthComponent() {}
 
-    // The fifth component.
+    /** The fifth component. */
     private Component fifthComponent;
 
     /**

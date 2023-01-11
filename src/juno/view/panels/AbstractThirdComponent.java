@@ -41,7 +41,7 @@ public abstract class AbstractThirdComponent
      */
     public AbstractThirdComponent() {}
 
-    // The third component.
+    /** The third component. */
     private Component thirdComponent;
 
     /**

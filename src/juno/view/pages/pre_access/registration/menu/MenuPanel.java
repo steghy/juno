@@ -46,7 +46,7 @@ public class MenuPanel
         extends AbstractSixthComponent
         implements Exportable, InterfaceDataLineProvider, Observer {
 
-    // The data lines map.
+    /** The data lines map. */
     private final Map<String, DataLine> dataLines;
 
     // The MenuPanel instance.

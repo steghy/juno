@@ -30,6 +30,10 @@ import juno.view.panels.AbstractSecondComponent;
 import java.awt.*;
 import java.util.Objects;
 
+/**
+ * This class defines the welcome panel.
+ * @author Simone Gentili
+ */
 public class WelcomePanel
         extends AbstractSecondComponent {
 

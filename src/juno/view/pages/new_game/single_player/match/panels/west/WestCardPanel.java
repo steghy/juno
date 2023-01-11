@@ -54,19 +54,19 @@ public class WestCardPanel
         extends JPanel
         implements Observer, Restorable {
 
-    // 'Top' insects value parameter.
+    /** The top insects' parameter. */
     private final int topInsectsParameter;
 
-    // The Image component initializer.
+    /** The image component initializer. */
     private InterfaceImageComponentInitializer initializer;
 
-    // The image resizer.
+    /** The image resizer. */
     private InterfaceImageResizer resizer;
 
-    // The grid bag constraints.
+    /** The grid bag constraints. */
     private final GridBagConstraints gbc;
 
-    // The show card boolean value.
+    /** The show card boolean value. */
     private boolean showCard = true;
 
     // The WestCardPanel instance.

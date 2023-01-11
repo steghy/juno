@@ -37,10 +37,10 @@ import java.awt.*;
 public class Frame
         extends JFrame {
 
-    // The main background.
+    /** The background. */
     private JLabel background;
 
-    // The panel.
+    /** The panel. */
     private JPanel panel;
 
     // The Frame instance.

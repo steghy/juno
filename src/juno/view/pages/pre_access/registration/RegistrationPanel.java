@@ -37,7 +37,7 @@ import java.util.Objects;
 public class RegistrationPanel
         extends AbstractSecondComponent {
 
-    // From welcome panel boolean value.
+    /** From welcome panel boolean value. */
     private boolean fromWelcomePanel = false;
 
     // The Registration panel instance.

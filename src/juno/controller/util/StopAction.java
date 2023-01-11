@@ -47,11 +47,13 @@ public class StopAction
     private final Component c;
 
     /**
-     * Builds a StopAction with the specified
-     * stoppable object.
+     * Builds a StopAction object with the
+     * specified parameters.
      * @param stoppable A Stoppable object.
+     * @param c A Component object.
      */
-    public StopAction(@NotNull Stoppable stoppable, Component c) {
+    public StopAction(@NotNull Stoppable stoppable,
+                      Component c) {
         this.stoppable = stoppable;
         this.c = c;
     }

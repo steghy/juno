@@ -40,7 +40,7 @@ public class LostGamesPanel
         extends JPanel
         implements Observer {
 
-    // The lost games points.
+    /** Lost game points label. */
     private final JLabel lostGamesPoints;
 
     // The LostGamesPanel instance.

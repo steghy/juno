@@ -40,7 +40,7 @@ public abstract class AbstractSeventhComponent
     /** Constructor. */
     public AbstractSeventhComponent() {}
 
-    // The seventh component.
+    /** The seventh component. */
     private Component seventhComponent;
 
     /**

@@ -40,7 +40,7 @@ public abstract class AbstractNinthComponent
     /** Constructor. */
     public AbstractNinthComponent() {}
 
-    // The ninth component.
+    /** The ninth component. */
     private Component ninthComponent;
 
     /**

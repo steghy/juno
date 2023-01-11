@@ -31,6 +31,11 @@ import juno.view.util.InterfaceImageResizer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * This abstract class defines abstract graphic
+ * object creators.
+ * @author Simone Gentili
+ */
 public abstract class AbstractGObjectCreator {
 
     /** Constructor. */

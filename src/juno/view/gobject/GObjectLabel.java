@@ -38,7 +38,7 @@ public class GObjectLabel<T>
         extends ImageLabel
         implements InterfaceGObject<T> {
 
-    // The Object.
+    /** The encapsulated object. */
     private final T object;
 
     /**

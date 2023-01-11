@@ -38,7 +38,9 @@ import java.util.Objects;
 public class UserDataSetter
         extends AbstractUserDataSetter<String, Configurable> {
 
-    // Builds a UserDataSetter object.
+    /**
+     * Builds a UserDataSetter.
+     */
     public UserDataSetter() {}
 
     @Override

@@ -37,7 +37,7 @@ import java.awt.*;
 public class ImageButton
         extends JButton {
 
-    // The image resizer.
+    /** The image resizer. */
     private InterfaceImageResizer resizer;
 
     /**

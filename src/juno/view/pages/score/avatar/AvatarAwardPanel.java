@@ -37,10 +37,10 @@ import java.awt.*;
 public class AvatarAwardPanel
         extends JPanel {
 
-    // The 'left' insects parameter.
+    /** Left insects parameter. */
     private final int leftInsectsParameter;
 
-    // The grid bag constraints.
+    /** The grid bag constraints. */
     private final GridBagConstraints gbc;
 
     /** Builds an AvatarAwardPanel instance. */

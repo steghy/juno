@@ -44,19 +44,19 @@ public class UserAvatarPanel<T>
         extends AvatarPanel
         implements Observer {
 
-    // The avatar image setter.
+    /** The observable avatar image setter. */
     private final Observable avatarImageSetter;
 
-    // The avatar name setter.
+    /** The observable avatar name setter. */
     private final Observable avatarNameSetter;
 
-    // The graphic avatar image creator.
+    /** The graphic avatar image creator. */
     private final InterfaceGObjectCreator<T> creator;
 
-    // The avatar image provider.
+    /** The avatar image provider. */
     private final Provider<T> imageProvider;
 
-    // The avatar name provider.
+    /** The avatar name provider. */
     private final Provider<String> nameProvider;
 
     /**

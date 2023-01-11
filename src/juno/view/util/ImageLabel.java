@@ -37,7 +37,7 @@ import java.awt.*;
 public class ImageLabel
         extends JLabel {
 
-    // The image resizer.
+    /** The image resizer. */
     private InterfaceImageResizer resizer;
 
     /**

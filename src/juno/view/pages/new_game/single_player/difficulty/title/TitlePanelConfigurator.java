@@ -43,6 +43,7 @@ public class TitlePanelConfigurator {
     // Builds a TitlePanelConfigurator object.
     private TitlePanelConfigurator() {}
 
+    /** Configures the TitlePanel instance. */
     public static void configure() {
         // Main component.
         TitlePanel titlePanel = TitlePanel.getInstance();

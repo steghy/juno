@@ -37,7 +37,7 @@ import java.awt.*;
 public class ImageToggleButton
         extends JToggleButton {
 
-    // The image resizer.
+    /** The image resizer. */
     private InterfaceImageResizer resizer;
 
     /**

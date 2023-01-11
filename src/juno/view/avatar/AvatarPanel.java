@@ -38,10 +38,10 @@ import java.awt.*;
 public class AvatarPanel
         extends JPanel {
 
-    // The avatar image.
+    /** The avatar image. */
     private JButton avatarImage;
 
-    // The avatar name.
+    /** The avatar name. */
     private JLabel avatarName;
 
     /**

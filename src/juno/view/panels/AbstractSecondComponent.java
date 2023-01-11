@@ -41,7 +41,7 @@ public abstract class AbstractSecondComponent
     /** Constructor. */
     public AbstractSecondComponent() {}
 
-    // The second component.
+    /** The second component. */
     private Component secondComponent;
 
     /**

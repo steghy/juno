@@ -40,7 +40,7 @@ public class GamesWonPanel
         extends JPanel
         implements Observer {
 
-    // The games won points.
+    /** The games won points label. */
     private final JLabel gamesWonPoints;
 
     // The GamesWonPanel instance.

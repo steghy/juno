@@ -39,10 +39,10 @@ import java.util.Objects;
 public class DataLine
         extends JPanel {
 
-    // The label.
+    /** The label. */
     private final JLabel label;
 
-    // The text field.
+    /** The text field. */
     private final JTextField textField;
 
     /**

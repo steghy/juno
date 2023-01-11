@@ -38,10 +38,10 @@ import java.util.Random;
 public class Donut<T>
         extends ArrayList<T> {
 
-    // The index of the current selected item.
+    /** The index of the current element of the Donut. */
     private int index;
 
-    // Inverter boolean value.
+    /** The inverted boolean value. */
     private boolean inverted;
 
     /** Builds a Donut object. */

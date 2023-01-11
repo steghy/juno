@@ -42,7 +42,7 @@ public class AbstractFirstComponent
     /** Constructor. */
     public AbstractFirstComponent() {}
 
-    // The first component.
+    /** The first component. */
     private Component firstComponent;
 
     /**

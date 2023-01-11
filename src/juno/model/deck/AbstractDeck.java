@@ -41,10 +41,10 @@ public abstract class AbstractDeck<T>
     /** Constructor. */
     public AbstractDeck() {}
 
-    // The Deck filler.
+    /** The deck filler. */
     private InterfaceDeckFiller<T> filler;
 
-    // The Deck mixer.
+    /** The mixer. */
     private InterfaceMixer<T> mixer;
 
     /**

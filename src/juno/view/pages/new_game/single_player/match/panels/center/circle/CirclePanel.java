@@ -42,7 +42,7 @@ public class CirclePanel
         extends AbstractSecondComponent
         implements Observer, Restorable {
 
-    // The inverted boolean value.
+    /** The inverted boolean value. */
     private boolean inverted;
 
     // The CircleLabel instance.

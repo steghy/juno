@@ -40,7 +40,7 @@ public abstract class AbstractEighthComponent
     /** Constructor. */
     public AbstractEighthComponent() {}
 
-    // The eighth component.
+    /** The eighth component. */
     private Component eighthComponent;
 
     /**

@@ -40,7 +40,7 @@ public class AbstractFourthComponent
     /** Constructor. */
     public AbstractFourthComponent() {}
 
-    // The fourth component.
+    /** The fourth component. */
     private Component fourthComponent;
 
     /**
