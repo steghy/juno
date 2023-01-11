@@ -30,22 +30,49 @@ import java.awt.*;
 import java.awt.geom.Area;
 import java.awt.geom.RoundRectangle2D;
 
+/**
+ * This class defines rounded border.
+ */
 @SuppressWarnings("ALL")
-public class RoundedBorder implements Border {
+public class RoundedBorder
+        implements Border {
 
+    // Radius value.
     private int radius;
+
+    // Thickness value.
     private int thickness;
+
+    // Color value.
     private Color color;
+
+    // Internal color value.
     private Color internalColor;
+
+    // Stroke value.
     private Stroke stroke;
+
+    // The rendering hints.
     private RenderingHints hints;
 
+    /** Builds a RoundedBorder with the
+     * specified radius value.
+     * @param radius An integer value.
+     */
     public RoundedBorder(int radius) {
         this.radius = radius;
     }
 
+    /** Builds an empty RoundedBorder. */
     public RoundedBorder() {}
 
+    /**
+     * Builds a RoundedBorder with the specified parameters
+     * @param radius An integer value.
+     * @param thickness An integer value.
+     * @param internalColor A Color object.
+     * @param color A Color object.
+     */
     public RoundedBorder(int radius,
                          int thickness,
                          Color internalColor,
@@ -55,7 +82,9 @@ public class RoundedBorder implements Border {
         this.color = color;
         this.internalColor = internalColor;
         this.stroke = new BasicStroke(thickness);
-        this.hints = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        this.hints = new RenderingHints(
+                RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON);
     }
 
     @Override

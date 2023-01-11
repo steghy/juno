@@ -26,11 +26,15 @@
 package juno.controller.new_game.controller;
 
 /**
+ * This interface defines controllers.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface Controller {
 
+    /**
+     * Execute the control.
+     */
     void control();
 
 }

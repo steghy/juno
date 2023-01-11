@@ -29,8 +29,19 @@ import juno.model.card.InterfaceCard;
 import juno.model.deck.DeckFactory;
 import juno.model.deck.Deck;
 
+/**
+ * This class defines the deck factory tester.
+ * @author Simone Gentili
+ */
 public class DeckFactoryTester {
 
+    // Tester class.
+    private DeckFactoryTester() {}
+
+    /**
+     * Execute the deck factory test.
+     * @param args An array of String objects.
+     */
     @SuppressWarnings("unchecked")
     public static void main(String[] args) {
         DeckFactory deckFactory = DeckFactory.getInstance();

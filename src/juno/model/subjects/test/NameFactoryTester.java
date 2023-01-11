@@ -27,8 +27,19 @@ package juno.model.subjects.test;
 
 import juno.model.subjects.factory.NameProvider;
 
+/**
+ * This class defines a name factory tester.
+ * @author Simone Gentili
+ */
 public class NameFactoryTester {
 
+    // Tester class.
+    private NameFactoryTester() {}
+
+    /**
+     * Execute the name factory tester with the specified arguments.
+     * @param args An array of String objects.
+     */
     public static void main(String[] args) {
         NameProvider randomNameProvider = NameProvider.getInstance();
         randomNameProvider.provide(3).forEach(System.out::println);

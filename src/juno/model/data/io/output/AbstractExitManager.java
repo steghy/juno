@@ -37,6 +37,9 @@ import org.jetbrains.annotations.Nullable;
 public abstract class AbstractExitManager<T>
         implements InterfaceExitManager {
 
+    /** Constructor. */
+    public AbstractExitManager() {}
+
     // The exporter manager.
     private InterfaceExporterManager<T> exporter;
 

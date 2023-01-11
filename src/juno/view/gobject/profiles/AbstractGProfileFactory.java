@@ -38,6 +38,9 @@ import org.jetbrains.annotations.Nullable;
 public abstract class AbstractGProfileFactory<T>
         extends AbstractGObjectFactory<T> {
 
+    /** Constructor. */
+    public AbstractGProfileFactory() {}
+
     // Profile name key.
     private String key;
 

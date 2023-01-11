@@ -27,10 +27,12 @@ package juno.controller.pre_access.loggers;
 
 import juno.controller.pre_access.registration.InterfaceRegistrationDataSelector;
 import juno.model.util.Observer;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 
 /**
+ * This class defines a registration notifier.
  * @author Simone Gentili
  */
 public class RegistrationNotifier
@@ -42,17 +44,25 @@ public class RegistrationNotifier
     // Builds the RegistrationNotifier.
     private RegistrationNotifier() {}
 
+    /**
+     * Returns the RegistrationNotifier instance.
+     * @return The RegistrationNotifier instance.
+     */
     public static RegistrationNotifier getInstance() {
         if(instance == null) instance = new RegistrationNotifier();
         return instance;
     }
 
+    /**
+     * Notifies the registration with
+     * a message dialog.
+     */
     public void notifyRegistrationMessage() {
         JOptionPane.showMessageDialog(null, "Thank you for the registration.");
     }
 
     @Override
-    public void update(Object object) {
+    public void update(@NotNull Object object) {
         if(object instanceof InterfaceRegistrationDataSelector) {
             notifyRegistrationMessage();
         } else throw new IllegalArgumentException(

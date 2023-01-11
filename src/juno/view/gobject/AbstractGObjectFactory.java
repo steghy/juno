@@ -36,6 +36,9 @@ import org.jetbrains.annotations.Nullable;
 public abstract class AbstractGObjectFactory<T>
         implements InterfaceGObjectFactory<T>, InterfaceGObjectGenerator<T> {
 
+    /** Constructor. */
+    public AbstractGObjectFactory() {}
+
     // The graphic object creator.
     private InterfaceGObjectCreator<T> creator;
 

@@ -39,6 +39,9 @@ import org.jetbrains.annotations.Nullable;
 public abstract class AbstractHumanPlayer<T>
         extends AbstractPlayer<T> {
 
+    /** Constructor. */
+    public AbstractHumanPlayer() {}
+
     // The profile name provider.
     Provider<String> provider;
 

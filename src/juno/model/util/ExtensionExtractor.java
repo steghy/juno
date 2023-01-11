@@ -35,6 +35,9 @@ import org.jetbrains.annotations.NotNull;
  */
 public class ExtensionExtractor {
 
+    // Utility class.
+    private ExtensionExtractor() {}
+
     /**
      * Extract the extension from the specified
      * String object.

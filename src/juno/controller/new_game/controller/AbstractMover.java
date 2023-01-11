@@ -31,8 +31,15 @@ import juno.model.subjects.shift.InterfaceTurnMover;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * This abstract class defines abstract movers.
+ * @param <T> The type of the cards.
+ */
 public abstract class AbstractMover<T>
         extends AbstractDeckUser<T> {
+
+    /** Constructor. */
+    public AbstractMover() {}
 
     // The turn mover.
     private InterfaceTurnMover turnMover;

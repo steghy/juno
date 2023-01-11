@@ -20,11 +20,8 @@ juno.model
 juno.model.card
 juno.model.card.actions
 juno.model.card.colors
+juno.model.data.achievements
 juno.model.data.avatar
-juno.model.data.awards
-juno.model.data.awards.avatar
-juno.model.data.awards.frame
-juno.model.data.goals
 juno.model.data.io
 juno.model.data.io.input
 juno.model.data.io.input.configurable
@@ -38,7 +35,6 @@ juno.model.deck
 juno.model.deck.test
 juno.model.requester
 juno.model.sound
-juno.model.sound.test
 juno.model.subjects
 juno.model.subjects.ai
 juno.model.subjects.ai.examiner

@@ -33,7 +33,9 @@ import java.util.List;
 import java.util.Random;
 
 /**
+ * This class defines a random object provider.
  * @author Simone Gentili
+ * @param <T> The type of the object to provide.
  */
 public class RandomObjectProvider<T>
         implements Provider<T> {

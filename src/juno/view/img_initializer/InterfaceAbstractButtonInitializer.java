@@ -30,9 +30,22 @@ import juno.view.util.RotatedIcon;
 
 import javax.swing.*;
 
+/**
+ * This interface defines abstract
+ * button initializers.
+ * @author Simone Gentili
+ */
 @FunctionalInterface
 public interface InterfaceAbstractButtonInitializer {
 
+    /**
+     * Initialize the specified AbstractButton object
+     * with the specified parameters.
+     * @param button An AbstractButton object.
+     * @param file An InterfacePathProvider object.
+     * @param rolloverFiler An InterfacePathProvider object.
+     * @param rotate A RotatedIcon.Rotate object.
+     */
     void initialize(AbstractButton button,
                     InterfacePathProvider file,
                     InterfacePathProvider rolloverFiler,

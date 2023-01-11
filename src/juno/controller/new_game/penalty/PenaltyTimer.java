@@ -32,6 +32,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * This class defines a penalty timer.
+ * @author Simone Gentili
+ */
 public class PenaltyTimer
         extends AbstractObservable
         implements ActionListener, Stoppable {
@@ -48,11 +52,19 @@ public class PenaltyTimer
         timer.setRepeats(false);
     }
 
+    /**
+     * Starts the timer and update all
+     * the Observers of this object.
+     */
     public void startTimer() {
         timer.start();
         updateAll();
     }
 
+    /**
+     * Returns the timer of this object.
+     * @return A Timer object.
+     */
     public Timer getTimer() {
         return timer;
     }

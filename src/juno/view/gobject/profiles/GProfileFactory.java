@@ -39,6 +39,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * This class defines a graphic profile factory.
+ * @author Simone Gentili
+ */
 public class GProfileFactory
         extends AbstractGProfileFactory<String>
         implements Observer, Observable {
@@ -66,7 +70,8 @@ public class GProfileFactory
         return instance;
     }
 
-    @Override @Nullable
+    @Override
+    @Nullable
     public List<InterfaceGObject<String>> getGObjects() {
         return gProfiles;
     }

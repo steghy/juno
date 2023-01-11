@@ -36,6 +36,7 @@ import java.util.List;
 /**
  * This class defines abstract account setters.
  * @author Simone Gentili
+ * @param <T> The type of the object to set.
  */
 public abstract class AbstractAccountSetter<T>
         implements Setter<T> {

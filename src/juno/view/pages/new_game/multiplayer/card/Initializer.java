@@ -23,27 +23,42 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.new_game.single_player.mode;
+package juno.view.pages.new_game.multiplayer.card;
 
-import juno.view.pages.new_game.single_player.mode.menu.MenuPanelConfigurator;
-import juno.view.pages.new_game.single_player.mode.title.TitlePanelConfigurator;
+import juno.controller.util.InterfaceInitializer;
+import juno.view.pages.new_game.multiplayer.available.AvailableServiceInitializer;
+import juno.view.pages.new_game.multiplayer.unavailable.UnavailableServiceInitializer;
 
 /**
- * This class defines the mode initializer.
+ * This class defines an initializer.
  * @author Simone Gentili
  */
-public class ModeInitializer {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // Builds a ModeInitializer object.
-    private ModeInitializer() {}
+    // The Initializer instance.
+    private static Initializer instance;
 
-    public static void initialize() {
-        // Components configurations.
-        TitlePanelConfigurator.configure();
-        MenuPanelConfigurator.configure();
+    // Builds a MultiplayerInitializer object.
+    private Initializer() {}
+
+    /**
+     * Returns the Initializer object.
+     * @return The Initializer object.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
+    public void initialize() {
+        // Components configuration.
+        AvailableServiceInitializer.initialize();
+        UnavailableServiceInitializer.initialize();
 
         // Main component configuration.
-        ModePanelConfigurator.configure();
+        MultiplayerCardPanelConfigurator.configure();
     }
 
 }

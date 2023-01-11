@@ -33,8 +33,9 @@ package juno.model.subjects.ai;
 public interface InterfaceEasy {
 
     /**
-     *
-     * @return
+     * Returns true if, and only if, the
+     * difficulty is easy, otherwise returns false.
+     * @return A boolean value.
      */
     boolean isEasy();
 

@@ -29,6 +29,7 @@ import juno.model.util.PathGenerator;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * This class defines a path builder.
  * @author Simone Gentili
  */
 public class PathBuilder

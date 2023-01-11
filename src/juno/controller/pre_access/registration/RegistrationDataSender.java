@@ -34,7 +34,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * This class represents registration data sender.
+ * This class defines a registration data sender.
  * @author Simone Gentili
  */
 public class RegistrationDataSender
@@ -53,11 +53,12 @@ public class RegistrationDataSender
     private final InterfaceRegistrationDataSelector dataSelector;
 
     /**
-     * Builds a RegistrationDataSender with the specified
-     * Configurable and InterfaceRegistrationDataSender
-     * objects.
+     * Builds a RegistrationDataSender with the
+     * specified parameters.
      * @param configurable A Configurable object.
      * @param exportable An Exportable object.
+     * @param errorProvider An InterfaceErrorProvider object.
+     * @param dataSelector An InterfaceRegistrationDataSelector object.
      */
     public RegistrationDataSender(@NotNull Configurable configurable,
                                   @NotNull Exportable exportable,

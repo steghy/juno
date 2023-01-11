@@ -39,6 +39,9 @@ import java.awt.*;
 public class AbstractFirstComponent
         extends JPanel {
 
+    /** Constructor. */
+    public AbstractFirstComponent() {}
+
     // The first component.
     private Component firstComponent;
 

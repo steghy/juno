@@ -36,6 +36,9 @@ import org.jetbrains.annotations.Nullable;
 public abstract class AbstractGObjectMapFactory<T>
         implements InterfaceGObjectMapFactory<T>, InterfaceGObjectMapGenerator<T> {
 
+    /** Constructor. */
+    public AbstractGObjectMapFactory() {}
+
     // The graphic object factory.
     private InterfaceGObjectFactory<T> factory;
 

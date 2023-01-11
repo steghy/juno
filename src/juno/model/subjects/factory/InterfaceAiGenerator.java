@@ -34,6 +34,12 @@ package juno.model.subjects.factory;
 @FunctionalInterface
 public interface InterfaceAiGenerator<T> {
 
+    /**
+     * Generates the specified number of artificial players
+     * with the specified difficulty.
+     * @param num An integer.
+     * @param difficulty An Object.
+     */
     void generate(int num,
                   T difficulty);
 

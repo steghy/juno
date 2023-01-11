@@ -25,14 +25,22 @@
 
 package juno.model.requester;
 
+/**
+ * This class defines a utility method.
+ */
 public class GitHubRepositorySetter {
 
+    // Utility class.
     private GitHubRepositorySetter() {}
 
+    /**
+     * Sets the GitHub repository of this application.
+     */
     public static void setRepository() {
         GitHubURLBuilder url = GitHubURLBuilder.getInstance();
         url.adminName = "steghy";
         url.repositoryName = "juno";
         url.branchName = "main";
     }
+
 }

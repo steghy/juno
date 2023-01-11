@@ -50,6 +50,7 @@ public class MenuPanelConfigurator {
     // Builds a MenuPanelConfigurator object.
     private MenuPanelConfigurator() {}
 
+    /** Configures the MenuPanel instance. */
     public static void configure() {
         // Main component.
         MenuPanel menuPanel = MenuPanel.getInstance();

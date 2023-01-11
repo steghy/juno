@@ -39,6 +39,9 @@ import java.util.Objects;
 public abstract class AbstractSubscriber
         implements Subscriber, Unsubscriber {
 
+    /** Constructor. */
+    public AbstractSubscriber() {}
+
     // The Observer object.
     private Observer observer;
 

@@ -26,12 +26,24 @@
 package juno.model.deck.test;
 
 import juno.model.card.InterfaceCard;
+import juno.model.deck.Deck;
 import juno.model.deck.DeckFactory;
 import juno.model.deck.Mixer;
-import juno.model.deck.Deck;
 
+/**
+ * This class defines a mixer tester.
+ * @author Simone Gentili
+ */
 public class MixerTester {
 
+    // Tester class.
+    private MixerTester() {}
+
+    /**
+     * Execute the mixer tester with the
+     * specified arguments.
+     * @param args An array of String objects.
+     */
     @SuppressWarnings("unchecked")
     public static void main(String[] args) {
         Mixer<InterfaceCard> mixer = (Mixer<InterfaceCard>) Mixer.getInstance();
@@ -41,4 +53,5 @@ public class MixerTester {
         mixer.shuffle(deck);
         deck.forEach(System.out::println);
     }
+
 }

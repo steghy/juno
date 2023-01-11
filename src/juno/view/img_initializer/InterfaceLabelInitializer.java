@@ -30,9 +30,20 @@ import juno.view.util.RotatedIcon;
 
 import javax.swing.*;
 
+/**
+ * This interface defines a label initializer.
+ * @author Simone Gentili
+ */
 @FunctionalInterface
 public interface InterfaceLabelInitializer {
 
+    /**
+     * Initialize the specified JLabel object
+     * with the specified parameters.
+     * @param label A JLabel object.
+     * @param file An InterfacePathProvider object.
+     * @param rotate A RotatedIcon.Rotate object.
+     */
     void initialize(JLabel label,
                     InterfacePathProvider file,
                     RotatedIcon.Rotate rotate);

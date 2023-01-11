@@ -23,27 +23,42 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.new_game.single_player.players;
+package juno.view.pages.new_game.single_player.difficulty;
 
-import juno.view.pages.new_game.single_player.players.menu.MenuPanelConfigurator;
-import juno.view.pages.new_game.single_player.players.title.TitlePanelConfigurator;
+import juno.controller.util.InterfaceInitializer;
+import juno.view.pages.new_game.single_player.difficulty.menu.MenuPanelConfigurator;
+import juno.view.pages.new_game.single_player.difficulty.title.TitlePanelConfigurator;
 
 /**
- * This class defines an initializer.
+ * this class defines an initializer.
  * @author Simone Gentili
  */
-public class PlayersNumberInitializer {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // Builds a PlayersNumberInitializer object.
-    private PlayersNumberInitializer() {}
+    // The Initializer instance.
+    private static Initializer instance;
 
-    public static void initialize() {
+    // Builds the Initializer instance.
+    private Initializer() {}
+
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
+    public void initialize() {
         // Components configurations.
         TitlePanelConfigurator.configure();
         MenuPanelConfigurator.configure();
 
         // Main component configuration.
-        PlayersNumberPanelConfigurator.configure();
+        DifficultyPanelConfigurator.configure();
     }
 
 }

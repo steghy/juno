@@ -25,7 +25,6 @@
 
 package juno.model.data.profile;
 
-import juno.model.data.profile.InterfaceErrorProvider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -34,6 +33,9 @@ import org.jetbrains.annotations.Nullable;
  * @author Simone Gentili
  */
 public abstract class AbstractProfile {
+
+    /** Constructor. */
+    public AbstractProfile() {}
 
     // The error provider.
     private InterfaceErrorProvider provider;

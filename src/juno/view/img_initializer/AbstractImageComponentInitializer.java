@@ -36,6 +36,9 @@ import org.jetbrains.annotations.Nullable;
 public abstract class AbstractImageComponentInitializer
         implements InterfaceImageComponentInitializer {
 
+    /** Constructor. */
+    public AbstractImageComponentInitializer() {}
+
     // The requester.
     private InterfaceRequester requester;
 

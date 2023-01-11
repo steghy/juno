@@ -37,6 +37,7 @@ public class MultiplayerCardPanelConfigurator {
     // Builds a MultiplayerCardPanelConfigurator object. */
     private MultiplayerCardPanelConfigurator() {}
 
+    /** Configures the MultiplayerCardPanel instance. */
     public static void configure() {
         // Main component.
         MultiplayerCardPanel multiplayerCardPanel = MultiplayerCardPanel.getInstance();

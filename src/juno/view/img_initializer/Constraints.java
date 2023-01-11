@@ -32,34 +32,49 @@ package juno.view.img_initializer;
  */
 public enum Constraints {
 
+    /** Throw exception */
     THROW_EXCEPTION,
 
+    /** Red button */
     RED_BUTTON,
 
+    /** Blue button */
     BLUE_BUTTON,
 
+    /** Yellow button */
     YELLOW_BUTTON,
 
+    /** Cyan button */
     CYAN_BUTTON,
 
+    /** Green label */
     GREEN_BUTTON,
 
+    /** Red label. */
     RED_LABEL,
 
+    /** Blue label */
     BLUE_LABEL,
 
+    /** Yellow label */
     YELLOW_LABEL,
 
+    /** Cyan label */
     CYAN_LABEL,
 
+    /** Green label */
     GREEN_LABEL,
 
+    /** Keep image */
     KEEP_IMAGE,
 
+    /** Keep rollover image */
     KEEP_ROLLOVER_IMAGE,
 
+    /** Keep selected image */
     KEEP_SELECTED_IMAGE,
 
+    /** Keep rollover selected image */
     KEEP_ROLLOVER_SELECTED_IMAGE
 
 }

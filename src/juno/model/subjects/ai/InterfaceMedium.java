@@ -33,8 +33,10 @@ package juno.model.subjects.ai;
 public interface InterfaceMedium {
 
     /**
-     *
-     * @return
+     * Returns true if, and only if, the
+     * difficulty is medium, otherwise
+     * returns false.
+     * @return A boolean value.
      */
     boolean isMedium();
 

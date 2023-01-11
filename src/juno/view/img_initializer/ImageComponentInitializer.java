@@ -42,15 +42,15 @@ import java.util.Objects;
 public class ImageComponentInitializer
         extends AbstractImageComponentInitializer {
 
-    public Dimension dimension = null;
-    public Constraints BOTH_MISSING = Constraints.THROW_EXCEPTION;
-    public Constraints BOTH_SELECTED_MISSING = Constraints.THROW_EXCEPTION;
-    public Constraints ALL_MISSING = Constraints.THROW_EXCEPTION;
-    public Constraints IMAGE_MISSING = Constraints.KEEP_ROLLOVER_IMAGE;
-    public Constraints ROLLOVER_IMAGE_MISSING = Constraints.KEEP_IMAGE;
-    public Constraints SELECTED_IMAGE_MISSING = Constraints.KEEP_ROLLOVER_SELECTED_IMAGE;
-    public Constraints ROLLOVER_SELECTED_IMAGE_MISSING = Constraints.KEEP_SELECTED_IMAGE;
-    public boolean download = false;
+    private final Dimension dimension = null;
+    private final Constraints BOTH_MISSING = Constraints.THROW_EXCEPTION;
+    private final Constraints BOTH_SELECTED_MISSING = Constraints.THROW_EXCEPTION;
+    private final Constraints ALL_MISSING = Constraints.THROW_EXCEPTION;
+    private final Constraints IMAGE_MISSING = Constraints.KEEP_ROLLOVER_IMAGE;
+    private final Constraints ROLLOVER_IMAGE_MISSING = Constraints.KEEP_IMAGE;
+    private final Constraints SELECTED_IMAGE_MISSING = Constraints.KEEP_ROLLOVER_SELECTED_IMAGE;
+    private final Constraints ROLLOVER_SELECTED_IMAGE_MISSING = Constraints.KEEP_SELECTED_IMAGE;
+    private final boolean download = false;
 
     // The ImageComponentInitializer instance.
     private static ImageComponentInitializer instance;

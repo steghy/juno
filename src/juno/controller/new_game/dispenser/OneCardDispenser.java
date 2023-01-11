@@ -42,7 +42,9 @@ import java.util.Collection;
 import java.util.List;
 
 /**
+ * This class defines a one card dispenser.
  * @author Simone Gentili
+ * @param <T> The type of the card.
  */
 public class OneCardDispenser<T>
         extends AbstractObservable

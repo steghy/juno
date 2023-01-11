@@ -29,6 +29,7 @@ import juno.model.util.Setter;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * This class defines a player setter.
  * @author Simone Gentili
  */
 public class PlayersSetter

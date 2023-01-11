@@ -29,68 +29,23 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 
+/**
+ * This class defines a utility methods.
+ * @author Simone Gentili
+ */
 public class Os {
-	
-	public static String getOSName() {
-		return System.getProperty("os.name");
-	}
-	
-	public static String getOSVersion() {
-		return System.getProperty("os.version");
-	}
 
-	public static String getOSArchitecture() {
-		return System.getProperty("os.arch");
-	}
-	
-	public static boolean isWindows() {
-		return getOSName().startsWith("Windows");
-	}
+	// Utility class.
+	private Os() {}
 
-	public static boolean isGnuLinux() {
-		return getOSName().startsWith("Linux");
-	}
-
-	public static boolean isMacOs() {
-		return getOSName().startsWith("Mac Os");
-	}
-
-	public static boolean parentExists(String path) {
-		File file = new File(path);
-		return file.getParentFile().exists();
-	}
-
-	public static String getCurrentPath() {
-		return System.getProperty("user.dir");
-	}
-	
+	/**
+	 * Returns true if, and only if, the specified
+	 * path exists, otherwise returns false.
+	 * @param path A String object.
+	 * @return A Boolean value.
+	 */
 	public static boolean exists(@NotNull String path) {
 			return new File(path).exists();
-	}
-
-	public static boolean exists(@NotNull File file) {
-		return file.exists();
-	}
-
-	public static boolean isDirectory(@NotNull String path) {
-		return new File(path).isDirectory();
-	}
-
-	public static boolean isDirectory(@NotNull File file) {
-		return file.isDirectory();
-	}
-
-	public static boolean isFile(@NotNull String path) {
-		return new File(path).isFile();
-	}
-
-	public static boolean isFile(@NotNull File file) {
-		return file.isFile();
-	}
-
-	public static boolean removeFile(@NotNull String path) {
-		File file = new File(path);
-		return file.delete();
 	}
 
 }

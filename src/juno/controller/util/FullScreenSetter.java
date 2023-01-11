@@ -32,6 +32,10 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * This class defines a fullscreen setter.
+ * @author Simone Gentili
+ */
 public class FullScreenSetter
         extends AbstractObservable
         implements Setter<JFrame> {

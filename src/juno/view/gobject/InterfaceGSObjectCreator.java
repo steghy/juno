@@ -27,9 +27,22 @@ package juno.view.gobject;
 
 import juno.view.util.RotatedIcon;
 
+/**
+ * This class defines graphic object creator.
+ * @author Simone Gentili
+ * @param <T> The type of the encapsulate object.
+ * @param <E> The type of the returned objects.
+ */
 @FunctionalInterface
 public interface InterfaceGSObjectCreator<T, E> {
 
+    /**
+     * Create the graphic object with the
+     * specified obejct and rotation object.
+     * @param object An Object
+     * @param rotate A Rotate object.
+     * @return An Object.
+     */
     T create(E object, RotatedIcon.Rotate rotate);
 
 }

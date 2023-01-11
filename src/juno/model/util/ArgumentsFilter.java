@@ -38,6 +38,9 @@ import java.util.stream.Collectors;
  */
 public class ArgumentsFilter {
 
+	/** Utility class. */
+	private ArgumentsFilter() {}
+
 	/**
 	 * Filter the specified Collection.
 	 * @param from A Collection object.

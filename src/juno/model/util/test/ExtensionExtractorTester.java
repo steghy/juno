@@ -27,10 +27,22 @@ package juno.model.util.test;
 
 import juno.model.util.ExtensionExtractor;
 
+/**
+ * This interface defines an extension extractor object.
+ * @author Simone Gentili
+ */
 public class ExtensionExtractorTester {
 
+    // Tester class.
+    private ExtensionExtractorTester() {}
+
+    /**
+     * Execute the extension extract test.
+     * @param args An array of String objects.
+     */
     public static void main(String[] args) {
         String extension = ExtensionExtractor.extract("file.json.txt");
         System.out.println(extension);
     }
+
 }

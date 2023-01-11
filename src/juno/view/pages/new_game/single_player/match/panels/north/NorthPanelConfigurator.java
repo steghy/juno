@@ -44,7 +44,8 @@ public class NorthPanelConfigurator {
     
     // Builds a NorthPanelConfigurator object.
     private NorthPanelConfigurator() {}
-    
+
+    /** Configures the NorthPanel instance. */
     public static void configure() {
         // Main component.
         NorthPanel northPanel = NorthPanel.getInstance();

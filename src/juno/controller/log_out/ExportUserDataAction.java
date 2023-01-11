@@ -35,7 +35,7 @@ import java.awt.event.ActionListener;
 /**
  * This class defines export user data action.
  * @author Simone Gentili
- * @param <T> The type of the object involved.
+ * @param <T> The type of the provided objects.
  */
 public class ExportUserDataAction<T>
         implements ActionListener {
@@ -47,8 +47,10 @@ public class ExportUserDataAction<T>
     private final Provider<T> provider;
 
     /**
-     * Builds a ExportUserDataAction with the specified exporter manager.
+     * Builds a ExportUserDataAction with the
+     * specified parameters.
      * @param exporterManager An InterfaceExporterManager object.
+     * @param provider A Provider object.
      */
     public ExportUserDataAction(@NotNull InterfaceExporterManager<T> exporterManager,
                                 @NotNull Provider<T> provider) {

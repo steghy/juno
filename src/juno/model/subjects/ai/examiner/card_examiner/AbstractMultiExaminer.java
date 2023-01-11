@@ -38,6 +38,9 @@ import org.jetbrains.annotations.Nullable;
 public abstract class AbstractMultiExaminer<T>
         extends AbstractExaminer<T> {
 
+    /** Constructor. */
+    public AbstractMultiExaminer() {}
+
     // Easy.
     private InterfaceExaminer<T> easy;
 

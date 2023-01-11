@@ -37,6 +37,9 @@ import java.awt.*;
 public abstract class AbstractFifthComponent
         extends AbstractFourthComponent {
 
+    /** Constructor. */
+    public AbstractFifthComponent() {}
+
     // The fifth component.
     private Component fifthComponent;
 

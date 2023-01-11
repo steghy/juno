@@ -28,6 +28,7 @@ package juno.controller.pre_access.loggers;
 import java.util.Objects;
 
 /**
+ * This class defines a logger.
  * @author Simone Gentili
  */
 public class Logger

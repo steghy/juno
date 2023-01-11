@@ -51,7 +51,7 @@ public class DiscardedPile<T>
         extends Stack<T>
         implements InterfaceDiscardedPile<T>, Provider<T>, Observable, Restorable {
 
-    // The last inserted card.
+    /** The card. */
     private T card;
 
     // The Observers List.

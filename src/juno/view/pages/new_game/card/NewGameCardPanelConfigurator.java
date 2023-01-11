@@ -38,6 +38,7 @@ public class NewGameCardPanelConfigurator {
     // Builds a NewGameCardPanelConfigurator object.
     private NewGameCardPanelConfigurator() {}
 
+    /** Configures the NewGameCardPanel instance. */
     public static void configure() {
         // Main component.
         NewGameCardPanel newGameCardPanel = NewGameCardPanel.getInstance();

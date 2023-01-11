@@ -23,28 +23,42 @@
  * SOFTWARE.
  */
 
-package juno.model.sound.test;
+package juno.view.pages.new_game.single_player.mode;
 
-import juno.model.data.io.ProgramDirectory;
-import juno.model.sound.ButtonSoundPlayer;
-import juno.model.util.PathGenerator;
+import juno.controller.util.InterfaceInitializer;
+import juno.view.pages.new_game.single_player.mode.menu.MenuPanelConfigurator;
+import juno.view.pages.new_game.single_player.mode.title.TitlePanelConfigurator;
 
-import java.io.File;
+/**
+ * This class defines the mode initializer.
+ * @author Simone Gentili
+ */
+public class Initializer
+        implements InterfaceInitializer {
 
-public class ButtonSoundPlayerTester {
+    // The Initializer instance.
+    private static Initializer instance;
 
-    public static void main(String[] args) throws InterruptedException {
-        ButtonSoundPlayer buttonSoundPlayer = ButtonSoundPlayer.getInstance();
-        buttonSoundPlayer.load(
-                new File(PathGenerator.generate(
-                        ProgramDirectory.EFFECTS.absolutePath(), "click-effect.wav"
-                ))
-        );
+    // Builds the Initializer instance.
+    private Initializer() {}
 
-        buttonSoundPlayer.play();
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
 
+    @Override
+    public void initialize() {
+        // Components configurations.
+        TitlePanelConfigurator.configure();
+        MenuPanelConfigurator.configure();
 
-        while(true) {}
+        // Main component configuration.
+        ModePanelConfigurator.configure();
     }
 
 }

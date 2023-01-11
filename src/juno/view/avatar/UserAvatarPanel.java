@@ -38,6 +38,7 @@ import javax.swing.*;
 /**
  * This class defines the user avatar panel.
  * @author Simone Gentili
+ * @param <T> The type of the avatar image.
  */
 public class UserAvatarPanel<T>
         extends AvatarPanel

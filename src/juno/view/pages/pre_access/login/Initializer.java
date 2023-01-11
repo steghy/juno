@@ -57,7 +57,7 @@ public class Initializer
         // Components.
         TitlePanelConfigurator.configure();
         ProfilesPanelConfigurator.configure();
-        juno.view.pages.pre_access.login.profiles_panel.Initializer.initialize();
+        juno.view.pages.pre_access.login.profiles_panel.Initializer.getInstance().initialize();
         MenuPanelConfigurator.configure();
 
         // Main components.

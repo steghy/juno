@@ -35,6 +35,9 @@ import org.jetbrains.annotations.Nullable;
  */
 public abstract class AbstractExporterManagerUser<T> {
 
+    /** Constructor. */
+    public AbstractExporterManagerUser() {}
+
     // The exporter manager.
     private InterfaceExporterManager<T> exporterManager;
 

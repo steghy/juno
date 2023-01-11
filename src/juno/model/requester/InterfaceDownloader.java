@@ -40,7 +40,8 @@ public interface InterfaceDownloader {
      * and memorized it within the specified path.
      * @param url A URL Object.
      * @param path A String object.
-     * @throws IOException
+     * @throws IOException Signals that an I/O exception
+     *                     to some sort has occurred.
      */
     void download(URL url,
                   String path) throws IOException;

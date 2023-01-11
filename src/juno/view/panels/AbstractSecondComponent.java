@@ -38,6 +38,9 @@ import java.awt.*;
 public abstract class AbstractSecondComponent
         extends AbstractFirstComponent {
 
+    /** Constructor. */
+    public AbstractSecondComponent() {}
+
     // The second component.
     private Component secondComponent;
 

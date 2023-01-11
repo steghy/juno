@@ -36,6 +36,7 @@ public class ProfilesPanelConfigurator {
     // Builds a ProfilesPanelConfiguration object.
     private ProfilesPanelConfigurator() {}
 
+    /** Configures the ProfilesPanel instance. */
     public static void configure() {
         // Main component.
         ProfilesPanel profilesPanel = ProfilesPanel.getInstance();

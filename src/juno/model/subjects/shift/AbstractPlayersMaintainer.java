@@ -35,6 +35,10 @@ import org.jetbrains.annotations.Nullable;
  */
 public abstract class AbstractPlayersMaintainer<T> {
 
+    /** Constructor. */
+    public AbstractPlayersMaintainer() {}
+
+    /** The players Donut object. */
     @Nullable
     Donut<T> players;
 

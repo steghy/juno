@@ -49,6 +49,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * This class defines a configurator.
  * @author Simone Gentili
  */
 public class MainPanelConfigurator {

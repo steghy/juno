@@ -35,6 +35,7 @@ import javax.swing.*;
 import java.util.Map;
 
 /**
+ * This class defines a panel illuminator.
  * @author Simone Gentili
  */
 public class PanelIlluminator

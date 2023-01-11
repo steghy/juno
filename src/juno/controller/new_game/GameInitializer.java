@@ -50,6 +50,18 @@ public class GameInitializer
     // The StartGameAction instance.
     private static GameInitializer instance;
 
+    // Builds the GameInitializer instance.
+    private GameInitializer() {}
+
+    /**
+     * Returns the StartGameAction instance.
+     * @return The StartGameAction instance.
+     */
+    public static GameInitializer getInstance() {
+        if(instance == null) instance = new GameInitializer();
+        return instance;
+    }
+
     /**
      * Sets the ai player generator of this object.
      * @param aiGenerator An InterfaceAiPlayerGenerator object.
@@ -64,15 +76,6 @@ public class GameInitializer
      */
     public void setDeckGenerator(@NotNull Generator deckGenerator) {
         this.deckGenerator = deckGenerator;
-    }
-
-    /**
-     * Returns the StartGameAction instance.
-     * @return The StartGameAction instance.
-     */
-    public static GameInitializer getInstance() {
-        if(instance == null) instance = new GameInitializer();
-        return instance;
     }
 
     @Override

@@ -28,7 +28,6 @@ package juno.view.pages.new_game;
 import juno.controller.util.InterfaceInitializer;
 import juno.view.pages.new_game.card.NewGameCardPanelConfigurator;
 import juno.view.pages.new_game.menu.MenuPanelConfigurator;
-import juno.view.pages.new_game.multiplayer.card.MultiplayerInitializer;
 import juno.view.pages.new_game.title.TitlePanelConfigurator;
 
 /**
@@ -57,7 +56,7 @@ public class Initializer
     public void initialize() {
         // Components initialization.
         juno.view.pages.new_game.single_player.Initializer.getInstance().initialize();
-        MultiplayerInitializer.initialize();
+        juno.view.pages.new_game.multiplayer.card.Initializer.getInstance().initialize();
 
         // Components configurations.
         MenuPanelConfigurator.configure();

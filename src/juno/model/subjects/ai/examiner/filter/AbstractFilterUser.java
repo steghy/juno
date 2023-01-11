@@ -35,8 +35,11 @@ import org.jetbrains.annotations.Nullable;
  */
 public abstract class AbstractFilterUser<T> {
 
+    /** Constructor. */
+    public AbstractFilterUser() {}
+
     // The filter.
-    InterfaceFilter<T> filter;
+    private InterfaceFilter<T> filter;
 
     /**
      * Sets the filter of this object.

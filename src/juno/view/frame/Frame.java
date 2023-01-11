@@ -70,14 +70,27 @@ public class Frame
         add(background, BorderLayout.CENTER);
     }
 
+    /**
+     * Sets the default dimension of this frame object.
+     */
     public void setDefaultDimension() {
         setMinimumSize(new Dimension(1200, 700));
     }
 
+    /**
+     * Sets the background of this frame with
+     * the specified JLabel object.
+     * @param background A JLabel object.
+     */
     public void setBackground(@NotNull JLabel background) {
         this.background = background;
     }
 
+    /**
+     * Sets the panel of this object with
+     * the specified JPanel object.
+     * @param panel A JPanel object.
+     */
     public void setPanel(@NotNull JPanel panel) {
         this.panel = panel;
     }

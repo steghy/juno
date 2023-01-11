@@ -36,6 +36,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * This class defines an avatar connector.
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */

@@ -25,11 +25,10 @@
 
 package juno.view.util;
 
-import java.awt.Component;
-import java.awt.Graphics2D;
-import java.awt.Graphics;
-import java.awt.RenderingHints;
-import javax.swing.Icon;
+import org.jetbrains.annotations.NotNull;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
  *  The RotatedIcon allows you to change the orientation of an Icon by
@@ -45,27 +44,52 @@ import javax.swing.Icon;
  */
 public class RotatedIcon implements Icon {
 
+    /**
+     * This class defines Rotate objects.
+     */
     public enum Rotate {
+        /** Down. */
         DOWN,
+        /** Up. */
         UP,
+        /** Upside down. */
         UPSIDE_DOWN,
+        /** About center. */
         ABOUT_CENTER
     }
 
+    // The Icon object.
     private final Icon icon;
+
+    // The Rotate object.
     private final Rotate rotate;
+
+    // Degrees.
     private double degrees;
+
+    // The boolean circular icon value.
     private boolean circularIcon;
 
-    public RotatedIcon(Icon icon) {
+    /**
+     * Builds a RotatedIcon with the
+     * specified Icon object.
+     * @param icon An Icon object.
+     */
+    public RotatedIcon(@NotNull Icon icon) {
         this(icon, Rotate.ABOUT_CENTER);
     }
 
-    public RotatedIcon(Icon icon, Rotate rotate) {
+    /**
+     * Builds a RotatedIcon with the
+     * specified Icon object and Rotate object.
+     * @param icon An Icon object.
+     * @param rotate A Rotate object.
+     */
+    public RotatedIcon(@NotNull Icon icon,
+                       @NotNull Rotate rotate) {
         this.icon = icon;
         this.rotate = rotate;
     }
-
 
     /**
      *  Gets the Icon to be rotated

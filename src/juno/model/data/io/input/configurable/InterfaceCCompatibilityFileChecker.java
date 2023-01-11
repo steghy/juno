@@ -25,6 +25,11 @@
 
 package juno.model.data.io.input.configurable;
 
+/**
+ * This interface defines compatibility checker that
+ * use Configurable objects.
+ * @author Simone Gentili
+ */
 @FunctionalInterface
 public interface InterfaceCCompatibilityFileChecker {
 

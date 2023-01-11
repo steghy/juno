@@ -37,6 +37,9 @@ import org.jetbrains.annotations.Nullable;
 public abstract class AbstractPlayersProvider<T>
         extends AbstractPlayersMaintainer<T> {
 
+    /** Constructor. */
+    public AbstractPlayersProvider() {}
+
     // The human players.
     private T player;
 

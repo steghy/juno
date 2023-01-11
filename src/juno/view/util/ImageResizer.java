@@ -107,6 +107,14 @@ public class ImageResizer
                 (int) (icon.getIconHeight() / divisor)));
     }
 
+    /**
+     * Resize the specified JLabel object by
+     * dividing the width and the height of
+     * the Icon object of the specified JLabel
+     * with the specified double value.
+     * @param label A JLabel object.
+     * @param divisor A double value.
+     */
     public void resize(@NotNull JLabel label,
                        double divisor) {
         Icon icon = label.getIcon();

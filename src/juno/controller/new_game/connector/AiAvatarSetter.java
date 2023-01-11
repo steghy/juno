@@ -39,6 +39,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
+ * This class defines an ai avatar setter.
  * @author Simone Gentili
  */
 public class AiAvatarSetter

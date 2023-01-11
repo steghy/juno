@@ -32,8 +32,20 @@ import juno.model.util.PathGenerator;
 
 import java.io.IOException;
 
+/**
+ * This class defines a Profile tester.
+ * @author Simone Gentili
+ */
 public class ProfileTester {
 
+    // Tester class.
+    private ProfileTester() {}
+
+    /**
+     * Execute the Profile tester with the specified arguments.
+     * @param args An array of String object.
+     * @throws IOException Signals that an I/O exception to some sort has occurred.
+     */
     public static void main(String[] args) throws IOException {
         Profile profile = Profile.getInstance();
         String profileConfigurationFilePath = PathGenerator.generate(ProgramDirectory.PROFILES.absolutePath(), "steghy-profile.json");

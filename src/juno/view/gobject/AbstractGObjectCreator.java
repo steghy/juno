@@ -33,6 +33,9 @@ import org.jetbrains.annotations.Nullable;
 
 public abstract class AbstractGObjectCreator {
 
+    /** Constructor. */
+    public AbstractGObjectCreator() {}
+
     // The path object assembler.
     private InterfacePathProviderAssembler assembler;
 

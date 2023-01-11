@@ -63,10 +63,12 @@ public class AI<T, E>
     private final InterfaceDifficulty difficulty;
 
     /**
-     * Builds an AI object with the
-     * specified name and difficulty.
+     * Builds an AI object with the specified
+     * parameters.
      * @param name A String object.
-     * @param difficulty A Difficulty object.
+     * @param difficulty An InterfaceDifficulty object.
+     * @param cardExaminer An InterfaceCardExaminer object.
+     * @param colorExaminer An InterfaceColorExaminer object.
      */
     public AI(@NotNull String name,
               @NotNull InterfaceDifficulty difficulty,

@@ -38,7 +38,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
+ * This class defines a card dispenser.
  * @author Simone Gentili
+ * @param <T> The type of the cards.
  */
 public class CardDispenser<T>
         extends AbstractObservable

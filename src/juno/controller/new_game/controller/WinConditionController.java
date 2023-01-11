@@ -36,6 +36,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Objects;
 
 /**
+ * This class defines a win condition controller.
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */

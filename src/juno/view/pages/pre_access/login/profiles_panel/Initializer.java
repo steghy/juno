@@ -25,16 +25,32 @@
 
 package juno.view.pages.pre_access.login.profiles_panel;
 
+import juno.controller.util.InterfaceInitializer;
+
 /**
  * This class defines an initializer
  * @author Simone Gentili
  */
-public class Initializer {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // Builds an Initializer object.
+    // The Initializer instance.
+    private static Initializer instance;
+
+    // Builds the Initializer instance.
     private Initializer() {}
 
-    public static void initialize() {
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
+    public void initialize() {
         GProfileProcessor gProfileProcessor = GProfileProcessor.getInstance();
         ProfilesPanel profilesPanel = ProfilesPanel.getInstance();
         profilesPanel.setProcessor(gProfileProcessor);

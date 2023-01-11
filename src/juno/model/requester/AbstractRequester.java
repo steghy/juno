@@ -38,6 +38,9 @@ import java.util.List;
 public abstract class AbstractRequester
         implements InterfaceRequester {
 
+    /** Constructor. */
+    public AbstractRequester() {}
+
     // The URL builder list.
     private final List<InterfaceURLBuilder> urlBuilderList = new ArrayList<>();
 

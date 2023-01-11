@@ -25,12 +25,33 @@
 
 package juno.model.subjects.ai;
 
+/**
+ * This interface defines artificial players.
+ * @author Simone Gentili
+ * @param <T> The type of the object returned from the move() method.
+ * @param <E> The type of the object returned from the color() method.
+ */
 public interface InterfaceAi<T, E> {
 
+    /**
+     * Returns the object chosen from this
+     * artificial player.
+     * @return An Object.
+     */
     T move();
 
+    /**
+     * Returns the color chosen from this
+     * artificial object.
+     * @return An Object.
+     */
     E color();
 
+    /**
+     * Returns true if this artificial player
+     * said "uno", otherwise returns false.
+     * @return A boolean value.
+     */
     boolean uno();
 
 }

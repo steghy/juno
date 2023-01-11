@@ -42,6 +42,7 @@ import juno.model.subjects.shift.TurnMover;
 import juno.view.pages.new_game.single_player.card.SinglePlayerCardPanel;
 
 /**
+ * This class defines an initializer.
  * @author Simone Gentili
  */
 public class Initializer

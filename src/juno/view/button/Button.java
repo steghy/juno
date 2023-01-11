@@ -32,63 +32,101 @@ package juno.view.button;
 public enum Button
         implements InterfaceButton {
 
-    // LOGO //
+    /** Juno logo */
     JUNO(true),
 
     // PRE ACCESS PANEL //
+    /** Welcome */
     WELCOME(true),
+    /** Welcome back */
     WELCOME_BACK(true),
+    /** Registration */
     REGISTRATION(true),
+    /** Create an account */
     CREATE_AN_ACCOUNT(true),
+    /** Continue without an account */
     CONTINUE_WITHOUT_AN_ACCOUNT(true),
+    /** Log in */
     LOG_IN(true),
+    /** Confirm */
     CONFIRM(true),
+    /** Profile button */
     PROFILE_BUTTON(true),
 
     // MAIN MENU SECTION //
+    /** New game */
     NEW_GAME(true),
+    /** Score */
     SCORE(true),
+    /** Options */
     OPTIONS(true),
+    /** Exit */
     EXIT(true),
+    /** Log out */
     LOG_OUT(true),
 
     // OPTIONS //
+    /** Settings */
     SETTINGS(true),
+    /** Audio toggle music */
     AUDIO_TOGGLE_MUSIC(false),
+    /** Audio toggle effects */
     AUDIO_TOGGLE_EFFECTS(false),
+    /** Fullscreen toggle */
     FULLSCREEN_TOGGLE(false),
+    /** Back */
     BACK(true),
 
     // NEW GAME MENU //
+    /** Difficulty */
     DIFFICULTY(true),
+    /** Single player */
     SINGLE_PLAYER(true),
+    /** Multiplayer */
     MULTIPLAYER(true),
 
     // SINGLE_PLAYER //
+    /** Two players */
     TWO_PLAYERS(true),
+    /** Three players */
     THREE_PLAYERS(true),
+    /** Four players */
     FOUR_PLAYERS(true),
+    /** Players */
     PLAYERS(true),
+    /** Start */
     START(true),
+    /** Restart */
     RESTART(true),
+    /** Winner */
     WINNER(true),
 
     // MODE //
+    /** Mode */
     MODE(true),
+    /** Classic */
     CLASSIC(true),
+    /** Classic artwork */
     CLASSIC_ARTWORK(true),
 
     // MATCH //
+    /** Cover */
     COVER(true),
+    /** Circle */
     CIRCLE(true),
+    /** Inverted circle */
     INVERTED_CIRCLE(true),
 
     // MULTIPLAYER //
+    /** Unavailable service */
     UNAVAILABLE_SERVICE(true),
 
     // DIFFICULTY //
+    /** Easy */
     EASY(true),
+    /** Medium */
     MEDIUM(true),
+    /** Hard */
     HARD(true);
 
     // Simple button boolean value.
@@ -97,8 +135,11 @@ public enum Button
     // Toggle button boolean value.
     private final boolean isToggle;
 
-    // Builds a Button object with
-    // the specified boolean value.
+    /**
+     * Create a Button instance with
+     * the specified boolean value.
+     * @param isSimple A boolean value.
+     */
     Button(boolean isSimple) {
         this.isSimple = isSimple;
         this.isToggle = !isSimple;

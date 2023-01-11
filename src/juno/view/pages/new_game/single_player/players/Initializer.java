@@ -23,27 +23,42 @@
  * SOFTWARE.
  */
 
-package juno.view.pages.new_game.multiplayer.card;
+package juno.view.pages.new_game.single_player.players;
 
-import juno.view.pages.new_game.multiplayer.available.AvailableServiceInitializer;
-import juno.view.pages.new_game.multiplayer.unavailable.UnavailableServiceInitializer;
+import juno.controller.util.InterfaceInitializer;
+import juno.view.pages.new_game.single_player.players.menu.MenuPanelConfigurator;
+import juno.view.pages.new_game.single_player.players.title.TitlePanelConfigurator;
 
 /**
  * This class defines an initializer.
  * @author Simone Gentili
  */
-public class MultiplayerInitializer {
+public class Initializer
+        implements InterfaceInitializer {
 
-    // Builds a MultiplayerInitializer object.
-    private MultiplayerInitializer() {}
+    // The Initializer instance.
+    private static Initializer instance;
 
-    public static void initialize() {
-        // Components configuration.
-        AvailableServiceInitializer.initialize();
-        UnavailableServiceInitializer.initialize();
+    // Builds the Initializer instance..
+    private Initializer() {}
+
+    /**
+     * Returns the Initializer instance.
+     * @return The Initializer instance.
+     */
+    public static Initializer getInstance() {
+        if(instance == null) instance = new Initializer();
+        return instance;
+    }
+
+    @Override
+    public void initialize() {
+        // Components configurations.
+        TitlePanelConfigurator.configure();
+        MenuPanelConfigurator.configure();
 
         // Main component configuration.
-        MultiplayerCardPanelConfigurator.configure();
+        PlayersNumberPanelConfigurator.configure();
     }
 
 }

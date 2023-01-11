@@ -40,6 +40,10 @@ public interface InterfaceColor extends
         InterfaceYellow,
         InterfaceGreen {
 
+    /**
+     * Returns the name of this color.
+     * @return A String object.
+     */
     String name();
 
 }

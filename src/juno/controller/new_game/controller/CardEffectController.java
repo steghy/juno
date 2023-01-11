@@ -42,6 +42,7 @@ import java.awt.event.ActionListener;
 import java.util.Objects;
 
 /**
+ * This class defines a card effect controller.
  * @author Simone Gentili
  */
 public class CardEffectController

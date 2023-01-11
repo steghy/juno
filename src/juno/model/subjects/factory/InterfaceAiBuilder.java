@@ -30,11 +30,19 @@ import juno.model.subjects.InterfacePlayer;
 /**
  * This interface defines ai builders.
  * @author Simone Gentili
- * @param <T> The type of the object involved.
- * @param <E> The type of the object involved.
+ * @param <T> The type passed to the InterfacePlayer object returned.
+ * @param <E> The type of the specified difficulty object.
  */
 @FunctionalInterface
 public interface InterfaceAiBuilder<T, E> {
 
+    /**
+     * Builds an artificial player (AI) with
+     * the specified parameters.
+     * @param name A String object.
+     * @param difficulty An Object.
+     * @return An InterfacePlayer object.
+     */
     InterfacePlayer<T> build(String name, E difficulty);
+
 }

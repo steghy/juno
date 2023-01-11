@@ -31,11 +31,15 @@ import java.util.List;
  * This interface represents generator of
  * Map object that contains InterfaceGObject.
  * @author Simone Gentili
- * @param <T> The type of the objects.
+ * @param <T> The type of the objects encapsulated within the InterfaceGObjects.
  */
 @FunctionalInterface
 public interface InterfaceGObjectMapGenerator<T> {
 
+    /**
+     * Generates a Map of InterfaceGObjects.
+     * @param gObjects A List object.
+     */
     void generate(List<InterfaceGObject<T>> gObjects);
 
 }

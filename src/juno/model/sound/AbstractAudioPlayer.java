@@ -34,8 +34,15 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * This class defines an abstract audio player.
+ * @author Simone Gentili
+ */
 public abstract class AbstractAudioPlayer
         implements MuteableAudioPlayer, ActionListener {
+
+    /** Constructor. */
+    public AbstractAudioPlayer() {}
 
     // The timer.
     private Timer timer;

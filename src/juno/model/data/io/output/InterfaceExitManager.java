@@ -25,8 +25,16 @@
 
 package juno.model.data.io.output;
 
+/**
+ * This interface defines exit managers.
+ * @author Simone Gentili
+ */
 @FunctionalInterface
 public interface InterfaceExitManager {
 
+    /**
+     * Exit from this application.
+     */
     void exit();
+
 }

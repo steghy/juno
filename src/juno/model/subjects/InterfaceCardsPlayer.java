@@ -28,13 +28,18 @@ package juno.model.subjects;
 import java.util.List;
 
 /**
- * This class defines a player with cards.
+ * This class defines players that provide cards.
  * @author Simone Gentili
  * @param <T> The type of the cards.
  */
 @FunctionalInterface
 public interface InterfaceCardsPlayer<T> {
 
+    /**
+     * Returns the List object with the
+     * cards of this player.
+     * @return A List object.
+     */
     List<T> cards();
 
 }

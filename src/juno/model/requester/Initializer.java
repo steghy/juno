@@ -38,7 +38,7 @@ public class Initializer
     private static Initializer instance;
 
     // Builds the Initializer instance.
-    public Initializer() {}
+    private Initializer() {}
 
     /**
      * Returns the Initializer instance.

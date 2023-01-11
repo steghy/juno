@@ -26,11 +26,15 @@
 package juno.controller.new_game.dispenser;
 
 /**
+ * This interface defines dispensers.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface InterfaceCardDispenser {
 
+    /**
+     * Dispenses the product.
+     */
     void dispense();
 
 }

@@ -41,6 +41,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
+ * This class defines a card controller.
  * @author Simone Gentili
  */
 public class CardController

@@ -41,6 +41,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
+ * This class defines a penalty executor.
  * @author Simone Gentili
  * @param <T> The type of the card.
  */

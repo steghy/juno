@@ -27,13 +27,19 @@ package juno.model.subjects.ai.examiner.filter;
 
 import java.util.List;
 
+/**
+ * This interface defines number filter.
+ * @author Simone Gentili
+ * @param <T> The type of the filtered objects.
+ */
 @FunctionalInterface
 public interface InterfaceNumberFilter<T> {
 
     /**
-     *
-     * @param cards
-     * @return
+     * Filters the specified list and returns
+     * a List object with only the numerical cards.
+     * @param cards A List object.
+     * @return A List object.
      */
     List<T> number(List<T> cards);
 

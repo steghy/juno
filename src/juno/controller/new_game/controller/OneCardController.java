@@ -38,7 +38,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Objects;
 
 /**
+ * This class defines a one card controller.
  * @author Simone Gentili
+ * @param <T> The type of the cards.
  */
 public class OneCardController<T>
         extends AbstractObservable

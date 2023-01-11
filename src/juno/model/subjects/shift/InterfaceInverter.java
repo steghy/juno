@@ -33,7 +33,8 @@ package juno.model.subjects.shift;
 public interface InterfaceInverter {
 
     /**
-     *
+     * Invert the orientation of
+     * the players Donut object.
      */
     void invert();
 

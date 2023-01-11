@@ -35,60 +35,82 @@ public enum ProgramDirectory
 		implements InterfacePathProvider {
 
 	// Data.
+	/** Data directory. */
 	DATA("data"),
 
 	// Data -> Config.
+	/** Config directory. */
 	CONFIG(DATA,"config"),
+	/** Profiles directory. */
 	PROFILES(CONFIG, "profiles"),
+	/** Goals directory. */
 	GOALS(CONFIG, "goals"),
+	/** Score directory */
 	SCORE(CONFIG, "scores"),
+	/** Avatar directory. */
 	AVATAR(CONFIG, "avatar"),
 
 	// Data -> Audio.
+	/** Audio directory. */
 	AUDIO(DATA, "audio"),
+	/** Music directory. */
 	MUSIC(AUDIO, "music"),
+	/** Effects directory */
 	EFFECTS(AUDIO, "effects"),
 
 	// Data -> Video.
+	/** Videos directory. */
 	VIDEOS(DATA, "videos"),
 
 	// Data -> Images.
+	/** Images directory. */
 	IMAGES(DATA, "images"),
 
 	// Images -> Gifs.
+	/** Gifs directory. */
 	GIFS(IMAGES, "gifs"),
 
 	// Images -> Logos.
+	/** Logos directory. */
 	LOGOS(IMAGES, "logos"),
 
 	// Images -> Backgrounds.
+	/** Backgrounds directory. */
 	BACKGROUNDS(IMAGES, "backgrounds"),
 
 	// Images -> Buttons.
+	/** Buttons directory. */
 	BUTTONS(IMAGES, "buttons"),
 
 	// Images -> Cards.
+	/** Cards directory. */
 	CARDS(IMAGES, "cards"),
 
 	// Images -> Colors.
+	/** Colors directory */
 	COLORS(IMAGES, "colors"),
 
 	// Cards -> Cover and cards.
+	/** Cover directory. */
 	COVER(CARDS, "cover"),
+	/** Red cards directory. */
 	RED_CARDS(CARDS, "red"),
+	/** Blue directory. */
 	BLUE_CARDS(CARDS, "blue"),
+	/** Green directory */
 	GREEN_CARDS(CARDS, "green"),
+	/** Yellow directory. */
 	YELLOW_CARDS(CARDS, "yellow"),
+	/** Jolly directory. */
 	JOLLY_CARDS(CARDS, "jolly"),
 
 	// Images -> Awards.
+	/** Awards directory. */
 	AWARDS(IMAGES, "awards"),
 
 	// Images/Awards -> Avatars.
-	AVATARS(AWARDS, "avatars"),
-
-	// Images/Awards -> Frames.
-	FRAMES(AWARDS, "frames");
+	/** Avatars directory. */
+	AVATARS(AWARDS, "avatars");
 
 	// The path.
 	private String path;

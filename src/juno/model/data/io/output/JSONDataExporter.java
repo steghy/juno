@@ -32,13 +32,23 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map;
 
+/**
+ * This class defines a json data exporter.
+ * @author Simone Gentili
+ */
 public class JSONDataExporter 
         implements InterfaceDataExporter {
 
+    // The JSONDataExporter instance.
     private static JSONDataExporter instance;
 
+    // Builds the JSONDataExporter instance.
     private JSONDataExporter() {}
 
+    /**
+     * Returns the JSONDataExporter instance.
+     * @return The JSONDataExporter instance.hk
+     */
     public static JSONDataExporter getInstance() {
         if(instance == null) {
             instance = new JSONDataExporter();
@@ -53,4 +63,5 @@ public class JSONDataExporter
         fileWriter.write(jsonObject.toString());
         fileWriter.close();
     }
+
 }

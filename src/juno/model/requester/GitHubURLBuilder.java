@@ -43,10 +43,15 @@ public class GitHubURLBuilder
     /** The GitHub token prefix. */
     public static final String TOKEN = "?token=";
 
+    /** The prefix. */
     public String prefix;         // GitHub url prefix.
+    /** The repository name. */
     public String repositoryName; // Repository name.
+    /** The admin name. */
     public String adminName;      // Admin name.
+    /** The branch name. */
     public String branchName;     // Branch name.
+    /** The token (private repository case). */
     public String token;          // Token
 
     // The GitHubURLBuilder instance.

@@ -37,6 +37,7 @@ public class NewGamePanelConfigurator {
     // Builds the NewGamePanelConfigurator.
     private NewGamePanelConfigurator() {}
 
+    /** Configures the NewGamePanelConfigurator instance. */
     public static void configure() {
         // Main component.
         NewGamePanel newGamePanel = NewGamePanel.getInstance();

@@ -28,6 +28,7 @@ package juno.controller.new_game.game_settings;
 import juno.model.subjects.ai.InterfaceDifficulty;
 
 /**
+ * This class containes tha game data.
  * @author Simone Gentili
  */
 public class GameData {

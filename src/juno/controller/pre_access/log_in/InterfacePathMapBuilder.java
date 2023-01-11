@@ -28,12 +28,19 @@ package juno.controller.pre_access.log_in;
 import java.util.Map;
 
 /**
+ * This interface defines a path map builder.
  * @author Simone Gentili
- * @param <T> The type of the keys.
+ * @param <T> The type of the returned map keys.
  */
 @FunctionalInterface
 public interface InterfacePathMapBuilder<T> {
 
+    /**
+     * Builds and returns a Map object
+     * using the specified String object.
+     * @param name A String object.
+     * @return A Map object.
+     */
     Map<T, String> build(String name);
 
 }

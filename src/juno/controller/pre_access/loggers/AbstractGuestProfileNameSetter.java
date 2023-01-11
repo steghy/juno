@@ -37,6 +37,9 @@ import org.jetbrains.annotations.Nullable;
 public abstract class AbstractGuestProfileNameSetter
         implements InterfaceGuestProfileNameSetter {
 
+    /** Constructor. */
+    public AbstractGuestProfileNameSetter() {}
+
     // The profile name setter.
     private Setter<String> nameSetter;
 

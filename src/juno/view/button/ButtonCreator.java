@@ -44,8 +44,13 @@ public class ButtonCreator
         extends AbstractGObjectCreator
         implements InterfaceGSObjectCreator<AbstractButton, InterfaceButton> {
 
+    /** The rollover string */
     public String rollover = "_ROLLOVER";
+
+    /** The selected string. */
     public String selected = "_SELECTED";
+
+    /** The extension string. */
     public String extension = ".png";
 
     // The directory path provider.

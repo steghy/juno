@@ -38,6 +38,9 @@ import org.jetbrains.annotations.Nullable;
 public abstract class AbstractExaminer<T>
         implements InterfaceCardExaminer<T> {
 
+    /** Constructor. */
+    public AbstractExaminer() {}
+
     // The item's provider.
     private InterfaceCompatibleCardsProvider<T> itemsProvider;
 

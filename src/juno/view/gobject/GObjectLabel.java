@@ -29,12 +29,24 @@ import juno.view.util.ImageLabel;
 import juno.view.util.InterfaceImageResizer;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * This class defines a graphic label object.
+ * @author Simone Gentili
+ * @param <T> The type of the encapsulated object.
+ */
 public class GObjectLabel<T>
         extends ImageLabel
         implements InterfaceGObject<T> {
 
+    // The Object.
     private final T object;
 
+    /**
+     * Builds a GObjectLabel with the
+     * specified parameters.
+     * @param object An Object.
+     * @param resizer An InterfaceImageResizer object.
+     */
     public GObjectLabel(@NotNull T object,
                         @NotNull InterfaceImageResizer resizer) {
         super(resizer);

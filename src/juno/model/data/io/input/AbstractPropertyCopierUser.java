@@ -35,6 +35,9 @@ import org.jetbrains.annotations.Nullable;
  */
 public abstract class AbstractPropertyCopierUser {
 
+    /** Constructor. */
+    public AbstractPropertyCopierUser() {}
+
     // The property copier.
     private InterfacePropertyCopier copier;
 

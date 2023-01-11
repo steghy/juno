@@ -39,6 +39,9 @@ public abstract class AbstractPlayer<T>
         extends AbstractObservable
         implements InterfacePlayer<T> {
 
+    /** Constructor. */
+    public AbstractPlayer() {}
+
     // The List of the cards.
     List<T> cards = new ArrayList<>();
 

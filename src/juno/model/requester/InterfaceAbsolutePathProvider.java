@@ -25,9 +25,17 @@
 
 package juno.model.requester;
 
+/**
+ * This interface defines absolute path providers.
+ * @author Simone Gentili
+ */
 @FunctionalInterface
 public interface InterfaceAbsolutePathProvider {
 
+    /**
+     * Returns the absolute path of this object.
+     * @return A String object.
+     */
     String absolutePath();
 
 }

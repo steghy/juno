@@ -34,6 +34,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 /**
+ * This class defines a first discarded card manager.
  * @author Simone Gentili
  */
 public class FirstDiscardedCardManager

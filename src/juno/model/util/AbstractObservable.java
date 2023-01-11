@@ -38,6 +38,9 @@ import java.util.List;
 public abstract class AbstractObservable
         implements Observable {
 
+    /** Constructor. */
+    public AbstractObservable() {}
+
     // The Observers List.
     private final List<Observer> observerList = new ArrayList<>();
 

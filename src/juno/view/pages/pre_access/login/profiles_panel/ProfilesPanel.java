@@ -85,7 +85,8 @@ public class ProfilesPanel
         this.processor = processor;
     }
 
-    public void addComponent(@NotNull Component c) {
+    // Adds the specified Component object to this object.
+    private void addComponent(@NotNull Component c) {
         if(getComponents().length == 0) gbc.insets = new Insets(0, 0, 0, 0);
         else gbc.insets = new Insets(gbc.insets.top + topInsectsParameter, 0, 0, 0);
         super.add(c, gbc);

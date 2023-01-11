@@ -26,11 +26,15 @@
 package juno.controller.new_game.controller;
 
 /**
+ * This interface defines first discarded card manager.
  * @author Simone Gentili
  */
 @FunctionalInterface
 public interface InterfaceFirstDiscardedCardManager {
 
+    /**
+     * Discards the first card to the discarded pile.
+     */
     void discardFirstCard();
 
 }

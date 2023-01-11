@@ -55,9 +55,13 @@ public class ErrorProviderDecorator
     private final InterfacePathBuilder pathBuilder;
 
     /**
-     * Builds an ErrorDecorator with the specified
-     * error provider object.
+     * Builds an ErrorProviderDecorator object with the
+     * specified paramenters.
      * @param errorProvider An InterfaceErrorProvider object.
+     * @param pathBuilder An InterfacePathBuilder object.
+     * @param exportable An Exportable object.
+     * @param key A String object.
+     * @param guest A String object.
      */
     public ErrorProviderDecorator(@NotNull InterfaceErrorProvider errorProvider,
                                   @NotNull InterfacePathBuilder pathBuilder,

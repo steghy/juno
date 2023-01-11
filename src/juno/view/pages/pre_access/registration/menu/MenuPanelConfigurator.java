@@ -30,12 +30,12 @@ import juno.controller.pre_access.log_in.PathBuilder;
 import juno.controller.pre_access.registration.RegistrationDataSelector;
 import juno.controller.pre_access.registration.RegistrationDataSender;
 import juno.controller.pre_access.registration.RegistrationPanelRestorer;
+import juno.model.data.io.ProgramDirectory;
 import juno.model.data.profile.ErrorProviderDecorator;
 import juno.model.data.profile.profile.Profile;
-import juno.model.data.io.ProgramDirectory;
 import juno.model.sound.ButtonSoundPlayer;
-import juno.view.button.ButtonCreator;
 import juno.view.button.Button;
+import juno.view.button.ButtonCreator;
 import juno.view.pages.pre_access.card.PreAccessCardPanel;
 import juno.view.pages.pre_access.registration.RegistrationPanel;
 import juno.view.util.ImageResizer;
@@ -55,6 +55,7 @@ public class MenuPanelConfigurator {
     // Builds a MenuPanelConfigurator object.
     private MenuPanelConfigurator() {}
 
+    /** Configures the MenuPanel instance. */
     public static void configure() {
         // Main component.
         MenuPanel menuPanel = MenuPanel.getInstance();

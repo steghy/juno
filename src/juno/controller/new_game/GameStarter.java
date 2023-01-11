@@ -85,6 +85,11 @@ public class GameStarter
         this.provider = provider;
     }
 
+    /**
+     * Start the match setting the specified InterfacePlayer
+     * as first player.
+     * @param player An InterfacePlayer object.
+     */
     @SuppressWarnings("unchecked")
     public void start(@NotNull InterfacePlayer<InterfaceCard> player) {
         updateAll();

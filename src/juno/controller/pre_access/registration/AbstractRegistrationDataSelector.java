@@ -38,6 +38,9 @@ import org.jetbrains.annotations.Nullable;
 public abstract class AbstractRegistrationDataSelector
         extends AbstractCCompatibilityCheckerUser {
 
+    /** Constructor. */
+    public AbstractRegistrationDataSelector() {}
+
     // The error notifier.
     private InterfaceErrorNotifier notifier;
 
