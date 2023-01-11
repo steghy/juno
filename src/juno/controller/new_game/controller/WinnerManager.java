@@ -33,6 +33,10 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
+/**
+ * This class defines a winner manager.
+ * @author Simone Gentili
+ */
 public class WinnerManager
         extends AbstractObservable {
 

@@ -48,8 +48,8 @@ public class PenaltyExecutor<T>
         extends AbstractDeckUser<T>
         implements ActionListener, InterfacePenaltyExecutor, Stoppable, Observable, Observer {
 
-    // The observer list.
-    private final List<Observer> observabelList;
+    // The Observers List.
+    private final List<Observer> observerList;
 
     // Card to draw (penalty).
     private int cardToDraw;
@@ -67,7 +67,7 @@ public class PenaltyExecutor<T>
     private PenaltyExecutor() {
         timer = new Timer(1000, this);
         cardToDraw = 2;
-        observabelList = new ArrayList<>();
+        observerList = new ArrayList<>();
     }
 
     /**
@@ -111,17 +111,17 @@ public class PenaltyExecutor<T>
 
     @Override
     public boolean addObserver(@NotNull Observer observer) {
-        return observabelList.add(observer);
+        return observerList.add(observer);
     }
 
     @Override
     public boolean removeObserver(@NotNull Observer observer) {
-        return observabelList.remove(observer);
+        return observerList.remove(observer);
     }
 
     @Override
     public void updateAll() {
-        observabelList.forEach(observer -> observer.update(this));
+        observerList.forEach(observer -> observer.update(this));
     }
 
     @Override

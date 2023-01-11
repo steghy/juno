@@ -137,6 +137,7 @@ public class Initializer
         cardEffectController.setProvider(currentPlayerProvider);
         cardEffectController.setActivator(cardEffectActivator);
         cardEffectController.setTurnMover(turnMover);
+        cardEffectController.setDiscardedPile(discardedPile);
 
         // First discarded card.
         firstDiscardedCardManager.setDiscardedPile(discardedPile);

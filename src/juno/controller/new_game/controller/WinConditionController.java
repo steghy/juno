@@ -80,6 +80,7 @@ public class WinConditionController<T>
 
     @Override
     public void update(@NotNull Object object) {
+        // The update comes from the DiscardedPile class.
         if(object instanceof InterfaceDiscardedPile<?> discardedPile) {
             if(discardedPile.size() != 1)
                 control();

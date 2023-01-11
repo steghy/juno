@@ -27,6 +27,8 @@ package juno.controller.new_game.controller;
 
 import juno.controller.new_game.dispenser.InterfaceCardDispenser;
 import juno.controller.util.Stoppable;
+import juno.model.deck.InterfaceDeck;
+import juno.model.deck.InterfaceDiscardedPile;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.ai.InterfaceAi;
 import juno.model.subjects.shift.InterfaceTurnMover;
@@ -81,19 +83,24 @@ public class Mover<T>
     @Override
     @SuppressWarnings("unchecked")
     public void actionPerformed(ActionEvent e) {
+        InterfaceDeck<T> deck = Objects.requireNonNull(getDeck());
+        InterfaceDiscardedPile<T> discardedPile = Objects.requireNonNull(getDiscardedPile());
+        InterfaceTurnMover turnMover = Objects.requireNonNull(getTurnMover());
+
         InterfacePlayer<T> current = players.current();
         if(current instanceof InterfaceAi<?, ?> ai) {
             T card = (T) ai.move();
             if(card == null) {
-                current.add(Objects.requireNonNull(getDeck()).draw());
+                current.add(deck.draw());
                 card = (T) ai.move();
             } if(card != null) {
                 current.remove(card);
-                timer.stop();
-                Objects.requireNonNull(getDiscardedPile()).discard(card);
-            } else Objects.requireNonNull(getTurnMover()).next();
+                discardedPile.discard(card);
+            } else turnMover.next();
         } else {
             timer.stop();
+            // The graphical interface of the human
+            // player is updated by this update
             updateAll();
         }
     }
@@ -106,9 +113,6 @@ public class Mover<T>
             Objects.requireNonNull(getTurnMover()).next();
             timer.start();
         } else if(object instanceof InterfaceTurnMover) {
-            // timer.stop() permette di evitare il problema della giocata veloce
-            // del giocatore successivo a quello del player umano quando si gioca
-            // una carta molto velocemente. Analizzare e comprondere.
             timer.stop();
             timer.start();
         } else if(object instanceof Provider<?> provider) {

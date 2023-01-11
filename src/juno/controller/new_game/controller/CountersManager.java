@@ -36,7 +36,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Objects;
 
 /**
+ * This class defines a counter manager.
  * @author Simone Gentili
+ * @param <T> The type of the cards.
  */
 public class CountersManager<T>
         implements Observer {

@@ -27,14 +27,14 @@ package juno.controller.new_game.controller;
 
 import juno.controller.new_game.penalty.PenaltyExecutor;
 import juno.model.card.InterfaceCard;
-import juno.model.deck.DiscardedPile;
 import juno.model.deck.InterfaceCardEffectActivator;
+import juno.model.deck.InterfaceDiscardedPile;
 import juno.model.subjects.InterfacePlayer;
 import juno.model.subjects.ai.InterfaceAi;
 import juno.model.subjects.shift.InterfaceTurnMover;
 import juno.model.util.AbstractObservable;
-import juno.model.util.Provider;
 import juno.model.util.Observer;
+import juno.model.util.Provider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -59,6 +59,10 @@ public class CardEffectController
     // The turn mover.
     @Nullable
     private InterfaceTurnMover turnMover;
+
+    // The discarded pile.
+    @Nullable
+    private InterfaceDiscardedPile<InterfaceCard> discardedPile;
 
     // The CardEffectController instance.
     private static CardEffectController instance;
@@ -99,10 +103,18 @@ public class CardEffectController
         this.turnMover = turnMover;
     }
 
+    /**
+     * Sets the discarded pile of this object.
+     * @param discardedPile An InterfaceDiscardedPile object.
+     */
+    public void setDiscardedPile(@NotNull InterfaceDiscardedPile<InterfaceCard> discardedPile) {
+        this.discardedPile = discardedPile;
+    }
+
     @Override
     public void control() {
         InterfacePlayer<InterfaceCard> current = Objects.requireNonNull(provider).provide();
-        InterfaceCard card = (InterfaceCard) DiscardedPile.getInstance().provide();
+        InterfaceCard card = Objects.requireNonNull(discardedPile).provide();
         Objects.requireNonNull(activator).activate(card);
         // Human player case.
         if(!(current instanceof InterfaceAi<?,?>)) {
