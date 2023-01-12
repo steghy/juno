@@ -28,7 +28,6 @@ package juno.model.data.io.input;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.HashMap;
@@ -72,23 +71,33 @@ public class PropertyDeepCopier
                 object.getClass().getDeclaredFields();
 
         for(Field field : fields) {
-                if(!Modifier.isFinal(field.getModifiers())) {
+                if(true) {
 
-                    // It may throw an InaccessibleObjectException
-                    // for some Java standard library classes.
+                    /*
+                     It may throw an InaccessibleObjectException
+                     for some Java standard library classes.
+                    */
                     field.setAccessible(true);
 
                     Class<?> fieldType = field.getType();
 
-                    // Singleton class case. StackOverflow error
-                    // without this check.
+                    /*
+                     Singleton class case. StackOverflow error
+                     without this check.
+                    */
                     if(fieldType == object.getClass()) continue;
+
+                    /*
+                    Check Enum class case.
+                     */
 
                     switch (fieldType.getSimpleName()) {
 
-                        // Inspection for these values is unnecessary
-                        // and would result in an exception
-                        // (InaccessibleObjectException) anyway.
+                        /*
+                         Inspection for these values is unnecessary
+                         and would result in an exception
+                         (InaccessibleObjectException) anyway.
+                        */
                         case    ("String"),
                                 ("Integer"),   ("int"),
                                 ("Double"),    ("double"),
@@ -108,17 +117,16 @@ public class PropertyDeepCopier
                         case    ("BigInteger")
                                 -> map.put(field.getName(), ((BigInteger)field.get(object)).intValue());
 
-                        // Recursive call to fetch the values from the object.
-                        // Possible InaccessibleObjectException.
-                        // Object o = field.get(object);
-                        // try {
-                        //         Map<String, Object> temp = deepCopy(o);
-                        //         map.put(field.getName(), temp);
-                        // catch (InaccessibleObjectException e) {
-                        //         map.put(field.getName(), o);
-                        //
-                        //
-                        //
+                        /*
+                         Recursive call to fetch the values from the object.
+                         Possible InaccessibleObjectException.
+                         Object o = field.get(object);
+                         try {
+                                 Map<String, Object> temp = deepCopy(o);
+                                 map.put(field.getName(), temp);
+                         catch (InaccessibleObjectException e) {
+                                 map.put(field.getName(), o);
+                        */
                         default -> map.put(field.getName(), deepCopy(field.get(object)));
                     }
                 }

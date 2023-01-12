@@ -71,8 +71,10 @@ public class Configurator
                           @NotNull Map<String, Object> map)
             throws NoSuchFieldException, IllegalAccessException, InvocationTargetException {
 
-        // Prevent the error of considering the fields of class 'Class'
-        // in case the object passed in input was of type Class.
+        /*
+         Prevent the error of considering the fields of class 'Class'
+         in case the object passed in input was of type Class.
+        */
         Class<?> clazz = object instanceof Class<?> ? (Class<?>) object : object.getClass();
         for(Map.Entry<String, Object> entry : map.entrySet()) {
 
@@ -84,15 +86,19 @@ public class Configurator
 
             Object value = entry.getValue();
 
-            // It may throw an InaccessibleObjectException
-            // for some Java standard library classes.
+            /*
+             It may throw an InaccessibleObjectException
+             for some Java standard library classes.
+            */
             field.setAccessible(true);
 
             Class<?> fieldType = field.getType();
             Class<?> valueType = value.getClass();
 
-            // Recursively configuration of the field with
-            // the obtained map.
+            /*
+             Recursively configuration of the field with
+             the obtained map.
+            */
             if(value instanceof Map<?, ?> anotherMap) {
                 if(!anotherMap.isEmpty())
                     configure(field.get(object), (Map<String, Object>) anotherMap);
@@ -162,10 +168,8 @@ public class Configurator
                         default -> throw new RuntimeException("Unexpected type: " + fieldType);
                     }
                 }
-            } else {
-                throw new IllegalArgumentException("Invalid value type (" + valueType +
+            } else throw new IllegalArgumentException("Invalid value type (" + valueType +
                         ") for key (" + key + "). Expected type (" + fieldType + ")");
-            }
         }
     }
 }

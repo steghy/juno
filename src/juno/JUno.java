@@ -67,11 +67,9 @@ public class JUno {
             // Audio player.
             AudioPlayer.getInstance().play();
 
-            ButtonSoundPlayer.getInstance().mute();
-
             // Fullscreen mode.
+            ButtonSoundPlayer.getInstance().mute();
             ((JToggleButton) Objects.requireNonNull(MenuPanel.getInstance().getThirdComponent())).doClick();
-
             ButtonSoundPlayer.getInstance().unmute();
 
             // Frame.
@@ -80,11 +78,8 @@ public class JUno {
 
         } catch (Exception e) {
             e.printStackTrace();
-
             StringBuilder b = new StringBuilder();
-
             Arrays.stream(e.getStackTrace()).forEach(l -> b.append(l).append("\n"));
-
             JOptionPane.showMessageDialog(
                     null,
                     "An error has occurred: \n" + b,
