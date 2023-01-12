@@ -62,7 +62,9 @@ public class PropertyDeepCopier
     }
 
     @Override
-    public Map<String, Object> deepCopy(@NotNull Object object) throws IllegalAccessException {
+    public Map<String, Object> deepCopy(@NotNull Object object)
+            throws IllegalAccessException {
+
         Map<String, Object> map = new HashMap<>();
 
         // Prevent the error of considering the fields of class 'Class'
@@ -71,64 +73,61 @@ public class PropertyDeepCopier
                 object.getClass().getDeclaredFields();
 
         for(Field field : fields) {
-                if(true) {
+                /*
+                 It may throw an InaccessibleObjectException
+                 for some Java standard library classes.
+                */
+                field.setAccessible(true);
+
+                Class<?> fieldType = field.getType();
+
+                /*
+                 Singleton class case. StackOverflow error
+                 without this check.
+                */
+                if(fieldType == object.getClass()) continue;
+
+                /*
+                Check Enum class case.
+                 */
+
+                switch (fieldType.getSimpleName()) {
 
                     /*
-                     It may throw an InaccessibleObjectException
-                     for some Java standard library classes.
+                     Inspection for these values is unnecessary
+                     and would result in an exception
+                     (InaccessibleObjectException) anyway.
                     */
-                    field.setAccessible(true);
+                    case    ("String"),
+                            ("Integer"),   ("int"),
+                            ("Double"),    ("double"),
+                            ("Float"),     ("float"),
+                            ("Short"),     ("short"),
+                            ("Long"),      ("long"),
+                            ("Character"), ("char"),
+                            ("Byte"),      ("byte"),
+                            ("Boolean"),   ("boolean")
+                            -> map.put(field.getName(), field.get(object));
 
-                    Class<?> fieldType = field.getType();
+                    // BigDecimal to double.
+                    case    ("BigDecimal")
+                            -> map.put(field.getName(), ((BigDecimal)field.get(object)).doubleValue());
+
+                    // BigInteger to int.
+                    case    ("BigInteger")
+                            -> map.put(field.getName(), ((BigInteger)field.get(object)).intValue());
 
                     /*
-                     Singleton class case. StackOverflow error
-                     without this check.
+                     Recursive call to fetch the values from the object.
+                     Possible InaccessibleObjectException.
+                     Object o = field.get(object);
+                     try {
+                             Map<String, Object> temp = deepCopy(o);
+                             map.put(field.getName(), temp);
+                     catch (InaccessibleObjectException e) {
+                             map.put(field.getName(), o);
                     */
-                    if(fieldType == object.getClass()) continue;
-
-                    /*
-                    Check Enum class case.
-                     */
-
-                    switch (fieldType.getSimpleName()) {
-
-                        /*
-                         Inspection for these values is unnecessary
-                         and would result in an exception
-                         (InaccessibleObjectException) anyway.
-                        */
-                        case    ("String"),
-                                ("Integer"),   ("int"),
-                                ("Double"),    ("double"),
-                                ("Float"),     ("float"),
-                                ("Short"),     ("short"),
-                                ("Long"),      ("long"),
-                                ("Character"), ("char"),
-                                ("Byte"),      ("byte"),
-                                ("Boolean"),   ("boolean")
-                                -> map.put(field.getName(), field.get(object));
-
-                        // BigDecimal to double.
-                        case    ("BigDecimal")
-                                -> map.put(field.getName(), ((BigDecimal)field.get(object)).doubleValue());
-
-                        // BigInteger to int.
-                        case    ("BigInteger")
-                                -> map.put(field.getName(), ((BigInteger)field.get(object)).intValue());
-
-                        /*
-                         Recursive call to fetch the values from the object.
-                         Possible InaccessibleObjectException.
-                         Object o = field.get(object);
-                         try {
-                                 Map<String, Object> temp = deepCopy(o);
-                                 map.put(field.getName(), temp);
-                         catch (InaccessibleObjectException e) {
-                                 map.put(field.getName(), o);
-                        */
-                        default -> map.put(field.getName(), deepCopy(field.get(object)));
-                    }
+                    default -> map.put(field.getName(), deepCopy(field.get(object)));
                 }
         } return map;
     }
